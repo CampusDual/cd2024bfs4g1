@@ -1,6 +1,6 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
-import com.campusdual.cd2024bfs4g1.api.core.service.IBootcampsService;
+import com.campusdual.cd2024bfs4g1.api.core.service.IBootcampService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-public class BootcampsService implements IBootcampService {
+public class BootcampService implements IBootcampService {
 
     @Autowired
     private BootcampDao bootcampDao;
