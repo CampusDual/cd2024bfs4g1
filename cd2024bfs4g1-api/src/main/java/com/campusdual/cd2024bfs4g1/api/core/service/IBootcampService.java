@@ -6,7 +6,7 @@ import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import java.util.List;
 import java.util.Map;
 
-public interface IBootcampsService {
+public interface IBootcampService {
 
     // BOOTCAMP
     EntityResult bootcampsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
