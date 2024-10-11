@@ -9,11 +9,11 @@ import java.util.Map;
 public interface IBootcampService {
 
     // BOOTCAMP
-    EntityResult bootcampsQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
+    EntityResult bootcampQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
-    EntityResult bootcampsInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+    EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
 
-    EntityResult bootcampsUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-    EntityResult bootcampsDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }
