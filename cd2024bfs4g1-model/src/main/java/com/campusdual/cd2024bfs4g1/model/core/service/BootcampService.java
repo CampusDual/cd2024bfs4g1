@@ -22,10 +22,25 @@ public class BootcampService implements IBootcampService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult bootcampQuery(Map<String, Object> keyMap, List<String> attrList)
+    public EntityResult bootcampsQuery(Map<String, Object> keyMap, List<String> attrList)
             throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.bootcampDao, keyMap, attrList);
     }
 
+    @Override
+    public EntityResult bootcampsInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.bootcampDao, attrMap);
+    }
+
+    @Override
+    public EntityResult bootcampsUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
+            throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.bootcampDao, attrMap, keyMap);
+    }
+
+    @Override
+    public EntityResult bootcampsDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.bootcampDao, keyMap);
+    }
 
 }
