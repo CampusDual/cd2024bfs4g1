@@ -75,5 +75,10 @@
   "VALIDATOR.HASSMALLCASE": "Debe tener al menos 1 minúscula",
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
-  "VIEW": "Vistas"
+  "VIEW": "Vistas",
+  "NAME": "Nombre",
+  "START_DATE": "Fecha de Inicio",
+  "END_DATE": "Fecha de Fin",
+  "STATUS": "Estado",
+  "FINISHED": "Finalizado"
 }

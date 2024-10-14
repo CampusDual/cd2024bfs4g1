@@ -75,5 +75,11 @@
   "VALIDATOR.HASSMALLCASE": "Must contain at least 1 Letter in Small Case",
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
-  "VIEW": "Views"
+  "VIEW": "Views",
+  "NAME": "Name",
+  "START_DATE": "Start Date",
+  "END_DATE": "End Date",
+  "STATUS": "Status",
+  "FINISHED": "Finished"
+
 }
