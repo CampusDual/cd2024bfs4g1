@@ -30,6 +30,5 @@ public class StudentBootcampDao implements IStudentBootcampService {
     public EntityResult studentBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
         return this.daoHelper.update(this.studentDao, attrMap, keyMap);
     };
-//
 
 }
