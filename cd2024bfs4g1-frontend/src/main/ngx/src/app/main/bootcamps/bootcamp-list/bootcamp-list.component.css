@@ -29,7 +29,8 @@ o-table[attr="bootcampsTable"] {
   o-table[attr="bootcampsTable"] [visible-columns="ID"],
   o-table[attr="bootcampsTable"] [visible-columns="NAME"],
   o-table[attr="bootcampsTable"] [visible-columns="START_DATE"],
-  o-table[attr="bootcampsTable"] [visible-columns="END_DATE"] {
+  o-table[attr="bootcampsTable"] [visible-columns="END_DATE"],
+  o-table[attr="bootcampsTable"] [visible-columns="STATUS"] {
     display: table-cell;
   }
   
