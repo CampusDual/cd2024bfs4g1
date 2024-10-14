@@ -1,0 +1,44 @@
+o-table[attr="bootcampsTable"] {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  o-table[attr="bootcampsTable"] th,
+  o-table[attr="bootcampsTable"] td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  o-table[attr="bootcampsTable"] th {
+    background-color: #f2f2f2;
+    color: black;
+    text-align: left;
+  }
+  
+  /* Alternancia de colores en las filas */
+  o-table[attr="bootcampsTable"] tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  o-table[attr="bootcampsTable"] tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Estilo para las columnas visibles */
+  o-table[attr="bootcampsTable"] [visible-columns="ID"],
+  o-table[attr="bootcampsTable"] [visible-columns="NAME"],
+  o-table[attr="bootcampsTable"] [visible-columns="START_DATE"],
+  o-table[attr="bootcampsTable"] [visible-columns="END_DATE"] {
+    display: table-cell;
+  }
+  
+  /* Estilo para la barra de scroll */
+  o-table[attr="bootcampsTable"] {
+    overflow-x: auto;
+  }
+  
+  /* Ajuste del alto de la tabla */
+  o-table[attr="bootcampsTable"] {
+    max-height: 400px;
+  }
