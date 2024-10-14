@@ -17,7 +17,8 @@ export const routes: Routes = [
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'profile', component: ProfileComponent },
-      { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule) }
+      { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule) },
+      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) }
     ]
   }
 ];
