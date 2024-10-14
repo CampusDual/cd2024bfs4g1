@@ -11,9 +11,4 @@ public interface IBootcampService {
     // BOOTCAMP
     EntityResult bootcampQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException;
 
-    EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
-
-    EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
-
-    EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }

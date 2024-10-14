@@ -1,6 +1,12 @@
+
+
+
 <o-table attr="bootcampsTable" service="bootcamps" entity="bootcamp" keys="ID"
     columns="ID;NAME;START_DATE;END_DATE;STATUS"
-    visible-columns="NAME;START_DATE;END_DATE;STATUS" query-rows="20">
+    visible-columns="NAME;START_DATE;END_DATE;STATUS" query-rows="20"
+    show-report-on-demand-option="false"
+    show-charts-on-demand-option="false"
+    delete-button="false">
 
     <o-table-column attr="START_DATE" title="START_DATE" type="date"
     format="DD/MM/YYYY">
@@ -9,6 +15,5 @@
     <o-table-column attr="END_DATE" title="END_DATE" type="date"
     format="DD/MM/YYYY">
     </o-table-column>
-
 
 </o-table>
