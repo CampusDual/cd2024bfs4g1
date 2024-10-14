@@ -1,0 +1,12 @@
+<o-form attr="contactDetail" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input attr="ID" sql-type="INTEGER" enabled="no"></o-text-input>
+    <o-column fxFlex>
+            <div fxLayout="row" fxLayoutGap="8px">
+                <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
+                <o-text-input fxFlex="40" attr="surnames" required="yes"></o-text-input>
+            </div>
+            <div fxLayout="row" fxLayoutGap="8px">
+                <o-email-input attr="email"></o-email-input>
+            </div>
+    </o-column>
+</o-form>

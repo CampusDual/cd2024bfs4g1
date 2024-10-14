@@ -29,7 +29,7 @@ export const customProviders: any = [
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [
     AppComponent
