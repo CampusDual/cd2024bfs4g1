@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BootcampDetailsComponent } from './bootcamp-details/bootcamp-details.component';
 
 const routes: Routes = [
-  {path:'', component: BootcampDetailsComponent}
+  {path:'', component: BootcampDetailsComponent},
+  {path: 'bootcamps/:id',component: BootcampsDetailsComponent}
 ];
 
 @NgModule({
