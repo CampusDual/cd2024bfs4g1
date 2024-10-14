@@ -11,4 +11,7 @@ public interface IStudentService {
 
     EntityResult studentQuery(Map<String, Object> keyMap, List<String> attributes) throws OntimizeJEERuntimeException;
 
+    EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
+
+    EntityResult studentUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }
