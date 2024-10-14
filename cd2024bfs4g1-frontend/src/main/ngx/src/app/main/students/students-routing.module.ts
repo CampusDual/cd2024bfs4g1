@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentsTableComponent } from './students-table/students-table.component';
 
 const routes: Routes = [
-  { path:'', component: StudentsTableComponent} //TODO: cambiar ruta???
+  { path:'', component: StudentsTableComponent} 
 ];
 
 @NgModule({

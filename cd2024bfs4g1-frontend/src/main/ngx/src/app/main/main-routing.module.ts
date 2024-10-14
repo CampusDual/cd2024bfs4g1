@@ -9,6 +9,7 @@ import { StudentsModule } from './students/students.module';
 export const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: MainComponent,
     canActivate: [AuthGuardService],
     children: [
