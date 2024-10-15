@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BootcampsDetailsComponent } from './bootcamps-details/bootcamps-details.component';
+import { BootcampDetailsComponent } from './bootcamp-details/bootcamp-details.component';
 
 const routes: Routes = [
-  {path: 'bootcamps/:ID',component: BootcampsDetailsComponent}
+  {path:'', component: BootcampDetailsComponent},
+  {path: 'bootcamps/:id',component: BootcampsDetailsComponent}
 ];
 
 @NgModule({
