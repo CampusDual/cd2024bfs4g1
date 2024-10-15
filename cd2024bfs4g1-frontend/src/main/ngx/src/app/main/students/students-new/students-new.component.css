@@ -1,0 +1,45 @@
+
+  /* Estilos para los formularios */
+  o-form[attr="contactDetail"] {
+    background-color: #d5e9de;
+    border: 2px solid #a8d3b8;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  [fxLayout="row"] {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+  }
+  
+  o-text-input, o-email-input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 10px 10px;
+    background-color: #F5F5F5;
+    border: 1px solid #a8d3b8;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #2f4f4f;
+    box-sizing: border-box;
+  }
+
+label {
+    display: block;
+    width: 100%;
+    margin: 10px 0 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #668873;
+    box-sizing: border-box;
+}
+  
+  
+
+  

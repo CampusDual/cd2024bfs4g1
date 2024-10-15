@@ -4,7 +4,7 @@ info:
   version: '1.0'
   description: The cd2024bfs4g1 API
 servers:
-  - url: '/'
+  - url: ''
     description: Localhost
 
 paths:
