@@ -26,3 +26,6 @@
     <o-table-column attr="student_id" title="Id Student"></o-table-column>
     <o-table-column attr="bootcamp_id" title="Id Bootcamp"></o-table-column>
 </o-table>
+
+  <o-combo #combo attr="combo-multiple-disabled" enabled="no" label="Country" [static-data]="staticData" [data]="valueMultiple" value-column="key" columns="key;value" visible-columns="value" required="yes" read-only="false" layout-padding multiple="yes"></o-combo>
+</o-form>
