@@ -6,24 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-bootcamp-prueba.component.css']
 })
 export class StudentBootcampPruebaComponent {
+  dataArray = [
+    { key: 'US', value: 'United States' },
+    { key: 'CA', value: 'Canada' },
+    { key: 'MX', value: 'Mexico' },
+    { key: 'FR', value: 'France' },
+    { key: 'DE', value: 'Germany' }
+  ];
 
-  // Datos que se mostrarán en el comboBox (estáticos en este caso)
-  staticData = [
-    { key: '1', value: 'USA' },
-    { key: '2', value: 'Canada' },
-    { key: '3', value: 'Mexico' },
-    { key: '4', value: 'Spain' },
-    { key: '5', value: 'France' }
-  ]
-  valueMultiple: string[];
-
-
-  constructor() {
-    setTimeout(() => {
-      this.valueMultiple = ['1', '3']; 
-    });
-  }
-
+ 
+  valueMultiple = [];  
 
 
 }
