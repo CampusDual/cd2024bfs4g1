@@ -6,12 +6,13 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 @Lazy
-@Repository(value = "StudentBootcampDao")
+@Repository(value = "StudentDao")
 @ConfigurationFile(
-        configurationFile = "dao/StudentBootcampDao.xml",
+        configurationFile = "dao/StudentDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
-public class StudentBootcampDao extends OntimizeJdbcDaoSupport {
-    public static final String TABLE_ID = "ID";
-    public static final String STUDENT_ID = "STUDENT_ID";
-    public static final String BOOTCAMP_ID = "BOOTCAMP_ID";
+public class StudentDao extends OntimizeJdbcDaoSupport {
+        public static final String STU_ID   = "ID";
+        public static final String NAME     = "NAME";
+        public static final String SURNAMES = "SURNAMES";
+        public static final String EMAIL    = "EMAIL";
 }
