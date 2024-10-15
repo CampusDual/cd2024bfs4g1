@@ -26,9 +26,11 @@
   "HOME": "Home",
   "LANG_en": "English",
   "LANG_es": "Spanish",
+  "LANG_gal": "Galician",
   "LANGUAGE_de": "German",
   "LANGUAGE_en": "English",
   "LANGUAGE_es": "Spanish",
+  "LANGUAGE_gal": "Galician",
   "LOGIN": "Login",
   "LOGIN_TITLE": "Log in to your account",
   "LOGOUT": "Logout",
@@ -79,6 +81,11 @@
   "name": "Name",
   "start_date": "Start Date",
   "end_date": "End Date",
-  "status": "Status"
+  "status": "Status",
+  "Students": "Students",
+  "Name": "Name",
+  "Surnames": "Surname",
+  "Email": "Email",
+  "Items per page": "Items per page"
 
 }

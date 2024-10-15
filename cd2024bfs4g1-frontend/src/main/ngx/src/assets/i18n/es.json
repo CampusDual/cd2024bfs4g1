@@ -26,9 +26,11 @@
   "HOME": "Inicio",
   "LANG_en": "Inglés",
   "LANG_es": "Español",
+  "LANG_gal": "Galego",
   "LANGUAGE_de": "Alemán",
   "LANGUAGE_en": "Inglés",
   "LANGUAGE_es": "Español",
+  "LANGUAGE_gal": "Galego",
   "LOGIN": "Entrar",
   "LOGIN_TITLE": "Inicia sesión en tu cuenta",
   "LOGOUT": "Salir",
@@ -76,8 +78,13 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Debe tener al menos un caracter especial",
   "VERSION": "Versión",
   "VIEW": "Vistas",
-  "NAME": "Nombre",
+  "name": "Nombre",
   "start_date": "Fecha de Inicio",
   "end_date": "Fecha de Fin",
-  "status": "Estado"
+  "status": "Estado",
+  "Students": "Estudiantes",
+  "Name": "Nombre",
+  "Surnames": "Apellidos",
+  "Email": "Correo",
+  "Items per page": "Registros por página"
 }
