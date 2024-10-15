@@ -8,7 +8,7 @@ import { BootcampListComponent } from './bootcamp-list/bootcamp-list.component';
 
 @NgModule({
   declarations: [
-    BootcampListComponent
+    BootcampListComponent,
     BootcampDetailsComponent
   ],
   imports: [

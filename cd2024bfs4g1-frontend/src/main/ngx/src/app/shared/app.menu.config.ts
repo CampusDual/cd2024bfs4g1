@@ -11,6 +11,5 @@ export const MENU_CONFIG: MenuRootItem[] = [
     ]
   },
   { id: 'students', name: 'Students', tooltip: 'STUDENTS', route: '/main/students', icon: 'person' },
-  { id: 'bootcamps', name: 'Bootcamps', tooltip: 'BOOTCAMPS', route: '/main/bootcamps', icon: 'person' },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
