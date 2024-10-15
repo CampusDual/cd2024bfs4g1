@@ -1,19 +1,40 @@
-
-
-
 <o-table attr="bootcampsTable" service="bootcamps" entity="bootcamp" keys="ID"
     columns="ID;NAME;START_DATE;END_DATE;STATUS"
     visible-columns="NAME;START_DATE;END_DATE;STATUS" query-rows="20"
     show-report-on-demand-option="false"
     show-charts-on-demand-option="false"
-    delete-button="false">
+    delete-button="false"
+    selection-mode="none"
+    detail-mode="false"
 
-    <o-table-column attr="START_DATE" title="START_DATE" type="date"
-    format="DD/MM/YYYY">
+    >
+
+    <o-table-column
+    attr="NAME" title="NAME"
+    type="string" content-align="center"
+    ></o-table-column>
+
+    <o-table-column
+    attr="STATUS" title="STATUS"
+    type="string" content-align="center"
+    ></o-table-column>
+
+
+
+    <o-table-context-menu 
+    insert="false" edit="false" 
+    view-detail="false" delete="false">
+    </o-table-context-menu>
+
+
+    <o-table-column 
+    attr="START_DATE" title="START_DATE" ç
+    type="date" format="DD/MM/YYYY">
     </o-table-column>
 
-    <o-table-column attr="END_DATE" title="END_DATE" type="date"
-    format="DD/MM/YYYY">
+    <o-table-column 
+    attr="END_DATE" title="END_DATE" 
+    type="date" format="DD/MM/YYYY">
     </o-table-column>
 
 </o-table>
