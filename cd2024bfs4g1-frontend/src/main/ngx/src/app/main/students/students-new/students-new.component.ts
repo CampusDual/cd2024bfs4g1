@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { OFormComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-students-new',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./students-new.component.css']
 })
 export class StudentsNewComponent {
+
+  @ViewChild('studentsform') protected formStudents: OFormComponent;
+
+  insertStudent() {
+    this.formStudents.insert();
+  }
 
 }
