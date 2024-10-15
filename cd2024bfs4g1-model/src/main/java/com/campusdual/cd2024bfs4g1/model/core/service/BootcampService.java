@@ -27,20 +27,5 @@ public class BootcampService implements IBootcampService {
         return this.daoHelper.query(this.bootcampDao, keyMap, attrList);
     }
 
-    @Override
-    public EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.bootcampDao, attrMap);
-    }
-
-    @Override
-    public EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
-            throws OntimizeJEERuntimeException {
-        return this.daoHelper.update(this.bootcampDao, attrMap, keyMap);
-    }
-
-    @Override
-    public EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.bootcampDao, keyMap);
-    }
 
 }

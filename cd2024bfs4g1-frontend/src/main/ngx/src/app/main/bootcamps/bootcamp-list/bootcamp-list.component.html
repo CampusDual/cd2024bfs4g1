@@ -1,38 +1,47 @@
-<o-table attr="bootcampsTable" service="bootcamps" entity="bootcamp" keys="ID"
-    columns="ID;NAME;START_DATE;END_DATE;STATUS"
-    visible-columns="NAME;START_DATE;END_DATE;STATUS" query-rows="20"
+<o-table 
+    attr="bootcampsTable" service="bootcamps" 
+    entity="bootcamp" keys="id"
+    columns="id;name;start_date;end_date;status"
+    visible-columns="name;start_date;end_date;status" 
     show-report-on-demand-option="false"
     show-charts-on-demand-option="false"
-
     delete-button="false"
     selection-mode="none"
     detail-mode="false"
     >
 
+    <o-table-paginator 
+    page-size-options="15">
+    </o-table-paginator>
+
     <o-table-context-menu
     insert="false" edit="false"
-    view-detail="false" delete="false">
+    view-detail="false" >
     </o-table-context-menu>
 
-
     <o-table-column
-    attr="NAME" title="NAME"
+    attr="name" title="name"
     type="string" content-align="center"
+    title-align="center"
     ></o-table-column>
 
     <o-table-column
-    attr="STATUS" title="STATUS"
+    attr="status" title="status"
     type="string" content-align="center"
+    title-align="center"
     ></o-table-column>
 
     <o-table-column
-    attr="START_DATE" title="START_DATE" ç
-    type="date" format="DD/MM/YYYY">
+    attr="start_date" title="start_date" 
+    type="date" format="DD/MM/YYYY"
+    content-align="center" title-align="center">
+    
     </o-table-column>
 
     <o-table-column
-    attr="END_DATE" title="END_DATE"
-    type="date" format="DD/MM/YYYY">
+    attr="end_date" title="end_date"
+    type="date" format="DD/MM/YYYY"
+    content-align="center" title-align="center">
     </o-table-column>
 
 </o-table>

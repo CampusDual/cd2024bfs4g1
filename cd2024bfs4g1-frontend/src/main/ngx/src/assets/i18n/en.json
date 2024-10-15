@@ -76,10 +76,9 @@
   "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
   "VIEW": "Views",
-  "NAME": "Name",
-  "START_DATE": "Start Date",
-  "END_DATE": "End Date",
-  "STATUS": "Status",
-  "FINISHED": "Finished"
+  "name": "Name",
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "status": "Status"
 
 }

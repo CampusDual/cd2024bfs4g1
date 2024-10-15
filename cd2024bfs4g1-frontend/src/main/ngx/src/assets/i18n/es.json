@@ -77,8 +77,7 @@
   "VERSION": "Versión",
   "VIEW": "Vistas",
   "NAME": "Nombre",
-  "START_DATE": "Fecha de Inicio",
-  "END_DATE": "Fecha de Fin",
-  "STATUS": "Estado",
-  "FINISHED": "Finalizado"
+  "start_date": "Fecha de Inicio",
+  "end_date": "Fecha de Fin",
+  "status": "Estado"
 }

@@ -41,7 +41,7 @@ o-table[attr="bootcampsTable"] {
   
   /* Ajuste del alto de la tabla */
   o-table[attr="bootcampsTable"] {
-    max-height: 400px;
+    max-height: 750px;
   }
 
   
