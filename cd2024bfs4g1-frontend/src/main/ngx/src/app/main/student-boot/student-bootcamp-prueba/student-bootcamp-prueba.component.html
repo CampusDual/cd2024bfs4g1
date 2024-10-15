@@ -1,5 +1,28 @@
-<o-form editable-detail="no" show-header="no">
-  <o-combo #combo attr="combo-multiple" label="Country" [static-data]="staticData" [data]="valueMultiple" value-column="key" columns="key;value" visible-columns="value" required="yes" read-only="false" layout-padding multiple="yes"></o-combo>
-
-  <o-combo #combo attr="combo-multiple-disabled" enabled="no" label="Country" [static-data]="staticData" [data]="valueMultiple" value-column="key" columns="key;value" visible-columns="value" required="yes" read-only="false" layout-padding multiple="yes"></o-combo>
-</o-form>
+ <!-- <o-form editable-detail="no" show-header="no">
+ Combo que permite selección múltiple
+  <o-combo
+    #combo
+    attr="combo-multiple"
+    label="Country"
+    [static-data]="dataArray"
+    [data]="valueMultiple"
+    value-column="key"
+    columns="key;value"
+    visible-columns="value"
+    required="yes"
+    read-only="false"
+    layout-padding
+    multiple="yes">
+  </o-combo>
+  <div fxLayout="row">
+    <o-button attr="raised1" type="RAISED" label="Añadir" layout-padding></o-button>
+  </div>
+   Botón para mostrar los valores seleccionados en la consola
+  <button (click)="getSelectedValues()">Obtener valores seleccionados</button>
+</o-form>-->
+<o-table attr="studentsBootcampsTable" service="studentbootcamp" entity="studentBootcamp" keys="id"
+    columns="id;student_id;bootcamp_id"
+    visible-columns="student_id;bootcamp_id" query-rows="2">
+    <o-table-column attr="student_id" title="Id Student"></o-table-column>
+    <o-table-column attr="bootcamp_id" title="Id Bootcamp"></o-table-column>
+</o-table>
