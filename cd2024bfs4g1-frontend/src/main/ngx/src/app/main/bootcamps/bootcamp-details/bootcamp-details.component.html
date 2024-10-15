@@ -1,14 +1,9 @@
-<o-form show-header="no" query-on-init="no" fxFill>
-    <o-text-input attr="student_id" label="student_id" required="yes"></o-text-input>
-    <o-button type="FLAT" (click)="addStudent()" label="Add student" color="primary"></o-button>
+<o-form keys="id" service="bootcamps" entity="bootcamp">
+    <o-table attr="studentsBootcampTable" service="studentsBootcamp" entity="studentsBootcamp" keys="id"
+        parent-keys="id:bootcamp_id"
+        columns="id;name;surnames"
+        visible-columns="name;surnames" query-rows="2">
+        <o-table-column attr="name" title="Name"></o-table-column>
+        <o-table-column attr="surnames" title="Surnames"></o-table-column>
+    </o-table>
 </o-form>
-<o-form show-header="no" query-on-init="no" fxFill>
-    <o-text-input attr="student_id" label="student_id" required="yes"></o-text-input>
-    <o-button type="FLAT" (click)="deleteStudent()" label="Delete student" color="primary"></o-button>
-</o-form>
-<o-table attr="studentsTable" service="students" entity="student" keys="id"
-    columns="id;name;surnames"
-    visible-columns="name;surnames" query-rows="2">
-    <o-table-column attr="name" title="Name"></o-table-column>
-    <o-table-column attr="surnames" title="Surnames"></o-table-column>
-</o-table>
