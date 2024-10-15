@@ -20,7 +20,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule) },
       { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) },
-      { path: 'test', loadChildren: () => import('./student-boot//student-boot.module').then(m => m.StudentBootModule) }
+      { path: 'test', loadChildren: () => import('./student-boot/student-boot.module').then(m => m.StudentBootModule) }
     ]
   }
 ];
