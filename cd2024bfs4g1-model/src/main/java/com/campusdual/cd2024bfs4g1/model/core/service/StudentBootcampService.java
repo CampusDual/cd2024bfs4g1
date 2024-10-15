@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Service("StudentBootcampService")
 @Lazy
-public class StudentBootcampDao implements IStudentBootcampService {
+public class StudentBootcampService implements IStudentBootcampService {
 
     @Autowired
     private StudentDao studentDao;
