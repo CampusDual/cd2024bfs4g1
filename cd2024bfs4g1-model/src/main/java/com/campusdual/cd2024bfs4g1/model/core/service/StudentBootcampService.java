@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service("StudentBootcampService")
@@ -30,5 +31,8 @@ public class StudentBootcampService implements IStudentBootcampService {
       public EntityResult studentBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
           return this.daoHelper.delete(this.studentBootcampDao, keyMap);
     }
-
+     @Override
+    public EntityResult studentsWithBootcampQuery(Map<String, Object> keysValues, List<String> attributes) {
+        return this.daoHelper.query(this.studentBootcampDao, keysValues, attributes);
+    }
 }
