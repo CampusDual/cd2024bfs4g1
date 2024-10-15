@@ -5,7 +5,7 @@ import { StudentBootcampPruebaComponent } from './student-bootcamp-prueba/studen
 
 
 const routes: Routes = [
-  { path: '', component: StudentBootcampPruebaComponent, pathMatch : 'full'},  
+  { path: '', pathMatch : 'full',component: StudentBootcampPruebaComponent},  
  
 ];
 

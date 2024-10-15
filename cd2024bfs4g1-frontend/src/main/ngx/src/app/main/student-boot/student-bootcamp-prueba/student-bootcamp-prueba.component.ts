@@ -6,16 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-bootcamp-prueba.component.css']
 })
 export class StudentBootcampPruebaComponent {
-  dataArray = [
-    { key: 'US', value: 'United States' },
-    { key: 'CA', value: 'Canada' },
-    { key: 'MX', value: 'Mexico' },
-    { key: 'FR', value: 'France' },
-    { key: 'DE', value: 'Germany' }
-  ];
+  // dataArray = [
+  //   { key: 'US', value: 'United States' },
+  //   { key: 'CA', value: 'Canada' },
+  //   { key: 'MX', value: 'Mexico' },
+  //   { key: 'FR', value: 'France' },
+  //   { key: 'DE', value: 'Germany' }
+  // ];
 
  
-  valueMultiple = [];  
+  // valueMultiple = [];  
+
 
 
 }
