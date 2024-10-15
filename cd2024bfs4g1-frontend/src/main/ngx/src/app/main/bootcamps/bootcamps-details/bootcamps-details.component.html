@@ -1,1 +1,13 @@
-<p>bootcamps-details works!</p>
+<o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
+    show-header-navigation="no">
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <o-column fxFlex>
+            <div fxLayout="row" fxLayoutGap="8px">
+                <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
+                <o-date-input fxFlex="40" attr="start_date" required="yes"></o-date-input>
+                <o-date-input fxFlex="40" attr="end_date" required="yes"></o-date-input>
+            </div>
+            
+            
+    </o-column>
+</o-form>
