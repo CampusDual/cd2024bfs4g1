@@ -11,7 +11,7 @@ import { StudentsTableComponent } from './students-table/students-table.componen
 @NgModule({
   declarations: [
     StudentsDetailComponent,
-    StudentsNewComponent
+    StudentsNewComponent,
     StudentsTableComponent
   ],
   imports: [
