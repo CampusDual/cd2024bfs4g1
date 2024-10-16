@@ -1,18 +1,16 @@
-<o-form #studentsform attr="contactDetail" keys="id" show-header="no" show-header-navigation="no">
+<o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
         <div fxFlex="45">
             <label for="name">Nombre</label>
-            <o-text-input required="yes" id="name"></o-text-input>
+            <o-text-input attr="name" required="yes" id="name"></o-text-input>
         </div>
         <div fxFlex="45">
             <label for="surnames">Apellidos</label>
-            <o-text-input required="yes" id="surnames"></o-text-input>
+            <o-text-input attr="surnames" required="yes" id="surnames"></o-text-input>
         </div>
         <div fxFlex="98">
             <label for="email">Email</label>
-            <o-email-input id="email"></o-email-input>
+            <o-email-input attr="email" id="email"></o-email-input>
         </div>
     </div>
-
-    <button (click)="insertStudent()" >Guardar</button>
 </o-form>

@@ -6,8 +6,8 @@ import { StudentsTableComponent } from './students-table/students-table.componen
 
 const routes: Routes = [
   { path:'', pathMatch:'full', component: StudentsTableComponent},
-  { path:"list/new", component:StudentsNewComponent},
-  { path:"list/:id", component:StudentsDetailComponent}
+  { path:"new", component:StudentsNewComponent},
+  { path:":id", component:StudentsDetailComponent}
 ];
 
 @NgModule({

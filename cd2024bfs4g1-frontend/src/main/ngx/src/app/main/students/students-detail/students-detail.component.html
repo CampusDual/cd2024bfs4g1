@@ -1,12 +1,17 @@
-<o-form attr="contactDetail" keys="id" header-actions="R;I;U" show-header-navigation="no">
-    <o-text-input attr="ID" sql-type="INTEGER" enabled="no"></o-text-input>
-    <o-column fxFlex>
-            <div fxLayout="row" fxLayoutGap="8px">
-                <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
-                <o-text-input fxFlex="40" attr="surnames" required="yes"></o-text-input>
-            </div>
-            <div fxLayout="row" fxLayoutGap="8px">
-                <o-email-input attr="email"></o-email-input>
-            </div>
-    </o-column>
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input [ngClass]="{'hidden': true}" attr="id" sql-type="INTEGER" enabled="no"/>
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
+        <div fxFlex="45">
+            <label for="name">Nombre</label>
+            <o-text-input attr="name" required="yes" id="name"></o-text-input>
+        </div>
+        <div fxFlex="45">
+            <label for="surnames">Apellidos</label>
+            <o-text-input attr="surnames" required="yes" id="surnames"></o-text-input>
+        </div>
+        <div fxFlex="98">
+            <label for="email">Email</label>
+            <o-email-input attr="email" id="email"></o-email-input>
+        </div>
+    </div>
 </o-form>

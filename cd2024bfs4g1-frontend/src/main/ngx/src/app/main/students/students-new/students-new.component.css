@@ -1,6 +1,19 @@
+o-form-toolbar {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
 
-  /* Estilos para los formularios */
-  o-form[attr="contactDetail"] {
+  o-form-toolbar button {
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 15px;
+  }
+
+  o-form {
     background-color: #d5e9de;
     border: 2px solid #a8d3b8;
     padding: 20px;
@@ -9,14 +22,14 @@
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   [fxLayout="row"] {
     display: flex;
     align-items: center;
     justify-content:space-between;
     flex-wrap: wrap;
   }
-  
+
   o-text-input, o-email-input {
     display: block;
     width: 100%;
@@ -39,7 +52,3 @@ label {
     color: #668873;
     box-sizing: border-box;
 }
-  
-  
-
-  
