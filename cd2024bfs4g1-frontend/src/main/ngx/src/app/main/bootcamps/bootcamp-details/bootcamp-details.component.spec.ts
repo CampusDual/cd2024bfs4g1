@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BootcampsDetailsComponent } from './bootcamps-details.component';
+import { BootcampDetailsComponent } from './bootcamp-details.component';
 
 describe('BootcampsDetailsComponent', () => {
-  let component: BootcampsDetailsComponent;
-  let fixture: ComponentFixture<BootcampsDetailsComponent>;
+  let component: BootcampDetailsComponent;
+  let fixture: ComponentFixture<BootcampDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BootcampsDetailsComponent ]
+      declarations: [ BootcampDetailsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BootcampsDetailsComponent);
+    fixture = TestBed.createComponent(BootcampDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
