@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bootcamp-details.component.css']
 })
 export class BootcampDetailsComponent {
-   addStudent() {
-    console.log("addStudent");
-  }
-
 
 }
