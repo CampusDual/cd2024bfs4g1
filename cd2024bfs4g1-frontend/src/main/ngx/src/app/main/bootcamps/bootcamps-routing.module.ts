@@ -6,10 +6,10 @@ import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
 
 const routes: Routes = [
   //AQUI ES DONDE REDIRIGIMOS A LA LISTA SI ESTA VACIA
-  {path:"",redirectTo:"list",pathMatch:"full"},
-  {path:"list",component:BootcampListComponent},
-  {path: 'bootcamp/new',component: BootcampNewComponent},
-  {path: 'bootcamp/:id',component: BootcampDetailsComponent}
+  
+  {path:"",pathMatch:"full",component:BootcampListComponent},
+  {path: 'new',component: BootcampNewComponent},
+  {path: ':id',component: BootcampDetailsComponent}
  
 
 ];

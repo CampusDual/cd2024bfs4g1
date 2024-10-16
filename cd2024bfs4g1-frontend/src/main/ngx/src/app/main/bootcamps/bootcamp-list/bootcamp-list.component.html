@@ -1,4 +1,5 @@
-<o-table 
+
+<o-table  
     attr="bootcampsTable" service="bootcamps" 
     entity="bootcamp" keys="id"
     columns="id;name;start_date;end_date;status"
@@ -7,8 +8,10 @@
     show-report-on-demand-option="false"
     show-charts-on-demand-option="false"
     delete-button="false"
+    refresh-button="false"
+   
     >
-
+    
     <o-table-paginator 
     page-size="15"
     page-size-options="15">

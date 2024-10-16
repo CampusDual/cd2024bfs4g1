@@ -14,7 +14,6 @@ export class BootcampDetailsComponent {
   }
 
 volver(e :any){
-console.log (e + "Hola UwU")
 this.router.navigate(['./main/bootcamps']);
 
     }
