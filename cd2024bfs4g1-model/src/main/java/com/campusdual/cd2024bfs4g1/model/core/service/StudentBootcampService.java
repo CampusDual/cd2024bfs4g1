@@ -3,10 +3,12 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentBootcampService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +26,16 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Override
     public EntityResult studentBootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert(this.studentBootcampDao, attrMap);
+       try {
+           return this.daoHelper.insert(this.studentBootcampDao, attrMap);
+       } catch (DuplicateKeyException e) {
+           EntityResult entityResultError = new EntityResultMapImpl();
+           entityResultError.setCode(EntityResult.OPERATION_WRONG);
+           entityResultError.setMessage("The student already exists in the bootcamp");
+           return entityResultError;
+       } catch (Exception generalException) {
+           throw generalException;
+       }
     }
 
     @Override

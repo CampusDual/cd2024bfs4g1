@@ -1,0 +1,23 @@
+<!-- 
+<o-table attr="studentsTable" service="students" entity="student" keys="id"
+    columns="id;name;surnames;email"
+    visible-columns="name;surnames;email" query-rows="3">
+</o-table> -->
+
+<o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no">
+    <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <o-combo 
+    attr="student_id" 
+    label="Students" 
+    value-column="id" 
+    columns="id;name;surnames" 
+    service ="students" 
+    entity="student"
+    visible-columns="name;surnames"
+    searchable="yes">
+</o-combo>
+
+</o-form>
+<o-button label="Add" (click)="addStudentBootcamp()"></o-button>
+<o-button label="Return" (click)="navigateBack()"></o-button>
+

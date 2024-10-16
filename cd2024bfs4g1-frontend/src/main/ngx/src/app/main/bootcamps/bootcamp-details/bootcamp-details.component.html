@@ -1,9 +1,10 @@
 <o-form keys="id" service="bootcamps" entity="bootcamp">
-    <o-table attr="studentsBootcampTable" service="studentsBootcamp" entity="studentsBootcamp" keys="id"
-        parent-keys="id:bootcamp_id"
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <o-table attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+        parent-keys="bootcamp_id:id"
         columns="id;name;surnames"
-        visible-columns="name;surnames" query-rows="2">
-        <o-table-column attr="name" title="Name"></o-table-column>
-        <o-table-column attr="surnames" title="Surnames"></o-table-column>
+        visible-columns="name;surnames" query-rows="10"
+        detail-mode="false"
+        delete-button="false">   
     </o-table>
 </o-form>
