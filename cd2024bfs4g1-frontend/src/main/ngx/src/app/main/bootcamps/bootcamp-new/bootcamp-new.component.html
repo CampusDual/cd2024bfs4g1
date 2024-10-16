@@ -4,8 +4,8 @@
     <o-column fxFlex>
             <div fxLayout="row" fxLayoutGap="8px">
                 <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
-                <o-date-input fxFlex="40" attr="start_date" required="yes"></o-date-input>
-                <o-date-input fxFlex="40" attr="end_date" required="yes"></o-date-input>
+                <o-date-input #initdate fxFlex="40" attr="start_date" required="yes"></o-date-input>
+                <o-date-input fxFlex="40" attr="end_date" required="yes"  [validators]="validatorsArray"></o-date-input>
             </div>
     </o-column>
 </o-form>
