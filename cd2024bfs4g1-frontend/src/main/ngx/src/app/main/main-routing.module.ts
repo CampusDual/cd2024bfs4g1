@@ -19,8 +19,7 @@ export const routes: Routes = [
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule) },
-      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) },
-      { path: 'test', loadChildren: () => import('./student-boot/student-boot.module').then(m => m.StudentBootModule) }
+      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) }
     ]
   }
 ];
