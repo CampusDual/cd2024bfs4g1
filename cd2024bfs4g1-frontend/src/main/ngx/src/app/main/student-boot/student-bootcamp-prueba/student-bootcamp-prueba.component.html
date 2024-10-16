@@ -20,9 +20,13 @@
    Botón para mostrar los valores seleccionados en la consola
   <button (click)="getSelectedValues()">Obtener valores seleccionados</button>
 </o-form>-->
-<o-table attr="studentsBootcampsTable" service="studentbootcamp" entity="studentBootcamp" keys="id"
-    columns="id;student_id;bootcamp_id"
-    visible-columns="student_id;bootcamp_id" query-rows="2">
-    <o-table-column attr="student_id" title="Id Student"></o-table-column>
-    <o-table-column attr="bootcamp_id" title="Id Bootcamp"></o-table-column>
+<o-table attr="studentBootcampPrueba" service="studentbootcamp" entity="studentBootcamp" key="id"
+    columns="id;student_id;bootcamp_id;bootcampname;start_date;end_date"
+    visible-columns="student_id;bootcamp_id;bootcampname;start_date;end_date" query-rows="2">
+
+    <o-table-column attr="student_id" title="Student ID"></o-table-column>
+    <o-table-column attr="bootcamp_id" title="Bootcamp ID"></o-table-column>
+    <o-table-column attr="bootcampname" title="Bootcamp Name"></o-table-column>
+    <o-table-column attr="start_date" title="Start Date" type="date"></o-table-column>
+    <o-table-column attr="end_date" title="End Date" type="date"></o-table-column>
 </o-table>
