@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { BootcampsNewComponent } from './bootcamps-new.component';
+import { BootcampNewComponent } from './bootcamp-new.component';
 
 describe('BootcampsNewComponent', () => {
-  let component: BootcampsNewComponent;
-  let fixture: ComponentFixture<BootcampsNewComponent>;
+  let component: BootcampNewComponent;
+  let fixture: ComponentFixture<BootcampNewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BootcampsNewComponent ]
+      declarations: [ BootcampNewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BootcampsNewComponent);
+    fixture = TestBed.createComponent(BootcampNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

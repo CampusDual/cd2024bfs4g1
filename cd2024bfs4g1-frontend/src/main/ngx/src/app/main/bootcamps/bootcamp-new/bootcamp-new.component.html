@@ -1,13 +1,11 @@
-<o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
+<o-form attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D" (onInsert)="volver($event)"
     show-header-navigation="no">
-    <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <h3 class="titulo3">Nuevo Bootcamp</h3>
     <o-column fxFlex>
             <div fxLayout="row" fxLayoutGap="8px">
                 <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
                 <o-date-input fxFlex="40" attr="start_date" required="yes"></o-date-input>
                 <o-date-input fxFlex="40" attr="end_date" required="yes"></o-date-input>
             </div>
-
-
     </o-column>
 </o-form>
