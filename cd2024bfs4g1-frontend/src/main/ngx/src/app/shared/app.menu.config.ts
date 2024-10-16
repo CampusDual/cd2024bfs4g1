@@ -2,6 +2,7 @@ import { MenuRootItem } from 'ontimize-web-ngx';
 
 export const MENU_CONFIG: MenuRootItem[] = [
   { id: 'home', name: 'HOME', icon: 'home', route: '/main/home' },
+  {id: 'bootcamps', name: 'Bootcamps', icon: 'view_cozy', route: 'main/bootcamps/list'},
   {
     id: 'admin', name: 'ADMIN', tooltip: 'ADMIN', icon: 'admin_panel_settings',
     items: [
@@ -10,6 +11,5 @@ export const MENU_CONFIG: MenuRootItem[] = [
     ]
   },
   { id: 'students', name: 'Students', tooltip: 'STUDENTS', route: '/main/students', icon: 'person' },
-  { id: 'bootcamps', name: 'Bootcamps', tooltip: 'BOOTCAMPS', route: '/main/bootcamps', icon: 'person' },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];

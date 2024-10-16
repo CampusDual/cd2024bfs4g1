@@ -1,3 +1,5 @@
+//conectar a back en controller en -ws
+
 export const SERVICE_CONFIG: Object = {
   'users': {
     'path': '/users',
@@ -8,4 +10,7 @@ export const SERVICE_CONFIG: Object = {
   permissions: {
     'path': '/permissions'
   },
+  'bootcamps':{
+    'path': '/bootcamps'
+  }
 };
