@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-                 catalog="" schema="${mainschema}" table="studentbootcamp" datasource="mainDataSource"
-                 sqlhandler="dbSQLStatementHandler">
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="student_bootcamp"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+
+
 
     <DeleteKeys>
         <Column>id</Column>
     </DeleteKeys>
+
     <UpdateKeys>
         <Column>id</Column>
     </UpdateKeys>
     <GeneratedKey>id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="sb"/>
+                <AmbiguousColumn name="student_id" prefix="sb"/>
+                <AmbiguousColumn name="bootcamp_id" prefix="sb"/>
+                <AmbiguousColumn name="studentname" prefix="s" databaseName="name"/>
+                <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name"/>
+            </AmbiguousColumns>
 
+            <Sentence>
+                <![CDATA[
+     select
+      #COLUMNS#
+     from
+      students s
+     inner join
+      student_bootcamp sb on s.id = sb.student_id
+     inner join
+      bootcamps b on sb.bootcamp_id = b.id
+     #WHERE#
+   ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
