@@ -1,7 +1,9 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D"
-    show-header-navigation="no">
-    <o-text-input [ngClass]="{'hidden': true}" attr="id" sql-type="INTEGER" enabled="no" />
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no"/>
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
+
+        <h1 fxFlex="98">Datos de alumno</h1>
+
         <div fxFlex="45">
             <label for="name">{{'LNAME'|oTranslate}}</label>
             <o-text-input attr="name" required="yes" id="name"></o-text-input>

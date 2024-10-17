@@ -1,24 +1,10 @@
-o-form-toolbar {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-o-form-toolbar button {
-  margin-right: 10px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 3px;
-  padding: 5px 15px;
-}
+* { font-family: 'Roboto', sans-serif; }
 
 o-form {
   background-color: #d5e9de;
-  border: 2px solid #a8d3b8;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 80%;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 65%;
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -34,9 +20,8 @@ o-text-input, o-email-input {
   display: block;
   width: 100%;
   padding: 10px;
-  margin: 10px 0 10px 10px;
+  margin: 15px 0 10px 10px;
   background-color: #F5F5F5;
-  border: 1px solid #a8d3b8;
   border-radius: 5px;
   font-size: 14px;
   color: #2f4f4f;
@@ -55,6 +40,16 @@ label {
 
 .hidden {
   display: none;
+}
+
+h1 {
+  font-size: 24px;
+  padding: 10px;
+  color: #4f6d54;
+  /* Un tono más oscuro del verde */
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 
