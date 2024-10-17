@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.parser.Entity;
-
 @Service("StudentService")
 @Lazy
 public class StudentService implements IStudentService {
@@ -38,5 +36,10 @@ public class StudentService implements IStudentService {
 	@Override
 	public EntityResult studentUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
 		return this.daoHelper.update(this.studentDao, attrMap, keyMap);
+	}
+
+	@Override
+	public EntityResult studentDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+		return this.daoHelper.delete(this.studentDao, keyMap);
 	}
 }
