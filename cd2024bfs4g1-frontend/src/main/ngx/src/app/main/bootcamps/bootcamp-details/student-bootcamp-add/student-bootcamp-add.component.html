@@ -5,8 +5,9 @@
 </o-table> -->
 
 <o-form #studentBootcampForm service="studentBootcamp" entity="studentBootcamp" editable-detail="no" show-header="no"
-        label-header="Añadir alumnos al bootcamp" undo-button="false" label-header-align="center">
+        undo-button="false" label-header-align="center">
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <div class="header">Inserta Alumno en Bootcamp</div>
     <o-combo
     attr="student_id"
     label="Students"
@@ -19,6 +20,8 @@
 </o-combo>
 
 </o-form>
-<o-button label="Add" (click)="addStudentBootcamp()"></o-button>
-<o-button label="Return" (click)="navigateBack()"></o-button>
 
+<div fxLayout="row">
+    <o-button label="Add" (click)="addStudentBootcamp()" layout-padding type="RAISED"></o-button>
+    <o-button label="Return" (click)="navigateBack()" layout-padding type="RAISED"></o-button>
+</div>
