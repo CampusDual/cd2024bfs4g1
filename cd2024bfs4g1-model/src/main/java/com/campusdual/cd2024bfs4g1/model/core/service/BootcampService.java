@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,7 @@ public class BootcampService implements IBootcampService {
 
     @Autowired
     private BootcampDao bootcampDao;
+
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
@@ -33,22 +33,13 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  // Asegúrate que este formato coincide con el formato de las fechas
+        Date startDate = (Date) attrMap.get(BootcampDao.ATTR_START_DATE);
+        Date finishDate = (Date) attrMap.get(BootcampDao.ATTR_FINISH_DATE);
 
-        try {
-            Date startDate = dateFormat.parse((String) attrMap.get(BootcampDao.ATTR_START_DATE));
-            Date finishDate = dateFormat.parse((String) attrMap.get(BootcampDao.ATTR_FINISH_DATE));
-
-            if (finishDate.before(startDate)) {
-                EntityResult error = new EntityResultMapImpl();
-                error.setCode(EntityResult.OPERATION_WRONG);
-                error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
-                return error;
-            }
-        } catch (ParseException e) {
+        if (finishDate.before(startDate)) {
             EntityResult error = new EntityResultMapImpl();
             error.setCode(EntityResult.OPERATION_WRONG);
-            error.setMessage("INVALID_DATE_FORMAT");
+            error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
             return error;
         }
 
@@ -58,6 +49,43 @@ public class BootcampService implements IBootcampService {
     @Override
     public EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
+
+        EntityResult query = this.daoHelper.query(this.bootcampDao, keyMap,
+                Arrays.asList(BootcampDao.ATTR_START_DATE, BootcampDao.ATTR_FINISH_DATE));
+
+        Map<String, Object> mapResult = query.getRecordValues(0);
+        Date startDate = (Date) mapResult.get(BootcampDao.ATTR_START_DATE);
+        Date finishDate = (Date) mapResult.get(BootcampDao.ATTR_FINISH_DATE);
+        Date finalFinishDate = (Date) attrMap.get(BootcampDao.ATTR_FINISH_DATE);
+        Date finalStartDate = (Date) attrMap.get(BootcampDao.ATTR_START_DATE);
+
+        if (finalFinishDate != null && finalStartDate == null) {
+            if (finalFinishDate.before(startDate)) {
+                EntityResult error = new EntityResultMapImpl();
+                error.setCode(EntityResult.OPERATION_WRONG);
+                error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
+                return error;
+            }
+        }
+
+        if (finalStartDate != null && finalFinishDate == null) {
+            if (finishDate.before(finalStartDate)) {
+                EntityResult error = new EntityResultMapImpl();
+                error.setCode(EntityResult.OPERATION_WRONG);
+                error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
+                return error;
+            }
+        }
+
+        if (finalFinishDate != null && finalStartDate != null) {
+            if (finalFinishDate.before(finalStartDate)) {
+                EntityResult error = new EntityResultMapImpl();
+                error.setCode(EntityResult.OPERATION_WRONG);
+                error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
+                return error;
+            }
+        }
+
         return this.daoHelper.update(this.bootcampDao, attrMap, keyMap);
     }
 
@@ -65,5 +93,4 @@ public class BootcampService implements IBootcampService {
     public EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(this.bootcampDao, keyMap);
     }
-
 }
