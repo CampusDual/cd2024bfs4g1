@@ -1,6 +1,6 @@
 <o-form keys="id" service="bootcamps" entity="bootcamp">
     <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
-    <o-table attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+    <o-table attr="studentsBootcampTable" service="studentBootcamp" entity="studentsWithBootcamp" keys="id"
         parent-keys="bootcamp_id:id"
         columns="id;name;surnames"
         visible-columns="name;surnames" query-rows="10"

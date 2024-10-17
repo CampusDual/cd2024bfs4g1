@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ontimize.jee.server.rest.ORestController;
 
 @RestController
-@RequestMapping("/studentBootcamps")
+@RequestMapping("/studentbootcamp")
 public class StudentBootcampController extends ORestController<IStudentBootcampService>{
 
     @Autowired

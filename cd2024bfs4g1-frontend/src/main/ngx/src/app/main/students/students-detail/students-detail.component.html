@@ -1,5 +1,6 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
-    <o-text-input [ngClass]="{'hidden': true}" attr="id" sql-type="INTEGER" enabled="no"/>
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D"
+    show-header-navigation="no">
+    <o-text-input [ngClass]="{'hidden': true}" attr="id" sql-type="INTEGER" enabled="no" />
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
         <div fxFlex="45">
             <label for="name">Nombre</label>
@@ -12,6 +13,18 @@
         <div fxFlex="98">
             <label for="email">Email</label>
             <o-email-input attr="email" required="yes" id="email"></o-email-input>
+        </div>
+        <div fxFlex="98">
+            <label for="bootcamp_name">Bootcamps</label>
+        </div>
+        <div fxFlex="99">
+            <div style="margin-left: 10px;">
+                <o-table attr="bootcampsStudentTable" service="studentBootcamp" entity="studentsWithBootcamp" keys="id"
+                    parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname" query-rows="10"
+                    detail-mode="false" delete-button="false">
+                    <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                </o-table>
+            </div>
         </div>
     </div>
 </o-form>
