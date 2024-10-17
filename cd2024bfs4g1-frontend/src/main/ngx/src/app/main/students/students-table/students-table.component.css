@@ -1,0 +1,20 @@
+
+.table {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #d5e9de;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+
+*{
+    background-color: #d5e9de!important;
+    text-decoration:overline;
+  }
+  
+
+  /* mat-mdc-tooltip-trigger mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-email
+  mat-column-email ng-tns-c228-1 o-column-string ng-star-inserted*/
+  
