@@ -31,7 +31,7 @@ public class StudentBootcampService implements IStudentBootcampService {
        } catch (DuplicateKeyException e) {
            EntityResult entityResultError = new EntityResultMapImpl();
            entityResultError.setCode(EntityResult.OPERATION_WRONG);
-           entityResultError.setMessage("The student already exists in the bootcamp");
+           entityResultError.setMessage("Error already exists");
            return entityResultError;
        } catch (Exception generalException) {
            throw generalException;
