@@ -42,7 +42,7 @@ public class StudentBootcampService implements IStudentBootcampService {
         return this.daoHelper.delete(this.studentBootcampDao, keyMap);
     }
     @Override
-    public EntityResult bootcampStudentQuery(Map<String, Object> keysValues, List<String> attributes) {
+    public EntityResult studentBootcampQuery(Map<String, Object> keysValues, List<String> attributes) throws OntimizeJEERuntimeException{
         return this.daoHelper.query(this.studentBootcampDao, keysValues, attributes);
     }
 

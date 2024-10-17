@@ -16,13 +16,14 @@
         </div>
         <div fxFlex="98">
             <label for="bootcamp_name">Bootcamps</label>
-            <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
         </div>
         <div fxFlex="99">
             <div style="margin-left: 10px;">
-                <o-table attr="bootcampsStudentTable" service="studentBootcamp" entity="bootcampStudent" keys="id"
-                    parent-keys="student_id:id" columns="id;name" visible-columns="name" query-rows="10"
+                <o-table attr="bootcampsStudentTable" service="studentBootcamp" entity="studentBootcamp" keys="id"
+                    parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname" query-rows="10"
                     detail-mode="false" delete-button="false">
+                    <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+
                 </o-table>
             </div>
         </div>

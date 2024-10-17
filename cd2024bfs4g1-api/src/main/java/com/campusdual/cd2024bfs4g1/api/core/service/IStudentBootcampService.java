@@ -12,7 +12,7 @@ public interface IStudentBootcampService {
 
     EntityResult studentBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
-    EntityResult bootcampStudentQuery(Map<String, Object> keysValues, List<String> attributes);
+    EntityResult studentBootcampQuery(Map<String, Object> keysValues, List<String> attributes)throws OntimizeJEERuntimeException;
 
     EntityResult studentBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 }
