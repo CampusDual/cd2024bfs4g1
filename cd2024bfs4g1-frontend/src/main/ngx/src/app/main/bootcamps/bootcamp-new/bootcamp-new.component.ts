@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { ODateInputComponent } from 'ontimize-web-ngx';
+
 @Component({
   selector: 'app-bootcamp-new',
   templateUrl: './bootcamp-new.component.html',
@@ -10,29 +10,27 @@ import { ODateInputComponent } from 'ontimize-web-ngx';
 export class BootcampNewComponent {
 
   validatorsArray: ValidatorFn[] = [];
-  @ViewChild("initdate") initdate: ODateInputComponent;
 
   constructor(private router: Router) {
     this.validatorsArray.push(this.dateValidator);
   }
 
-
-
-  volver(e: any) {
+  volver(e) {
     this.router.navigate(['./main/bootcamps']);
   }
 
   dateValidator(control: FormControl): ValidationErrors {
     let result = {};
-    if (this) {
-      let enddate: Date = control.value;
-      let startdate: Date = this.initdate.getValue();
+
+    if (control && control.parent && control.value) {
+      let enddate = control.value.valueOf();
+      let startdate = control.parent.value.start_date;
 
       if (enddate && startdate && enddate < startdate) {
-        result['END_DATE_MORE_THAN_INIT_DATE'] = true;
+        result['wrongendate'] = true;
       }
-      console.log(control.value)
     }
+
     return result;
   }
 

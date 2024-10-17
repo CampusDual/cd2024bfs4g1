@@ -4,8 +4,11 @@
     <o-column fxFlex>
             <div fxLayout="row" fxLayoutGap="8px">
                 <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
-                <o-date-input #initdate fxFlex="40" attr="start_date" required="yes"></o-date-input>
-                <o-date-input fxFlex="40" attr="end_date" required="yes"  [validators]="validatorsArray"></o-date-input>
+                <o-date-input fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+                <o-date-input fxFlex="40" attr="end_date" required="yes"
+                    [validators]="validatorsArray" format="DD/MM/YYYY">
+                    <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+                </o-date-input>
             </div>
     </o-column>
 </o-form>
