@@ -10,5 +10,4 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./bootcamp-list.component.css']
 })
 export class BootcampListComponent {
-
 }
