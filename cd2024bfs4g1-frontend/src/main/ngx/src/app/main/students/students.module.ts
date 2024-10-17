@@ -6,13 +6,15 @@ import { StudentsDetailComponent } from './students-detail/students-detail.compo
 import { StudentsNewComponent } from './students-new/students-new.component';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { StudentsTableComponent } from './students-table/students-table.component';
+import { BootcampStudentAddComponent } from './students-detail/bootcamp-student-add/bootcamp-student-add.component';
 
 
 @NgModule({
   declarations: [
     StudentsDetailComponent,
     StudentsNewComponent,
-    StudentsTableComponent
+    StudentsTableComponent,
+    BootcampStudentAddComponent
   ],
   imports: [
     CommonModule,
