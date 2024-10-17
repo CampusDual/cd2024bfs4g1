@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Defining custom providers (if needed)...
 export const customProviders: any = [
   MainService,
-  { provide: O_MAT_ERROR_OPTIONS, useValue: { type: 'lite' } },
   { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
 ];
 
