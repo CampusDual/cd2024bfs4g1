@@ -12,28 +12,27 @@
         <Column>id</Column>
     </UpdateKeys>
     <GeneratedKey>id</GeneratedKey>
+
     <Queries>
         <Query id="default">
             <AmbiguousColumns>
                 <AmbiguousColumn name="id" prefix="sb"/>
-                <AmbiguousColumn name="student_id" prefix="sb"/>
-                <AmbiguousColumn name="bootcamp_id" prefix="sb"/>
-                <AmbiguousColumn name="studentname" prefix="s" databaseName="name"/>
-                <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name"/>
+                <AmbiguousColumn name="name" prefix="s"/>
+                <AmbiguousColumn name="studentname" prefix="s" databaseName="name" />
+                <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
             </AmbiguousColumns>
-
             <Sentence>
                 <![CDATA[
-     select
-      #COLUMNS#
-     from
-      students s
-     inner join
-      student_bootcamp sb on s.id = sb.student_id
-     inner join
-      bootcamps b on sb.bootcamp_id = b.id
-     #WHERE#
-   ]]>
+                SELECT
+                  #COLUMNS#
+                FROM
+                  students s
+                INNER JOIN
+                  student_bootcamp sb ON s.id = sb.student_id
+                INNER JOIN
+                  bootcamps b ON sb.bootcamp_id = b.id
+                #WHERE#
+                ]]>
             </Sentence>
         </Query>
     </Queries>
