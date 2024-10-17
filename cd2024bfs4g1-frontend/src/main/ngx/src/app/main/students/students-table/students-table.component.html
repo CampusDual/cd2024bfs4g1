@@ -1,7 +1,12 @@
 <o-table attr="studentsTable" service="students" entity="student" keys="id"
     columns="id;name;surnames;email"
-    visible-columns="name;surnames;email" query-rows="3">
+    visible-columns="name;surnames;email" query-rows="3" delete-button="false" show-report-on-demand-option="false"
+    show-charts-on-demand-option="false">
     <o-table-column attr="name" title="Name"></o-table-column>
     <o-table-column attr="surnames" title="Surnames"></o-table-column>
     <o-table-column attr="email" title="Email"></o-table-column>
+    <o-table-context-menu
+    insert="false" edit="false"
+    view-detail="false" delete="false">
+    </o-table-context-menu>
 </o-table>
