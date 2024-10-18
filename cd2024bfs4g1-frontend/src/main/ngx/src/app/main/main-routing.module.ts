@@ -4,9 +4,6 @@ import { AuthGuardService } from 'ontimize-web-ngx';
 
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
-import { BootcampsModule } from './bootcamps/bootcamps.module';
-import { StudentsModule } from './students/students.module';
-
 export const routes: Routes = [
   {
     path: '',

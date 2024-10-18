@@ -10,14 +10,4 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./bootcamp-list.component.css']
 })
 export class BootcampListComponent {
-
-  constructor(private router:Router){}
-
-nuevo(e :any){
-this.router.navigate(['./main/bootcamps/bootcamp/new']);
-    }
-detalles(e: Event) {
-
-}
-
 }

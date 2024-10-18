@@ -87,6 +87,7 @@
   "Surnames": "Apellidos",
   "Email": "Correo",
   "Items per page": "Registros por página",
+  "surnames": "Apellidos",
   "END_DATE_MORE_THAN_INIT_DATE": "La fecha de fin no puede ser anterior a la fecha de inicio",
   "BOOTCAMP_HAS_STUDENTS":"El bootcamp que quieres borrar tiene alumnos"
 }
