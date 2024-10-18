@@ -87,7 +87,6 @@
   "Surnames": "Surname",
   "Email": "Email",
   "Items per page": "Items per page",
-  "surnames": "Surname",
-  "Items per page": "Items per page",
-  "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date"
+  "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date",
+  "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students",
 }

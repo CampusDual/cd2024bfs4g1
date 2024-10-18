@@ -16,9 +16,7 @@ import java.util.Map;
         configurationFile = "dao/StudentBootcampDao.xml",
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class StudentBootcampDao extends OntimizeJdbcDaoSupport {
-    public static final String TABLE_ID = "ID";
-    public static final String STUDENT_ID = "STUDENT_ID";
-    public static final String BOOTCAMP_ID = "BOOTCAMP_ID";
-
-
+    public static final String TABLE_ID = "id";
+    public static final String STUDENT_ID = "student_id";
+    public static final String BOOTCAMP_ID = "bootcamp_id";
 }
