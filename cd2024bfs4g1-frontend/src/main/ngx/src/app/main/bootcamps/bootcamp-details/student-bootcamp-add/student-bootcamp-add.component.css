@@ -3,3 +3,41 @@
     font-weight: bold;  /* Texto en negrita */
     text-align: center;  /* Centrar el texto */
     margin-bottom: 20px;  /* Espacio debajo del encabezado */}
+
+.table_container { height: 20%;}
+
+.combocontainer {
+    width: 100%;
+    height: auto;
+}
+
+.general_combobox {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #d5e9de;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+
+
+
+  .general_button {
+    width: 15%;
+    margin:0px 5px;
+    background-color: #d5e9de;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+
+}

@@ -1,7 +1,8 @@
 <o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no"
 after-insert-mode="new">
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
-        <div fxFlex="45">
+      <h1 fxFlex="98">Alta de alumno</h1>
+      <div fxFlex="45">
             <label for="name">{{'L_NAME'|oTranslate}}</label>
             <o-text-input attr="name" required="yes" id="name"></o-text-input>
         </div>
