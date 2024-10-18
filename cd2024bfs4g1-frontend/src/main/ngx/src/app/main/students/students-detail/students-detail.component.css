@@ -1,16 +1,16 @@
 o-form-toolbar {
-  background-color: #f0f0f0;   
-  padding: 10px;               
-  border-radius: 5px;          
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 o-form-toolbar button {
-  margin-right: 10px;          
-  background-color: #007bff;    
-  color: white;                 
-  border-radius: 3px;           
-  padding: 5px 15px;            
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+  padding: 5px 15px;
 }
 
 o-form {
@@ -52,10 +52,9 @@ label {
   color: #668873;
   box-sizing: border-box;
 }
-  
+
 .hidden {
   display: none;
 }
-  
 
-  
+
