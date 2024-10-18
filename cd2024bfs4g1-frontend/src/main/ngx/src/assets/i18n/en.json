@@ -103,7 +103,7 @@
   "LNAME": "Name",
   "LSURNAME": "Surname",
   "LEMAIL": "Email",
-  "BT_ALUMNS": "Bootcamp Alumns"
+  "BT_ALUMNS": "Bootcamp Alumns",
   "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date",
   "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students"
 }
