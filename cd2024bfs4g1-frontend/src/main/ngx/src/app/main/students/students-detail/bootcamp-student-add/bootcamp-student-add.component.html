@@ -1,10 +1,10 @@
 <o-form #studentBootcampForm service="studentBootcamp" entity="studentBootcamp" editable-detail="no" show-header="no" after-insert-mode="new">
-    <o-text-input attr="student_id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <o-text-input attr="student_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps"
         entity="bootcamp" visible-columns="name" searchable="yes">
     </o-combo>
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
-        <o-button attr="addbutton" type="RAISED" label="Add" color="primary" (click)="studentBootcampForm.insert()"></o-button>
+        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="studentBootcampForm.insert()"></o-button>
         <o-button attr="addbutton" type="RAISED" label="Go back" (click)="location.back()"></o-button>
     </div>
 </o-form>

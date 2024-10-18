@@ -88,6 +88,22 @@
   "Email": "Email",
   "Items per page": "Items per page",
   "surnames": "Surname",
+  "email": "Email",
+  "Ok": "Ok",
+  "Add": "Add",
+  "Return": "Return",
+  "INSERT_STUDENT_BT_TITLE": "Insert Student on Bootcamp",
+  "TT_END_DATE": "End date of Bootcamp",
+  "TT_START_DATE": "Start date of Bootcamp",
+  "TT_STATUS": "Status of course",
+  "TT_NAME": "Name of Bootcamp",
+  "L_NAME": "Name",
+  "L_SURNAME": "Surname",
+  "L_EMAIL": "Email",
+  "LNAME": "Name",
+  "LSURNAME": "Surname",
+  "LEMAIL": "Email",
+  "BT_ALUMNS": "Bootcamp Alumns"
   "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date",
   "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students"
 }
