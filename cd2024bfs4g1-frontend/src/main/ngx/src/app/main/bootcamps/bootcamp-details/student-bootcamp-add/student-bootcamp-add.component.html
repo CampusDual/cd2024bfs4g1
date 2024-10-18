@@ -1,14 +1,8 @@
-<!--
-<o-table attr="studentsTable" service="students" entity="student" keys="id"
-    columns="id;name;surnames;email"
-    visible-columns="name;surnames;email" query-rows="3">
-</o-table> -->
-
-<o-form #studentBootcampForm service="studentBootcamp" entity="studentBootcamp" editable-detail="no" show-header="no"
-        undo-button="false" label-header-align="center">
-    <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no"></o-text-input>
-    <div class="header">Inserta Alumno en Bootcamp</div>
-    <o-combo
+<o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no"
+        undo-button="false" label-header-align="center" after-insert-mode="new">
+  <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+  <div class="header">Inserta Alumno en Bootcamp</div>
+  <o-combo
     attr="student_id"
     label="Students"
     value-column="id"
@@ -17,11 +11,11 @@
     entity="student"
     visible-columns="name;surnames"
     searchable="yes">
-</o-combo>
+  </o-combo>
 
 </o-form>
 
 <div fxLayout="row">
-    <o-button label="Add" (click)="addStudentBootcamp()" layout-padding type="RAISED"></o-button>
-    <o-button label="Return" (click)="navigateBack()" layout-padding type="RAISED"></o-button>
+  <o-button label="Add" (click)="addStudentBootcamp()" layout-padding type="RAISED"></o-button>
+  <o-button label="Return" (click)="navigateBack()" layout-padding type="RAISED"></o-button>
 </div>
