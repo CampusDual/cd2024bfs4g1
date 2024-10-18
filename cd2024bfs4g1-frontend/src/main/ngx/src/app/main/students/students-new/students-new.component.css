@@ -1,4 +1,4 @@
-body { font-family: 'Roboto', sans-serif; }
+* { font-family: 'Roboto', sans-serif; }
 
 o-form {
   background-color: #d5e9de;
@@ -12,17 +12,17 @@ o-form {
 [fxLayout="row"] {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-between;
   flex-wrap: wrap;
 }
 
-o-text-input, o-email-input {
+ o-email-input {
   display: block;
   width: 100%;
   padding: 10px;
-  margin: 15px 0 15px 10px;
+  margin: 15px 0 10px 10px;
   background-color: #F5F5F5;
-  border-radius: 5px; 
+  border-radius: 5px;
   font-size: 14px;
   color: #2f4f4f;
   box-sizing: border-box;
@@ -38,6 +38,10 @@ label {
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 h1 {
   font-size: 24px;
   padding: 10px;
@@ -47,3 +51,16 @@ h1 {
   font-weight: 600;
   margin-bottom: 20px;
 }
+
+
+.general_table {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #d5e9de;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.table_container { height: 100%;}

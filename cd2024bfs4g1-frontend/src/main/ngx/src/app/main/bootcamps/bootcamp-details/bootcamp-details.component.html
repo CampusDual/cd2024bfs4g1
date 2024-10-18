@@ -3,7 +3,7 @@
     <h3 class="titulo3">Detalles Bootcamp</h3>
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-column fxFlex>
-      <div fxLayout="row" fxLayoutGap="8px">
+      <div  fxLayout="row" fxLayoutGap="8px">
         <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
         <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
                       (onValueChange)="throwChange(enddate)"></o-date-input>
@@ -13,7 +13,8 @@
         </o-date-input>
       </div>
     </o-column>
-    <o-table attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+    <div class="table_container">
+    <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
         parent-keys="bootcamp_id:id" columns="id;name;surnames" visible-columns="name;surnames" query-rows="10"
         detail-mode="false" delete-button="false" show-report-on-demand-option="false"
         show-charts-on-demand-option="false">
@@ -22,6 +23,7 @@
         view-detail="false" delete="false">
         </o-table-context-menu>
     </o-table>
+</div>
 </o-form>
 
 

@@ -16,7 +16,7 @@ o-form {
   flex-wrap: wrap;
 }
 
-o-text-input, o-email-input {
+ o-email-input {
   display: block;
   width: 100%;
   padding: 10px;
@@ -53,3 +53,14 @@ h1 {
 }
 
 
+.general_table {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #d5e9de;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.table_container { height: 100%;}
