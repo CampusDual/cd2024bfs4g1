@@ -1,21 +1,23 @@
-<o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no"
-        undo-button="false" label-header-align="center" after-insert-mode="new">
-  <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
-  <div class="header">{{'INSERT_STUDENT_BT_TITLE'|oTranslate}}</div>
-  <o-combo
-    attr="student_id"
-    label="Students"
-    value-column="id"
-    columns="id;name;surnames"
-    service ="students"
-    entity="student"
-    visible-columns="name;surnames"
-    searchable="yes">
-  </o-combo>
+<div class="combocontainer">
+  <o-form class="table_container" #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no"
+          undo-button="false" label-header-align="center" after-insert-mode="new">
+    <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+    <div class="header">Inserta Alumno en Bootcamp</div>
+    <o-combo
+      attr="student_id"
+      label="Students"
+      value-column="id"
+      columns="id;name;surnames"
+      service ="students"
+      entity="student"
+      visible-columns="name;surnames"
+      searchable="yes">
+    </o-combo>
 
-</o-form>
+  </o-form>
 
-<div fxLayout="row">
-  <o-button label="Add"  (click)="addStudentBootcamp()" layout-padding type="RAISED"></o-button>
-  <o-button label="Return" (click)="navigateBack()" layout-padding type="RAISED"></o-button>
+  <div class="buttoncontainer">
+    <o-button class="general_button"  label="Add" (click)="addStudentBootcamp()"></o-button>
+    <o-button class="general_button"  label="Return" (click)="navigateBack()"></o-button>
+  </div>
 </div>
