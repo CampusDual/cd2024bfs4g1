@@ -1,24 +1,13 @@
 <o-form keys="id" service="bootcamps" entity="bootcamp" label-header="Alumnos del bootcamp" header-actions=""
     editable-detail="false" label-header-align = "center">
-    <o-text-input attr="id"
-                  sql-type="INTEGER"
-                  enabled="no"
-                  hidden="true"></o-text-input>
-    <o-table attr="studentsBootcampTable"
-      service="studentBootcamps"
-      entity="studentsWithBootcamp"
-      keys="id"
-      parent-keys="bootcamp_id:id"
-      columns="id;name;surnames"
-      visible-columns="name;surnames"
-      query-rows="10"
-      detail-mode="false"
-      delete-button="false"
-      show-report-on-demand-option="false"
-      show-charts-on-demand-option="false">
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
+    <o-table attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+        parent-keys="bootcamp_id:id" columns="id;name;surnames" visible-columns="name;surnames" query-rows="10"
+        detail-mode="false" delete-button="false" show-report-on-demand-option="false"
+        show-charts-on-demand-option="false">
+        <o-table-context-menu
+        insert="false" edit="false"
+        view-detail="false" delete="false">
+        </o-table-context-menu>
     </o-table>
-    <o-table-context-menu
-      insert="false" edit="false"
-      view-detail="false" delete="false">
-    </o-table-context-menu>
 </o-form>

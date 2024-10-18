@@ -10,7 +10,7 @@ export const SERVICE_CONFIG: Object = {
   permissions: {
     'path': '/permissions'
   },
-  'studentBootcamp':{
+  'studentBootcamps':{
     'path': '/studentbootcamp'
   },
   'bootcamps':{
