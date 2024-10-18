@@ -1,0 +1,32 @@
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no">
+    <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no"/>
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
+
+        <h1 fxFlex="98">Datos de alumno</h1>
+
+        <div fxFlex="45">
+            <label for="name">{{'LNAME'|oTranslate}}</label>
+            <o-text-input attr="name" required="yes" id="name"></o-text-input>
+        </div>
+        <div fxFlex="45">
+            <label for="surnames">{{'LSURNAME'|oTranslate}}</label>
+            <o-text-input attr="surnames" required="yes" id="surnames"></o-text-input>
+        </div>
+        <div fxFlex="98">
+            <label for="email">{{'LEMAIL'|oTranslate}}</label>
+            <o-email-input attr="email" required="yes" id="email"></o-email-input>
+        </div>
+        <div fxFlex="98">
+            <label for="bootcamp_name">Bootcamps</label>
+        </div>
+        <div fxFlex="99">
+            <div class="table_container" style="margin-left: 10px;">
+                <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+                    parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname" query-rows="10"
+                    detail-mode="false" delete-button="false">
+                    <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                </o-table>
+            </div>
+        </div>
+    </div>
+</o-form>
