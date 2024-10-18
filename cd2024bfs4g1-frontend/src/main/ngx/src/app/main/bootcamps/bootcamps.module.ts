@@ -5,13 +5,15 @@ import { BootcampDetailsComponent } from './bootcamp-details/bootcamp-details.co
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { BootcampListComponent } from './bootcamp-list/bootcamp-list.component';
 import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp-add/student-bootcamp-add.component';
+import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
 
 
 @NgModule({
   declarations: [
     BootcampListComponent,
     BootcampDetailsComponent,
-    StudentBootcampAddComponent
+    StudentBootcampAddComponent,
+    BootcampNewComponent
   ],
   imports: [
     CommonModule,

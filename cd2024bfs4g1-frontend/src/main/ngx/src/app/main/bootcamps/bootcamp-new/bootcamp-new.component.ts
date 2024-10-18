@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 
 @Component({
-  selector: 'app-bootcamp-details',
-  templateUrl: './bootcamp-details.component.html',
-  styleUrls: ['./bootcamp-details.component.css']
-
+  selector: 'app-bootcamp-new',
+  templateUrl: './bootcamp-new.component.html',
+  styleUrls: ['./bootcamp-new.component.css']
 })
-export class BootcampDetailsComponent {
+export class BootcampNewComponent {
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
@@ -44,4 +43,5 @@ export class BootcampDetailsComponent {
   throwChange2(startdate: ODateInputComponent ) {
     startdate.getControl().updateValueAndValidity();
   }
+
 }

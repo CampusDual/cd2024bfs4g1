@@ -1,0 +1,16 @@
+<o-form attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D" (onInsert)="volver($event)"
+    show-header-navigation="no">
+    <h3 class="titulo3">Nuevo Bootcamp</h3>
+    <o-column fxFlex>
+            <div fxLayout="row" fxLayoutGap="8px">
+                <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
+                <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
+                (onValueChange)="throwChange(enddate)"></o-date-input>
+                    <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+                <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" [validators]="validatorsArray"
+                format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
+                </o-date-input>
+            </div>
+    </o-column>
+</o-form>

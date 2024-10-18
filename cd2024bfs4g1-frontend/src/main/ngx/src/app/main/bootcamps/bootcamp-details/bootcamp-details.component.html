@@ -1,6 +1,18 @@
-<o-form keys="id" service="bootcamps" entity="bootcamp" label-header="Alumnos del bootcamp" header-actions=""
-    editable-detail="false" label-header-align = "center">
-    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
+<o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)"
+    show-header-navigation="no">
+    <h3 class="titulo3">Detalles Bootcamp</h3>
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
+    <o-column fxFlex>
+      <div fxLayout="row" fxLayoutGap="8px">
+        <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
+        <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
+                      (onValueChange)="throwChange(enddate)"></o-date-input>
+        <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" [validators]="validatorsArray"
+                      format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+          <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
+        </o-date-input>
+      </div>
+    </o-column>
     <o-table attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
         parent-keys="bootcamp_id:id" columns="id;name;surnames" visible-columns="name;surnames" query-rows="10"
         detail-mode="false" delete-button="false" show-report-on-demand-option="false"
@@ -11,3 +23,5 @@
         </o-table-context-menu>
     </o-table>
 </o-form>
+
+

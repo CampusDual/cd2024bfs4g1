@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentBootcampService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -20,6 +21,7 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Autowired
     private StudentBootcampDao studentBootcampDao;
+    private StudentDao studentDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -46,4 +48,9 @@ public class StudentBootcampService implements IStudentBootcampService {
     public EntityResult studentsWithBootcampQuery(Map<String, Object> keysValues, List<String> attributes) {
         return this.daoHelper.query(this.studentBootcampDao, keysValues, attributes);
     }
+    public EntityResult studentBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
+        return this.daoHelper.update(this.studentDao, attrMap, keyMap);
+    };
+
+
 }
