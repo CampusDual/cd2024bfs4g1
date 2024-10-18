@@ -1,5 +1,5 @@
 
-.table {
+.general_table {
     width: 80%;
     margin: 20px auto;
     background-color: #d5e9de;
@@ -9,12 +9,6 @@
     font-family: 'Roboto', sans-serif;
   }
 
-*{
-    background-color: #d5e9de!important;
-    text-decoration:overline;
-  }
-  
+  .table_container { height: 90%;}
 
-  /* mat-mdc-tooltip-trigger mat-mdc-cell mdc-data-table__cell cdk-cell cdk-column-email
-  mat-column-email ng-tns-c228-1 o-column-string ng-star-inserted*/
   
