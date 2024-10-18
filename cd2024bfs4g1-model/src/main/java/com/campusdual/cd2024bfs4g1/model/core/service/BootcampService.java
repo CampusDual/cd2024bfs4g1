@@ -13,10 +13,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("BootcampService")
 @Lazy
@@ -81,8 +78,10 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        EntityResult query = this.daoHelper.query(this.studentBootcampDao,keyMap,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
-        if(query.isEmpty()){
+        Map<String,Object> deletekey = new Hashtable<>();
+        deletekey.put(StudentBootcampDao.BOOTCAMP_ID,keyMap.get(BootcampDao.ATTR_ID));
+        EntityResult query = this.daoHelper.query(this.studentBootcampDao,deletekey,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
+        if(!query.isEmpty()){
             EntityResult error = new EntityResultMapImpl();
             error.setCode(EntityResult.OPERATION_WRONG);
             error.setMessage("BOOTCAMP_HAS_STUDENTS");
