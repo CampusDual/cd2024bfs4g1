@@ -1,4 +1,4 @@
-<o-form #studentBootcampForm service="studentBootcamp" entity="studentBootcamp" editable-detail="no" show-header="no" after-insert-mode="new">
+<o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" after-insert-mode="new">
     <o-text-input attr="student_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps"
         entity="bootcamp" visible-columns="name" searchable="yes">
