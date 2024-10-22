@@ -15,7 +15,7 @@
     </o-column>
     <div class="table_container">
       <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-      parent-keys="bootcamp_id:id" columns="id;name;surnames;student_id" visible-columns="name;surnames;student_id" query-rows="10"
+      parent-keys="bootcamp_id:id" columns="id;name;surnames;student_id" visible-columns="name;surnames" query-rows="10"
       detail-mode="false" delete-button="false" show-report-on-demand-option="false"
       show-charts-on-demand-option="false" (onClick)="goToStudentDetail($event)">
       <o-table-context-menu
