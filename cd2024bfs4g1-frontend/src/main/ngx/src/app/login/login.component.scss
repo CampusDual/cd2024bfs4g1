@@ -23,18 +23,17 @@
 
     .login-bg-container {
       background-color: #F64983;
-      width: 500px;
+      width: 33%;
       position: absolute;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      z-index: 1;
       height: 300px;
       margin-top: 100px;
       margin-left: 17%;
-      border-radius: 5%;
+      border-radius: 3%;
       box-shadow: 10px 15px 50px rgba(204, 2, 69, 0.6);
-      z-index: 2; /* Z-index elevado para que se superponga */
+      z-index: 2;
       height: 500px; 
     }
 
@@ -51,20 +50,20 @@
     // }
 
     .wrapp-login {
-      width: 550px;
-      height: 600px;
+      width: 35%;
+      height: 82.2%;
       position: relative; 
       z-index: 1; 
       margin-top: 50px;
       margin-left: 47%; ; 
       background-color: white; 
       padding: 0px, 30px;
-      border-radius: 5%;
+      border-radius: 3%;
 
       .login-inner-container {
         width: 100%;
         padding-top: 90px;
-        border-radius: 5%;
+        border-radius: 3%;
         
         form {
           padding: 16px;
