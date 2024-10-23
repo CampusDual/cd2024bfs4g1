@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit {
 
   onBootcampChange(event: any) {
       const bootcampId = event.newValue;
-      const filter = { id: bootcampId }; 
+      const filter = { id: bootcampId };
 
       this.service.query(filter, ['id', 'start_date', 'end_date'], 'bootcamp').subscribe(resp => {
         if (resp.code === 0 && resp.data.length > 0) {
-          const bootcamp = resp.data[0]; 
+          const bootcamp = resp.data[0];
           this.startDateInput.setValue(new Date(bootcamp.start_date));
           this.endDateInput.setValue(new Date(bootcamp.end_date));
         } else {
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
       const month = date.getMonth();
       const year = date.getFullYear();
 
-      if ((day === 1 && month === 1 && year === 2022) || 
+      if ((day === 1 && month === 1 && year === 2022) ||
           (day === 20 && month === 4 && year === 2022)) {
         return 'miestilo';
       }
