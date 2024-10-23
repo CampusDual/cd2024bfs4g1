@@ -8,7 +8,7 @@
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-
+  background-color: #F64983;
   .login-outer-container {
     width: 100%;
     height: 100%;
@@ -22,39 +22,56 @@
     overflow: auto;
 
     .login-bg-container {
-      background-image: url('^assets/images/login_bg.png');
-      width: calc(100% - 640px);
+      background-color: #F64983;
+      width: 500px;
+      position: absolute;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      position: relative;
       z-index: 1;
+      height: 300px;
+      margin-top: 100px;
+      margin-left: 17%;
+      border-radius: 5%;
+      box-shadow: 10px 15px 50px rgba(204, 2, 69, 0.6);
+      z-index: 2; /* Z-index elevado para que se superponga */
+      height: 500px; 
     }
 
-    .login-bg-container::before {
-      content: "";
-      display: block;
-      position: absolute;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, .1);
-      opacity: .8;
-    }
+    // .login-bg-container::before {
+    //   content: "";
+    //   display: block;
+    //   z-index: -1;
+    //   width: 100%;
+    //   height: 100%;
+    //   top: 0;
+    //   left: 0;
+    //   background: rgba(0, 0, 0, .1);
+    //   opacity: .8;
+    // }
 
     .wrapp-login {
-      width: 640px;
-      min-height: 100%;
+      width: 550px;
+      height: 600px;
+      position: relative; 
+      z-index: 1; 
+      margin-top: 50px;
+      margin-left: 47%; ; 
+      background-color: white; 
+      padding: 0px, 30px;
+      border-radius: 5%;
 
       .login-inner-container {
         width: 100%;
-
+        padding-top: 90px;
+        border-radius: 5%;
+        
         form {
           padding: 16px;
+          padding-left: 50px;
           min-height: 600px;
           min-width: 368px;
+          
         }
 
         .logo-container {
