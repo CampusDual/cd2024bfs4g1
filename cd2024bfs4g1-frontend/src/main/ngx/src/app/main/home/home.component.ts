@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
         }else{
           return "calendarcell";
         }
-       
+
       }
     }
     return '';
