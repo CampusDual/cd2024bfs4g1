@@ -30,7 +30,6 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
-		// Query the StudentDao for all students
 		return this.daoHelper.query(this.studentDao, keysMap, attributes);
 	}
 
