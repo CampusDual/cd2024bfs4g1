@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public class StudentDao extends OntimizeJdbcDaoSupport {
         public static final String STU_ID   = "id";
         public static final String NAME     = "name";
-        public static final String SURNAMES = "surname";
+        public static final String SURNAME1 = "surname";
         public static final String EMAIL    = "email";
         public static final String DNI = "dni";
         public static final String SURNAME2 = "surname2";
