@@ -23,18 +23,17 @@
 
     .login-bg-container {
       background-color: #F64983;
-      width: 33%;
+      width: 32.5%;
       position: absolute;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      height: 300px;
       margin-top: 100px;
-      margin-left: 17%;
+      margin-left: 17.5%;
       border-radius: 3%;
       box-shadow: 10px 15px 50px rgba(204, 2, 69, 0.6);
       z-index: 2;
-      height: 500px; 
+      height: 68%; 
     }
 
     // .login-bg-container::before {
@@ -143,7 +142,7 @@
   }
 
 }
-@media(max-width:576px) {
+@media(max-width:700px) {
   .full-page {
     .login-outer-container {
       .wrapp-login {
