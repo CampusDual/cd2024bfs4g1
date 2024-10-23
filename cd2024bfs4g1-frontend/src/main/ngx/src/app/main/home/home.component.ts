@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  selected: Date | null;
+  
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute
@@ -20,5 +22,6 @@ export class HomeComponent implements OnInit {
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
+
 
 }
