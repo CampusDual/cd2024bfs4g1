@@ -33,6 +33,8 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+
+/*
 		String dni = (String) attrMap.get(StudentDao.DNI);
 		EntityResult error = new EntityResultMapImpl();
 		error.setCode(EntityResult.OPERATION_WRONG);
@@ -51,8 +53,9 @@ public class StudentService implements IStudentService {
 		if (calculatedLetter != letter) {
 			error.setMessage("DNI_INVALID_LETTER");
 			return error;
-		}
+		}*/
 		return this.daoHelper.insert(this.studentDao, attrMap);
+
 	}
 
 	@Override

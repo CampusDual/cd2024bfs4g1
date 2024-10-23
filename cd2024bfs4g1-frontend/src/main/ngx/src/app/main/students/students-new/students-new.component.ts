@@ -9,8 +9,19 @@ import { OFormComponent } from 'ontimize-web-ngx';
 export class StudentsNewComponent {
 
   @ViewChild('studentsform') protected formStudents: OFormComponent;
+ 
   insertStudent() {
     this.formStudents.insert();
   }
-
+  
+    getValueBooleanType(type) {
+      switch (type) {
+        case 'number':
+          return 1;
+        case 'boolean':
+          return false;
+        case 'string':
+          return 'Y'
+      }
+    }
 }

@@ -8,64 +8,65 @@ after-insert-mode="new">
     </div>
     <div fxFlex="45">
         <label for="dni">{{'LDNI' | oTranslate}}</label>
-        <o-nif-input attr="nif2" label="NIF" data="53780330M" read-only="no" required="yes"></o-nif-input>
+        <o-nif-input attr="dni" label="NIF" data="53780330M" read-only="no" required="yes"></o-nif-input>
     </div>
     <div fxFlex="45">
         <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
-        <o-text-input attr="surname1" required="yes" id="surname1"></o-text-input>
+        <o-text-input attr="surname1" required="yes" ></o-text-input>
     </div>
     <div fxFlex="45">
         <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-        <o-text-input attr="surname2" required="no" id="surname2"></o-text-input>
+        <o-text-input attr="surname2" required="no" ></o-text-input>
     </div>
 
-    <div fxFlex="98">
-        <label for="Personal email">{{'LEMAIL'|oTranslate}}</label>
-        <o-email-input attr="personal_email" required="yes" id="personal_email"></o-email-input>
-    </div>
-    <div fxFlex="98">
-        <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
-        <o-date-input attr="birth_date" required="yes" id="birth_date"></o-date-input>
-    </div>
     <div fxFlex="45">
         <label for="phone">{{'LPHONE' | oTranslate}}</label>
-        <o-text-input attr="phone" required="yes" id="phone"></o-text-input>
+        <o-text-input attr="phone" required="yes" ></o-text-input>
     </div>
     <div fxFlex="45">
         <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-        <o-text-input attr="employment_status" required="yes" id="employment_status"></o-text-input>
+        <o-text-input attr="employment_status" required="yes"></o-text-input>
+    </div>
+    <div fxFlex="98">
+        <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
+        <o-date-input attr="birth_date" required="yes" ></o-date-input>
+    </div>
+    <div fxFlex="98">
+        <label for="Personal email">{{'LEMAIL'|oTranslate}}</label>
+        <o-email-input attr="personal_email" required="yes" ></o-email-input>
     </div>
     <div fxFlex="98">
         <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-        <o-email-input attr="campus_email" required="no" id="campus_email"></o-email-input>
+        <o-email-input attr="campus_email" required="no" ></o-email-input>
     </div>
     <div fxFlex="45">
         <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-        <o-text-input attr="fct_school" required="no" id="fct_school"></o-text-input>
-    </div>
-    <div fxFlex="45">
-        <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-        <o-date-input attr="fct_start" required="no" id="fct_start"></o-date-input>
-    </div>
-    <div fxFlex="45">
-        <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
-        <o-date-input attr="fct_end" required="no" id="fct_end"></o-date-input>
+        <o-text-input attr="fct_school" required="no" ></o-text-input>
     </div>
     <div fxFlex="45">
         <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
-        <o-text-input attr="tutor" required="no" id="tutor"></o-text-input>
+        <o-text-input attr="tutor" required="no" ></o-text-input>
     </div>
     <div fxFlex="45">
-        <label for="udemy">{{'LUDEMY' | oTranslate}}</label>
-        <o-text-input attr="udemy" required="yes" id="udemy"></o-text-input>
+        <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
+        <o-date-input attr="fct_start" required="no" ></o-date-input>
+    </div>
+    <div fxFlex="45">
+        <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
+        <o-date-input attr="fct_end" required="no"></o-date-input>
+    </div>
+
+    <div fxFlex="45">
+    <label for="udemy">{{'LUDEMY' | oTranslate}}</label>
+    <o-checkbox attr="udemy" boolean-type="string"></o-checkbox>
     </div>
     <div fxFlex="45">
         <label for="github_user">{{'LGITHUB_USER' | oTranslate}}</label>
-        <o-text-input attr="github_user" required="no" id="github_user"></o-text-input>
+        <o-text-input attr="github_user" required="no" ></o-text-input>
     </div>
     <div fxFlex="98">
         <label for="notes">{{'LNOTES' | oTranslate}}</label>
-        <o-textarea-input attr="notes" required="no" id="notes"></o-textarea-input>
+        <o-textarea-input attr="notes" required="no"></o-textarea-input>
     </div>    
     </div>
 </o-form>
