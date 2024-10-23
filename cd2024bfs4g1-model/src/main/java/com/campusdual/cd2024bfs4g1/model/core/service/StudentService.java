@@ -36,11 +36,11 @@ public class StudentService implements IStudentService {
 		String dni = (String) attrMap.get(StudentDao.DNI);
 		EntityResult error = new EntityResultMapImpl();
 		error.setCode(EntityResult.OPERATION_WRONG);
-		error.setMessage("DNI_INVALID_LETTER");
+
 		if (dni == null || !dni.matches("\\d{8}[A-Z]")) {
+			error.setMessage("DNI_INVALID_FORMAT");
 			return error;
 		}
-
 		String numbers = dni.substring(0, 8);
 		char letter = dni.charAt(8);
 
@@ -48,9 +48,8 @@ public class StudentService implements IStudentService {
 		char[] letters = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',
 				'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
 		char calculatedLetter = letters[number % 23];
-
 		if (calculatedLetter != letter) {
-
+			error.setMessage("DNI_INVALID_LETTER");
 			return error;
 		}
 		return this.daoHelper.insert(this.studentDao, attrMap);

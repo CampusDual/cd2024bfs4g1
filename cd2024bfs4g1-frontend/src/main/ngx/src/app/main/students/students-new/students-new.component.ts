@@ -9,7 +9,6 @@ import { OFormComponent } from 'ontimize-web-ngx';
 export class StudentsNewComponent {
 
   @ViewChild('studentsform') protected formStudents: OFormComponent;
-
   insertStudent() {
     this.formStudents.insert();
   }
