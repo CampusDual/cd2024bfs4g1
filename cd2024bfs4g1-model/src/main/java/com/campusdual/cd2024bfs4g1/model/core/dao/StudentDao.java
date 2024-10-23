@@ -28,4 +28,6 @@ public class StudentDao extends OntimizeJdbcDaoSupport {
         public static final String UDEMY             = "udemy";
         public static final String GITHUB_USER       = "github_user";
         public static final String NOTES             = "notes";
-}
+        public static final String SURNAMES = "surname";
+        public static final String EMAIL    = "email";
+} 
