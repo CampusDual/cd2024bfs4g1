@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 export class StudentsNewComponent {
 
   @ViewChild('studentsform') protected formStudents: OFormComponent;
- 
+
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
-  
-  
+
+
   constructor(private router: Router) {
     this.validatorsArray.push(this.dateValidator);
   }
@@ -26,7 +26,7 @@ export class StudentsNewComponent {
   insertStudent() {
     this.formStudents.insert();
   }
-  
+
   dateValidator(control: FormControl): ValidationErrors {
     let result = {};
 
