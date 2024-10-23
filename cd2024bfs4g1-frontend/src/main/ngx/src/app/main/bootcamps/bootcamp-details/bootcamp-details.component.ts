@@ -17,6 +17,10 @@ export class BootcampDetailsComponent {
   constructor(private router: Router) {
     this.validatorsArray.push(this.dateValidator);
   }
+  goToStudentDetail(event: any) {
+      const studentId = event.row.student_id;
+      this.router.navigate(['/main/students', studentId])
+  }
 
   volver(e) {
     this.router.navigate(['./main/bootcamps']);
@@ -37,11 +41,11 @@ export class BootcampDetailsComponent {
     return result;
   }
 
-  
-  throwChange(enddate: ODateInputComponent ) {
+
+  throwChange(enddate: ODateInputComponent) {
     enddate.getControl().updateValueAndValidity();
   }
-  throwChange2(startdate: ODateInputComponent ) {
+  throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
 }
