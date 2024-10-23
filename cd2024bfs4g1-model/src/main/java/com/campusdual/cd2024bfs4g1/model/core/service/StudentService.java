@@ -6,11 +6,14 @@ import java.util.Map;
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+
+import javax.swing.text.html.parser.Entity;
 
 @Service("StudentService")
 @Lazy
@@ -30,6 +33,26 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+		String dni = (String) attrMap.get(StudentDao.DNI);
+		EntityResult error = new EntityResultMapImpl();
+		error.setCode(EntityResult.OPERATION_WRONG);
+		error.setMessage("DNI_INVALID_LETTER");
+		if (dni == null || !dni.matches("\\d{8}[A-Z]")) {
+			return error;
+		}
+
+		String numbers = dni.substring(0, 8);
+		char letter = dni.charAt(8);
+
+		int number = Integer.parseInt(numbers);
+		char[] letters = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',
+				'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+		char calculatedLetter = letters[number % 23];
+
+		if (calculatedLetter != letter) {
+
+			return error;
+		}
 		return this.daoHelper.insert(this.studentDao, attrMap);
 	}
 
