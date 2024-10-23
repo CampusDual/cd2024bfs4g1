@@ -3,7 +3,9 @@ ALTER TABLE students
 ALTER TABLE students
   RENAME COLUMN email TO "personal_email";
 
--- Agregar nuevas columnas
+truncate table student_bootcamp;
+truncate table students cascade;
+
 ALTER TABLE students
   ADD COLUMN "dni" varchar(9) not null,
   ADD COLUMN "surname2" varchar(255),
