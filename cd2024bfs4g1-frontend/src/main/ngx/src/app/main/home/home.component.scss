@@ -29,7 +29,7 @@
 }
 
 .button-container {
-  width: 100%;
+  width: 100%; /* El contenedor del calendario también ocupará el 100% del contenedor padre */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,6 +47,7 @@ mat-calendar {
   width: 100%;
   font-size: 1.2em;
 }
+
 
 
 
