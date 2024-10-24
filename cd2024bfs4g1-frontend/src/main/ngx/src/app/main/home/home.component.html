@@ -1,4 +1,25 @@
-<mat-card class="demo-inline-calendar-card">
-  <mat-calendar [(selected)]="selected"></mat-calendar>
-</mat-card>
-<p>Selected date: {{selected}}</p>
+<div class="container">
+  <o-form>
+    <o-combo class="general_combobox" attr="bootcamp_id" label="Bootcamps" value-column="id"
+      columns="id;name;start_date;end_date" service="bootcamps" entity="bootcamp" visible-columns="name"
+      searchable="yes" (onValueChange)="onBootcampChange($event)">
+    </o-combo>
+
+
+    <o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="" show-header-navigation="no">
+      <h3 class="titulo3">Detalles Bootcamp</h3>
+      <o-column fxFlex>
+        <div fxLayout="row" fxLayoutGap="8px">
+          <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+          <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+        </div>
+      </o-column>
+    </o-form>
+  </o-form>
+  <div class="button-container">
+    <mat-card class="calendar-card">
+      <mat-calendar [dateClass]="dateClass" #picker startAt="2022-10-30T22:00:00Z">
+      </mat-calendar>
+    </mat-card>
+  </div>
+</div>
