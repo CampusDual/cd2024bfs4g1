@@ -13,6 +13,7 @@
     <o-table-paginator page-size="10" page-size-options="20,40"></o-table-paginator>
 
 
+
 <o-form editable-detail ="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
     <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" icon="filter_list" class="collapsible">
 
@@ -57,11 +58,17 @@
                     layout-padding></o-filter-builder-menu>-->
 
         </div>
-
+    <!--   <o-row layout-align="space-between center">
+            <o-text-input attr="name" read-only="no" fxFlex="33"></o-text-input>
+            <o-text-input attr="surnames" read-only="no" fxFlex="66"></o-text-input>
+        </o-row>
+        <o-list-picker attr="studentsPicker" read-only="no" service="students" entity="student" columns="name;Surnames"
+        value-column="id" keys="id" visible-columns="name;surnames" width="33%"></o-list-picker>
 
     <o-filter-builder #filterBuilder attr="thefilter" filters="name:name;surname1:surname1;surname2:surname2;tutor:tutor;udemy:udemy;employment_status:employment_status;id" [target]="tableStudents"
     query-on-change="yes" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
     </o-column-collapsible>
+
 
 
 
