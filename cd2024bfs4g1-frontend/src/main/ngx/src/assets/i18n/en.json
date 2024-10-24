@@ -119,7 +119,21 @@
   "ALUMNO_DATA": "Student Data",
   "BT_ALUMNS": "Bootcamp Alumns",
   "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date",
+  "FILTERS": "FILTERS",
+  "surname1": "First Surname",
+  "surname2": "Second Surname",
+  "tutor": "Tutor",
+  "udemy": "Udemy",
+  "employment_status": "Employment Status",
+  "student_status": "Student Status",
+  "CLEAR": "Clear",
+  "FILTER": "Filter",
+  "SLIDE_SEARCH": "Joint Search",
+  "SLIDE_TT": "Enable search for complex fields.",
+  "LOCALE_gal": "GAL",
   "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students",
   "description":"Description",
-  "notes":"Notes"
+  "notes":"Notes",
+  "LAST_SURNAME": "Last Surname",
+  "FIRST_SURNAME": "First Surname"
 }
