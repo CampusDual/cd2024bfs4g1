@@ -1,13 +1,11 @@
 <div class="full-page">
   <div class="login-outer-container">
-
     <div class="login-bg-container">
     </div>
 
     <div class="wrapp-login">
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
         <form [formGroup]="loginForm" (ngSubmit)="login()">
-
           <div class="login-title-container" fxLayout="column">
             <p class="session-expired text" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
             <span class="title_text">{{ 'LOGIN_TITLE' | oTranslate }}:</span>
@@ -15,14 +13,17 @@
 
           <div fxLayout="column" fxLayoutGap="10px">
             <mat-form-field fxFill class="m-top-24">
-              <input matInput class="mat-input" #user placeholder="{{ 'USERNAME' | oTranslate }}" id="username" [formControl]="userCtrl">
+              <input matInput class="mat-input" placeholder="{{ 'USERNAME' | oTranslate }}" id="username" [formControl]="userCtrl">
               <mat-error *ngIf="userCtrl.hasError('required')">
                 {{ 'ERROR_USER_REQUIRED' | oTranslate }}
               </mat-error>
             </mat-form-field>
             <mat-form-field fxFill class="m-top-24">
-              <input matInput class="mat-input" #password placeholder="{{ 'PASSWORD' | oTranslate }}" id="password" type="password"
-                [formControl]="pwdCtrl">
+              <input matInput class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}" id="password"
+                [type]="hidePassword ? 'password' : 'text'" [formControl]="pwdCtrl">
+              <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!hidePassword" type="button">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
               <mat-error *ngIf="pwdCtrl.hasError('required')">
                 {{ 'ERROR_PASS_REQUIRED' | oTranslate }}
               </mat-error>
@@ -31,13 +32,11 @@
 
           <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="m-top-24">
             <mat-checkbox class="text">{{ 'REMEMBER_ME' | oTranslate }}</mat-checkbox>
-            <!-- <span class="text link_text">{{ 'FORGOT_PWD' | oTranslate }}</span> -->
           </div>
 
           <button mat-raised-button color="primary" type="submit">{{ 'LOGIN' | oTranslate }}</button>
         </form>
       </div>
-
     </div>
   </div>
 
@@ -48,5 +47,4 @@
       <span>{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
     </div>
   </div>
-
 </div>
