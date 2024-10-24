@@ -1,54 +1,65 @@
 <div class="table_container">
 
-
 <o-form editable-detail ="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
     <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" icon="filter_list" class="collapsible">
 
-        <div class="filter_style" fxLayout="column" fxLayoutGap="14px">
-            <div fxLayout="row wrap" fxLayoutGap="32px">
-                <o-text-input attr="name" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
-                <o-text-input attr="surnames" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
-                <o-text-input attr="email" read-only="no" fxFlex="25%"></o-text-input>
-                <o-combo #type attr="studentsType" read-only="no" service="students" entity="student" columns="name, surnames, email"
-                value-column="id" keys="id" visible-columns="name;surnames;email" fxFlex="calc(25% - 32px)"></o-combo>
+        <div class="filter_style" fxLayout="column" fxLayoutGap="8px">
+
+                <div fxLayout="row wrap" fxLayoutGap="8px" >
+                    <o-text-input attr="name" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
+                    <o-text-input attr="surname1" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
+                    <o-text-input attr="surname2" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>     
+                    <o-text-input attr="tutor" read-only="no" flFlex="calc(25% - 32px)" ></o-text-input>                                          
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="8px">
+                    <o-text-input attr="udemy" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
+                    <o-text-input attr="employment_status" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
+                    <!--<o-combo #type attr="employment_status" read-only="no" service="students" entity="student" columns="employment_status"
+                    value-column="employment_status" keys="id" visible-columns="employment_status" fxFlex="calc(25% - 32px)"></o-combo> POR IMPLEMENTAR-->
+                    <o-text-input attr="student_status" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>      <!--NO EXISTE EN LA BASE DE DATOS-->              
+
+                </div>
             </div>
-            <div fxLayout="row" fxLayoutGap="32px" fxFill class="filter_btn" fxLayoutAlign="flex-end flex-end">
-                    <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED" label="Clear" layout-padding>
-                    </o-button>
-                    <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED" label="Filter" layout-padding color="accent">
-                    </o-button>
+
+                    <!-- Primer grupo de botones (a la izquierda) -->
+                <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 70%">
+  
+                <!-- Primer grupo de botones (a la izquierda) -->
+                    <div fxLayout="row" fxLayoutGap="8px">
+                        <o-slide-toggle #sliderToggle attr="slidertoggle" label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no"
+                        tooltip="{{'SLIDE_TT' | oTranslate}}"></o-slide-toggle> 
+                    </div>
+  
+  
+                <!-- Segundo grupo de botones (a la derecha) -->
+                <div fxLayout="row" fxLayoutGap="8px">
+                    <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
+                    <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED" label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button>
+                 </div>
+
+
+                <!--   BORRAR EN CASO DE NO NECESITAR. ES EL MENU PARA GUARDAR Y CARGAR FILTROS
+                    
                     <o-filter-builder-menu [oFilterBuilder]="filterBuilder" show-filter-option="no" show-clear-filter-option="no"
-                    layout-padding></o-filter-builder-menu>
-            </div>
+                    layout-padding></o-filter-builder-menu>-->
+
         </div>
 
-    <!--   <o-row layout-align="space-between center"> 
-            <o-text-input attr="name" read-only="no" fxFlex="33"></o-text-input>
-            <o-text-input attr="surnames" read-only="no" fxFlex="66"></o-text-input>
-        </o-row>
-        <o-list-picker attr="studentsPicker" read-only="no" service="students" entity="student" columns="name;Surnames" 
-        value-column="id" keys="id" visible-columns="name;surnames" width="33%"></o-list-picker>
 
-
-        <o-row layout-align="end">
-            <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="RAISED" label="Filter" class="filter-button"></o-button>
-            <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="RAISED" label="Clear" class="filter-button"></o-button>
-        </o-row>
-    -->
-    <o-filter-builder #filterBuilder attr="thefilter" filters="name:name;surnames:surnames;email:email;id" [target]="tableStudents" 
+    <o-filter-builder #filterBuilder attr="thefilter" filters="name:name;surname1:surname1;surname2:surname2;tutor:tutor;udemy:udemy;employment_status:employment_status;id" [target]="tableStudents" 
     query-on-change="yes" query-on-change-delay="500" [expression-builder]="createFilter"></o-filter-builder>
     </o-column-collapsible>
 
 
 
-
   <o-table #tableStudents class="general_table" attr="studentsTable" service="students" entity="student" keys="id"
-      columns="id;name;surnames;email"
-      visible-columns="name;surnames;email" query-rows="10" delete-button="false" show-report-on-demand-option="false"
+      columns="id;name;surname1;surname2;personal_email;tutor;udemy;employment_status"
+      visible-columns="name;surname1;surname2;personal_email" query-rows="10" delete-button="false" show-report-on-demand-option="false"
       show-charts-on-demand-option="false">
       <o-table-column attr="name" title="Name"></o-table-column>
-      <o-table-column attr="surnames" title="Surnames"></o-table-column>
-      <o-table-column attr="email" title="Email"></o-table-column>
+      <o-table-column attr="surname1" title="Surnames"></o-table-column>
+      <o-table-column attr="surname2" title="Surnames"></o-table-column>
+      <o-table-column attr="personal_email" title="Email"></o-table-column>
       <o-table-context-menu 
       insert="false" edit="false"
       view-detail="false" delete="false">
