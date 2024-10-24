@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class StudentsDetailComponent {
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
-  
-  
+
+
   constructor(private router: Router) {
     this.validatorsArray.push(this.dateValidator);
   }
