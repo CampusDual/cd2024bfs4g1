@@ -16,7 +16,7 @@
     width: 80%;
     margin: 20px auto;
     background-color: #d5e9de;
-    padding: 20px;
+    padding: 15px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
@@ -24,7 +24,7 @@
   
   .filter_style {
     background-color: #d5e9de;
-    padding: 20px;
+    padding: 20px 60px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
