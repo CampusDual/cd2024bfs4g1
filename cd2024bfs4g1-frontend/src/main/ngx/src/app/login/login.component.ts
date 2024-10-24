@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   public sessionExpired = false;
   private redirect = '/main';
+  hidePassword = true; // Variable para controlar la visibilidad de la contraseña
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -48,7 +49,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): any {
     this.navigationService.setVisible(false);
-
     this.loginForm.addControl('username', this.userCtrl);
     this.loginForm.addControl('password', this.pwdCtrl);
 
@@ -71,6 +71,10 @@ export class LoginComponent implements OnInit {
           self.router.navigate([this.redirect]);
         }, this.handleError);
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.hidePassword = !this.hidePassword;
   }
 
   private loadUserInfo() {
