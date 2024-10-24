@@ -20,7 +20,6 @@
     align-items: stretch;
     overflow: auto;
     background-color: #c9daf1;
-    align-items: center;
     .login-bg-container {
       background: linear-gradient(#1A3459 40%, #C2F457);
       justify-content: center;
@@ -57,7 +56,6 @@
       padding: 0px, 30px;
       border-radius: 3%;
       box-shadow: 10px 0px 20px rgba(117, 171, 247, 0.6);
-      max-height: 600px;
       .img2{
         display: none;
       }
@@ -134,6 +132,7 @@
 @media (max-width: 1300px) {
   .full-page {
     .login-outer-container {
+      align-items: center;
       .login-bg-container {
         display: none;
       }
@@ -142,6 +141,7 @@
         width: 80%;
         height: 90%;
         max-width: 600px;
+        max-height: 700px;
 
         .img2{
           display: block;
@@ -162,6 +162,7 @@
             div:first-child{
               margin-top: 2%;
             }
+            
           }
         }
       }
