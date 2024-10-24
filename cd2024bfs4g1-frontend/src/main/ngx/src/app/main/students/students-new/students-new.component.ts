@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { OFormComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students-new',
@@ -17,7 +16,7 @@ export class StudentsNewComponent {
   validatorsArray1: ValidatorFn[] = [];
 
 
-  constructor(private router: Router) {
+  constructor() {
     this.validatorsArray.push(this.dateValidator);
   }
 
