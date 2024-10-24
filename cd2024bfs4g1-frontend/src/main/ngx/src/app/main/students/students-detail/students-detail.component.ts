@@ -22,7 +22,7 @@ export class StudentsDetailComponent {
 
     if (control && control.parent && control.value) {
       let enddate = control.value.valueOf();
-      let startdate = control.parent.value.start_date;
+      let startdate = control.parent.value.fct_start;
 
       if (enddate && startdate && enddate < startdate) {
         result['wrongendate'] = true;
