@@ -9,6 +9,12 @@
   margin-bottom: 20px;
 }
 
+.date-input-container {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  margin-bottom: 20px; /* Espacio entre el formulario y el calendario */
+}
+
 .button-container {
   width: 100%; /* El contenedor del calendario también ocupará el 100% del contenedor padre */
   display: flex;
