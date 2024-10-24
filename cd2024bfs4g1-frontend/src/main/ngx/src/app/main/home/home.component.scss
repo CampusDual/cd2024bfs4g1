@@ -15,6 +15,12 @@
   margin-bottom: 20px;
 }
 
+.date-input-container {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  margin-bottom: 20px; /* Espacio entre el formulario y el calendario */
+}
+
 .button-container {
   width: 100%;
   display: flex;
