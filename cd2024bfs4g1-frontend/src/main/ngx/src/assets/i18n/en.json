@@ -119,7 +119,6 @@
   "ALUMNO_DATA": "Student Data",
   "BT_ALUMNS": "Bootcamp Alumns",
   "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date",
-  "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students",
   "FILTERS": "FILTERS",
   "surname1": "First Surname",
   "surname2": "Second Surname",
@@ -134,5 +133,7 @@
   "LOCALE_gal": "GAL",
   "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students",
   "description":"Description",
-  "notes":"Notes"
+  "notes":"Notes",
+  "LAST_SURNAME": "Last Surname",
+  "FIRST_SURNAME": "First Surname"
 }
