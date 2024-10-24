@@ -1,10 +1,15 @@
 <div class="full-page">
   <div class="login-outer-container">
     <div class="login-bg-container">
+      <img class="img"  src="../../assets/images/logoNS-BLANCO.png" >
     </div>
 
     <div class="wrapp-login">
+
+
       <div fxFill fxLayout="column" fxLayoutAlign="center center" class="login-inner-container">
+      <img class="img2"  src="../../assets/images/logoNS-AZUL.png" >
+
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="login-title-container" fxLayout="column">
             <p class="session-expired text" *ngIf="sessionExpired">{{ 'ERROR_SESSION_EXPIRED' | oTranslate }}</p>
@@ -21,7 +26,7 @@
             <mat-form-field fxFill class="m-top-24">
               <input matInput class="mat-input" placeholder="{{ 'PASSWORD' | oTranslate }}" id="password"
                 [type]="hidePassword ? 'password' : 'text'" [formControl]="pwdCtrl">
-              <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!hidePassword" type="button">
+              <button class="boton" mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!hidePassword" type="button">
                 <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
               </button>
               <mat-error *ngIf="pwdCtrl.hasError('required')">
@@ -40,11 +45,5 @@
     </div>
   </div>
 
-  <div id="footer" class="footer-container">
-    <div fxLayout="row" fxLayoutAlign="end center">
-      <span>{{ 'FOOTER_CREATED_BY' | oTranslate }}</span>
-      <span> &copy; 2021 </span>
-      <span>{{ 'FOOTER_RIGHTS' | oTranslate }}</span>
-    </div>
-  </div>
+
 </div>
