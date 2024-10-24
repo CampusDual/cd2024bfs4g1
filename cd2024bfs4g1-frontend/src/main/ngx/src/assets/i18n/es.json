@@ -105,5 +105,7 @@
   "LEMAIL": "Correo",
   "BT_ALUMNS": "Alumnos del Bootcamp",
   "END_DATE_MORE_THAN_INIT_DATE": "La fecha de fin no puede ser anterior a la fecha de inicio",
-  "BOOTCAMP_HAS_STUDENTS":"El bootcamp que quieres borrar tiene alumnos"
+  "BOOTCAMP_HAS_STUDENTS":"El bootcamp que quieres borrar tiene alumnos",
+  "description":"Descripción",
+   "notes":"Notas"
 }

@@ -11,6 +11,8 @@
                       format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
           <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
         </o-date-input>
+        <o-textarea-input fxFlex="40" attr="description" required="no" max-length="150"></o-textarea-input>
+        <o-textarea-input fxFlex="40" attr="notes" required="no" max-length="200"></o-textarea-input>
       </div>
     </o-column>
     <div class="table_container">
