@@ -8,7 +8,6 @@
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  //#F64983
   .login-outer-container {
     width: 100%;
     height: 100%;
@@ -21,6 +20,7 @@
     align-items: stretch;
     overflow: auto;
     background-color: #c9daf1;
+    align-items: center;
     .login-bg-container {
       background: linear-gradient(#1A3459 40%, #C2F457);
       justify-content: center;
@@ -45,7 +45,6 @@
       }
     }
 
-   
 
     .wrapp-login {
       width: 35%;
@@ -58,6 +57,7 @@
       padding: 0px, 30px;
       border-radius: 3%;
       box-shadow: 10px 0px 20px rgba(117, 171, 247, 0.6);
+      max-height: 600px;
       .img2{
         display: none;
       }
