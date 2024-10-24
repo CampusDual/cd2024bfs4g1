@@ -1,6 +1,30 @@
-.bg {
-  background-color: darkred;
+.container {
+  width: 100%;
+  max-width: 800px; /* Ajusta el tamaño total del contenedor */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
 }
-.demo-inline-calendar-card {
-  width: 600px;
+
+.general_combobox {
+  width: 100%; /* El combo ahora ocupará el 100% del contenedor */
+  margin-bottom: 20px;
+}
+
+.button-container {
+  width: 100%; /* El contenedor del calendario también ocupará el 100% del contenedor padre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.calendar-card {
+  width: 100%; /* El calendario ocupa el 100% del ancho disponible */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+mat-calendar {
+  width: 100%;
+  font-size: 1.2em; /* Aumentar tamaño del calendario */
 }
