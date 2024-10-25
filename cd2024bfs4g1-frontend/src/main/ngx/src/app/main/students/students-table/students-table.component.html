@@ -1,8 +1,6 @@
 <div class="table_container">
 
 
-
-
 <o-form editable-detail ="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
     <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" icon="filter_list" class="collapsible">
 
@@ -15,36 +13,32 @@
                     <o-text-input attr="tutor" read-only="no" flFlex="calc(25% - 32px)" ></o-text-input>
                 </div>
                 <div fxLayout="row wrap" fxLayoutGap="8px">
-                    <o-text-input attr="udemy" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
                     <o-text-input attr="employment_status" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
-                    <!--<o-combo #type attr="employment_status" read-only="no" service="students" entity="student" columns="employment_status"
-                    value-column="employment_status" keys="id" visible-columns="employment_status" fxFlex="calc(25% - 32px)"></o-combo> POR IMPLEMENTAR-->
-                    <o-text-input attr="student_status" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>      <!--NO EXISTE EN LA BASE DE DATOS-->
+
+                    <o-combo #type attr="udemy" read-only="no" [static-data]="[{'value': 'true', 'label': 'Active'},{'value': 'false', 'label': 'Inactive'}]"
+                     service="students" entity="student" columns="udemy"
+                    value-column="value" keys="id" visible-columns="label" fxFlex="250px"></o-combo> 
+                    <o-text-input attr="student_status" read-only="no" flFlex="calc(25% - 32px)" hidden></o-text-input>      <!--NO EXISTE EN LA BASE DE DATOS QUEDA ESCONDIDO-->
+                    
+
+
 
                 </div>
             </div>
 
-                    <!-- Primer grupo de botones (a la izquierda) -->
                 <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 70%">
 
-                <!-- Primer grupo de botones (a la izquierda) -->
                     <div fxLayout="row" fxLayoutGap="8px">
                         <o-slide-toggle #sliderToggle attr="slidertoggle" label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no"
                         tooltip="{{'SLIDE_TT' | oTranslate}}"></o-slide-toggle>
                     </div>
 
 
-                <!-- Segundo grupo de botones (a la derecha) -->
                 <div fxLayout="row" fxLayoutGap="8px">
                     <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
                     <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED" label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button>
                  </div>
 
-
-                <!--   BORRAR EN CASO DE NO NECESITAR. ES EL MENU PARA GUARDAR Y CARGAR FILTROS
-
-                    <o-filter-builder-menu [oFilterBuilder]="filterBuilder" show-filter-option="no" show-clear-filter-option="no"
-                    layout-padding></o-filter-builder-menu>-->
 
         </div>
 
@@ -55,7 +49,7 @@
 
 
     <o-table #tableStudents class="general_table" attr="studentsTable" service="students" entity="student" keys="id"
-    columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes"
+    columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes"
     visible-columns="name;surname1;surname2;dni;personal_email" delete-button="false"
     show-report-on-demand-option="false" show-charts-on-demand-option="false">
     <o-table-column attr="name" title="Name"></o-table-column>
