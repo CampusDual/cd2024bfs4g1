@@ -11,9 +11,8 @@
       delete-button="true"
       refresh-button="false"
       query-rows="20"
+
       >
-
-
 
       <o-table-context-menu
       insert="false" edit="false"
@@ -28,12 +27,12 @@
       ></o-table-column>
 
       <o-table-column
-      attr="status" title="status"
+      attr="status" title="status" 
       type="string" content-align="center"
       title-align="center"
       tooltip="yes" tooltip-value="Estado general del curso"
-      ></o-table-column>
 
+      ></o-table-column>
       <o-table-column
       attr="start_date" title="start_date"
       type="date" format="DD/MM/YYYY"
@@ -46,8 +45,7 @@
       attr="end_date" title="end_date"
       type="date" format="DD/MM/YYYY"
       content-align="center" title-align="center"
-      tooltip="yes" tooltip-value="Fecha finalización del curso"
-      orderable="false">
+      tooltip="yes" tooltip-value="Fecha finalización del curso">
       </o-table-column>
 
       <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
