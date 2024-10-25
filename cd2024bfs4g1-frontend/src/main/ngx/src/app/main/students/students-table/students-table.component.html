@@ -15,7 +15,7 @@
                 <div fxLayout="row wrap" fxLayoutGap="8px">
                     <o-text-input attr="employment_status" read-only="no" flFlex="calc(25% - 32px)"></o-text-input>
 
-                    <o-combo #type attr="udemy" read-only="no" [static-data]="[{'value': 'true', 'label': 'Active'},{'value': 'false', 'label': 'Inactive'}]"
+                    <o-combo #type attr="udemy" read-only="no" [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
                      service="students" entity="student" columns="udemy"
                     value-column="value" keys="id" visible-columns="label" fxFlex="250px"></o-combo>
                     <o-text-input attr="student_status" read-only="no" flFlex="calc(25% - 32px)" hidden></o-text-input>      <!--NO EXISTE EN LA BASE DE DATOS QUEDA ESCONDIDO-->

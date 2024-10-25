@@ -140,5 +140,7 @@
   "LAST_SURNAME": "Last Surname",
   "FIRST_SURNAME": "First Surname",
   "personal_email": "Personal Email",
-  "NEW_BC": "New Bootcamp"
+  "NEW_BC": "New Bootcamp",
+  "Active": "Active",
+  "Inactive": "Inactivo"
 }

@@ -140,5 +140,7 @@
   "NEW_BC": "Nuevo Bootcamp",
   "LAST_SURNAME": "Segundo Apellido",
   "FIRST_SURNAME": "Primer Apellido",
-  "personal_email": "Correo Personal"
+  "personal_email": "Correo Personal",
+  "Active": "Activo",
+  "Inactive": "Inactivo"
 }
