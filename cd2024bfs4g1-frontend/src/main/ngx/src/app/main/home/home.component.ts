@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.service = this.injector.get(OntimizeService);
     this.configureService();
+    this.dateClass.bind(this);
   }
 
   ngOnInit() {
@@ -47,16 +48,15 @@ export class HomeComponent implements OnInit {
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate: Date, view) => {
     let date: Date = new Date(cellDate);
-    if (view === 'month') {
-      const day = date.getDate();
-      const month = date.getMonth();
-      const year = date.getFullYear();
+   let startDate:Date = this.startDateInput.getValue();
+   let endDate:Date = this.endDateInput.getValue();
+     if (view === "month"){
+        if (startDate && endDate && date> startDate && date <endDate)
+        {
+          return "miestilo";
+        }
+     }
 
-      if ((day === 1 && month === 1 && year === 2022) ||
-          (day === 20 && month === 4 && year === 2022)) {
-        return 'miestilo';
-      }
-    }
 
     return '';
   };
