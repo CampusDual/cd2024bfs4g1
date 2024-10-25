@@ -8,7 +8,7 @@ const spainProvinces: string[] = [
     "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", 
     "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", 
     "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", 
-    "Zamora", "Zaragoza"
+    "Zamora", "Zaragoza","Ceuta", "Melilla","Otros"
 ];
 
 export default spainProvinces;

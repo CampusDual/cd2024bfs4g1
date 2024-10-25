@@ -33,27 +33,16 @@ export class StudentsNewComponent {
   dateValidator(control: FormControl): ValidationErrors {
     let result = {};
 
-    
-  // Verificar que el control y su padre existan
-  if (!control || !control.parent) {
-    return result; // Retorna un objeto vacío si no hay control o parent
-  }
+    if (control && control.parent && control.value) {
+      let enddate = control.value.valueOf();
+      let startdate = control.parent.value.fct_start;
 
-  // Obtener los valores de las fechas
-  const enddate = control.value; // Fecha de finalización
-  const startdate = control.parent.value.fct_start; // Fecha de inicio
+      if (enddate && startdate && enddate < startdate) {
+        result['wrongendate'] = true;
+      }
+    }
 
-  // Si alguno de los dos es null, no aplicar el validador
-  if (!enddate || !startdate) {
-    return null; // Retorna un objeto vacío si alguna fecha es nula
-  }
-
-  // Validar si enddate es menor que startdate
-  if (enddate.valueOf() < startdate.valueOf()) {
-    result['wrongendate'] = true; // Agregar error si enddate es menor
-  }
-
-  return result; 
+    return result;
   }
 
 
