@@ -14,7 +14,7 @@
   </o-form>
   <div class="button-container">
     <mat-card class="calendar-card" *ngIf="selected">
-      <mat-calendar [dateClass]="dateClass" #picker startAt="{{this.startDateInput.getValue()}}">
+      <mat-calendar [dateClass]="dateClass" #picker [startAt]="startAtDate">
       </mat-calendar>
     </mat-card>
   </div>
