@@ -3,8 +3,6 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ODateInputComponent, OntimizeService } from 'ontimize-web-ngx';
 
-let initialDate: Date = new Date();
-
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -15,6 +13,7 @@ export class HomeComponent implements OnInit {
   @ViewChild("enddate") endDateInput: ODateInputComponent;
 
   selected = false;
+  startAtDate: Date;
   protected service: OntimizeService;
 
   constructor(
@@ -41,13 +40,16 @@ export class HomeComponent implements OnInit {
     this.service.query(filter, ['id', 'start_date', 'end_date'], 'bootcamp').subscribe(resp => {
       if (resp.code === 0 && resp.data.length > 0) {
         const bootcamp = resp.data[0];
-        this.startDateInput.setValue(new Date(bootcamp.start_date));
-        this.endDateInput.setValue(new Date(bootcamp.end_date));
+        const startDate = new Date(bootcamp.start_date);
+        const endDate = new Date(bootcamp.end_date);
+
+        this.startDateInput.setValue(startDate);
+        this.endDateInput.setValue(endDate);
+        this.startAtDate = startDate;
         this.selected = true;
 
       } else {
         alert('No se encontraron datos para este bootcamp.');
-
       }
     });
     this.selected = false;
