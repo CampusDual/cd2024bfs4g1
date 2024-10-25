@@ -133,7 +133,10 @@
   "LOCALE_gal": "GAL",
   "BOOTCAMP_HAS_STUDENTS":"El bootcamp que quieres borrar tiene alumnos",
   "description":"Descripción",
-  "notes":"Notas",
+   "notes":"Notas",
+   "First Surname": "Primer Apellido",
+   "Last Surname": "Segundo Apellido",
+  "STUDENT_REGISTRATION": "Alta de Estudiante",
   "LAST_SURNAME": "Segundo Apellido",
   "FIRST_SURNAME": "Primer Apellido",
   "personal_email": "Correo Personal"
