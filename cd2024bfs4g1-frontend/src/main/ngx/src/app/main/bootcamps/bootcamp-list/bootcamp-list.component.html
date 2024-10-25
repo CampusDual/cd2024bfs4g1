@@ -1,55 +1,56 @@
-<div class="table_container">
-  <o-table
-      class="general_table"
-      attr="bootcampsTable" service="bootcamps"
-      entity="bootcamp" keys="id"
-      columns="id;name;start_date;end_date;status"
-      visible-columns="name;start_date;end_date;status"
-      sort-columns="end_date:DESC"
-      show-report-on-demand-option="false"
-      show-charts-on-demand-option="false"
-      delete-button="true"
-      refresh-button="false"
-
-      >
-
-      <o-table-paginator
-      page-size="15"
-      page-size-options="15">
-      </o-table-paginator>
-
-      <o-table-context-menu
-      insert="false" edit="false"
-      view-detail="false" delete="false">
-      </o-table-context-menu>
-
-      <o-table-column
-      attr="name" title="name"
-      type="string" content-align="center"
-      title-align="center"
-      tooltip="yes" tooltip-value="Nombre del curso"
-      ></o-table-column>
-
-      <o-table-column
-      attr="status" title="status"
-      type="string" content-align="center"
-      title-align="center"
-      tooltip="yes" tooltip-value="Estado general del curso"
-      ></o-table-column>
-
-      <o-table-column
-      attr="start_date" title="start_date"
-      type="date" format="DD/MM/YYYY"
-      content-align="center" title-align="center"
-      tooltip="yes" tooltip-value="Fecha de inicio del curso">
-      </o-table-column>
-
-      <o-table-column
-      attr="end_date" title="end_date"
-      type="date" format="DD/MM/YYYY"
-      content-align="center" title-align="center"
-      tooltip="yes" tooltip-value="Fecha finalización del curso">
-      </o-table-column>
-
-  </o-table>
-</div>
+<o-form-layout-manager attr="bootcampsLayout" mode="split" label-columns="name">
+  <div class="table_container">
+    <o-table
+        class="general_table"
+        attr="bootcampsTable" service="bootcamps"
+        entity="bootcamp" keys="id"
+        columns="id;name;start_date;end_date;status"
+        visible-columns="name;start_date;end_date;status"
+        sort-columns="end_date:DESC"
+        show-report-on-demand-option="false"
+        show-charts-on-demand-option="false"
+        delete-button="true"
+        refresh-button="false"
+  
+        >
+  
+        <o-table-paginator
+        page-size="15"
+        page-size-options="15">
+        </o-table-paginator>
+  
+        <o-table-context-menu
+        insert="false" edit="false"
+        view-detail="false" delete="false">
+        </o-table-context-menu>
+  
+        <o-table-column
+        attr="name" title="name"
+        type="string" content-align="center"
+        title-align="center"
+        tooltip="yes" tooltip-value="Nombre del curso"
+        ></o-table-column>
+  
+        <o-table-column
+        attr="status" title="status"
+        type="string" content-align="center"
+        title-align="center"
+        tooltip="yes" tooltip-value="Estado general del curso"
+        ></o-table-column>
+  
+        <o-table-column
+        attr="start_date" title="start_date"
+        type="date" format="DD/MM/YYYY"
+        content-align="center" title-align="center"
+        tooltip="yes" tooltip-value="Fecha de inicio del curso">
+        </o-table-column>
+  
+        <o-table-column
+        attr="end_date" title="end_date"
+        type="date" format="DD/MM/YYYY"
+        content-align="center" title-align="center"
+        tooltip="yes" tooltip-value="Fecha finalización del curso">
+        </o-table-column>
+    </o-table>
+  </div>
+  </o-form-layout-manager>
