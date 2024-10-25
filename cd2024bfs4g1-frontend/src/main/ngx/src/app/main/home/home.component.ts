@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate: Date, view) => {
     let date: Date = new Date(cellDate);
-    //let date2 = date.getTime();
     let startDate: Date = this.startDateInput.getValue();
     let endDate: Date = this.endDateInput.getValue();
     if (view === "month") {
@@ -80,4 +79,3 @@ export class HomeComponent implements OnInit {
 
 
 }
-
