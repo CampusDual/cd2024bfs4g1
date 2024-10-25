@@ -70,7 +70,12 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "vendor": true,
+                "styles": true,
+                "scripts": true
+
+              },
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
