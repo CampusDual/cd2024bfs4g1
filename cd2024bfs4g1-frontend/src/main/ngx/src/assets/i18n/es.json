@@ -142,5 +142,8 @@
   "FIRST_SURNAME": "Primer Apellido",
   "personal_email": "Correo Personal",
   "Active": "Activo",
-  "Inactive": "Inactivo"
+  "Inactive": "Inactivo",
+  "Pending": "Pending",
+  "Started": "Started",
+  "Finished": "Finished"
 }

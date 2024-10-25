@@ -142,5 +142,8 @@
   "personal_email": "Personal Email",
   "NEW_BC": "New Bootcamp",
   "Active": "Active",
-  "Inactive": "Inactivo"
+  "Inactive": "Inactivo",
+  "Pending": "Pending",
+  "Started": "Started",
+  "Finished": "Finished"
 }
