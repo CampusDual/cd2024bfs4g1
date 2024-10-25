@@ -13,10 +13,9 @@
     </o-column>
   </o-form>
   <div class="button-container">
-    <mat-card class="calendar-card">
-      <mat-calendar [dateClass]="dateClass" #picker startAt="2022-10-30T22:00:00Z">
+    <mat-card class="calendar-card" *ngIf="selected">
+      <mat-calendar [dateClass]="dateClass" #picker [startAt]="startAtDate">
       </mat-calendar>
     </mat-card>
   </div>
 </div>
-
