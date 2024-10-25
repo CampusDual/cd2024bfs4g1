@@ -5,12 +5,12 @@
       entity="bootcamp" keys="id"
       columns="id;name;start_date;end_date;status"
       visible-columns="name;start_date;end_date;status"
-      orderable="true"
       sort-columns="end_date:ASC"
       show-report-on-demand-option="false"
       show-charts-on-demand-option="false"
       delete-button="true"
       refresh-button="false"
+      query-rows="20"
       >
 
 
@@ -42,14 +42,15 @@
       </o-table-column>
 
       <o-table-column
+      #end_date
       attr="end_date" title="end_date"
       type="date" format="DD/MM/YYYY"
       content-align="center" title-align="center"
       tooltip="yes" tooltip-value="Fecha finalización del curso"
-      orderable="true">
+      orderable="false">
       </o-table-column>
 
-      <o-table-paginator page-size="10" page-size-options="20;40"></o-table-paginator>
+      <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
 
 
   </o-table>
