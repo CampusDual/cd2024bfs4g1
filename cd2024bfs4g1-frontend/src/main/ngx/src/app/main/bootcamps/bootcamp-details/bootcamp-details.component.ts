@@ -18,9 +18,13 @@ export class BootcampDetailsComponent {
     this.validatorsArray.push(this.dateValidator);
   }
   goToStudentDetail(event: any) {
-      const studentId = event.row.student_id;
+      const studentId = event.student_id;
       this.router.navigate(['/main/students', studentId])
   }
+
+  onClickStudent(event: any) {
+    this.router.navigate(['/main/students', ])
+}
 
   volver(e) {
     this.router.navigate(['./main/bootcamps']);
