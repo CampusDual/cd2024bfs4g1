@@ -1,8 +1,6 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ODateInputComponent, OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
-let initialDate: Date=new Date();
+
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
