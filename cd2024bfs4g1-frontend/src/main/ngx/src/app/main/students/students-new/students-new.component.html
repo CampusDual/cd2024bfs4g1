@@ -1,7 +1,6 @@
-<o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no"
+<o-form #studentsform label-header="{{'STUDENT_REGISTRATION'|oTranslate}}" attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no"
         after-insert-mode="new">
   <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
-    <h1 fxFlex="98">{{'STUDENT_REGISTRATION'|oTranslate}}</h1>
     <div fxFlex="45">
       <label for="name">{{'LNAME'|oTranslate}}</label>
       <o-text-input attr="name" required="yes" id="name"></o-text-input>
