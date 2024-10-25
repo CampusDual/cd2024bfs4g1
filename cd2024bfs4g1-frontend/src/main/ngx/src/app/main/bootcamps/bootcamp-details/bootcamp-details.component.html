@@ -2,18 +2,21 @@
     show-header-navigation="no" label-header="{{'BOOTCAMP_DETAILS'|oTranslate}}">
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-column fxFlex>
-      <div  fxLayout="row" fxLayoutGap="8px">
-        <o-text-input fxFlex="40" attr="name" required="yes" max-length="100"></o-text-input>
-        <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
+      <div fxLayoutAlign="center center"  fxLayout="row" fxLayoutGap="8px">
+        <o-text-input fxFlex="30" attr="name" required="yes"></o-text-input>
+        <o-date-input #startdate fxFlex="15" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"
                       (onValueChange)="throwChange(enddate)"></o-date-input>
-        <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" [validators]="validatorsArray"
+        <o-date-input #enddate fxFlex="15" attr="end_date" required="yes" [validators]="validatorsArray"
                       format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
           <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
         </o-date-input>
+      </div>
+      <div fxLayoutAlign="center center"  fxLayout="row" fxLayoutGap="8px">
         <o-textarea-input fxFlex="40" attr="description" required="no" max-length="150"></o-textarea-input>
         <o-textarea-input fxFlex="40" attr="notes" required="no" max-length="200"></o-textarea-input>
       </div>
     </o-column>
+
     <div class="table_container">
     <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
         parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;personal_email;student_id;action" visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name"
@@ -26,7 +29,6 @@
         insert="false" edit="false"
         view-detail="false" delete="false">
         </o-table-context-menu>
-        <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
 
     </o-table>
 </div>
