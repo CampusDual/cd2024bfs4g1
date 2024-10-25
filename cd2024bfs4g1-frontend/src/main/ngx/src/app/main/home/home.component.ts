@@ -57,11 +57,19 @@ export class HomeComponent implements OnInit {
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate: Date, view) => {
     let date: Date = new Date(cellDate);
+    //let date2 = date.getTime();
     let startDate: Date = this.startDateInput.getValue();
     let endDate: Date = this.endDateInput.getValue();
     if (view === "month") {
       if (startDate && endDate && date >= startDate && date <= endDate) {
-        return "miestilo";
+        if(startDate.toString() == date.getTime().toString()){
+          return "calendarcellStart";
+        }else if(endDate.toString() == date.getTime().toString()){
+          return "calendarcellEnd";
+        }else{
+          return "calendarcell";
+        }
+       
       }
     }
     return '';
