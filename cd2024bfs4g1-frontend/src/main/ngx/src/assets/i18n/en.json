@@ -134,7 +134,17 @@
   "BOOTCAMP_HAS_STUDENTS":"The bootcamp you want to delete has students",
   "description":"Description",
   "notes":"Notes",
+  "First Surname": "First Surname",
+  "Last Surname": "Last Surname",
+  "STUDENT_REGISTRATION": "Student Registration",
   "LAST_SURNAME": "Last Surname",
   "FIRST_SURNAME": "First Surname",
-  "personal_email": "Personal Email"
+  "personal_email": "Personal Email",
+  "NEW_BC": "New Bootcamp",
+  "Active": "Active",
+  "Inactive": "Inactivo",
+  "Pending": "Pending",
+  "Started": "Started",
+  "Finished": "Finished",
+  "STUDENTS_DATA":"Student Data"
 }

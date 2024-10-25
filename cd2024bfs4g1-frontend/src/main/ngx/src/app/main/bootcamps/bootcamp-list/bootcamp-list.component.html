@@ -5,18 +5,14 @@
       entity="bootcamp" keys="id"
       columns="id;name;start_date;end_date;status"
       visible-columns="name;start_date;end_date;status"
-      sort-columns="end_date:DESC"
+      sort-columns="end_date:ASC"
       show-report-on-demand-option="false"
       show-charts-on-demand-option="false"
       delete-button="true"
       refresh-button="false"
+      query-rows="20"
 
       >
-
-      <o-table-paginator
-      page-size="15"
-      page-size-options="15">
-      </o-table-paginator>
 
       <o-table-context-menu
       insert="false" edit="false"
@@ -31,11 +27,11 @@
       ></o-table-column>
 
       <o-table-column
-      attr="status" title="status"
+      attr="status" title="status" 
       type="string" content-align="center"
       title-align="center"
-      tooltip="yes" tooltip-value="Estado general del curso"
-      ></o-table-column>
+      tooltip="yes" tooltip-value="Estado general del curso">
+      <o-table-cell-renderer-translate></o-table-cell-renderer-translate></o-table-column>
 
       <o-table-column
       attr="start_date" title="start_date"
@@ -45,11 +41,15 @@
       </o-table-column>
 
       <o-table-column
+      #end_date
       attr="end_date" title="end_date"
       type="date" format="DD/MM/YYYY"
       content-align="center" title-align="center"
       tooltip="yes" tooltip-value="Fecha finalización del curso">
       </o-table-column>
+
+      <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+
 
   </o-table>
 </div>
