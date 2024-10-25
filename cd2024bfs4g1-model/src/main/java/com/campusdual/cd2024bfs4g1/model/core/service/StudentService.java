@@ -1,5 +1,6 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -35,16 +36,16 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-		Date startDate = (Date) attrMap.get(studentDao.FCT_START);
-		Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
-
-		if (finishDate.before(startDate)) {
-			EntityResult error = new EntityResultMapImpl();
-			error.setCode(EntityResult.OPERATION_WRONG);
-			error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
-			return error;
-		}
-
+if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
+	Date startDate = (Date) attrMap.get(studentDao.FCT_START);
+	Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
+	if (finishDate.before(startDate)) {
+		EntityResult error = new EntityResultMapImpl();
+		error.setCode(EntityResult.OPERATION_WRONG);
+		error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
+		return error;
+	}
+}
 		return this.daoHelper.insert(this.studentDao, attrMap);
 	}
 
@@ -56,6 +57,9 @@ public class StudentService implements IStudentService {
 					Arrays.asList(studentDao.FCT_START, studentDao.FCT_END));
 
 			Map<String, Object> mapResult = query.getRecordValues(0);
+
+		if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
+
 			Date currentStartDate = (Date) mapResult.get(studentDao.FCT_START);
 			Date currentFinishDate = (Date) mapResult.get(studentDao.FCT_END);
 
@@ -65,7 +69,7 @@ public class StudentService implements IStudentService {
 			if (newFinishDate.before(newStartDate)) {
 				return createErrorResult("END_DATE_MORE_THAN_INIT_DATE");
 			}
-
+		}
 
 
 		return this.daoHelper.update(this.studentDao, attrMap, keyMap);

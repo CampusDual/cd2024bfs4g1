@@ -26,6 +26,34 @@
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
       <o-text-input attr="employment_status" required="yes"></o-text-input>
     </div>
+
+    <div fxFlex="45">
+      <label for="status">{{'LSTATUS' | oTranslate}}</label>
+      <o-combo 
+      attr="status" required="yes" translate="yes"  [static-data]="[
+      { key: 'NOT_ELIGIBLE' },
+      { key: 'UNDER_REVIEW' }
+    ]"
+      value-column="key"
+      columns="key"
+      visible-columns="key"
+      required="yes">
+    
+    </o-combo>
+    </div>
+    <div fxFlex="45">
+      <label for="province">{{'LPROVINCE' | oTranslate}}</label>
+      <o-combo attr="province"    [static-data]="dataArray"
+      [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
+      columns="key;value"  visible-columns="value"></o-combo>
+    </div>
+
+    <div fxFlex="45">
+      <label for="location">{{'LLOCATION' | oTranslate}}</label>
+      <o-text-input attr="location" required="no"></o-text-input>
+    </div>
+
+
     <div fxFlex="98">
       <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
       <o-date-input attr="birth_date" required="yes" ></o-date-input>

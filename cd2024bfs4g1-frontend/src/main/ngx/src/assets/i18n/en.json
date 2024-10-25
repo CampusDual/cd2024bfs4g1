@@ -157,5 +157,10 @@
   "ADD_ST_BC": "Add Student on Bootcamp",
   "BOOTCAMP_DETAILS": "Bootcamp Details",
   "Bootcamp name": "Bootcamp Name",
-  "Go back": "Return"
+  "Go back": "Return",
+  "NOT_ELIGIBLE": "Not eligible",
+  "UNDER_REVIEW": "Under review",
+  "LSTATUS": "Status",
+  "LPROVINCE": "Province",
+  "LLOCATION": "Location"
 }

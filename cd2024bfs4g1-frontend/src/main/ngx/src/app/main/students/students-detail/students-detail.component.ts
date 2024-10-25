@@ -3,6 +3,7 @@ import { OFormComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import spainProvinces from 'src/app/main/students/provinces';
 @Component({
   selector: 'app-students-detail',
   templateUrl: './students-detail.component.html',
@@ -11,6 +12,10 @@ import { Router } from '@angular/router';
 export class StudentsDetailComponent {
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  dataArray = spainProvinces.map(provincia => ({ key: provincia, value: provincia }));
+
+  // Valor predeterminado (opcional)
+  valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
   constructor(private router: Router) {
@@ -20,16 +25,25 @@ export class StudentsDetailComponent {
   dateValidator(control: FormControl): ValidationErrors {
     let result = {};
 
-    if (control && control.parent && control.value) {
-      let enddate = control.value.valueOf();
-      let startdate = control.parent.value.fct_start;
-
-      if (enddate && startdate && enddate < startdate) {
-        result['wrongendate'] = true;
-      }
+    if (!control || !control.parent) {
+      return result; // Retorna un objeto vacío si no hay control o parent
     }
-
-    return result;
+  
+    // Obtener los valores de las fechas
+    const enddate = control.value; // Fecha de finalización
+    const startdate = control.parent.value.fct_start; // Fecha de inicio
+  
+    // Si alguno de los dos es null, no aplicar el validador
+    if (!enddate || !startdate) {
+      return result; // Retorna un objeto vacío si alguna fecha es nula
+    }
+  
+    // Validar si enddate es menor que startdate
+    if (enddate.valueOf() < startdate.valueOf()) {
+      result['wrongendate'] = true; // Agregar error si enddate es menor
+    }
+  
+    return result; // Retornar el resultado de la validación
   }
 
 
