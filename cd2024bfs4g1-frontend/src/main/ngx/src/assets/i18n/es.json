@@ -135,5 +135,6 @@
   "description":"Descripción",
   "notes":"Notas",
   "LAST_SURNAME": "Segundo Apellido",
-  "FIRST_SURNAME": "Primer Apellido"
+  "FIRST_SURNAME": "Primer Apellido",
+  "personal_email": "Correo Personal"
 }

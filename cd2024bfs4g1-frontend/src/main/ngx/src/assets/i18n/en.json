@@ -135,5 +135,6 @@
   "description":"Description",
   "notes":"Notes",
   "LAST_SURNAME": "Last Surname",
-  "FIRST_SURNAME": "First Surname"
+  "FIRST_SURNAME": "First Surname",
+  "personal_email": "Personal Email"
 }
