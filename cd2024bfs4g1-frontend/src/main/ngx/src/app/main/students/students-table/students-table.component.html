@@ -17,9 +17,9 @@
 
                     <o-combo #type attr="udemy" read-only="no" [static-data]="[{'value': 'true', 'label': 'Active'},{'value': 'false', 'label': 'Inactive'}]"
                      service="students" entity="student" columns="udemy"
-                    value-column="value" keys="id" visible-columns="label" fxFlex="250px"></o-combo> 
+                    value-column="value" keys="id" visible-columns="label" fxFlex="250px"></o-combo>
                     <o-text-input attr="student_status" read-only="no" flFlex="calc(25% - 32px)" hidden></o-text-input>      <!--NO EXISTE EN LA BASE DE DATOS QUEDA ESCONDIDO-->
-                    
+
 
 
 
@@ -59,12 +59,7 @@
     <o-table-column attr="personal_email" title="Email"></o-table-column>
     <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
     </o-table-context-menu>
-    <o-table-paginator page-size="15" page-size-options="15,40"></o-table-paginator>
-    </o-table>
-
-
-
-
+    <o-table-paginator page-size="10" page-size-options="20;40"></o-table-paginator>
+  </o-table>
 </o-form>
-
 </div>
