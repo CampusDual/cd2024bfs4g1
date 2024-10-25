@@ -1,17 +1,17 @@
-.titulo3{
 
-    background-color: white;
-    text-align: center;
-    padding: 3px 0;
-}
 .general_table {
     width: 80%;
     margin: 20px auto;
     background-color: #d5e9de;
     padding: 20px;
+    
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
   }
 
   .table_container { height: 90%;}
+
+  .fechas{
+
+  }
