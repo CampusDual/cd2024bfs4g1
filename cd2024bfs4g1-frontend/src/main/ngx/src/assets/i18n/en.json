@@ -145,5 +145,6 @@
   "Inactive": "Inactivo",
   "Pending": "Pending",
   "Started": "Started",
-  "Finished": "Finished"
+  "Finished": "Finished",
+  "STUDENTS_DATA":"Student Data"
 }
