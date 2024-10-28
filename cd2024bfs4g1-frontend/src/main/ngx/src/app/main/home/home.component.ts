@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   protected service: OntimizeService;
 
   selected: Date | null;
-  
+
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute,
@@ -77,6 +77,4 @@ export class HomeComponent implements OnInit {
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
-
-
 }

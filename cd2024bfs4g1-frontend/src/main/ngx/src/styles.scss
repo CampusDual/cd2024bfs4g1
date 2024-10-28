@@ -48,7 +48,7 @@ button.calendarcellStart span {
   text-align:center;
   width: 100%;
   height: 89%;
-  
+
   margin-top: 1.5px;
 }
 
@@ -143,4 +143,41 @@ button.miestilo{
 button.miestilo{
   background: orange;
   border-radius: 100%;
+
+
+
+
+button.calendarcellStart span {
+  background: #2E8B57;
+  text-align:center;
+  width: 100%;
+  height: 89%;
+
+  margin-top: 1.5px;
 }
+
+button.calendarcellEnd span {
+  background: #DC143C;
+  text-align:center;
+  width: 100%;
+  height: 89%;
+  margin-top: 1.5px;
+}
+
+button.calendarcell{
+  border-radius: 0px;
+  margin: 0.1em 0em;
+}
+button.calendarcell span{
+  background: lightgrey;
+  text-align:center;
+  width: 100%;
+  height: 89%;
+}
+span.mat-calendar-body-cell-content{
+  border-radius: 0px;
+  font-size: large;
+}
+
+
+
