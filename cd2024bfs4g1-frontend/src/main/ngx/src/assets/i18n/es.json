@@ -155,5 +155,7 @@
   "Finished": "Finalizado",
   "STUDENTS_DATA":"Datos de Alumno",
   "ADD_ST_BC": "Añadir Alumno en Bootcamp",
-  "BOOTCAMP_DETAILS": "Detalles Bootcamp"
+  "BOOTCAMP_DETAILS": "Detalles Bootcamp",
+  "Bootcamp name": "Nombre del Bootcamp",
+  "Go back": "Volver"
 }
