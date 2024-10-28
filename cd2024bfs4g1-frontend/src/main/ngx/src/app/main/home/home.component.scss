@@ -1,3 +1,40 @@
-.bg {
-  background-color: darkred;
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.general_combobox {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.date-input-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.calendar-card {
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+mat-calendar {
+  width: 100%;
+  font-size: 1.2em;
+}
+.demo-inline-calendar-card {
+  width: 600px;
 }
