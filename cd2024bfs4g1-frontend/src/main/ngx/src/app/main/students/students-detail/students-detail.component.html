@@ -32,7 +32,7 @@
 
     <div fxFlex="45">
       <label for="status">{{'LSTATUS' | oTranslate}}</label>
-      <o-combo 
+      <o-combo
       attr="status" required="yes" translate="yes"  [static-data]="[
       { key: 'NOT_ELIGIBLE' },
       { key: 'UNDER_REVIEW' }
@@ -41,7 +41,7 @@
       columns="key"
       visible-columns="key"
       required="yes">
-    
+
     </o-combo>
     </div>
     <div fxFlex="45">
@@ -111,9 +111,10 @@
     <div fxFlex="99">
       <div class="table_container" style="margin-left: 10px;">
         <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-                 parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname" 
+                 parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname"
                  detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false">
-                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+          <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+          <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
           <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
         </o-table>
       </div>
