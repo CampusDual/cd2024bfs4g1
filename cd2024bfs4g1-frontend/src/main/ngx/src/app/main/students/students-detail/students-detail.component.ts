@@ -3,6 +3,7 @@ import { OFormComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import spainProvinces from 'src/app/main/students/provinces';
 @Component({
   selector: 'app-students-detail',
   templateUrl: './students-detail.component.html',
@@ -11,6 +12,10 @@ import { Router } from '@angular/router';
 export class StudentsDetailComponent {
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  dataArray = spainProvinces.map(provincia => ({ key: provincia, value: provincia }));
+
+  // Valor predeterminado (opcional)
+  valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
   constructor(private router: Router) {

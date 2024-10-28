@@ -157,5 +157,12 @@
   "ADD_ST_BC": "Añadir Alumno en Bootcamp",
   "BOOTCAMP_DETAILS": "Detalles Bootcamp",
   "Bootcamp name": "Nombre del Bootcamp",
-  "Go back": "Volver"
+  "Go back": "Volver",
+  "NOT_ELIGIBLE": "No apto",
+  "UNDER_REVIEW": "En seguimiento",
+  "LSTATUS": "Estado",
+  "LPROVINCE": "Provincia",
+  "LLOCATION": "Ubicación",
+  "province": "Provincia",
+  "location": "Ubicación"
 }
