@@ -59,21 +59,30 @@ export class HomeComponent implements OnInit {
     let date: Date = new Date(cellDate);
     let startDate: Date = this.startDateInput.getValue();
     let endDate: Date = this.endDateInput.getValue();
+    console.log("===========================");
+    console.log("Current Date: ", date);
+    console.log("Start Date: ", startDate);
+    console.log("End Date: ", endDate);
+    console.log("Date.getTime().toString: "+date.getTime().toString() );
+    console.log("StarDate.toString: " +startDate.toString());
+    console.log("EndDate.toString: " +endDate.toString());
+    console.log("===========================");
     if (view === "month") {
-      if (startDate && endDate && date >= startDate && date <= endDate) {
-        if(startDate.toString() == date.getTime().toString()){
+      if (startDate && endDate && date >= startDate && date <= endDate) {  
+        if (startDate.toString() == date.getTime().toString()) {
           return "calendarcellStart";
-        }else if(endDate.toString() == date.getTime().toString()){
+        } else if (endDate.toString() == date.getTime().toString()) { 
           return "calendarcellEnd";
-        }else{
+        } else {    
           return "calendarcell";
         }
-
       }
     }
+    
     return '';
   };
 
+  
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
