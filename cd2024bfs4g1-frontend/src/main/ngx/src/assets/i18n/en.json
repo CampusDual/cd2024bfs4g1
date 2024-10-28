@@ -162,5 +162,7 @@
   "UNDER_REVIEW": "Under review",
   "LSTATUS": "Status",
   "LPROVINCE": "Province",
-  "LLOCATION": "Location"
+  "LLOCATION": "Location",
+  "province": "Province",
+  "location": "Location"
 }

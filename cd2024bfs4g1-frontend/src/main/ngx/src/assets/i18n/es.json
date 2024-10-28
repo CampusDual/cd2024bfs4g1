@@ -162,5 +162,7 @@
   "UNDER_REVIEW": "En seguimiento",
   "LSTATUS": "Estado",
   "LPROVINCE": "Provincia",
-  "LLOCATION": "Ubicación"
+  "LLOCATION": "Ubicación",
+  "province": "Provincia",
+  "location": "Ubicación"
 }
