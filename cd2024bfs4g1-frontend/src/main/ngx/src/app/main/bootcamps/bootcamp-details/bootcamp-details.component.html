@@ -1,6 +1,5 @@
 <o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"  (onUpdate)="volver($event)" (onDelete)="volver($event)"
-    show-header-navigation="no">
-    <h3 class="titulo3">Detalles Bootcamp</h3>
+    show-header-navigation="no" label-header="{{'BOOTCAMP_DETAILS'|oTranslate}}">
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-column fxFlex>
       <div  fxLayout="row" fxLayoutGap="8px">
