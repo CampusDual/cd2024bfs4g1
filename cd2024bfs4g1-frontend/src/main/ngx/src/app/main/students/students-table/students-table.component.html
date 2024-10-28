@@ -61,7 +61,7 @@
         <o-table #tableStudents class="general_table" attr="studentsTable" service="students" entity="student" keys="id"
             columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;status;province;location"
             visible-columns="name;surname1;surname2;dni;personal_email;status" delete-button="false"
-            show-report-on-demand-option="false" show-charts-on-demand-option="false">
+            show-report-on-demand-option="false" show-charts-on-demand-option="false" query-rows="20">
             <o-table-column attr="name" title="Name"></o-table-column>
             <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
             <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
@@ -70,7 +70,7 @@
             <o-table-column attr="status" type="translate" title="LSTATUS"></o-table-column>
             <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
             </o-table-context-menu>
-            <o-table-paginator page-size="15" page-size-options="15,40"></o-table-paginator>
+            <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
         </o-table>
 
 
