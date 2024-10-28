@@ -44,21 +44,20 @@
 
 
 button.calendarcellStart span {
-  background: green;
-  border-radius: 0%;
-  border: #2f4f4f;
-  border-bottom:white ;
-  border-top: white;
-  border-width: 5px;
+  background: rgb(2, 241, 202);
+  text-align:center;
+  width: 100%;
+  height: 89%;
+  
+  margin-top: 1.5px;
 }
 
 button.calendarcellEnd span {
-  background: rgb(255, 2, 2);
-  border-radius: 0%;
-  border: #2f4f4f;
-  border-bottom:white ;
-  border-top: white;
-  border-width: 5px;
+  background: rgb(6, 223, 89);
+  text-align:center;
+  width: 100%;
+  height: 89%;
+  margin-top: 1.5px;
 }
 
 button.calendarcell{
@@ -66,7 +65,7 @@ button.calendarcell{
   margin: 0.1em 0em;
 }
 button.calendarcell span{
-  background: lightgray;
+  background: rgb(48, 2, 2);
   text-align:center;
   width: 100%;
   height: 89%;
