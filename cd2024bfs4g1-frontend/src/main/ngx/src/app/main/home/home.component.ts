@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   protected service: OntimizeService;
 
   selected: Date | null;
-  
+
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute,
