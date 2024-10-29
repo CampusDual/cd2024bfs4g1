@@ -1,47 +1,49 @@
-<o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"  (onUpdate)="volver($event)" (onDelete)="volver($event)"
-    show-header-navigation="no" label-header="{{'BOOTCAMP_DETAILS'|oTranslate}}">
-    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
-      <div class="contenedor" fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
-        <div class="especial" fxFlex="35">
-          <label for="name">Nombre*</label>
-          <o-text-input  attr="name" required="yes"></o-text-input>
-        </div>
-        <div class="especial"  fxFlex="25">
-          <label for="start_date">Fecha de inicio*</label>
-          <o-date-input #startdate class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"
-          (onValueChange)="throwChange(enddate)"></o-date-input>
-        </div>
-        <div class="especial" fxFlex="25">
-          <label for="end_date">Fecha de fin*</label>
-          <o-date-input #enddate  attr="end_date" required="yes" [validators]="validatorsArray"
-            format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
-            <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
-          </o-date-input>
-        </div>
-        <div class="especial" fxFlex="45">
-          <label for="description">Descripcion</label>
-          <o-textarea-input  attr="description" required="no" max-length="200"></o-textarea-input>
-        </div>
-        <div class="especial" fxFlex="45">
-          <label for="notes">Notas</label>
-          <o-textarea-input  attr="notes" required="no" max-length="200"></o-textarea-input>
-        </div>
+<o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
+  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no">
+  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+  <div class="contenedor">
+    <div class="grid-container">
+      <div class="especial nombre">
+        <label for="name">Nombre*</label>
+        <o-text-input attr="name" required="yes"></o-text-input>
       </div>
-     
-    <div class="table_container" fxLayout="column" fxLayoutFill >
-    <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-        parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;personal_email;student_id;action" visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name"
-        detail-mode="true" delete-button="false" show-report-on-demand-option="false"
-        show-charts-on-demand-option="false" (onClick)="onClickStudent($event)">
-        <o-table-column attr="action" width="64px">
-          <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)" icon="person_search"></o-table-cell-renderer-action>
-        </o-table-column>
-        <o-table-context-menu
-        insert="false" edit="false"
-        view-detail="false" delete="false">
-        </o-table-context-menu>
+      <div class="especial fecha-inicio">
+        <label for="start_date">Fecha de inicio*</label>
+        <o-date-input #startdate class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"
+          (onValueChange)="throwChange(enddate)"></o-date-input>
+      </div>
+      <div class="especial fecha-fin">
+        <label for="end_date">Fecha de fin*</label>
+        <o-date-input #enddate attr="end_date" required="yes" [validators]="validatorsArray" format="DD/MM/YYYY"
+          (onValueChange)="throwChange2(startdate)">
+          <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+        </o-date-input>
+      </div>
+      <div class="especial descripcion">
+        <label for="description">Descripcion</label>
+        <o-textarea-input attr="description" required="no" max-length="200"></o-textarea-input>
+      </div>
+      <div class="especial notas">
+        <label for="notes">Notas</label>
+        <o-textarea-input attr="notes" required="no" max-length="200"></o-textarea-input>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="table_container" fxLayout="column" fxLayoutFill>
+    <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp"
+      keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;personal_email;student_id;action"
+      visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" query-rows="10"
+      detail-mode="true" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+      (onClick)="onClickStudent($event)">
+      <o-table-column attr="action" width="64px">
+        <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
+          icon="person_search"></o-table-cell-renderer-action>
+      </o-table-column>
+      <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+      </o-table-context-menu>
 
     </o-table>
-</div>
+  </div>
 </o-form>
-
