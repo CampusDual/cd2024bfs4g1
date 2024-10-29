@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { OFormComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import spainProvinces from 'src/app/main/students/provinces';
+import spainComunitys from 'src/app/main/students/spaincomunitys';
 
 @Component({
   selector: 'app-students-new',
@@ -21,7 +21,7 @@ export class StudentsNewComponent {
     this.validatorsArray.push(this.dateValidator);
   }
 
-  dataArray = spainProvinces.map(provincia => ({ key: provincia, value: provincia }));
+  dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar

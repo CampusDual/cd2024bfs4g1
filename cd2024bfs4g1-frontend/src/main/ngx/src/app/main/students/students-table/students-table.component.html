@@ -28,7 +28,12 @@
                       flFlex="calc(25% - 32px)">
                     </o-combo>
 
-
+                    <o-combo attr="spain_comunity" read-only="no"  service="students" entity="student" columns="spain_comunity" 
+                    [static-data]="dataArray" 
+                    value-column="key" 
+                    visible-columns="value"
+                    fxFlex="250px" searchable="yes">
+                    </o-combo>
 
                 </div>
             </div>
@@ -51,7 +56,7 @@
 
             </div>
             <o-filter-builder #filterBuilder attr="thefilter"
-                filters="name:name;surname1:surname1;surname2:surname2;tutor:tutor;udemy:udemy;employment_status:employment_status;status:status;id"
+                filters="name:name;surname1:surname1;surname2:surname2;tutor:tutor;udemy:udemy;employment_status:employment_status;status:status;spain_comunity:spain_comunity;id"
                 [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
                 [expression-builder]="createFilter"></o-filter-builder>
         </o-column-collapsible>

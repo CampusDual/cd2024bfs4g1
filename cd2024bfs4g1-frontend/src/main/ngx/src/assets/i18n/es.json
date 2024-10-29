@@ -161,8 +161,8 @@
   "NOT_ELIGIBLE": "No apto",
   "UNDER_REVIEW": "En seguimiento",
   "LSTATUS": "Estado",
-  "LPROVINCE": "Provincia",
+  "LSPAINCOMUNITY": "Comunidad Autónoma",
+  "spain_comunity": "Comunidad Autónoma",
   "LLOCATION": "Ubicación",
-  "province": "Provincia",
   "location": "Ubicación"
 }
