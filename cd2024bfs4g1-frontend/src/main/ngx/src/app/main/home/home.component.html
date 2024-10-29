@@ -18,3 +18,19 @@
     </mat-card>
   </div>
 </div>
+<o-table>
+  <!-- Columna de la tabla para la acción de descarga -->
+  <o-table-column attr="action" width="10px">
+    <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
+  </o-table-column>
+
+  <!-- Menú contextual de la tabla -->
+  <o-table-context-menu [context-menu]="contextMenu" insert="no" edit="no" view-detail="no"></o-table-context-menu>
+
+
+  <!-- Definición del menú contextual -->
+  <o-context-menu #contextMenu>
+    <o-context-menu-item icon="download" label="Descargar" (execute)="onExecute($event)"></o-context-menu-item>
+  </o-context-menu>
+
+</o-table>
