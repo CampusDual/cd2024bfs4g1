@@ -1,24 +1,24 @@
 const spainComunitys: string[] = [
-    "Andalucía", 
-    "Aragón", 
+    "Andalucía",
+    "Aragón",
     "Asturias",
     "Baleares",
-    "Canarias", 
-    "Cantabria", 
-    "Castilla La Mancha", 
-    "Castilla y León", 
+    "Canarias",
+    "Cantabria",
+    "Castilla La Mancha",
+    "Castilla y León",
     "Cataluña",
     "Comunidad Valenciana",
+    "Euskadi",
     "Extremadura",
     "Galicia",
     "Madrid",
     "Murcia",
     "Navarra",
-    "País Vasco",
     "La Rioja",
     "Ceuta",
     "Melilla",
-    "Otros"
+    "Others"
 ];
 
 export default spainComunitys;

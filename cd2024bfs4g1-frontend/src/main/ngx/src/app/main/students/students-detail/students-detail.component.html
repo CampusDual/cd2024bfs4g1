@@ -1,4 +1,4 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D" show-header-navigation="yes">
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="yes">
   <div o-form-toolbar-buttons>
     <o-button attr="backButton" class="o-form-toolbar-button"  type="RAISED" icon="keyboard_backspace" label="Go back" (click)="location.back()"></o-button>
   </div>
@@ -116,7 +116,7 @@
       <div class="table_container" style="margin-left: 10px;">
         <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
                  parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname"
-                 detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false">
+                 detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false">
           <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
           <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
           <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
