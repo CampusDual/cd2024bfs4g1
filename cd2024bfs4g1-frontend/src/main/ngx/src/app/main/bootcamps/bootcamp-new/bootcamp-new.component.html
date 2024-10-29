@@ -4,10 +4,10 @@
             <div fxLayout="row" fxLayoutGap="8px">
                 <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
                 <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
-                (onValueChange)="throwChange(enddate)"></o-date-input>
+                (onValueChange)="throwChange(enddate)" value-type="date"></o-date-input>
                     <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
                 <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" [validators]="validatorsArray"
-                format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+                format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)"  value-type="date">
                 <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
                 </o-date-input>
                 <o-textarea-input fxFlex="40" attr="description" required="no" max-length="150"></o-textarea-input>
