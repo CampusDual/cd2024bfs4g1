@@ -11,7 +11,4 @@ public class DocumentFileDao {
     public static final String ATTR_ID = "id";
     public static final String ATTR_NAME = "name";
     public static final String ATTR_PATH = "file_path";
-    public static final String ATTR_FIELD1 = "field1";
-    public static final String ATTR_FIELD2 = "field2";
-
 }
