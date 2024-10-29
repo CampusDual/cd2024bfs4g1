@@ -1,11 +1,10 @@
 <div class="container">
-  <h1>{{'CALENDAR'| oTranslate}}</h1>
   <o-combo class="general_combobox" attr="bootcamp_id" label="Bootcamps" value-column="id"
     columns="id;name;start_date;end_date" service="bootcamps" null-selection="no" entity="bootcamp" visible-columns="name"
     searchable="yes" (onValueChange)="onBootcampChange($event)">
   </o-combo>
   <o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" show-header="no">
-    <h3 class="titulo3" fxLayoutAlign="center center">{{'BC_DUR'| oTranslate}}</h3>
+    <h3 class="titulo3" fxLayoutAlign="center center">Duración del Bootcamp</h3>
       <div class="date-input-container" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center">
         <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY" enabled="no"></o-date-input>
         <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" format="DD/MM/YYYY" enabled="no"></o-date-input>
@@ -18,19 +17,3 @@
     </mat-card>
   </div>
 </div>
-<o-table>
-  <!-- Columna de la tabla para la acción de descarga -->
-  <o-table-column attr="action" width="10px">
-    <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
-  </o-table-column>
-
-  <!-- Menú contextual de la tabla -->
-  <o-table-context-menu [context-menu]="contextMenu" insert="no" edit="no" view-detail="no"></o-table-context-menu>
-
-
-  <!-- Definición del menú contextual -->
-  <o-context-menu #contextMenu>
-    <o-context-menu-item icon="download" label="Descargar" (execute)="onExecute($event)"></o-context-menu-item>
-  </o-context-menu>
-
-</o-table>
