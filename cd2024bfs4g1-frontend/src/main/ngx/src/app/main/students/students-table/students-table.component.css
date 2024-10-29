@@ -11,8 +11,10 @@
 }
 
 .table_container {
-  height: auto; /* Ajusta la altura automáticamente */
-  margin: 0;  /* Elimina los márgenes */
+  width: 100%;
+  overflow-x: hidden; /* Ocultar el desbordamiento horizontal */
+  margin: 0 auto; /* Centrar el contenedor */
+  padding: 0 10px; /* Añadir un pequeño padding */
 }
 
 .table_row {
@@ -24,22 +26,32 @@
   padding: 6px;  /* Ajusta ligeramente el padding de las celdas */
 }
 
-
+.table_container {
+  width: 100%;
+  overflow-x: hidden; /* Ocultar el desbordamiento horizontal */
+  margin: 0 auto; /* Centrar el contenedor */
+  padding: 0 10px; /* Añadir un pequeño padding */
+}
 
 .students-filters-form {
-  width: 70%;
+  width: 68%; /* Ajustar ligeramente el ancho */
   margin: 20px auto;
   background-color: #d5e9de;
-  padding: 15px;
+  padding: 10px; /* Reducir ligeramente el padding */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; /* Asegurarse de que el padding no cause desbordamiento */
 }
 
 .filter_style {
   background-color: #d5e9de;
-  padding: 20px 60px;
+  padding: 20px 40px; /* Ajustar ligeramente el padding */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
+  box-sizing: border-box; /* Asegurarse de que el padding no cause desbordamiento */
 }
+
+
+
