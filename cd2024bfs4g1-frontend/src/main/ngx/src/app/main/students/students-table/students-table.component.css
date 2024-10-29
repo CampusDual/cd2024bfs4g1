@@ -2,19 +2,32 @@
   width: 80%;
   margin: 20px auto;
   background-color: #d5e9de;
-  padding: 20px;
+  padding: 12px;  /* Ajusta ligeramente el padding */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  height: calc(100vh - 120px); /* Ajusta la altura de la tabla */
+  font-size: 14px; /* Ajusta ligeramente el tamaño de la fuente */
+  height: calc(100vh - 110px); /* Ajusta la altura de la tabla */
 }
 
 .table_container {
-  height: 100%; /* Asegúrate de que el contenedor ocupe todo el espacio */
+  height: auto; /* Ajusta la altura automáticamente */
+  margin: 0;  /* Elimina los márgenes */
 }
 
+.table_row {
+  max-height: 32px; /* Ajusta ligeramente la altura máxima de las filas */
+  overflow: hidden;
+}
+
+.table_cell {
+  padding: 6px;  /* Ajusta ligeramente el padding de las celdas */
+}
+
+
+
 .students-filters-form {
-  width: 80%;
+  width: 70%;
   margin: 20px auto;
   background-color: #d5e9de;
   padding: 15px;
