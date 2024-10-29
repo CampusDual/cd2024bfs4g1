@@ -37,4 +37,63 @@ public class DocumentRestController extends ORestController<IDocumentService> {
         return this.documentsrv;
     }
 
+    @PostMapping(value="upload")
+    public ResponseEntity upload(@RequestParam("name") String name, @RequestParam("file") MultipartFile file, @RequestParam(name="data",required=false) String data ){
+        HashMap<String, Object> extraData = new HashMap<>();
+        if (data != null) {
+           try {
+               extraData = new ObjectMapper().readValue(data, HashMap.class);
+           } catch (JsonProcessingException e) {
+               e.printStackTrace();
+           }
+        }
+        String field1 = null; //no hacerle mucho caso a los nombres
+        String field2 = null;
+        EntityResult result = new EntityResultMapImpl();
+        if(extraData.get(DocumentFileDao.ATTR_FIELD1) instanceof Map){
+            Map mField1 = (Map) extraData.get(DocumentFileDao.ATTR_FIELD1);
+            field1 = (String) mField1.get("field1");
+            field2 = (String) mField1.get("field2");
+
+            String directory = path+File.separator+name; //No se si esta bien analizar
+            try {
+                Files.createDirectories(Paths.get(directory));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            String filePath = directory+"\\"+file.getOriginalFilename(); // Esta funcion da el nombre bien??
+            File newFile = new File(filePath);
+            Map<String,Object> fileResult = new HashMap();
+            try{
+                if(newFile.exists()){
+                    fileResult.put(NAME, file);//Presuponiendo que file es el nombre del archivo
+                    fileResult.put(STATUS, "ALREADY_EXISTS");
+                }else{
+                    //Escribir archivo en el disco
+                    file.transferTo(newFile); //No deja porque es un string npi???
+                    Map<String,Object> attrMap = new HashMap();
+                    attrMap.put(DocumentFileDao.ATTR_FIELD1, field1);
+                    attrMap.put(DocumentFileDao.ATTR_FIELD2, field2);
+                    attrMap.put(DocumentFileDao.ATTR_NAME, file.getOriginalFilename());
+                    attrMap.put(DocumentFileDao.ATTR_PATH, filePath);
+                    EntityResult fileInsert = documentsrv.personalFileInsert(attrMap);
+                    if (fileInsert.isWrong()){
+                        fileResult.put(NAME, file.getOriginalFilename());
+                        fileResult.put(STATUS, "ERROR_ON_INSERT");
+                    }else{
+                        fileResult.put(NAME, file.getOriginalFilename());
+                        fileResult.put(STATUS, "OK");
+                    }
+
+                }
+            }catch (IOException e){
+                fileResult.put(NAME, file.getOriginalFilename());
+                fileResult.put(STATUS, "ERROR_ON_WRITE");
+            }
+            result.addRecord(fileResult);
+        }
+
+        return new ResponseEntity<EntityResult>(result, HttpStatus.OK);
+    }
+
 }
