@@ -3,7 +3,10 @@ import { OFormComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import spainProvinces from 'src/app/main/students/provinces';
+import { Location } from '@angular/common';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
+
 @Component({
   selector: 'app-students-detail',
   templateUrl: './students-detail.component.html',
@@ -18,7 +21,7 @@ export class StudentsDetailComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public location : Location) {
     this.validatorsArray.push(this.dateValidator);
   }
 
