@@ -161,7 +161,8 @@
   "NOT_ELIGIBLE": "Not eligible",
   "UNDER_REVIEW": "Under review",
   "LSTATUS": "Status",
-  "LPROVINCE": "Province",
+  "LSPAINCOMUNITY": "Spain Comunity",
+  "spain_comunity": "Spain Comunity",
   "LLOCATION": "Location",
   "province": "Province",
   "location": "Location"
