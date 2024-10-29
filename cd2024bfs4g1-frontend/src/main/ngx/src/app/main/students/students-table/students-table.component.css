@@ -2,55 +2,55 @@
   width: 80%;
   margin: 20px auto;
   background-color: #d5e9de;
-  padding: 12px;  
+  padding: 12px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  font-size: 14px; 
-  height: calc(100vh - 110px); 
+  font-size: 14px;
+  height: calc(100vh - 110px);
 }
 
 .table_container {
   width: 100%;
-  overflow-x: hidden; 
-  margin: 0 auto; 
-  padding: 0 10px; 
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 .table_row {
-  max-height: 32px; 
+  max-height: 32px;
   overflow: hidden;
 }
 
 .table_cell {
-  padding: 6px;  
+  padding: 6px;
 }
 
 .table_container {
   width: 99%;
-  overflow-x: hidden; 
-  margin: 0 auto; 
-  padding: 0 10px; 
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 .students-filters-form {
-  width: 68%; 
+  width: 68%;
   margin: 20px auto;
   background-color: #d5e9de;
-  padding: 10px; 
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .filter_style {
   background-color: #d5e9de;
-  padding: 20px 40px; 
+  padding: 20px 40px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 
