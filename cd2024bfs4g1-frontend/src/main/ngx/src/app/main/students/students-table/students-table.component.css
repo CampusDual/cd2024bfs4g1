@@ -2,55 +2,55 @@
   width: 80%;
   margin: 20px auto;
   background-color: #d5e9de;
-  padding: 12px;  /* Ajusta ligeramente el padding */
+  padding: 12px;  
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  font-size: 14px; /* Ajusta ligeramente el tamaño de la fuente */
-  height: calc(100vh - 110px); /* Ajusta la altura de la tabla */
+  font-size: 14px; 
+  height: calc(100vh - 110px); 
 }
 
 .table_container {
   width: 100%;
-  overflow-x: hidden; /* Ocultar el desbordamiento horizontal */
-  margin: 0 auto; /* Centrar el contenedor */
-  padding: 0 10px; /* Añadir un pequeño padding */
+  overflow-x: hidden; 
+  margin: 0 auto; 
+  padding: 0 10px; 
 }
 
 .table_row {
-  max-height: 32px; /* Ajusta ligeramente la altura máxima de las filas */
+  max-height: 32px; 
   overflow: hidden;
 }
 
 .table_cell {
-  padding: 6px;  /* Ajusta ligeramente el padding de las celdas */
+  padding: 6px;  
 }
 
 .table_container {
-  width: 100%;
-  overflow-x: hidden; /* Ocultar el desbordamiento horizontal */
-  margin: 0 auto; /* Centrar el contenedor */
-  padding: 0 10px; /* Añadir un pequeño padding */
+  width: 99%;
+  overflow-x: hidden; 
+  margin: 0 auto; 
+  padding: 0 10px; 
 }
 
 .students-filters-form {
-  width: 68%; /* Ajustar ligeramente el ancho */
+  width: 68%; 
   margin: 20px auto;
   background-color: #d5e9de;
-  padding: 10px; /* Reducir ligeramente el padding */
-  border-radius: 15px;
+  padding: 10px; 
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  box-sizing: border-box; /* Asegurarse de que el padding no cause desbordamiento */
+  box-sizing: border-box; 
 }
 
 .filter_style {
   background-color: #d5e9de;
-  padding: 20px 40px; /* Ajustar ligeramente el padding */
+  padding: 20px 40px; 
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
-  box-sizing: border-box; /* Asegurarse de que el padding no cause desbordamiento */
+  box-sizing: border-box; 
 }
 
 
