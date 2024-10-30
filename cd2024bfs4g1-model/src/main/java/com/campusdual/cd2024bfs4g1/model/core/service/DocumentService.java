@@ -13,6 +13,7 @@ import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import com.ontimize.jee.server.dao.IOntimizeDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -24,22 +25,24 @@ public class DocumentService implements IDocumentService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+    @Value("${aap.files.path}")
+    private String path;
 
     @Override
-    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query((IOntimizeDaoSupport) this.documentFileDao, keyMap, attrList, "documentfiles");
+    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList){
+        return this.daoHelper.query(this.documentFileDao, keyMap, attrList, "documentfiles");
     }
 
     @Override
-    public EntityResult personalFileInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.insert((IOntimizeDaoSupport) this.documentFileDao, attrMap);
+    public EntityResult personalFileInsert(Map<String, Object> attrMap) {
+        return this.daoHelper.insert(this.documentFileDao, attrMap);
     }
 
     @Override
-    public EntityResult personalFilesDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+    public EntityResult personalFilesDelete(Map<String, Object> keyMap) {
         List<String> attrList = new ArrayList<>();
         attrList.add(DocumentFileDao.ATTR_PATH);
-        EntityResult fileResult = daoHelper.query((IOntimizeDaoSupport) documentFileDao, keyMap, attrList);
+        EntityResult fileResult = daoHelper.query(documentFileDao, keyMap, attrList);
 
         if (fileResult.isWrong()) {
             return fileResult;
@@ -56,6 +59,6 @@ public class DocumentService implements IDocumentService {
                 return errorResult;
             }
         }
-        return this.daoHelper.delete((IOntimizeDaoSupport)this.documentFileDao, keyMap);
+        return this.daoHelper.delete(this.documentFileDao, keyMap);
     }
 }

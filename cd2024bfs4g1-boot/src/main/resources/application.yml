@@ -94,3 +94,7 @@ spring:
       org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration, org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.FallbackWebSecurityAutoConfiguration
 environment:
   profile: ${ENVIRONMENT_PROFILE:#{'production'}}
+
+aap:
+  files:
+    path: 'D:\students\Pruebas\'
