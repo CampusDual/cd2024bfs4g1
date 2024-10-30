@@ -168,6 +168,8 @@
   "location": "Location",
   "BC_DUR": "Bootcamp Duration",
   "CALENDAR": "Calendar",
-  "Error, this already exists": "Error, this already exists",
   "STUDENT_HAS_BOOTCAMPS":"The student to be deleted has assigned bootcamps"
+  "Error, this already exists": "Error, this already exists",
+  "Bootcamps List": "Bootcamps List",
+  "Students list": "Students list"
 }
