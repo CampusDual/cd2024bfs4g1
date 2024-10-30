@@ -10,12 +10,12 @@ import java.util.Map;
 public interface IDocumentService {
 
     //Consulta todos los archivos personales
-    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList)throws OntimizeJEERuntimeException;
+    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList);//throws OntimizeJEERuntimeException;
 
     //Inserta archivos personales
-    public EntityResult personalFileInsert(Map<String, Object> attrMap)throws OntimizeJEERuntimeException;
+    public EntityResult personalFileInsert(Map<String, Object> attrMap);//throws OntimizeJEERuntimeException;
 
     //Elimina archivos personales
-    EntityResult personalFilesDelete(Map<String, Object> keyMap)throws OntimizeJEERuntimeException;
+    EntityResult personalFilesDelete(Map<String, Object> keyMap);//throws OntimizeJEERuntimeException;
 
 }
