@@ -166,5 +166,6 @@
   "LLOCATION": "Ubicación",
   "location": "Ubicación",
   "BC_DUR": "Duración del Bootcamp",
-  "CALENDAR": "Calendario"
+  "CALENDAR": "Calendario",
+  "Error, this already exists": "Error, esto ya existe"
 }

@@ -167,5 +167,6 @@
   "province": "Province",
   "location": "Location",
   "BC_DUR": "Bootcamp Duration",
-  "CALENDAR": "Calendar"
+  "CALENDAR": "Calendar",
+  "Error, this already exists": "Error, this already exists"
 }
