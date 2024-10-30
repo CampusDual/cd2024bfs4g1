@@ -1,5 +1,4 @@
 <div class="table_container">
-
     <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
 
         <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" icon="filter_list"
@@ -65,7 +64,7 @@
         <o-table #tableStudents class="general_table" attr="studentsTable" service="students" entity="student" keys="id"
             columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;status;spain_comunity;location"
             visible-columns="name;surname1;surname2;dni;personal_email;status" delete-button="false"
-            show-report-on-demand-option="false" show-charts-on-demand-option="false">
+            show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Students" show-title="true">
             <o-table-column attr="name" title="Name"></o-table-column>
             <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
             <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
