@@ -167,5 +167,6 @@
   "location": "Ubicación",
   "BC_DUR": "Duración del Bootcamp",
   "CALENDAR": "Calendario",
-  "Error, this already exists": "Error, esto ya existe"
+  "Error, this already exists": "Error, esto ya existe",
+  "STUDENT_HAS_BOOTCAMPS":"El estudiante a eliminar tiene bootcamps asignados"
 }
