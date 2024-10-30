@@ -49,4 +49,5 @@ export class StudentsDetailComponent {
 
  mostrarBoton: boolean = true; ngOnInit() {  
   this.mostrarBoton = !this.router.url.includes('isdetail'); }
+
 }

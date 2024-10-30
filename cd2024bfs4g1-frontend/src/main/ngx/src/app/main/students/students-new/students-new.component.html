@@ -7,7 +7,7 @@
     </div>
     <div fxFlex="45">
       <label for="dni">{{'LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="NIF" data="53780330M" read-only="no" required="yes"></o-nif-input>
+      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes"></o-nif-input>
     </div>
     <div fxFlex="45">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
@@ -20,7 +20,7 @@
 
     <div fxFlex="45">
       <label for="phone">{{'LPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes"  [data]="getValue()" ></o-phone-input>
+      <o-phone-input attr="phone" required="yes" automatic-binding="false" [data]="'+34 000000000'"  ></o-phone-input>
     </div>
 
     <div fxFlex="45">
