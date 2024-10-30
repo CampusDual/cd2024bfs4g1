@@ -46,4 +46,8 @@ export class StudentsDetailComponent {
   throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
+
+ mostrarBoton: boolean = true; ngOnInit() {  
+  this.mostrarBoton = !this.router.url.includes('isdetail'); }
+
 }
