@@ -21,7 +21,7 @@ label {
 .table_container {
   width: 96%; 
   margin: 5px auto;
-  background-color: #d5e5e9;
+  background-color: #f5f0f2;
   border-radius: 15px;
   padding: 20px;
 }
@@ -57,11 +57,10 @@ label {
 .table_container {
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Roboto', sans-serif;
 }
 
 .general_table {
-  background-color: #d5e5e9;
+  background-color: #f5f0f2;
 }
 
 @media (max-width: 768px) {
