@@ -17,4 +17,11 @@
       </mat-calendar>
     </mat-card>
   </div>
+  <o-form>
+    <o-file-input #fileinput attr="file" fxFlex="50" label="{{'SUBIR_DOCUMENTOS' | oTranslate }}"
+    service="documents" entity="upload" max-file-size="100000" multiple="yes" max-num-files="5"
+    split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
+    (onUpload)="onUploadFiles($event)" (onError)="onError($event)" fxFlex="100"></o-file-input>
+    <o-button type="submit">Submit </o-button>
+  </o-form>
 </div>
