@@ -1,17 +1,17 @@
 .general_table {
-  width: 80%;
-  margin: 20px auto;
+  width: 95%;
+  margin: 10px auto;
   background-color: #d5e9de;
   padding: 12px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  height: calc(100vh - 110px);
+  height: 73vh;
 }
 
 .table_container {
-  width: 100%;
+  width: 90%;
   overflow-x: hidden;
   margin: 0 auto;
   padding: 0 10px;
@@ -24,13 +24,6 @@
 
 .table_cell {
   padding: 6px;
-}
-
-.table_container {
-  width: 99%;
-  overflow-x: hidden;
-  margin: 0 auto;
-  padding: 0 10px;
 }
 
 .students-filters-form {
