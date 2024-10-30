@@ -1,13 +1,11 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import java.sql.SQLOutput;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -28,6 +26,9 @@ public class StudentService implements IStudentService {
 
 	@Autowired
 	private DefaultOntimizeDaoHelper daoHelper;
+
+	@Autowired
+	private StudentBootcampDao studentBootcampDao;
 
 	@Override
 	public EntityResult studentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
@@ -77,7 +78,20 @@ if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END
 
 	@Override
 	public EntityResult studentDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-		return this.daoHelper.delete(this.studentDao, keyMap);
+		Map<String,Object> deletekey = new Hashtable<>();
+		deletekey.put(StudentBootcampDao.STUDENT_ID,keyMap.get(StudentDao.STU_ID));
+		EntityResult query = this.daoHelper.query(this.studentBootcampDao,deletekey,Arrays.asList(StudentBootcampDao.STUDENT_ID));
+
+
+		if(!query.isEmpty()){
+			EntityResult error = new EntityResultMapImpl();
+			error.setCode(EntityResult.OPERATION_WRONG);
+			error.setMessage("STUDENT_HAS_BOOTCAMPS");
+			return error;
+		}else {
+			return this.daoHelper.delete(this.studentDao, keyMap);
+		}
+
 	}
 	private EntityResult createErrorResult(String message) {
 		EntityResult error = new EntityResultMapImpl();
