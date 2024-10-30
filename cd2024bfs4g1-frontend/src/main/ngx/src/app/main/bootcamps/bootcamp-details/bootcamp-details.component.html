@@ -1,7 +1,7 @@
 <o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
   (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no">
   <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
-  <div class="contenedor">
+
     <div class="grid-container">
       <div class="especial nombre">
         <label for="name">Nombre*</label>
@@ -28,22 +28,20 @@
         <o-textarea-input attr="notes" required="no" max-length="200"></o-textarea-input>
       </div>
     </div>
-  </div>
 
-
-  <div class="table_container" fxLayout="column" fxLayoutFill>
-    <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp"
-      keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;personal_email;student_id;action"
-      visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" query-rows="10"
-      detail-mode="true" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
-      (onClick)="onClickStudent($event)">
-      <o-table-column attr="action" width="64px">
-        <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
-          icon="person_search"></o-table-cell-renderer-action>
-      </o-table-column>
-      <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
-      </o-table-context-menu>
-
-    </o-table>
-  </div>
+    <div class="table_container" fxLayout="column" fxLayoutFill>
+      <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps"
+        entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
+        columns="id;name;surname1;surname2;personal_email;student_id;action"
+        visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" query-rows="10"
+        detail-mode="true" delete-button="false" show-report-on-demand-option="false"
+        show-charts-on-demand-option="false" (onClick)="onClickStudent($event)">
+        <o-table-column attr="action" width="64px">
+          <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
+            icon="person_search"></o-table-cell-renderer-action>
+        </o-table-column>
+        <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+        </o-table-context-menu>
+      </o-table>
+    </div>
 </o-form>
