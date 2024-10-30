@@ -85,9 +85,17 @@ mat-tab-body { background-color: #d5e5e9; }
   border-radius: 10px;
 }
 
-.ontimize-table.o-table .o-table-container
-.o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base {
-border: 2px solid #d5e5e9;
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base,
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.mat-accent,
+.o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base,
+.o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base.mat-accent,
+.o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base,
+.o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base,
+.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
+  border: 2px solid #d5e5e9;
 border-radius: 10px;
 }
 
@@ -97,4 +105,8 @@ border-radius: 10px;
 
 .o-table .o-table-container .mat-mdc-table .mat-mdc-header-cell.start div{
   text-align: center ;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before{
+  border-bottom-color: #f64983;
 }
