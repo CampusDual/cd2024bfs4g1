@@ -52,5 +52,8 @@ export class StudentsNewComponent {
   throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
+  public getValue() {
+    return '+34 986350677';
+  }
 }
 

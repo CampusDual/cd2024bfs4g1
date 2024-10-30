@@ -20,8 +20,9 @@
 
     <div fxFlex="45">
       <label for="phone">{{'LPHONE' | oTranslate}}</label>
-      <o-text-input attr="phone" required="yes" ></o-text-input>
+      <o-phone-input attr="phone" required="yes"  [data]="getValue()" ></o-phone-input>
     </div>
+    <o-phone-input attr="input3" label="phone" enabled="no" [data]="getValue()"></o-phone-input>
     <div fxFlex="45">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
       <o-text-input attr="employment_status" required="yes"></o-text-input>

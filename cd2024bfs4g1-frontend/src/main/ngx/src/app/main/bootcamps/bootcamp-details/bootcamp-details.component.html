@@ -3,7 +3,7 @@
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-column fxFlex>
       <div  fxLayout="row" fxLayoutGap="8px">
-        <o-text-input fxFlex="40" attr="name" required="yes"></o-text-input>
+        <o-text-input fxFlex="40" attr="name" required="yes" max-length="100"></o-text-input>
         <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
                       (onValueChange)="throwChange(enddate)"></o-date-input>
         <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" [validators]="validatorsArray"
@@ -16,7 +16,7 @@
     </o-column>
     <div class="table_container">
     <o-table class="general_table" attr="studentsBootcampTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-        parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;personal_email;student_id;action" visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" 
+        parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;personal_email;student_id;action" visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name"
         detail-mode="true" delete-button="false" show-report-on-demand-option="false"
         show-charts-on-demand-option="false" (onClick)="onClickStudent($event)">
         <o-table-column attr="action" width="64px">
@@ -27,7 +27,7 @@
         view-detail="false" delete="false">
         </o-table-context-menu>
         <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-       
+
     </o-table>
 </div>
 </o-form>
