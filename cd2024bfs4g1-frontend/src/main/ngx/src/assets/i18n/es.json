@@ -164,5 +164,7 @@
   "LSPAINCOMUNITY": "Comunidad Autónoma",
   "spain_comunity": "Comunidad Autónoma",
   "LLOCATION": "Ubicación",
-  "location": "Ubicación"
+  "location": "Ubicación",
+  "BC_DUR": "Duración del Bootcamp",
+  "CALENDAR": "Calendario"
 }

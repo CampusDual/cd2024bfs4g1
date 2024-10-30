@@ -165,5 +165,7 @@
   "spain_comunity": "Spanish Community",
   "LLOCATION": "Location",
   "province": "Province",
-  "location": "Location"
+  "location": "Location",
+  "BC_DUR": "Bootcamp Duration",
+  "CALENDAR": "Calendar"
 }
