@@ -96,7 +96,13 @@ mat-tab-body { background-color: #d5e5e9; }
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
   border: 2px solid #d5e5e9;
-border-radius: 10px;
+  border-radius: 10px;
+}
+.o-form-toolbar-button button{
+  border-radius: 10px;
+  box-shadow: 0 0px 0px;
+
+
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
