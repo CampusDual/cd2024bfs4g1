@@ -1,14 +1,50 @@
-
 .general_table {
-    width: 80%;
-    margin: 20px auto;
-    background-color: #d5e9de;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Roboto', sans-serif;
-  }
+  width: 95%;
+  margin: 10px auto;
+  background-color: #d5e9de;
+  padding: 12px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 73vh;
+}
 
-  .table_container { height: 90%;}
+.table_container {
+  width: 90%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0 10px;
+}
 
-  
+.table_row {
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.table_cell {
+  padding: 6px;
+}
+
+.students-filters-form {
+  width: 68%;
+  margin: 20px auto;
+  background-color: #d5e9de;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.filter_style {
+  background-color: #d5e9de;
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  box-sizing: border-box;
+}
+
+
+

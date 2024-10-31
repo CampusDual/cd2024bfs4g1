@@ -15,5 +15,8 @@ public class BootcampDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_START_DATE = "start_date";
     public static final String ATTR_FINISH_DATE = "end_date";
     public static final String ATTR_STATUS = "status";
+    public static final String ATTR_DESCRIPTION = "description";
+    public static final String ATTR_NOTES = "notes";
+
 
 }

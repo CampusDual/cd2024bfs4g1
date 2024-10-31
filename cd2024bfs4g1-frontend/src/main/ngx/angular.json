@@ -70,7 +70,12 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "vendor": true,
+                "styles": true,
+                "scripts": true
+
+              },
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -211,7 +216,9 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/ontimize-web-ngx/ontimize.scss",
+              "src/assets/css/app.scss",
+              "src/styles.css"  
             ],
             "scripts": []
           }

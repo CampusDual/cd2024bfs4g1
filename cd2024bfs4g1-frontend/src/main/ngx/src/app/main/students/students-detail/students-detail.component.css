@@ -1,10 +1,12 @@
+
 * { font-family: 'Roboto', sans-serif; }
 
 o-form {
   background-color: #d5e9de;
   padding: 25px;
   border-radius: 15px;
-  max-width: 65%;
+  max-width: 80%;
+  max-height: 94%;
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

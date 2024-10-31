@@ -1,3 +1,73 @@
-.bg {
-  background-color: darkred;
+.container {
+  width: 50%; 
+  margin: 20px auto; 
+  background-color: #d5e9de; 
+  padding: 10px; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 12px; 
+  box-sizing: border-box; 
 }
+
+.general_combobox {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.date-input-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px 20px; 
+  background-color: #d5e9de; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-sizing: border-box; 
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.calendar-card {
+  width: 70%; 
+  padding: 5px; 
+  background-color: #c3e4d2; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 10px; 
+  box-sizing: border-box; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+mat-calendar {
+  width: 70%; 
+  font-size: 0.9em; 
+}
+
+.demo-inline-calendar-card {
+  width: 300px; 
+}
+
+.titulo3 {
+  background-color: #d5e9de;
+  text-align: center;
+  padding: 3px 0;
+}
+
+label {
+  background-color: #d5e9de; 
+  padding: 5px; 
+  border-radius: 5px; 
+  display: inline-block; 
+}
+

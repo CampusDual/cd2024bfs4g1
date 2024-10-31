@@ -28,6 +28,10 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Override
     public EntityResult studentBootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+
+       if (!attrMap.containsKey("student_id") || !attrMap.containsKey("bootcamp_id")) { // Check if the student_id is present, if not throw error
+           return new EntityResultMapImpl(EntityResult.OPERATION_WRONG, EntityResult.NODATA_RESULT);
+       }
        try {
            return this.daoHelper.insert(this.studentBootcampDao, attrMap);
        } catch (DuplicateKeyException e) {

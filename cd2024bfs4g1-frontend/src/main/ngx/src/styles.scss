@@ -39,8 +39,74 @@
   }
 }
 
+button.calendarcellStart span {
+  background: #2E8B57;
+  text-align:center;
+  width: 100%;
+  height: 89%;
+
+  margin-top: 1.5px;
+}
+
+button.calendarcellEnd span {
+  background: #DC143C;
+  text-align:center;
+  width: 100%;
+  height: 89%;
+  margin-top: 1.5px;
+}
+
+button.calendarcell{
+  border-radius: 0px;
+  margin: 0.1em 0em;
+}
+button.calendarcell span{
+  background: lightgrey;
+  text-align:center;
+  width: 100%;
+  height: 89%;
+}
+span.mat-calendar-body-cell-content{
+  border-radius: 0px;
+  font-size: large;
+}
+
 .table_container .general_table tr td, .table_container .general_table tr th {
-  background-color: #d5e9de;
+  background-color: #f5f0f2;
   text-align: center;
-  color: #2f4f4f;
+  color: #caeeee;
+}
+
+mat-tab-body { background-color: #d5e5e9; }
+
+.mat-mdc-text-field-wrapper {
+  width: 100%;
+  border: 2px solid #d5e5e9;
+  border-radius: 10px;
+}
+
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base,
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.mat-accent,
+.o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base,
+.o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base.mat-accent,
+.o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base,
+.o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base,
+.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
+  border: 2px solid #d5e5e9;
+border-radius: 10px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  border-bottom-color: #d5e5e9;
+}
+
+.o-table .o-table-container .mat-mdc-table .mat-mdc-header-cell.start div{
+  text-align: center ;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before{
+  border-bottom-color: #f64983;
 }
