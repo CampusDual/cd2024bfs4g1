@@ -4,27 +4,27 @@
 
     <div class="grid-container">
       <div class="especial nombre">
-        <label for="name">{{'Name*' | oTranslate}}</label>
+        <label for="LNAME">{{'LNAME' | oTranslate}}</label>
         <o-text-input label-visible="false" attr="name" required="yes"></o-text-input>
       </div>
       <div class="especial fecha-inicio">
-        <label for="start_date">{{'StartDate*' | oTranslate}}</label>
+        <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label>
         <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"
           (onValueChange)="throwChange(enddate)"></o-date-input>
       </div>
       <div class="especial fecha-fin">
-        <label for="end_date">{{'EndDate*' | oTranslate}}</label>
+        <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label>
         <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray" format="DD/MM/YYYY"
           (onValueChange)="throwChange2(startdate)">
           <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
         </o-date-input>
       </div>
       <div class="especial descripcion">
-        <label for="description">{{'description' | oTranslate}}</label>
+        <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
         <o-textarea-input label-visible="false" attr="description" required="no" max-length="200"></o-textarea-input>
       </div>
       <div class="especial notas">
-        <label for="notes">{{'notes' | oTranslate}}</label>
+        <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
         <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
       </div>
     </div>

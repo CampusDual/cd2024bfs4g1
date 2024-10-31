@@ -107,7 +107,7 @@
   "L_NAME": "Name",
   "L_SURNAME": "Surname",
   "L_EMAIL": "Email",
-  "LNAME": "Name",
+  "LNAME": "Name*",
   "LSURNAME1": "First Surname",
   "LSURNAME2": "Second Surname",
   "LEMAIL": "Personal Email",
@@ -172,7 +172,8 @@
   "Error, this already exists": "Error, this already exists",
   "Bootcamps List": "Bootcamps List",
   "Students list": "Students list",
-  "Name*": "Name*",
-  "StartDate*": "Start Date*",
-  "EndDate*": "End Date*"
+  "LSTARTDATE":"End Date*",
+  "LENDDATE":"Start Date*",
+  "LDESPCRIPTION":"Description",
+  "LNOTE":"Notes"
 }

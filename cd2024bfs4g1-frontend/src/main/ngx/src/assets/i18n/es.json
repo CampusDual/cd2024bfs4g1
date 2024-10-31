@@ -107,7 +107,7 @@
   "L_NAME": "Nombre",
   "L_SURNAME": "Apellidos",
   "L_EMAIL": "Correo",
-  "LNAME": "Nombre",
+  "LNAME": "Nombre*",
   "LSURNAME1": "Primer Apellido",
   "LSURNAME2": "Segundo Apellido",
   "LEMAIL": "Correo Electrónico Personal",
@@ -171,7 +171,8 @@
   "Bootcamps List": "Lista de bootcamps",
   "Students list": "Lista de estudiantes",
   "STUDENT_HAS_BOOTCAMPS":"El estudiante a eliminar tiene bootcamps asignados",
-  "Name*": "Nombre*",
-  "StartDate*": "Fecha de Inicio*",
-  "EndDate*": "Fecha de Finalización*"
+  "LSTARTDATE":"Fecha Inicio*",
+  "LENDDATE":"Fecha Fin*",
+  "LDESPCRIPTION":"Descripción",
+  "LNOTE":"Notas"
 }
