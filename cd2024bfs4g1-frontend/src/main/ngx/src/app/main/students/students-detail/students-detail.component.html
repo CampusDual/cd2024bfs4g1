@@ -18,11 +18,11 @@
       <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="dni">
-      <label for="dni">{{'LDNI' | oTranslate}}</label>
+      <label for="LDNI">{{'LDNI' | oTranslate}}</label>
       <o-nif-input attr="dni" label="NIF" read-only="no" required="yes"></o-nif-input>
     </div>
     <div class="telefono">
-      <label for="phone">{{'LPHONE' | oTranslate}}</label>
+      <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
       <o-phone-input attr="phone" required="yes" ></o-phone-input>
     </div>
     <div class="employmentStatus">
@@ -31,7 +31,7 @@
     </div>
 
     <div class="status">
-      <label for="status">{{'LSTATUS' | oTranslate}}</label>
+      <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
       <o-combo
       attr="status" required="yes" translate="yes"  [static-data]="[
       { key: 'NOT_ELIGIBLE' },
@@ -45,7 +45,7 @@
     </o-combo>
     </div>
     <div class="comunidad">
-      <label for="spain_comunity">{{'LSPAINCOMUNITY' | oTranslate}}</label>
+      <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
       <o-combo attr="spain_comunity"   [static-data]="dataArray"
       [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
       columns="key;value"  visible-columns="value"></o-combo>
@@ -58,15 +58,15 @@
 
 
     <div class="fechaCumple">
-      <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
+      <label for="LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>
       <o-date-input attr="birth_date" required="yes"  format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="email">
-      <label for="Personal email">{{'LEMAIL'|oTranslate}}</label>
+      <label for="LEMAIL">{{'LEMAIL'|oTranslate}}</label>
       <o-email-input attr="personal_email" required="yes" ></o-email-input>
     </div>
     <div class="emailCampus">
-      <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+      <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
       <o-email-input attr="campus_email" required="no" ></o-email-input>
     </div>
     <div class="fctSchool">
@@ -79,14 +79,14 @@
       <o-text-input attr="tutor" required="no" max-length="200" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="fctStart">
-      <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
+      <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
       <o-date-input #startdate attr="fct_start" required="no"
                     format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
     <div class="fctEnd">
-      <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
+      <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
       <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
                     format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
@@ -95,7 +95,7 @@
     </div>
 
     <div class="udemy">
-      <label for="udemy">{{'LUDEMY' | oTranslate}}</label>
+      <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
       <o-checkbox attr="udemy"></o-checkbox>
     </div>
     <div class="table_container" >
@@ -109,11 +109,11 @@
       </o-table>
       </div>
     <div class="githubUser">
-      <label for="github_user">{{'LGITHUB_USER' | oTranslate}}</label>
+      <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
       <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
     </div>
     <div class="notes">
-      <label for="notes">{{'LNOTES' | oTranslate}}</label>
+      <label for="LNOTES">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
     </div>
   </div>
