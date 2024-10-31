@@ -1,13 +1,11 @@
 .general_table {
-  width: 95%;
-  margin: 10px auto;
-  background-color: #d5e9de;
-  padding: 12px;
+  width: 90%;
+  margin: 20px auto;
+  background-color: #f5f0f2;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  height: 73vh;
 }
 
 .table_container {
@@ -29,16 +27,15 @@
 .students-filters-form {
   width: 68%;
   margin: 20px auto;
-  background-color: #d5e9de;
+  background-color: #d5e5e9;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
 .filter_style {
-  background-color: #d5e9de;
+  background-color: #d5e5e9;
   padding: 20px 40px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
