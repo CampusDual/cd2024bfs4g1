@@ -22,10 +22,6 @@ export class BootcampDetailsComponent {
       this.router.navigate(['/main/students', studentId])
   }
 
-  onClickStudent(event: any) {
-    this.router.navigate(['/main/students', ])
-}
-
   volver(e) {
     this.router.navigate(['./main/bootcamps']);
   }
