@@ -35,13 +35,31 @@
 }
 
 .filter_style {
-  background-color: #d5e5e9;
-  padding: 20px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 15px; 
+  background-color: #f5f0f2;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+  width: 93%; 
+  margin: 5px auto;
   box-sizing: border-box;
 }
+
+.filter_style o-text-input,
+.filter_style o-combo {
+  width: 100%;
+  min-width: 100px;
+}
+
+.centered-actions {
+  grid-column: 1 / -1; 
+  justify-content: center; 
+  margin-top: 10px;
+}
+
+
 
 
 
