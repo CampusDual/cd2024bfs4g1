@@ -25,7 +25,7 @@
 
     <div fxFlex="45">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-      <o-text-input attr="employment_status" required="yes" max-length="20"></o-text-input>
+      <o-text-input attr="employment_status" required="yes" max-length="20" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
 
     <div fxFlex="45">
@@ -73,7 +73,7 @@
     </div>
     <div fxFlex="45">
       <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
-      <o-text-input attr="tutor" required="no" max-length="200" ></o-text-input>
+      <o-text-input attr="tutor" required="no" max-length="200" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div fxFlex="45">
       <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
