@@ -96,7 +96,13 @@ mat-tab-body { background-color: #d5e5e9; }
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
   border: 2px solid #d5e5e9;
-border-radius: 10px;
+  border-radius: 10px;
+}
+.o-form-toolbar-button button{
+  border-radius: 10px;
+  box-shadow: 0 0px 0px;
+
+
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
@@ -110,3 +116,34 @@ border-radius: 10px;
 .mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before{
   border-bottom-color: #f64983;
 }
+
+.table_container .general_table .o-table-no-results span{
+  color: black;
+}
+
+.general_table {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #f5f0f2;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.popup {
+  width: 40%;
+  height: 30%;
+  border-radius: 15px;
+}
+
+.popup .general_table {
+  width: 90%;
+  margin: 20px auto;
+  background-color: #f5f0f2;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+

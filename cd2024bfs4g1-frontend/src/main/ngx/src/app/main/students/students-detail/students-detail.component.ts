@@ -48,7 +48,7 @@ export class StudentsDetailComponent {
   }
 
  mostrarBoton: boolean = true; ngOnInit() {  
-  this.mostrarBoton = !this.router.url.includes('isdetail'); }
+  this.mostrarBoton = /\d+$/.test(this.router.url); }
 
   toUpperCamelCase(event: any) {
     event.target.value = event.target.value

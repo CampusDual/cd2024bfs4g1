@@ -1,89 +1,85 @@
-<o-form #studentsform label-header="{{'STUDENT_REGISTRATION'|oTranslate}}" attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no"
+<o-form #studentsform  attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D" show-header-navigation="no"
         after-insert-mode="new" confirm-exit="no">
-  <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
-    <div fxFlex="45">
+  <div class="grid-container" >
+    <div class="nombre">
       <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name"max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
-    <div fxFlex="45">
-      <label for="dni">{{'LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
-    </div>
-    <div fxFlex="45">
+    <div class="apellido">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
       <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
-    <div fxFlex="45">
+    <div class="apellido2">
       <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
       <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
-
-    <div fxFlex="45">
-      <label for="phone">{{'LPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes" automatic-binding="false" [data]="'+34 000000000'"  ></o-phone-input>
+    <div class="dni">
+      <label for="dni">{{'LDNI' | oTranslate}}</label>
+      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
     </div>
-
-    <div fxFlex="45">
+    <div class="telefono">
+      <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
+      <o-phone-input attr="phone" required="yes" automatic-binding="false" [data]="'+34 000000000'"></o-phone-input>
+    </div>
+    <div class="employmentStatus">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
       <o-text-input attr="employment_status" required="yes" max-length="20" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
 
-    <div fxFlex="45">
-      <label for="status">{{'LSTATUS' | oTranslate}}</label>
-      <o-combo 
+    <div class="status">
+      <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
+      <o-combo
       attr="status" required="yes" translate="yes"  [static-data]="[
       { key: 'NOT_ELIGIBLE' },
       { key: 'UNDER_REVIEW' }
-    ]"
+      ]"
       value-column="key"
       columns="key"
       visible-columns="key"
       required="yes">
-    
-    </o-combo>
+      </o-combo>
     </div>
-    <div fxFlex="45">
+    <div class="comunidad">
       <label for="spain_comunity">{{'LSPAINCOMUNITY' | oTranslate}}</label>
       <o-combo attr="spain_comunity"   [static-data]="dataArray"
       [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
       columns="key;value"  visible-columns="value"></o-combo>
     </div>
 
-    <div fxFlex="45">
+    <div class="location">
       <label for="location">{{'LLOCATION' | oTranslate}}</label>
       <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
 
 
-    <div fxFlex="98">
+    <div class="fechaCumple">
       <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
       <o-date-input attr="birth_date" required="yes"  format="DD/MM/YYYY"></o-date-input>
     </div>
-    <div fxFlex="98">
+    <div class="email">
       <label for="Personal email">{{'LEMAIL'|oTranslate}}</label>
       <o-email-input attr="personal_email" required="yes" ></o-email-input>
     </div>
-    <div fxFlex="98">
+    <div class="emailCampus">
       <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
       <o-email-input attr="campus_email" required="no" ></o-email-input>
     </div>
-    <div fxFlex="45">
+    <div class="fctSchool">
       <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
       <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
-    <div fxFlex="45">
-      <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
-      <o-text-input attr="tutor" required="no" max-length="200" (input)="toUpperCamelCase($event)"></o-text-input>
+    <div class="udemy">
+      <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
+      <o-checkbox attr="udemy"></o-checkbox>
     </div>
-    <div fxFlex="45">
+    <div class="fctStart">
       <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
       <o-date-input #startdate attr="fct_start" required="no"
                     format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
-
     </div>
-    <div fxFlex="45">
+    <div class="fctEnd">
       <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
       <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
                     format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
@@ -91,16 +87,16 @@
       </o-date-input>
 
     </div>
-
-    <div fxFlex="45">
-      <label for="udemy">{{'LUDEMY' | oTranslate}}</label>
-      <o-checkbox attr="udemy"></o-checkbox>
+    <div class="tutor">
+      <label for="LTUTOR">{{'LTUTOR' | oTranslate}}</label>
+      <o-text-input attr="tutor" required="no" max-length="200" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
-    <div fxFlex="45">
-      <label for="github_user">{{'LGITHUB_USER' | oTranslate}}</label>
+
+    <div class="githubUser">
+      <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
       <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
     </div>
-    <div fxFlex="98">
+    <div class="notes">
       <label for="notes">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
     </div>
