@@ -109,14 +109,12 @@
       <label for="notes">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
     </div>
-    <div fxFlex="98">
-      <label for="bootcamp_name">Bootcamps</label>
-    </div>
     <div fxFlex="99">
       <div class="table_container" style="margin-left: 10px;">
         <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
                  parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname"
-                 detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false">
+                 detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false"
+                 title="Bootcamps" show-title="true">
           <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
           <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
           <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>

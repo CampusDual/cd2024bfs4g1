@@ -171,5 +171,8 @@
   "STUDENT_HAS_BOOTCAMPS":"The student to be deleted has assigned bootcamps",
   "Error, this already exists": "Error, this already exists",
   "Bootcamps List": "Bootcamps List",
-  "Students list": "Students list"
+  "Students list": "Students list",
+  "Name*": "Name*",
+  "StartDate*": "Start Date*",
+  "EndDate*": "End Date*"
 }

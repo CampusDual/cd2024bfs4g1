@@ -170,5 +170,8 @@
   "Error, this already exists": "Error, esto ya existe",
   "Bootcamps List": "Lista de bootcamps",
   "Students list": "Lista de estudiantes",
-  "STUDENT_HAS_BOOTCAMPS":"El estudiante a eliminar tiene bootcamps asignados"
+  "STUDENT_HAS_BOOTCAMPS":"El estudiante a eliminar tiene bootcamps asignados",
+  "Name*": "Nombre*",
+  "StartDate*": "Fecha de Inicio*",
+  "EndDate*": "Fecha de Finalización*"
 }
