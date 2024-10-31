@@ -72,14 +72,14 @@
       <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
       <o-checkbox attr="udemy"></o-checkbox>
     </div>
-    <div fxFlex="45">
+    <div class="fctStart">
       <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
       <o-date-input #startdate attr="fct_start" required="no"
                     format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
-    <div fxFlex="45">
+    <div class="fctEnd">
       <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
       <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
                     format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
@@ -96,7 +96,7 @@
       <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
       <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
     </div>
-    <div fxFlex="98">
+    <div class="notes">
       <label for="notes">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
     </div>

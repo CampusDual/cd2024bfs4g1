@@ -106,7 +106,7 @@ label {
   .email,
   .fctSchool,
   .fctStart,
-  .udemy{
+  .tutor{
    grid-column: 1/2 ;
   }
   .apellido,
@@ -115,9 +115,9 @@ label {
   .comunidad,
   .fechaCumple,
   .emailCampus,
-  .tutor,
   .githubUser,
-  .fctEnd{
+  .fctEnd,
+  .udemy{
    grid-column: 2/3 ;
   }
 
