@@ -53,13 +53,12 @@ public class DocumentRestController extends ORestController<IDocumentService> {
                 throw new RuntimeException(e);
             }
         }
-        String student_id = "";
+        Number student_id = null;
         EntityResult result = new EntityResultMapImpl();
-        if(extraData.get(DocumentFileDao.ATTR_ID_STUDENT) instanceof Map){
+        if(extraData.get(DocumentFileDao.ATTR_ID_STUDENT) instanceof Number){
             //get the user associated
             //get the description associated
-            Map mStudentId = (Map) extraData.get(DocumentFileDao.ATTR_ID_STUDENT);
-            student_id = (String) mStudentId.get("value");
+            student_id = (Number) extraData.get(DocumentFileDao.ATTR_ID_STUDENT);
 
             //the directory is related to the product
             String directory = path+student_id;
