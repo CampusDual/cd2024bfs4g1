@@ -107,7 +107,7 @@ label {
   background-color: #f5f0f2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1250px) {
   .grid-container,
   .table_container {
     width: 98%;
@@ -115,15 +115,40 @@ label {
   }
 
   .grid-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr, 1fr;
   }
 
   .nombre,
-  .fecha-inicio,
-  .fecha-fin,
-  .descripcion,
-  .notas {
-    grid-column: auto;
+  .apellido2,
+  .telefono,
+  .status,
+  .location,
+  .email,
+  .fctSchool,
+  .fctStart,
+  .udemy{
+   grid-column: 1/3 ;
   }
+  .apellido,
+  .dni,
+  .employmentStatus,
+  .comunidad,
+  .fechaCumple,
+  .emailCampus,
+  .tutor,
+  .githubUser,
+  .fctEnd{
+   grid-column: 3/4 ;
+  }
+
+  .notes{
+    grid-column: 1/4;
+  }
+  .table_container{
+    grid-column: 1/4;
+    grid-row: 12;
+  }
+
 }
+
 
