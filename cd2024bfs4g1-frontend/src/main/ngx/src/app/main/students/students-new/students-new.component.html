@@ -3,7 +3,7 @@
   <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
     <div fxFlex="45">
       <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name"max-length="255"></o-text-input>
+      <o-text-input attr="name" required="yes" id="name"max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div fxFlex="45">
       <label for="dni">{{'LDNI' | oTranslate}}</label>
@@ -11,11 +11,11 @@
     </div>
     <div fxFlex="45">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" required="yes" max-length="255"></o-text-input>
+      <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div fxFlex="45">
       <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-      <o-text-input attr="surname2" required="no" max-length="255"></o-text-input>
+      <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
 
     <div fxFlex="45">
@@ -51,7 +51,7 @@
 
     <div fxFlex="45">
       <label for="location">{{'LLOCATION' | oTranslate}}</label>
-      <o-text-input attr="location" required="no"></o-text-input>
+      <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
 
 
@@ -69,7 +69,7 @@
     </div>
     <div fxFlex="45">
       <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-      <o-text-input attr="fct_school" required="no" max-length="100" ></o-text-input>
+      <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div fxFlex="45">
       <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
