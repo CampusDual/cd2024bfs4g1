@@ -52,6 +52,13 @@ export class StudentsNewComponent {
   throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
-  
+
+toUpperCamelCase(event: any) {
+  event.target.value = event.target.value
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
 }
 
