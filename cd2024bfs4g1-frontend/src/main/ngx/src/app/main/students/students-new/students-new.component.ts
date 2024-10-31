@@ -53,7 +53,6 @@ export class StudentsNewComponent {
     startdate.getControl().updateValueAndValidity();
   }
 
-// Method to convert input text to UpperCamelCase allowing spaces
 toUpperCamelCase(event: any) {
   event.target.value = event.target.value
     .split(' ')
