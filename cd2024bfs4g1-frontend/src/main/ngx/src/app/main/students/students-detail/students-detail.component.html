@@ -101,14 +101,20 @@
 
     <div class="table_container" >
 
-      <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-        parent-keys="student_id:id" columns="id;bootcampname" visible-columns="bootcampname"
-        detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false">
-        <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-        <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
-        <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-      </o-table>
-      </div>
+      <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+        <o-form-layout-dialog-options class="popup" title="">
+          <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
+            entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
+            visible-columns="bootcampname" detail-mode="false" delete-button="false"
+            show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false">
+            <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+            <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+            <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+          </o-table>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
+
+    </div>
     <div class="githubUser">
       <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
       <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>

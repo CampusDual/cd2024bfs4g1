@@ -19,7 +19,7 @@ label {
 
 .grid-container,
 .table_container {
-  width: 96%; 
+  width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
   border-radius: 15px;
@@ -28,7 +28,7 @@ label {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; 
+  grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: 10px;
   height: auto;
@@ -66,12 +66,12 @@ label {
 @media (max-width: 768px) {
   .grid-container,
   .table_container {
-    width: 98%; 
+    width: 98%;
     padding: 15px;
   }
 
   .grid-container {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .nombre,

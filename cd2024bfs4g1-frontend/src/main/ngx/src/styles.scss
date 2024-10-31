@@ -116,3 +116,30 @@ mat-tab-body { background-color: #d5e5e9; }
 .mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before{
   border-bottom-color: #f64983;
 }
+
+.general_table {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #f5f0f2;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.popup {
+  width: 40%;
+  height: 30%;
+  border-radius: 15px;
+}
+
+.popup .general_table {
+  width: 90%;
+  margin: 20px auto;
+  background-color: #f5f0f2;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
