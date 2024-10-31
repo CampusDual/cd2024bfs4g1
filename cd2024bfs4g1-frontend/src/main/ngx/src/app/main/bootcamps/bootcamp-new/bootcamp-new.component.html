@@ -1,17 +1,31 @@
-<o-form attr="BootcampNew" label-header="{{'NEW_BC'|oTranslate}}" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D" (onInsert)="volver($event)"
-    show-header-navigation="no"confirm-exit="no" >
-    <o-column fxFlex>
-            <div fxLayout="row" fxLayoutGap="8px">
-                <o-text-input fxFlex="40" attr="name" required="yes" max-length="100"></o-text-input>
-                <o-date-input #startdate fxFlex="40" attr="start_date" required="yes" format="DD/MM/YYYY"
-                (onValueChange)="throwChange(enddate)"></o-date-input>
-                    <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-                <o-date-input #enddate fxFlex="40" attr="end_date" required="yes" [validators]="validatorsArray"
+<o-form attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id"
+    header-actions="R;I;U;D" (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
+    <div class="grid-container">
+        <div class="especial nombre">
+            <label for="LNAME">{{'LNAME' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="name" required="yes" max-length="100"></o-text-input>
+        </div>
+        <div class="especial fecha-inicio">
+            <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label>
+            <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes"
+                format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)"></o-date-input>
+            <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+        </div>
+        <div class="especial fecha-fin">
+            <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label>
+            <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray"
                 format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
-                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
-                </o-date-input>
-                <o-textarea-input fxFlex="40" attr="description" required="no" max-length="150"></o-textarea-input>
-                <o-textarea-input fxFlex="40" attr="notes" required="no" max-length="200"></o-textarea-input>
-            </div>
-    </o-column>
+                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+            </o-date-input>
+        </div>
+        <div class="especial descripcion">
+            <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
+            <o-textarea-input label-visible="false" attr="description" required="no"
+                max-length="200"></o-textarea-input>
+        </div>
+        <div class="especial notas">
+            <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
+            <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
+        </div>
+    </div>
 </o-form>
