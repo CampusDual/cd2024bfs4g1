@@ -3,7 +3,7 @@
     <o-button attr="backButton" class="o-form-toolbar-button"  type="RAISED" icon="keyboard_backspace" label="Go back" (click)="location.back()" *ngIf="mostrarBoton"></o-button>
   </div>
 
-  <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no"/>
+  <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no"/>
   <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
 
     <h1 fxFlex="98">{{'STUDENTS_DATA' | oTranslate}}</h1>
@@ -108,6 +108,13 @@
     <div fxFlex="98">
       <label for="notes">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
+    </div>
+    <div fxFlex="98">
+      <label for="Upload">{{'Upload Document' | oTranslate}}</label>
+      <o-file-input #fileinput attr="file" fxFlex="50" label="{{'Upload Document' | oTranslate }}"
+      service="documents" entity="upload" max-file-size="100000" multiple="yes" max-num-files="5"
+      split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
+      (onUpload)="onUploadFiles($event)" (onError)="onError($event)" fxFlex="100"></o-file-input>
     </div>
     <div fxFlex="98">
       <label for="bootcamp_name">Bootcamps</label>

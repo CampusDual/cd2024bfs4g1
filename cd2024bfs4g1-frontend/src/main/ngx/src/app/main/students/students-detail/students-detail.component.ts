@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { OFormComponent } from 'ontimize-web-ngx';
+import { Component, ViewChild } from '@angular/core';
+import { OFormComponent, OTextInputComponent, OTextInputModule } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,9 +12,15 @@ import spainComunitys from 'src/app/main/students/spaincomunitys';
   styleUrls: ['./students-detail.component.css']
 })
 export class StudentsDetailComponent {
+  @ViewChild("idNumber") idNumber: OTextInputComponent;
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
+
+
+
+
+
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
@@ -49,5 +55,36 @@ export class StudentsDetailComponent {
 
  mostrarBoton: boolean = true; ngOnInit() {  
   this.mostrarBoton = !this.router.url.includes('isdetail'); }
+ 
+  getFileData() {
+    console.log(this.idNumber);
+    if (this.idNumber){
+      return { student_id: this.idNumber.getValue() };
+    }else{
+      return null;
+    }
+   
+     
 
+  }
+
+  // Método para manejar la respuesta de la subida de archivos
+  onUploadFiles(event) {
+    console.log(event);
+  }
+
+  onFileUpload() {
+
+  }
+
+  onError(event) {
+    // Manejar error en la subida de archivos
+    if (event.status === 507) {
+      this.showError(event);
+    }
+
+  }
+  showError(event: any) {
+    console.log(event);
+  }
 }
