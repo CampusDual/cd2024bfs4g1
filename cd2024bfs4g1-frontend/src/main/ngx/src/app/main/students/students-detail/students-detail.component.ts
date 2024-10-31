@@ -57,4 +57,8 @@ export class StudentsDetailComponent {
       .join(' ');
   }
 
+  toUpperCase(event: any){
+    event.target.value = event.target.value.toUpperCase();
+  }
+
 }
