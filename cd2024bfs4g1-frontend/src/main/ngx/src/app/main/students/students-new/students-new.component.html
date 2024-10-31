@@ -7,7 +7,7 @@
     </div>
     <div fxFlex="45">
       <label for="dni">{{'LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes"></o-nif-input>
+      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
     </div>
     <div fxFlex="45">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>

@@ -59,6 +59,9 @@ toUpperCamelCase(event: any) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 }
+toUpperCase(event: any){
+  event.target.value = event.target.value.toUpperCase();
+}
 
 }
 
