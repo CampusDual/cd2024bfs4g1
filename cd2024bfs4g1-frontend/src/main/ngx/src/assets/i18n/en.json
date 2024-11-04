@@ -111,7 +111,7 @@
   "LSURNAME1": "First Surname*",
   "LSURNAME2": "Second Surname",
   "LEMAIL": "Personal Email*",
-  "LDNI": "NIF*",
+  "LDNI": "ID*",
   "LBIRTHDATE": "Birth Date*",
   "LPHONE": "Phone*",
   "LEMSTATUS": "Employment Status*",
@@ -176,6 +176,6 @@
   "LENDDATE":"End Date*",
   "LDESPCRIPTION":"Description",
   "LNOTE":"Notes",
-  "DNI": "NIF",
-  "NIF": "DNI"
+  "DNI": "ID",
+  "NIF": "ID"
 }
