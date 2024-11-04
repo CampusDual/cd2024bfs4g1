@@ -111,7 +111,7 @@
   "LSURNAME1": "First Surname*",
   "LSURNAME2": "Second Surname",
   "LEMAIL": "Personal Email*",
-  "LDNI": "DNI*",
+  "LDNI": "ID*",
   "LBIRTHDATE": "Birth Date*",
   "LPHONE": "Phone*",
   "LEMSTATUS": "Employment Status*",
@@ -172,8 +172,10 @@
   "Error, this already exists": "Error, this already exists",
   "Bootcamps List": "Bootcamps List",
   "Students list": "Students list",
-  "LSTARTDATE":"End Date*",
-  "LENDDATE":"Start Date*",
+  "LSTARTDATE":"Start Date*",
+  "LENDDATE":"End Date*",
   "LDESPCRIPTION":"Description",
-  "LNOTE":"Notes"
+  "LNOTE":"Notes",
+  "DNI": "ID",
+  "NIF": "ID"
 }

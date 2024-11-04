@@ -15,7 +15,7 @@
     </div>
     <div class="dni">
       <label for="dni">{{'LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
+      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
     </div>
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
@@ -36,14 +36,15 @@
       value-column="key"
       columns="key"
       visible-columns="key"
-      required="yes">
+      required="yes"
+      null-selection="no">
       </o-combo>
     </div>
     <div class="comunidad">
       <label for="spain_comunity">{{'LSPAINCOMUNITY' | oTranslate}}</label>
       <o-combo attr="spain_comunity"   [static-data]="dataArray"
       [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-      columns="key;value"  visible-columns="value"></o-combo>
+      columns="key;value"  visible-columns="value" null-selection="no"></o-combo>
     </div>
 
     <div class="location">

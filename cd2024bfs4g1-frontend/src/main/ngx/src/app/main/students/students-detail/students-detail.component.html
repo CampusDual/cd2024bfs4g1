@@ -10,8 +10,8 @@
       <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido">
-      <label for="dni">{{'LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
+      <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
+      <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido2">
       <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
@@ -19,7 +19,7 @@
     </div>
     <div class="dni">
       <label for="LDNI">{{'LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="NIF" read-only="no" required="yes"></o-nif-input>
+      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"></o-nif-input>
     </div>
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
@@ -40,7 +40,8 @@
       value-column="key"
       columns="key"
       visible-columns="key"
-      required="yes">
+      required="yes"
+      null-selection="false">
 
     </o-combo>
     </div>
@@ -48,7 +49,7 @@
       <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
       <o-combo attr="spain_comunity"   [static-data]="dataArray"
       [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-      columns="key;value"  visible-columns="value"></o-combo>
+      columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
     </div>
 
     <div class="location">
