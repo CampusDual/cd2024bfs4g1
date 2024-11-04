@@ -174,5 +174,7 @@
   "LSTARTDATE":"Fecha Inicio*",
   "LENDDATE":"Fecha Fin*",
   "LDESPCRIPTION":"Descripción",
-  "LNOTE":"Notas"
+  "LNOTE":"Notas",
+  "DNI": "DNI",
+  "NIF": "DNI"
 }
