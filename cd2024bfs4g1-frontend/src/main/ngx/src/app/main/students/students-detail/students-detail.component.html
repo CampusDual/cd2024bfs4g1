@@ -40,7 +40,8 @@
       value-column="key"
       columns="key"
       visible-columns="key"
-      required="yes">
+      required="yes"
+      null-selection="false">
 
     </o-combo>
     </div>
@@ -48,7 +49,7 @@
       <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
       <o-combo attr="spain_comunity"   [static-data]="dataArray"
       [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-      columns="key;value"  visible-columns="value"></o-combo>
+      columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
     </div>
 
     <div class="location">

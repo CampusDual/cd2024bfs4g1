@@ -15,16 +15,16 @@
                     <o-combo #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
-                        visible-columns="label" translate="yes"></o-combo>
+                        visible-columns="label" translate="yes" null-selection="no"></o-combo>
 
                     <o-combo #type attr="status" read-only="no"
                         [static-data]="[{'value': 'NOT_ELIGIBLE', 'label': 'NOT_ELIGIBLE'},{'value': 'UNDER_REVIEW', 'label': 'UNDER_REVIEW'}]"
                         service="students" entity="student" columns="status" value-column="value"
-                        visible-columns="label" keys="id" translate="yes"></o-combo>
+                        visible-columns="label" keys="id" translate="yes" null-selection="no"></o-combo>
 
                     <o-combo attr="spain_comunity" read-only="no" service="students" entity="student"
                         columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
-                        searchable="yes"></o-combo>
+                        searchable="yes" null-selection="no"></o-combo>
 
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
                         <o-slide-toggle #sliderToggle attr="slidertoggle" label="{{'SLIDE_SEARCH' | oTranslate}}"
