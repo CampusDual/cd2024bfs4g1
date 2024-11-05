@@ -13,6 +13,6 @@ public class DocumentFileDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID_STUDENT = "student_id";
     public static final String ATTR_NAME = "name";
     public static final String ATTR_PATH = "file_path";
-    //public static final String ATTR_BASE64 = "base64";
+    public static final String ATTR_BASE64 = "base64";
 
 }
