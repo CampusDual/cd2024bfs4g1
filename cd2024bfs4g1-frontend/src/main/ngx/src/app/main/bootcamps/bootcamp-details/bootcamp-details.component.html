@@ -29,7 +29,18 @@
       <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
     </div>
   </div>
-
+  <div class="table_container">
+  <div class="prueba">
+    <div class="container" *ngIf="months.length > 0">
+      <div class="button-container" *ngFor="let month of months">
+        <mat-card class="calendar-card" *ngIf="selected">
+          <mat-calendar [dateClass]="dateClass" #picker [startAt]="month">
+          </mat-calendar>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="table_container" fxLayout="column" fxLayoutFill>
     <o-form-layout-manager attr="addStudentLayout" mode="dialog">
       <o-form-layout-dialog-options class="popup" title="">
@@ -51,15 +62,6 @@
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
   </div>
-  <div class="prueba">
-    <div class="container" *ngIf="months.length > 0">
-      <div class="button-container" *ngFor="let month of months">
-        <mat-card class="calendar-card" *ngIf="selected">
-          <mat-calendar [dateClass]="dateClass" #picker [startAt]="month">
-          </mat-calendar>
-        </mat-card>
-      </div>
-    </div>
-  </div>
+ 
 
 </o-form>
