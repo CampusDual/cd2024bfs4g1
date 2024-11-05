@@ -96,4 +96,4 @@ environment:
   profile: ${ENVIRONMENT_PROFILE:#{'production'}}
 aap:
   files:
-    path: 'C:\students\documents'
+    path: 'C:\students\documents\'

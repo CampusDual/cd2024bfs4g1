@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Lazy
 @ConfigurationFile(configurationFile = "dao/DocumentFileDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class DocumentFileDao extends OntimizeJdbcDaoSupport {
-    //public static final String ATTR_ID = "id";
+    public static final String ATTR_ID = "id";
     public static final String ATTR_ID_STUDENT = "student_id";
     public static final String ATTR_NAME = "name";
     public static final String ATTR_PATH = "file_path";

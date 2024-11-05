@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { OFormComponent } from 'ontimize-web-ngx';
+import { Component, ViewChild } from '@angular/core';
+import { OFormComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import spainComunitys from 'src/app/main/students/spaincomunitys';
   styleUrls: ['./students-detail.component.css']
 })
 export class StudentsDetailComponent {
+  @ViewChild("idNumber") idNumber: OTextInputComponent;
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
@@ -59,6 +60,38 @@ export class StudentsDetailComponent {
 
   toUpperCase(event: any){
     event.target.value = event.target.value.toUpperCase();
+  }
+
+  getFileData() {
+    console.log(this.idNumber);
+    if (this.idNumber){
+      return { student_id: this.idNumber.getValue() };
+    }else{
+      return null;
+    }
+
+
+
+  }
+
+
+  onUploadFiles(event) {
+    console.log(event);
+  }
+
+  onFileUpload() {
+
+  }
+
+  onError(event) {
+ 
+    if (event.status === 507) {
+      this.showError(event);
+    }
+
+  }
+  showError(event: any) {
+    console.log(event);
   }
 
 }

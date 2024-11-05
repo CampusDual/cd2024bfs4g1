@@ -14,6 +14,9 @@ export const SERVICE_CONFIG: Object = {
   'bootcamps':{
     'path': '/bootcamps'
   }
-  ,
+  ,'documents':{
+    'path': '/documents'
+  },
+
 
 };
