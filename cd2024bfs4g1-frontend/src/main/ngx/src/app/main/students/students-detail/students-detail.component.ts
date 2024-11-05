@@ -47,7 +47,7 @@ export class StudentsDetailComponent {
     startdate.getControl().updateValueAndValidity();
   }
 
- mostrarBoton: boolean = true; ngOnInit() {  
+ mostrarBoton: boolean = true; ngOnInit() {
   this.mostrarBoton = /\d+$/.test(this.router.url); }
 
   toUpperCamelCase(event: any) {

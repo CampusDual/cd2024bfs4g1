@@ -12,6 +12,8 @@ import { ODateInputComponent, OntimizeService } from 'ontimize-web-ngx';
 })
 export class BootcampDetailsComponent {
 
+  months: Date[] = [];
+
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
 
@@ -21,7 +23,7 @@ export class BootcampDetailsComponent {
     this.service = this.injector.get(OntimizeService);
     this.configureService();
     this.dateClass.bind(this);
-    
+
   }
   goToStudentDetail(event: any) {
       const studentId = event.student_id;
@@ -84,6 +86,7 @@ export class BootcampDetailsComponent {
         this.startDateInput.setValue(startDate);
         this.endDateInput.setValue(endDate);
         this.startAtDate = startDate;
+        this.generateMonths(startDate, endDate);
         this.selected = true;
 
       } else {
@@ -116,5 +119,13 @@ export class BootcampDetailsComponent {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
 
-  
+  generateMonths(startDate: Date, endDate: Date) {
+    this.months = [];
+    const current = new Date(startDate);
+
+    while (current <= endDate) {
+      this.months.push(new Date(current)); 
+      current.setMonth(current.getMonth() + 1); 
+    }
+  }
 }

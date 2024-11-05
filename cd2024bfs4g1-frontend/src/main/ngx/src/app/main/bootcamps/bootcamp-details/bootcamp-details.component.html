@@ -52,15 +52,15 @@
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
   </div>
-  <div class="container" >
-    <div class="button-container">
+  <div class="container" *ngIf="months.length > 0">
+    <div class="button-container" *ngFor="let month of months">
       <mat-card class="calendar-card" *ngIf="selected">
-        <mat-calendar [dateClass]="dateClass" #picker [startAt]="startAtDate">
+        <mat-calendar [dateClass]="dateClass" #picker [startAt]="month">
         </mat-calendar>
       </mat-card>
     </div>
   </div>
-  
+
 </o-form>
 
 
