@@ -116,6 +116,7 @@ label {
 mat-calendar {
   width: 100%; /* Ancho del calendario dentro de la card */
   font-size: 0.9em;
+  pointer-events: none;
 }
 
 
