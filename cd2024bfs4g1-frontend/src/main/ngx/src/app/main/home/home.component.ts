@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   selected = false;
   startAtDate: Date;
+  endAtDate:Date;
   protected service: OntimizeService;
 
   constructor(
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
         this.startDateInput.setValue(startDate);
         this.endDateInput.setValue(endDate);
         this.startAtDate = startDate;
+        this.endAtDate = endDate;
         this.selected = true;
 
       } else {

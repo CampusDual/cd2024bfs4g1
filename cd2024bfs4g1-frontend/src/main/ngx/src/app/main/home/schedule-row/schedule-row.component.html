@@ -1,0 +1,13 @@
+<div class="schedule-row-container">
+    <div><o-button attr="past" type="FAB-MINI" icon="arrow_back" layout-padding (click)="move(-1)"></o-button></div>
+    <div *ngFor="let date of elements" class="schedule-row-container-header">
+        <div class="month"><span *ngIf="date.getDate()==1">{{date | date:'MMMM yyyy'}}</span></div>
+        <div class="week">
+            {{date| date:'ccc'}}
+        </div>
+        <div [ngClass]="today.getTime() == date.getTime()?'today':'date-cell'">
+            {{date| date:'dd'}}
+        </div>
+    </div>
+    <div><o-button attr="future" type="FAB-MINI" icon="arrow_forward" layout-padding (click)="move(+1)"></o-button></div>
+</div>
