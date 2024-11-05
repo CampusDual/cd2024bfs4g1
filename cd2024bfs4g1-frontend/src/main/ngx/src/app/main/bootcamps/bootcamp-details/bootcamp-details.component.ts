@@ -48,4 +48,6 @@ export class BootcampDetailsComponent {
   throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
+
+  
 }
