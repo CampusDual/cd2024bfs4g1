@@ -82,35 +82,9 @@ label {
     grid-column: auto;
   }
 }
-.container {
-  width: 50%; 
-  margin: 20px auto; 
-  background-color: #d5e5e9; 
-  padding: 10px; 
-  border-radius: 15px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 12px; 
-  box-sizing: border-box; 
-}
 
-.general_combobox {
-  width: 100%;
-  margin-bottom: 20px;
-}
 
-.date-input-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 10px 20px; 
-  background-color: #d5e5e9; 
-  border-radius: 15px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  box-sizing: border-box; 
-}
-
+/* Calendario */
 .button-container {
   width: 100%;
   display: flex;
@@ -120,27 +94,26 @@ label {
 }
 
 .calendar-card {
-  width: 70%; 
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  width: 96%;
   padding: 5px; 
-  background-color: #d5e5e9; 
-  border-radius: 15px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   font-family: 'Roboto', sans-serif; 
   font-size: 10px; 
-  box-sizing: border-box; 
   display: flex; 
   justify-content: center; 
   align-items: center; 
 }
 
 mat-calendar {
-  width: 94%; 
+  width: 11%;
   font-size: 0.9em; 
 }
 
 .demo-inline-calendar-card {
   width: 300px; 
 }
+/* FIN Calendario */
 
 
 
