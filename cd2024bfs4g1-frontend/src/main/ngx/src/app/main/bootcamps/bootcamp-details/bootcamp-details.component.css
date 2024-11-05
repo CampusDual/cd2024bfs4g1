@@ -83,37 +83,40 @@ label {
   }
 }
 
+/* Estilos principales para centrar */
+.prueba {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+}
 
 /* Calendario */
-.button-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Asegura que ocupen espacio en línea */
+  gap: 10px; /* Espacio entre calendarios */
+  justify-items: center; /* Centra los calendarios en su celda */
+  max-width: 100%; /* Limita el ancho del contenedor */
 }
 
 .calendar-card {
   background-color: #f5f0f2;
   border-radius: 15px;
-  width: 96%;
   padding: 5px; 
   font-family: 'Roboto', sans-serif; 
   font-size: 10px; 
   display: flex; 
   justify-content: center; 
   align-items: center; 
+  width: 100%; /* Ancho del calendario */
 }
 
 mat-calendar {
-  width: 11%;
-  font-size: 0.9em; 
+  width: 100%; /* Ancho del calendario dentro de la card */
+  font-size: 0.9em;
 }
 
-.demo-inline-calendar-card {
-  width: 300px; 
-}
-/* FIN Calendario */
 
 
 
