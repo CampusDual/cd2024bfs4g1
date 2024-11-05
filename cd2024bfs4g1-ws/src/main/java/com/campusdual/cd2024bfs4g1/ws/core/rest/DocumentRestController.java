@@ -94,6 +94,6 @@ public class DocumentRestController extends ORestController<IDocumentService> {
             }
         }
 
-        return new ResponseEntity<EntityResult>(result, HttpStatus.OK);
+         return new ResponseEntity<EntityResult>(result, HttpStatus.OK);
     }
 }
