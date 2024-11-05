@@ -122,7 +122,7 @@ export class BootcampDetailsComponent {
   generateMonths(startDate: Date, endDate: Date) {
     this.months = [];
     const current = new Date(startDate);
-
+    current.setDate(1);
     while (current <= endDate) {
       this.months.push(new Date(current)); 
       current.setMonth(current.getMonth() + 1); 
