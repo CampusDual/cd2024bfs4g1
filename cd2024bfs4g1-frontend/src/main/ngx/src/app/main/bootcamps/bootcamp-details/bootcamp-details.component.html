@@ -1,5 +1,5 @@
 <o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
-  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no">
+  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"  (onDataLoaded)="onBootcampChange($event)">
   <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
 
     <div class="grid-container">
@@ -52,7 +52,14 @@
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
   </div>
-  <app-calendar></app-calendar> 
+  <div class="container" >
+    <div class="button-container">
+      <mat-card class="calendar-card" *ngIf="selected">
+        <mat-calendar [dateClass]="dateClass" #picker [startAt]="startAtDate">
+        </mat-calendar>
+      </mat-card>
+    </div>
+  </div>
   
 </o-form>
 

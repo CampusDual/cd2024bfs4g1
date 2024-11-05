@@ -6,7 +6,7 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { BootcampListComponent } from './bootcamp-list/bootcamp-list.component';
 import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp-add/student-bootcamp-add.component';
 import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
-import { CalendarComponent } from './calendar/calendar.component';
+
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     BootcampDetailsComponent,
     StudentBootcampAddComponent,
     BootcampNewComponent,
-    CalendarComponent
+
   ],
   imports: [
     CommonModule,
