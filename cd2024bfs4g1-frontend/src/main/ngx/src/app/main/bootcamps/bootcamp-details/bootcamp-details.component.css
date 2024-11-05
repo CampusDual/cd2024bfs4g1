@@ -88,7 +88,7 @@ label {
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
-  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  margin-top: 10px;
 }
 
 /* Calendario */
@@ -110,6 +110,7 @@ label {
   justify-content: center; 
   align-items: center; 
   width: 100%; /* Ancho del calendario */
+  height: 100%;
 }
 
 mat-calendar {
