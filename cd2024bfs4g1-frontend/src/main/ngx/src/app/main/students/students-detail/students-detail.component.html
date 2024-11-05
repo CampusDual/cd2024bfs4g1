@@ -1,13 +1,16 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D" show-header-navigation="no" >
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D"
+  show-header-navigation="no">
   <div o-form-toolbar-buttons>
-    <o-button attr="backButton" class="o-form-toolbar-button"  type="RAISED" icon="keyboard_backspace" label="Go back" (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
+    <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
+      (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
-  <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no"/>
-    <div class="grid-container">
+  <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
+  <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="name" required="yes" id="name" max-length="255"
+        (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
@@ -23,33 +26,27 @@
     </div>
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes" ></o-phone-input>
+      <o-phone-input attr="phone" required="yes"></o-phone-input>
     </div>
     <div class="employmentStatus">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-      <o-text-input attr="employment_status" required="yes" max-length="20" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="employment_status" required="yes" max-length="20"
+        (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
 
     <div class="status">
       <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
-      <o-combo
-      attr="status" required="yes" translate="yes"  [static-data]="[
+      <o-combo attr="status" required="yes" translate="yes" [static-data]="[
       { key: 'NOT_ELIGIBLE' },
       { key: 'UNDER_REVIEW' }
-    ]"
-      value-column="key"
-      columns="key"
-      visible-columns="key"
-      required="yes"
-      null-selection="false">
+    ]" value-column="key" columns="key" visible-columns="key" required="yes" null-selection="false">
 
-    </o-combo>
+      </o-combo>
     </div>
     <div class="comunidad">
       <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
-      <o-combo attr="spain_comunity"   [static-data]="dataArray"
-      [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-      columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
+      <o-combo attr="spain_comunity" [static-data]="dataArray" [data]="valueSimple" required="yes" searchable="yes"
+        value-column="key" columns="key;value" visible-columns="value" null-selection="false"></o-combo>
     </div>
 
     <div class="location">
@@ -60,20 +57,19 @@
 
     <div class="fechaCumple">
       <label for="LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>
-      <o-date-input attr="birth_date" required="yes"  format="DD/MM/YYYY"></o-date-input>
+      <o-date-input attr="birth_date" required="yes" format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="email">
       <label for="LEMAIL">{{'LEMAIL'|oTranslate}}</label>
-      <o-email-input attr="personal_email" required="yes" ></o-email-input>
+      <o-email-input attr="personal_email" required="yes"></o-email-input>
     </div>
     <div class="emailCampus">
       <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-      <o-email-input attr="campus_email" required="no" ></o-email-input>
+      <o-email-input attr="campus_email" required="no"></o-email-input>
     </div>
     <div class="fctSchool">
       <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-      <o-text-input attr="fct_school" required="no" max-length="100"
-      (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="tutor">
       <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
@@ -81,16 +77,16 @@
     </div>
     <div class="fctStart">
       <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
-      <o-date-input #startdate attr="fct_start" required="no"
-                    format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)">
+      <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
+        (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
     <div class="fctEnd">
       <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-      <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
-                    format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
-        <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
+      <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
+        (onValueChange)="throwChange2(startdate)">
+        <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
 
     </div>
@@ -100,7 +96,7 @@
       <o-checkbox attr="udemy"></o-checkbox>
     </div>
 
-    <div class="table_container" >
+    <div class="table_container">
 
       <o-form-layout-manager attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
@@ -124,13 +120,25 @@
       <label for="LNOTES">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
     </div>
-   
+
   </div>
   <div fxFlex="98">
     <label for="Upload">{{'Upload Document' | oTranslate}}</label>
-    <o-file-input #fileinput attr="file" fxFlex="50" label="{{'Upload Document' | oTranslate }}"
-    service="documents" entity="upload" max-file-size="100000" multiple="yes" max-num-files="5"
-    split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
-    (onUpload)="onUploadFiles($event)" (onError)="onError($event)" fxFlex="100"></o-file-input>
+    <o-file-input #fileinput attr="file" fxFlex="50" label="{{'Upload Document' | oTranslate }}" service="documents"
+      entity="upload" max-file-size="100000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
+      [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
+      (onError)="onError($event)" fxFlex="100"></o-file-input>
   </div>
+
+  <o-table class="general_table" attr="documentsTable" service="documents" entity="personalFiles" keys="id"
+    parent-keys="student_id:id" columns="id;file_path" visible-columns="file_path" detail-mode="false"
+    delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+    refresh-button="false">
+    <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+    <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+    <o-table-column attr="file_path" title="Document Path"></o-table-column>
+    <!-- <o-table-column attr="action" width="10px">
+      <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
+    </o-table-column> -->
+  </o-table>
 </o-form>
