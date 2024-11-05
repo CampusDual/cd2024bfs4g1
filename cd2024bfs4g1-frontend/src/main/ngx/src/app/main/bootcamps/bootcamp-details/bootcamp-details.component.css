@@ -134,7 +134,7 @@ label {
 }
 
 mat-calendar {
-  width: 70%; 
+  width: 94%; 
   font-size: 0.9em; 
 }
 
@@ -142,16 +142,5 @@ mat-calendar {
   width: 300px; 
 }
 
-.titulo3 {
-  background-color: #d5e5e9;
-  text-align: center;
-  padding: 3px 0;
-}
 
-label {
-  background-color: #d5e9de; 
-  padding: 5px; 
-  border-radius: 5px; 
-  display: inline-block; 
-}
 
