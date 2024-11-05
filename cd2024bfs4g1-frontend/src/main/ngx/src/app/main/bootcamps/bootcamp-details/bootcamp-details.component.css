@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif; /* Asegúrate de que Roboto esté correctamente cargado */
+  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
@@ -28,7 +28,7 @@ label {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Ajusta según el diseño deseado */
+  grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: 10px;
   height: auto;
@@ -53,6 +53,9 @@ label {
 .notas {
   grid-column: 2 / 4;
 }
+.gridcalendario{
+  grid-column: 1/4;
+}
 
 .table_container {
   padding: 30px;
@@ -71,7 +74,7 @@ label {
   }
 
   .grid-container {
-    grid-template-columns: 1fr; /* Una columna en pantallas más pequeñas */
+    grid-template-columns: 1fr;
   }
 
   .nombre,
@@ -79,25 +82,29 @@ label {
   .fecha-fin,
   .descripcion,
   .notas {
-    grid-column: auto; /* Ajusta automáticamente en pantallas pequeñas */
+    grid-column: auto;
   }
 }
 
-/* Estilos principales para centrar */
 .prueba {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
 }
 
-/* Calendario */
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Cambiado a 3 columnas fijas */
-  gap: 10px; /* Espacio entre calendarios */
-  justify-items: center; /* Centra los calendarios en su celda */
-  max-width: 100%; /* Limita el ancho del contenedor */
+  display: flex;
+  flex-direction: column;
+  max-height: 400px; /* Altura máxima para el contenedor de calendarios */
+  overflow-y: auto; /* Permitir desplazamiento vertical */
+  overflow-x: hidden; /* Deshabilitar desplazamiento horizontal */
+}
+
+.button-container {
+  display: grid; /* Usar grid para las columnas */
+  grid-template-columns: repeat(6, 1fr); /* 6 columnas */
+  gap: 10px; /* Espacio entre los calendarios */
 }
 
 .calendar-card {
@@ -109,13 +116,22 @@ label {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  width: 100%; /* Ancho del calendario */
-  height: 100%;
+  min-height: 150px; /* Ajusta esta altura mínima según sea necesario */
+  width: 100%; /* Asegura que las tarjetas ocupen el 100% del espacio disponible */
+  position: relative; /* Para manejar el contenido interno */
+  overflow: hidden; /* Oculta contenido que se desborda */
 }
 
 mat-calendar {
-  width: 100%; /* Ancho del calendario dentro de la card */
+  width: 100%; 
+  height: 100%; /* Esto asegura que el calendario ocupe todo el espacio de su tarjeta */
   font-size: 0.9em;
-  pointer-events: none; /* Evita la interacción */
+  pointer-events: none; 
+  overflow: hidden; /* Asegura que no haya contenido desbordante */
 }
 
+/* Para limitar el tamaño del contenido dentro del calendario */
+mat-calendar .mat-calendar-body-cell {
+  max-width: 100%; /* Asegura que las celdas no excedan el ancho */
+  max-height: 100%; /* Asegura que las celdas no excedan la altura */
+}
