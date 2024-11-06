@@ -7,7 +7,6 @@ o-form {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  
 }
 
 label {
@@ -18,6 +17,7 @@ label {
   color: #dc2955;
 }
 
+/* Container Styles */
 .grid-container,
 .table_container {
   width: 96%;
@@ -32,9 +32,15 @@ label {
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: 10px;
-  height: auto;
 }
 
+.table_container {
+  flex-direction: row;
+  max-height: 800px;
+  padding: 30px;
+}
+
+/* Grid Layout */
 .nombre {
   grid-column: 1 / 2;
 }
@@ -54,28 +60,55 @@ label {
 .notas {
   grid-column: 2 / 4;
 }
-.gridcalendario{
-  grid-column: 1/4;
+
+.gridcalendario {
+  grid-column: 1 / 4;
 }
 
-.table_container {
-  flex-direction: row;
-  max-height: 800px; 
-  
-  padding: 30px;
-  
+/* Calendar & Button Containers */
+.calendar-container,
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
-.general_table {
+.calendar-container {
+  align-items: flex-start;
+  margin-top: 10px;
+  overflow-y: auto; /* Permite desplazamiento vertical */
+  max-height: 100vh; /* Limita la altura total */
+  padding-bottom: 20px; /* Añade margen inferior */
+}
+
+.button-container {
+  min-height: 200px;
+}
+
+/* Calendar Card */
+.calendar-card {
   background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 6 - 40px);
+  min-width: 250px;
+  max-width: 250px;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 30px; /* Margen debajo de cada card */
 }
 
+/* Responsive Layout */
 @media (max-width: 768px) {
   .grid-container,
   .table_container {
     width: 98%;
     padding: 15px;
-    
   }
 
   .grid-container {
@@ -89,43 +122,13 @@ label {
   .notas {
     grid-column: auto;
   }
+
+  .calendar-card {
+    width: 100%; /* Ajusta el ancho en dispositivos pequeños */
+  }
 }
 
-.calendar-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;  
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 10px;
-  height: auto;  
-}
-
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  min-height: 200px; 
-}
-
-.calendar-card {
-  background-color: #f5f0f2;
-  border-radius: 15px;
-  padding: 5px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% / 6 - 40px); 
-  min-width: 250px;
-  max-width: 250px; 
-  height: auto; 
-  box-sizing: border-box;
-}
-
-
+/* Calendar Styles */
 mat-calendar {
   width: 100%;
   font-size: 0.9em;
@@ -133,11 +136,9 @@ mat-calendar {
   overflow: hidden;
 }
 
-
-
 mat-calendar .mat-calendar-body-cell {
-  max-width: 100%; 
-  max-height: 100%; 
+  max-width: 100%;
+  max-height: 100%;
 }
 
 mat-calendar .mat-calendar-arrow {
