@@ -7,6 +7,7 @@ o-form {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  
 }
 
 label {
@@ -59,9 +60,8 @@ label {
 
 .table_container {
   flex-direction: row;
-  max-height: 400px; /* Altura máxima para el contenedor de calendarios */
-  overflow-y: auto; /* Permitir desplazamiento vertical */
-  overflow-x: auto; /* Deshabilitar desplazamiento horizontal */
+  max-height: 800px; /* Altura máxima para el contenedor de calendarios */
+  
   padding: 30px;
   
 }
