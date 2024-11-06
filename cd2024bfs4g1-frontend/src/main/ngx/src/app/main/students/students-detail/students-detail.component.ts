@@ -79,9 +79,6 @@ export class StudentsDetailComponent {
     }else{
       return null;
     }
-
-
-
   }
 
 
