@@ -1,0 +1,26 @@
+<o-form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="I;U;D" show-header-navigation="no" >
+    <div o-form-toolbar-buttons>
+      <o-button attr="backButton" class="o-form-toolbar-button"  type="RAISED" icon="keyboard_backspace" label="Go back" (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
+    </div>
+  
+    <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no"/>
+      <div class="grid-container">
+      <div class="nombre">
+        <label for="name">{{'LNAME'|oTranslate}}</label>
+        <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div class="apellido">
+        <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
+        <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div class="apellido2">
+        <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+        <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div class="email">
+        <label for="LEMAIL">{{'LEMAIL'|oTranslate}}</label>
+        <o-email-input attr="personal_email" required="yes" ></o-email-input>
+      </div>
+    </div>
+  </o-form>
+  

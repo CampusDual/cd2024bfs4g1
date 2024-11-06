@@ -1,0 +1,66 @@
+.general_table {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #f5f0f2;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .table_container {
+    width: 90%;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  
+  .table_row {
+    max-height: 32px;
+    overflow: hidden;
+  }
+  
+  .table_cell {
+    padding: 6px;
+  }
+  
+  .students-filters-form {
+    width: 68%;
+    margin: 20px auto;
+    background-color: #d5e5e9;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .filter_style {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; 
+    background-color: #f5f0f2;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 93%; 
+    margin: 5px auto;
+    box-sizing: border-box;
+  }
+  
+  .filter_style o-text-input,
+  .filter_style o-combo {
+    width: 100%;
+    min-width: 100px;
+  }
+  
+  .centered-actions {
+    grid-column: 1 / -1; 
+    justify-content: center; 
+    margin-top: 10px;
+  }
+  
+  
+  
+  
+  
+  
