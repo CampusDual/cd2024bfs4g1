@@ -1,0 +1,31 @@
+<div class="calendar-timestamps-container">
+    <div class="sidebar">
+        Sidebar
+    </div>
+
+    <div class="calendar-container">
+        <div class="date-rows" onscroll="onScroll(event)">
+            <div class="date-item-container ">
+                <div class="years">
+                    <div *ngFor="let year of years" class="date-item year">{{year}}</div>
+                </div>
+                <o-button color="primary" label="Prev">Prev</o-button>
+                <o-button color="primary" label="Next">Next</o-button>
+            </div>
+            <div class="date-item-container ">
+                <div class="months">
+                    <div *ngFor="let month of months" class="date-item month">{{month}}</div>
+                </div>
+                <o-button color="primary" label="Prev">Prev</o-button>
+                <o-button color="primary" label="Next">Next</o-button>
+            </div>
+            <div class="date-item-container days">
+                <div *ngFor="let day of days" class="date-item day">{{day}}</div>
+            </div>
+
+        </div>
+
+        <div class="calendar">Eventos aqui</div>
+    </div>
+
+</div>

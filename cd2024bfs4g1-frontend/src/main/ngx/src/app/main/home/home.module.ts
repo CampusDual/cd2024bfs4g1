@@ -6,6 +6,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CalendarTimestampsComponent } from '../calendar-timestamps/calendar-timestamps/calendar-timestamps.component';
+import { CalendarTimestampsModule } from '../calendar-timestamps/calendar-timestamps.module';
 
 @NgModule({
   imports: [
@@ -14,9 +16,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     HomeRoutingModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    CalendarTimestampsModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
   ]
 })
 export class HomeModule { }
