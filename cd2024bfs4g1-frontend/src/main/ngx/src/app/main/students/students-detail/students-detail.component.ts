@@ -22,7 +22,7 @@ export class StudentsDetailComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location: Location, public injector:Injector) {
+  constructor(private router: Router, public location: Location, public injector: Injector) {
     this.validatorsArray.push(this.dateValidator);
     this.service = this.injector.get(OntimizeService);
     this.configureService();
@@ -86,6 +86,8 @@ export class StudentsDetailComponent {
 
   onUploadFiles(event) {
     console.log(event);
+    alert("File added")
+
   }
 
   onFileUpload() {
@@ -111,7 +113,7 @@ export class StudentsDetailComponent {
         let filename = res.data[0].name;
         let base64 = res.data[0].base64;
         // Se crea un enlace temporal para descargar el archivo.
-        const src = `data:text/csv;base64,${base64}`; 
+        const src = `data:text/csv;base64,${base64}`;
         const link = document.createElement("a");
         link.href = src;
         link.download = filename;

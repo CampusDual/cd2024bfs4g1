@@ -100,7 +100,7 @@
 
       <o-form-layout-manager attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
-          
+
           <div class="upload-container" style="display: flex; flex-direction: column;">
             <label for="fileinput">{{ 'Upload Document' | oTranslate }}</label>
             <o-file-input #fileinput attr="file" fxFlex="50" label="{{ 'Upload Document' | oTranslate }}"
@@ -114,7 +114,7 @@
 
             <o-table class="general_table" attr="documentsTable" service="documents" entity="personalFiles" keys="id"
               parent-keys="student_id:id" columns="id;name" visible-columns="name" detail-mode="false"
-              delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+              show-report-on-demand-option="false" show-charts-on-demand-option="false"
               refresh-button="false" insert-button="false" quick-filter="false"
               show-paginator-first-last-buttons="false" pagination-controls="no">
               <o-table-context-menu view-detail="false" edit="false" delete="false"
