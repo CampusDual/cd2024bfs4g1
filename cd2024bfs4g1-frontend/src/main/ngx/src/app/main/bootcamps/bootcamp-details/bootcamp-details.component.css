@@ -60,7 +60,7 @@ label {
 
 .table_container {
   flex-direction: row;
-  max-height: 800px; /* Altura máxima para el contenedor de calendarios */
+  max-height: 800px; 
   
   padding: 30px;
   
@@ -91,7 +91,7 @@ label {
   }
 }
 
-.prueba {
+.calendar-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +102,7 @@ label {
 .button-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centra los calendarios cuando hay menos de 6 */
+  justify-content: center;
   gap: 15px;
   max-height: 400px;
 
@@ -117,10 +117,10 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% / 6 - 40px); /* Ajuste automático para 6 columnas */
+  width: calc(100% / 6 - 40px); 
   min-width: 250px;
-  max-width: 250px; /* Tamaño mínimo para no volverse demasiado pequeño */
-  height: auto; /* Altura flexible */
+  max-width: 250px; 
+  height: auto; 
   box-sizing: border-box;
 }
 
@@ -133,10 +133,9 @@ mat-calendar {
 
 
 
-/* Para limitar el tamaño del contenido dentro del calendario */
 mat-calendar .mat-calendar-body-cell {
-  max-width: 100%; /* Asegura que las celdas no excedan el ancho */
-  max-height: 100%; /* Asegura que las celdas no excedan la altura */
+  max-width: 100%; 
+  max-height: 100%; 
 }
 
 mat-calendar .mat-calendar-arrow {
