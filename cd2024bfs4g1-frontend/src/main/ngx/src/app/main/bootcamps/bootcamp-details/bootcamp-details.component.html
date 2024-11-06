@@ -1,33 +1,48 @@
 <o-form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
-  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no">
+  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
+  (onDataLoaded)="onBootcampChange($event)">
   <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
 
-    <div class="grid-container">
-      <div class="especial nombre">
-        <label for="LNAME">{{'LNAME' | oTranslate}}</label>
-        <o-text-input label-visible="false" attr="name" required="yes"></o-text-input>
-      </div>
-      <div class="especial fecha-inicio">
-        <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label>
-        <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"
-          (onValueChange)="throwChange(enddate)"></o-date-input>
-      </div>
-      <div class="especial fecha-fin">
-        <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label>
-        <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray" format="DD/MM/YYYY"
-          (onValueChange)="throwChange2(startdate)">
-          <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-        </o-date-input>
-      </div>
-      <div class="especial descripcion">
-        <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
-        <o-textarea-input label-visible="false" attr="description" required="no" max-length="200"></o-textarea-input>
-      </div>
-      <div class="especial notas">
-        <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
-        <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
-      </div>
+  <div class="grid-container">
+    <div class="especial nombre">
+      <label for="LNAME">{{'LNAME' | oTranslate}}</label>
+      <o-text-input label-visible="false" attr="name" required="yes"></o-text-input>
     </div>
+    <div class="especial fecha-inicio">
+      <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label>
+      <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"
+        (onValueChange)="throwChange(enddate)"></o-date-input>
+    </div>
+    <div class="especial fecha-fin">
+      <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label>
+      <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray"
+        format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+        <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+      </o-date-input>
+    </div>
+    <div class="especial descripcion">
+      <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
+      <o-textarea-input label-visible="false" attr="description" required="no" max-length="200"></o-textarea-input>
+    </div>
+    <div class="especial notas">
+      <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
+      <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
+    </div>
+      <o-column-collapsible class="gridcalendario" title="{{'CALENDAR' | oTranslate}}" appearance="legacy" expanded="no" icon="calendar_today" elevation="2">
+        <div class="table_container">
+          <div class="calendar-container">
+            <div class="container" *ngIf="months.length > 0">
+              <div class="button-container">
+                <mat-card class="calendar-card" *ngFor="let month of months">
+                  <mat-calendar [dateClass]="dateClass" #picker [startAt]="month">
+                  </mat-calendar>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </o-column-collapsible>
+  </div>
 
   <div class="table_container" fxLayout="column" fxLayoutFill>
     <o-form-layout-manager attr="addStudentLayout" mode="dialog">
@@ -38,9 +53,7 @@
           visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" query-rows="10"
           detail-mode="true" delete-button="false" show-report-on-demand-option="false"
           show-charts-on-demand-option="false">
-          <o-table-paginator
-            page-size="20"
-            page-size-options="10;20;40">
+          <o-table-paginator page-size="20" page-size-options="10;20;40">
           </o-table-paginator>
           <o-table-column attr="action" width="64px">
             <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
@@ -52,8 +65,6 @@
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
   </div>
+
+
 </o-form>
-
-
-
-

@@ -8,12 +8,14 @@ import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp
 import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
 
 
+
 @NgModule({
   declarations: [
     BootcampListComponent,
     BootcampDetailsComponent,
     StudentBootcampAddComponent,
-    BootcampNewComponent
+    BootcampNewComponent,
+
   ],
   imports: [
     CommonModule,
