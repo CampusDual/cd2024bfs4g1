@@ -176,5 +176,11 @@
   "LDESPCRIPTION":"Descripción",
   "LNOTE":"Notas",
   "DNI": "DNI",
-  "NIF": "DNI"
+  "NIF": "DNI",
+  "WORKING": "Trabajando",
+  "SELF_EMPLOYED": "Autonomo",
+  "UNEMPLOYED": "Desempleado",
+  "STUDENT": "Estudiante"
+
+  
 }

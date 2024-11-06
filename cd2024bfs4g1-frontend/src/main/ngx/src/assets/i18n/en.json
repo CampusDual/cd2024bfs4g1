@@ -177,5 +177,9 @@
   "LDESPCRIPTION":"Description",
   "LNOTE":"Notes",
   "DNI": "ID",
-  "NIF": "ID"
+  "NIF": "ID",
+  "WORKING": "Working",
+  "SELF_EMPLOYED": "Self employed",
+  "UNEMPLOYED": "Unemployed",
+  "STUDENT": "Student"
 }
