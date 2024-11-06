@@ -17,7 +17,7 @@ label {
   color: #dc2955;
 }
 
-/* Container Styles */
+
 .grid-container,
 .table_container {
   width: 96%;
@@ -40,7 +40,7 @@ label {
   padding: 30px;
 }
 
-/* Grid Layout */
+
 .nombre {
   grid-column: 1 / 2;
 }
@@ -65,7 +65,7 @@ label {
   grid-column: 1 / 4;
 }
 
-/* Calendar & Button Containers */
+
 .calendar-container,
 .button-container {
   display: flex;
@@ -78,15 +78,15 @@ label {
   align-items: flex-start;
   margin-top: 10px;
 
-  max-height: 100vh; /* Limita la altura total */
-  padding-bottom: 20px; /* Añade margen inferior */
+  max-height: 100vh; 
+  padding-bottom: 20px; 
 }
 
 .button-container {
   min-height: 200px;
 }
 
-/* Calendar Card */
+
 .calendar-card {
   background-color: #f5f0f2;
   border-radius: 15px;
@@ -100,10 +100,10 @@ label {
   max-width: 250px;
   height: auto;
   box-sizing: border-box;
-  margin-bottom: 45px; /* Margen debajo de cada card */
+  margin-bottom: 45px; 
 }
 
-/* Responsive Layout */
+
 @media (max-width: 768px) {
   .grid-container,
   .table_container {
@@ -124,11 +124,11 @@ label {
   }
 
   .calendar-card {
-    width: 100%; /* Ajusta el ancho en dispositivos pequeños */
+    width: 100%; 
   }
 }
 
-/* Calendar Styles */
+
 mat-calendar {
   width: 100%;
   font-size: 0.9em;
