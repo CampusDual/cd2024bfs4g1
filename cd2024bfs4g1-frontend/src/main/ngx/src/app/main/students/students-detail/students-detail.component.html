@@ -100,13 +100,23 @@
 
       <o-form-layout-manager attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
+          
+          <div class="upload-container" style="display: flex; flex-direction: column;">
+            <label for="fileinput">{{ 'Upload Document' | oTranslate }}</label>
+            <o-file-input #fileinput attr="file" fxFlex="50" label="{{ 'Upload Document' | oTranslate }}"
+              service="documents" entity="upload" max-file-size="100000" multiple="yes" max-num-files="5"
+              split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
+              (onUpload)="onUploadFiles($event)" (onError)="onError($event)" fxFlex="100">
+            </o-file-input>
+          </div>
+
           <div class="table-container" style="display: flex; gap: 20px; ">
 
             <o-table class="general_table" attr="documentsTable" service="documents" entity="personalFiles" keys="id"
               parent-keys="student_id:id" columns="id;name" visible-columns="name" detail-mode="false"
               delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
-              refresh-button="false" insert-button="false">
-              <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+              refresh-button="false" insert-button="false" quick-filter="false"
+              show-paginator-first-last-buttons="false" pagination-controls="no">
               <o-table-context-menu view-detail="false" edit="false" delete="false"
                 insert="false"></o-table-context-menu>
               <o-table-column attr="name" title="Document name"></o-table-column>
@@ -138,14 +148,6 @@
     <div class="notes">
       <label for="LNOTES">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
-    </div>
-    <div class="upload-container" style="display: flex; flex-direction: column;">
-      <label for="fileinput">{{ 'Upload Document' | oTranslate }}</label>
-      <o-file-input #fileinput attr="file" fxFlex="50" label="{{ 'Upload Document' | oTranslate }}" service="documents"
-        entity="upload" max-file-size="100000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
-        [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
-        (onError)="onError($event)" fxFlex="100">
-      </o-file-input>
     </div>
   </div>
 
