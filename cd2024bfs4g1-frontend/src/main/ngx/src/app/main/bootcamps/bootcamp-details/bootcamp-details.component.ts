@@ -30,9 +30,9 @@ export class BootcampDetailsComponent {
     this.router.navigate(['/main/students', studentId])
   }
 
-  deleteStudentFromBootcamp(event: any) {
-    const relationId = event.id
-
+  goToStudentBootcampDetail(event: any){
+    const studentId = event.student_id;
+    this.router.navigate(['/main/students', studentId])
   }
 
   volver(e) {
