@@ -100,14 +100,33 @@
 
       <o-form-layout-manager attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
-          <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
-            entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-            visible-columns="bootcampname" detail-mode="false" delete-button="false"
-            show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false">
-            <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-            <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
-            <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-          </o-table>
+          <div class="table-container" style="display: flex; gap: 20px; ">
+
+            <o-table class="general_table" attr="documentsTable" service="documents" entity="personalFiles" keys="id"
+              parent-keys="student_id:id" columns="id;name" visible-columns="name" detail-mode="false"
+              delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+              refresh-button="false" insert-button="false">
+              <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+              <o-table-context-menu view-detail="false" edit="false" delete="false"
+                insert="false"></o-table-context-menu>
+              <o-table-column attr="name" title="Document name"></o-table-column>
+              <o-table-column attr="action" width="10px">
+                <o-table-cell-renderer-action (onClick)="actionClick($event)"
+                  icon="download"></o-table-cell-renderer-action>
+              </o-table-column>
+            </o-table>
+
+            <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
+              entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
+              visible-columns="bootcampname" detail-mode="false" delete-button="false"
+              show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false">
+              <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+              <o-table-context-menu view-detail="false" edit="false" delete="false"
+                insert="false"></o-table-context-menu>
+              <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+            </o-table>
+
+          </div>
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
 
@@ -120,25 +139,14 @@
       <label for="LNOTES">{{'LNOTES' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
     </div>
-
+    <div class="upload-container" style="display: flex; flex-direction: column;">
+      <label for="fileinput">{{ 'Upload Document' | oTranslate }}</label>
+      <o-file-input #fileinput attr="file" fxFlex="50" label="{{ 'Upload Document' | oTranslate }}" service="documents"
+        entity="upload" max-file-size="100000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
+        [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
+        (onError)="onError($event)" fxFlex="100">
+      </o-file-input>
+    </div>
   </div>
-  <div fxFlex="98">
-    <label for="Upload">{{'Upload Document' | oTranslate}}</label>
-    <o-file-input #fileinput attr="file" fxFlex="50" label="{{'Upload Document' | oTranslate }}" service="documents"
-      entity="upload" max-file-size="100000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
-      [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
-      (onError)="onError($event)" fxFlex="100"></o-file-input>
-  </div>
 
-  <o-table class="general_table" attr="documentsTable" service="documents" entity="personalFiles" keys="id"
-    parent-keys="student_id:id" columns="id;name" visible-columns="name" detail-mode="false"
-    delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
-    refresh-button="false">
-    <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-    <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
-    <o-table-column attr="name" title="Document name"></o-table-column>
-    <o-table-column attr="action" width="10px">
-      <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
-    </o-table-column>
-  </o-table>
 </o-form>
