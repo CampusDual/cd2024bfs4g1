@@ -110,12 +110,12 @@ label {
 .calendar-card {
   background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 5px; 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 10px; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 150px; /* Ajusta esta altura mínima según sea necesario */
   width: 100%; /* Asegura que las tarjetas ocupen el 100% del espacio disponible */
   position: relative; /* Para manejar el contenido interno */
@@ -123,10 +123,10 @@ label {
 }
 
 mat-calendar {
-  width: 100%; 
+  width: 100%;
   height: 100%; /* Esto asegura que el calendario ocupe todo el espacio de su tarjeta */
   font-size: 0.9em;
-  pointer-events: none; 
+  pointer-events: none;
   overflow: hidden; /* Asegura que no haya contenido desbordante */
 }
 
@@ -134,4 +134,8 @@ mat-calendar {
 mat-calendar .mat-calendar-body-cell {
   max-width: 100%; /* Asegura que las celdas no excedan el ancho */
   max-height: 100%; /* Asegura que las celdas no excedan la altura */
+}
+
+mat-calendar .mat-calendar-arrow {
+  display: none;
 }
