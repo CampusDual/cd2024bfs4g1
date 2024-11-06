@@ -45,7 +45,7 @@ public class StudentBootcampService implements IStudentBootcampService {
     }
 
     @Override
-      public EntityResult studentBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+      public EntityResult studentsWithBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
           return this.daoHelper.delete(this.studentBootcampDao, keyMap);
     }
      @Override
