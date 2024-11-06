@@ -94,18 +94,19 @@ label {
 .calendar-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;  
+  flex-wrap: wrap;
+  gap: 15px;
   margin-top: 10px;
+  height: auto;  
 }
-
 
 .button-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  max-height: 400px;
-
+  min-height: 200px; 
 }
 
 .calendar-card {
@@ -123,6 +124,7 @@ label {
   height: auto; 
   box-sizing: border-box;
 }
+
 
 mat-calendar {
   width: 100%;
