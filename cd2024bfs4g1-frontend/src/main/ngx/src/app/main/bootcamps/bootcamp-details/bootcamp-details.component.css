@@ -100,9 +100,12 @@ label {
 
 
 .button-container {
-  display: grid; /* Usar grid para las columnas */
-  grid-template-columns: repeat(6, 1fr); /* 6 columnas */
-  gap: 10px; /* Espacio entre los calendarios */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los calendarios cuando hay menos de 6 */
+  gap: 15px;
+  max-height: 400px;
+
 }
 
 .calendar-card {
@@ -114,19 +117,21 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 150px; /* Ajusta esta altura mínima según sea necesario */
-  width: 100%; /* Asegura que las tarjetas ocupen el 100% del espacio disponible */
-  position: relative; /* Para manejar el contenido interno */
-  overflow: hidden; /* Oculta contenido que se desborda */
+  width: calc(100% / 6 - 40px); /* Ajuste automático para 6 columnas */
+  min-width: 250px;
+  max-width: 250px; /* Tamaño mínimo para no volverse demasiado pequeño */
+  height: auto; /* Altura flexible */
+  box-sizing: border-box;
 }
 
 mat-calendar {
   width: 100%;
-  height: 100%; /* Esto asegura que el calendario ocupe todo el espacio de su tarjeta */
   font-size: 0.9em;
   pointer-events: none;
-  overflow: hidden; /* Asegura que no haya contenido desbordante */
+  overflow: hidden;
 }
+
+
 
 /* Para limitar el tamaño del contenido dentro del calendario */
 mat-calendar .mat-calendar-body-cell {
