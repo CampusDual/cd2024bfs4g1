@@ -77,7 +77,7 @@ label {
 .calendar-container {
   align-items: flex-start;
   margin-top: 10px;
-  overflow-y: auto; /* Permite desplazamiento vertical */
+
   max-height: 100vh; /* Limita la altura total */
   padding-bottom: 20px; /* Añade margen inferior */
 }
@@ -100,7 +100,7 @@ label {
   max-width: 250px;
   height: auto;
   box-sizing: border-box;
-  margin-bottom: 30px; /* Margen debajo de cada card */
+  margin-bottom: 45px; /* Margen debajo de cada card */
 }
 
 /* Responsive Layout */
