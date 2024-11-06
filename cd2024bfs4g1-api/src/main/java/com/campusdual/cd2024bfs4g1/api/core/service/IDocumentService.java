@@ -11,6 +11,10 @@ public interface IDocumentService {
 
     public EntityResult personalFileInsert(Map<String, Object> attrMap);//throws OntimizeJEERuntimeException;
 
+    public EntityResult studentdocumentQuery(Map<String, Object> keyMap, List<String> attrList);//throws OntimizeJEERuntimeException;
+
+    public EntityResult studentdocumentInsert(Map<String, Object> attrMap);
+
     EntityResult personalFilesDelete(Map<String, Object> keyMap);//throws OntimizeJEERuntimeException;
 
     EntityResult myPersonalFilesContentQuery(Map<String, Object> keyMap, List<String> attrList);
