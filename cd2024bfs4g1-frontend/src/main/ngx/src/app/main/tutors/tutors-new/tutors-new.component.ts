@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./tutors-new.component.css']
 })
 export class TutorsNewComponent {
-
+  toUpperCamelCase(event: any) {
+    event.target.value = event.target.value
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+  }
 }

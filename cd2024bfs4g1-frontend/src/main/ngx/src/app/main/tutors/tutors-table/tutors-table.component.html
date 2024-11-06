@@ -1,8 +1,7 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name">
     <div class="table_container">
-        <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
             <o-table #tableTutors virtual-scroll="false" class="general_table" attr="tutorsTable" service="tutors" sort-columns="name"
-                entity="student" keys="id"
+                entity="tutor" keys="id"
                 columns="id;name;surname1;surname2;email"
                 visible-columns="name;surname1;surname2;email" delete-button="false"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Tutors"
@@ -15,6 +14,5 @@
                 </o-table-context-menu>
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
             </o-table>
-        </o-form>
     </div>
 </o-form-layout-manager>

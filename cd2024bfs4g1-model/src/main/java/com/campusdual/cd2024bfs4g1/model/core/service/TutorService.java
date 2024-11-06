@@ -29,21 +29,21 @@ public class TutorService implements ITutorService {
 
     @Override
     public EntityResult tutorQuery(Map<String, Object> keyMap, List<String> attributes) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.query(tutorDao, keyMap, attributes);
     }
 
     @Override
     public EntityResult tutorInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.insert(tutorDao, attrMap);
     }
 
     @Override
     public EntityResult tutorUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.update(tutorDao, attrMap, keyMap);
     }
 
     @Override
     public EntityResult tutorDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.delete(tutorDao, keyMap);
     }
 }
