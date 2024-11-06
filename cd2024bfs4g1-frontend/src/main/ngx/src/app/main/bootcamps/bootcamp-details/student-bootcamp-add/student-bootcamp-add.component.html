@@ -3,7 +3,19 @@
     undo-button="false" label-header-align="center" after-insert-mode="new">
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students"
-      entity="student" visible-columns="name;surname1;surname2" searchable="yes" sortable="yes" sort="ASC" null-selection="no">
+      entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no">
+    </o-combo>
+    <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
+    <o-combo attr="status" required="yes" translate="yes" [static-data]="[
+    { key: 'Candidato' },
+    { key: 'Contactado' },
+    { key: 'Confirmado' },
+    { key: 'Cancelado' },
+    { key: 'Activo' },
+    { key: 'Finalizado contratable' },
+    { key: 'Finalizado no contratabl' },
+    { key: 'No finalizado' },
+  ]" value-column="key" columns="key" visible-columns="key" required="yes" null-selection="false" [data]="'Candidato'">
     </o-combo>
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
       <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"

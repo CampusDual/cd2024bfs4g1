@@ -36,7 +36,6 @@ label {
 
 .table_container {
   flex-direction: row;
-  max-height: 800px;
   padding: 30px;
 }
 
