@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IDocumentService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.DocumentFileDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDocumentDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Service;
 public class DocumentService implements IDocumentService {
     @Autowired
     private DocumentFileDao documentFileDao;
+    @Autowired
+    private StudentDocumentDao studentdocumentDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -37,6 +40,16 @@ public class DocumentService implements IDocumentService {
     @Override
     public EntityResult personalFileInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(this.documentFileDao, attrMap);
+    }
+
+    @Override
+    public EntityResult studentdocumentQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(this.studentdocumentDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult studentdocumentInsert(Map<String, Object> attrMap) {
+        return this.daoHelper.insert(this.studentdocumentDao, attrMap);
     }
 
     @Override
