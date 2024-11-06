@@ -58,8 +58,12 @@ label {
 }
 
 .table_container {
+  flex-direction: row;
+  max-height: 400px; /* Altura máxima para el contenedor de calendarios */
+  overflow-y: auto; /* Permitir desplazamiento vertical */
+  overflow-x: auto; /* Deshabilitar desplazamiento horizontal */
   padding: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
 }
 
 .general_table {
@@ -71,6 +75,7 @@ label {
   .table_container {
     width: 98%;
     padding: 15px;
+    
   }
 
   .grid-container {
@@ -93,13 +98,6 @@ label {
   margin-top: 10px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  max-height: 400px; /* Altura máxima para el contenedor de calendarios */
-  overflow-y: auto; /* Permitir desplazamiento vertical */
-  overflow-x: hidden; /* Deshabilitar desplazamiento horizontal */
-}
 
 .button-container {
   display: grid; /* Usar grid para las columnas */
