@@ -112,14 +112,14 @@
 
           <div class="table-container" style="display: flex; gap: 20px; ">
 
-            <o-table #documentsTable class="general_table" attr="documentsTable" service="documents" entity="studentdocument" keys="id"
-              parent-keys="student_id:id" columns="id;name" visible-columns="name" detail-mode="false"
-              show-report-on-demand-option="false" show-charts-on-demand-option="false"
+            <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
+              entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
+              detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
               refresh-button="false" insert-button="false" quick-filter="false"
               show-paginator-first-last-buttons="false" pagination-controls="no">
               <o-table-context-menu view-detail="false" edit="false" delete="false"
                 insert="false"></o-table-context-menu>
-              <o-table-column attr="name" title="Document name"></o-table-column>
+              <o-table-column attr="name" for="TDOCUMENT">{{'TDOCUMENT' | oTranslate}}></o-table-column>
               <o-table-column attr="action" width="10px">
                 <o-table-cell-renderer-action (onClick)="actionClick($event)"
                   icon="download"></o-table-cell-renderer-action>
@@ -127,11 +127,12 @@
             </o-table>
 
             <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
-                     entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-                     visible-columns="bootcampname" detail-mode="false" show-report-on-demand-option="false"
-                     show-charts-on-demand-option="false">
+              entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
+              visible-columns="bootcampname" detail-mode="false" show-report-on-demand-option="false"
+              show-charts-on-demand-option="false">
               <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-              <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+              <o-table-context-menu view-detail="false" edit="false" delete="false"
+                insert="false"></o-table-context-menu>
               <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
             </o-table>
 
