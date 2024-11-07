@@ -18,18 +18,32 @@
     { key: 'No finalizado' },
   ]" value-column="key" columns="key" visible-columns="key" required="yes" null-selection="false" [data]="'Candidato'">
     </o-combo>
-    <o-form editable-detail="no" show-header="no" layout-direction="column">
-      <div fxLayout="column" layout-padding>
-        <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin' | oTranslate }}</label>
+
+    <div class="especial fecha-inicio">
+      <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" 
+       ></o-date-input>
+    </div>
+
+    <div class="especial fecha-fin">
+      <o-date-input #enddate label-visible="false" attr="end_date" required="yes" 
+        format="DD/MM/YYYY">
+      </o-date-input>
+    </div>
+
+
+    <div fxLayout="column" layout-padding>
+        <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
         <o-daterange-input attr="dateRangeBootcamp" label="{{ '' | oTranslate }}" read-only="no" 
-          required="yes" [data]="getDateBootcamp()" format="DD/MM/YYYY" automatic-binding="false"
+          required="yes" format="DD/MM/YYYY"  automatic-binding="false"
           show-week-numbers="true" mode="desktop">
         </o-daterange-input>
-      </div>
-    </o-form>
+    </div>
+
+    
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
       <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
         (click)="addStudentBootcamp()"></o-button>
     </div>
+
   </o-form>
 </div>

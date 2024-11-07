@@ -12,8 +12,7 @@ export class StudentBootcampAddComponent {
 
 
   @ViewChild('studentBootcampForm') studentBootcampForm:OFormComponent;
-  @ViewChild("startdate") startDateInput: ODateInputComponent;
-  @ViewChild("enddate") endDateInput: ODateInputComponent;
+
 
 
   public selected = {};
@@ -34,12 +33,5 @@ export class StudentBootcampAddComponent {
   candidate(){
     this.studentBootcampForm.setFieldValue("status","Candidato")
   }
-  getDateBootcamp(){
 
-    this.selected = {
-      startDate: this.startDateInput,
-      endDate: this.endDateInput
-    };
-    return this.selected
-  }
 }
