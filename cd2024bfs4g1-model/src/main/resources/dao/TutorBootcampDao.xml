@@ -29,7 +29,7 @@
      from
       tutors t
      inner join
-      tutors_bootcamp tb on t.id = tb.tutor_id
+      tutor_bootcamp tb on t.id = tb.tutor_id
      inner join
       bootcamps b on tb.bootcamp_id = b.id
      #WHERE#

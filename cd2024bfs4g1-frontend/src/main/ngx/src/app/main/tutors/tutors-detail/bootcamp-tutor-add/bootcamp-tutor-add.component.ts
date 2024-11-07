@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bootcamp-tutor-add.component.css']
 })
 export class BootcampTutorAddComponent {
-  constructor(public location:Location){}
+  
 }
