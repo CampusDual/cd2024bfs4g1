@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { TutorsDetailComponent } from './tutors-detail.component';
+import { OntimizeWebModule } from 'ontimize-web-ngx';
 
 describe('TutorsDetailComponent', () => {
   let component: TutorsDetailComponent;
@@ -8,9 +9,12 @@ describe('TutorsDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TutorsDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [TutorsDetailComponent],
+      imports: [
+        ReactiveFormsModule,
+        OntimizeWebModule
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TutorsDetailComponent);
     component = fixture.componentInstance;
