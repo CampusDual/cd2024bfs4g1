@@ -177,5 +177,6 @@
   "LDESPCRIPTION":"Description",
   "LNOTE":"Notes",
   "DNI": "ID",
-  "NIF": "ID"
+  "NIF": "ID",
+  "TDOCUMENT":"Document title"
 }
