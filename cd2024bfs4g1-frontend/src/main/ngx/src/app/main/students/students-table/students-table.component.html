@@ -27,8 +27,6 @@
                         searchable="yes" null-selection="no"></o-combo>
 
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
-                        <o-slide-toggle #sliderToggle attr="slidertoggle" label="{{'SLIDE_SEARCH' | oTranslate}}"
-                            read-only="no" tooltip="{{'SLIDE_TT' | oTranslate}}"></o-slide-toggle>
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
                             label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
                         <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
