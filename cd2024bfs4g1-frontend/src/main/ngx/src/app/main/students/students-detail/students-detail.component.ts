@@ -73,7 +73,6 @@ export class StudentsDetailComponent {
   }
 
   getFileData() {
-    console.log(this.idNumber);
     if (this.idNumber) {
       return { student_id: this.idNumber.getValue() };
     } else {
@@ -83,7 +82,6 @@ export class StudentsDetailComponent {
 
 
   onUploadFiles(event) {
-    console.log(event);
     this.documentsTable.refresh();
     alert("File added")
     

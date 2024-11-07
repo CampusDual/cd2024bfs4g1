@@ -98,21 +98,20 @@
 
     <div class="table_container">
 
-      <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
-        <o-form-layout-dialog-options class="popup" title="">
 
-          <div class="upload-container" style="display: flex; flex-direction: column;">
+
+          <div class="upload-container" >
             <label for="fileinput">{{ 'Upload Document' | oTranslate }}</label>
-            <o-file-input #fileinput attr="file" fxFlex="50" label="{{ 'Upload Document' | oTranslate }}"
+            <o-file-input #fileinput attr="file"  label="{{ 'Upload Document' | oTranslate }}"
               service="documents" entity="upload" max-file-size="100000" multiple="yes" max-num-files="5"
               split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
-              (onUpload)="onUploadFiles($event)" (onError)="onError($event)" fxFlex="100">
+              (onUpload)="onUploadFiles($event)" (onError)="onError($event)" >
             </o-file-input>
           </div>
 
-          <div class="table-container" style="display: flex; gap: 20px; ">
 
-            <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
+
+            <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
               entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
               detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
               refresh-button="false" insert-button="false" quick-filter="false"
@@ -125,18 +124,20 @@
                   icon="download"></o-table-cell-renderer-action>
               </o-table-column>
             </o-table>
+            <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
+              <o-form-layout-dialog-options class="popup" title="">
 
-            <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
+            <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
               entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-              visible-columns="bootcampname" detail-mode="false" show-report-on-demand-option="false"
-              show-charts-on-demand-option="false">
+              visible-columns="bootcampname" quick-filter="false" detail-mode="false" show-report-on-demand-option="false"
+              show-charts-on-demand-option="false" >
               <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
               <o-table-context-menu view-detail="false" edit="false" delete="false"
                 insert="false"></o-table-context-menu>
               <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
             </o-table>
 
-          </div>
+
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
 
