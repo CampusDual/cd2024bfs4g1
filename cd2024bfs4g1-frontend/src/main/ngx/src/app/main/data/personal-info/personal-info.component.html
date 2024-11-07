@@ -68,14 +68,14 @@
       <o-checkbox attr="udemy" enabled="false"></o-checkbox>
     </div>
 
-    <div class="table_container">
+    <div class="table_container" >
 
       <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
           <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
             entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
             visible-columns="bootcampname" detail-mode="false" show-report-on-demand-option="false"
-            show-charts-on-demand-option="false">
+            show-charts-on-demand-option="false" title="Bootcamps" show-title="true">
             <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
             <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
             <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
