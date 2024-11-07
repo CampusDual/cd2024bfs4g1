@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { OFormComponent, OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
+import { OFormComponent, OntimizeService, OTableComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import spainComunitys from 'src/app/main/students/spaincomunitys';
 })
 export class StudentsDetailComponent {
   @ViewChild("idNumber") idNumber: OTextInputComponent;
+  @ViewChild("documentsTable") documentsTable: OTableComponent;
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
@@ -83,7 +84,9 @@ export class StudentsDetailComponent {
 
   onUploadFiles(event) {
     console.log(event);
+    this.documentsTable.refresh();
     alert("File added")
+    
 
   }
 

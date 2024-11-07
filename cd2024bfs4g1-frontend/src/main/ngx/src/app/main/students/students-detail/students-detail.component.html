@@ -112,7 +112,7 @@
 
           <div class="table-container" style="display: flex; gap: 20px; ">
 
-            <o-table class="general_table" attr="documentsTable" service="documents" entity="studentdocument" keys="id"
+            <o-table #documentsTable class="general_table" attr="documentsTable" service="documents" entity="studentdocument" keys="id"
               parent-keys="student_id:id" columns="id;name" visible-columns="name" detail-mode="false"
               show-report-on-demand-option="false" show-charts-on-demand-option="false"
               refresh-button="false" insert-button="false" quick-filter="false"
