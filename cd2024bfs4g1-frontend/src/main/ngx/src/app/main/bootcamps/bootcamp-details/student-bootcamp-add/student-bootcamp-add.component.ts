@@ -12,7 +12,8 @@ export class StudentBootcampAddComponent {
 
 
   @ViewChild('studentBootcampForm') studentBootcampForm:OFormComponent;
-
+  @ViewChild("startdate") startDateInput: ODateInputComponent;
+  @ViewChild("enddate") endDateInput: ODateInputComponent;
 
 
   public selected = {};
@@ -33,5 +34,27 @@ export class StudentBootcampAddComponent {
   candidate(){
     this.studentBootcampForm.setFieldValue("status","Candidato")
   }
+ 
+
+  inicialDR() {
+    const startDateValue = this.startDateInput.getValue();
+    const endDateValue = this.endDateInput.getValue();
+  
+    const startMoment = moment(startDateValue).local();  
+    const endMoment = moment(endDateValue).local();      
+  
+    this.selected = {
+      startDate: startMoment,
+      endDate: endMoment
+    };
+  
+    this.studentBootcampForm.setFieldValue("dateRangeBootcamp", this.selected);
+  }
+  
+
+  
+  
+  
+
 
 }
