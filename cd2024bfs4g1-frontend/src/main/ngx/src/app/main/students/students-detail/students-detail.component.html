@@ -118,7 +118,7 @@
               show-paginator-first-last-buttons="false" pagination-controls="no">
               <o-table-context-menu view-detail="false" edit="false" delete="false"
                 insert="false"></o-table-context-menu>
-              <o-table-column attr="name" for="TDOCUMENT">{{'TDOCUMENT' | oTranslate}}></o-table-column>
+                <o-table-column attr="name" title="Document title"></o-table-column>
               <o-table-column attr="action" width="10px">
                 <o-table-cell-renderer-action (onClick)="actionClick($event)"
                   icon="download"></o-table-cell-renderer-action>
