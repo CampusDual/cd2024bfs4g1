@@ -114,7 +114,7 @@
   "LDNI": "ID*",
   "LBIRTHDATE": "Birth Date*",
   "LPHONE": "Phone*",
-  "LEMSTATUS": "Employment Status*",
+  "LEMSTATUS": "Employment Status",
   "LCAMPUS_EMAIL": "Campus Email",
   "LFCT_SCHOOL": "FCT School",
   "LFCT_START": "FCT Start Date",

@@ -30,9 +30,10 @@
     </div>
 
     <div class="employmentStatus">
-      <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-      <o-combo attr="situation" required="yes" translate="yes"
-        null-selection="false">
+      <label for="employment_status">{{'LEMSTATUS' | oTranslate}}*</label>
+      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false" 
+      [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id" 
+      columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
       </o-combo>
     </div>
 
