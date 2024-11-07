@@ -1,16 +1,13 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D"
-  show-header-navigation="no">
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D" show-header-navigation="no" >
   <div o-form-toolbar-buttons>
-    <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
-      (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
+    <o-button attr="backButton" class="o-form-toolbar-button"  type="RAISED" icon="keyboard_backspace" label="Go back" (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
   <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name" max-length="255"
-        (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
@@ -26,30 +23,36 @@
     </div>
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes"></o-phone-input>
+      <o-phone-input attr="phone" required="yes" ></o-phone-input>
     </div>
-
     <div class="employmentStatus">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}*</label>
-      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false" 
-      [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id" 
+      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
+      [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
       columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
       </o-combo>
     </div>
 
     <div class="status">
       <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
-      <o-combo attr="status" required="yes" translate="yes" [static-data]="[
+      <o-combo
+      attr="status" required="yes" translate="yes"  [static-data]="[
       { key: 'NOT_ELIGIBLE' },
       { key: 'UNDER_REVIEW' }
-    ]" value-column="key" columns="key" visible-columns="key" required="yes" null-selection="false">
+    ]"
+      value-column="key"
+      columns="key"
+      visible-columns="key"
+      required="yes"
+      null-selection="false">
 
-      </o-combo>
+    </o-combo>
     </div>
     <div class="comunidad">
       <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
-      <o-combo attr="spain_comunity" [static-data]="dataArray" [data]="valueSimple" required="yes" searchable="yes"
-        value-column="key" columns="key;value" visible-columns="value" null-selection="false"></o-combo>
+      <o-combo attr="spain_comunity"   [static-data]="dataArray"
+      [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
+      columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
     </div>
 
     <div class="location">
@@ -60,19 +63,20 @@
 
     <div class="fechaCumple">
       <label for="LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>
-      <o-date-input attr="birth_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+      <o-date-input attr="birth_date" required="yes"  format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="email">
       <label for="LEMAIL">{{'LEMAIL'|oTranslate}}</label>
-      <o-email-input attr="personal_email" required="yes"></o-email-input>
+      <o-email-input attr="personal_email" required="yes" ></o-email-input>
     </div>
     <div class="emailCampus">
       <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-      <o-email-input attr="campus_email" required="no"></o-email-input>
+      <o-email-input attr="campus_email" required="no" ></o-email-input>
     </div>
     <div class="fctSchool">
       <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-      <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="fct_school" required="no" max-length="100"
+      (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="tutor">
       <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
