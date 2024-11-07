@@ -1,8 +1,9 @@
-import { Component, ElementRef, Injector, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Injector, ViewChild } from '@angular/core';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ODateInputComponent, OntimizeService } from 'ontimize-web-ngx';
+import { ODateInputComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -17,13 +18,23 @@ export class BootcampDetailsComponent {
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
 
-  constructor(private router: Router ,private actRoute: ActivatedRoute,
-    protected injector: Injector) {
+  constructor(private router: Router,
+    private actRoute: ActivatedRoute,
+    protected injector: Injector,
+    private _adapter: DateAdapter<any>,
+    @Inject(MAT_DATE_LOCALE) private _locale: string,
+    private translateService: OTranslateService) {
     this.validatorsArray.push(this.dateValidator);
     this.service = this.injector.get(OntimizeService);
     this.configureService();
     this.dateClass.bind(this);
-
+    this._locale = this.translateService.getCurrentLang();
+    this._adapter.setLocale(this._locale);
+    translateService.onLanguageChanged.subscribe((lan) => {
+      this._locale = lan;
+      this._adapter.setLocale(this._locale);
+      this._adapter.setLocale(this._locale);
+    });
   }
   goToStudentDetail(event: any) {
     const studentId = event.student_id;
@@ -124,8 +135,8 @@ export class BootcampDetailsComponent {
     const current = new Date(startDate);
     current.setDate(1);
     while (current <= endDate) {
-      this.months.push(new Date(current)); 
-      current.setMonth(current.getMonth() + 1); 
+      this.months.push(new Date(current));
+      current.setMonth(current.getMonth() + 1);
     }
   }
 
