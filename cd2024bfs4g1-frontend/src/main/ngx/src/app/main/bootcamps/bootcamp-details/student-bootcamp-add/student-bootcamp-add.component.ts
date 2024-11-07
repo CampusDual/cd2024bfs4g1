@@ -52,16 +52,10 @@ export class StudentBootcampAddComponent {
   }
 
   throwChange($event: any) {
-    // Verifica que $event tenga los valores adecuados (startDate y endDate)
-      
-      // Usamos moment para asegurarnos de que los valores estén en formato correcto
-      let startDate = moment($event.newValue.startDate);  // Asegúrate de que el formato sea el correcto
-      let endDate = moment($event.newValue.endDate);
+
+      let startDate = moment($event.newValue.startDate).local();  
+      let endDate = moment($event.newValue.endDate).local();
   
-      // Actualiza los valores de los inputs de fecha individualmente
-     // Seteamos el valor en el campo enddate
-  
-      // También puedes actualizar los valores en el formulario
       this.studentBootcampForm.setFieldValue("start_date", startDate);
       this.studentBootcampForm.setFieldValue("end_date", endDate);
     
