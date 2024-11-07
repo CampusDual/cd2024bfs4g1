@@ -33,7 +33,7 @@ public class TutorBootcampService implements ITutorBootcampService {
             return new EntityResultMapImpl(EntityResult.OPERATION_WRONG, EntityResult.NODATA_RESULT);
         }
         try {
-            return this.daoHelper.insert(this.tutorBootcampDao, attrMap);
+            return this.daoHelper.insert(tutorBootcampDao, attrMap);
         } catch (DuplicateKeyException e) {
             EntityResult entityResultError = new EntityResultMapImpl();
             entityResultError.setCode(EntityResult.OPERATION_WRONG);
@@ -46,15 +46,17 @@ public class TutorBootcampService implements ITutorBootcampService {
 
     @Override
     public EntityResult tutorBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.tutorBootcampDao, keyMap);
+        return this.daoHelper.delete(tutorBootcampDao, keyMap);
     }
+
     @Override
     public EntityResult tutorsWithBootcampQuery(Map<String, Object> keysValues, List<String> attributes) {
-        return this.daoHelper.query(this.tutorBootcampDao, keysValues, attributes);
+        return this.daoHelper.query(tutorBootcampDao, keysValues, attributes);
     }
+
     @Override
     public EntityResult tutorBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
-        return this.daoHelper.update(this.tutorDao, attrMap, keyMap);
+        return this.daoHelper.update(tutorDao, attrMap, keyMap);
     }
 
 }
