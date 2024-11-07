@@ -155,3 +155,13 @@ mat-calendar .mat-calendar-arrow {
   text-decoration: line-through;
 }
 
+.mat-calendar-previous-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
+  display: none;
+}
+.mat-calendar-next-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
+  display: none;
+}
+.mat-calendar-controls {
+  display: flex;
+  flex-direction: column;
+}

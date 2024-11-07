@@ -93,7 +93,7 @@ label {
   padding: 5px;
   font-size: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: calc(100% / 6 - 40px);
   min-width: 250px;
