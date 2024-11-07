@@ -37,6 +37,14 @@
       <label for="location">{{'LLOCATION' | oTranslate}}</label>
       <o-text-input attr="location" required="no"></o-text-input>
     </div>
+    <div class="fechaCumple">
+      <label for="LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>
+      <o-date-input attr="birth_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+    </div>
+    <div class="email">
+      <label for="LEMAIL">{{'LEMAIL'|oTranslate}}</label>
+      <o-email-input attr="personal_email" required="yes"></o-email-input>
+    </div>
     <div class="emailCampus">
       <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
       <o-email-input attr="campus_email" required="no"></o-email-input>
@@ -89,7 +97,7 @@
       </o-form-layout-manager>
 
     </div>
-  
+
   </div>
 </o-form>
 
