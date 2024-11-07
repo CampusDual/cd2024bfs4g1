@@ -28,15 +28,11 @@
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
       <o-phone-input attr="phone" required="yes"></o-phone-input>
     </div>
-    
+
     <div class="employmentStatus">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-      <o-combo attr="employment_status" required="no" translate="yes" [static-data]="[
-      { key: 'WORKING' },
-      { key: 'SELF_EMPLOYED' },
-      { key: 'UNEMPLOYED' },
-      { key: 'STUDENT' }
-      ]" value-column="key" columns="key" visible-columns="key" null-selection="false">
+      <o-combo attr="situation" required="yes" translate="yes"
+        null-selection="false">
       </o-combo>
     </div>
 
