@@ -8,17 +8,17 @@
         <div class="date-rows" onscroll="onScroll(event)">
             <div class="date-item-container ">
                 <o-button color="primary" label="Prev" (click)="decSelectedYear()">Prev</o-button>
-                <o-button color="primary" label="Next" (click)="incSelectedYear()">Next</o-button>
                 <div class="years">
                     <div *ngFor="let year of years" class="date-item year">{{year}}</div>
                 </div>
+                <o-button color="primary" label="Next" (click)="incSelectedYear()">Next</o-button>
             </div>
             <div class="date-item-container ">
                 <o-button color="primary" label="Prev" (click)="decSelectedMonth()">Prev</o-button>
-                <o-button color="primary" label="Next" (click)="incSelectedMonth()">Next</o-button>
                 <div class="months">
                     <div *ngFor="let month of months" class="date-item month">{{month}}</div>
                 </div>
+                <o-button color="primary" label="Next" (click)="incSelectedMonth()">Next</o-button>
             </div>
             <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
                 <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{'font-weight': updateDayCSSForCurrentDay(dayWithWeekDays.day)}">
@@ -33,7 +33,10 @@
             <div *ngFor="let bootcamp of bootcamps; index as i" class="bootcamp" [ngStyle]="{'grid-area': updateBootcampsGridColumns(i + 1, bootcamp.start_date, bootcamp.end_date)}">
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
                     <div style="color: #C0C0C0">{{bootcamp.start_date.toDateString().substring(4, 30)}}</div>
-                    <div>{{bootcamp.name}}</div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div>{{bootcamp.name}}</div>
+                        <div style="font-size: 12px; color:#C0C0C0">{{bootcamp.status}}</div>
+                    </div>
                     <div style="color: #C0C0C0">{{bootcamp.end_date.toDateString().substring(4, 30)}}</div>
                 </div>
             </div>

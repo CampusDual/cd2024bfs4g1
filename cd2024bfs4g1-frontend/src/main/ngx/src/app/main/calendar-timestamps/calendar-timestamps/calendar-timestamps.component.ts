@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import moment from 'moment';
+import { CalendarService } from '../calendar-service.service';
 
 enum Month {
   January = 0,
@@ -9,7 +10,7 @@ enum Month {
   May = 4,
   June = 5,
   July = 6,
-  August = 6,
+  August = 7,
   September = 8,
   October = 9,
   November = 10,
@@ -46,7 +47,6 @@ interface Bootcamp {
   name: string;
   start_date: Date;
   end_date: Date;
-  description: string;
   status: string;
 }
 
@@ -68,6 +68,7 @@ export class CalendarTimestampsComponent {
   daysWithWeekDays: Day[] = [];
   allBootcamps: Bootcamp[] = [];
   bootcamps: Bootcamp[] = [];
+  backendResponse: any;
 
   private currentDate = Date.now();
   private currentYear = moment(this.currentDate).year();
@@ -75,10 +76,9 @@ export class CalendarTimestampsComponent {
   private currentDay = moment(this.currentDate).date();
 
   public selectedYear = this.currentYear;
-  public selectedMonth = this.currentMonth + 1;
+  public selectedMonth = this.currentMonth;
 
-  constructor(private elementRef: ElementRef) {
-    console.log(`${this.currentYear} ${Month[this.currentMonth]} ${this.currentDay}`);
+  constructor(private elementRef: ElementRef, private calendarService: CalendarService) {
   }
 
   // Load data ------------------------------------------------------------------------------
@@ -86,10 +86,27 @@ export class CalendarTimestampsComponent {
     this.loadYears();
     this.loadMonths();
     this.loadDays();
-    this.loadWeekDays();
+    this.calendarService.searchBootcamps().subscribe(
+      response => {
+        console.log('POST Response:', response);
+        response.data.map((bootcamp: any) => {
+          bootcamp.start_date = new Date(bootcamp.start_date);
+          bootcamp.end_date = new Date(bootcamp.end_date);
+        });
+        this.allBootcamps = response.data;
+        console.log('All Bootcamps:', this.allBootcamps);
+      },
+      error => {
+        console.error('POST Error:', error);
+      }
+    );
     this.loadAllBootcamps();
     this.loadBootcamps();
+
   }
+
+  queryBackend(): void {
+    }
 
   loadYears(): void {
     this.years=[this.selectedYear]
@@ -104,62 +121,11 @@ export class CalendarTimestampsComponent {
     this.daysWithWeekDays = this.days.map(day => {
       return {day: day, dayOfWeek: AbbrDayOfWeek[new Date(this.selectedYear, this.selectedMonth, day).getDay()]};
     });
-    console.log(this.daysWithWeekDays);
-  }
-
-  loadWeekDays(): void {
   }
 
   loadAllBootcamps(): void {
-    this.allBootcamps = [{
-    id: 1,
-    name: 'Bootcamp 1',
-    start_date: new Date('2024-11-01'),
-    end_date: new Date('2024-11-29'),
-    description: 'Bootcamp 1 description', 
-    status: 'active'
-  },
-  {
-    id: 2,
-    name: 'Bootcamp 2',
-    start_date: new Date('2024-11-02'),
-    end_date: new Date('2024-11-29'),
-    description: 'Bootcamp 2 description', 
-    status: 'active'
-  },
-  {
-    id: 3,
-    name: 'Bootcamp 3',
-    start_date: new Date('2024-11-05'),
-    end_date: new Date('2024-12-20'),
-    description: 'Bootcamp 3 description',
-    status: 'inactive'
-  },
-  {
-    id: 4,
-    name: 'Bootcamp 4',
-    start_date: new Date('2024-10-03'),
-    end_date: new Date('2024-11-16'),
-    description: 'Bootcamp 4 description',
-    status: 'active'
-  },
-  {
-    id: 5,
-    name: 'Bootcamp 5',
-    start_date: new Date('2024-11-01'),
-    end_date: new Date('2024-11-20'),
-    description: 'Bootcamp 5 description',
-    status: 'inactive'
-  },
-  {
-    id: 6,
-    name: 'Bootcamp 6',
-    start_date: new Date('2024-11-01'),
-    end_date: new Date('2024-11-30'),
-    description: 'Bootcamp 6 description',
-    status: 'active'
-  },
-  ]
+
+  console.log(`All Bootcamps: ${this.allBootcamps}`);
 }
 
   loadBootcamps(): void { //Conditionally loads the bootcamp data based on the selected month and year
@@ -253,14 +219,12 @@ export class CalendarTimestampsComponent {
   updateBootcampsGridColumns(bootcampId: number, startDate: Date, endDate: Date) {
     let startColumn = 1;
     let endColumn = this.days.length + 1;
-    console.log(`Start month: ${startDate.getMonth()}, End month: ${endDate.getMonth()}, Current month: ${this.currentMonth}`);
-    if (startDate.getUTCMonth() == this.currentMonth) {
+    if (startDate.getUTCMonth() == this.selectedMonth) {
       startColumn = startDate.getUTCDate();
     }
-    if (endDate.getUTCMonth() == this.currentMonth) {
+    if (endDate.getUTCMonth() == this.selectedMonth) {
       endColumn = endDate.getUTCDate() + 1; 
     }
-    console.log(`Current month: ${this.selectedMonth}, Current year ${this.selectedYear}`); 
     return `${bootcampId} / ${startColumn} / auto / ${endColumn}`; //changes the CSS grid-area to 'grid-area':grid-row-start/grid-column-start/grid-row-end/grid-column-end
   }
 
