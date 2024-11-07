@@ -1,31 +1,43 @@
 <div class="calendar-timestamps-container">
     <div class="sidebar">
-        Sidebar
+        <!-- <img src="assets/images/logo.png" class="logo" style="width: 100px; height: 100px;">
+        <div *ngFor="let bootcamp of bootcamps" class="sidebar-bootcamp">{{bootcamp.name}}</div> -->
     </div>
 
     <div class="calendar-container">
         <div class="date-rows" onscroll="onScroll(event)">
             <div class="date-item-container ">
+                <o-button color="primary" label="Prev" (click)="decSelectedYear()">Prev</o-button>
+                <o-button color="primary" label="Next" (click)="incSelectedYear()">Next</o-button>
                 <div class="years">
                     <div *ngFor="let year of years" class="date-item year">{{year}}</div>
                 </div>
-                <o-button color="primary" label="Prev">Prev</o-button>
-                <o-button color="primary" label="Next">Next</o-button>
             </div>
             <div class="date-item-container ">
+                <o-button color="primary" label="Prev" (click)="decSelectedMonth()">Prev</o-button>
+                <o-button color="primary" label="Next" (click)="incSelectedMonth()">Next</o-button>
                 <div class="months">
                     <div *ngFor="let month of months" class="date-item month">{{month}}</div>
                 </div>
-                <o-button color="primary" label="Prev">Prev</o-button>
-                <o-button color="primary" label="Next">Next</o-button>
             </div>
-            <div class="date-item-container days">
-                <div *ngFor="let day of days" class="date-item day">{{day}}</div>
+            <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
+                <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{'font-weight': updateDayCSSForCurrentDay(dayWithWeekDays.day)}">
+                    <div>{{dayWithWeekDays.day}}</div>
+                    <div>{{dayWithWeekDays.dayOfWeek}}</div>
+                </div>
             </div>
 
         </div>
 
-        <div class="calendar">Eventos aqui</div>
+        <div class="calendar" [ngStyle]="{'grid-template-columns': updateBootcampsGridColumnsContainer()}">
+            <div *ngFor="let bootcamp of bootcamps; index as i" class="bootcamp" [ngStyle]="{'grid-area': updateBootcampsGridColumns(i + 1, bootcamp.start_date, bootcamp.end_date)}">
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <div style="color: #C0C0C0">{{bootcamp.start_date.toDateString().substring(4, 30)}}</div>
+                    <div>{{bootcamp.name}}</div>
+                    <div style="color: #C0C0C0">{{bootcamp.end_date.toDateString().substring(4, 30)}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

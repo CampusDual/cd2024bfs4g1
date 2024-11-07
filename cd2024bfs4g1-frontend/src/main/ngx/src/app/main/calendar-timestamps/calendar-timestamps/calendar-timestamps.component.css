@@ -33,12 +33,16 @@
 }
 
 .calendar {
-  width: 100%;
+  display: grid;
+  margin-bottom: 10px;
   height: 50px;
   background-color: #f0f0f0 ;
 }
   
 .date-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 5px 10px;
   margin: 0 5px;
   border: 1px solid #ccc;
@@ -49,19 +53,29 @@
 
 .years {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Adjust for the number of years */
+  grid-template-columns: repeat(1, 1fr); 
   width: 100%;
 }
 
 .months {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Adjust for the number of years */
+  grid-template-columns: repeat(1, 1fr); 
   width: 100%;
 }
 
 .days {
   display: grid;
-  grid-template-columns: repeat(31, 1fr); /* Adjust for the number of years */
+}
+
+.bootcamp {
+  display: grid;
+  margin: 0 auto;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #f0f0f0;
 }
 
 .year {
@@ -74,4 +88,5 @@
 
 .day {
   color: #dc3545;
+  font-size: 12px; ;
 }
