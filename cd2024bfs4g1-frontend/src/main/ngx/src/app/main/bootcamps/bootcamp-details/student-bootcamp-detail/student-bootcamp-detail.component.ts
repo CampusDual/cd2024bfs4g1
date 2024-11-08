@@ -14,6 +14,8 @@ export class StudentBootcampDetailComponent {
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
 
+  public selected = {};
+
   throwChange($event: any) {
 
     let startDate = moment($event.newValue.startDate).local();  
@@ -22,5 +24,25 @@ export class StudentBootcampDetailComponent {
     this.studentBootcampForm.setFieldValue("start_date", startDate);
     this.studentBootcampForm.setFieldValue("end_date", endDate);
   
+}
+
+inicialDR() {
+
+  const startDateValue = this.startDateInput.getValue();
+  const endDateValue = this.endDateInput.getValue();
+
+  const startMoment = moment(startDateValue).local();  
+  const endMoment = moment(endDateValue).local();      
+
+  this.selected = {
+    startDate: startMoment,
+    endDate: endMoment
+  };
+
+  this.studentBootcampForm.setFieldValue("dateRangeBootcamp", this.selected);
+}
+
+updateStudentBootcamp() {
+  this.studentBootcampForm.update();
 }
 }
