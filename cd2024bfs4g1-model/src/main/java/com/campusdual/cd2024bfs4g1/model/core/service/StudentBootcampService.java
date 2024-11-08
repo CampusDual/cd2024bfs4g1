@@ -21,7 +21,6 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Autowired
     private StudentBootcampDao studentBootcampDao;
-    private StudentDao studentDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
