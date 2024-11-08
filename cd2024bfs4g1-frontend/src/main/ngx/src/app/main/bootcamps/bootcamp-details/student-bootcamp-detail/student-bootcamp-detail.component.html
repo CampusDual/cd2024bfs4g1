@@ -1,7 +1,7 @@
 <div class="combocontainer">
-    <o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no"
-      undo-button="false" label-header-align="center" after-insert-mode="new">
-      <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+    <o-form  service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no"
+      undo-button="false" label-header-align="center" after-insert-mode="new" keys="id">
+      <o-text-input attr="id" sql-type="INTEGER" enabled="no"></o-text-input>
       <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students"
         entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
       </o-combo>
@@ -38,7 +38,7 @@
           </o-daterange-input>
       </div>
       <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
-        <o-button attr="addbutton" id="Update" type="RAISED" label="Add" color="primary"
+        <o-button attr="addbutton" id="Update" type="RAISED" label="Update" color="primary"
           ></o-button>
       </div>
   
