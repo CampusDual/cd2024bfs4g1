@@ -155,13 +155,15 @@ mat-calendar .mat-calendar-arrow {
   text-decoration: line-through;
 }
 
-.mat-calendar-previous-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
+.gridcalendario .mat-calendar-previous-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
   display: none;
 }
-.mat-calendar-next-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
+.gridcalendario .mat-calendar-next-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
   display: none;
 }
-.mat-calendar-controls {
+.gridcalendario .mat-calendar-controls {
   display: flex;
   flex-direction: column;
 }
+
+/* englobar el coso del calendario en un div mio y poner un id o algo y seleccionarlo des de ahi */
