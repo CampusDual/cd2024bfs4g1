@@ -106,7 +106,10 @@
           (onError)="onError($event)">
         </o-file-input>
       </div>
-
+      <div class="boton">
+          <button (click)="limpiar($event)">Limpiar</button>
+          
+      </div>
 
       <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
         entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
