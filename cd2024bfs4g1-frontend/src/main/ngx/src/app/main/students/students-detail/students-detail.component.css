@@ -102,7 +102,7 @@ label {
   padding: 30px;
   width: 100%;
   display: grid;
-  grid-template-columns:1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: 10px;
   height: auto;
@@ -118,16 +118,17 @@ label {
  margin: 0%;
 }
 .segunda{
-  grid-column: 2/4;
+
   width: 100%;
   margin: 0%;
 }
 .selectedrow{
+  grid-column: 3/5;
   width: 100%;
 }
 
 
-@media (max-width: 1250px) {
+@media (max-width: 1500px) {
   .grid-container,
   .table_container {
     width: 95%;
@@ -171,7 +172,7 @@ label {
   .primera{
     grid-column: 1/4;
   }
-  
+
   .selectedrow{
     width: 100%;
     grid-column: 1/4;
