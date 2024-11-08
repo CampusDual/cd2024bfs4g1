@@ -6,6 +6,7 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { BootcampListComponent } from './bootcamp-list/bootcamp-list.component';
 import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp-add/student-bootcamp-add.component';
 import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
+import { StudentBootcampDetailComponent } from './bootcamp-details/student-bootcamp-detail/student-bootcamp-detail.component';
 
 
 
@@ -15,6 +16,7 @@ import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
     BootcampDetailsComponent,
     StudentBootcampAddComponent,
     BootcampNewComponent,
+    StudentBootcampDetailComponent,
 
   ],
   imports: [
