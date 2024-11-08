@@ -17,6 +17,10 @@
             <AmbiguousColumns>
                 <AmbiguousColumn name="id" prefix="sb"/>
                 <AmbiguousColumn name="name" prefix="s"/>
+                <AmbiguousColumn name="start_date" prefix="b"/>
+                <AmbiguousColumn name="end_date" prefix="b"/>
+                <AmbiguousColumn name="start_date" prefix="sb"/>
+                <AmbiguousColumn name="end_date" prefix="sb"/>
                 <AmbiguousColumn name="studentname" prefix="s" databaseName="name" />
                 <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
 
