@@ -108,7 +108,7 @@ label {
   height: auto;
 }
 .upload-container{
-  grid-column: 1/4;
+  grid-column: 1/5;
 }
 .general_table {
   background-color: #f5f0f2;
@@ -170,12 +170,12 @@ label {
     grid-row: 12;
   }
   .primera{
-    grid-column: 1/4;
+    grid-column: 1/5;
   }
 
   .selectedrow{
     width: 100%;
-    grid-column: 1/4;
+    grid-column: 1/5;
   }
 }
 
