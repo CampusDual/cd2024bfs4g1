@@ -3,11 +3,12 @@
     undo-button="false" label-header-align="center" after-insert-mode="new"
     (onDataLoaded)="candidate();inicialDR()">
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
-    <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students"
+    <label >{{ 'Estudiante*' | oTranslate }}</label>
+    <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students" label-visible="false"
       entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
     </o-combo>
     <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
-    <o-combo attr="status" required="yes" translate="yes" [static-data]="[
+    <o-combo attr="status" required="yes" label-visible="false" translate="yes" [static-data]="[
     { key: 'Candidato' },
     { key: 'Contactado' },
     { key: 'Confirmado' },
@@ -20,12 +21,12 @@
     </o-combo>
 
     <div class="especial fecha-inicio">
-      <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY"  
+      <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" hidden="true"
        ></o-date-input>
     </div>
 
     <div class="especial fecha-fin">
-      <o-date-input #enddate label-visible="false" attr="end_date" required="yes" 
+      <o-date-input #enddate label-visible="false" attr="end_date" required="yes" hidden="true"
         format="DD/MM/YYYY">
       </o-date-input>
     </div>
