@@ -13,7 +13,21 @@
     </UpdateKeys>
     <GeneratedKey>id</GeneratedKey>
 
+
+
     <Queries>
+        <Query id="default">
+            <Sentence>
+                <![CDATA[
+                        SELECT
+                        #COLUMNS#
+                        FROM
+                            ${mainschema}.students st
+                            left join ${mainschema}.usr_user uu ON st.user_id = uu.usr_id
+                            #WHERE#
+                    ]]>
+            </Sentence>
+        </Query>
         <Query id="default">
             <AmbiguousColumns>
                 <AmbiguousColumn name="id" prefix="s"/>
