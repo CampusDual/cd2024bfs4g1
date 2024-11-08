@@ -14,8 +14,8 @@
     <Queries>
         <Query id="default">
             <AmbiguousColumns>
-                <AmbiguousColumn name="id" prefix="d"/>
-                <AmbiguousColumn name="name" prefix="d"/>
+                <AmbiguousColumn name="id" prefix="sd"/>
+
             </AmbiguousColumns>
 
             <Sentence>
