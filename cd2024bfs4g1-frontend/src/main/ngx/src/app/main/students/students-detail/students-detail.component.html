@@ -98,12 +98,12 @@
 
     <div class="table_container">
 
-      <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
+      <o-form-layout-manager attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
           <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
             entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-            visible-columns="bootcampname" detail-mode="false" show-report-on-demand-option="false"
-            show-charts-on-demand-option="false">
+            visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"
+            show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none">
             <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
             <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
             <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>

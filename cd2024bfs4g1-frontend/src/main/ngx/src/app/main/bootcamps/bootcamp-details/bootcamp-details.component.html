@@ -45,13 +45,13 @@
   </div>
 
   <div class="table_container" fxLayout="column" fxLayoutFill>
-    <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
-      <o-form-layout-dialog-options class="popup" title="">
+    <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+      <o-form-layout-dialog-options class="popup">
         <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
           entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
           columns="id;name;surname1;surname2;personal_email;student_id;action"
           visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" query-rows="10"
-          detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false">
+          detail-mode="none" show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none">
           <o-table-paginator page-size="20" page-size-options="10;20;40">
           </o-table-paginator>
           <o-table-column attr="action" width="64px">
