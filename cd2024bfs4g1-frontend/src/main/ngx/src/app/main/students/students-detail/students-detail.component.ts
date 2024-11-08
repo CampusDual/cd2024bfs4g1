@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { OFormComponent } from 'ontimize-web-ngx';
+import { Component, Injector, ViewChild } from '@angular/core';
+import { OFormComponent, OntimizeService, OTableComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
