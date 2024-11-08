@@ -114,6 +114,7 @@ public class DocumentService implements IDocumentService {
 
         Hashtable<String, Object> dKeymap = new Hashtable<>();
         dKeymap.put(DocumentFileDao.ATTR_ID, documentId);
+        personalFilesDelete(dKeymap);
 
         return this.daoHelper.delete(this.documentFileDao, dKeymap);
 
