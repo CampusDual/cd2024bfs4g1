@@ -18,4 +18,7 @@ public interface IDocumentService {
     EntityResult personalFilesDelete(Map<String, Object> keyMap);//throws OntimizeJEERuntimeException;
 
     EntityResult myPersonalFilesContentQuery(Map<String, Object> keyMap, List<String> attrList);
+
+    EntityResult studentdocumentDelete(Map<String, Object> keyMap);
+
 }
