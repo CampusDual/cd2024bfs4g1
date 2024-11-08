@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -65,7 +66,16 @@ public class StudentBootcampService implements IStudentBootcampService {
     }
     @Override
     public EntityResult studentBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
+        Date startDate = (Date) attrMap.remove(StudentBootcampDao.SB_START_DATE);
+        Date endDate = (Date) attrMap.remove(StudentBootcampDao.SB_END_DATE);
+        if(startDate != null){
+            attrMap.put(StudentBootcampDao.START_DATE, startDate);
+        }
+        if(endDate != null){
+            attrMap.put(StudentBootcampDao.END_DATE, endDate);
+        }
         return this.daoHelper.update(this.studentBootcampDao, attrMap, keyMap);
+
     }
 
 
