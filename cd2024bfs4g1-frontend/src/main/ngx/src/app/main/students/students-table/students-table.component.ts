@@ -21,8 +21,7 @@ export class StudentsTableComponent {
 
     values.forEach(fil => {
       if (fil.value) {
-        if (fil.attr === 'name' || fil.attr === 'surname1' || fil.attr === 'surname2' ||
-          fil.attr === 'tutor' || fil.attr === 'udemy' || 
+        if (fil.attr === 'tutor' || fil.attr === 'udemy' || 
           fil.attr === 'employment_status'|| fil.attr==='status'|| fil.attr==='spain_comunity') {
           filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, fil.value));
         }

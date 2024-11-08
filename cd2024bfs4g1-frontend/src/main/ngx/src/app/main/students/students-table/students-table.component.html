@@ -1,13 +1,10 @@
-<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name">
+<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'Students' | oTranslate}}">
     <div class="table_container">
         <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
             <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no"
                 icon="filter_list" class="collapsible">
 
                 <div class="filter_style">
-                    <o-text-input attr="name" read-only="no"></o-text-input>
-                    <o-text-input attr="surname1" read-only="no"></o-text-input>
-                    <o-text-input attr="surname2" read-only="no"></o-text-input>
                     <o-text-input attr="tutor" read-only="no"></o-text-input>
 
                     <o-text-input attr="employment_status" read-only="no"></o-text-input>
@@ -15,20 +12,18 @@
                     <o-combo #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
-                        visible-columns="label" translate="yes" null-selection="no"></o-combo>
+                        visible-columns="label" translate="yes" ></o-combo>
 
                     <o-combo #type attr="status" read-only="no"
                         [static-data]="[{'value': 'NOT_ELIGIBLE', 'label': 'NOT_ELIGIBLE'},{'value': 'UNDER_REVIEW', 'label': 'UNDER_REVIEW'}]"
                         service="students" entity="student" columns="status" value-column="value"
-                        visible-columns="label" keys="id" translate="yes" null-selection="no"></o-combo>
+                        visible-columns="label" keys="id" translate="yes" ></o-combo>
 
                     <o-combo attr="spain_comunity" read-only="no" service="students" entity="student"
                         columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
-                        searchable="yes" null-selection="no"></o-combo>
+                        searchable="yes" ></o-combo>
 
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
-                        <o-slide-toggle #sliderToggle attr="slidertoggle" label="{{'SLIDE_SEARCH' | oTranslate}}"
-                            read-only="no" tooltip="{{'SLIDE_TT' | oTranslate}}"></o-slide-toggle>
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
                             label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
                         <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
@@ -39,7 +34,7 @@
 
 
                 <o-filter-builder #filterBuilder attr="thefilter"
-                    filters="name:name;surname1:surname1;surname2:surname2;tutor:tutor;udemy:udemy;employment_status:employment_status;status:status;spain_comunity:spain_comunity;id"
+                    filters="tutor:tutor;udemy:udemy;employment_status:employment_status;status:status;spain_comunity:spain_comunity;id"
                     [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
                     [expression-builder]="createFilter"></o-filter-builder>
             </o-column-collapsible>

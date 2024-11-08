@@ -151,6 +151,18 @@ mat-calendar .mat-calendar-arrow {
   display: none;
 }
 
+.selectedrow .o-table .o-table-container .mat-mdc-table .mat-mdc-row.selected {
+  text-decoration: line-through;
+}
+
+.mat-mdc-tab-group.mat-mdc-tab-group .mat-mdc-tab-body-wrapper {
+  background-color: #D5E5E9 ;
+}
+
+.mat-mdc-table{
+  background-color: #f5f0f2;
+}
+
 .gridcalendario .mat-calendar-previous-button.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
   display: none;
 }
