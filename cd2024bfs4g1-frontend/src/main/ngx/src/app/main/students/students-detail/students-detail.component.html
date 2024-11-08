@@ -5,7 +5,7 @@
       (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
-  <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no" />
+  <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'LNAME'|oTranslate}}</label>
@@ -98,19 +98,42 @@
 
     <div class="table_container">
 
+          <div class="upload-container" >
+            <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
+            <o-file-input #fileinput attr="file"  label="{{ 'Upload Document' | oTranslate }}"
+              service="documents" entity="upload" max-file-size="100000" multiple="yes" max-num-files="5"
+              split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
+              (onUpload)="onUploadFiles($event)" (onError)="onError($event)" >
+            </o-file-input>
+          </div>
+
+
+
+            <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
+              entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
+              detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+              refresh-button="false" insert-button="false" quick-filter="false"
+              show-paginator-first-last-buttons="false" pagination-controls="no">
+              <o-table-context-menu view-detail="false" edit="false" delete="false"
+                insert="false"></o-table-context-menu>
+                <o-table-column attr="name" title="Document title"></o-table-column>
+              <o-table-column attr="action" width="10px">
+                <o-table-cell-renderer-action (onClick)="actionClick($event)"
+                  icon="download"></o-table-cell-renderer-action>
+              </o-table-column>
+            </o-table>
       <o-form-layout-manager attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
           <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
-            entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-            visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"
-            show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none">
+                   entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
+                   visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"
+                   show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none">
             <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
             <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
             <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
           </o-table>
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
-
     </div>
     <div class="githubUser">
       <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
