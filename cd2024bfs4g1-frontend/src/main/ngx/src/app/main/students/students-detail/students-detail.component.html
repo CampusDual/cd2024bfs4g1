@@ -119,7 +119,7 @@
           <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
         </o-table-column>
       </o-table>
-      <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+      <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
           <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
             entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
