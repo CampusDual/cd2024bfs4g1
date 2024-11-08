@@ -2,9 +2,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IDocumentService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.DocumentFileDao;
@@ -33,7 +31,7 @@ public class DocumentService implements IDocumentService {
     private String path;
 
     @Override
-    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList){
+    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(this.documentFileDao, keyMap, attrList, "documentfiles");
     }
 
@@ -73,8 +71,10 @@ public class DocumentService implements IDocumentService {
                 return errorResult;
             }
         }
+
         return this.daoHelper.delete(this.documentFileDao, keyMap);
     }
+
     @Override
     public EntityResult myPersonalFilesContentQuery(Map<String, Object> keyMap, List<String> attrList) {
         attrList.add(DocumentFileDao.ATTR_PATH);
@@ -96,5 +96,26 @@ public class DocumentService implements IDocumentService {
         //add all the Base64 values for each file
         fileResult.put(DocumentFileDao.ATTR_BASE64, base64Files);
         return fileResult;
+    }
+
+    @Override
+    public EntityResult studentdocumentDelete(Map<String, Object> keyMap) {
+
+
+        EntityResult studentDocumentQuery = this.daoHelper.query(studentdocumentDao, keyMap, Arrays.asList(StudentDocumentDao.ATTR_ID_DOCUMENT));
+        if (studentDocumentQuery.isWrong()) {
+            return studentDocumentQuery;
+        }
+        Integer documentId = (Integer) studentDocumentQuery.getRecordValues(0).get(StudentDocumentDao.ATTR_ID_DOCUMENT);
+        EntityResult sdResult = this.daoHelper.delete(this.studentdocumentDao, keyMap);
+        if (sdResult.isWrong()) {
+            return sdResult;
+        }
+
+        Hashtable<String, Object> dKeymap = new Hashtable<>();
+        dKeymap.put(DocumentFileDao.ATTR_ID, documentId);
+
+        return this.daoHelper.delete(this.documentFileDao, dKeymap);
+
     }
 }
