@@ -23,8 +23,8 @@
                 <AmbiguousColumn name="end_date" prefix="sb"/>
                 <AmbiguousColumn name="studentname" prefix="s" databaseName="name" />
                 <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
-                <AmbiguousColumn name="start_date" prefix="sb" databaseName="start_date"/>
-                <AmbiguousColumn name="end_date" prefix="sb" databaseName="end_date"/>
+                <AmbiguousColumn name="sb_start_date" prefix="sb" databaseName="start_date"/>
+                <AmbiguousColumn name="sb_end_date" prefix="sb" databaseName="end_date"/>
                 <AmbiguousColumn name="start_date" prefix="b" databaseName="start_date"/>
                 <AmbiguousColumn name="end_date" prefix="b" databaseName="end_date"/>
                 <AmbiguousColumn name="status" prefix="sb" />

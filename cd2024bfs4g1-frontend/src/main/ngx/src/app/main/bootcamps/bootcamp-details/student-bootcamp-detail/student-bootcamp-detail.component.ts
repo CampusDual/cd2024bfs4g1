@@ -21,8 +21,8 @@ export class StudentBootcampDetailComponent {
     let startDate = moment($event.newValue.startDate).local();  
     let endDate = moment($event.newValue.endDate).local();
 
-    this.studentBootcampForm.setFieldValue("start_date", startDate);
-    this.studentBootcampForm.setFieldValue("end_date", endDate);
+    this.studentBootcampForm.setFieldValue("sb_start_date", startDate);
+    this.studentBootcampForm.setFieldValue("sb_end_date", endDate);
   
 }
 
