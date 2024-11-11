@@ -177,6 +177,9 @@
   "LNOTE":"Notas",
   "DNI": "DNI",
   "NIF": "DNI",
+  "Document title":"Título del documento",
+  "fileinput" : "Subir documentos",
+  "Upload Document" : "Archivos a subir",
   "WORKING": "Trabajando",
   "SELF_EMPLOYED": "Autonomo",
   "UNEMPLOYED": "Desempleado",
@@ -184,6 +187,4 @@
   "LEMPLOYMENTSTATUS": "Estado Laboral",
   "LSITUATION": "Situacion",
   "Config": "Configuracion"
-
-  
 }

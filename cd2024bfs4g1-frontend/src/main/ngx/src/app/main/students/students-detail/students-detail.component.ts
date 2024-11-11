@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { OFormComponent, OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
+import { OFileInputComponent, OFormComponent, OntimizeService, OTableComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,17 +13,18 @@ import spainComunitys from 'src/app/main/students/spaincomunitys';
 })
 export class StudentsDetailComponent {
   @ViewChild("idNumber") idNumber: OTextInputComponent;
+  @ViewChild("documentsTable") documentsTable: OTableComponent;
+  @ViewChild("fileinput") fileinput: OFileInputComponent;
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   protected service: OntimizeService;
-  protected injector: Injector;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location: Location) {
+  constructor(private router: Router, public location: Location, public injector: Injector) {
     this.validatorsArray.push(this.dateValidator);
     this.service = this.injector.get(OntimizeService);
     this.configureService();
@@ -73,17 +74,20 @@ export class StudentsDetailComponent {
   }
 
   getFileData() {
-    console.log(this.idNumber);
-    if (this.idNumber){
+    if (this.idNumber) {
       return { student_id: this.idNumber.getValue() };
-    }else{
+    } else {
       return null;
     }
   }
 
 
   onUploadFiles(event) {
-    console.log(event);
+    this.documentsTable.refresh();
+    this.fileinput.clearValue();
+    alert("File added")
+
+
   }
 
   onFileUpload() {
@@ -91,7 +95,7 @@ export class StudentsDetailComponent {
   }
 
   onError(event) {
- 
+
     if (event.status === 507) {
       this.showError(event);
     }
@@ -100,7 +104,6 @@ export class StudentsDetailComponent {
   showError(event: any) {
     console.log(event);
   }
-/*
   // Método para manejar el evento de clic en la acción
   actionClick(event) {
     // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
@@ -110,7 +113,7 @@ export class StudentsDetailComponent {
         let filename = res.data[0].name;
         let base64 = res.data[0].base64;
         // Se crea un enlace temporal para descargar el archivo.
-        const src = data:text/csv;base64,${base64};
+        const src = `data:text/csv;base64,${base64}`;
         const link = document.createElement("a");
         link.href = src;
         link.download = filename;
@@ -123,24 +126,5 @@ export class StudentsDetailComponent {
   refreshFileInput() {
     this.fileinput.clearValue();
   }
-
-  // Método para manejar la ejecución de la acción desde el menú contextual
-  onExecute(event: any) {
-    // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente a la acción ejecutada.
-    this.service.query({ id: event.id }, ['name', 'base64'], 'myPersonalFilesContent').subscribe(res => {
-      if (res.data && res.data.length) {
-        // Si se encuentran datos, se extrae el nombre del archivo y el contenido en base64.
-        let filename = res.data[0].name;
-        let base64 = res.data[0].base64;
-        // Se crea un enlace temporal para descargar el archivo.
-        const src = data:text/csv;base64,${base64};
-        const link = document.createElement("a");
-        link.href = src;
-        link.download = filename;
-        link.click();
-        link.remove();
-      }
-    });
-  }*/
 
 }
