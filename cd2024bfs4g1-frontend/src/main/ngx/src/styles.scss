@@ -94,21 +94,34 @@ mat-tab-body { background-color: #1a3459; }
 .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.mat-accent,
 .o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base,
 .o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base.mat-accent,
+.o-form .o-form-toolbar button:not([disabled]).o-form-toolbar-button.mat-mdc-button-base.mat-primary,
 .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base,
 .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base.mat-accent,
 .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base,
-.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent {
+  border: none;
+  background-color: #8AB237;
+  border-radius: 10px;
+}
+
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
   border: none;
   background-color: #8AB237;
   border-radius: 10px;
 }
+
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base:hover,
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent:hover {
+  border: 2px solid #8AB237;
+  background-color: #1a3459;
+  border-radius: 10px;
+  color: #8AB237;
+}
+
 .o-form-toolbar-button button{
   border-radius: 10px;
   box-shadow: 0 0px 0px;
-
-
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
@@ -191,6 +204,7 @@ label{
   background-color: #f5f0f2;
 
 }
+
 
 .mat-mdc-tab .mdc-tab__content {
  background-color: #1a3459 ;
