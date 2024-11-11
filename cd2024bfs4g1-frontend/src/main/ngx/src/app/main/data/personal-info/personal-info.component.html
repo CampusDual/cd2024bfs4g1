@@ -3,7 +3,7 @@
 <o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions=""
   show-header-navigation="no" editable-detail="false" show-header="false">
 
-  <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no" />
+  <o-text-input #studentId hidden attr="user_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'DNAME'|oTranslate}}</label>

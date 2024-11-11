@@ -375,7 +375,9 @@ public class UserAndRoleService implements IUserAndRoleService {
 				usrMap.put(String.valueOf(key), userInfo.getOtherData().get(key));
 			}
 		}
-		eR.putAll(usrMap);
+		usrMap.putAll(usrMap);
+
+		eR.put(UserDao.USR_ID, SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString());
 		return eR;
 	}
 
