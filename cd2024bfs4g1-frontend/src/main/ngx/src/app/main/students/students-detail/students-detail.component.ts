@@ -123,5 +123,8 @@ export class StudentsDetailComponent {
     });
 
   }
+  refreshFileInput() {
+    this.fileinput.clearValue();
+  }
 
 }

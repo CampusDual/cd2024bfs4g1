@@ -105,6 +105,8 @@
           [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
           (onError)="onError($event)">
         </o-file-input>
+      
+        <button type="button" (click)="refreshFileInput()" for="CLEAR">{{'CLEAR' | oTranslate}}</button>
       </div>
 
 
