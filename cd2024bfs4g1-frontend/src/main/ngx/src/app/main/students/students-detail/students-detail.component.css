@@ -107,8 +107,26 @@ label {
   gap: 10px;
   height: auto;
 }
-.upload-container{
+.upload-container {
+  display: flex;
+  flex-direction: column; 
   grid-column: 1/5;
+}
+
+.input-button-container {
+  display: flex;
+  align-items: center; 
+}
+
+.o-file-input {
+  flex-grow: 4; 
+}
+
+o-button {
+  margin-left: 8px; 
+  flex-shrink: 0; 
+  margin-bottom: 18px;
+  width: 80px; 
 }
 .general_table {
   background-color: #f5f0f2;
