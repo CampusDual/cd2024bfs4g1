@@ -3,96 +3,78 @@
 <o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions=""
   show-header-navigation="no" editable-detail="false" show-header="false">
 
-  <o-text-input #studentId hidden attr="user_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
+  <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
+
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'DNAME'|oTranslate}}</label>
-      <o-text-input attr="name"  id="name" max-length="255" [ngModel]="name">{{name}}</o-text-input>
+      <o-text-input attr="name"  id="name" max-length="255"  data={{name}}>{{name}}</o-text-input>
     </div>
-    <div>{{name}}</div>
-    <div>{{surname1}}</div>
-    <div>{{surname2}}</div>
-
     <div class="apellido">
       <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" max-length="255"></o-text-input>
+      <o-text-input attr="surname1" max-length="255" data={{surname1}}></o-text-input>
     </div>
     <div class="apellido2">
       <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-      <o-text-input attr="surname2" required="no" max-length="255"></o-text-input>
+      <o-text-input attr="surname2" max-length="255" data={{surname2}}></o-text-input>
     </div>
     <div class="dni">
       <label for="LDNI">{{'DDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}"  required="yes"></o-nif-input>
+      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" data={{dni}}></o-nif-input>
     </div>
     <div class="telefono">
       <label for="LPHONE">{{'DPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes"></o-phone-input>
+      <o-phone-input attr="phone" data={{phone}}></o-phone-input>
     </div>
     <div class="employmentStatus">
       <label for="employment_status">{{'DEMSTATUS' | oTranslate}}</label>
-      <o-text-input attr="employment_status" required="yes" max-length="20"></o-text-input>
+      <o-text-input attr="employment_status" max-length="20" data={{employmentStatus}}></o-text-input>
     </div>
     <div class="fechaCumple">
       <label for="LBIRTHDATE">{{'DBIRTHDATE' | oTranslate}}</label>
-      <o-date-input attr="birth_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+      <o-date-input attr="birth_date" format="DD/MM/YYYY" [data]="birthDate"></o-date-input>
     </div>
     <div class="location">
       <label for="location">{{'LLOCATION' | oTranslate}}</label>
-      <o-text-input attr="location" required="no"></o-text-input>
+      <o-text-input attr="location" data={{location}}></o-text-input>
     </div>
     <div class="emailCampus">
       <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-      <o-email-input attr="campus_email" required="no"></o-email-input>
+      <o-email-input attr="campus_email" [data]="campusEmail"></o-email-input>
     </div>
     <div class="email">
       <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
-      <o-email-input attr="personal_email" required="yes"></o-email-input>
+      <o-email-input attr="personal_email" [data]="personalEmail"></o-email-input>
     </div>
     <div class="fctSchool">
       <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-      <o-text-input attr="fct_school" required="no" max-length="100"></o-text-input>
+      <o-text-input attr="fct_school" max-length="100" data={{fctSchool}}></o-text-input>
     </div>
     <div class="tutor">
       <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
-      <o-text-input attr="tutor" required="no" max-length="200"></o-text-input>
+      <o-text-input attr="tutor" max-length="200" [data]="tutor" sql-type="INTEGER"></o-text-input>
     </div>
     <div class="fctStart">
       <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
-      <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY">
+      <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY" [data]="fctStart">
       </o-date-input>
     </div>
     <div class="fctEnd">
       <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-      <o-date-input #enddate attr="fct_end" required="no" format="DD/MM/YYYY">
+      <o-date-input #enddate attr="fct_end" required="no" format="DD/MM/YYYY" [data]="fctEnd">
       </o-date-input>
     </div>
 
     <div class="udemy">
       <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
-      <o-checkbox attr="udemy" enabled="false"></o-checkbox>
+      <o-checkbox attr="udemy" enabled="false" [data]="udemy"></o-checkbox>
     </div>
 
         <div class="githubUser">
       <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-      <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+      <o-text-input attr="github_user" required="no" max-length="200" data={{githubUser}}></o-text-input>
     </div>
 
-    <div class="table_container" >
-      <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
-        <o-form-layout-dialog-options class="popup" title="">
-          <o-table class="general_table" attr="bootcampsStudentTable" service="studentBootcamps"
-            entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-            visible-columns="bootcampname" detail-mode="false" show-report-on-demand-option="false"
-            show-charts-on-demand-option="false" title="Bootcamps" insert-button="false" delete-button="false" show-title="true">
-            <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-            <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
-            <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-          </o-table>
-        </o-form-layout-dialog-options>
-      </o-form-layout-manager>
-
-    </div>
 
   </div>
 </o-form>

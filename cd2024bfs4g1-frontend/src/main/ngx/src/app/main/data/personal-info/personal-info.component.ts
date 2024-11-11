@@ -9,8 +9,11 @@ import { OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-
 })
 export class PersonalInfoComponent {
   student: any = {};
-  studentId: number;
-  @ViewChild("studentId") inputId: OTextInputComponent;
+  userId: number;
+
+  @ViewChild("userId") inputId: OTextInputComponent;
+
+
 
   mainInfo: any = {};
   protected service: OntimizeService;
@@ -32,6 +35,8 @@ export class PersonalInfoComponent {
   fctEnd: Date;
   udemy: boolean;
   githubUser: String;
+  user_id: number;
+
 
 
 
@@ -46,8 +51,8 @@ export class PersonalInfoComponent {
     this.configureService();
     
     this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
-        this.studentId = result.data.student_id;
-        this.inputId.setValue(this.studentId);
+        this.userId = result.data.user_id;
+        this.inputId.setValue(this.userId);
         this.mainInfo = result.data;
         this.getMovements(this.mainInfo);
     })
@@ -61,16 +66,20 @@ export class PersonalInfoComponent {
   getMovements(data){
     if(data.hasOwnProperty('usr_id') && this.service !== null){
       const filter = {
-        'user_id': data['user_id']
+        'user_id': data['usr_id']
       };
 
       const columns = ['name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status',
         'birth_date', 'location', 'campus_email', 'personal_email', 'fct_school', 'tutor',
-        'fct_start', 'fct_end', 'udemy', 'github_user'
+        'fct_start', 'fct_end', 'udemy', 'github_user','user_id'
       ];
 
       this.service.query(filter, columns, 'student').subscribe(resp => {
         if(resp.code == 0){
+
+
+
+
           this.name = resp.data[0].name;
           this.surname1 = resp.data[0].surname1;
           this.surname2 = resp.data[0].surname2;
@@ -87,6 +96,9 @@ export class PersonalInfoComponent {
           this.fctEnd = resp.data[0].fct_end; 
           this.udemy = resp.data[0].udemy; 
           this.githubUser = resp.data[0].github_user;
+
+
+          
         }else{
           alert('Error en query');
         }
@@ -94,10 +106,8 @@ export class PersonalInfoComponent {
     }
   }
 
-  dataLoaded(){
-    const filter = {
-      usr_id: this.studentId
-    };
-  }
 
 }
+
+
+

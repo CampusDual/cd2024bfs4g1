@@ -375,9 +375,20 @@ public class UserAndRoleService implements IUserAndRoleService {
 				usrMap.put(String.valueOf(key), userInfo.getOtherData().get(key));
 			}
 		}
-		usrMap.putAll(usrMap);
+		/*usrMap.putAll(usrMap);
 
-		eR.put(UserDao.USR_ID, SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString());
+		eR.put("usr_id", SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()[0].toString());*/
+
+
+		Integer userId = (Integer) userInfo.getOtherData().get("usr_id");
+
+		if(userId == null){
+			throw new OntimizeJEERuntimeException("UserID not found");
+		}
+
+		usrMap.put("usr_id", userId);
+		eR.putAll(usrMap);
+
 		return eR;
 	}
 
