@@ -61,7 +61,7 @@ export class PersonalInfoComponent {
   getMovements(data){
     if(data.hasOwnProperty('usr_id') && this.service !== null){
       const filter = {
-        'usr_id': data['usr_id']
+        'user_id': data['user_id']
       };
 
       const columns = ['name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status',
@@ -74,8 +74,19 @@ export class PersonalInfoComponent {
           this.name = resp.data[0].name;
           this.surname1 = resp.data[0].surname1;
           this.surname2 = resp.data[0].surname2;
-
-
+          this.dni = resp.data[0].dni;
+          this.phone = resp.data[0].phone;
+          this.employmentStatus = resp.data[0].employment_status; 
+          this.birthDate = resp.data[0].birth_date; 
+          this.location = resp.data[0].location; 
+          this.campusEmail = resp.data[0].campus_email; 
+          this.personalEmail = resp.data[0].personal_email; 
+          this.fctSchool = resp.data[0].fct_school; 
+          this.tutor = resp.data[0].tutor; 
+          this.fctStart = resp.data[0].fct_start; 
+          this.fctEnd = resp.data[0].fct_end; 
+          this.udemy = resp.data[0].udemy; 
+          this.githubUser = resp.data[0].github_user;
         }else{
           alert('Error en query');
         }
@@ -88,16 +99,5 @@ export class PersonalInfoComponent {
       usr_id: this.studentId
     };
   }
-
-  /*ngOnInit() {
-    this.mainService.getUserInfo().subscribe(response => {
-      if(response.data){
-        this.studentId = response.data.student_id;
-        this.inputId.setValue(this.studentId);
-        this.student = response.data;
-      }
-    });
-  }*/
-
 
 }
