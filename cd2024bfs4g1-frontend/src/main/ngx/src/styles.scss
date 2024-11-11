@@ -119,9 +119,7 @@ mat-tab-body { background-color: #1a3459; }
   text-align: center ;
 }
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before{
-  border-bottom-color: #f64983;
-}
+
 
 .table_container .general_table .o-table-no-results span{
   color: black;
@@ -190,4 +188,19 @@ label{
   --mdc-outlined-button-disabled-outline-color: rgba(0, 0, 0, 0.12); // color del borde 
   background-color: #f5f0f2;
   
+}
+.mat-mdc-tab .mdc-tab__content {
+ background-color: #1a3459 ;
+
+}
+.o-form-layout-tabgroup .mat-mdc-tab-group.o-tab-ontimize > .mat-mdc-tab-header .mat-mdc-tab-label-container .mat-mdc-tab.mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #7ec117,
+  ;
+}
+.mat-mdc-tab-group.o-tab-ontimize > .mat-mdc-tab-header .mat-mdc-tab-label-container .mat-mdc-tab.mdc-tab--active span.tab-label span.gradient-layer {
+  display: none;
+  
+}
+.mat-mdc-tab-group.o-tab-ontimize > .mat-mdc-tab-header .mat-mdc-tab-label-container .mat-mdc-tab span.tab-label span.gradient-layer{
+  display: none;
 }
