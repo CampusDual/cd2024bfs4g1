@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MainService } from 'src/app/shared/services/main.service';
 import { OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-web-ngx';
 
@@ -14,6 +14,7 @@ export class PersonalInfoComponent {
 
   mainInfo: any = {};
   protected service: OntimizeService;
+
 
   name: String;
   surname1: String;
@@ -34,11 +35,17 @@ export class PersonalInfoComponent {
 
 
 
-  constructor(private mainService: MainService) {}
+
+
+  constructor(protected injector: Injector) {
+    this.service= this.injector.get(OntimizeService);
+  }
 
 
   ngOnInit(){
-    this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
+    this.configureService();
+    
+    /*this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
         this.studentId = result.data.student_id;
         this.inputId.setValue(this.studentId);
         this.mainInfo = result.data;
@@ -47,12 +54,12 @@ export class PersonalInfoComponent {
         this.surname1=result.data.surname1;
         this.surname2=result.data.surname2;
         this.dni=result.data.dni;
-        this.phone=result.data.phone;
+        this.phone=result.data.phone;*/
 
 
-
-
-
+      
+      
+      
       /*this.studentId = result.data.student_id;
       this.inputId.setValue(this.studentId);
       this.mainInfo = result.data;
@@ -60,7 +67,37 @@ export class PersonalInfoComponent {
 
 
 
-    })
+    /*})*/
+  }
+
+  protected configureService(){
+    const conf = this.service.getDefaultServiceConfiguration('students');
+    this.service.configureService(conf);
+  }
+
+  getMovements(data){
+    if(data.hasOwnProperty('usr_id') && this.service !== null){
+      const filter = {
+        'usr_id': data['usr_id']
+      };
+
+      const columns = ['name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status',
+        'birth_date', 'location', 'campus_email', 'personal_email', 'fct_school', 'tutor',
+        'fct_start', 'fct_end', 'udemy', 'github_user'
+      ];
+
+      this.service.query(filter, columns, 'student').subscribe(resp => {
+        if(resp.code == 0){
+          this.name = resp.data[0].name;
+          this.surname1 = resp.data[0].surname1;
+          this.surname2 = resp.data[0].surname2;
+
+
+        }else{
+          alert('Error en query');
+        }
+      })
+    }
   }
 
   dataLoaded(){

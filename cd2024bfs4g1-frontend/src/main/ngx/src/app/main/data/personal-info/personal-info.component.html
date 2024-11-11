@@ -1,14 +1,22 @@
+<div>{{name}}</div>
+<div>{{surname1}}</div>
+<div>{{surname2}}</div>
+
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}">
 <div class="container">
 <o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions=""
   show-header-navigation="no" editable-detail="false" show-header="false">
 
-  <o-text-input #studentId hidden attr="user_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
+  <o-text-input #studentId hidden attr="usr_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'DNAME'|oTranslate}}</label>
-      <o-text-input attr="name" id="name" max-length="255"></o-text-input>
+      <o-text-input attr="name"  id="name" max-length="255">{{name}}</o-text-input>
     </div>
+    <div>{{name}}</div>
+    <div>{{surname1}}</div>
+    <div>{{surname2}}</div>
+
     <div class="apellido">
       <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
       <o-text-input attr="surname1" max-length="255"></o-text-input>
