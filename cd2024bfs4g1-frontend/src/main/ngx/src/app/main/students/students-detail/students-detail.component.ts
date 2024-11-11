@@ -120,6 +120,9 @@ export class StudentsDetailComponent {
     });
 
   }
+  refreshFileInput() {
+    this.fileinput.clearValue();
+  }
 
   // Método para manejar la ejecución de la acción desde el menú contextual
   onExecute(event: any) {
