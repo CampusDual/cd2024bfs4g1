@@ -92,7 +92,10 @@ o-form {
   box-sizing: border-box;
   margin-bottom: 45px; 
 }
-
+.general_table{
+  box-shadow: none;
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .grid-container,
