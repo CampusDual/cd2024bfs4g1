@@ -12,6 +12,19 @@
             </o-table>
         </o-form-layout-dialog-options>
     </div>
+    <div class="table_container">
+        <o-form-layout-dialog-options class="popup" title="LSTUDENTSTATUS">
+            <o-table class="general_table" detail-form-route="studentstatus/" insert-form-route="new"
+                attr="studentsStatusTable" virtual-scroll="false" service="studentstatus"
+                entity="studentStatus" keys="id" columns="id;status" visible-columns="status"
+                sort-columns="status" query-rows="5" show-report-on-demand-option="false"
+                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="false"
+                show-title="true" title="LSTUDENTSTATUS">
+                <o-table-paginator page-size="5" page-size-options="5;10;15">
+                </o-table-paginator>
+            </o-table>
+        </o-form-layout-dialog-options>
+    </div>
 </o-form-layout-manager>
 <o-form-layout-manager attr="configLayout" mode="dialog"> 
 <div class="table_container">
