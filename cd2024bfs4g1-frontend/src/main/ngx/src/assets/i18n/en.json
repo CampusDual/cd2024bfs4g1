@@ -186,6 +186,7 @@
   "LSITUATION": "Situation",
   "Config": "Config",
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
-  "Estudiante*" : "Student*"
-
+  "Estudiante*" : "Student*",
+  "Student": "Student",
+  "Edit": "Edit"
 }

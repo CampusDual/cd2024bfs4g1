@@ -114,7 +114,7 @@
   "LDNI": "DNI*",
   "LBIRTHDATE": "Fecha de Nacimiento*",
   "LPHONE": "Teléfono*",
-  "LEMSTATUS": "Estado Laboral",
+  "LEMSTATUS": "Estado Laboral*",
   "LCAMPUS_EMAIL": "Correo Electrónico del Campus",
   "LFCT_SCHOOL": "Escuela de FCT",
   "LFCT_START": "Fecha de Inicio de FCT",
@@ -185,6 +185,7 @@
   "LSITUATION": "Situacion",
   "Config": "Configuracion",
   "Fecha Inicio/Fecha Fin*": "Fecha Inicio/Fecha Fin*",
-  "Estudiante*" : "Estudiante*"
-
+  "Estudiante*" : "Estudiante*",
+   "Student": "Estudiante",
+   "Edit": "Editar"
 }

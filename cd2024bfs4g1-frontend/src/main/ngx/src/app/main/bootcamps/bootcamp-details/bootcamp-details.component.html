@@ -45,7 +45,7 @@
   </div>
 
   <div class="table_container" fxLayout="column" fxLayoutFill>
-    <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+    <o-form-layout-manager attr="addStudentLayout" mode="dialog" title="Student" >
       <o-form-layout-dialog-options class="popup">
         <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
           entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"

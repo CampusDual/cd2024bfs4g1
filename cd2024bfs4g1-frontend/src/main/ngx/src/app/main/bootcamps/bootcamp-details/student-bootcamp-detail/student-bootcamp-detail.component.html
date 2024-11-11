@@ -4,7 +4,7 @@
       (onDataLoaded)="inicialDR()">
       <o-text-input attr="id" sql-type="INTEGER" enabled="no"hidden = "true" > </o-text-input>
       <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students"
-        entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
+        entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" enabled="false" >
       </o-combo>
       <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
       <o-combo attr="status" required="yes" translate="yes" [static-data]="[
@@ -41,7 +41,7 @@
           </o-daterange-input>
       </div>
       <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
-        <o-button attr="addbutton" id="Update" type="RAISED" label="Update" color="primary"
+        <o-button attr="editbutton" id="edit" type="RAISED" label="Edit" color="primary"
         (onClick)="updateStudentBootcamp()"></o-button>
       </div>
   
