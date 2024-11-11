@@ -6,7 +6,9 @@ import { EmploymentStatusNewComponent } from './employment-status-new/employment
 const routes: Routes = [
   {path:'', pathMatch:'full', component: ConfigTablesComponent},
   {path: 'employmentstatus/new',component: EmploymentStatusNewComponent},
-  {path: 'employmentstatus/:id',component: EmploymentStatusDetailsComponent},];
+  {path: 'employmentstatus/:id',component: EmploymentStatusDetailsComponent},
+  {path: 'studentstatus/new',component: EmploymentStatusNewComponent},
+  {path: 'studentstatus/:id',component: EmploymentStatusDetailsComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
