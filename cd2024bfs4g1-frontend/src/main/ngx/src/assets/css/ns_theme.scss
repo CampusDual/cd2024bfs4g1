@@ -4,15 +4,15 @@
 /* Color definitions */
 $mat-custom-primary: (
   50 : #e9f9d8,
-  100 : #d3f3b2,
-  200 : #bbea8b,
+  100 : #f8f8f8, // color fondo hover
+  200 : #bbea8b, // color barra
   300 : #a2e165,
   400 : #91db49,
-  500 : #1a3459, //color botones
+  500 : #1a3459, // color texto botones botones
   // Color principal
   600 : #7ec117,
   700 : #72a912,
-  800 : #67910e,
+  800 : #1a3459, // color texto hover
   900 : #53730b,
   A100 : #e7ffc0,
   A200 : #c4ff8a,
