@@ -37,7 +37,7 @@ export class PersonalInfoComponent {
 
 
 
-  constructor(protected injector: Injector) {
+  constructor(protected injector: Injector, private mainService: MainService) {
     this.service= this.injector.get(OntimizeService);
   }
 
@@ -45,29 +45,12 @@ export class PersonalInfoComponent {
   ngOnInit(){
     this.configureService();
     
-    /*this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
+    this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
         this.studentId = result.data.student_id;
         this.inputId.setValue(this.studentId);
         this.mainInfo = result.data;
-
-        this.name=result.data.name;
-        this.surname1=result.data.surname1;
-        this.surname2=result.data.surname2;
-        this.dni=result.data.dni;
-        this.phone=result.data.phone;*/
-
-
-      
-      
-      
-      /*this.studentId = result.data.student_id;
-      this.inputId.setValue(this.studentId);
-      this.mainInfo = result.data;
-      this.dataLoaded();*/
-
-
-
-    /*})*/
+        this.getMovements(this.mainInfo);
+    })
   }
 
   protected configureService(){
