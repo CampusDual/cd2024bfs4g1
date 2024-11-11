@@ -123,7 +123,7 @@ export class StudentsDetailComponent {
     });
 
   }
-  refreshFileInput() {
+  limpiar(event){
     this.fileinput.clearValue();
   }
 
