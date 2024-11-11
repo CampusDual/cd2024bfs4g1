@@ -82,8 +82,7 @@ span.mat-calendar-body-cell-content{
   color: #caeeee;
 }
 
-
-mat-tab-body { background-color: #d5e5e9; }
+mat-tab-body { background-color: #1a3459; }
 
 .mat-mdc-text-field-wrapper {
   width: 100%;
@@ -101,7 +100,8 @@ mat-tab-body { background-color: #d5e5e9; }
 .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
-  border: 2px solid #d5e5e9;
+  border: none;
+  background-color: #8AB237;
   border-radius: 10px;
 }
 .o-form-toolbar-button button{
@@ -137,7 +137,11 @@ mat-tab-body { background-color: #d5e5e9; }
   font-family: 'Roboto', sans-serif;
 }
 
-
+.popup {
+  width: 40%;
+  height: 30%;
+  border-radius: 15px;
+}
 
 .popup .general_table {
   width: 90%;
