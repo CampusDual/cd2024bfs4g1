@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from 'ontimize-web-ngx';
-
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -17,7 +17,8 @@ export const routes: Routes = [
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'profile', component: ProfileComponent },
       { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule) },
-      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) }
+      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) },
+      { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule)}
     ]
   }
 ];

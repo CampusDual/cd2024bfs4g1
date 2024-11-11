@@ -181,5 +181,9 @@
   "WORKING": "Working",
   "SELF_EMPLOYED": "Self employed",
   "UNEMPLOYED": "Unemployed",
-  "STUDENT": "Student"
+  "STUDENT": "Student",
+  "LEMPLOYMENTSTATUS": "Employment Status",
+  "LSITUATION": "Situation",
+  "Config": "Config"
+
 }

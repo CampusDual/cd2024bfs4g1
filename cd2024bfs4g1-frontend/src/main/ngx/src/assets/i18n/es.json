@@ -180,7 +180,10 @@
   "WORKING": "Trabajando",
   "SELF_EMPLOYED": "Autonomo",
   "UNEMPLOYED": "Desempleado",
-  "STUDENT": "Estudiante"
+  "STUDENT": "Estudiante",
+  "LEMPLOYMENTSTATUS": "Estado Laboral",
+  "LSITUATION": "Situacion",
+  "Config": "Configuracion"
 
   
 }
