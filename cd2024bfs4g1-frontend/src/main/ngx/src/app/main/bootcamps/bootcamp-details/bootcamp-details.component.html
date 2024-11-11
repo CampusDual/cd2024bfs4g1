@@ -74,4 +74,19 @@
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
   </div>
+
+<div>
+  <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email" 
+  title="Mentors List" quick-filter="true" quick-filter-columns="name;surname1;surname2;email" refresh-button="true" insert-button="false" delete-button="false"
+  selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="true" page-size-options="5;10"
+  insert-button-position="bottom" show-buttons-text="false">
+  <o-list-item *ngFor="let tutor of list.dataArray">
+    <o-list-item-text
+      title="{{ tutor.name }} {{ tutor.surname1 }}"
+      primary-text="{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}"
+      secondary-text="{{ tutor.email }}">
+    </o-list-item-text>
+  </o-list-item>
+  </o-list>
+</div>
 </o-form>
