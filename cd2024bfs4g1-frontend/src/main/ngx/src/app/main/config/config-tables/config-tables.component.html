@@ -1,0 +1,15 @@
+<o-form-layout-manager attr="configLayout" mode="dialog">
+    <div class="table_container">
+        <o-form-layout-dialog-options class="popup" title="LEMPLOYMENTSTATUS">
+            <o-table class="general_table" detail-form-route="employmentstatus/" insert-form-route="new"
+                attr="employmentStatusTable" virtual-scroll="false" service="employmentstatus"
+                entity="employmentStatus" keys="id" columns="id;situation" visible-columns="situation"
+                sort-columns="situation" query-rows="5" show-report-on-demand-option="false"
+                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="false"
+                show-title="true" title="LEMPLOYMENTSTATUS">
+                <o-table-paginator page-size="5" page-size-options="5;10;15">
+                </o-table-paginator>
+            </o-table>
+        </o-form-layout-dialog-options>
+    </div>
+</o-form-layout-manager>

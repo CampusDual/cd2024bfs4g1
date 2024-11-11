@@ -1,0 +1,25 @@
+.general_table {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #f5f0f2;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.table_container {
+    width: 90%;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.table_row {
+    max-height: 32px;
+    overflow: hidden;
+}
+
+.table_cell {
+    padding: 6px;
+} 

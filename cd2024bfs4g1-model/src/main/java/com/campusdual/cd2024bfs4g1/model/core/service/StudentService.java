@@ -1,10 +1,8 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentService;
-import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -14,8 +12,6 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.parser.Entity;
 
 @Service("StudentService")
 @Lazy

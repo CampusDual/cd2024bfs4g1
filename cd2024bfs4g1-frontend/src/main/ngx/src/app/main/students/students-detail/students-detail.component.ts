@@ -20,7 +20,7 @@ export class StudentsDetailComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location : Location) {
+  constructor(private router: Router, public location: Location) {
     this.validatorsArray.push(this.dateValidator);
   }
 
@@ -47,8 +47,9 @@ export class StudentsDetailComponent {
     startdate.getControl().updateValueAndValidity();
   }
 
- mostrarBoton: boolean = true; ngOnInit() {
-  this.mostrarBoton = /\d+$/.test(this.router.url); }
+  mostrarBoton: boolean = true; ngOnInit() {
+    this.mostrarBoton = /\d+$/.test(this.router.url);
+  }
 
   toUpperCamelCase(event: any) {
     event.target.value = event.target.value
@@ -57,7 +58,7 @@ export class StudentsDetailComponent {
       .join(' ');
   }
 
-  toUpperCase(event: any){
+  toUpperCase(event: any) {
     event.target.value = event.target.value.toUpperCase();
   }
 
