@@ -201,5 +201,7 @@
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
   "Estudiante*" : "Student*",
   "Student": "Student",
-  "Edit": "Edit"
+  "Edit": "Edit",
+  "BOOTCAMP_NAME_CANNOT_BE_EMPTY" : "Bootcamp must have a name",
+  "NAME_AND_LASTNAMES_CANNOT_BE_EMPTY" : "Students must have a name and a last name"
 }
