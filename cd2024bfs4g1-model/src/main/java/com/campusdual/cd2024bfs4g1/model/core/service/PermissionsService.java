@@ -29,8 +29,8 @@ public class PermissionsService implements IPermissionsService {
     @Autowired
     private MenuDao menuDao;
 
-    /*@Autowired
-    private RoutesDao routeDao;*/
+    @Autowired
+    private RoutesDao routeDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -88,7 +88,7 @@ public class PermissionsService implements IPermissionsService {
      *
      * @param permissions the permision map where insert the route permissions
      */
-    /*private void addRouteToPermission(Map<String, Object> permissions) {
+    private void addRouteToPermission(Map<String, Object> permissions) {
         List columns = Arrays.asList(RoutesDao.ATTR_PERMISSIONID, RoutesDao.ATTR_ENABLED);
         Map<String,Object> keys = new HashMap<>();
         keys.put(RoutesDao.ATTR_ROLENAME,getRole());
@@ -100,7 +100,7 @@ public class PermissionsService implements IPermissionsService {
             }
             permissions.put(ROUTES,routePermissionsList);
         }
-    }*/
+    }
 
     /**
      * controls the case of the keys in the permission map.
