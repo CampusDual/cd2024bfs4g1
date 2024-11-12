@@ -235,21 +235,19 @@ label{
 }
 
 .mat-drawer-container {
-  color: #1a3459; 
+  color: #1a3459;
 }
 .o-user-info mat-icon {
   color: #1a3459; // color icono al lado de usuario
 }
-
-o-app-sidenav.o-app-sidenav .o-app-sidenav-container .o-app-header, // SELECTOR MENU DE ARRIBA
-o-app-sidenav.o-app-sidenav.header-layout .o-app-sidenav-container .o-app-header {
-  // background-color: #cd1111;
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container .sidenav-toggle { //icono menu hamburguesa
+  color: #1a3459;
 }
-
-//Selector menu de la izquierda sin el hover
-.o-app-sidenav .navMenu ,.o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav {
-  // background-color: red;
-}
+// SELECTOR MENU DE ARRIBA
+// o-app-sidenav.o-app-sidenav .o-app-sidenav-container .o-app-header
+// o-app-sidenav.o-app-sidenav.header-layout .o-app-sidenav-container .o-app-header {
+//    background-color: #cd1111;
+// }
 
 .mat-drawer.o-app-sidenav-sidenav .o-app-sidenav-menuitem mat-icon:not(.o-app-sidenav-menugroup-arrow){
   color: #1a3459;
