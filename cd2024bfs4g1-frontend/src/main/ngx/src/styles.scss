@@ -86,7 +86,7 @@ mat-tab-body { background-color: #1a3459; }
 
 .mat-mdc-text-field-wrapper {
   width: 100%;
-  border: 2px solid #d5e5e9;
+  border: 0.5px solid #8AB237;
   border-radius: 10px;
 }
 
@@ -223,4 +223,26 @@ label{
 }
 .mat-mdc-tab-group.mat-mdc-tab-group .mat-mdc-tab-body-wrapper {
   background-color:#1a3459 ;
+}
+.collapsible-2 .mat-expansion-panel-header-title,
+.collapsible-2 .mat-expansion-indicator::after{
+  color: #f5f0f2;
+}
+
+.mat-drawer-container {
+  // background-color: red; Color de fondo de la pagina
+  color: #f64893; // color menu hamburguesa y titulos de tablas
+}
+.o-user-info mat-icon {
+  color: #f64893; // color icono al lado de usuario
+}
+
+o-app-sidenav.o-app-sidenav .o-app-sidenav-container .o-app-header, // SELECTOR MENU DE ARRIBA
+o-app-sidenav.o-app-sidenav.header-layout .o-app-sidenav-container .o-app-header {
+  // background-color: #cd1111; 
+}
+
+//Selector menu de la izquierda sin el hover
+.o-app-sidenav .navMenu ,.o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container{
+  // background-color: red;
 }
