@@ -259,3 +259,6 @@ label{
 .o-app-sidenav .o-app-sidenav-menu-item:not([disabled=true]) a:hover {
   border-left: 8px solid #7ec117;
 }
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active, .mat-mdc-tab-group .mat-mdc-tab-link.mdc-tab--active {
+  opacity: 1;
+}
