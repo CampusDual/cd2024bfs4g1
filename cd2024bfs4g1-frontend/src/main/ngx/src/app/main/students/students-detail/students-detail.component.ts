@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { OFormComponent } from 'ontimize-web-ngx';
+import { Component, Injector, ViewChild } from '@angular/core';
+import { OFileInputComponent, OFormComponent, OntimizeService, OTableComponent, OTextInputComponent } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,16 +12,27 @@ import spainComunitys from 'src/app/main/students/spaincomunitys';
   styleUrls: ['./students-detail.component.css']
 })
 export class StudentsDetailComponent {
+  @ViewChild("idNumber") idNumber: OTextInputComponent;
+  @ViewChild("documentsTable") documentsTable: OTableComponent;
+  @ViewChild("fileinput") fileinput: OFileInputComponent;
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
+  protected service: OntimizeService;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location: Location) {
+  constructor(private router: Router, public location: Location, public injector: Injector) {
     this.validatorsArray.push(this.dateValidator);
+    this.service = this.injector.get(OntimizeService);
+    this.configureService();
+  }
+
+  protected configureService() {
+    const conf = this.service.getDefaultServiceConfiguration('documents');
+    this.service.configureService(conf);
   }
 
   dateValidator(control: FormControl): ValidationErrors {
@@ -60,6 +71,60 @@ export class StudentsDetailComponent {
 
   toUpperCase(event: any) {
     event.target.value = event.target.value.toUpperCase();
+  }
+
+  getFileData() {
+    if (this.idNumber) {
+      return { student_id: this.idNumber.getValue() };
+    } else {
+      return null;
+    }
+  }
+
+
+  onUploadFiles(event) {
+    this.documentsTable.refresh();
+    this.fileinput.clearValue();
+    alert("File added")
+
+
+  }
+
+  onFileUpload() {
+
+  }
+
+  onError(event) {
+
+    if (event.status === 507) {
+      this.showError(event);
+    }
+
+  }
+  showError(event: any) {
+    console.log(event);
+  }
+  // Método para manejar el evento de clic en la acción
+  actionClick(event) {
+    // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
+    this.service.query({ id: event.id }, ['name', 'base64'], 'myPersonalFilesContent').subscribe(res => {
+      if (res.data && res.data.length) {
+        // Si se encuentran datos, se extrae el nombre del archivo y el contenido en base64.
+        let filename = res.data[0].name;
+        let base64 = res.data[0].base64;
+        // Se crea un enlace temporal para descargar el archivo.
+        const src = `data:text/csv;base64,${base64}`;
+        const link = document.createElement("a");
+        link.href = src;
+        link.download = filename;
+        link.click();
+        link.remove();
+      }
+    });
+
+  }
+  refreshFileInput() {
+    this.fileinput.clearValue();
   }
 
 }

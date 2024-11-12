@@ -22,13 +22,10 @@
       <o-phone-input attr="phone" required="yes" automatic-binding="false" [data]="'+34 000000000'"></o-phone-input>
     </div>
     <div class="employmentStatus">
-      <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-      <o-combo attr="employment_status" required="no" translate="yes" [static-data]="[
-      { key: 'WORKING' },
-      { key: 'SELF_EMPLOYED' },
-      { key: 'UNEMPLOYED' },
-      { key: 'STUDENT' }
-      ]" value-column="key" columns="key" visible-columns="key" null-selection="false">
+      <label for="employment_status">{{'LEMSTATUS' | oTranslate}}*</label>
+      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
+      [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
+      columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
       </o-combo>
     </div>
 
@@ -81,7 +78,7 @@
     </div>
     <div class="fctStart">
       <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-      <o-date-input #startdate attr="fct_start" required="no"
+      <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no "
                     format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
@@ -89,7 +86,7 @@
     <div class="fctEnd">
       <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
       <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
-                    format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+                    format="DD/MM/YYYY" text-input-enabled="no " (onValueChange)="throwChange2(startdate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
       </o-date-input>
 
