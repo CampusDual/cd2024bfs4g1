@@ -16,7 +16,7 @@
         <Query id="default">
             <ValidColumns>
                 <Column>id</Column>
-                <Column>permissiondi</Column>
+                <Column>permissionid</Column>
                 <Column>enabled</Column>
                 <Column>id_rolename</Column>
                 <Column>rol_name</Column>
@@ -26,8 +26,8 @@
                         SELECT
                             #COLUMNS#
                         FROM
-                            ${mainschema}.usr_role r
-                            join ${mainschema}.troutes ro on r.rol_id= ro.id_rolename
+                            ${mainschema}.usr_role ur
+                            join ${mainschema}.troutes t on ur.rol_id= t.id_rolename
                         #WHERE#
                     ]]>
             </Sentence>
