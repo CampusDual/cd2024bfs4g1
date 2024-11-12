@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import moment from 'moment';
 import { ODateInputComponent, OFormComponent } from 'ontimize-web-ngx';
 
@@ -8,8 +9,10 @@ import { ODateInputComponent, OFormComponent } from 'ontimize-web-ngx';
   styleUrls: ['./student-bootcamp-detail.component.css']
 })
 export class StudentBootcampDetailComponent {
+  constructor(private router: Router) {
 
-  
+  }
+
   @ViewChild('studentBootcampForm') studentBootcampForm:OFormComponent;
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
@@ -18,12 +21,12 @@ export class StudentBootcampDetailComponent {
 
   throwChange($event: any) {
 
-    let startDate = moment($event.newValue.startDate).local();  
+    let startDate = moment($event.newValue.startDate).local();
     let endDate = moment($event.newValue.endDate).local();
 
     this.studentBootcampForm.setFieldValue("sb_start_date", startDate);
     this.studentBootcampForm.setFieldValue("sb_end_date", endDate);
-  
+
 }
 
 inicialDR() {
@@ -31,8 +34,8 @@ inicialDR() {
   const startDateValue = this.startDateInput.getValue();
   const endDateValue = this.endDateInput.getValue();
 
-  const startMoment = moment(startDateValue).local();  
-  const endMoment = moment(endDateValue).local();      
+  const startMoment = moment(startDateValue).local();
+  const endMoment = moment(endDateValue).local();
 
   this.selected = {
     startDate: startMoment,
@@ -44,5 +47,7 @@ inicialDR() {
 
 updateStudentBootcamp() {
   this.studentBootcampForm.update();
+  this.studentBootcampForm.closeDetail();
 }
+
 }

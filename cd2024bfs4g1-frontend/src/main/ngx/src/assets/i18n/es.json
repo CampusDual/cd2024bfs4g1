@@ -200,6 +200,7 @@
    "Student": "Estudiante",
    "Edit": "Editar",
   "USER*": "Nombre de Usuario*",
-  "PASSWORD*": "Contraseña*"
-
+  "PASSWORD*": "Contraseña*",
+   "Edit": "Editar",
+  "Select dates": "Seleccionar fechas"
 }

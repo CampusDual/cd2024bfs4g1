@@ -1,5 +1,5 @@
 <div class="combocontainer">
-  <o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" 
+  <o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" confirm-exit="false"
     undo-button="false" label-header-align="center" after-insert-mode="new"
     (onDataLoaded)="candidate();inicialDR()">
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
