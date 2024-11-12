@@ -80,14 +80,14 @@
     </div>
     <div class="fctStart">
       <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
-      <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
+      <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no " format="DD/MM/YYYY"
         (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
     <div class="fctEnd">
       <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-      <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
+      <o-date-input #enddate attr="fct_end" required="no" text-input-enabled="no " [validators]="validatorsArray" format="DD/MM/YYYY"
         (onValueChange)="throwChange2(startdate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
