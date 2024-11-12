@@ -6,8 +6,10 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,6 +65,13 @@ public class StudentStatusService implements IStudentStatusService {
 
     @Override
     public EntityResult studentStatusDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.studentStatusDao, keyMap);
+      try {
+           return this.daoHelper.delete(this.studentStatusDao, keyMap);
+       } catch (DataIntegrityViolationException e) {
+          EntityResult error = new EntityResultMapImpl();
+          error.setMessage("NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE");
+           error.setCode(EntityResult.OPERATION_WRONG);
+            return error;
+        }
     }
 }

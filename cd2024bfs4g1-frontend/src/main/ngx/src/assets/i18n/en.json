@@ -82,6 +82,7 @@
   "start_date": "Start Date",
   "end_date": "End Date",
   "status": "Status",
+  "situation": "Situation",
   "phone": "Phone",
   "birth_date": "Birth Date",
   "campus_email": "Campus Email",

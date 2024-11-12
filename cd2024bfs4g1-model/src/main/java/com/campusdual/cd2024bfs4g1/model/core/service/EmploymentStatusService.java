@@ -9,6 +9,7 @@ import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class EmploymentStatusService implements IEmploymentStatusService {
     @Override
     public EntityResult employmentStatusInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 
-        if (isEmptyField(attrMap, StudentStatusDao.ATTR_STATUS)) {
+        if (isEmptyField(attrMap, employmentStatusDao.ATTR_SITUATION)) {
             return createErrorResult("EMPLOYMENT_STATUS_CANNOT_BE_EMPTY");
         }
         return this.daoHelper.insert(this.employmentStatusDao, attrMap);
@@ -53,7 +54,7 @@ public class EmploymentStatusService implements IEmploymentStatusService {
     @Override
     public EntityResult employmentStatusUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
 
-        if (isEmptyField(attrMap, StudentStatusDao.ATTR_STATUS)) {
+        if (isEmptyField(attrMap, employmentStatusDao.ATTR_SITUATION)) {
             return createErrorResult("EMPLOYMENT_STATUS_CANNOT_BE_EMPTY");
         }
         return this.daoHelper.update(this.employmentStatusDao, attrMap, keyMap);
@@ -61,6 +62,13 @@ public class EmploymentStatusService implements IEmploymentStatusService {
 
     @Override
     public EntityResult employmentStatusDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(this.employmentStatusDao, keyMap);
+       try {
+           return this.daoHelper.delete(this.employmentStatusDao, keyMap);
+       } catch (DataIntegrityViolationException e) {
+           EntityResult error = new EntityResultMapImpl();
+           error.setMessage("NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE");
+           error.setCode(EntityResult.OPERATION_WRONG);
+           return error;
+        }
     }
 }

@@ -82,6 +82,7 @@
   "start_date": "Fecha de Inicio",
   "end_date": "Fecha de Fin",
   "status": "Estado",
+  "situation": "Situacion",
   "phone": "Teléfono",
   "birth_date": "Fecha de Nacimiento",
   "campus_email": "Correo Campus",

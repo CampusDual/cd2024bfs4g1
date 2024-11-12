@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { OntimizeWebModule, OTableComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-config-tables',
@@ -7,5 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./config-tables.component.css']
 })
 export class ConfigTablesComponent {
+  @ViewChild('studentStatusTable') studentStatusTable: OTableComponent;
+  @ViewChild('employmentStatusTable') employmentStatusTable: OTableComponent;
+  onRowStatusDeleted($event: any) {
+    this.studentStatusTable.refresh();
+  }
+  onRowEmploymentStatusDeleted($event: any) {
+    this.employmentStatusTable.refresh();
+  }
+
 
 }
