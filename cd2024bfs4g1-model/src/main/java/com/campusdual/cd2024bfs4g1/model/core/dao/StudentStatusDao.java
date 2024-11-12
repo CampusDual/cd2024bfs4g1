@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 
 public class StudentStatusDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
-    public static final String ATTR_SITUATION = "status";
+    public static final String ATTR_STATUS = "status";
 }

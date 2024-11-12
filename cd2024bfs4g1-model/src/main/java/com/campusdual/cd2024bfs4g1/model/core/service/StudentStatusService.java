@@ -30,16 +30,16 @@ public class StudentStatusService implements IStudentStatusService {
 
     @Override
     public EntityResult studentStatusInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.insert(this.studentStatusDao, attrMap);
     }
 
     @Override
     public EntityResult studentStatusUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.update(this.studentStatusDao, attrMap, keyMap);
     }
 
     @Override
     public EntityResult studentStatusDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return null;
+        return this.daoHelper.delete(this.studentStatusDao, keyMap);
     }
 }
