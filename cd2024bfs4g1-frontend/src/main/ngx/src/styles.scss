@@ -98,7 +98,9 @@ mat-tab-body { background-color: #1a3459; }
 .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base,
 .o-grid .o-grid-toolbar button.o-grid-button:not([disabled]).mat-mdc-button-base.mat-accent,
 .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base,
-.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent {
+.o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-primary,
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default {
   border: none;
   background-color: #8AB237;
   border-radius: 10px;
