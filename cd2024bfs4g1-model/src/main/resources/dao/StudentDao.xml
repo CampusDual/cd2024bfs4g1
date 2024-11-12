@@ -17,6 +17,10 @@
 
     <Queries>
         <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="st"/>
+
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
                         SELECT
@@ -24,26 +28,9 @@
                         FROM
                             ${mainschema}.students st
                             left join ${mainschema}.usr_user uu ON st.user_id = uu.usr_id
+                            inner join ${mainschema}.employment_status es on st.employment_status_id = es.id
                             #WHERE#
                     ]]>
-            </Sentence>
-        </Query>
-        <Query id="default">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="id" prefix="s"/>
-
-            </AmbiguousColumns>
-
-            <Sentence>
-                <![CDATA[
-     select
-      #COLUMNS#
-     from
-      students s
-     inner join
-      employment_status es on s.employment_status_id = es.id
-     #WHERE#
-   ]]>
             </Sentence>
         </Query>
     </Queries>
