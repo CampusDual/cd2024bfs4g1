@@ -118,12 +118,13 @@
         entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
         detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
         refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
-        pagination-controls="no">
+        select-all-checkbox-visible="true" selection-mode="none" pagination-controls="no">
         <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
         <o-table-column attr="name" title="Document title"></o-table-column>
         <o-table-column attr="action" width="10px">
           <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
         </o-table-column>
+
       </o-table>
       <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup" title="">
