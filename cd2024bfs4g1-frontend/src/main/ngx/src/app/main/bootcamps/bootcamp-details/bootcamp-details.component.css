@@ -10,7 +10,7 @@ o-form {
 }
 
 .grid-container,
-.table_container {
+.table_container{
   width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
@@ -26,10 +26,21 @@ o-form {
 }
 
 .table_container {
-  flex-direction: row;
+  max-height: 800px;
   padding: 30px;
 }
 
+.general_container{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+}
+.list_container{
+  width: 90%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+}
 
 .nombre {
   grid-column: 1 / 2;
