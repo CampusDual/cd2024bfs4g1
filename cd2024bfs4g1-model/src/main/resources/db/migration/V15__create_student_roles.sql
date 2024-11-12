@@ -65,3 +65,6 @@ INSERT INTO public.troutes (id,permissionid,enabled,id_rolename)
 VALUES (17,'data-permission',false,2);
 INSERT INTO public.troutes (id,permissionid,enabled,id_rolename)
 VALUES (18,'data-permission',true,3);
+
+INSERT INTO public.usr_role (rol_id,rol_name,rol_xml_client_permission,rol_json_client_permission,rol_notes)
+    VALUES (3,'student','<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>','{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }','Role for students');
