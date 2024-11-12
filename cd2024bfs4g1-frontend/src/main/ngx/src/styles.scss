@@ -242,10 +242,10 @@ label{
 
 o-app-sidenav.o-app-sidenav .o-app-sidenav-container .o-app-header, // SELECTOR MENU DE ARRIBA
 o-app-sidenav.o-app-sidenav.header-layout .o-app-sidenav-container .o-app-header {
-  // background-color: #cd1111; 
+  // background-color: #cd1111;
 }
 
 //Selector menu de la izquierda sin el hover
-.o-app-sidenav .navMenu ,.o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav .mat-drawer-inner-container{
+.o-app-sidenav .navMenu ,.o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav {
   // background-color: red;
 }
