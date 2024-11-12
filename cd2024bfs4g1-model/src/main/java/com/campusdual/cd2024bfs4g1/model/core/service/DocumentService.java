@@ -77,26 +77,45 @@ public class DocumentService implements IDocumentService {
 
     @Override
     public EntityResult myPersonalFilesContentQuery(Map<String, Object> keyMap, List<String> attrList) {
+        // Asegurarnos de que 'ATTR_PATH' esté en la lista de atributos y 'ATTR_BASE64' no lo esté
         attrList.add(DocumentFileDao.ATTR_PATH);
         attrList.remove(DocumentFileDao.ATTR_BASE64);
-        EntityResult fileResult = daoHelper.query(documentFileDao, keyMap, attrList);
+
+        // Consultar la tabla cruzada para obtener los IDs de documentos asociados
+        EntityResult studentDocumentQuery = this.daoHelper.query(studentdocumentDao, keyMap, Arrays.asList(StudentDocumentDao.ATTR_ID_DOCUMENT));
+        if (studentDocumentQuery.isWrong()) {
+            return studentDocumentQuery;
+        }
+
+
+        Hashtable<String, Object> dKeymap = new Hashtable<>();
+        Integer documentId = (Integer) studentDocumentQuery.getRecordValues(0).get(StudentDocumentDao.ATTR_ID_DOCUMENT);
+        dKeymap.put(DocumentFileDao.ATTR_ID, documentId);
+
+        EntityResult fileResult = daoHelper.query(documentFileDao, dKeymap, attrList);
+        if (fileResult.isWrong()) {
+            return fileResult;
+        }
+
         List<String> base64Files = new ArrayList<>();
-        //for each file calculate the Base64 value of the local file
+
         for (int i = 0; i < fileResult.calculateRecordNumber(); i++) {
             String filePath = (String) fileResult.getRecordValues(i).get(DocumentFileDao.ATTR_PATH);
             File file = new File(filePath);
             try {
-                //calculate the Base64
+                // Calcular el Base64
                 byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(file));
                 base64Files.add(new String(encoded));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        //add all the Base64 values for each file
+
+        // Añadir todos los valores Base64 para cada archivo
         fileResult.put(DocumentFileDao.ATTR_BASE64, base64Files);
         return fileResult;
     }
+
 
     @Override
     public EntityResult studentdocumentDelete(Map<String, Object> keyMap) {
