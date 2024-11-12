@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IPermissionsService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.MenuDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.RoutesDao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -30,7 +31,7 @@ public class PermissionsService implements IPermissionsService {
     private MenuDao menuDao;
 
     @Autowired
-    private RoutesDao routeDao;
+    private RoutesDao routesDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -42,7 +43,7 @@ public class PermissionsService implements IPermissionsService {
         //add the permissions of menu
         addMenuToPermission(permissions);
         //add the permissions of the route
-        /*addRouteToPermission(permissions);*/
+        addRouteToPermission(permissions);
         Map<String,Object> hResult = new HashMap<>();
         hResult.put(PERMISSION,castMapToStringJson(permissions));
         result.addRecord(hResult);
@@ -92,7 +93,7 @@ public class PermissionsService implements IPermissionsService {
         List columns = Arrays.asList(RoutesDao.ATTR_PERMISSIONID, RoutesDao.ATTR_ENABLED);
         Map<String,Object> keys = new HashMap<>();
         keys.put(RoutesDao.ATTR_ROLENAME,getRole());
-        EntityResult routePermisions = this.daoHelper.query(routeDao,keys,columns);
+        EntityResult routePermisions = this.daoHelper.query(routesDao,keys,columns);
         if(routePermisions.calculateRecordNumber()>0){
             List routePermissionsList = new ArrayList();
             for(int i=0; i< routePermisions.calculateRecordNumber();i++){
