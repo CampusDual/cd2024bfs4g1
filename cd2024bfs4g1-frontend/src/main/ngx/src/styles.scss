@@ -233,11 +233,10 @@ label{
 }
 
 .mat-drawer-container {
-  // background-color: red; Color de fondo de la pagina
-  color: #f64893; // color menu hamburguesa y titulos de tablas
+  color: #1a3459; 
 }
 .o-user-info mat-icon {
-  color: #f64893; // color icono al lado de usuario
+  color: #1a3459; // color icono al lado de usuario
 }
 
 o-app-sidenav.o-app-sidenav .o-app-sidenav-container .o-app-header, // SELECTOR MENU DE ARRIBA
@@ -248,4 +247,11 @@ o-app-sidenav.o-app-sidenav.header-layout .o-app-sidenav-container .o-app-header
 //Selector menu de la izquierda sin el hover
 .o-app-sidenav .navMenu ,.o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav {
   // background-color: red;
+}
+
+.mat-drawer.o-app-sidenav-sidenav .o-app-sidenav-menuitem mat-icon:not(.o-app-sidenav-menugroup-arrow){
+  color: #1a3459;
+}
+.o-app-sidenav .o-app-sidenav-menu-group:not([disabled=true]) a.o-app-sidenav-viewer-sidenav-item-selected, .o-app-sidenav .o-app-sidenav-menu-item:not([disabled=true]) a.o-app-sidenav-viewer-sidenav-item-selected {
+  border-left: 8px solid #7ec117;
 }
