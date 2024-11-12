@@ -202,5 +202,9 @@
   "Estudiante*" : "Student*",
   "Student": "Student",
   "Edit": "Edit",
-  "Select dates": "Select dates"
+  "Select dates": "Select dates",
+  "DATERANGE": {
+    "APPLYLABEL": "Select",
+    "W":"W"
+  }
 }
