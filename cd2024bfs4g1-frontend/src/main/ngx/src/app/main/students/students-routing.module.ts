@@ -5,6 +5,7 @@ import { StudentsDetailComponent } from './students-detail/students-detail.compo
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { BootcampStudentAddComponent } from './students-detail/bootcamp-student-add/bootcamp-student-add.component';
 
+
 const routes: Routes = [
   { path:'', pathMatch:'full', component: StudentsTableComponent},
   { path:"new", component:StudentsNewComponent},

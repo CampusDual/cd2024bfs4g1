@@ -177,6 +177,14 @@
   "LNOTE":"Notas",
   "DNI": "DNI",
   "NIF": "DNI",
+  "DNAME": "Nombre",
+  "DSURNAME1": "Primer Apellido",
+  "DDNI": "DNI",
+  "DEMSTATUS": "Estado Laboral",
+  "DBIRTHDATE": "Fecha de Nacimiento",
+  "DEMAIL": "Correo Electrónico Personal",
+  "PDATA": "Datos Personales",
+  "DPHONE": "Teléfono",
   "Document title":"Título del documento",
   "fileinput" : "Subir documentos",
   "Upload Document" : "Archivos a subir",
@@ -190,5 +198,8 @@
   "Fecha Inicio/Fecha Fin*": "Fecha Inicio/Fecha Fin*",
   "Estudiante*" : "Estudiante*",
    "Student": "Estudiante",
-   "Edit": "Editar"
+   "Edit": "Editar",
+  "USER*": "Nombre de Usuario*",
+  "PASSWORD*": "Contraseña*"
+
 }

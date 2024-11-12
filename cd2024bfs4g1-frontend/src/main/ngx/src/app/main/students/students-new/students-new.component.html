@@ -17,6 +17,14 @@
       <label for="dni">{{'LDNI' | oTranslate}}</label>
       <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes" (input)="toUpperCase($event)"></o-nif-input>
     </div>
+    <div class="usuario">
+      <label for="usuario">{{'USER*' | oTranslate}}</label>
+      <o-text-input attr="usr_login" required="no" id="name" max-length="255"></o-text-input>
+    </div>
+    <div class="contraseña">
+      <label for="contraseña">{{'PASSWORD*' | oTranslate}}</label>
+      <o-password-input attr="usr_password" required="no" show-password-button="true"></o-password-input>
+    </div>
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
       <o-phone-input attr="phone" required="yes" automatic-binding="false" [data]="'+34 000000000'"></o-phone-input>
