@@ -6,6 +6,8 @@ import com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Lazy
 @Repository(value = "TutorBootcampDao")
 @ConfigurationFile(

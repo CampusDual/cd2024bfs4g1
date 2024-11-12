@@ -121,6 +121,7 @@
   "LFCT_START": "Fecha de inicio de FCT",
   "LFCT_END": "Fecha de fin de FCT",
   "LTUTOR": "Tutor FCT",
+  "LMENTOR":"Tutor",
   "LUDEMY": "Udemy",
   "LGITHUB_USER": "Usuario de GitHub",
   "LNOTES": "Notas",
