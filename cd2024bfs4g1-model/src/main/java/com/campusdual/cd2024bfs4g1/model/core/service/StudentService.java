@@ -33,30 +33,33 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
-	Date startDate = (Date) attrMap.get(studentDao.FCT_START);
-	Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
-	if (finishDate.before(startDate)) {
-		EntityResult error = new EntityResultMapImpl();
-		error.setCode(EntityResult.OPERATION_WRONG);
-		error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
-		return error;
-	}
-}
+		if (isEmptyField(attrMap, studentDao.NAME) || isEmptyField(attrMap, studentDao.SURNAME1) || isEmptyField(attrMap, studentDao.SURNAME2)) {
+			return createErrorResult("NAME_AND_LASTNAMES_CANNOT_BE_EMPTY");
+		}
+
+		if ((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
+			Date startDate = (Date) attrMap.get(studentDao.FCT_START);
+			Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
+			if (finishDate.before(startDate)) {
+				EntityResult error = new EntityResultMapImpl();
+				error.setCode(EntityResult.OPERATION_WRONG);
+				error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
+				return error;
+			}
+		}
 		return this.daoHelper.insert(this.studentDao, attrMap);
 	}
 
 	@Override
 	public EntityResult studentUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+		if (isEmptyField(attrMap, studentDao.NAME) || isEmptyField(attrMap, studentDao.SURNAME1) || isEmptyField(attrMap, studentDao.SURNAME2)) {
+			return createErrorResult("NAME_AND_LASTNAMES_CANNOT_BE_EMPTY");
+		}
 
+		EntityResult query = this.daoHelper.query(this.studentDao, keyMap, Arrays.asList(studentDao.FCT_START, studentDao.FCT_END));
+		Map<String, Object> mapResult = query.getRecordValues(0);
 
-			EntityResult query = this.daoHelper.query(this.studentDao, keyMap,
-					Arrays.asList(studentDao.FCT_START, studentDao.FCT_END));
-
-			Map<String, Object> mapResult = query.getRecordValues(0);
-
-		if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
-
+		if ((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
 			Date currentStartDate = (Date) mapResult.get(studentDao.FCT_START);
 			Date currentFinishDate = (Date) mapResult.get(studentDao.FCT_END);
 
@@ -67,9 +70,11 @@ if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END
 				return createErrorResult("END_DATE_MORE_THAN_INIT_DATE");
 			}
 		}
-
-
 		return this.daoHelper.update(this.studentDao, attrMap, keyMap);
+	}
+
+	private boolean isEmptyField(Map<String, Object> map, String key) {
+		return !map.containsKey(key) || map.get(key) == null || map.get(key).toString().trim().isEmpty();
 	}
 
 	@Override
