@@ -33,10 +33,14 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        if (isEmptyField(attrMap, BootcampDao.ATTR_NAME)) {
+            return createErrorResult("BOOTCAMP_NAME_CANNOT_BE_EMPTY");
+        }
+
         Date startDate = (Date) attrMap.get(BootcampDao.ATTR_START_DATE);
         Date finishDate = (Date) attrMap.get(BootcampDao.ATTR_FINISH_DATE);
 
-        if (finishDate.before(startDate)) {
+        if (finishDate != null && startDate != null && finishDate.before(startDate)) {
             EntityResult error = new EntityResultMapImpl();
             error.setCode(EntityResult.OPERATION_WRONG);
             error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
@@ -50,6 +54,10 @@ public class BootcampService implements IBootcampService {
     public EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
 
+        if (isEmptyField(attrMap, BootcampDao.ATTR_NAME)) {
+            return createErrorResult("BOOTCAMP_NAME_CANNOT_BE_EMPTY");
+        }
+
         EntityResult query = this.daoHelper.query(this.bootcampDao, keyMap,
                 Arrays.asList(BootcampDao.ATTR_START_DATE, BootcampDao.ATTR_FINISH_DATE));
 
@@ -60,11 +68,15 @@ public class BootcampService implements IBootcampService {
         Date newStartDate = (Date) attrMap.getOrDefault(BootcampDao.ATTR_START_DATE, currentStartDate);
         Date newFinishDate = (Date) attrMap.getOrDefault(BootcampDao.ATTR_FINISH_DATE, currentFinishDate);
 
-        if (newFinishDate.before(newStartDate)) {
+        if (newFinishDate != null && newStartDate != null && newFinishDate.before(newStartDate)) {
             return createErrorResult("END_DATE_MORE_THAN_INIT_DATE");
         }
 
         return this.daoHelper.update(this.bootcampDao, attrMap, keyMap);
+    }
+
+    private boolean isEmptyField(Map<String, Object> map, String key) {
+        return !map.containsKey(key) || map.get(key) == null || map.get(key).toString().trim().isEmpty();
     }
 
     private EntityResult createErrorResult(String message) {
