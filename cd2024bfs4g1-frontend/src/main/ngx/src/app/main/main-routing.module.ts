@@ -19,7 +19,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule), data: {oPermission: {permissionId: 'students-permission', restrictedPermissionsRedirect: '/main/home'}} },
       { path: 'data', loadChildren: () => import('./data/data.module').then(m => m.DataModule), data: {oPermission: {permissionId: 'data-permission', restrictedPermissionsRedirect: '/main/home'}}},
-      { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule)}
+      { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule), data: {oPermission: {permissionId: 'config-permission', restrictedPermissionsRedirect: '/main/home'}}}
     ]
   }
 ];
