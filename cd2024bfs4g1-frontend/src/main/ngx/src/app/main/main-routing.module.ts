@@ -10,8 +10,8 @@ export const routes: Routes = [
     canActivate: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule) },
+      { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), data: { oPermission: {permissionId: 'home-permission', restrictedPermissionsRedirect: 'main/data'}} },
+      { path: 'bootcamps', loadChildren: () => import('./bootcamps/bootcamps.module').then(m => m.BootcampsModule), data: {oPermission: {permissionId: 'bootcamps', restrictedPermissionsRedirect: 'main/data'}} },
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: 'profile', component: ProfileComponent },
