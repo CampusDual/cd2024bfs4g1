@@ -249,28 +249,6 @@ if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END
 		return this.daoHelper.insert(this.userRoleDao, userRoleMap);
 	}
 
-
-
-	/*//NUEVO DESDE AQUI
-	@Override
-	public Map<String, Object> getStudentById(String userLogin) {
-		// Crear filtro
-		Map<String, Object> filter = new HashMap<>();
-		filter.put("usr_login", userLogin);
-		// Usar `userId` como clave
-		// Crear lista de columnas que quieres recuperar
-		List<String> columns = List.of(StudentDao.STU_ID, StudentDao.NAME, StudentDao.SURNAME1, StudentDao.SURNAME2,
-				StudentDao.DNI, StudentDao.PHONE, StudentDao.EMPLOYMENT_STATUS, StudentDao.LOCATION,
-				StudentDao.BIRTH_DATE, StudentDao.PERSONAL_EMAIL, StudentDao.CAMPUS_EMAIL, StudentDao.FCT_SCHOOL,
-				StudentDao.TUTOR, StudentDao.FCT_START, StudentDao.FCT_END, StudentDao.UDEMY, StudentDao.GITHUB_USER);
-		// Realizar consulta en la base de datos para obtener los datos del estudiante
-		EntityResult result = this.daoHelper.query(this.studentDao, filter, columns);
-		if (result != null && result.calculateRecordNumber() > 0) {
-			return result.getRecordValues(0);
-		}
-		return null;
-	}*/
-
 	private EntityResult createErrorResult(String message) {
 		EntityResult error = new EntityResultMapImpl();
 		error.setCode(EntityResult.OPERATION_WRONG);
