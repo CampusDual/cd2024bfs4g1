@@ -100,10 +100,14 @@ mat-tab-body { background-color: #1a3459; }
 .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base,
 .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
 .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-primary,
-.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default {
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default,
+button.mat-mdc-raised-button.mat-primary
+{
   border: none;
   background-color: #8AB237;
   border-radius: 10px;
+  color: #1a3459;
+  box-shadow: none;
 }
 
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
@@ -114,7 +118,10 @@ mat-tab-body { background-color: #1a3459; }
 }
 
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base:hover,
-.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent:hover {
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent:hover,
+button.mat-mdc-raised-button.mat-primary:hover,
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-primary:hover,
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default:hover {
   border: 2px solid #8AB237;
   background-color: #1a3459;
   border-radius: 10px;
@@ -154,7 +161,6 @@ mat-tab-body { background-color: #1a3459; }
 
 .popup {
   width: 40%;
-  height: 30%;
   border-radius: 15px;
 }
 
