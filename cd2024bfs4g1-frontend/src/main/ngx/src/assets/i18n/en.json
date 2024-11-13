@@ -223,7 +223,6 @@
   "REQ_Estudiante": "Student*",
   "Estudiante*" : "Student",
   "Student": "Student",
-  "Edit": "Edit",
   "subida":"File uploaded successfully",
   "Config": "Config",
   "REQ_LSTUDENTSTATUS": "Student status*",
@@ -258,5 +257,6 @@
   "Student-Bootcamp status": "Student-Bootcamp status",
   "Bootcamp status":"Bootcamp status",
   "RSURNAME2": "Second Surname*",
+  "Edit": "Edit",
   "TUTOR": "Mentor"
 }

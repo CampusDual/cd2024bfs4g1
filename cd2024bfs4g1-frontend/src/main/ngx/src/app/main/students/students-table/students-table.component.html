@@ -6,11 +6,16 @@
 
                 <div class="filter_style">
 
-                    <o-combo attr="employment_status_id" label="LEMSTATUS" required="no" translate="yes"
-                        null-selection="true" read-only="false" [data]="[]" service="employmentstatus"
-                        entity="employmentStatus" keys="id" columns="id;situation" value-column="id"
-                        description-columns="situation" query-on-init="true">
-                    </o-combo>
+
+                    <o-combo #type attr="employment_status_id" label="{{'TUTOR' | oTranslate}}" read-only="no"
+                        service="employmentstatus" entity="employmentStatus" keys="id"
+                        columns="id;situation" value-column="id" description-columns="situation" query-on-init="true"
+                        visible-columns="label" translate="yes" ></o-combo>
+
+                    <o-combo #type attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" read-only="no"
+                        service="employmentstatus" entity="employmentStatus" keys="id"
+                        columns="id;situation" value-column="id" description-columns="situation" query-on-init="true"
+                        visible-columns="label" translate="yes" ></o-combo>
 
                     <o-combo class="udemy" #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
@@ -26,17 +31,19 @@
                         service="students" entity="student" columns="status" value-column="value"
                         visible-columns="label" keys="id" translate="yes" ></o-combo>
 
+                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students" entity="student"
+                        columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
+                        searchable="yes" ></o-combo>
 
-                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
-                        entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
-                        visible-columns="value" searchable="yes"></o-combo>
+
                     <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
                         type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
 
-                            label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
-                       <!--  <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
-                            label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button> -->
-                    </div>
+                    <!-- <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"> -->
+                        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
+                            label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
+
+                   <!--  </div> -->
                 </div>
 
 
