@@ -126,7 +126,7 @@
   "ALUMNO_DATA": "Student Data",
   "BT_ALUMNS": "Bootcamp Alumns",
   "END_DATE_MORE_THAN_INIT_DATE": "The end date cannot be earlier than the start date",
-  "FILTERS": "FILTERS",
+  "FILTERS": "Filters",
   "surname1": "First Surname",
   "surname2": "Second Surname",
   "tutor": "Tutor",
@@ -201,5 +201,6 @@
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
   "Estudiante*" : "Student*",
   "Student": "Student",
-  "Edit": "Edit"
+  "Edit": "Edit",
+  "TUTOR": "Mentor"
 }
