@@ -50,12 +50,6 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-		if (hasInvalidNameOrSurname(attrMap)) {
-			EntityResult error = new EntityResultMapImpl();
-			error.setCode(EntityResult.OPERATION_WRONG);
-			error.setMessage("NAME_AND_LASTNAMES_CANNOT_BE_EMPTY");
-			return error;
-		}
 		if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
 	Date startDate = (Date) attrMap.get(studentDao.FCT_START);
 	Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
@@ -214,17 +208,7 @@ public class StudentService implements IStudentService {
 
 
 	}
-	private boolean hasInvalidNameOrSurname(Map<String, Object> attrMap) {
-		String nombre = (String) attrMap.get(studentDao.NAME); // Ajusta el nombre de campo según sea necesario
-		String apellido1 = (String) attrMap.get(studentDao.SURNAME1);
-		String apellido2 = (String) attrMap.get(studentDao.SURNAME2);
 
-		return isNullOrEmptyOrWhitespace(nombre) || isNullOrEmptyOrWhitespace(apellido1) || isNullOrEmptyOrWhitespace(apellido2);
-	}
-
-	private boolean isNullOrEmptyOrWhitespace(String value) {
-		return value == null || value.trim().isEmpty();
-	}
 	@Override
 	public EntityResult studentDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
 		Map<String,Object> deletekey = new Hashtable<>();
