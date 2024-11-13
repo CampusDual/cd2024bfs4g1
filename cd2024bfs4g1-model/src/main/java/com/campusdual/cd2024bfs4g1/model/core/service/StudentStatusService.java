@@ -73,5 +73,6 @@ public class StudentStatusService implements IStudentStatusService {
            error.setCode(EntityResult.OPERATION_WRONG);
             return error;
         }
+
     }
 }

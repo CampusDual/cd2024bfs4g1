@@ -202,6 +202,11 @@
   "Estudiante*" : "Student*",
   "Student": "Student",
   "Edit": "Edit",
+  "Config": "Config",
+  "LSTUDENTSTATUS": "Student Status",
+  "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "The student status you want to delete is in use",
+  "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "The employment status you want to delete is in use",
+  "update": "Update",
   "LSTUDENTSTATUS": "Student Status",
   "Select dates": "Select dates",
   "DATERANGE": {

@@ -198,13 +198,16 @@
   "LSTUDENTSTATUS": "Estado del Estudiante",
   "Fecha Inicio/Fecha Fin*": "Fecha Inicio/Fecha Fin*",
   "Estudiante*" : "Estudiante*",
-  "Edit": "Editar",
   "Student": "Estudiante",
   "USER*": "Nombre de Usuario*",
   "PASSWORD*": "Contraseña*",
   "DATERANGE": {
     "APPLYLABEL": "Seleccionar",
     "W":"S"
-  }
+  },
+  "Edit": "Editar",
+  "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "No se puede eliminar, el estado del alumno se encuentra en uso",
+  "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "No se puede eliminar, el estado laboral se encuentra en uso",
+  "update": "Actualizar"
 
 }

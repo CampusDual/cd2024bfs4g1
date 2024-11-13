@@ -11,10 +11,15 @@ export class ConfigTablesComponent {
   @ViewChild('studentStatusTable') studentStatusTable: OTableComponent;
   @ViewChild('employmentStatusTable') employmentStatusTable: OTableComponent;
   onRowStatusDeleted($event: any) {
-    this.studentStatusTable.refresh();
+    //this.studentStatusTable.refresh();
+    console.log("BORRO");
   }
   onRowEmploymentStatusDeleted($event: any) {
-    this.employmentStatusTable.refresh();
+    //this.employmentStatusTable.refresh();
+    console.log("BORRO");
+  }
+  prueba() {
+    console.log("Borro FALLO");
   }
 
 
