@@ -211,5 +211,7 @@
   "DATERANGE": {
     "APPLYLABEL": "Select",
     "W":"W"
-  }
+  },
+  "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "The employment status cannot be empty",
+  "STATUS_NAME_CANNOT_BE_EMPTY": "The status name cannot be empty"
 }
