@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ODateInputComponent, OntimizeService, OTranslateService, OValidators } from 'ontimize-web-ngx';
+import { OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
