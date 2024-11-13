@@ -24,7 +24,7 @@
     <div>
       <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
       <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" 
-        required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)"
+        required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" label-visible="false">
       </o-daterange-input>
   </div>
