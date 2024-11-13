@@ -5,7 +5,6 @@
                 icon="filter_list" class="collapsible-2">
 
                 <div class="filter_style">
-                    <o-text-input attr="tutor" read-only="no"></o-text-input>
 
                     <o-combo attr="employment_status_id" label="LEMSTATUS" required="no" translate="yes"
                         null-selection="true" read-only="false" [data]="[]" service="employmentstatus"
@@ -13,7 +12,7 @@
                         description-columns="situation" query-on-init="true">
                     </o-combo>
 
-                    <o-combo class= "udemy" #type attr="udemy" read-only="no"
+                    <o-combo class="udemy" #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
                         visible-columns="label" translate="yes"></o-combo>
@@ -22,17 +21,21 @@
                         entity="studentStatus" keys="id" columns="id;status" value-column="id" visible-columns="status"
                         read-only="no">
                     </o-combo>
+                    <o-combo class="estado" #type attr="status" read-only="no"
+                        [static-data]="[{'value': 'NOT_ELIGIBLE', 'label': 'NOT_ELIGIBLE'},{'value': 'UNDER_REVIEW', 'label': 'UNDER_REVIEW'}]"
+                        service="students" entity="student" columns="status" value-column="value"
+                        visible-columns="label" keys="id" translate="yes" ></o-combo>
 
-                    <o-combo attr="spain_comunity" read-only="no" service="students" entity="student"
+                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students" entity="student"
                         columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
                         searchable="yes"></o-combo>
 
-                    <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+                    <!-- <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"> -->
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
-                            label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
+                            label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
                        <!--  <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
                             label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button> -->
-                    </div>
+
                 </div>
 
 

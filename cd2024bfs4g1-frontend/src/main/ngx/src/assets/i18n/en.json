@@ -256,5 +256,7 @@
   "BOOTCAMPS_IN_STUDENT" : "Bootcamps this student is enrolled in",
   "STUDENT_FILES" : "Student files",
   "Student-Bootcamp status": "Student-Bootcamp status",
-  "Bootcamp status":"Bootcamp status"
+  "Bootcamp status":"Bootcamp status",
+  "RSURNAME2": "Second Surname*",
+  "TUTOR": "Mentor"
 }
