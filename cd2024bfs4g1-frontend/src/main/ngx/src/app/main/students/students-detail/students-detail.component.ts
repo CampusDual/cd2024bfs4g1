@@ -5,6 +5,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
+import EventEmitter from 'events';
 
 @Component({
   selector: 'app-students-detail',
@@ -82,12 +83,17 @@ export class StudentsDetailComponent {
   }
 
 
+  showMessage = false;
+
   onUploadFiles(event) {
     this.documentsTable.refresh();
     this.fileinput.clearValue();
-    alert("File added")
 
+    this.showMessage = true;
 
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
   }
 
   onFileUpload() {
@@ -97,7 +103,7 @@ export class StudentsDetailComponent {
   onError(event) {
 
     if (event.status === 507) {
-      this.showError(event);
+      this.showError("event");
     }
 
   }
