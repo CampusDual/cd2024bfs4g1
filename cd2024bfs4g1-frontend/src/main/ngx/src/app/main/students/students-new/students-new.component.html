@@ -23,7 +23,12 @@
     </div>
     <div class="contraseña">
       <label for="contraseña">{{'PASSWORD*' | oTranslate}}</label>
-      <o-password-input attr="usr_password" required="no" show-password-button="true"></o-password-input>
+      <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8" [validators]="validatorsNewPasswordArray">
+        <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+        <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+        <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+        <o-validator error-name="hasSpecialCharacters" error-text="VALIDATOR.HASSPECIALCHARACTERS"></o-validator>
+      </o-password-input>
     </div>
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
