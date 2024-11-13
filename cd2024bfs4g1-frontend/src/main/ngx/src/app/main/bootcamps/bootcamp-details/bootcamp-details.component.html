@@ -74,12 +74,13 @@
         </o-table>
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
-  </div>
-  <div class="list_container" fxLayout="column" fxLayoutFill>
+
+  <div class="list_container" >
+      <div class="title"> {{'Tutors' | oTranslate}}</div>
       <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
-      title="Mentors List" quick-filter="false" refresh-button="true" insert-button="false" delete-button="false"
+      quick-filter="false" refresh-button="false" insert-button="false" delete-button="false"
       selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
-      insert-button-position="bottom" show-buttons-text="false">
+      insert-button-position="bottom" show-buttons-text="false" controls="false">
       <o-list-item *ngFor="let tutor of list.dataArray">
         <o-list-item-text
           title="{{ tutor.name }} {{ tutor.surname1 }}"
