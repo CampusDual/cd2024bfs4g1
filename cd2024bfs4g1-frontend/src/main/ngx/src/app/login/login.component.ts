@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
             username: result.data['usr_name'],
             avatar: avatar
           });
-          const userRole = result.data['role'];
+          const userRole = result.data['rol_name'];
           this.redirectUserBasedOnRole(userRole);
         }
       );
