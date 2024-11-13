@@ -61,6 +61,22 @@ export class BootcampDetailsComponent {
     return result;
   }
 
+  inicialDR() {
+    const startDateValue = this.startDateInput.getValue();
+    const endDateValue = this.endDateInput.getValue();
+  
+    const startMoment = moment(startDateValue).local();  
+    const endMoment = moment(endDateValue).local();      
+  
+    this.selectedDateRange = {
+      startDate: startMoment,
+      endDate: endMoment
+    };
+  
+    this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
+  }
+
+
   throwChange($event: any) {
 
     let startDate = moment($event.newValue.startDate).local();  
@@ -73,9 +89,9 @@ export class BootcampDetailsComponent {
   // throwChange(enddate: ODateInputComponent) {
   //   enddate.getControl().updateValueAndValidity();
   // }
-  throwChange2(startdate: ODateInputComponent) {
-    startdate.getControl().updateValueAndValidity();
-  }
+ // throwChange2(startdate: ODateInputComponent) {
+   // startdate.getControl().updateValueAndValidity();
+ // }
 
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
@@ -136,22 +152,6 @@ export class BootcampDetailsComponent {
     }
     return '';
   };
-
-
-  inicialDR() {
-    const startDateValue = this.startDateInput.getValue();
-    const endDateValue = this.endDateInput.getValue();
-  
-    const startMoment = moment(startDateValue).local();  
-    const endMoment = moment(endDateValue).local();      
-  
-    this.selectedDateRange = {
-      startDate: startMoment,
-      endDate: endMoment
-    };
-  
-    this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
-  }
 
 
   navigate() {
