@@ -201,5 +201,10 @@
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
   "Estudiante*" : "Student*",
   "Student": "Student",
-  "Edit": "Edit"
+  "Edit": "Edit",
+  "Select dates": "Select dates",
+  "DATERANGE": {
+    "APPLYLABEL": "Select",
+    "W":"W"
+  }
 }

@@ -45,13 +45,15 @@
   </div>
 
   <div class="table_container" fxLayout="column" fxLayoutFill>
-    <o-form-layout-manager attr="addStudentLayout" mode="dialog" title="Student" >
-      <o-form-layout-dialog-options class="popup">
+    <o-form-layout-manager attr="addStudentLayout" mode="dialog" title="Student" virtual-scroll="false">
+      <o-form-layout-dialog-options class="popup" >
         <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
           entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
-          columns="id;name;surname1;surname2;personal_email;student_id;action"
-          visible-columns="name;surname1;surname2;personal_email;action" sort-columns="name" query-rows="10"
+          columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
+          visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10"
           show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="click">
+          <o-table-column attr="sb_start_date" title="Start Date" type="date" format="DD/MM/YYYY"></o-table-column>
+          <o-table-column attr="sb_end_date" title="End Date" type="date" format="DD/MM/YYYY"></o-table-column>
           <o-table-paginator page-size="20" page-size-options="10;20;40">
           </o-table-paginator>
           <o-table-column attr="action" width="64px">
