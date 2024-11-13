@@ -26,15 +26,6 @@
                         service="students" entity="student" columns="status" value-column="value"
                         visible-columns="label" keys="id" translate="yes" ></o-combo>
 
-                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students" entity="student"
-                        columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
-                        searchable="yes"></o-combo>
-
-                    <!-- <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"> -->
-                        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
-                            label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-                       <!--  <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
-                            label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button> -->
 
                     <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
@@ -42,6 +33,10 @@
                     <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
                         type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
 
+                            label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
+                       <!--  <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
+                            label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button> -->
+                    </div>
                 </div>
 
 
