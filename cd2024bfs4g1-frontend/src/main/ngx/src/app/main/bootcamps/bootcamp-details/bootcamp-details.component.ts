@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ODateInputComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
+import { ODateInputComponent, OntimizeService, OTranslateService, OValidators } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -17,6 +17,7 @@ export class BootcampDetailsComponent {
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  validatorsWithoutSpace: ValidatorFn[] = [];
 
   constructor(private router: Router,
     private actRoute: ActivatedRoute,
@@ -25,6 +26,7 @@ export class BootcampDetailsComponent {
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     private translateService: OTranslateService) {
     this.validatorsArray.push(this.dateValidator);
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
     this.configureService();
     this.dateClass.bind(this);

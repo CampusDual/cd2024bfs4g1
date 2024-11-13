@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { ODateInputComponent } from 'ontimize-web-ngx';
+import { ODateInputComponent, OValidators } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bootcamp-new',
@@ -12,9 +12,11 @@ export class BootcampNewComponent {
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  validatorsWithoutSpace: ValidatorFn[] = [];
 
   constructor(private router: Router) {
     this.validatorsArray.push(this.dateValidator);
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
 
   volver(e) {

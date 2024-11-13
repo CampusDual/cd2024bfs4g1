@@ -16,6 +16,7 @@ export class StudentsNewComponent {
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   validatorsNewPasswordArray: ValidatorFn[] = [];
+  validatorsWithoutSpace: ValidatorFn[] = [];
 
 
   constructor() {
@@ -24,6 +25,7 @@ export class StudentsNewComponent {
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/, 'hasSpecialCharacters'));
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
 
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));

@@ -7,11 +7,11 @@
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido2">
       <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
@@ -23,11 +23,16 @@
     </div>
     <div class="usuario">
       <label for="usuario">{{'USER*' | oTranslate}}</label>
-      <o-text-input attr="usr_login" required="yes" id="name" max-length="255"></o-text-input>
+      <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"></o-text-input>
     </div>
     <div class="contraseña">
       <label for="contraseña">{{'PASSWORD*' | oTranslate}}</label>
-      <o-password-input attr="usr_password" required="yes" show-password-button="true"></o-password-input>
+      <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8" [validators]="validatorsNewPasswordArray">
+        <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+        <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+        <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+        <o-validator error-name="hasSpecialCharacters" error-text="VALIDATOR.HASSPECIALCHARACTERS"></o-validator>
+      </o-password-input>
     </div>
 
 
