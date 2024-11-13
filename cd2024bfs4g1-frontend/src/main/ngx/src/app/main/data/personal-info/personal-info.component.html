@@ -1,7 +1,7 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}" >
 <div class="container">
 <o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions=""
-  show-header-navigation="no" editable-detail="false" show-header="false" cdkScrollable="false">
+  show-header-navigation="no" (scroll)="false" editable-detail="false" show-header="false" cdk-scrollable="false">
 
   <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
 
