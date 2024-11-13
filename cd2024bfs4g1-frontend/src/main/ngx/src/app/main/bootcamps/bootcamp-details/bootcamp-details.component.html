@@ -51,8 +51,7 @@
         </div>
       </o-column-collapsible>
   </div>
- <div class="general_container">
-  <div class="table_container" fxLayout="column" fxLayoutFill>
+  <div class="general_container">
     <o-form-layout-manager attr="addStudentLayout" mode="dialog">
       <o-form-layout-dialog-options class="popup">
 
@@ -75,7 +74,7 @@
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
 
-  <div class="list_container" >
+    <div class="list_container" >
       <div class="title"> {{'Tutors' | oTranslate}}</div>
       <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
       quick-filter="false" refresh-button="false" insert-button="false" delete-button="false"
@@ -89,10 +88,7 @@
         </o-list-item-text>
       </o-list-item>
       </o-list>
+    </div>
   </div>
-
-
-  </div>
-
-
+  
 </o-form>

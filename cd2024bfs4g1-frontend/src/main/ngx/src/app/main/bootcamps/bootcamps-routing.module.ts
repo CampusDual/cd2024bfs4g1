@@ -12,8 +12,8 @@ const routes: Routes = [
 
 
   {path:"",pathMatch:"full",component:BootcampListComponent},
-  {path: 'new',component: BootcampNewComponent},
-  {path: ':id',component: BootcampDetailsComponent},
+  {path:'new',component: BootcampNewComponent},
+  {path:':id',component: BootcampDetailsComponent},
   {path:':bootcamp_id/new', component: StudentBootcampAddComponent},
   {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent}
 ];
