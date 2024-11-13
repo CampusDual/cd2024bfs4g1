@@ -37,7 +37,7 @@
 
 .filter_style {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(5, 1fr); 
   gap: 15px; 
   background-color: #f5f0f2;
   padding: 20px;
@@ -50,8 +50,7 @@
 
 .filter_style o-text-input,
 .filter_style o-combo {
-  width: 100%;
-  min-width: 100px;
+  width: 70%;
 }
 
 .centered-actions {
@@ -60,7 +59,7 @@
   margin-top: 10px;
 }
 
-
-
-
+.udemy{
+  
+}
 
