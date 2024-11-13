@@ -223,5 +223,7 @@
   "dateRangeBootcamp" : "Start date/End date",
   "dateRangeBootcampDetail" : "Start date/End date",
   "Bootcamps Asigned":"Bootcamps Asigned",
-  "RSURNAME2": "Second Surname*"
+  "RSURNAME2": "Second Surname*",
+  "Edit": "Edit",
+  "TUTOR": "Mentor"
 }
