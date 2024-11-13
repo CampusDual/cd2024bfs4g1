@@ -1,22 +1,32 @@
-<o-form attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id"
-    header-actions="R;I;U;D" (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
+<o-form #bootcampForm attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
+    (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
     <div class="grid-container">
         <div class="especial nombre">
             <label for="LNAME">{{'LNAME' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="name" required="yes" max-length="100"></o-text-input>
         </div>
-        <div class="especial fecha-inicio">
-            <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label>
+        <div class="especial fecha-inicio" hidden="true">
+            <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
             <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes"
-                format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)"></o-date-input>
-            <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+                format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)" hidden="true"></o-date-input >
+            <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
         </div>
-        <div class="especial fecha-fin">
-            <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label>
+        <div class="especial fecha-fin" hidden="true">
+            <!-- <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label> -->
             <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray"
-                format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+                format="DD/MM/YYYY" hidden="true">
                 <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
+        </div>
+
+        <div>
+            <div>
+                <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
+                <o-daterange-input attr="dateRangeBootcamp" read-only="no" required="yes" format="DD/MM/YYYY"
+                    automatic-binding="false" (onValueChange)="throwChange($event)" show-week-numbers="true"
+                    mode="desktop" label-visible="false" text-input-enabled="no ">
+                </o-daterange-input>
+            </div>
         </div>
         <div class="especial descripcion">
             <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>

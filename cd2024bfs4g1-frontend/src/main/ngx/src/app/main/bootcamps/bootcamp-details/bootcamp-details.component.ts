@@ -3,7 +3,8 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ODateInputComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
+import moment from 'moment';
+import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -12,7 +13,7 @@ import { ODateInputComponent, OntimizeService, OTranslateService } from 'ontimiz
 
 })
 export class BootcampDetailsComponent {
-
+  @ViewChild('bootcampDetailForm') bootcampDetailForm:OFormComponent;
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
@@ -60,20 +61,46 @@ export class BootcampDetailsComponent {
     return result;
   }
 
+  inicialDR() {
+    const startDateValue = this.startDateInput.getValue();
+    const endDateValue = this.endDateInput.getValue();
+  
+    const startMoment = moment(startDateValue).local();  
+    const endMoment = moment(endDateValue).local();      
+  
+    this.selectedDateRange = {
+      startDate: startMoment,
+      endDate: endMoment
+    };
+  
+    this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
+  }
 
-  throwChange(enddate: ODateInputComponent) {
-    enddate.getControl().updateValueAndValidity();
-  }
-  throwChange2(startdate: ODateInputComponent) {
-    startdate.getControl().updateValueAndValidity();
-  }
+
+  throwChange($event: any) {
+
+    let startDate = moment($event.newValue.startDate).local();  
+    let endDate = moment($event.newValue.endDate).local();
+
+    this.bootcampDetailForm.setFieldValue("start_date", startDate);
+    this.bootcampDetailForm.setFieldValue("end_date", endDate);
+  
+}
+  // throwChange(enddate: ODateInputComponent) {
+  //   enddate.getControl().updateValueAndValidity();
+  // }
+ // throwChange2(startdate: ODateInputComponent) {
+   // startdate.getControl().updateValueAndValidity();
+ // }
 
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
+  @ViewChild("dateRange") dateRange: ODateRangeInputComponent;
 
   selected = false;
   startAtDate: Date;
   protected service: OntimizeService;
+  public selectedDateRange = {};
 
 
 
@@ -94,6 +121,7 @@ export class BootcampDetailsComponent {
         const startDate = new Date(bootcamp.start_date);
         const endDate = new Date(bootcamp.end_date);
 
+      
         this.startDateInput.setValue(startDate);
         this.endDateInput.setValue(endDate);
         this.startAtDate = startDate;
