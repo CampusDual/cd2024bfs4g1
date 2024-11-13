@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { ODateInputComponent, OFormComponent } from 'ontimize-web-ngx';
+import { ODateInputComponent, OFormComponent,OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 
 @Component({
