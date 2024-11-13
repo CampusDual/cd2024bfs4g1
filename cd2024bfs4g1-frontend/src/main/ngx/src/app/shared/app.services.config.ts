@@ -21,5 +21,8 @@ export const SERVICE_CONFIG: Object = {
     'path': '/employmentstatus'
   }
   ,
+  'studentstatus':{
+    'path': '/studentstatus'
+  }
 
 };

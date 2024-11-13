@@ -82,6 +82,7 @@
   "start_date": "Start Date",
   "end_date": "End Date",
   "status": "Status",
+  "situation": "Situation",
   "phone": "Phone",
   "birth_date": "Birth Date",
   "campus_email": "Campus Email",
@@ -160,7 +161,7 @@
   "Go back": "Return",
   "NOT_ELIGIBLE": "Not eligible",
   "UNDER_REVIEW": "Under review",
-  "LSTATUS": "Status*",
+  "LSTATUS": "Status",
   "LSPAINCOMUNITY": "Spanish Community*",
   "spain_comunity": "Spanish Community",
   "LLOCATION": "Location",
@@ -197,14 +198,20 @@
   "STUDENT": "Student",
   "LEMPLOYMENTSTATUS": "Employment Status",
   "LSITUATION": "Situation",
-  "Config": "Config",
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
   "Estudiante*" : "Student*",
   "Student": "Student",
   "Edit": "Edit",
+  "Config": "Config",
+  "LSTUDENTSTATUS": "Student Status",
+  "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "The student status you want to delete is in use",
+  "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "The employment status you want to delete is in use",
+  "update": "Update",
   "Select dates": "Select dates",
   "DATERANGE": {
     "APPLYLABEL": "Select",
     "W":"W"
-  }
+  },
+  "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "The employment status cannot be empty",
+  "STATUS_NAME_CANNOT_BE_EMPTY": "The status name cannot be empty"
 }

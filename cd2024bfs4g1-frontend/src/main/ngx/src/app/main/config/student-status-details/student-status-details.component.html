@@ -1,0 +1,14 @@
+<o-form #student_status_details confirm-exit="no" attr="student_details_status" service="studentstatus" entity="studentStatus" keys="id" show-header="no"
+    header-actions="I;U;D" show-header-navigation="no">
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+
+    <div class="grid-container">
+        <div>
+            <label for="LSTUDENTSTATUS">{{'LSTUDENTSTATUS' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="status" required="yes"></o-text-input>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button translate="yes" attr="updatebutton" id="update" type="RAISED" label="update" color="primary" (click)="student_status_details.update();student_status_details.closeDetail()"></o-button>
+        </div>
+    </div>
+</o-form>

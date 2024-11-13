@@ -1,23 +1,62 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'Students' | oTranslate}}">
     <div class="table_container">
         <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
-            
+            <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no"
+                icon="filter_list" class="collapsible">
+
+                <div class="filter_style">
+                    <o-text-input attr="tutor" read-only="no"></o-text-input>
+
+                    <o-combo attr="employment_status_id" label="LEMSTATUS" required="no" translate="yes" null-selection="true" read-only="false"
+                    [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
+                    columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
+                    </o-combo>
+
+                    <o-combo #type attr="udemy" read-only="no"
+                        [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
+                        service="students" entity="student" columns="udemy" value-column="value" keys="id"
+                        visible-columns="label" translate="yes" ></o-combo>
+
+                        <o-combo attr="student_status_id" label="LSTATUS"  null-selection="true"
+                        service="studentstatus" entity="studentStatus" keys="id"
+                        columns="id;status" value-column="id" visible-columns="status" read-only="no" >
+                        </o-combo>
+
+                    <o-combo attr="spain_comunity" read-only="no" service="students" entity="student"
+                        columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
+                        searchable="yes" ></o-combo>
+
+                    <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+                        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
+                            label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
+                        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
+                            label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button>
+                    </div>
+                </div>
+
+
+
+                <o-filter-builder #filterBuilder attr="thefilter"
+                    filters="tutor:tutor;udemy:udemy;employment_status_id:employment_status_id;student_status_id:student_status_id;spain_comunity:spain_comunity;id"
+                    [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
+                    [expression-builder]="createFilter"></o-filter-builder>
+            </o-column-collapsible>
+
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students" sort-columns="name"
-                entity="student" keys="id"
-                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;status;spain_comunity;location;situation"
-                visible-columns="name;surname1;surname2;dni;personal_email;status" delete-button="false"
-                show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Students"
-                show-title="true">
-                <o-table-column attr="name" title="Name"></o-table-column>
-                <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
-                <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
-                <o-table-column attr="dni" title="DNI"></o-table-column>
-                <o-table-column attr="personal_email" title="Email"></o-table-column>
-                <o-table-column attr="status" type="translate" title="status"></o-table-column>
-                <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
-                </o-table-context-menu>
-                <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-            </o-table>
+            entity="student" keys="id"
+            columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status_id;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;situation;student_status_id"
+            visible-columns="name;surname1;surname2;dni;personal_email;" delete-button="false"
+            show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Students"
+            show-title="true">
+            <o-table-column attr="name" title="Name"></o-table-column>
+            <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
+            <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
+            <o-table-column attr="dni" title="DNI"></o-table-column>
+            <o-table-column attr="personal_email" title="Email"></o-table-column>
+            <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+            </o-table-context-menu>
+            <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+        </o-table>
         </o-form>
     </div>
 </o-form-layout-manager>

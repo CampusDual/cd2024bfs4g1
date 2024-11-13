@@ -82,6 +82,7 @@
   "start_date": "Fecha de Inicio",
   "end_date": "Fecha de Fin",
   "status": "Estado",
+  "situation": "Situacion",
   "phone": "Teléfono",
   "birth_date": "Fecha de Nacimiento",
   "campus_email": "Correo Campus",
@@ -160,7 +161,7 @@
   "Go back": "Volver",
   "NOT_ELIGIBLE": "No apto",
   "UNDER_REVIEW": "En seguimiento",
-  "LSTATUS": "Estado*",
+  "LSTATUS": "Estado",
   "LSPAINCOMUNITY": "Comunidad Autónoma*",
   "spain_comunity": "Comunidad Autónoma",
   "LLOCATION": "Ubicación",
@@ -194,16 +195,21 @@
   "STUDENT": "Estudiante",
   "LEMPLOYMENTSTATUS": "Estado Laboral",
   "LSITUATION": "Situacion",
-  "Config": "Configuracion",
+  "LSTUDENTSTATUS": "Estado del Estudiante",
   "Fecha Inicio/Fecha Fin*": "Fecha Inicio/Fecha Fin*",
   "Estudiante*" : "Estudiante*",
-   "Student": "Estudiante",
-   "Edit": "Editar",
+  "Student": "Estudiante",
   "USER*": "Nombre de Usuario*",
   "PASSWORD*": "Contraseña*",
   "DATERANGE": {
     "APPLYLABEL": "Seleccionar",
     "W":"S"
-  }
+  },
+  "Edit": "Editar",
+  "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "No se puede eliminar, el estado del alumno se encuentra en uso",
+  "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "No se puede eliminar, el estado laboral se encuentra en uso",
+  "update": "Actualizar",
+  "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "El estado laboral no puede estar vacio",
+  "STATUS_NAME_CANNOT_BE_EMPTY": "El nombre del estado no puede estar vacio"
 
 }

@@ -6,6 +6,8 @@ import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp
 import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
 import { StudentBootcampDetailComponent } from './bootcamp-details/student-bootcamp-detail/student-bootcamp-detail.component';
 
+
+
 const routes: Routes = [
 
 
