@@ -33,9 +33,6 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        if (isEmptyField(attrMap, BootcampDao.ATTR_NAME)) {
-            return createErrorResult("BOOTCAMP_NAME_CANNOT_BE_EMPTY");
-        }
 
         Date startDate = (Date) attrMap.get(BootcampDao.ATTR_START_DATE);
         Date finishDate = (Date) attrMap.get(BootcampDao.ATTR_FINISH_DATE);
@@ -54,9 +51,6 @@ public class BootcampService implements IBootcampService {
     public EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
 
-        if (isEmptyField(attrMap, BootcampDao.ATTR_NAME)) {
-            return createErrorResult("BOOTCAMP_NAME_CANNOT_BE_EMPTY");
-        }
 
         EntityResult query = this.daoHelper.query(this.bootcampDao, keyMap,
                 Arrays.asList(BootcampDao.ATTR_START_DATE, BootcampDao.ATTR_FINISH_DATE));
@@ -75,9 +69,6 @@ public class BootcampService implements IBootcampService {
         return this.daoHelper.update(this.bootcampDao, attrMap, keyMap);
     }
 
-    private boolean isEmptyField(Map<String, Object> map, String key) {
-        return !map.containsKey(key) || map.get(key) == null || map.get(key).toString().trim().isEmpty();
-    }
 
     private EntityResult createErrorResult(String message) {
         EntityResult error = new EntityResultMapImpl();
