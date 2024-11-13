@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         .subscribe(() => {
           self.sessionExpired = false;
           this.loadUserInfo();
-          self.router.navigate([this.redirect]);
+          
         }, this.handleError);
     }
   }
@@ -90,8 +90,28 @@ export class LoginComponent implements OnInit {
             username: result.data['usr_name'],
             avatar: avatar
           });
+          const userRole = result.data['rol_name'];
+          this.redirectUserBasedOnRole(userRole);
         }
       );
+  }
+
+  private redirectUserBasedOnRole(role: string): void {
+    let redirectRoute = this.redirect; 
+    switch (role) {
+      case 'admin':
+        redirectRoute = '/main';
+        break;
+      case 'user':
+        redirectRoute = '/main';
+        break;
+      case 'student':
+        redirectRoute = '/main/data';
+        break;
+      default:
+        redirectRoute = this.redirect; 
+    }
+    this.router.navigate([redirectRoute]);
   }
 
   private handleError(error) {
