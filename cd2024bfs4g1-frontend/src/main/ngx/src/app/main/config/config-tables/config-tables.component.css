@@ -24,13 +24,8 @@
     padding: 6px;
 }
 
-.maestros-container {
-    background-color: #1a3459;
-    display: flex;
-    flex-direction: column;
-}
-
 .config-container {
+    background-color: #1a3459;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
