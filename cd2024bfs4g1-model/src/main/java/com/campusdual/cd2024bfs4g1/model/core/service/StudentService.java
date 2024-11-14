@@ -50,7 +50,7 @@ public class StudentService implements IStudentService {
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
+		if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
 	Date startDate = (Date) attrMap.get(studentDao.FCT_START);
 	Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
 	if (finishDate.before(startDate)) {
@@ -111,7 +111,6 @@ if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END
 
 	@Override
 	public EntityResult studentUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-
 
 			EntityResult query = this.daoHelper.query(this.studentDao, keyMap,
 					Arrays.asList(studentDao.FCT_START, studentDao.FCT_END));

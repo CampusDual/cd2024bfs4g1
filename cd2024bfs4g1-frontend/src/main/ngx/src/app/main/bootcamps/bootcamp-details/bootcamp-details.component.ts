@@ -3,6 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
@@ -18,6 +19,7 @@ export class BootcampDetailsComponent {
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  validatorsWithoutSpace: ValidatorFn[] = [];
 
   constructor(private router: Router,
     private actRoute: ActivatedRoute,
@@ -26,6 +28,7 @@ export class BootcampDetailsComponent {
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     private translateService: OTranslateService) {
     this.validatorsArray.push(this.dateValidator);
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
     this.configureService();
     this.dateClass.bind(this);
@@ -64,27 +67,27 @@ export class BootcampDetailsComponent {
   inicialDR() {
     const startDateValue = this.startDateInput.getValue();
     const endDateValue = this.endDateInput.getValue();
-  
-    const startMoment = moment(startDateValue).local();  
-    const endMoment = moment(endDateValue).local();      
-  
+
+    const startMoment = moment(startDateValue).local();
+    const endMoment = moment(endDateValue).local();
+
     this.selectedDateRange = {
       startDate: startMoment,
       endDate: endMoment
     };
-  
+
     this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
   }
 
 
   throwChange($event: any) {
 
-    let startDate = moment($event.newValue.startDate).local();  
+    let startDate = moment($event.newValue.startDate).local();
     let endDate = moment($event.newValue.endDate).local();
 
     this.bootcampDetailForm.setFieldValue("start_date", startDate);
     this.bootcampDetailForm.setFieldValue("end_date", endDate);
-  
+
 }
   // throwChange(enddate: ODateInputComponent) {
   //   enddate.getControl().updateValueAndValidity();
@@ -121,7 +124,6 @@ export class BootcampDetailsComponent {
         const startDate = new Date(bootcamp.start_date);
         const endDate = new Date(bootcamp.end_date);
 
-      
         this.startDateInput.setValue(startDate);
         this.endDateInput.setValue(endDate);
         this.startAtDate = startDate;
