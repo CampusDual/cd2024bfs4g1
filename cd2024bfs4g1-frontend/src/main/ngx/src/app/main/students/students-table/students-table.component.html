@@ -38,6 +38,12 @@
                        <!--  <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
                             label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button> -->
 
+                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
+                        entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
+                        visible-columns="value" searchable="yes"></o-combo>
+                    <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
+                        type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
+
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
