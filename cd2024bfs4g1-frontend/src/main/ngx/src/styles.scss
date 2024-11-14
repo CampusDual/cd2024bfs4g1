@@ -259,6 +259,11 @@ label{
 .o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav.mat-drawer-closed .o-app-sidenav-item:not(.o-user-info) {
   color: #1a3459;
 }
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav:not(.mat-drawer-closed) .o-app-sidenav-menugroup mat-icon:not(.o-app-sidenav-menugroup-arrow),
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav:not(.mat-drawer-closed) .o-app-sidenav-menuitem mat-icon:not(.o-app-sidenav-menugroup-arrow),
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav:not(.mat-drawer-closed) .o-app-sidenav-menugroup .o-app-sidenav-menugroup-arrow{
+  color: #1a3459;
+}
 .o-app-sidenav .o-app-sidenav-menu-group:not([disabled=true]) a.o-app-sidenav-viewer-sidenav-item-selected, .o-app-sidenav .o-app-sidenav-menu-item:not([disabled=true]) a.o-app-sidenav-viewer-sidenav-item-selected {
   border-left: 8px solid #7ec117;
 }
