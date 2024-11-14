@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-.maestros-container .quickFilter {
+.config-container .quickFilter {
   visibility: hidden;
+}
+
+.config-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table_container {
+  flex: 1;
 }
 
 .o-form-layout-manager {
