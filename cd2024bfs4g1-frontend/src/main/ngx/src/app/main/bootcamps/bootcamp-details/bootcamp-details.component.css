@@ -142,6 +142,7 @@ o-form {
   width: 100%;
 }
 
+
 @media (max-width: 768px) {
   .grid-container,
   .table_container {
@@ -181,4 +182,9 @@ mat-calendar .mat-calendar-body-cell {
 
 mat-calendar .mat-calendar-arrow {
   display: none;
+}
+.timetable_table{
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+  height: auto;
 }

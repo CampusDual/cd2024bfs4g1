@@ -1,11 +1,11 @@
-<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
-  header-actions="R;I;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
-  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
-  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
+<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;U;D"
+  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
+  (onDataLoaded)="onBootcampChange($event);inicialDR()" >
+  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
 
   <div class="grid-container">
     <div class="especial nombre">
-      <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
+      <label for="LNAME">{{'LNAME' | oTranslate}}</label>
       <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
     </div>
     <div class="especial fecha-inicio" hidden="true">
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-      <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
+      <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
       <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" >
@@ -50,6 +50,24 @@
           </div>
         </div>
       </o-column-collapsible>
+    <o-column-collapsible class="gridcalendario" title="{{'TimeTable' | oTranslate}}" appearance="legacy" expanded="no" icon="schedule" elevation="2">
+      <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
+        <o-form-layout-dialog-options class="popup" >
+          <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable" service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
+          detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id" parent-keys="id_bootcamp:id;start_date;end_date"
+                   columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
+                   visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
+                   show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" detail-button-in-row-icon="">
+            <o-table-column attr="time_start" title="TimeStart" content-align="center"></o-table-column>
+            <o-table-column attr="time_end" title="TimeEnd" content-align="center"></o-table-column>
+            <o-table-column attr="day_start" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
+            <o-table-column attr="day_end" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
+            <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
+            </o-table-context-menu>
+          </o-table>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
+    </o-column-collapsible>
   </div>
   <div class="general_container">
     <div class="table_container">
@@ -75,7 +93,7 @@
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
     </div>
-    
+
 
     <div class="list_container" >
     <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
@@ -96,5 +114,4 @@
     </o-form-layout-manager>
     </div>
   </div>
-
 </o-form>
