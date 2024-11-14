@@ -1,17 +1,21 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D" show-header-navigation="no" >
+<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D"
+  show-header-navigation="no">
   <div o-form-toolbar-buttons>
-    <o-button attr="backButton" class="o-form-toolbar-button"  type="RAISED" icon="keyboard_backspace" label="Go back" (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
+    <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
+      (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
   <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
   <div class="grid-container">
     <div class="nombre">
       <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"
+        (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido">
       <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255"
+        (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="apellido2">
       <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
@@ -23,11 +27,13 @@
     </div>
     <div class="usuario">
       <label for="usuario">{{'USER*' | oTranslate}}</label>
-      <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"></o-text-input>
+      <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name"
+        max-length="255"></o-text-input>
     </div>
     <div class="contraseña">
       <label for="contraseña">{{'PASSWORD*' | oTranslate}}</label>
-      <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8" [validators]="validatorsNewPasswordArray">
+      <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8"
+        [validators]="validatorsNewPasswordArray">
         <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
         <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
         <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
@@ -37,30 +43,29 @@
 
     <div class="telefono">
       <label for="LPHONE">{{'LPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes" ></o-phone-input>
+      <o-phone-input attr="phone" required="yes"></o-phone-input>
     </div>
     <div class="employmentStatus">
       <label for="employment_status">{{'LEMSTATUS' | oTranslate}}*</label>
-      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
-      [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
-      columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
+      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes"
+        null-selection="false" [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
+        columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
       </o-combo>
     </div>
 
     <div class="status">
       <div class="studentStatus">
-        <label for="student_status">{{'LSTATUS' | oTranslate}}*</label>
-        <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
-        [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
-        columns="id;status" value-column="id" description-columns="status" query-on-init="true">
+        <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
+        <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="yes" translate="yes"
+          null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
+          columns="id;status" value-column="id" description-columns="status" query-on-init="true">
         </o-combo>
       </div>
     </div>
     <div class="comunidad">
       <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
-      <o-combo attr="spain_comunity"   [static-data]="dataArray"
-      [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-      columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
+      <o-combo attr="spain_comunity" [static-data]="dataArray" [data]="valueSimple" required="yes" searchable="yes"
+        value-column="key" columns="key;value" visible-columns="value" null-selection="false"></o-combo>
     </div>
 
     <div class="location">
@@ -71,24 +76,24 @@
 
     <div class="fechaCumple">
       <label for="LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>
-      <o-date-input attr="birth_date" required="yes"  format="DD/MM/YYYY"></o-date-input>
+      <o-date-input attr="birth_date" required="yes" format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="email">
       <label for="LEMAIL">{{'LEMAIL'|oTranslate}}</label>
-      <o-email-input attr="personal_email" required="yes" ></o-email-input>
+      <o-email-input attr="personal_email" required="yes"></o-email-input>
     </div>
     <div class="emailCampus">
       <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-      <o-email-input attr="campus_email" required="no" ></o-email-input>
+      <o-email-input attr="campus_email" required="no"></o-email-input>
     </div>
     <div class="fctSchool">
       <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-      <o-text-input attr="fct_school" required="no" max-length="100"
-      (input)="toUpperCamelCase($event)"></o-text-input>
+      <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
     </div>
     <div class="tutor">
       <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
-      <o-text-input attr="tutor" required="no" max-length="200" (input)="toUpperCamelCase($event)" sql-type="INTEGER"></o-text-input>
+      <o-text-input attr="tutor" required="no" max-length="200" (input)="toUpperCamelCase($event)"
+        sql-type="INTEGER"></o-text-input>
     </div>
     <div class="fctStart">
       <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
@@ -99,8 +104,8 @@
     </div>
     <div class="fctEnd">
       <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-      <o-date-input #enddate attr="fct_end" required="no" text-input-enabled="no " [validators]="validatorsArray" format="DD/MM/YYYY"
-        (onValueChange)="throwChange2(startdate)">
+      <o-date-input #enddate attr="fct_end" required="no" text-input-enabled="no " [validators]="validatorsArray"
+        format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
 
@@ -118,12 +123,13 @@
       <div class="upload-container">
         <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
         <div class="input-button-container">
-          <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}" service="documents"
-            entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
-            [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
-            (onError)="onError($event)">
+          <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}"
+            service="documents" entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5"
+            split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
+            (onUpload)="onUploadFiles($event)" (onError)="onError($event)">
           </o-file-input>
-          <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
+          <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}"
+            color="primary"></o-button>
         </div>
       </div>
       <div *ngIf="showMessage" class="notification">
