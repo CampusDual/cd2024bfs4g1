@@ -1,34 +1,3 @@
-<div class="maestros-container">
-<o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LEMPLOYMENTSTATUS">
-    <div class="table_container">
-        <o-form-layout-dialog-options class="popup">
-            <o-table #employmentStatusTable class="general_table" detail-form-route="employmentstatus/" insert-form-route="new" quick-filter="true"
-                attr="employmentStatusTable" virtual-scroll="false" service="employmentstatus"
-                entity="employmentStatus" keys="id" columns="id;situation" visible-columns="situation"
-                sort-columns="situation" query-rows="5" show-report-on-demand-option="false" translate="yes"
-                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="single"
-                show-title="true" title="LEMPLOYMENTSTATUS">
-                <o-table-paginator page-size="5" page-size-options="5;10;15">
-                </o-table-paginator>
-            </o-table>
-        </o-form-layout-dialog-options>
-    </div>
-</o-form-layout-manager>
-<o-form-layout-manager attr="configLayout" mode="dialog"  dialog-min-width="450px" dialog-min-height="200px" title="LSTUDENTSTATUS">
-<div class="table_container">
-    <o-form-layout-dialog-options class="popup">
-        <o-table #studentStatusTable class="general_table" detail-form-route="studentstatus/" insert-form-route="new" quick-filter="true"
-            attr="studentsStatusTable" virtual-scroll="false" service="studentstatus"
-            entity="studentStatus" keys="id" columns="id;status" visible-columns="status"
-            sort-columns="status" query-rows="5" show-report-on-demand-option="false" translate="yes"
-            show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="single"
-            show-title="true" title="LSTUDENTSTATUS" >
-            <o-table-paginator page-size="5" page-size-options="5;10;15">
-            </o-table-paginator>
-        </o-table>
-    </o-form-layout-dialog-options>
-</div>
-</o-form-layout-manager>
 <div class="config-container">
     <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
         title="LEMPLOYMENTSTATUS">
