@@ -101,7 +101,9 @@ mat-tab-body { background-color: #1a3459; }
 .o-list .o-list-toolbar button.o-list-button:not([disabled]).mat-mdc-button-base.mat-accent,
 .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-primary,
 .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default,
-button.mat-mdc-raised-button.mat-primary
+button.mat-mdc-raised-button.mat-primary,
+.o-button button.mat-mdc-unelevated-button,
+.o-button button.mat-mdc-button
 {
   border: none;
   background-color: #8AB237;
@@ -121,7 +123,9 @@ button.mat-mdc-raised-button.mat-primary
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent:hover,
 button.mat-mdc-raised-button.mat-primary:hover,
 .mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-primary:hover,
-.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default:hover {
+.mat-mdc-dialog-actions button:not([disabled]).mat-mdc-button-base.o-button-default:hover,
+.o-button button.mat-mdc-unelevated-button:hover,
+.o-button button.mat-mdc-button:hover {
   border: 2px solid #8AB237;
   background-color: #1a3459;
   border-radius: 10px;
