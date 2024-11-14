@@ -6,7 +6,7 @@
   <div class="grid-container">
     <div class="especial nombre">
       <label for="LNAME">{{'LNAME' | oTranslate}}</label>
-      <o-text-input  [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
+      <o-text-input  attr="name" required="yes"></o-text-input>
     </div>
     <div class="especial fecha-inicio" hidden="true">
       <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
@@ -20,10 +20,10 @@
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
-
+    
     <div>
       <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
-      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
+      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" 
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" >
       </o-daterange-input>
@@ -60,8 +60,8 @@
           columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
           visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10"
           show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="click">
-          <o-table-column attr="sb_start_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
-          <o-table-column attr="sb_end_date" title="start_date" type="date" format="DD/MM/YYYY"></o-table-column>
+          <o-table-column attr="sb_start_date" title="start_date" type="date" format="DD/MM/YYYY"></o-table-column>
+          <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
           <o-table-paginator page-size="20" page-size-options="10;20;40">
           </o-table-paginator>
           <o-table-column attr="action" width="64px" tooltip="yes" tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
