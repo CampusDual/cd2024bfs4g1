@@ -255,7 +255,8 @@ label{
 //    background-color: #cd1111;
 // }
 
-.mat-drawer.o-app-sidenav-sidenav .o-app-sidenav-menuitem mat-icon:not(.o-app-sidenav-menugroup-arrow){
+.mat-drawer.o-app-sidenav-sidenav .o-app-sidenav-menuitem mat-icon:not(.o-app-sidenav-menugroup-arrow),
+.o-app-sidenav .o-app-sidenav-container .mat-drawer.o-app-sidenav-sidenav.mat-drawer-closed .o-app-sidenav-item:not(.o-user-info) {
   color: #1a3459;
 }
 .o-app-sidenav .o-app-sidenav-menu-group:not([disabled=true]) a.o-app-sidenav-viewer-sidenav-item-selected, .o-app-sidenav .o-app-sidenav-menu-item:not([disabled=true]) a.o-app-sidenav-viewer-sidenav-item-selected {
