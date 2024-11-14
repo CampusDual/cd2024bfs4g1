@@ -216,5 +216,7 @@
   "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "The employment status cannot be empty",
   "STATUS_NAME_CANNOT_BE_EMPTY": "The status name cannot be empty",
   "BT_STATUS_TT": "Bootcamp general status",
-  "STU_SEARCH_TT": "Redirect to students detail"
+  "STU_SEARCH_TT": "Redirect to students detail",
+  "dateRangeBootcamp" : "Start date/End date",
+  "dateRangeBootcampDetail" : "Start date/End date"
 }

@@ -213,6 +213,7 @@
   "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "El estado laboral no puede estar vacio",
   "STATUS_NAME_CANNOT_BE_EMPTY": "El nombre del estado no puede estar vacio",
   "BT_STATUS_TT": "Estado general del bootcamp",
-  "STU_SEARCH_TT": "Ir a detalles del estudiante"
-
+  "STU_SEARCH_TT": "Ir a detalles del estudiante",
+  "dateRangeBootcamp" : "Fecha inicio/Fecha fin",
+  "dateRangeBootcampDetail" : "Fecha inicio/Fecha fin"
 }
