@@ -27,12 +27,13 @@
 .students-filters-form {
   width: 68%;
   margin: 20px auto;
-  background-color: #d5e5e9;
+  background-color: #1a3459;
   padding: 10px;
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
+
 
 .filter_style {
   display: grid;

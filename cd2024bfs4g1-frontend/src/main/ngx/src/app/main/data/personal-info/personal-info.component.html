@@ -1,9 +1,7 @@
-<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}" >
-<div class="container">
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions=""
-  show-header-navigation="no" editable-detail="false" show-header="false" cdkScrollable="false">
-
-  <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" /> <!-- hay que cambiar el id que le pasamos sacando el id de usuario-->
+<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}">
+  <div class="main-container">
+    <o-form attr="studentsDetail" service="students" entity="student"keys="id" header-actions="" show-header-navigation="no" editable-detail="false" show-header="false">
+      <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
 
   <div class="grid-container">
     <div class="nombre">
@@ -73,13 +71,10 @@
     </div>
 
         <div class="githubUser">
-      <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-      <o-text-input attr="github_user" required="no" max-length="200" data={{githubUser}}></o-text-input>
-    </div>
-
-
+          <label for="LGITHUB_USER">{{ 'LGITHUB_USER' | oTranslate }}</label>
+          <o-text-input attr="github_user" required="no" max-length="200" data="{{ githubUser }}"></o-text-input>
+        </div>
+      </div>
+    </o-form>
   </div>
-</o-form>
-
-</div>
 </o-form-layout-manager>

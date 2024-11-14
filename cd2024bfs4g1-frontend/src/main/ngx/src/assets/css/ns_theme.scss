@@ -1,40 +1,38 @@
-@use '@angular/material'as mat;
-@use 'node_modules/ontimize-web-ngx/theming/ontimize-style.scss'as ontimize-style;
+@use '@angular/material' as mat;
+@use 'node_modules/ontimize-web-ngx/theming/ontimize-style.scss' as ontimize-style;
 
 /* Color definitions */
 $mat-custom-primary: (
-    50 : #fde4eb,
-    100 : #fbbcca,
-    200 : #f890a4,
-    300 : #f4647e,
-    400 : #f24961,
-    500 : #F64983, // Color de texto de botones
-    600 : #ef447b,
-    700 : #ea3d70,
-    800 : #e53666,
-    900 : #dc2955,
-    A100 : #ffe3eb,
-    A200 : #ffc0cf,
-    A400 : #ff9db3,
-    A700 : #ff88a2,
-    contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #ffffff,
-      500 : #ffffff, // Contraste para color de advertencia
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #ffffff,
-      A700 : #ffffff
-  )
+  50 : #e9f9d8,
+  100 : #f8f8f8, // color fondo hover
+  200 : #bbea8b, // color barra
+  300 : #a2e165,
+  400 : #91db49,
+  500 : #1a3459, // color texto botones botones
+  // Color principal
+  600 : #7ec117,
+  700 : #72a912,
+  800 : #1a3459, // color texto hover
+  900 : #53730b,
+  A100 : #e7ffc0,
+  A200 : #c4ff8a,
+  A400 : #a1ff54,
+  A700 : #8fff37,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff, // Contraste para el color principal
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000)
 );
-
 
 /* Color definitions */
 $mat-custom-primary-dark: (50 : #f1f6fa, 100 : #dce8f2, 200 : #c5d9e9, 300 : #adc9e0, 400 : #9cbed9, 500 : #8ab2d2, 600 : #82abcd, 700 : #77a2c7, 800 : #6d99c1, 900 : #5a8ab6, A100 : #ffffff, A200 : #ebf5ff, A400 : #b8dcff, A700 : #9ed0ff, contrast: (50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #000000, 500 : #000000, 600 : #000000, 700 : #000000, 800 : #000000, 900 : #000000, A100 : #000000, A200 : #000000, A400 : #000000, A700 : #000000, ));

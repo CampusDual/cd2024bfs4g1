@@ -3,13 +3,7 @@
     height: 100%;
     margin: 0 auto;
   }
-label {
-  display: block;
-  margin: 10px 0 10px 10px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #dc2955;
-}
+
 
 .grid-container{
   width: 96%; 
