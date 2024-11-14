@@ -113,7 +113,7 @@
         <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
         <div class="input-button-container">
           <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}" service="documents"
-            entity="upload" max-file-size="100000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
+            entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
             [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
             (onError)="onError($event)">
           </o-file-input>
