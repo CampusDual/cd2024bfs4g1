@@ -29,14 +29,13 @@
         attr="name" title="name"
         type="string" content-align="center"
         title-align="center"
-        tooltip="yes" tooltip-value="Nombre del curso"
         ></o-table-column>
 
         <o-table-column
         attr="status" title="status"
         type="string" content-align="center"
         title-align="center"
-        tooltip="yes" tooltip-value="Estado general del curso"
+        tooltip="yes" tooltip-value="{{'BT_STATUS_TT'|oTranslate}}"
         ><o-table-cell-renderer-translate></o-table-cell-renderer-translate>
       </o-table-column>
 
@@ -44,14 +43,14 @@
         attr="start_date" title="start_date"
         type="date" format="DD/MM/YYYY"
         content-align="center" title-align="center"
-        tooltip="yes" tooltip-value="Fecha de inicio del curso">
+        >
         </o-table-column>
 
         <o-table-column
         attr="end_date" title="end_date"
         type="date" format="DD/MM/YYYY"
         content-align="center" title-align="center"
-        tooltip="yes" tooltip-value="Fecha finalización del curso">
+        >
         </o-table-column>
     </o-table>
   </div>
