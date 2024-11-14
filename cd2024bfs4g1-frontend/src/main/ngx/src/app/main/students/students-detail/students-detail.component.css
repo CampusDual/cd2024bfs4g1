@@ -118,24 +118,24 @@ label {
 }
 .upload-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   grid-column: 1/5;
 }
 
 .input-button-container {
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .o-file-input {
-  flex-grow: 4; 
+  flex-grow: 4;
 }
 
 o-button {
-  margin-left: 8px; 
-  flex-shrink: 0; 
+  margin-left: 8px;
+  flex-shrink: 0;
   margin-bottom: 18px;
-  width: 80px; 
+  width: 80px;
 }
 .general_table {
   background-color: #f5f0f2;
@@ -208,7 +208,7 @@ o-button {
   }
 }
 div.notification label  {
-  background-color: #F64983; 
+  background-color: #F64983;
   color: white;
   padding: 10px;
   position: fixed;
@@ -224,4 +224,7 @@ div.notification label  {
   opacity: 0;
 }
 
+.checkbox-container {
+  padding: 0;
+}
 

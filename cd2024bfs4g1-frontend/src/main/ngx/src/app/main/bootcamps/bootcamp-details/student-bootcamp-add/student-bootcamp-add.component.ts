@@ -24,6 +24,7 @@ export class StudentBootcampAddComponent {
 
   addStudentBootcamp() {
       this.studentBootcampForm.insert();
+      this.studentBootcampForm.closeDetail();
   }
 
 

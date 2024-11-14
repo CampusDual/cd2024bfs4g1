@@ -19,7 +19,7 @@
     </div>
     <div class="usuario">
       <label for="usuario">{{'USER*' | oTranslate}}</label>
-      <o-text-input attr="usr_login" required="no" id="name" max-length="255" [validators]="validatorsWithoutSpace"></o-text-input>
+      <o-text-input attr="usr_login" required="yes" id="name" max-length="255" [validators]="validatorsWithoutSpace"></o-text-input>
     </div>
     <div class="contraseña">
       <label for="contraseña">{{'PASSWORD*' | oTranslate}}</label>
@@ -81,7 +81,9 @@
     </div>
     <div class="udemy">
       <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
-      <o-checkbox attr="udemy"></o-checkbox>
+      <div class="checkbox-container">
+        <o-checkbox attr="udemy"></o-checkbox>
+      </div>
     </div>
     <div class="fctStart">
       <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
