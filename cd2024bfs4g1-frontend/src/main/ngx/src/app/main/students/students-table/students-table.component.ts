@@ -21,7 +21,7 @@ export class StudentsTableComponent {
 
     values.forEach(fil => {
       if (fil.value) {
-        if (fil.attr === 'tutor' || fil.attr === 'udemy' || 
+        if ( fil.attr === 'tutor' ||  fil.attr === 'udemy' || 
           fil.attr === 'employment_status'|| fil.attr==='status'|| fil.attr==='spain_comunity') {
           filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, fil.value));
         }
@@ -32,11 +32,7 @@ export class StudentsTableComponent {
     });
 
     if (filters.length > 0) {
-      if (this.form.formGroup.value.slidertoggle) {
-        return filters.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_OR));
-      } else {
         return filters.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND));
-      }
     } else {
       return null;
     }
