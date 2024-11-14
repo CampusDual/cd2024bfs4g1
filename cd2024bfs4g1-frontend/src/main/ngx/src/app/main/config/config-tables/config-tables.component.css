@@ -22,9 +22,10 @@
 
 .table_cell {
     padding: 6px;
-} 
-.background{
+}
+
+.maestros-container{
     background-color: #1a3459;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
