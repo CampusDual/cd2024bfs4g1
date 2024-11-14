@@ -3,17 +3,18 @@
     <div class="grid-container">
         <div class="especial nombre">
             <label for="LNAME">{{'LNAME' | oTranslate}}</label>
-            <o-text-input label-visible="false" [validators]="validatorsWithoutSpace" attr="name" required="yes" max-length="100"></o-text-input>
+
+            <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes" max-length="100"></o-text-input>
         </div>
         <div class="especial fecha-inicio" hidden="true">
             <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
-            <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes"
+            <o-date-input #startdate  class="fechas" attr="start_date" required="yes"
                 format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)" hidden="true"></o-date-input >
             <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
         </div>
         <div class="especial fecha-fin" hidden="true">
             <!-- <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label> -->
-            <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray"
+            <o-date-input #enddate  attr="end_date" required="yes" [validators]="validatorsArray"
                 format="DD/MM/YYYY" hidden="true">
                 <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
@@ -24,18 +25,18 @@
                 <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
                 <o-daterange-input attr="dateRangeBootcamp" read-only="no" required="yes" format="DD/MM/YYYY"
                     automatic-binding="false" (onValueChange)="throwChange($event)" show-week-numbers="true"
-                    mode="desktop" label-visible="false" text-input-enabled="no ">
+                    mode="desktop" text-input-enabled="no ">
                 </o-daterange-input>
             </div>
         </div>
         <div class="especial descripcion">
             <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
-            <o-textarea-input label-visible="false" attr="description" required="no"
+            <o-textarea-input  attr="description" required="no"
                 max-length="200"></o-textarea-input>
         </div>
         <div class="especial notas">
             <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
-            <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
+            <o-textarea-input  attr="notes" required="no" max-length="200"></o-textarea-input>
         </div>
     </div>
 </o-form>
