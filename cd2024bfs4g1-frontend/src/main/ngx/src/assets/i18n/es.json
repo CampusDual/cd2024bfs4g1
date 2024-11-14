@@ -209,6 +209,7 @@
     "APPLYLABEL": "Seleccionar",
     "W":"S"
   },
+  "Mentors":"Tutores",
   "Edit": "Editar",
   "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "No se puede eliminar, el estado del alumno se encuentra en uso",
   "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "No se puede eliminar, el estado laboral se encuentra en uso",

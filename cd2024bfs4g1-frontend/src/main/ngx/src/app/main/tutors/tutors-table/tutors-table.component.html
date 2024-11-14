@@ -1,10 +1,10 @@
-<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name">
+<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="Mentors">
     <div class="table_container">
             <o-table #tableTutors virtual-scroll="false" class="general_table" attr="tutorsTable" service="tutors" sort-columns="name"
                 entity="tutor" keys="id"
                 columns="id;name;surname1;surname2;email"
                 visible-columns="name;surname1;surname2;email" delete-button="false"
-                show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Tutors"
+                show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Mentors"
                 show-title="true">
                 <o-table-column attr="name" title="Name"></o-table-column>
                 <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>

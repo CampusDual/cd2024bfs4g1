@@ -215,6 +215,7 @@
     "APPLYLABEL": "Select",
     "W":"W"
   },
+  "Mentors":"Mentors",
   "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "The employment status cannot be empty",
   "STATUS_NAME_CANNOT_BE_EMPTY": "The status name cannot be empty",
   "BT_STATUS_TT": "Bootcamp general status",

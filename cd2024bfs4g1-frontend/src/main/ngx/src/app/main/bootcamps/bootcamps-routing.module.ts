@@ -5,6 +5,7 @@ import { BootcampDetailsComponent } from './bootcamp-details/bootcamp-details.co
 import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp-add/student-bootcamp-add.component';
 import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
 import { StudentBootcampDetailComponent } from './bootcamp-details/student-bootcamp-detail/student-bootcamp-detail.component';
+import { TutorBootcampAddComponent } from './bootcamp-details/tutor-bootcamp-add/tutor-bootcamp-add.component';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'new',component: BootcampNewComponent},
   {path:':id',component: BootcampDetailsComponent},
   {path:':bootcamp_id/new', component: StudentBootcampAddComponent},
-  {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent}
+  {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent},
+  {path:':bootcamp_id/new_tutor', component: TutorBootcampAddComponent}
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
