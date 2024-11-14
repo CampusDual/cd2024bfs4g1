@@ -113,14 +113,16 @@
         <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
         <div class="input-button-container">
           <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}" service="documents"
-            entity="upload" max-file-size="100000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
+            entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
             [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
             (onError)="onError($event)">
           </o-file-input>
           <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
         </div>
       </div>
-
+      <div *ngIf="showMessage" class="notification">
+        <label for="subida">{{ 'subida' | oTranslate }}</label>
+      </div>
 
       <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
         entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
