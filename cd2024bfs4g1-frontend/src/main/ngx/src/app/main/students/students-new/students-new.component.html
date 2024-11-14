@@ -48,7 +48,7 @@
 
     <div class="status">
       <div class="studentStatus">
-        <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
+        <label for="student_status">{{'LSTATUS' | oTranslate}}*</label>
         <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="yes" translate="yes"
           null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
           columns="id;status" value-column="id" description-columns="status" query-on-init="true">
