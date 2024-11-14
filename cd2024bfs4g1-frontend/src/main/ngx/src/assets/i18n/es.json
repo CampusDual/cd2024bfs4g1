@@ -219,5 +219,6 @@
   "BT_STATUS_TT": "Estado general del bootcamp",
   "STU_SEARCH_TT": "Ir a detalles del estudiante",
   "dateRangeBootcamp" : "Fecha inicio/Fecha fin",
-  "dateRangeBootcampDetail" : "Fecha inicio/Fecha fin"
+  "dateRangeBootcampDetail" : "Fecha inicio/Fecha fin",
+  "Bootcamps Asigned": "Bootcamps Asignados"
 }

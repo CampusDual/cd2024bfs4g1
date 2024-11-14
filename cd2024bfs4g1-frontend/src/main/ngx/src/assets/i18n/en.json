@@ -221,5 +221,6 @@
   "BT_STATUS_TT": "Bootcamp general status",
   "STU_SEARCH_TT": "Redirect to students detail",
   "dateRangeBootcamp" : "Start date/End date",
-  "dateRangeBootcampDetail" : "Start date/End date"
+  "dateRangeBootcampDetail" : "Start date/End date",
+  "Bootcamps Asigned":"Bootcamps Asigned"
 }

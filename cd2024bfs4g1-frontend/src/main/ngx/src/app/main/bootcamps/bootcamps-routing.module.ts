@@ -16,8 +16,8 @@ const routes: Routes = [
   {path:'new',component: BootcampNewComponent},
   {path:':id',component: BootcampDetailsComponent},
   {path:':bootcamp_id/new', component: StudentBootcampAddComponent},
-  {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent},
-  {path:':bootcamp_id/new_tutor', component: TutorBootcampAddComponent}
+  {path:':bootcamp_id/new_tutor', component: TutorBootcampAddComponent},
+  {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent}
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

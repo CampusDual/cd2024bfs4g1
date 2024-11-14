@@ -25,7 +25,7 @@ export const SERVICE_CONFIG: Object = {
   },
   'tutorBootcamps':{
     'path': '/tutorbootcamp'
-  }
+  },
   'studentstatus':{
     'path': '/studentstatus'
   }
