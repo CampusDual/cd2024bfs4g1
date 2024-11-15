@@ -41,6 +41,7 @@
       <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
       <o-phone-input attr="phone" required="yes"></o-phone-input>
     </div>
+
     <div class="employmentStatus">
       <label for="employment_status">{{'REQ_LEMSTATUS' | oTranslate}}</label>
       <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
@@ -89,7 +90,7 @@
     </div>
     <div class="tutor">
       <label for="tutor">{{'REQ_LTUTOR' | oTranslate}}</label>
-      <o-combo attr="tutor" service="tutors" entity="tutor" required="yes" searchable="yes" value-column="id"
+      <o-combo attr="tutor" service="tutors" entity="tutor" required="no" searchable="yes" value-column="id"
         columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="false" sortable="yes" sort="ASC">
       </o-combo>
     </div>
