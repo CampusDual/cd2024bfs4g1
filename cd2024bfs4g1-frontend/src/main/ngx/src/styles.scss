@@ -304,6 +304,11 @@ label{
   text-align: center;
   padding: 3px 0;
 }
+
+
+.o-image .o-image-content .o-image-display-container.o-image-drag-and-drop:not(.o-image-drag-and-drop-required) {
+background: none;
+}
 .list_container .o-list-container .add-button {
   position: absolute;
   right: 3px;
