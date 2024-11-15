@@ -19,6 +19,9 @@
       <label for="dni">{{'REQ_LDNI' | oTranslate}}</label>
       <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"
         (input)="toUpperCase($event)"></o-nif-input>
+      <div class="aviso" *ngIf="Mostraraviso" >
+        <label for="dni" >El DNI escrito ya esta registrado<mat-icon class="mat-icon-rtl-mirror" svgIcon="warning" ></mat-icon></label>
+      </div>
     </div>
     <div class="usuario">
       <label for="REQ_USER">{{'REQ_USER' | oTranslate}}</label>
