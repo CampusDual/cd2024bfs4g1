@@ -32,24 +32,24 @@
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
-  
-  
+
+
 }
 
 
 .filter_style {
   display: grid;
-  /*grid-template-columns: repeat(6, 1fr);*/ 
+  /*grid-template-columns: repeat(6, 1fr);*/
   grid-template-columns: 1.5fr 1.5fr 0.8fr 1fr 1.5fr 1.5fr;
-  gap: 15px; 
+  gap: 15px;
   background-color: #f5f0f2;
   padding: 25px 30px 3px 30px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 93%; 
+  width: 93%;
   margin: 5px auto;
   box-sizing: border-box;
-  
+
 }
 
 .filter_style o-text-input,
@@ -59,8 +59,8 @@
 }
 
 /* .centered-actions {
-  grid-column: 1 / -1; 
-  justify-content: center; 
+  grid-column: 1 / -1;
+  justify-content: center;
   margin-top: 10px;
 } */
 
