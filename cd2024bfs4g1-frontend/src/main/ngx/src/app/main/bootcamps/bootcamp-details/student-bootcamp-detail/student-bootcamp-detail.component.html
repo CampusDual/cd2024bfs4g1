@@ -7,7 +7,7 @@
       <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students" label-visible="false"
         entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" enabled="false" >
       </o-combo>
-      <label for="LSTATUS">{{'LSTATUS' | oTranslate}}</label>
+      <label for="REQ_LSTATUS">{{'REQ_LSTATUS' | oTranslate}}</label>
       <o-combo attr="status" required="yes" translate="yes" [static-data]="[
       { key: 'Candidato' },
       { key: 'Contactado' },
@@ -35,7 +35,7 @@
 
 
       <div fxLayout="column" layout-padding>
-          <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
+          <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
           <o-daterange-input attr="dateRangeBootcamp" read-only="no"
             required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)"
             show-week-numbers="true" mode="desktop" label-visible="false">
