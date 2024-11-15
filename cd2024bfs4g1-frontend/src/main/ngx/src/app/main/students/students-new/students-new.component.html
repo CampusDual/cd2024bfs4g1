@@ -69,7 +69,7 @@
 
     <div class="fechaCumple">
       <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
-      <o-date-input attr="birth_date" required="yes" format="DD/MM/YYYY"></o-date-input>
+      <o-date-input attr="birth_date" required="yes" text-input-enabled="no" format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="email">
       <label for="Personal email">{{'LEMAIL'|oTranslate}}</label>
@@ -91,7 +91,7 @@
     </div>
     <div class="fctStart">
       <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-      <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no " format="DD/MM/YYYY"
+      <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no" format="DD/MM/YYYY"
         (onValueChange)="throwChange(enddate)">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
