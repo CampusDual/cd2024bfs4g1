@@ -18,21 +18,26 @@
         <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
       </div>
 
-      <div class="table_container" >
+    <div class="table_container">
 
-        <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="Bootcamp">
-          <o-form-layout-dialog-options class="popup">
+      <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+        title="Bootcamp">
+        <o-form-layout-dialog-options class="popup">
+          <div>
+            <h3>{{ 'Bootcamps asigned' | oTranslate }}</h3>
             <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
               entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id" columns="id;bootcampname"
-              visible-columns="bootcampname" detail-mode="false" delete-button="false" title="Bootcamps Asigned" show-title="yes"
-              show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false" >
+              visible-columns="bootcampname" detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+              refresh-button="false">
               <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-              <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+              <o-table-context-menu view-detail="false" edit="false" delete="false"
+                insert="false"></o-table-context-menu>
               <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
             </o-table>
-          </o-form-layout-dialog-options>
-        </o-form-layout-manager>
+          </div>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
 
-      </div>
     </div>
-  </o-form>
+  </div>
+</o-form>
