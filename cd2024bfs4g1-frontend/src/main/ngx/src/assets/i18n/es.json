@@ -116,7 +116,7 @@
   "REQ_LEMAIL": "Correo electrónico personal*",
   "LEMAIL": "Correo electrónico personal",
   "REQ_LDNI": "DNI*",
-  "LDNI": "DNI",  
+  "LDNI": "DNI",
   "REQ_LBIRTHDATE": "Fecha de nacimiento*",
   "LBIRTHDATE": "Fecha de nacimiento",
   "REQ_LPHONE": "Teléfono*",
@@ -242,5 +242,8 @@
   "STU_SEARCH_TT": "Ir a detalles del estudiante",
   "dateRangeBootcamp" : "Fecha inicio/Fecha fin",
   "dateRangeBootcampDetail" : "Fecha inicio/Fecha fin",
+  "STUDENTS_IN_BOOTCAMP" : "Estudiantes inscritos en este bootcamp",
+  "BOOTCAMPS_IN_STUDENT" : "Bootcamps a los que está inscrito este alumno",
+  "STUDENT_FILES" : "Archivos de este alumno",
   "Bootcamps Asigned": "Bootcamps Asignados"
 }

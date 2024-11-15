@@ -20,10 +20,10 @@
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
-    
+
     <div>
       <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
-      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" 
+      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" >
       </o-daterange-input>
@@ -73,7 +73,7 @@
         </o-table>
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
-    
+
     <div class="list_container" >
     <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
       <o-form-layout-dialog-options class="popup">
@@ -93,5 +93,5 @@
     </o-form-layout-manager>
     </div>
   </div>
-  
+
 </o-form>

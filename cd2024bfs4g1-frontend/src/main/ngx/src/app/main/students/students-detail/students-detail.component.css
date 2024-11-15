@@ -107,25 +107,32 @@ o-form {
 
 }
 
-
-
-
 o-button {
   flex-shrink: 0;
   margin-bottom: 18px;
   width: 80px;
 }
+
 .general_table {
   background-color: #f5f0f2;
 }
+
+.container_students {
+  height: auto;
+}
+
 .primera{
  grid-column: 1/2;
  margin: 0%;
+ height: 100%;
 }
+
 .segunda{
   width: 100%;
   margin: 0%;
+  height: 85%;
 }
+
 .selectedrow{
   grid-column: 2/4;
   width: 100%;
