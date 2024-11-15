@@ -13,21 +13,15 @@ export const SERVICE_CONFIG: Object = {
   },
   'bootcamps':{
     'path': '/bootcamps'
-  },
-  'documents':{
+  }
+  ,'documents':{
     'path': '/documents'
   },
   'employmentstatus':{
     'path': '/employmentstatus'
   },
-  'tutors': {
-    'path': '/tutors',
-  },
-  'tutorBootcamps':{
-    'path': '/tutorbootcamp'
-  },
-  'studentstatus':{
-    'path': '/studentstatus'
+  'tutors':{
+    'path': '/tutors'
   }
 
 };
