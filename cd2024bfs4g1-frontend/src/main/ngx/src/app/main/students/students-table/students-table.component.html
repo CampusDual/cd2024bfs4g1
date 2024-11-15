@@ -7,14 +7,14 @@
                 <div class="filter_style">
 
                     <o-combo #type attr="tutor" label="{{'TUTOR' | oTranslate}}" read-only="no"
-                        service="employmentstatus" entity="employmentStatus" keys="id"
-                        columns="id;situation" value-column="id" description-columns="situation" query-on-init="true"
-                        visible-columns="label" translate="yes" null-selection="true"></o-combo>
+                        service="tutors" entity="tutor" keys="id"
+                        columns="id;name" value-column="id" description-columns="name" query-on-init="true"
+                        visible-columns="name" translate="yes" null-selection="true"></o-combo>
 
                     <o-combo #type attr="employment_status" label="{{'LEMSTATUS' | oTranslate}}" read-only="no"
                         service="employmentstatus" entity="employmentStatus" keys="id"
                         columns="id;situation" value-column="id" description-columns="situation" query-on-init="true"
-                        visible-columns="label" translate="yes" null-selection="true"></o-combo>
+                        visible-columns="situation" translate="yes" null-selection="true"></o-combo>
 
                     <o-combo class="udemy" #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
@@ -35,14 +35,16 @@
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
-                    filters="tutor:tutor;udemy:udemy;status:status;spain_comunity:spain_comunity;employment_status:employment_status;id;"
+                    filters="tutor:tutor;udemy:udemy;status:status;spain_comunity:spain_comunity;employment_status:employment_status;tutor:tutor;id;"
                     [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
                     [expression-builder]="createFilter"></o-filter-builder>
             </o-column-collapsible>
 
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
                 sort-columns="name" entity="student" keys="id"
-                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;status;spain_comunity;location;situation"
+                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;employment_status;user_id;student_status_id"
+
                 visible-columns="name;surname1;surname2;dni;personal_email;status" delete-button="false"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Students"
                 show-title="true">

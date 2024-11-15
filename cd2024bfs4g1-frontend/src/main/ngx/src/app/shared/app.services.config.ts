@@ -19,7 +19,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'employmentstatus':{
     'path': '/employmentstatus'
+  },
+  'tutors':{
+    'path': '/tutors'
   }
-  ,
 
 };
