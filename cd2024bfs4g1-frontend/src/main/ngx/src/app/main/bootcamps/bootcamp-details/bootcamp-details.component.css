@@ -10,7 +10,7 @@ o-form {
 }
 
 .grid-container,
-.table_container{
+.table_container {
   width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
@@ -127,7 +127,6 @@ o-form {
   box-shadow: none;
   width: 100%;
 }
-
 
 @media (max-width: 768px) {
   .grid-container,
