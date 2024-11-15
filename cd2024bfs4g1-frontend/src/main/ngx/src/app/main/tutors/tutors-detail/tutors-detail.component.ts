@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn } from '@angular/forms';
+import { OValidators } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-tutors-detail',
@@ -7,6 +8,12 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./tutors-detail.component.css']
 })
 export class TutorsDetailComponent{
+
+  validatorsWithoutSpace: ValidatorFn[] = [];
+
+  constructor() { 
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
+  }
   
   toUpperCamelCase(event: any) {
     event.target.value = event.target.value

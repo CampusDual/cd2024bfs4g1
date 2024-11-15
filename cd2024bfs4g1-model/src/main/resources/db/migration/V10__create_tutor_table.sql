@@ -1,9 +1,9 @@
 CREATE TABLE tutors (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    surname1 VARCHAR(255) NOT null,
-    surname2 VARCHAR(255) NOT null,
-    email VARCHAR(255) not null
+    surname1 VARCHAR(255) NOT NULL,
+    surname2 VARCHAR(255) NULL,
+    email VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE tutor_bootcamp (
