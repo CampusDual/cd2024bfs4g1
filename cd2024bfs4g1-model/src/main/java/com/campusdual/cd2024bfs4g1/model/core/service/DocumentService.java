@@ -27,8 +27,14 @@ public class DocumentService implements IDocumentService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
-    @Value("${aap.files.path}")
+    @Value("${app.files.path:#{null}}")
     private String path;
+
+    public DocumentService(){
+        if(this.path == null || this.path.isBlank()){
+            path=System.getProperty("java.io.tmpdir");
+        }
+    }
 
     @Override
     public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList) {
