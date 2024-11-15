@@ -1,0 +1,48 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #d6d6d6;
+}
+
+.avatar {
+    grid-column: span 2;
+    margin-bottom: 15px;
+}
+
+.o-image {
+    border: 3px dashed #1a3459;
+    border-radius: 50%;
+}
+
+.textarea-full {
+    grid-column: span 2;
+}
+
+.roles-section {
+    grid-column: 2 / 3;
+    background-color: #f5f0f2;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #d6d6d6;
+}
+
+@media (max-width: 1000px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .roles-section {
+        grid-column: span 1;
+        margin-top: 15px;
+    }
+}
