@@ -141,40 +141,43 @@
         <label for="subida">{{ 'subida' | oTranslate }}</label>
       </div>
 
+    <o-form-layout-manager>
       <div class="container_students">
         <h3 class="title3">{{ 'STUDENT_FILES' | oTranslate }}</h3>
         <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
-        entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
-        detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
-        refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
-        select-all-checkbox-visible="true" selection-mode="none" pagination-controls="no">
-        <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
-        <o-table-column attr="name" title="Document title"></o-table-column>
-        <o-table-column attr="action" width="10px">
-          <o-table-cell-renderer-action (onClick)="actionClick($event)" icon="download"></o-table-cell-renderer-action>
-        </o-table-column>
-      </o-table>
+          entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
+          detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+          refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
+          select-all-checkbox-visible="true" selection-mode="none" pagination-controls="no">
+          <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+          <o-table-column attr="name" title="Document title"></o-table-column>
+          <o-table-column attr="action" width="10px">
+            <o-table-cell-renderer-action (onClick)="actionClick($event)"
+              icon="download"></o-table-cell-renderer-action>
+          </o-table-column>
+        </o-table>
       </div>
+    </o-form-layout-manager>
 
-      <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
-        <o-form-layout-dialog-options class="popup">
+    <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
+      <o-form-layout-dialog-options class="popup">
 
-          <div class="container_students">
-            <h3 class="titulo3" >{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
-            <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
-              entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
-              visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"
-              show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
-              selection-mode="none">
-              <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-              <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
-              <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-            </o-table>
-          </div>
+        <div class="container_students">
+          <h3 class="titulo3">{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
+          <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
+            entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
+            visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"
+            show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
+            selection-mode="none">
+            <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+            <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+            <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+          </o-table>
+        </div>
 
-        </o-form-layout-dialog-options>
-      </o-form-layout-manager>
-    </div>
+      </o-form-layout-dialog-options>
+    </o-form-layout-manager>
+  </div>
 
 
 </o-form>
