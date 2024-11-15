@@ -44,6 +44,7 @@ o-form {
   display: flex;
   flex-direction: column;
   width: 90%;
+  height: 105%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
@@ -51,11 +52,24 @@ o-form {
   margin-left: 10%;
 }
 
+.table_container{
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 105%;
+  margin: 0;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+}
+
 .general_table{
   width: 98%;
   grid-column: 1/2;
   margin: 0;
 }
+
 .title{
   font-size:30px;
   padding: 30px;
