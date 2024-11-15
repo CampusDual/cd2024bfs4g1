@@ -4,6 +4,7 @@ import { AuthGuardService, PermissionsGuardService } from 'ontimize-web-ngx';
 
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -18,8 +19,10 @@ export const routes: Routes = [
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule), data: {oPermission: {permissionId: 'settings-permission', restrictedPermissionsRedirect: '/main/home'}} },
       { path: 'profile', component: ProfileComponent },
       { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule), data: {oPermission: {permissionId: 'students-permission', restrictedPermissionsRedirect: '/main/home'}} },
+      { path: 'tutors', loadChildren: () => import('./tutors/tutors.module').then(m => m.TutorsModule) },
       { path: 'data', loadChildren: () => import('./data/data.module').then(m => m.DataModule), data: {oPermission: {permissionId: 'data-permission', restrictedPermissionsRedirect: '/main/home'}}},
       { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule), data: {oPermission: {permissionId: 'config-permission', restrictedPermissionsRedirect: '/main/home'}}}
+
     ]
   }
 ];

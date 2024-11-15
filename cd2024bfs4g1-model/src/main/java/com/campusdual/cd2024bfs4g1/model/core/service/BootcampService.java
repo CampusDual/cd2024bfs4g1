@@ -3,6 +3,8 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 import com.campusdual.cd2024bfs4g1.api.core.service.IBootcampService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -24,6 +26,8 @@ public class BootcampService implements IBootcampService {
     private DefaultOntimizeDaoHelper daoHelper;
     @Autowired
     private StudentBootcampDao studentBootcampDao;
+    @Autowired
+    private TutorBootcampDao tutorBootcampDao;
 
     @Override
     public EntityResult bootcampQuery(Map<String, Object> keyMap, List<String> attrList)
@@ -44,7 +48,23 @@ public class BootcampService implements IBootcampService {
             return error;
         }
 
-        return this.daoHelper.insert(this.bootcampDao, attrMap);
+        EntityResult insertResult = this.daoHelper.insert(this.bootcampDao, attrMap);
+        if (insertResult.isWrong()) {
+            return insertResult;
+        }
+
+        //Recuperamos los tutores
+        ArrayList<Integer> tutors = (ArrayList<Integer>) attrMap.get(TutorDao.ATTR_COMBOBOX_TUTOR);
+        //Recuperamos el ID del bootcamp
+        Integer bootcampId = (Integer) insertResult.get(BootcampDao.ATTR_ID);
+        //Por cada tutor insertamos en la tabla de relación
+        for (Integer tutorId:tutors){
+            Hashtable<String,Object> attrRelation = new Hashtable<>();
+            attrRelation.put(TutorBootcampDao.TUTOR_ID, tutorId);
+            attrRelation.put(TutorBootcampDao.BOOTCAMP_ID, bootcampId);
+            insertResult = this.daoHelper.insert(this.tutorBootcampDao, attrRelation);
+        }
+        return insertResult;
     }
 
     @Override

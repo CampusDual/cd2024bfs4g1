@@ -1,4 +1,4 @@
-<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
+<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;U;D"
   (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
   (onDataLoaded)="onBootcampChange($event);inicialDR()" >
   <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
@@ -51,14 +51,14 @@
         </div>
       </o-column-collapsible>
   </div>
+  <div class="general_container">
+    <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+      <o-form-layout-dialog-options class="popup">
 
-  <div class="table_container" fxLayout="column" fxLayoutFill>
-    <o-form-layout-manager attr="addStudentLayout" mode="dialog" title="Student" virtual-scroll="false">
-      <o-form-layout-dialog-options class="popup" >
         <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
           entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
           columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
-          visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10"
+          visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10" title="Alumnos Inscritos" show-title="yes"
           show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="click">
           <o-table-column attr="sb_start_date" title="start_date" type="date" format="DD/MM/YYYY"></o-table-column>
           <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -73,5 +73,25 @@
         </o-table>
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
+    
+    <div class="list_container" >
+    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
+      <o-form-layout-dialog-options class="popup">
+      <div class="title"> {{'Mentors' | oTranslate}}</div>
+      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
+      quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
+      selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
+      insert-button-position="bottom" show-buttons-text="false" controls="false">
+      <o-list-item *ngFor="let tutor of list.dataArray">
+        <o-list-item-text
+          title="{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}"
+          primary-text="{{ tutor.email }}">
+        </o-list-item-text>
+      </o-list-item>
+      </o-list>
+    </o-form-layout-dialog-options>
+    </o-form-layout-manager>
+    </div>
   </div>
+  
 </o-form>

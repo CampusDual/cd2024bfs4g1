@@ -121,6 +121,7 @@
   "LFCT_START": "FCT start date",
   "LFCT_END": "FCT end date",
   "LTUTOR": "FCT mentor",
+  "LMENTOR":"Mentor",
   "LUDEMY": "Udemy",
   "LGITHUB_USER": "GitHub user",
   "LNOTES": "Notes",
@@ -189,6 +190,7 @@
   "PASSWORD*": "Password*",
   "DPHONE": "Phone",
   "NIF": "ID",
+  "Tutors": "Tutors",
   "Document title":"Document title",
   "fileinput" : "Upload documents",
   "Upload Document" : "Files to upload",
@@ -213,10 +215,13 @@
     "APPLYLABEL": "Select",
     "W":"W"
   },
+  "Mentors":"Mentors",
   "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "The employment status cannot be empty",
   "STATUS_NAME_CANNOT_BE_EMPTY": "The status name cannot be empty",
   "BT_STATUS_TT": "Bootcamp general status",
   "STU_SEARCH_TT": "Redirect to students detail",
   "dateRangeBootcamp" : "Start date/End date",
-  "dateRangeBootcampDetail" : "Start date/End date"
+  "dateRangeBootcampDetail" : "Start date/End date",
+  "Bootcamps Asigned":"Bootcamps Asigned",
+  "RSURNAME2": "Second Surname*"
 }

@@ -9,8 +9,16 @@ o-form {
   margin: 0 auto;
 }
 
+label {
+  display: block;
+  margin: 10px 0 10px 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
 .grid-container,
-.table_container {
+.table_container{
   width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
@@ -26,11 +34,41 @@ o-form {
 }
 
 .table_container {
-  flex-direction: row;
+  max-height: 800px;
   padding: 30px;
 }
 
+.general_container{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  width: 96%;
+  margin: 5px auto;
+  border-radius: 15px;
 
+}
+
+.list_container{
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+  margin-left: 10%;
+}
+
+.general_table{
+  width: 98%;
+  grid-column: 1/2;
+  margin: 0;
+}
+.title{
+  font-size:30px;
+  padding: 30px;
+  text-align: center;
+}
 .nombre {
   grid-column: 1 / 2;
 }
@@ -68,8 +106,8 @@ o-form {
   align-items: flex-start;
   margin-top: 10px;
 
-  max-height: 100vh; 
-  padding-bottom: 20px; 
+  max-height: 100vh;
+  padding-bottom: 20px;
 }
 
 .button-container {
@@ -90,12 +128,13 @@ o-form {
   max-width: 250px;
   height: auto;
   box-sizing: border-box;
-  margin-bottom: 45px; 
+  margin-bottom: 45px;
 }
 .general_table{
   box-shadow: none;
   width: 100%;
 }
+
 
 @media (max-width: 768px) {
   .grid-container,
@@ -117,7 +156,7 @@ o-form {
   }
 
   .calendar-card {
-    width: 100%; 
+    width: 100%;
   }
 }
 

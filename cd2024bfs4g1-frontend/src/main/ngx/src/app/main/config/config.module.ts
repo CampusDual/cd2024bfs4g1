@@ -16,7 +16,7 @@ import { StudentStatusDetailsComponent } from './student-status-details/student-
     EmploymentStatusNewComponent,
     EmploymentStatusDetailsComponent,
     StudentStatusNewComponent,
-    StudentStatusDetailsComponent,
+    StudentStatusDetailsComponent
   ],
   imports: [
     CommonModule,

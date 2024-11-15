@@ -166,7 +166,7 @@ button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary:h
 }
 
 .popup {
-  width: 42%;
+  width: 40%;
   border-radius: 15px;
 }
 
@@ -294,4 +294,12 @@ label{
 
 .sidenav-toggle-container+.o-app-sidenav-image .o-app-sidenav-image-container {
   margin-top: 0;
+}
+
+.list_container .o-list-container .add-button {
+  position: absolute;
+  right: 3px;
+  top:-91px;
+  background-color:#7ec117;
+  color:#1a3459;
 }
