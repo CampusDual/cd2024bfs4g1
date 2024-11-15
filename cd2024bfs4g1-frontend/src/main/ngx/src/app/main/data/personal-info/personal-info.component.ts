@@ -69,7 +69,7 @@ export class PersonalInfoComponent {
         'user_id': data['usr_id']
       };
 
-      const columns = ['name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status',
+      const columns = ['name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status_id',
         'birth_date', 'location', 'campus_email', 'personal_email', 'fct_school', 'tutor',
         'fct_start', 'fct_end', 'udemy', 'github_user','user_id'
       ];
