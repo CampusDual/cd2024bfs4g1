@@ -22,6 +22,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'tutors':{
     'path': '/tutors'
+  },
+  'studentstatus':{
+    'path': '/studentstatus'
   }
 
 };
