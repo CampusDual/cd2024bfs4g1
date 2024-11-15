@@ -202,5 +202,7 @@
   "Estudiante*" : "Student*",
   "Student": "Student",
   "Edit": "Edit",
-  "TUTOR": "Mentor"
+  "TUTOR": "Mentor",
+  "STATUS": "Status",
+  "situation": "Situation"
 }

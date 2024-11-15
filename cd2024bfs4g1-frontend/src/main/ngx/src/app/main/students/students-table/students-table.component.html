@@ -21,7 +21,7 @@
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
                         visible-columns="label" translate="yes"></o-combo>
 
-                    <o-combo class="estado" #type attr="student_status_id" read-only="no"
+                    <o-combo class="estado" #type attr="student_status_id" label="{{'STATUS' | oTranslate}}" read-only="no"
                         service="studentstatus" entity="studentStatus" columns="id;status" value-column="id"
                         visible-columns="status" keys="id" translate="yes"></o-combo>
 
@@ -41,10 +41,10 @@
 
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
                 sort-columns="name" entity="student" keys="id"
-                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;employment_status;user_id;student_status_id"
+                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;situation;udemy;
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;student_status_id"
 
-                visible-columns="name;surname1;surname2;dni;personal_email;status" delete-button="false"
+                visible-columns="name;surname1;surname2;dni;personal_email;situation" delete-button="false"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Students"
                 show-title="true">
                 <o-table-column attr="name" title="Name"></o-table-column>

@@ -201,6 +201,9 @@
    "Edit": "Editar",
   "USER*": "Nombre de Usuario*",
   "PASSWORD*": "Contraseña*",
-  "TUTOR": "Tutor"
+  "TUTOR": "Tutor",
+   "STATUS": "Estado",
+ "situation": "Situacion"
+
 
 }
