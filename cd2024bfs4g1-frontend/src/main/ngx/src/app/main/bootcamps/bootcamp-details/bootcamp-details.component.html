@@ -75,7 +75,8 @@
     </o-form-layout-manager>
     
     <div class="list_container" >
-    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="Mentors">
+    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
+      <o-form-layout-dialog-options class="popup">
       <div class="title"> {{'Mentors' | oTranslate}}</div>
       <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
       quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
@@ -88,6 +89,7 @@
         </o-list-item-text>
       </o-list-item>
       </o-list>
+    </o-form-layout-dialog-options>
     </o-form-layout-manager>
     </div>
   </div>
