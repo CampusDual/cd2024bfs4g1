@@ -259,5 +259,7 @@
   "STATUS": "Status",
   "RSURNAME2": "Second Surname*",
   "Edit": "Edit",
-  "TUTOR": "Mentor"
+  "TUTOR": "Mentor",
+  "STATUS": "Status",
+  "situation": "Situation"
 }
