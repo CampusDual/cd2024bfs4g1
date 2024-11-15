@@ -1,0 +1,42 @@
+.pd-permissions-container {
+    display: flex;
+    gap: 30px;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+}
+
+.permissions-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 50;
+}
+
+.client-permission-row {
+    flex: 1;
+}
+
+.o-textarea-fill-height {
+    width: 100%;
+    height: 100%;
+}
+
+.server-permission-column {
+    display: flex;
+    flex: 50;
+}
+
+@media (max-width: 800px) {
+
+    .permissions-column,
+    .server-permission-column {
+        flex: 100%;
+    }
+
+    .pd-permissions-container {
+        flex-direction: column;
+    }
+}
+o-column.o-column .o-container > .o-container-title span{
+    color: red;
+}
