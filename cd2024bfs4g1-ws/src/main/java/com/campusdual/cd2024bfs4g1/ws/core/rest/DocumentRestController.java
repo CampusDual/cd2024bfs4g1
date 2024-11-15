@@ -53,7 +53,6 @@ public class DocumentRestController extends ORestController<IDocumentService> {
     public ResponseEntity upload(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files, @RequestParam(name = "data", required = false) String data) {
 
         HashMap<String, Object> extraData = new HashMap<>();
-        HashMap<String, Object> extraData2 = new HashMap<>();
         if (data != null) {
             try {
                 extraData = new ObjectMapper().readValue(data, HashMap.class);
