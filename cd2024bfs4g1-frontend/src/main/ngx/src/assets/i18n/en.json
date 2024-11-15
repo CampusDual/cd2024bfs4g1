@@ -222,5 +222,6 @@
   "STU_SEARCH_TT": "Redirect to students detail",
   "dateRangeBootcamp" : "Start date/End date",
   "dateRangeBootcampDetail" : "Start date/End date",
-  "Bootcamps Asigned":"Bootcamps Asigned"
+  "Bootcamps Asigned":"Bootcamps Asigned",
+  "RSURNAME2": "Second Surname*"
 }

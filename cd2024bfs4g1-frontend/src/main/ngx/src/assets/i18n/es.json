@@ -220,5 +220,6 @@
   "STU_SEARCH_TT": "Ir a detalles del estudiante",
   "dateRangeBootcamp" : "Fecha inicio/Fecha fin",
   "dateRangeBootcampDetail" : "Fecha inicio/Fecha fin",
-  "Bootcamps Asigned": "Bootcamps Asignados"
+  "Bootcamps Asigned": "Bootcamps Asignados",
+  "RSURNAME2":"Segundo apellido*"
 }
