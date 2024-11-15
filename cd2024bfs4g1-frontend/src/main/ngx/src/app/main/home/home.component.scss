@@ -1,13 +1,11 @@
 .container {
-  width: 50%; 
-  margin: 20px auto; 
-  background-color: #d5e5e9; 
-  padding: 10px; 
-  border-radius: 15px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  font-family: 'Roboto', sans-serif; 
-  font-size: 12px; 
-  box-sizing: border-box; 
+  width: 80%;
+  margin: 20px auto;
+  background-color: #f5f0f2;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
 }
 
 .general_combobox {
@@ -38,7 +36,7 @@
 .calendar-card {
   width: 70%; 
   padding: 5px; 
-  background-color: #d5e5e9; 
+  background-color: #f5f0f2; 
   border-radius: 15px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   font-family: 'Roboto', sans-serif; 
@@ -59,15 +57,8 @@ mat-calendar {
 }
 
 .titulo3 {
-  background-color: #d5e5e9;
+  background-color: #f5f0f2;
   text-align: center;
   padding: 3px 0;
-}
-
-label {
-  background-color: #d5e9de; 
-  padding: 5px; 
-  border-radius: 5px; 
-  display: inline-block; 
 }
 

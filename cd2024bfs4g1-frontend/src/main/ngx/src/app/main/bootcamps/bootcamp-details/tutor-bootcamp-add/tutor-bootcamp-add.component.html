@@ -1,0 +1,17 @@
+<div>
+    <o-form #tutorBootcampForm service="tutorBootcamps" entity="tutorBootcamp" show-header="no" confirm-exit="false"
+      undo-button="false" label-header-align="center" after-insert-mode="new">
+      <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+      <label>{{ 'Mentors' | oTranslate }}</label>
+      <o-combo attr="tutor_id" label="Tutors" value-column="id" columns="id;name;surname1;surname2" service="tutors" label-visible="false"
+        entity="tutor" visible-columns="name;surname1;surname2" required="no" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
+      </o-combo>
+
+      <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
+          (click)="addTutorBootcamp()"></o-button>
+      </div>
+  
+    </o-form>
+  </div>
+  

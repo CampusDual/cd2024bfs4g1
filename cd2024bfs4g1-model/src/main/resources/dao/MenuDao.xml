@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="tmenu"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id</Column>
+    </UpdateKeys>
+    <GeneratedKey>id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <ValidColumns>
+                <Column>id</Column>
+                <Column>attr</Column>
+                <Column>visible</Column>
+                <Column>enabled</Column>
+                <Column>rol_name</Column>
+                <Column>id_rolename</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                        SELECT
+                            #COLUMNS#
+                        FROM
+                            ${mainschema}.usr_role R
+                            join ${mainschema}.tmenu M ON R.rol_id = M.id_rolename
+                        #WHERE#
+                    ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

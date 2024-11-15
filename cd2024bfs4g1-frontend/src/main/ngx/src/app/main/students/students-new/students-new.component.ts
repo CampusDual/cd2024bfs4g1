@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { OFormComponent } from 'ontimize-web-ngx';
+import { OFormComponent, OValidators } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
@@ -15,10 +15,16 @@ export class StudentsNewComponent {
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  validatorsNewPasswordArray: ValidatorFn[] = [];
+  validatorsWithoutSpace: ValidatorFn[] = [];
 
 
   constructor() {
     this.validatorsArray.push(this.dateValidator);
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
 
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
@@ -53,15 +59,15 @@ export class StudentsNewComponent {
     startdate.getControl().updateValueAndValidity();
   }
 
-toUpperCamelCase(event: any) {
-  event.target.value = event.target.value
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
-}
-toUpperCase(event: any){
-  event.target.value = event.target.value.toUpperCase();
-}
+  toUpperCamelCase(event: any) {
+    event.target.value = event.target.value
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+  }
+  toUpperCase(event: any) {
+    event.target.value = event.target.value.toUpperCase();
+  }
 
 }
 

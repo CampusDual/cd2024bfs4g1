@@ -3,14 +3,14 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 import com.campusdual.cd2024bfs4g1.api.core.service.IBootcampService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
-import com.ontimize.jee.server.dao.IOntimizeDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -26,6 +26,8 @@ public class BootcampService implements IBootcampService {
     private DefaultOntimizeDaoHelper daoHelper;
     @Autowired
     private StudentBootcampDao studentBootcampDao;
+    @Autowired
+    private TutorBootcampDao tutorBootcampDao;
 
     @Override
     public EntityResult bootcampQuery(Map<String, Object> keyMap, List<String> attrList)
@@ -35,22 +37,40 @@ public class BootcampService implements IBootcampService {
 
     @Override
     public EntityResult bootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+
         Date startDate = (Date) attrMap.get(BootcampDao.ATTR_START_DATE);
         Date finishDate = (Date) attrMap.get(BootcampDao.ATTR_FINISH_DATE);
 
-        if (finishDate.before(startDate)) {
+        if (finishDate != null && startDate != null && finishDate.before(startDate)) {
             EntityResult error = new EntityResultMapImpl();
             error.setCode(EntityResult.OPERATION_WRONG);
             error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
             return error;
         }
 
-        return this.daoHelper.insert(this.bootcampDao, attrMap);
+        EntityResult insertResult = this.daoHelper.insert(this.bootcampDao, attrMap);
+        if (insertResult.isWrong()) {
+            return insertResult;
+        }
+
+        //Recuperamos los tutores
+        ArrayList<Integer> tutors = (ArrayList<Integer>) attrMap.get(TutorDao.ATTR_COMBOBOX_TUTOR);
+        //Recuperamos el ID del bootcamp
+        Integer bootcampId = (Integer) insertResult.get(BootcampDao.ATTR_ID);
+        //Por cada tutor insertamos en la tabla de relación
+        for (Integer tutorId:tutors){
+            Hashtable<String,Object> attrRelation = new Hashtable<>();
+            attrRelation.put(TutorBootcampDao.TUTOR_ID, tutorId);
+            attrRelation.put(TutorBootcampDao.BOOTCAMP_ID, bootcampId);
+            insertResult = this.daoHelper.insert(this.tutorBootcampDao, attrRelation);
+        }
+        return insertResult;
     }
 
     @Override
     public EntityResult bootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap)
             throws OntimizeJEERuntimeException {
+
 
         EntityResult query = this.daoHelper.query(this.bootcampDao, keyMap,
                 Arrays.asList(BootcampDao.ATTR_START_DATE, BootcampDao.ATTR_FINISH_DATE));
@@ -62,12 +82,13 @@ public class BootcampService implements IBootcampService {
         Date newStartDate = (Date) attrMap.getOrDefault(BootcampDao.ATTR_START_DATE, currentStartDate);
         Date newFinishDate = (Date) attrMap.getOrDefault(BootcampDao.ATTR_FINISH_DATE, currentFinishDate);
 
-        if (newFinishDate.before(newStartDate)) {
+        if (newFinishDate != null && newStartDate != null && newFinishDate.before(newStartDate)) {
             return createErrorResult("END_DATE_MORE_THAN_INIT_DATE");
         }
 
         return this.daoHelper.update(this.bootcampDao, attrMap, keyMap);
     }
+
 
     private EntityResult createErrorResult(String message) {
         EntityResult error = new EntityResultMapImpl();
@@ -90,5 +111,4 @@ public class BootcampService implements IBootcampService {
             return this.daoHelper.delete(this.bootcampDao, keyMap);
         }
     }
-
 }

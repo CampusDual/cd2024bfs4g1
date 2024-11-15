@@ -1,0 +1,13 @@
+
+<o-form #employment_status_new attr="employment_status_new" confirm-exit="no" service="employmentstatus" entity="employmentStatus" keys="id" show-header="no"
+header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)" confirm-exit="no">
+    <div class="grid-container">
+        <div>
+            <label for="REQ_LSITUATION">{{'REQ_LSITUATION' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="situation" required="yes" max-length="100"></o-text-input>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="employment_status_new.insert()"></o-button>
+        </div>
+    </div>
+</o-form>

@@ -1,31 +1,49 @@
-<o-form attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id"
-    header-actions="R;I;U;D" (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
+<o-form #bootcampForm attr="BootcampNew" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;I;U;D"
+    (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
     <div class="grid-container">
         <div class="especial nombre">
-            <label for="LNAME">{{'LNAME' | oTranslate}}</label>
-            <o-text-input label-visible="false" attr="name" required="yes" max-length="100"></o-text-input>
+            <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
+
+            <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes" max-length="100"></o-text-input>
         </div>
-        <div class="especial fecha-inicio">
-            <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label>
-            <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes"
-                format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)"></o-date-input>
-            <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+        <div class="especial fecha-inicio" hidden="true">
+            <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
+            <o-date-input #startdate  class="fechas" attr="start_date" required="yes"
+                format="DD/MM/YYYY" (onValueChange)="throwChange(enddate)" hidden="true"></o-date-input >
+            <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE" ></o-validator>
         </div>
-        <div class="especial fecha-fin">
-            <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label>
-            <o-date-input #enddate label-visible="false" attr="end_date" required="yes" [validators]="validatorsArray"
-                format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+        <div class="especial fecha-fin" hidden="true">
+            <!-- <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label> -->
+            <o-date-input #enddate  attr="end_date" required="yes" [validators]="validatorsArray"
+                format="DD/MM/YYYY" hidden="true">
                 <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
         </div>
+        <div>
+            <label for="LTUTOR">{{'REQ_LTUTOR' | oTranslate}}</label>
+            <o-combo attr="tutor" service="tutors" entity="tutor" required="yes" searchable="yes" value-column="id"
+                columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="false" layout-padding multiple="yes"
+                sortable="yes" sort="ASC">
+            </o-combo>
+        </div>
+
+        <div>
+            <div>
+                <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
+                <o-daterange-input attr="dateRangeBootcamp" read-only="no" required="yes" format="DD/MM/YYYY"
+                    automatic-binding="false" (onValueChange)="throwChange($event)" show-week-numbers="true"
+                    mode="desktop" text-input-enabled="no ">
+                </o-daterange-input>
+            </div>
+        </div>
         <div class="especial descripcion">
             <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
-            <o-textarea-input label-visible="false" attr="description" required="no"
+            <o-textarea-input  attr="description" required="no"
                 max-length="200"></o-textarea-input>
         </div>
         <div class="especial notas">
             <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
-            <o-textarea-input label-visible="false" attr="notes" required="no" max-length="200"></o-textarea-input>
+            <o-textarea-input  attr="notes" required="no" max-length="200"></o-textarea-input>
         </div>
     </div>
 </o-form>

@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { ODateInputComponent } from 'ontimize-web-ngx';
+import { ODateInputComponent, OFormComponent,OValidators } from 'ontimize-web-ngx';
+import moment from 'moment';
 
 @Component({
   selector: 'app-bootcamp-new',
@@ -9,12 +10,15 @@ import { ODateInputComponent } from 'ontimize-web-ngx';
   styleUrls: ['./bootcamp-new.component.css']
 })
 export class BootcampNewComponent {
+  @ViewChild('bootcampForm') bootcampForm:OFormComponent;
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
+  validatorsWithoutSpace: ValidatorFn[] = [];
 
   constructor(private router: Router) {
     this.validatorsArray.push(this.dateValidator);
+    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
 
   volver(e) {
@@ -36,12 +40,22 @@ export class BootcampNewComponent {
     return result;
   }
 
-  
-  throwChange(enddate: ODateInputComponent ) {
-    enddate.getControl().updateValueAndValidity();
-  }
-  throwChange2(startdate: ODateInputComponent ) {
-    startdate.getControl().updateValueAndValidity();
-  }
+
+  throwChange($event: any) {
+
+    let startDate = moment($event.newValue.startDate).local();
+    let endDate = moment($event.newValue.endDate).local();
+
+    this.bootcampForm.setFieldValue("start_date", startDate);
+    this.bootcampForm.setFieldValue("end_date", endDate);
+
+ }
+
+//   // throwChange(enddate: ODateInputComponent ) {
+//   //   enddate.getControl().updateValueAndValidity();
+//   // }
+//   throwChange2(startdate: ODateInputComponent ) {
+//     startdate.getControl().updateValueAndValidity();
+//   }
 
 }

@@ -6,6 +6,9 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { BootcampListComponent } from './bootcamp-list/bootcamp-list.component';
 import { StudentBootcampAddComponent } from './bootcamp-details/student-bootcamp-add/student-bootcamp-add.component';
 import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
+import { StudentBootcampDetailComponent } from './bootcamp-details/student-bootcamp-detail/student-bootcamp-detail.component';
+import { TutorBootcampAddComponent } from './bootcamp-details/tutor-bootcamp-add/tutor-bootcamp-add.component';
+
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
     BootcampListComponent,
     BootcampDetailsComponent,
     StudentBootcampAddComponent,
-    BootcampNewComponent
+    BootcampNewComponent,
+    StudentBootcampDetailComponent,
+    TutorBootcampAddComponent
+
   ],
   imports: [
     CommonModule,

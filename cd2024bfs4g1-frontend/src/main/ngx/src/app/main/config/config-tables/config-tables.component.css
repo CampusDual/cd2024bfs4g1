@@ -1,0 +1,38 @@
+.table_row {
+    max-height: 32px;
+    overflow: hidden;
+}
+
+.table_cell {
+    padding: 6px;
+}
+
+.config-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr; 
+    grid-template-rows: auto;
+    gap: 10px;
+    height: auto;
+}
+.table_container{
+    grid-column: 1 / 2;
+    max-width: 100%;
+    max-height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1250px) {
+    .config-container{
+      grid-template-columns: 1fr; 
+    }
+  
+    .table_container {
+      grid-column: auto;
+      justify-content: center;
+      margin-left: 10%;
+      margin-right: 10%;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }

@@ -5,15 +5,29 @@ export const SERVICE_CONFIG: Object = {
   'students': {
     'path': '/students',
   },
-  permissions: {
-    'path': '/permissions'
+  'permissions': {
+    'path': '/permissions/permission'
   },
   'studentBootcamps':{
     'path': '/studentbootcamp'
   },
   'bootcamps':{
     'path': '/bootcamps'
+  },
+  'documents':{
+    'path': '/documents'
+  },
+  'employmentstatus':{
+    'path': '/employmentstatus'
+  },
+  'tutors': {
+    'path': '/tutors',
+  },
+  'tutorBootcamps':{
+    'path': '/tutorbootcamp'
+  },
+  'studentstatus':{
+    'path': '/studentstatus'
   }
-  ,
 
 };
