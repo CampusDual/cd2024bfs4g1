@@ -14,12 +14,8 @@ import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-
-
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.swing.text.html.parser.Entity;
 
 @Service("StudentService")
 @Lazy

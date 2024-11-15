@@ -68,9 +68,7 @@ public class DocumentService implements IDocumentService {
         String filePath = (String) fileResult.getRecordValues(0).get(DocumentFileDao.ATTR_PATH);
         if (filePath != null && !filePath.isEmpty()) {
             File fichero = new File(filePath);
-            if (fichero.delete()) {
-
-            } else {
+            if (!fichero.delete()) {
                 EntityResult errorResult = new EntityResultMapImpl();
                 errorResult.setCode(EntityResult.OPERATION_WRONG);
                 errorResult.setMessage("FILE ERROR ON DELETE ");
@@ -83,11 +81,9 @@ public class DocumentService implements IDocumentService {
 
     @Override
     public EntityResult myPersonalFilesContentQuery(Map<String, Object> keyMap, List<String> attrList) {
-        // Asegurarnos de que 'ATTR_PATH' esté en la lista de atributos y 'ATTR_BASE64' no lo esté
         attrList.add(DocumentFileDao.ATTR_PATH);
         attrList.remove(DocumentFileDao.ATTR_BASE64);
 
-        // Consultar la tabla cruzada para obtener los IDs de documentos asociados
         EntityResult studentDocumentQuery = this.daoHelper.query(studentdocumentDao, keyMap, Arrays.asList(StudentDocumentDao.ATTR_ID_DOCUMENT));
         if (studentDocumentQuery.isWrong()) {
             return studentDocumentQuery;
@@ -109,7 +105,6 @@ public class DocumentService implements IDocumentService {
             String filePath = (String) fileResult.getRecordValues(i).get(DocumentFileDao.ATTR_PATH);
             File file = new File(filePath);
             try {
-                // Calcular el Base64
                 byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(file));
                 base64Files.add(new String(encoded));
             } catch (IOException e) {
@@ -117,7 +112,6 @@ public class DocumentService implements IDocumentService {
             }
         }
 
-        // Añadir todos los valores Base64 para cada archivo
         fileResult.put(DocumentFileDao.ATTR_BASE64, base64Files);
         return fileResult;
     }
@@ -125,8 +119,6 @@ public class DocumentService implements IDocumentService {
 
     @Override
     public EntityResult studentdocumentDelete(Map<String, Object> keyMap) {
-
-
         EntityResult studentDocumentQuery = this.daoHelper.query(studentdocumentDao, keyMap, Arrays.asList(StudentDocumentDao.ATTR_ID_DOCUMENT));
         if (studentDocumentQuery.isWrong()) {
             return studentDocumentQuery;
@@ -142,6 +134,5 @@ public class DocumentService implements IDocumentService {
         personalFilesDelete(dKeymap);
 
         return this.daoHelper.delete(this.documentFileDao, dKeymap);
-
     }
 }
