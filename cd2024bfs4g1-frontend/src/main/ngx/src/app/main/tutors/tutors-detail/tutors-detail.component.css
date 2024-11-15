@@ -26,6 +26,11 @@
     height: auto;
   }
   
+  .general_table{
+    width: 98%;
+    margin: 0;
+  }
+
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;

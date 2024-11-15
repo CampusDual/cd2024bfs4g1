@@ -1,7 +1,7 @@
-<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;U;D"
-  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
-  (onDataLoaded)="onBootcampChange($event);inicialDR()" >
-  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
+<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
+  header-actions="R;I;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
+  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
     <div class="especial nombre">
@@ -20,10 +20,10 @@
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
-    
+
     <div>
       <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
-      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" 
+      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" >
       </o-daterange-input>
@@ -52,32 +52,35 @@
       </o-column-collapsible>
   </div>
   <div class="general_container">
-    <o-form-layout-manager attr="addStudentLayout" mode="dialog">
-      <o-form-layout-dialog-options class="popup">
-
-        <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
-          entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
-          columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
-          visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10" title="Alumnos Inscritos" show-title="yes"
-          show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="click">
-          <o-table-column attr="sb_start_date" title="start_date" type="date" format="DD/MM/YYYY"></o-table-column>
-          <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
-          <o-table-paginator page-size="20" page-size-options="10;20;40">
-          </o-table-paginator>
-          <o-table-column attr="action" width="64px" tooltip="yes" tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-            <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
-              icon="person_search"></o-table-cell-renderer-action>
-          </o-table-column>
-          <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
-          </o-table-context-menu>
-        </o-table>
-      </o-form-layout-dialog-options>
-    </o-form-layout-manager>
+    <div class="table_container">
+      <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+        <o-form-layout-dialog-options class="popup">
+            <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
+          <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
+            entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
+            columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
+            visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10"
+            show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="click">
+            <o-table-column attr="sb_start_date" title="start_date" type="date" format="DD/MM/YYYY"></o-table-column>
+            <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
+            <o-table-paginator page-size="20" page-size-options="10;20;40">
+            </o-table-paginator>
+            <o-table-column attr="action" width="64px" tooltip="yes" tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
+              <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
+                icon="person_search"></o-table-cell-renderer-action>
+            </o-table-column>
+            <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+            </o-table-context-menu>
+          </o-table>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
+    </div>
     
+
     <div class="list_container" >
     <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
       <o-form-layout-dialog-options class="popup">
-      <div class="title"> {{'Mentors' | oTranslate}}</div>
+      <h3> {{'Mentors' | oTranslate}}</h3>
       <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
       quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
       selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
@@ -93,5 +96,5 @@
     </o-form-layout-manager>
     </div>
   </div>
-  
+
 </o-form>
