@@ -143,7 +143,7 @@
 
     <o-form-layout-manager>
       <div class="container_students">
-        <h3 class="title3">{{ 'STUDENT_FILES' | oTranslate }}</h3>
+        <h3>{{ 'STUDENT_FILES' | oTranslate }}</h3>
         <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
           entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
           detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
@@ -163,7 +163,7 @@
       <o-form-layout-dialog-options class="popup">
 
         <div class="container_students">
-          <h3 class="titulo3">{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
+          <h3>{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
           <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
             entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
             visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"

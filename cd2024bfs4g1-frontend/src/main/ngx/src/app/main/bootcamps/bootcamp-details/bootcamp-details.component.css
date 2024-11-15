@@ -9,14 +9,6 @@ o-form {
   margin: 0 auto;
 }
 
-label {
-  display: block;
-  margin: 10px 0 10px 10px;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-
 .grid-container,
 .table_container{
   width: 96%;
@@ -69,6 +61,8 @@ label {
   padding: 30px;
   text-align: center;
 }
+
+
 .nombre {
   grid-column: 1 / 2;
 }
@@ -92,7 +86,6 @@ label {
 .gridcalendario {
   grid-column: 1 / 4;
 }
-
 
 .calendar-container,
 .button-container {

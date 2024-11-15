@@ -1,5 +1,6 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="Bootcamps">
-  <div class="table_container">
+  <div class="">
+    <h1 class="titulo_tablas">{{ 'Bootcamps' | oTranslate }}</h1>
     <o-table
         class="general_table"
         attr="bootcampsTable" service="bootcamps"
@@ -11,8 +12,6 @@
         show-charts-on-demand-option="false"
         delete-button="false"
         refresh-button="true"
-        title="Bootcamps"
-        show-title="true"
         >
 
         <o-table-paginator
