@@ -23,10 +23,13 @@ export class StudentsTableComponent {
       // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
       const filterValue = fil.value != null ? fil.value.toString() : '';
 
-      if (fil.value) {
-        if ( fil.attr === 'tutor' ||  fil.attr === 'udemy' ||
-          fil.attr === 'employment_status'|| fil.attr==='status'|| fil.attr==='spain_comunity') {
-          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, fil.value));
+      // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
+      const filterValue = fil.value != null ? fil.value.toString() : '';
+
+      if (filterValue) {  // Solo agrega el filtro si filterValue no está vacío
+        if (fil.attr === 'tutor' || fil.attr === 'udemy' ||
+            fil.attr === 'employment_status_id' || fil.attr === 'student_status_id' || fil.attr === 'spain_comunity') {
+          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, filterValue));
         }
         if (fil.attr === 'id') {
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue));
