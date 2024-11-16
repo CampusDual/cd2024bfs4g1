@@ -1,5 +1,5 @@
 
-CREATE TABLE public.tmenu(id varchar(100),attr VARCHAR(100),visible BOOLEAN,enabled BOOLEAN,id_rolename INTEGER)
+CREATE TABLE public.tmenu(id varchar(100),attr VARCHAR(100),visible BOOLEAN,enabled BOOLEAN,id_rolename INTEGER);
 INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
     VALUES ('1', 'admin', true, true, 1);
 INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
