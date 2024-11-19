@@ -51,11 +51,8 @@
         </div>
       </o-column-collapsible>
 
-      <o-column-collapsible class="gridcalendario" title="{{'FILE' | oTranslate}}" appearance="legacy" expanded="no" icon="file" elevation="2">
-        <div class="table_container">
-          <div class="calendar-container">
-            <div class="container" *ngIf="months.length > 0">
-              <div class="button-container">
+      <o-column-collapsible title="{{'FILE' | oTranslate}}" appearance="legacy" expanded="no" icon="folder_open" elevation="2">
+              <div >
                 <div class="upload-container">
                   <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
                   <div class="input-button-container">
@@ -72,9 +69,9 @@
                 </div>
                 
                 <o-form-layout-manager>
-                <div class="container_students">
-                  <h3>{{ 'STUDENT_FILES' | oTranslate }}</h3>
-                  <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
+                <div >
+                  <h3>Bootcamp {{ 'FILE' | oTranslate }}</h3>
+                  <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
                     entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name" visible-columns="name"
                     detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
                     refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
@@ -89,9 +86,6 @@
                 </div>
                 </o-form-layout-manager>
               </div>
-            </div>
-          </div>
-        </div>
       </o-column-collapsible>
   </div>
   <div class="general_container">

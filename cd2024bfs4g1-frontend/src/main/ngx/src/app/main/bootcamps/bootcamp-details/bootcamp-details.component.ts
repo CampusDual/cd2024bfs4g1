@@ -33,7 +33,6 @@ export class BootcampDetailsComponent {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
-    this.configureService();
     this.dateClass.bind(this);
     this._locale = this.translateService.getCurrentLang();
     this._adapter.setLocale(this._locale);
@@ -112,12 +111,19 @@ export class BootcampDetailsComponent {
 
   ngOnInit() { }
 
-  protected configureService() {
+  protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
     this.service.configureService(conf);
   }
 
+  protected configureDocuments() {
+    const documentConf = this.service.getDefaultServiceConfiguration('documents');
+    this.service.configureService(documentConf);
+  }
+  
+
   onBootcampChange(event: any) {
+    this.configureBootcamps();
     const bootcampId = event.id;
     const filter = { id: bootcampId };
 
@@ -211,6 +217,7 @@ export class BootcampDetailsComponent {
   }
   // Método para manejar el evento de clic en la acción
   actionClick(event) {
+    this.configureDocuments();
     // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
     this.service.query({ id: event.id }, ['name', 'base64'], 'bootcampFilesContent').subscribe(res => {
       if (res.data && res.data.length) {
