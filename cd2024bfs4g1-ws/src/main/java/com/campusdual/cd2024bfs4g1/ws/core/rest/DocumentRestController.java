@@ -25,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 @RestController
 @RequestMapping("/documents")
@@ -49,133 +50,117 @@ public class DocumentRestController extends ORestController<IDocumentService> {
             path=System.getProperty("java.io.tmpdir");
         }
     }
-
     @PostMapping(value = "upload")
-    public ResponseEntity upload(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files, @RequestParam(name = "data", required = false) String data) {
-
-        HashMap<String, Object> extraData = new HashMap<>();
-        if (data != null) {
-            try {
-                extraData = new ObjectMapper().readValue(data, HashMap.class);
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        Number student_id = null;
-        EntityResult result = new EntityResultMapImpl();
-        if (extraData.get(StudentDocumentDao.ATTR_ID_STUDENT) instanceof Number) {
-            student_id = (Number) extraData.get(StudentDocumentDao.ATTR_ID_STUDENT);
-
-            String directory = path +"\\students\\" + student_id;
-            try {
-                Files.createDirectories(Paths.get(directory));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            for (MultipartFile file : files) {
-                String filePath = directory + "\\" + file.getOriginalFilename();
-                File newFile = new File(filePath);
-                Map<String, Object> fileResult = new HashMap<>();
-                try {
-                    if (newFile.exists()) {
-                        fileResult.put(NAME, file.getOriginalFilename());
-                        fileResult.put(STATUS, "ALREADY_EXIST");
-                    } else {
-                        file.transferTo(newFile);
-
-                        Map<String, Object> attrMap = new HashMap();
-                        attrMap.put(DocumentFileDao.ATTR_NAME, file.getOriginalFilename());
-                        attrMap.put(DocumentFileDao.ATTR_PATH, filePath);
-                        EntityResult fileInsert = documentsrv.personalFileInsert(attrMap);
-                        Number id = null;
-                        if (fileInsert.get(DocumentFileDao.ATTR_ID) instanceof Number) {
-                            id = (Number) fileInsert.get(DocumentFileDao.ATTR_ID);
-                            Map<String, Object> attrMap2 = new HashMap();
-                            attrMap2.put(StudentDocumentDao.ATTR_ID_STUDENT, student_id);
-                            attrMap2.put(StudentDocumentDao.ATTR_ID_DOCUMENT, id);
-                            documentsrv.studentdocumentInsert(attrMap2);
-                        }
-                        if (fileInsert.isWrong()) {
-                            fileResult.put(NAME, file.getOriginalFilename());
-                            fileResult.put(STATUS, "ERROR_ON_INSERT");
-                        } else {
-                            fileResult.put(NAME, file.getOriginalFilename());
-                            fileResult.put(STATUS, "OK");
-                        }
-                    }
-                } catch (IOException e) {
-                    fileResult.put(NAME, file.getOriginalFilename());
-                    fileResult.put(STATUS, "ERROR_ON_WRITE_FILE");
-                }
-                result.addRecord(fileResult);
-            }
-        }
-
-        return new ResponseEntity<EntityResult>(result, HttpStatus.OK);
+    public ResponseEntity<EntityResult> upload(
+            @RequestParam("name") String[] names,
+            @RequestParam("file") MultipartFile[] files,
+            @RequestParam(name = "data", required = false) String data) {
+        return handleUpload(data, files, "students", StudentDocumentDao.ATTR_ID_STUDENT, this::insertStudentDocument);
     }
-
 
     @PostMapping(value = "uploadBootcampDocument")
-    public ResponseEntity uploadBootcampDocument(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files, @RequestParam(name = "data", required = false) String data) {
+    public ResponseEntity<EntityResult> uploadBootcampDocument(
+            @RequestParam("name") String[] names,
+            @RequestParam("file") MultipartFile[] files,
+            @RequestParam(name = "data", required = false) String data) {
+        return handleUpload(data, files, "bootcamp", BootcampDocumentDao.ATTR_ID_BOOTCAMP, this::insertBootcampDocument);
+    }
 
-        HashMap<String, Object> extraData = new HashMap<>();
-        if (data != null) {
-            try {
-                extraData = new ObjectMapper().readValue(data, HashMap.class);
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        Number bootcamp_id = null;
+    private ResponseEntity<EntityResult> handleUpload(
+            String data,
+            MultipartFile[] files,
+            String directoryType,
+            String idAttribute,
+            BiConsumer<Number, Number> documentInsertHandler) {
+
+        HashMap<String, Object> extraData = parseExtraData(data);
         EntityResult result = new EntityResultMapImpl();
-        if (extraData.get(BootcampDocumentDao.ATTR_ID_BOOTCAMP) instanceof Number) {
-            bootcamp_id = (Number) extraData.get(BootcampDocumentDao.ATTR_ID_BOOTCAMP);
+        if (extraData.get(idAttribute) instanceof Number) {
+            Number entityId = (Number) extraData.get(idAttribute);
 
-            String directory = path +"\\bootcamp\\"+ bootcamp_id;
-            try {
-                Files.createDirectories(Paths.get(directory));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            String directory = path + "\\" + directoryType + "\\" + entityId;
+            createDirectory(directory);
+
             for (MultipartFile file : files) {
                 String filePath = directory + "\\" + file.getOriginalFilename();
                 File newFile = new File(filePath);
-                Map<String, Object> fileResult = new HashMap<>();
-                try {
-                    if (newFile.exists()) {
-                        fileResult.put(NAME, file.getOriginalFilename());
-                        fileResult.put(STATUS, "ALREADY_EXIST");
-                    } else {
-                        file.transferTo(newFile);
-
-                        Map<String, Object> attrMap = new HashMap();
-                        attrMap.put(DocumentFileDao.ATTR_NAME, file.getOriginalFilename());
-                        attrMap.put(DocumentFileDao.ATTR_PATH, filePath);
-                        EntityResult fileInsert = documentsrv.personalFileInsert(attrMap);
-                        Number id = null;
-                        if (fileInsert.get(DocumentFileDao.ATTR_ID) instanceof Number) {
-                            id = (Number) fileInsert.get(DocumentFileDao.ATTR_ID);
-                            Map<String, Object> attrMap2 = new HashMap();
-                            attrMap2.put(BootcampDocumentDao.ATTR_ID_BOOTCAMP, bootcamp_id);
-                            attrMap2.put(BootcampDocumentDao.ATTR_ID_DOCUMENT, id);
-                            documentsrv.bootcampdocumentInsert(attrMap2);
-                        }
-                        if (fileInsert.isWrong()) {
-                            fileResult.put(NAME, file.getOriginalFilename());
-                            fileResult.put(STATUS, "ERROR_ON_INSERT");
-                        } else {
-                            fileResult.put(NAME, file.getOriginalFilename());
-                            fileResult.put(STATUS, "OK");
-                        }
-                    }
-                } catch (IOException e) {
-                    fileResult.put(NAME, file.getOriginalFilename());
-                    fileResult.put(STATUS, "ERROR_ON_WRITE_FILE");
-                }
+                Map<String, Object> fileResult = processFile(file, newFile, filePath, entityId, documentInsertHandler);
                 result.addRecord(fileResult);
             }
         }
 
-        return new ResponseEntity<EntityResult>(result, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    private HashMap<String, Object> parseExtraData(String data) {
+        if (data == null) return new HashMap<>();
+        try {
+            return new ObjectMapper().readValue(data, HashMap.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void createDirectory(String directory) {
+        try {
+            Files.createDirectories(Paths.get(directory));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private Map<String, Object> processFile(
+            MultipartFile file,
+            File newFile,
+            String filePath,
+            Number entityId,
+            BiConsumer<Number, Number> documentInsertHandler) {
+
+        Map<String, Object> fileResult = new HashMap<>();
+        try {
+            if (newFile.exists()) {
+                fileResult.put(NAME, file.getOriginalFilename());
+                fileResult.put(STATUS, "ALREADY_EXIST");
+            } else {
+                file.transferTo(newFile);
+
+                Map<String, Object> attrMap = new HashMap<>();
+                attrMap.put(DocumentFileDao.ATTR_NAME, file.getOriginalFilename());
+                attrMap.put(DocumentFileDao.ATTR_PATH, filePath);
+                EntityResult fileInsert = documentsrv.personalFileInsert(attrMap);
+
+                if (fileInsert.isWrong()) {
+                    fileResult.put(NAME, file.getOriginalFilename());
+                    fileResult.put(STATUS, "ERROR_ON_INSERT");
+                } else {
+                    fileResult.put(NAME, file.getOriginalFilename());
+                    fileResult.put(STATUS, "OK");
+
+                    Number documentId = (Number) fileInsert.get(DocumentFileDao.ATTR_ID);
+                    documentInsertHandler.accept(entityId, documentId);
+                }
+            }
+        } catch (IOException e) {
+            fileResult.put(NAME, file.getOriginalFilename());
+            fileResult.put(STATUS, "ERROR_ON_WRITE_FILE");
+        }
+
+        return fileResult;
+    }
+
+    private void insertStudentDocument(Number studentId, Number documentId) {
+        Map<String, Object> attrMap = new HashMap<>();
+        attrMap.put(StudentDocumentDao.ATTR_ID_STUDENT, studentId);
+        attrMap.put(StudentDocumentDao.ATTR_ID_DOCUMENT, documentId);
+        documentsrv.studentdocumentInsert(attrMap);
+    }
+
+    private void insertBootcampDocument(Number bootcampId, Number documentId) {
+        Map<String, Object> attrMap = new HashMap<>();
+        attrMap.put(BootcampDocumentDao.ATTR_ID_BOOTCAMP, bootcampId);
+        attrMap.put(BootcampDocumentDao.ATTR_ID_DOCUMENT, documentId);
+        documentsrv.bootcampdocumentInsert(attrMap);
+    }
+
+
 }
