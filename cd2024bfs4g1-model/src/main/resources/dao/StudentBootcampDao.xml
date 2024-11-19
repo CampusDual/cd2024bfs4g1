@@ -24,12 +24,18 @@
                 <AmbiguousColumn name="sb_start_date" prefix="sb" databaseName="start_date"/>
                 <AmbiguousColumn name="sb_end_date" prefix="sb" databaseName="end_date"/>
                 <AmbiguousColumn name="status" prefix="sb" />
+                <AmbiguousColumn name="statusinbootcamp" prefix="sb" databaseName="status"/>
             </AmbiguousColumns>
 
             <Sentence>
                 <![CDATA[
      select
-      #COLUMNS#
+      #COLUMNS#,
+      CASE
+         WHEN CURRENT_DATE > b.end_date THEN 'Finished'::text
+         WHEN CURRENT_DATE < b.start_date THEN 'Pending'::text
+         ELSE 'Started'::text
+      END AS bootcampstatus
      from
       students s
      inner join
