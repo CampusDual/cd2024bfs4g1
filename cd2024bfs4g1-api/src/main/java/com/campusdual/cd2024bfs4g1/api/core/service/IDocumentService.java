@@ -21,4 +21,14 @@ public interface IDocumentService {
 
     EntityResult studentdocumentDelete(Map<String, Object> keyMap);
 
+
+
+
+    public EntityResult bootcampdocumentQuery(Map<String, Object> keyMap, List<String> attrList);
+
+    public EntityResult bootcampdocumentInsert(Map<String, Object> attrMap);
+
+    EntityResult bootcampdocumentDelete(Map<String, Object> keyMap);
+
+    public EntityResult bootcampFilesContentQuery(Map<String, Object> keyMap, List<String> attrList);
 }

@@ -96,5 +96,5 @@ environment:
   profile: ${ENVIRONMENT_PROFILE:#{'production'}}
 #Ruta donde se van a persistir los ficheros subidos
 #app:
-#  files:
-#    path:
+  #files:
+    #path: 'C:\students\pruebas\'
