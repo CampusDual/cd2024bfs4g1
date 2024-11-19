@@ -30,22 +30,13 @@
                         service="studentstatus" entity="studentStatus" columns="id;status" value-column="id"
                         visible-columns="status" keys="id" translate="yes"></o-combo>
 
-                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students" entity="student"
-                        columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
-                        searchable="yes" ></o-combo>
 
 
-                    <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
-                        type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-
-                    <!-- <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"> -->
-                        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
-                            label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-
-                   <!--  </div> -->
-                    <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
-                        type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-
+                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
+                        entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
+                        visible-columns="value" searchable="yes"></o-combo>
+                    <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
+                        label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
