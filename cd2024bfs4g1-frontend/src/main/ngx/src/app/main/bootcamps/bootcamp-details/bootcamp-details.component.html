@@ -1,11 +1,11 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;U;D"
   (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
   (onDataLoaded)="onBootcampChange($event);inicialDR()" >
-  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
+  <o-text-input  #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
 
   <div class="grid-container">
     <div class="especial nombre">
-      <label for="LNAME">{{'LNAME' | oTranslate}}</label>
+      <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
       <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
     </div>
     <div class="especial fecha-inicio" hidden="true">
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-      <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
+      <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
       <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" >
@@ -115,3 +115,5 @@
     </div>
   </div>
 </o-form>
+
+
