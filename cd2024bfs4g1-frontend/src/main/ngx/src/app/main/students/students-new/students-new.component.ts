@@ -20,6 +20,10 @@ export class StudentsNewComponent {
   showNotice: boolean =false;
 
 
+  constructor() {
+  Mostraraviso: boolean =false;
+
+
   constructor(protected injector: Injector) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
@@ -83,9 +87,10 @@ export class StudentsNewComponent {
     this.getDNI(event.srcElement.value);
 
   }
-
+}
 
 getDNI(dni:string) {
+
     const filter = {
       'dni': dni
     };
@@ -95,14 +100,18 @@ getDNI(dni:string) {
         console.log('DNI encontrado:');
         console.log(resp.data.length);
         if(!resp.data.length){
-          this.showNotice=false;
+          this.Mostraraviso=false;
         }else{
-          this.showNotice=true;
+          this.Mostraraviso=true;
         }
       } else {
         console.log(resp.message);
-        this.showNotice=false;
+        this.Mostraraviso=false;
       }
     });
+
 }
 }
+
+
+
