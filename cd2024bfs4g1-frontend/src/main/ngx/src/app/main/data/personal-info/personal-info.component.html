@@ -26,7 +26,7 @@
     </div>
     <div class="employmentStatus">
       <label for="employment_status">{{'DEMSTATUS' | oTranslate}}</label>
-      <o-text-input attr="employment_status" max-length="20" data={{employmentStatus}}></o-text-input>
+      <o-text-input attr="employment_status_id" max-length="20" [data]="[]" service="studentstatus" entity="studentStatus" keys="id" columns="id;status" value-column="id" description-columns="status" query-on-init="true"></o-text-input>
     </div>
     <div class="fechaCumple">
       <label for="LBIRTHDATE">{{'DBIRTHDATE' | oTranslate}}</label>
