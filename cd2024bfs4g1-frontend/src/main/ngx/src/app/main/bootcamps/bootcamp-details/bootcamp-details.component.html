@@ -1,11 +1,11 @@
-<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;U;D"
-  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
-  (onDataLoaded)="onBootcampChange($event);inicialDR()" >
-  <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
+<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
+  header-actions="R;I;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
+  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
     <div class="especial nombre">
-      <label for="LNAME">{{'LNAME' | oTranslate}}</label>
+      <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
       <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
     </div>
     <div class="especial fecha-inicio" hidden="true">
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-      <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
+      <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
       <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
         show-week-numbers="true" mode="desktop" >
@@ -51,23 +51,60 @@
         </div>
       </o-column-collapsible>
     <o-column-collapsible class="gridcalendario" title="{{'TimeTable' | oTranslate}}" appearance="legacy" expanded="no" icon="schedule" elevation="2">
-      <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
-        <o-form-layout-dialog-options class="popup" >
-          <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable" service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
-          detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id" parent-keys="id_bootcamp:id;start_date;end_date"
-                   columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
-                   visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
-                   show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" detail-button-in-row-icon="">
-            <o-table-column attr="time_start" title="TimeStart" content-align="center"></o-table-column>
-            <o-table-column attr="time_end" title="TimeEnd" content-align="center"></o-table-column>
-            <o-table-column attr="day_start" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
-            <o-table-column attr="day_end" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
-            <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
-            </o-table-context-menu>
-          </o-table>
-        </o-form-layout-dialog-options>
-      </o-form-layout-manager>
-    </o-column-collapsible>
+    <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
+      <o-form-layout-dialog-options class="popup" >
+        <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable" service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
+                 detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id" parent-keys="id_bootcamp:id;start_date;end_date"
+                 columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
+                 visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
+                 show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" detail-button-in-row-icon="">
+          <o-table-column attr="time_start" title="TimeStart" content-align="center"></o-table-column>
+          <o-table-column attr="time_end" title="TimeEnd" content-align="center"></o-table-column>
+          <o-table-column attr="day_start" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
+          <o-table-column attr="day_end" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
+          <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
+          </o-table-context-menu>
+        </o-table>
+      </o-form-layout-dialog-options>
+    </o-form-layout-manager>
+  </o-column-collapsible>
+
+      <o-column-collapsible title="{{'FILE' | oTranslate}}" appearance="legacy" expanded="no" icon="folder_open" elevation="2">
+              <div >
+                <div class="upload-container">
+                  <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
+                  <div class="input-button-container">
+                    <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}" service="documents"
+                      entity="uploadBootcampDocument" max-file-size="1000000" multiple="yes" max-num-files="5" split-upload="false" key="bootcamp_id"
+                      [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
+                      (onError)="onError($event)">
+                    </o-file-input>
+                    <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
+                  </div>
+                </div>
+                <div *ngIf="showMessage" class="notification">
+                  <label for="subida">{{ 'subida' | oTranslate }}</label>
+                </div>
+
+                <o-form-layout-manager>
+                <div >
+                  <h3>Bootcamp {{ 'FILE' | oTranslate }}</h3>
+                  <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
+                    entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name" visible-columns="name"
+                    detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                    refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
+                    select-all-checkbox-visible="true" selection-mode="none" pagination-controls="no">
+                    <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
+                    <o-table-column attr="name" title="Document title"></o-table-column>
+                    <o-table-column attr="action" width="10px">
+                      <o-table-cell-renderer-action (onClick)="actionClick($event)"
+                        icon="download"></o-table-cell-renderer-action>
+                    </o-table-column>
+                  </o-table>
+                </div>
+                </o-form-layout-manager>
+              </div>
+      </o-column-collapsible>
   </div>
   <div class="general_container">
     <div class="table_container">
@@ -115,3 +152,5 @@
     </div>
   </div>
 </o-form>
+
+
