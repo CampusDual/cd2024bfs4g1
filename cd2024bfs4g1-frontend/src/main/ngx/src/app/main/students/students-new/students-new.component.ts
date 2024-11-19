@@ -18,7 +18,7 @@ export class StudentsNewComponent {
   validatorsNewPasswordArray: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
   showNotice: boolean =false;
-  Mostraraviso: boolean =false;
+  
 
 
   constructor(protected injector: Injector) {
@@ -97,13 +97,13 @@ getDNI(dni:string) {
         console.log('DNI encontrado:');
         console.log(resp.data.length);
         if(!resp.data.length){
-          this.Mostraraviso=false;
+          this.showNotice=false;
         }else{
-          this.Mostraraviso=true;
+          this.showNotice=true;
         }
       } else {
         console.log(resp.message);
-        this.Mostraraviso=false;
+        this.showNotice=false;
       }
     });
 
