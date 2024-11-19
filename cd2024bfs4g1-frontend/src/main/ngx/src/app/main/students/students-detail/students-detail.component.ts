@@ -155,7 +155,7 @@ export class StudentsDetailComponent {
       if (resp.code === 0){
         console.log('DNI encontrado:');
         console.log(resp.data.length);
-        if(resp.data.length>0){
+        if(resp.data.length>1){
           this.showNotice=true;
         }else{
           this.showNotice=false;
