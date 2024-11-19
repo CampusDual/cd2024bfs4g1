@@ -1,13 +1,13 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'Students' | oTranslate}}">
     <div class="table_container">
         <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
-            <o-column-collapsible  title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no"
+            <o-column-collapsible  title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" elevation="10"
                 icon="filter_list" class="collapsible-2">
 
                 <div class="filter_style">
 
 
-                    <o-combo #type attr="tutor" label="{{'TUTOR' | oTranslate}}" read-only="no"
+                    <o-combo #type attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no"
                         service="tutors" entity="tutor" keys="id"
                         columns="id;name" value-column="id" description-columns="name" query-on-init="true"
                         visible-columns="name" translate="yes" null-selection="true"></o-combo>
@@ -26,7 +26,7 @@
                         entity="studentStatus" keys="id" columns="id;status" value-column="id" visible-columns="status"
                         read-only="no">
                     </o-combo>
-                    <o-combo class="estado" #type attr="student_status_id" label="{{'STATUS' | oTranslate}}" read-only="no"
+                    <o-combo class="estado" #type attr="student_status_id" label="{{'status' | oTranslate}}" read-only="no"
                         service="studentstatus" entity="studentStatus" columns="id;status" value-column="id"
                         visible-columns="status" keys="id" translate="yes"></o-combo>
 
