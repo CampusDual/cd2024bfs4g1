@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OValidators } from 'ontimize-web-ngx';
+import { OFileInputComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
@@ -15,6 +15,9 @@ import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, Ontimize
 })
 export class BootcampDetailsComponent {
   @ViewChild('bootcampDetailForm') bootcampDetailForm:OFormComponent;
+  @ViewChild("idNumber") idNumber: OTextInputComponent;
+  @ViewChild("documentsTable") documentsTable: OTableComponent;
+  @ViewChild("fileinput") fileinput: OFileInputComponent;
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
@@ -173,6 +176,62 @@ export class BootcampDetailsComponent {
     }
   }
 
-  
+  getFileData() {
+    if (this.idNumber) {
+      return { bootcamp_id: this.idNumber.getValue() };
+    } else {
+      return null;
+    }
+  }
 
+
+  showMessage = false;
+
+  onUploadFiles(event) {
+    this.documentsTable.refresh();
+    this.fileinput.clearValue();
+
+    this.showMessage = true;
+
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
+  }
+
+  onFileUpload() {
+
+  }
+
+  onError(event) {
+
+    if (event.status === 507) {
+      this.showError("event");
+    }
+
+  }
+  showError(event: any) {
+    console.log(event);
+  }
+  // Método para manejar el evento de clic en la acción
+  actionClick(event) {
+    // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
+    this.service.query({ id: event.id }, ['name', 'base64'], 'bootcampFilesContent').subscribe(res => {
+      if (res.data && res.data.length) {
+        // Si se encuentran datos, se extrae el nombre del archivo y el contenido en base64.
+        let filename = res.data[0].name;
+        let base64 = res.data[0].base64;
+        // Se crea un enlace temporal para descargar el archivo.
+        const src = `data:text/csv;base64,${base64}`;
+        const link = document.createElement("a");
+        link.href = src;
+        link.download = filename;
+        link.click();
+        link.remove();
+      }
+    });
+
+  }
+  refreshFileInput() {
+    this.fileinput.clearValue();
+  }
 }
