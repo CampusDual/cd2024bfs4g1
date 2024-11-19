@@ -138,6 +138,18 @@ o-button {
   grid-column: 2/4;
   width: 100%;
 }
+.aviso label{
+  color:rgb(244, 67, 54);
+  display: block;
+  font-size: 11px;
+  height: 20PX;
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 542.453px
+}
 
 
 @media (max-width: 1500px) {

@@ -21,7 +21,11 @@
     </div>
     <div class="dni">
       <label for="LDNI">{{'REQ_LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"></o-nif-input>
+      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes" (onBlur)="mostrar($event)"></o-nif-input>
+      <div class="aviso" *ngIf="showNotice">
+          <link rel="stylesheet"/>
+          <label for="dni" >El DNI escrito ya esta registrado </label>
+      </div>
     </div>
     <div class="usuario">
       <label for="usuario">{{'REQ_USER' | oTranslate}}</label>
@@ -41,7 +45,6 @@
       <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
       <o-phone-input attr="phone" required="yes"></o-phone-input>
     </div>
-
     <div class="employmentStatus">
       <label for="employment_status">{{'REQ_LEMSTATUS' | oTranslate}}</label>
       <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
@@ -180,4 +183,5 @@
   </div>
 
 </o-form>
+
 

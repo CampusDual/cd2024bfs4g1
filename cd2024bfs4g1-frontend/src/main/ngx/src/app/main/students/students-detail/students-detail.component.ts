@@ -22,6 +22,7 @@ export class StudentsDetailComponent {
   validatorsWithoutSpace: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   protected service: OntimizeService;
+  showNotice:boolean=false;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
@@ -38,7 +39,7 @@ export class StudentsDetailComponent {
   }
 
   protected configureService() {
-    const conf = this.service.getDefaultServiceConfiguration('documents');
+    const conf = this.service.getDefaultServiceConfiguration('students');
     this.service.configureService(conf);
   }
 
@@ -138,5 +139,31 @@ export class StudentsDetailComponent {
   refreshFileInput() {
     this.fileinput.clearValue();
   }
+  mostrar(event: any) {
 
+    console.log(event.srcElement.value);
+    this.getDNI(event.srcElement.value);
+
+  }
+
+  getDNI(dni:string) {
+    const filter = {
+      'dni': dni
+    };
+    const columns = ['id'];
+    this.service.query(filter, columns, 'student').subscribe(resp => {
+      if (resp.code === 0){
+        console.log('DNI encontrado:');
+        console.log(resp.data.length);
+        if(resp.data.length>0){
+          this.showNotice=true;
+        }else{
+          this.showNotice=false;
+        }
+      } else {
+        console.log(resp.message);
+        this.showNotice=false;
+      }
+    });
+}
 }
