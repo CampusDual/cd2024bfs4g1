@@ -12,6 +12,15 @@
   }
 }
 
+
+.mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+  color: white;
+}
+
+.mat-expansion-panel-header-title {
+  color: white;
+}
+
 /* Form toolbar background color */
 .o-form-toolbar .o-form-toolbar-header.mat-toolbar {
   background-color: transparent;
