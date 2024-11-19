@@ -18,9 +18,6 @@ export class StudentsNewComponent {
   validatorsNewPasswordArray: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
   showNotice: boolean =false;
-
-
-  constructor() {
   Mostraraviso: boolean =false;
 
 
@@ -87,7 +84,7 @@ export class StudentsNewComponent {
     this.getDNI(event.srcElement.value);
 
   }
-}
+
 
 getDNI(dni:string) {
 
