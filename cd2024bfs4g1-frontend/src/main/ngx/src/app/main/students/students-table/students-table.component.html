@@ -1,4 +1,5 @@
-<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'Students' | oTranslate}}">
+<o-form-layout-manager attr="studentsTableLayout" mode="tab"  title="{{'Students' | oTranslate}}">
+    <o-form-layout-tabgroup-options label-columns="name;surname1"></o-form-layout-tabgroup-options>
     <div class="table_container">
         <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
             <o-column-collapsible  title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" elevation="10"
@@ -11,10 +12,11 @@
                         columns="id;name;surname1;surname2" value-column="id" query-on-init="true"
                         visible-columns="name;surname1;surname2" translate="yes" null-selection="true" sort="ASC"></o-combo>
 
-                    <o-combo #type attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" read-only="no"
-                        service="employmentstatus" entity="employmentStatus" keys="id" sort="ASC"
-                        columns="id;situation" value-column="id" description-columns="situation" query-on-init="true"
-                        visible-columns="situation" translate="yes" null-selection="true"></o-combo>
+                    <o-combo attr="v_employment_status_id" label="LEMSTATUS" required="no" translate="yes"
+                        null-selection="true" read-only="false" service="employmentstatus"
+                        entity="employmentStatus" keys="id" columns="id;situation" value-column="id"
+                        description-columns="situation" query-on-init="true">
+                    </o-combo>
 
                     <o-combo class= "udemy" #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
@@ -33,21 +35,19 @@
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
                             label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-
                 </div>
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
-                    filters="tutor:tutor;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;employment_status_id:employment_status_id;id;"
+                    filters="tutor:tutor;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;v_employment_status_id:v_employment_status_id;"
                     [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
                     [expression-builder]="createFilter"></o-filter-builder>
             </o-column-collapsible>
 
             <div>
-
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
-                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;situation;udemy;
+                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;v_employment_status_id;udemy;
                 campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;student_status_id;usr_photo"
                 visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false">
@@ -68,5 +68,3 @@
         </o-form>
     </div>
 </o-form-layout-manager>
-
-

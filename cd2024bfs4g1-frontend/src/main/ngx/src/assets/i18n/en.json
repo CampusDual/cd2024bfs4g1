@@ -75,6 +75,7 @@
   "VALIDATOR.HASCAPITALCASE": "It must contain at least 1 in capital case",
   "VALIDATOR.HASNUMBER": "It must contain at least 1 number",
   "VALIDATOR.HASSMALLCASE": "It must contain at least 1 character in small case",
+  "VALIDATOR.HASSPECIALCHARACTERS": "Must contain at least 1 Special Character",
   "VERSION": "Version",
   "VIEW": "Views",
   "name": "Name",
@@ -143,7 +144,7 @@
   "FILTERS": "FILTERS",
   "surname1": "First surname",
   "surname2": "Second surname",
-  "tutor": "FCT mentor",
+  "tutor": "Mentor",
   "udemy": "Udemy",
   "employment_status": "Employment status",
   "student_status": "Student status",
@@ -280,5 +281,8 @@
   "Employment status" : "Employment status",
   "FCT Information" : "FCT Information",
   "Notes" : "Notes",
-  "OtherInformation": "Other information"
+  "OtherInformation": "Other information",
+  "LEMSTATUS_ACTUAL": "Current employment status",
+  "Historial_Laboral": "Employment history",
+  "REQ_DATE":"Date of Employment Status Change*"
 }

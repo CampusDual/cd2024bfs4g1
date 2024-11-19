@@ -13,8 +13,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'bootcamps':{
     'path': '/bootcamps'
-  }
-  ,'documents':{
+  },
+  'documents':{
     'path': '/documents'
   },
   'employmentstatus':{
@@ -35,5 +35,8 @@ export const SERVICE_CONFIG: Object = {
   'tutorBootcamps':{
     'path': '/tutorbootcamp'
   },
+  'employmentstatushistory':{
+    'path': '/employmentstatushistory'
+  }
 
 };

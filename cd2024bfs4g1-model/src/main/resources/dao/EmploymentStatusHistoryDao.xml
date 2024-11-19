@@ -2,7 +2,7 @@
 <JdbcEntitySetup xmlns="http://www.ontimize.com/schema/jdbc"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-                 catalog="" schema="${mainschema}" table="students" datasource="mainDataSource"
+                 catalog="" schema="${mainschema}" table="employment_status_history" datasource="mainDataSource"
                  sqlhandler="dbSQLStatementHandler">
 
     <DeleteKeys>
@@ -13,11 +13,12 @@
     </UpdateKeys>
     <GeneratedKey>id</GeneratedKey>
 
+
     <Queries>
         <Query id="default">
             <AmbiguousColumns>
-                <AmbiguousColumn name="id" prefix="st"/>
-                <AmbiguousColumn name="status" prefix="st"/>
+                <AmbiguousColumn name="id" prefix="esh"/>
+                <AmbiguousColumn name="employment_status_id" prefix="esh"/>
             </AmbiguousColumns>
 
             <Sentence>
@@ -25,15 +26,12 @@
                         SELECT
                         #COLUMNS#
                         FROM
-                            ${mainschema}.students st
-                            left join ${mainschema}.usr_user uu ON st.user_id = uu.usr_id
-                            inner join ${mainschema}.employment_status es on st.employment_status_id = es.id
-                            inner join ${mainschema}.student_status ss on st.student_status_id = ss.id
-                            left join ${mainschema}.v_recent_employment_status vres on st.id = vres.student_id
+                            ${mainschema}.employment_status_history esh
+                            inner join ${mainschema}.employment_status es on es.id = esh.employment_status_id
+                            inner join ${mainschema}.students st on st.id = esh.student_id
                             #WHERE#
                     ]]>
             </Sentence>
         </Query>
     </Queries>
-
 </JdbcEntitySetup>
