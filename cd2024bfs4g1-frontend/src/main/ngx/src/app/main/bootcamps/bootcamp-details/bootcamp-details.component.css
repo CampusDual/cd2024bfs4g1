@@ -182,3 +182,21 @@ mat-calendar .mat-calendar-body-cell {
 mat-calendar .mat-calendar-arrow {
   display: none;
 }
+
+div.notification label  {
+  background-color: #F64983;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.notification.hide {
+  opacity: 0;
+}
+
