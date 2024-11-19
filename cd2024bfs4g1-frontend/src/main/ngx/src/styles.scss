@@ -320,3 +320,7 @@ background: none;
 o-column.o-column .o-container > .o-container-title span{
   color: #1a3459;
 }
+
+.timetable_table .mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper {
+  display: none;
+}

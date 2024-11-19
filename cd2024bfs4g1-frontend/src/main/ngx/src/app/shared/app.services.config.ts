@@ -28,6 +28,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'studentstatus':{
     'path': '/studentstatus'
+  },
+  'bootcampTimetable':{
+    'path':'/bootcamptimetable'
   }
 
 };
