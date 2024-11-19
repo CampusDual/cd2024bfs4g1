@@ -2,20 +2,20 @@
         after-insert-mode="new" confirm-exit="no">
   <div class="grid-container" >
     <div class="nombre">
-      <label for="name">{{'LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
+      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace" ></o-text-input>
     </div>
     <div class="apellido">
-      <label for="surname1">{{'LSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
+      <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace"></o-text-input>
     </div>
     <div class="apellido2">
-      <label for="surname2">{{'RSURNAME2' | oTranslate}}</label>
-      <o-text-input attr="surname2" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+      <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)" ></o-text-input>
     </div>
     <div class="email">
-      <label for="email">{{'LEMAIL'|oTranslate}}</label>
-      <o-email-input attr="email" required="yes" ></o-email-input>
+      <label for="email">{{'REQ_LEMAIL'|oTranslate}}</label>
+      <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
     </div>
   </div>
 </o-form>

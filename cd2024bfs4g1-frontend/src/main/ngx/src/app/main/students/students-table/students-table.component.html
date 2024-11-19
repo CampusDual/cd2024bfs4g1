@@ -1,10 +1,11 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'Students' | oTranslate}}">
     <div class="table_container">
         <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
-            <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no"
-                icon="filter_list" class="collapsible">
+            <o-column-collapsible  title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no"
+                icon="filter_list" class="collapsible-2">
 
                 <div class="filter_style">
+                    <o-text-input attr="tutor" read-only="no"></o-text-input>
 
                     <o-combo #type attr="tutor" label="{{'TUTOR' | oTranslate}}" read-only="no"
                         service="tutors" entity="tutor" keys="id"
@@ -31,7 +32,15 @@
                     <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
                         type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
 
+                    <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+                        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
+                            label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
+                        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
+                            label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button>
+                    </div>
                 </div>
+
+
 
                 <o-filter-builder #filterBuilder attr="thefilter"
                     filters="tutor:tutor;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;employment_status_id:employment_status_id;id;"
@@ -39,14 +48,14 @@
                     [expression-builder]="createFilter"></o-filter-builder>
             </o-column-collapsible>
 
-            <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
+            <div>
+              <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
+              <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
                 sort-columns="name" entity="student" keys="id"
-                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;situation;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;student_status_id"
-
+                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;situation;employment_status_id;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;student_status_id"
                 visible-columns="name;surname1;surname2;dni;personal_email;situation" delete-button="false"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" title="Students"
-                show-title="true">
+                >
                 <o-table-column attr="name" title="Name"></o-table-column>
                 <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
                 <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
@@ -56,7 +65,8 @@
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 </o-table-context-menu>
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-            </o-table>
+              </o-table>
+            </div>
         </o-form>
     </div>
 </o-form-layout-manager>

@@ -31,7 +31,7 @@ public class DocumentRestController extends ORestController<IDocumentService> {
     public static final String STATUS = "status";
     public static final String NAME = "name";
 
-    @Value("${aap.files.path}")
+    @Value("${app.files.path:#{null}}")
     private String path;
 
     @Autowired
@@ -42,11 +42,17 @@ public class DocumentRestController extends ORestController<IDocumentService> {
         return this.documentsrv;
     }
 
+    public DocumentRestController(){
+        super();
+        if(this.path == null || this.path.isBlank()){
+            path=System.getProperty("java.io.tmpdir");
+        }
+    }
+
     @PostMapping(value = "upload")
     public ResponseEntity upload(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files, @RequestParam(name = "data", required = false) String data) {
 
         HashMap<String, Object> extraData = new HashMap<>();
-        HashMap<String, Object> extraData2 = new HashMap<>();
         if (data != null) {
             try {
                 extraData = new ObjectMapper().readValue(data, HashMap.class);

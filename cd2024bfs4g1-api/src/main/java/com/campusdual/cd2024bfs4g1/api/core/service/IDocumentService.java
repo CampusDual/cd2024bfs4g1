@@ -7,15 +7,15 @@ import java.util.Map;
 
 public interface IDocumentService {
 
-    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList);//throws OntimizeJEERuntimeException;
+    public EntityResult personalFilesQuery(Map<String, Object> keyMap, List<String> attrList);
 
-    public EntityResult personalFileInsert(Map<String, Object> attrMap);//throws OntimizeJEERuntimeException;
+    public EntityResult personalFileInsert(Map<String, Object> attrMap);
 
-    public EntityResult studentdocumentQuery(Map<String, Object> keyMap, List<String> attrList);//throws OntimizeJEERuntimeException;
+    public EntityResult studentdocumentQuery(Map<String, Object> keyMap, List<String> attrList);
 
     public EntityResult studentdocumentInsert(Map<String, Object> attrMap);
 
-    EntityResult personalFilesDelete(Map<String, Object> keyMap);//throws OntimizeJEERuntimeException;
+    EntityResult personalFilesDelete(Map<String, Object> keyMap);
 
     EntityResult myPersonalFilesContentQuery(Map<String, Object> keyMap, List<String> attrList);
 

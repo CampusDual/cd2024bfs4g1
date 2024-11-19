@@ -2,7 +2,7 @@
     (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
     <div class="grid-container">
         <div class="especial nombre">
-            <label for="LNAME">{{'LNAME' | oTranslate}}</label>
+            <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
 
             <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes" max-length="100"></o-text-input>
         </div>
@@ -20,7 +20,7 @@
             </o-date-input>
         </div>
         <div>
-            <label for="LMENTOR">{{'LMENTOR' | oTranslate}}</label>
+            <label for="LTUTOR">{{'REQ_LTUTOR' | oTranslate}}</label>
             <o-combo attr="tutor" service="tutors" entity="tutor" required="yes" searchable="yes" value-column="id"
                 columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="false" layout-padding multiple="yes"
                 sortable="yes" sort="ASC">
@@ -29,7 +29,7 @@
 
         <div>
             <div>
-                <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
+                <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
                 <o-daterange-input attr="dateRangeBootcamp" read-only="no" required="yes" format="DD/MM/YYYY"
                     automatic-binding="false" (onValueChange)="throwChange($event)" show-week-numbers="true"
                     mode="desktop" text-input-enabled="no ">
