@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.*;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IDocumentService;
+import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDocumentDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.DocumentFileDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDocumentDao;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -24,6 +25,8 @@ public class DocumentService implements IDocumentService {
     private DocumentFileDao documentFileDao;
     @Autowired
     private StudentDocumentDao studentdocumentDao;
+    @Autowired
+    private BootcampDocumentDao bootcampDocumentDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -135,4 +138,72 @@ public class DocumentService implements IDocumentService {
 
         return this.daoHelper.delete(this.documentFileDao, dKeymap);
     }
+
+    @Override
+    public EntityResult bootcampdocumentQuery(Map<String, Object> keyMap, List<String> attrList) {
+        return this.daoHelper.query(this.bootcampDocumentDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult bootcampdocumentInsert(Map<String, Object> attrMap) {
+        return this.daoHelper.insert(this.bootcampDocumentDao, attrMap);
+    }
+
+    @Override
+    public EntityResult bootcampdocumentDelete(Map<String, Object> keyMap) {
+        EntityResult bootcampDocumentQuery = this.daoHelper.query(bootcampDocumentDao, keyMap, Arrays.asList(StudentDocumentDao.ATTR_ID_DOCUMENT));
+        if (bootcampDocumentQuery.isWrong()) {
+            return bootcampDocumentQuery;
+        }
+        Integer documentId = (Integer) bootcampDocumentQuery.getRecordValues(0).get(StudentDocumentDao.ATTR_ID_DOCUMENT);
+        EntityResult sdResult = this.daoHelper.delete(this.bootcampDocumentDao, keyMap);
+        if (sdResult.isWrong()) {
+            return sdResult;
+        }
+
+        Hashtable<String, Object> dKeymap = new Hashtable<>();
+        dKeymap.put(DocumentFileDao.ATTR_ID, documentId);
+        personalFilesDelete(dKeymap);
+
+        return this.daoHelper.delete(this.bootcampDocumentDao, dKeymap);
+    }
+
+    @Override
+    public EntityResult bootcampFilesContentQuery(Map<String, Object> keyMap, List<String> attrList) {
+        attrList.add(DocumentFileDao.ATTR_PATH);
+        attrList.remove(DocumentFileDao.ATTR_BASE64);
+
+
+        EntityResult bootcampDocumentQuery = this.daoHelper.query(bootcampDocumentDao, keyMap, Arrays.asList(BootcampDocumentDao.ATTR_ID_DOCUMENT));
+        if (bootcampDocumentQuery.isWrong()) {
+            return bootcampDocumentQuery;
+        }
+
+
+        Hashtable<String, Object> dKeymap = new Hashtable<>();
+        Integer documentId = (Integer) bootcampDocumentQuery.getRecordValues(0).get(BootcampDocumentDao.ATTR_ID_DOCUMENT);
+        dKeymap.put(DocumentFileDao.ATTR_ID, documentId);
+
+        EntityResult fileResult = daoHelper.query(documentFileDao, dKeymap, attrList);
+        if (fileResult.isWrong()) {
+            return fileResult;
+        }
+
+        List<String> base64Files = new ArrayList<>();
+
+        for (int i = 0; i < fileResult.calculateRecordNumber(); i++) {
+            String filePath = (String) fileResult.getRecordValues(i).get(DocumentFileDao.ATTR_PATH);
+            File file = new File(filePath);
+            try {
+                byte[] encoded = Base64.encodeBase64(FileUtils.readFileToByteArray(file));
+                base64Files.add(new String(encoded));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        fileResult.put(DocumentFileDao.ATTR_BASE64, base64Files);
+        return fileResult;
+    }
+
 }
