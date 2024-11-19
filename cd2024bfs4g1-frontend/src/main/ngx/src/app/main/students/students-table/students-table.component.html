@@ -5,8 +5,6 @@
                 icon="filter_list" class="collapsible-2">
 
                 <div class="filter_style">
-                    <o-text-input attr="tutor" read-only="no"></o-text-input>
-
                     <o-combo #type attr="tutor" label="{{'TUTOR' | oTranslate}}" read-only="no"
                         service="tutors" entity="tutor" keys="id"
                         columns="id;name" value-column="id" description-columns="name" query-on-init="true"
@@ -29,15 +27,8 @@
                     <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
                         visible-columns="value" searchable="yes"></o-combo>
-                    <o-button class="o-form-toolbar-button" attr="clear" [oFilterBuilderClear]="filterBuilder"
-                        type="STROKED" label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-
-                    <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
-                        <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
-                            label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
-                        <o-button attr="filter" [oFilterBuilderQuery]="filterBuilder" type="STROKED"
-                            label="{{'FILTER' | oTranslate}}" layout-padding color="accent"></o-button>
-                    </div>
+                    <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
+                        label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
                 </div>
 
 
