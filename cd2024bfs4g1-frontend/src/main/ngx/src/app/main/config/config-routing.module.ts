@@ -5,14 +5,16 @@ import { EmploymentStatusDetailsComponent } from './employment-status-details/em
 import { EmploymentStatusNewComponent } from './employment-status-new/employment-status-new.component';
 import { StudentStatusNewComponent } from './student-status-new/student-status-new.component';
 import { StudentStatusDetailsComponent } from './student-status-details/student-status-details.component';
+import { TutorTypeNewComponent } from './tutor-type-new/tutor-type-new.component';
+import { TutorTypeDetailsComponent } from './tutor-type-details/tutor-type-details.component';
 const routes: Routes = [
   {path:'', pathMatch:'full', component: ConfigTablesComponent},
   {path: 'employmentstatus/new',component: EmploymentStatusNewComponent},
   {path: 'employmentstatus/:id',component: EmploymentStatusDetailsComponent},
   {path: 'studentstatus/new',component: StudentStatusNewComponent},
   {path: 'studentstatus/:id',component: StudentStatusDetailsComponent},
-  {path: 'tutortype/new',component: EmploymentStatusNewComponent},
-  {path: 'tutortype/:id',component: EmploymentStatusNewComponent}];
+  {path: 'tutortype/new',component: TutorTypeNewComponent},
+  {path: 'tutortype/:id',component: TutorTypeDetailsComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

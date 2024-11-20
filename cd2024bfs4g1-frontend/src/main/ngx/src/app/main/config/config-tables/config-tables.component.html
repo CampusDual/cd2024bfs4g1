@@ -40,14 +40,14 @@
         </mat-tab>
         <mat-tab label="Tutor" >
                 <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
-                    title="LEMPLOYMENTSTATUS">
+                    title="LTUTORTYPE">
                     <div class="table_container" >
-                        <h3 class="titulo_tablas">{{ 'LEMPLOYMENTSTATUS' | oTranslate }}</h3>
+                        <h3 class="titulo_tablas">{{ 'LTUTORTYPE' | oTranslate }}</h3>
                         <o-form-layout-dialog-options class="popup">
-                            <o-table #employmentStatusTable [quick-filter]="false" class="general_table" detail-form-route="tutortype/"
+                            <o-table #tutorTypeTable [quick-filter]="false" class="general_table" detail-form-route="tutortype/"
                                 insert-form-route="new" quick-filter="true" attr="tutorTypeTable" virtual-scroll="false"
                                 service="tutortype" entity="tutorType" keys="id" columns="id;type"
-                                visible-columns="type" sort-columns="type" query-rows="5"
+                                visible-columns="type" sort-columns="Type" query-rows="5"
                                 show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
                                 select-all-checkbox-visible="true" selection-mode="single" refresh-button="no">
                                 <o-table-paginator page-size="5" page-size-options="5;10;15">

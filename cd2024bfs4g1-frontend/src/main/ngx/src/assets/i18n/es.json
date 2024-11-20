@@ -253,6 +253,7 @@
   "DayEnd": "Fin del periodo",
   "time_end": "Hora salida*",
   "time_start": "Hora entrada*",
-   "HORARIO_EN_CONFLICTO":"Horario o fecha ya en uso"
-
+   "HORARIO_EN_CONFLICTO":"Horario o fecha ya en uso",
+   "LTUTORTYPE": "Tipo de tutor",
+   "REQ_LTUTORTYPE":"Tipo de tutor*"
 }

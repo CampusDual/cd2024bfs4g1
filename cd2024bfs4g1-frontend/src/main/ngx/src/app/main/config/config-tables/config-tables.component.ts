@@ -10,6 +10,7 @@ import { OntimizeWebModule, OTableComponent } from 'ontimize-web-ngx';
 export class ConfigTablesComponent {
   @ViewChild('studentStatusTable') studentStatusTable: OTableComponent;
   @ViewChild('employmentStatusTable') employmentStatusTable: OTableComponent;
+  @ViewChild('tutorTypeTable') tutorTypeTable: OTableComponent;
 
 
 
