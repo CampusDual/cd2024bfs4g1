@@ -6,7 +6,6 @@
 
                 <div class="filter_style">
 
-
                     <o-combo #type attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no"
                         service="tutors" entity="tutor" keys="id"
                         columns="id;name" value-column="id" description-columns="name" query-on-init="true"
@@ -27,6 +26,11 @@
                         read-only="no" sort="ASC">
                     </o-combo>
 
+                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
+                        entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
+                        visible-columns="value" searchable="yes"></o-combo>
+                    <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
+                        label="{{'CLEAR' | oTranslate}}" layout-padding></o-button>
 
                     <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
@@ -42,6 +46,7 @@
             </o-column-collapsible>
 
             <div>
+
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
                 sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;situation;udemy;
@@ -59,7 +64,7 @@
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 </o-table-context-menu>
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-            </o-table>
+              </o-table>
             </div>
         </o-form>
     </div>

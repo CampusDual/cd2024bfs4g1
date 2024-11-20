@@ -20,7 +20,7 @@ export class StudentsTableComponent {
     let filters: Array<Expression> = [];
 
     values.forEach(fil => {
-      // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
+
 
       // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
       const filterValue = fil.value != null ? fil.value.toString() : '';
@@ -37,6 +37,7 @@ export class StudentsTableComponent {
     });
 
     if (filters.length > 0) {
+
         return filters.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND));
     } else {
       return null;
