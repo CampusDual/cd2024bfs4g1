@@ -46,7 +46,7 @@ public class TutorTypeService implements ITutorTypeService {
     @Override
     public EntityResult tutorTypeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 
-        if (isEmptyField(attrMap, tutorTypeDao.ATTR_TYPE)) {
+        if (isEmptyField(attrMap, TutorTypeDao.ATTR_TYPE)) {
             return createErrorResult("EMPLOYMENT_STATUS_CANNOT_BE_EMPTY");
         }
         return this.daoHelper.insert(this.tutorTypeDao, attrMap);
@@ -55,7 +55,7 @@ public class TutorTypeService implements ITutorTypeService {
     @Override
     public EntityResult tutorTypeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
 
-        if (isEmptyField(attrMap, tutorTypeDao.ATTR_TYPE)) {
+        if (isEmptyField(attrMap, TutorTypeDao.ATTR_TYPE)) {
             return createErrorResult("EMPLOYMENT_STATUS_CANNOT_BE_EMPTY");
         }
         return this.daoHelper.update(this.tutorTypeDao, attrMap, keyMap);
