@@ -21,7 +21,6 @@ export class StudentsTableComponent {
 
     values.forEach(fil => {
       // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
-      const filterValue = fil.value != null ? fil.value.toString() : '';
 
       // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
       const filterValue = fil.value != null ? fil.value.toString() : '';
