@@ -28,6 +28,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'bootcampTimetable':{
     'path':'/bootcamptimetable'
-  }
+  },
+  'tutortype':{
+    'path':'/tutortype'
+  },
 
 };
