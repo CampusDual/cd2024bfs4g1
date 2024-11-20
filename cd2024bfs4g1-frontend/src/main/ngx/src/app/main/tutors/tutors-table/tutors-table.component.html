@@ -3,13 +3,14 @@
         <h1 class="titulo_tablas">{{ 'Mentors' | oTranslate }}</h1>
             <o-table #tableTutors virtual-scroll="false" class="general_table" attr="tutorsTable" service="tutors" sort-columns="name"
                 entity="tutor" keys="id"
-                columns="id;name;surname1;surname2;email"
-                visible-columns="name;surname1;surname2;email" delete-button="false"
+                columns="id;name;surname1;surname2;email;type"
+                visible-columns="name;surname1;surname2;email;type" delete-button="false"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false">
                 <o-table-column attr="name" title="Name"></o-table-column>
                 <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
                 <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
                 <o-table-column attr="email" title="Email"></o-table-column>
+                <o-table-column attr="type" title="Type"></o-table-column>
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 </o-table-context-menu>
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>

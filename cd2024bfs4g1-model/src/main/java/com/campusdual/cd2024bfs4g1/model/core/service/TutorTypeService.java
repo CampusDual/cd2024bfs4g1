@@ -1,8 +1,6 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
-import com.campusdual.cd2024bfs4g1.api.core.service.IEmploymentStatusService;
 import com.campusdual.cd2024bfs4g1.api.core.service.ITutorTypeService;
-import com.campusdual.cd2024bfs4g1.model.core.dao.EmploymentStatusDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorTypeDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;

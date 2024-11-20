@@ -1,6 +1,5 @@
 package com.campusdual.cd2024bfs4g1.ws.core.rest;
 
-import com.campusdual.cd2024bfs4g1.api.core.service.IEmploymentStatusService;
 import com.campusdual.cd2024bfs4g1.api.core.service.ITutorTypeService;
 import com.ontimize.jee.server.rest.ORestController;
 import org.springframework.beans.factory.annotation.Autowired;
