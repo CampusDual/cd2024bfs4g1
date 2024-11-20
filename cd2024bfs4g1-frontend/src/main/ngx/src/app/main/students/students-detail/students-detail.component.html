@@ -5,28 +5,48 @@
       (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
-  <mat-tab-group oTabGroup="material">
-    <mat-tab label="Main data">
+  <mat-tab-group oTabGroup="material" color="primary">
+    <mat-tab label="Main data" >
       <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no"/>
   <div class="grid-container">
-    <o-image id="student" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="OTHER" show-controls="no" height="180px"></o-image>
-
-    <div class="nombre">
-      <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
-    </div>
-    <div class="apellido">
-      <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
-    </div>
-    <div class="apellido2">
-      <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-      <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
-    </div>
-    <div class="dni">
-      <label for="LDNI">{{'REQ_LDNI' | oTranslate}}</label>
-      <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"></o-nif-input>
-    </div>
+    <!-- <o-image id="student" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="OTHER" show-controls="no" height="180px"></o-image> -->
+    <fieldset title="Datos personales" class="marcos">
+      <legend>Datos personales</legend>
+      <div >
+        <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
+        <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div >
+        <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
+        <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div >
+        <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+        <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div >
+        <label for="LDNI">{{'REQ_LDNI' | oTranslate}}</label>
+        <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"></o-nif-input>
+      </div>
+      <div >
+        <label for="REQ_LBIRTHDATE">{{'REQ_LBIRTHDATE' | oTranslate}}</label>
+        <o-date-input attr="birth_date" required="yes" text-input-enabled="no"  format="DD/MM/YYYY"></o-date-input>
+      </div>
+      <div >
+        <label for="LSPAINCOMUNITY">{{'REQ_LSPAINCOMUNITY' | oTranslate}}</label>
+        <o-combo attr="spain_comunity"   [static-data]="dataArray"
+        [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
+        columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
+      </div>
+  
+      <div>
+        <label for="location">{{'LLOCATION' | oTranslate}}</label>
+        <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+    </fieldset>
+    <fieldset title="Login">
+      <legend>Login</legend>
+      
     <div class="usuario">
       <label for="usuario">{{'REQ_USER' | oTranslate}}</label>
       <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"></o-text-input>
@@ -39,53 +59,47 @@
         <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
       </o-password-input>
     </div>
-    <div class="telefono">
-      <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
-      <o-phone-input attr="phone" required="yes"></o-phone-input>
-    </div>
-
-    <div class="employmentStatus">
-      <label for="employment_status">{{'REQ_LEMSTATUS' | oTranslate}}</label>
-      <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
-      [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
-      columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
-      </o-combo>
-    </div>
-
-    <div class="status">
-      <div class="studentStatus">
-        <label for="student_status">{{'REQ_LSTATUS' | oTranslate}}</label>
-        <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
-        [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
-        columns="id;status" value-column="id" description-columns="status" query-on-init="true">
+    </fieldset>
+    <fieldset>
+      <legend>Contacto</legend>
+        <div class="telefono">
+        <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
+        <o-phone-input attr="phone" required="yes"></o-phone-input>
+      </div>
+      <div class="email">
+        <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
+        <o-email-input attr="personal_email" required="yes" ></o-email-input>
+      </div>
+      <div class="employmentStatus">
+        <label for="employment_status">{{'REQ_LEMSTATUS' | oTranslate}}</label>
+        <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
+        [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
+        columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
         </o-combo>
       </div>
-    </div>
-    <div class="comunidad">
-      <label for="LSPAINCOMUNITY">{{'REQ_LSPAINCOMUNITY' | oTranslate}}</label>
-      <o-combo attr="spain_comunity"   [static-data]="dataArray"
-      [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-      columns="key;value"  visible-columns="value" null-selection="false"></o-combo>
-    </div>
+  
+      <div class="status">
+        <div class="studentStatus">
+          <label for="student_status">{{'REQ_LSTATUS' | oTranslate}}</label>
+          <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
+          [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
+          columns="id;status" value-column="id" description-columns="status" query-on-init="true">
+          </o-combo>
+        </div>
+      </div>
+  
+  
+  
+    
+      <div class="emailCampus">
+        <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+        <o-email-input attr="campus_email" required="no"></o-email-input>
+      </div>
+    </fieldset>
 
-    <div class="location">
-      <label for="location">{{'LLOCATION' | oTranslate}}</label>
-      <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
-    </div>
+  
 
-
-    <div class="fechaCumple">
-      <label for="REQ_LBIRTHDATE">{{'REQ_LBIRTHDATE' | oTranslate}}</label>
-      <o-date-input attr="birth_date" required="yes" text-input-enabled="no"  format="DD/MM/YYYY"></o-date-input>
-    </div>
-    <div class="email">
-      <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
-      <o-email-input attr="personal_email" required="yes" ></o-email-input>
-    </div>
-    <div class="emailCampus">
-      <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-      <o-email-input attr="campus_email" required="no"></o-email-input>
-    </div>
+ 
   </div>
     </mat-tab>
     <mat-tab class label="Fct">

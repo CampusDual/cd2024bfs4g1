@@ -18,7 +18,9 @@ o-form {
   padding: 20px;
   height: auto;
 }
-
+.marcos{
+  border-radius: 15px;
+}
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -26,7 +28,9 @@ o-form {
   height: auto;
 }
 
-
+.grouptab{
+  color: #f5f0f2;
+}
 .nombre {
   grid-column: 1/ 2;
 }
