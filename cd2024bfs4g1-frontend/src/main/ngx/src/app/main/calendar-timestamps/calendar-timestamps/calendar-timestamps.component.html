@@ -1,0 +1,55 @@
+<div class="calendar-timestamps-container">
+    <div class="calendar-container">
+        <div class="date-rows" onscroll="onScroll(event)">
+            <div class="date-item-container">
+                <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
+
+                <div class="years" *ngFor="let year of years">
+                    <div class="months">
+                        <div *ngIf="isSameMonthRange()">
+                            <div class="date-item month">
+                              {{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}
+                            </div>
+                        </div>
+                        <div *ngIf="!isSameMonthRange()">
+                            <div class="two-months">
+                              <span>{{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}</span>
+                              <span>{{ getMonthName(endDate) }} {{ endDate | date: 'yyyy' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <o-button color="white" (click)="incSelectedWeek()" icon="arrow_forward"></o-button>
+            </div>
+
+            <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
+                <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day"
+                     [ngStyle]="{
+                        'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.day),
+                        'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.day),
+                        'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.day)
+                     }">
+                    <div>{{dayWithWeekDays.day}}</div>
+                    <div>{{dayWithWeekDays.dayOfWeek}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar">
+            <div *ngFor="let bootcamp of bootcamps"
+                 class="bootcamp"
+                 [title]="getTooltip(bootcamp)"
+                 [ngStyle]="updateBootcampsGridColumns(bootcamp)"
+                 (click)="navigateToBootcampDetail(bootcamp.id)">
+                <div style="display: flex; justify-content: space-between;" matTooltipClass="my-tooltip" matTooltip="{{bootcamp.name}},&#10;  Fecha de inicio: {{bootcamp.start_date|date:'dd/MM/yyyy'}},&#10; Fecha de fin: {{bootcamp.end_date|date:'dd/MM/yyyy'}}">
+                    <div *ngIf="!shouldHideDates(bootcamp)" style="color: #C0C0C0">{{bootcamp.start_date.toDateString().substring(4, 30)}}</div>
+                    <div style="flex-grow: 1; text-align: center;">
+                        <div>{{getDisplayName(bootcamp)}}</div>
+                    </div>
+                    <div *ngIf="!shouldHideDates(bootcamp)" style="color: #C0C0C0">{{bootcamp.end_date.toDateString().substring(4, 30)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
