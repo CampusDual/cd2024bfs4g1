@@ -1,4 +1,7 @@
-* { font-family: 'Roboto', sans-serif; }
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
 .grid-container{
   width: 96%;
   margin: 5px auto;
@@ -84,11 +87,9 @@ o-form {
   margin: 0 auto;
 }
 
-
-
 .aviso label{
   color:rgb(244, 67, 54);
-  display: block;
+  display: flex;
   font-size: 11px;
   height: 20PX;
   letter-spacing: normal;
@@ -98,7 +99,26 @@ o-form {
   text-size-adjust: 100%;
   width: 542.453px
 }
+.aviso label mat-icon{
+  padding-bottom: 10px;
+  
+}
 
+.aviso label{
+  color:rgb(244, 67, 54);
+  display: flex;
+  font-size: 11px;
+  height: 20PX;
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 542.453px
+}
+.aviso label mat-icon{
+  padding-bottom: 10px;
+}
 
 @media (max-width: 1250px) {
 
