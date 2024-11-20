@@ -24,6 +24,17 @@
   padding: 6px;
 }
 
+.filter_style{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; /* Ajusta las columnas según el ancho disponible */
+  gap: 15px; /* Espaciado entre las columnas */
+  width: 100%; /* Usa todo el ancho disponible */
+  height: auto; /* Ajusta la altura según el contenido */
+  padding: 20px; /* Espaciado interno */
+  border: none; /* Elimina bordes si no son necesarios */
+  box-sizing: border-box; /* Incluye padding y bordes en el cálculo */
+}
+
 .students-filters-form {
   width: 68%;
   margin: 20px auto;
@@ -34,20 +45,6 @@
   box-sizing: border-box;
 }
 
-
-.filter_style {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 15px; 
-  background-color: #f5f0f2;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 93%; 
-  margin: 5px auto;
-  box-sizing: border-box;
-}
-
 .filter_style o-text-input,
 .filter_style o-combo {
   width: 100%;
@@ -55,8 +52,8 @@
 }
 
 .centered-actions {
-  grid-column: 1 / -1; 
-  justify-content: center; 
+  grid-column: 1 / -1;
+  justify-content: center;
   margin-top: 10px;
 }
 

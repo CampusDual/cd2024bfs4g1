@@ -10,7 +10,7 @@ o-form {
 }
 
 
-.grid-container{
+.grid-container {
   width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
@@ -22,10 +22,10 @@ o-form {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 15px;
   height: auto;
 }
+
 
 .nombre {
   grid-column: 1/ 2;
@@ -39,13 +39,14 @@ o-form {
   grid-column: 3 / 4;
 }
 
-.dni{
+.dni {
   grid-column: 1/ 2;
 }
 
-.usuario{
+.usuario {
   grid-column: 2/ 3;
 }
+
 .contraseña {
   grid-column: 3 / 4;
 }
@@ -53,58 +54,89 @@ o-form {
 .telefono {
   grid-column: 1 / 2;
 }
-.employmentStatus{
+
+.employmentStatus {
   grid-column: 2/3;
 }
-.status{
+
+.status {
   grid-column: 3/4;
 }
-.comunidad{
+
+.comunidad {
   grid-column: 1/2;
 }
-.location{
+
+.location {
   grid-column: 2/3;
 }
-.fechaCumple{
+
+.fechaCumple {
   grid-column: 3/4;
 }
-.email{
+
+.email {
   grid-column: 1/3;
 }
-.emailCampus{
+
+.emailCampus {
   grid-column: 3/3;
 }
-.fctSchool{
+
+.fctSchool {
   grid-column: 1/2;
 }
-.tutor{
+
+.tutor {
   grid-column: 2/3;
 }
-.fctStart{
+
+.fctStart {
   grid-column: 1/2;
 }
 
 
-.fctEnd{
+.fctEnd {
   grid-column: 2/3;
 }
-.udemy{
+
+.udemy {
   justify-items: center;
-  grid-column: 3/4;
-}
-.githubUser{
-  grid-column: 3/4;
-  grid-row: 6/7;
+  grid-column: 3/3;
+  grid-row: 2/7;
+  width: 20%;
 
 }
-.notes{
-  grid-column: 2/4;
+
+.githubUser {
+  grid-column: 2/3;
+  grid-row: 2/7;
+  width: auto;
+
 }
 
-.upload-container {
+.notes {
+  grid-column: 1/3;
+  grid-row: 3/7;
+  width: auto;
+}
+
+/* .upload-container {
   grid-column: 1/2;
   grid-row: 8/9;
 
+} */
+
+.documentsGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.StudentsFicheros{
+  width: 40%;
+  height: 20%;
+  grid-column: 1/2;
 }
 
 o-button {
@@ -119,28 +151,30 @@ o-button {
 
 .container_students {
   height: auto;
+  width: 40%;
 }
 
-.primera{
- grid-column: 1/2;
- margin: 0%;
- height: 100%;
+.primera {
+  grid-column: 1/2;
+  margin: 0%;
+  height: 100%;
 }
 
-.segunda{
+.segunda {
 
   width: 100%;
   margin: 0%;
   height: 85%;
 }
 
-.selectedrow{
+.selectedrow {
   grid-column: 2/4;
   width: 100%;
 }
 
 
 @media (max-width: 1500px) {
+
   .grid-container,
   .table_container {
     width: 95%;
@@ -160,9 +194,10 @@ o-button {
   .email,
   .fctSchool,
   .fctStart,
-  .udemy{
-   grid-column: 1/2 ;
+  .udemy {
+    grid-column: 1/2;
   }
+
   .apellido,
   .dni,
   .contraseña,
@@ -172,27 +207,32 @@ o-button {
   .emailCampus,
   .tutor,
   .githubUser,
-  .fctEnd{
-   grid-column: 2/3 ;
+  .fctEnd {
+    grid-column: 2/3;
   }
 
-  .notes{
+  .notes {
     grid-column: 1/3;
   }
-  .table_container{
+
+  .table_container {
     grid-column: 1/3;
     grid-row: 12;
   }
-  .primera{
+
+  .primera {
     grid-column: 1/5;
   }
 
-  .selectedrow{
+  .selectedrow {
     width: 100%;
     grid-column: 1/5;
   }
 }
-div.notification label  {
+
+div.notification label {
+  grid-column: 1/3;
+  grid-column: 1/3;
   background-color: #F64983;
   color: white;
   padding: 10px;
