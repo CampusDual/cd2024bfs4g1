@@ -8,20 +8,7 @@
       <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
       <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
     </div>
-    <div class="especial fecha-inicio" hidden="true">
-      <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
-      <o-date-input #startdate  class="fechas" attr="start_date" hidden="true" required="yes" format="DD/MM/YYYY"
-       ></o-date-input>
-    </div>
-    <div class="especial fecha-fin"  hidden="true">
-      <!-- <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label> -->
-      <o-date-input #enddate  attr="end_date" required="yes" hidden="true" [validators]="validatorsArray"
-        format="DD/MM/YYYY" >
-        <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-      </o-date-input>
-    </div>
-
-    <div>
+    <div class="fechas">
       <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
       <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no"
         required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
@@ -54,10 +41,10 @@
     <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
       <o-form-layout-dialog-options class="popup" >
         <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable" service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
-                 detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id" parent-keys="id_bootcamp:id;start_date;end_date"
-                 columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
-                 visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
-                 show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" detail-button-in-row-icon="">
+        detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id" parent-keys="id_bootcamp:id;start_date;end_date"
+        columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
+        visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
+        show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" detail-button-in-row-icon="">
           <o-table-column attr="time_start" title="TimeStart" content-align="center"></o-table-column>
           <o-table-column attr="time_end" title="TimeEnd" content-align="center"></o-table-column>
           <o-table-column attr="day_start" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -108,11 +95,11 @@
   </div>
   <div class="general_container">
     <div class="table_container">
-      <o-form-layout-manager attr="addStudentLayout" mode="dialog">
+      <o-form-layout-manager class="form" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup">
             <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
           <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
-            entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
+            entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date" quick-filter="false"
             columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
             visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" sort-columns="name" query-rows="10"
             show-report-on-demand-option="false" show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none" detail-mode="click">
@@ -130,25 +117,23 @@
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
     </div>
-
-
     <div class="list_container" >
-    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
-      <o-form-layout-dialog-options class="popup">
-      <h3> {{'Mentors' | oTranslate}}</h3>
-      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
-      quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
-      selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
-      insert-button-position="bottom" show-buttons-text="false" controls="false">
-      <o-list-item *ngFor="let tutor of list.dataArray">
-        <o-list-item-text
-          title="{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}"
-          primary-text="{{ tutor.email }}">
-        </o-list-item-text>
-      </o-list-item>
-      </o-list>
-    </o-form-layout-dialog-options>
-    </o-form-layout-manager>
+      <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
+        <o-form-layout-dialog-options class="popup">
+          <h3> {{'Mentors' | oTranslate}}</h3>
+          <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email"
+          quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
+          selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
+          insert-button-position="bottom" show-buttons-text="false" controls="false">
+          <o-list-item *ngFor="let tutor of list.dataArray">
+            <o-list-item-text
+              title="{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}"
+              primary-text="{{ tutor.email }}">
+            </o-list-item-text>
+          </o-list-item>
+          </o-list>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
     </div>
   </div>
 </o-form>

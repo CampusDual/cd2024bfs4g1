@@ -14,19 +14,23 @@ h3{
   font-weight: bold;
 }
 .grid-container,
-.table_container {
+.general_container {
   width: 96%;
   margin: 5px auto;
-  background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 20px;
 }
-
+.general_container{
+  display:grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 15px;
+}
 .grid-container {
   display: grid;
   grid-template-columns: 2fr 2fr;
+  background-color: #f5f0f2;
   grid-template-rows: auto;
   gap: 10px;
+  padding: 20px;
 }
 .gridHorario{
   grid-column: 1/2;
@@ -38,51 +42,35 @@ h3{
   width: 100%;
 }
 
-.table_container {
-  max-height: 800px;
-  padding: 30px;
-}
-
-.general_container{
-  display:grid;
-  grid-template-columns: 2fr 1fr;
-  width: 96%;
-  margin: 5px auto;
-  border-radius: 15px;
-
-}
-
 .list_container{
   grid-column: 2/3;
   display: flex;
   flex-direction: column;
   width: 96%;
-  height: 105%;
+  height: 100%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 20px;
-  margin-left: 10px;
+  padding: 10px;
 }
 
 .table_container{
   grid-column: 1/2;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 105%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .general_table{
-  width: 98%;
-  grid-column: 1/2;
+  width: 100%;
   margin: 0;
   background-color: #f5f0f2;
-
+  box-shadow: none;
+  height: 90%;
 }
 
 .input-button-container{
@@ -164,31 +152,36 @@ h3{
   box-sizing: border-box;
   margin-bottom: 45px;
 }
-.general_table{
-  box-shadow: none;
-  width: 100%;
-}
+
 
 
 @media (max-width: 768px) {
-  .grid-container,
-  .table_container {
+  .grid-container{
     width: 98%;
     padding: 15px;
-  }
-
-  .grid-container {
     grid-template-columns: 1fr;
+    gap:10px;
   }
 
   .nombre,
-  .fecha-inicio,
-  .fecha-fin,
+  .fechas,
   .descripcion,
-  .notas {
-    grid-column: auto;
+  .notas,
+  .gridcalendario,
+  .gridHorario,
+  .gridUpload {
+    grid-column: 1/2;
   }
-
+  .list_container{
+    grid-column: 1/3;
+    width: 100%;
+    padding: 15px;
+  }
+  .table_container{
+    grid-column: 1/3;
+    width: 100%;
+    padding: 15px;
+  }
   .calendar-card {
     width: 100%;
   }
@@ -211,10 +204,10 @@ mat-calendar .mat-calendar-arrow {
   display: none;
 }
 .timetable_table{
-   background-color: #f5f0f2;
-   font-family: 'Roboto', sans-serif;
-   height: auto;
- }
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+  height: auto;
+}
 
 div.notification label  {
   background-color: #F64983;
