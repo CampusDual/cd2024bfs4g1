@@ -80,7 +80,7 @@ export class StudentsNewComponent {
   }
   mostrar(event: any) {
 
-    console.log(event.srcElement.value);
+    
     this.getDNI(event.srcElement.value);
 
   }
@@ -93,18 +93,11 @@ getDNI(dni:string) {
     };
     const columns = ['id'];
     this.service.query(filter, columns, 'student').subscribe(resp => {
-      if (resp.code === 0){
-        console.log('DNI encontrado:');
-        console.log(resp.data.length);
         if(!resp.data.length){
           this.showNotice=false;
         }else{
           this.showNotice=true;
         }
-      } else {
-        console.log(resp.message);
-        this.showNotice=false;
-      }
     });
 
 }

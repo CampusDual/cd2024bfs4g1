@@ -9,6 +9,8 @@ import { StudentsTableComponent } from './students-table/students-table.componen
 import { BootcampStudentAddComponent } from './students-detail/bootcamp-student-add/bootcamp-student-add.component';
 import{MatIconModule} from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -25,4 +27,12 @@ import { RouterOutlet } from '@angular/router';
     StudentsRoutingModule
   ]
 })
-export class StudentsModule { }
+export class StudentsModule { 
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    // Registrar el ícono SVG 'thumb-up'
+    this.matIconRegistry.addSvgIcon(
+      'warning', // Nombre del ícono
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/warning.svg') // Ruta al archivo SVG
+    );
+  }
+}
