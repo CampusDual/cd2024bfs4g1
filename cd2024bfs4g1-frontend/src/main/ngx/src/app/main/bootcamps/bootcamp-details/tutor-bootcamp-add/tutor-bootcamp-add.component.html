@@ -1,17 +1,23 @@
 <div>
-    <o-form #tutorBootcampForm service="tutorBootcamps" entity="tutorBootcamp" show-header="no" confirm-exit="false"
-      undo-button="false" label-header-align="center" after-insert-mode="new">
-      <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
-      <label>{{ 'Mentors' | oTranslate }}</label>
-      <o-combo attr="tutor_id" label="Tutors" value-column="id" columns="id;name;surname1;surname2" service="tutors" label-visible="false"
-        entity="tutor" visible-columns="name;surname1;surname2" required="no" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
+  <o-form #tutorBootcampForm service="tutorBootcamps" entity="tutorBootcamp" show-header="no" confirm-exit="false"
+    undo-button="false" label-header-align="center" after-insert-mode="new">
+    <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+    <label>{{ 'Mentors' | oTranslate }}</label>
+    <o-combo attr="tutor_id" label="Tutors" value-column="id" columns="id;name;surname1;surname2" service="tutors"
+      label-visible="false" entity="tutor" visible-columns="name;surname1;surname2" required="no" searchable="yes"
+      sortable="yes" sort="ASC" null-selection="no">
+    </o-combo>
+    <div class="tutorType">
+      <label for="tutor_type">{{'REQ_LTUTORTYPE' | oTranslate}}</label>
+      <o-combo attr="type" label="{{'LTUTORTYPE' | oTranslate}}" required="yes" translate="yes" null-selection="false"
+        [data]="[]" service="tutortype" entity="tutorType" keys="id" columns="id;type" value-column="id"
+        description-columns="type" query-on-init="true">
       </o-combo>
+    </div>
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+      <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
+        (click)="addTutorBootcamp()"></o-button>
+    </div>
 
-      <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
-        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
-          (click)="addTutorBootcamp()"></o-button>
-      </div>
-  
-    </o-form>
-  </div>
-  
+  </o-form>
+</div>
