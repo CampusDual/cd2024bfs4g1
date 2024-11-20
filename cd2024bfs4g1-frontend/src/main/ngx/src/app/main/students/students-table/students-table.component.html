@@ -8,8 +8,8 @@
 
                     <o-combo #type attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no"
                         service="tutors" entity="tutor" keys="id"
-                        columns="id;name" value-column="id" description-columns="name" query-on-init="true"
-                        visible-columns="name" translate="yes" null-selection="true" sort="ASC"></o-combo>
+                        columns="id;name;surname1;surname2" value-column="id" query-on-init="true"
+                        visible-columns="name;surname1;surname2" translate="yes" null-selection="true" sort="ASC"></o-combo>
 
                     <o-combo #type attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" read-only="no"
                         service="employmentstatus" entity="employmentStatus" keys="id" sort="ASC"
@@ -30,7 +30,7 @@
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
                         visible-columns="value" searchable="yes" sort="ASC"></o-combo>
 
-                    <div class="centered-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+                    <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
                             label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
 
