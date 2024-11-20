@@ -26,18 +26,16 @@ h3{
   display: grid;
   grid-template-columns: 2fr 2fr;
   grid-template-rows: auto;
-  row-gap: 10px;
+  gap: 10px;
 }
 .gridHorario{
   grid-column: 1/2;
   width: 100%;
-  margin-right: 5px;
 }
 
 .gridUpload{
   grid-column: 2/3;
   width: 100%;
-  margin-left: 5px;
 }
 
 .table_container {
@@ -112,26 +110,22 @@ h3{
 
 .nombre {
   grid-column: 1 / 2;
-  margin-right: 5px;
 }
 
 .fecha-inicio {
   grid-column: 2 / 3;
-  margin-left: 5px;
 }
 
 .descripcion {
   grid-column: 1 / 2;
-  margin-right: 5px;
 }
 
 .notas {
-  grid-column: 2 / 4;
-  margin-left: 5px;
+  grid-column: 2 / 3;
 }
 
 .gridcalendario {
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
 }
 
 .calendar-container,
