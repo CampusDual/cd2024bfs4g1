@@ -1,0 +1,14 @@
+<o-form #tutor_type_details confirm-exit="no" attr="tutor_type_details" service="tutortype" entity="tutorType" keys="id" show-header="no"
+    header-actions="I;U;D" show-header-navigation="no" >
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+
+    <div class="grid-container">
+        <div>
+            <label for="REQ_LEMPLOYMENTSTATUS">{{'REQ_LEMPLOYMENTSTATUS' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="name" required="yes"></o-text-input>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button translate="yes" attr="updatebutton" id="update" type="RAISED" label="update" color="primary" (click)="tutor_type_details.update();tutor_type_details.closeDetail()"></o-button>
+        </div>
+    </div>
+</o-form>
