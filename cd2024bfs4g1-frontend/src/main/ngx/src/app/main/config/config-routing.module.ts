@@ -10,7 +10,9 @@ const routes: Routes = [
   {path: 'employmentstatus/new',component: EmploymentStatusNewComponent},
   {path: 'employmentstatus/:id',component: EmploymentStatusDetailsComponent},
   {path: 'studentstatus/new',component: StudentStatusNewComponent},
-  {path: 'studentstatus/:id',component: StudentStatusDetailsComponent}];
+  {path: 'studentstatus/:id',component: StudentStatusDetailsComponent},
+  {path: 'tutortype/new',component: EmploymentStatusNewComponent},
+  {path: 'tutortype/:id',component: EmploymentStatusNewComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

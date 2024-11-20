@@ -333,3 +333,35 @@ o-column.o-column .o-container > .o-container-title span{
 .timetable_table .mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper {
   display: none;
 }
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__text-label, .mat-mdc-paginator span.mdc-tab__text-label{
+  color: #7ec117;
+}
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__content{
+  color: #7ec117;
+}
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active , .mat-mdc-paginator {
+  background: #50647c;
+}
+.application-layout-content-wrapper .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs{
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a3459;
+  overflow: auto;
+  margin: 16px;
+}
+
+.mat-mdc-tab-group.mat-success .mdc-tab--active .mdc-tab-indicator__content--underline {
+  background-color: #07c400 !important;
+}
+
+ .mat-mdc-tab-group.mat-success .mdc-tab--active {
+  border-bottom: 2px solid #07c400 !important; 
+}
+.mat-mdc-tab .mdc-tab__content {
+  border-bottom: 2px solid #07c400;
+  background-color: transparent;
+}

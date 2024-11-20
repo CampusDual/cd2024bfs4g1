@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @ConfigurationFile(configurationFile = "dao/TutorTypeDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class TutorTypeDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
-    public static final String ATTR_TYPE = "name";
+    public static final String ATTR_TYPE = "type";
 }
