@@ -120,7 +120,7 @@ export class BootcampDetailsComponent {
     const documentConf = this.service.getDefaultServiceConfiguration('documents');
     this.service.configureService(documentConf);
   }
-  
+
 
   onBootcampChange(event: any) {
     this.configureBootcamps();
