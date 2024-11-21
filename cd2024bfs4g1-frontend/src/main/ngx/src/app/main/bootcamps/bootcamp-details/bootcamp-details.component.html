@@ -92,8 +92,8 @@
       </div>
     </mat-tab>
     <mat-tab label="Horarios">
-      <div class="table_containerfichero">
-        <div class="table_container">
+      <div class="table_container">
+        <div class="table_horario">
           <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
             <o-form-layout-dialog-options class="popup">
               <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable"
@@ -119,7 +119,7 @@
     </mat-tab>
     <mat-tab label="Ficheros">
       <div class="table_containerfichero">
-        <div class="table_container">
+        <div class="table_ficheros">
           <div class="upload-container">
             <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
             <div class="input-button-container">
@@ -160,7 +160,7 @@
 
     </mat-tab>
     <mat-tab label="Calendar">
-      <div class="table_container">
+      <div class="table_calendar">
         <div class="calendar-container">
           <div class="container" *ngIf="months.length > 0">
             <div class="button-container">
