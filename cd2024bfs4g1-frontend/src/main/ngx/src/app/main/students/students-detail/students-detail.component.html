@@ -181,10 +181,12 @@
     
     </mat-tab>
     <mat-tab label="Documents">
-        
+    <div class="documentsGrid">        
 
       <o-form-layout-manager>
-        <div class="pepe">
+        <fieldset title="Archivos subidos" class="marcos2">
+          <legend>Archivos subidos</legend>
+        <div class="container_students">
         <!-- <div class="StudentsFicheros"> -->
           <h3>{{ 'STUDENT_FILES' | oTranslate }}</h3>
           <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
@@ -207,15 +209,20 @@
                 [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
                 (onError)="onError($event)">
               </o-file-input>
-              <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
             </div>
+            <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
+
           <!-- </div> -->
         </div>
-        <div class="pepe"></div>
+      </fieldset>
       </o-form-layout-manager>
       <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup">
           <!-- <div class="container_students"> -->
+            <fieldset title="Archivos subidos" class="marcos2">
+              <legend>Archivos subidos</legend>
+            <div class="estudiantesDocumentos">
+
             <h3>{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
             <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
               entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
@@ -226,15 +233,17 @@
               <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
               <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
             </o-table>
+
+          </div>
           <!-- </div> -->
+           </fieldset>
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
-        
 
       <div *ngIf="showMessage" class="notification">
         <label for="subida">{{ 'subida' | oTranslate }}</label>
       </div>
-    
+    </div>
     </mat-tab>
   </mat-tab-group>
 

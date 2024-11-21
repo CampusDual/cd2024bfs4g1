@@ -156,12 +156,11 @@ o-form {
 }
 
 .udemy {
-  justify-items: center;
   grid-column: 3/3;
   grid-row: 2/7;
   width: 20%;
   padding-top: 22px;
-  padding-left: 20px;
+  padding-left: 40px;
 
 }
 
@@ -188,12 +187,13 @@ o-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  background-color: #f5f0f2;
+  background-color: #1a3459;
   border-radius: 5px;
   gap: 40px;
-  padding: 40px;
+  padding-left: 10;
+  padding-top: 30px;
+  padding-right: 10;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
 }
 
 
@@ -211,7 +211,13 @@ o-form {
 .container_students {
   height: auto;
   width: 100%;
+  grid-column: 1/2;
+  padding-left: 50px;
+}
+
+.estudiantesDocumentos{
   grid-column: 2/3;
+  padding-right: 50px;
 }
 
 .contenedorBootcamps {
@@ -226,9 +232,28 @@ o-button {
   margin-bottom: 18px;
   width: 80px;
 }
+.input-button-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.o-file-input{
+  grid-column: 1/2; 
+}
+
+.o-form-toolbar-button{
+  grid-column: 2/3;
+  padding-left: 40px;
+}
 
 .general_table {
   background-color: #f5f0f2;
+}
+
+.marcos2{
+color: #f5f0f2;
+border-radius: 15px;
+padding-left: 10px;
 }
 
 
