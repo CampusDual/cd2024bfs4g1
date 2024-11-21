@@ -324,3 +324,19 @@ o-column.o-column .o-container > .o-container-title span{
 .timetable_table .mat-mdc-form-field-has-icon-prefix .mat-mdc-text-field-wrapper {
   display: none;
 }
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__text-label, .mat-mdc-paginator span.mdc-tab__text-label{
+  color: #7ec117;
+}
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__content{
+  color: #7ec117;
+}
+.mat-mdc-tab-group.mat-success .mdc-tab--active .mdc-tab-indicator__content--underline {
+  background-color: #7ec117 !important;
+}
+
+.mat-mdc-tab-group.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-group.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+  border-color: var(--mdc-tab-indicator-active-indicator-color, #7ec117) !important;
+}
