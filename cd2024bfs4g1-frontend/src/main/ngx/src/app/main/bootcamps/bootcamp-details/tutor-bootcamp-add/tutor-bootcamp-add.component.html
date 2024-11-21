@@ -1,6 +1,6 @@
 <div>
   <o-form #tutorBootcampForm service="tutorBootcamps" entity="tutorBootcamp" show-header="no" confirm-exit="false"
-    undo-button="false" label-header-align="center" after-insert-mode="new">
+    undo-button="false" label-header-align="center" after-insert-mode="close" >
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
     <label>{{ 'Mentors' | oTranslate }}</label>
     <o-combo attr="tutor_id" label="Tutors" value-column="id" columns="id;name;surname1;surname2" service="tutors"
