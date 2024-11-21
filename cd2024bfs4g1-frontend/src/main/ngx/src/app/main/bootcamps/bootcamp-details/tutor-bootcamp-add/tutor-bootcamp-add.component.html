@@ -9,7 +9,7 @@
     </o-combo>
     <div class="tutorType">
       <label for="tutor_type">{{'REQ_LTUTORTYPE' | oTranslate}}</label>
-      <o-combo attr="type" label="{{'LTUTORTYPE' | oTranslate}}" required="yes" translate="yes" null-selection="false"
+      <o-combo attr="tutor_type" label="{{'LTUTORTYPE' | oTranslate}}" required="yes" translate="yes" null-selection="false"
         [data]="[]" service="tutortype" entity="tutorType" keys="id" columns="id;type" value-column="id"
         description-columns="type" query-on-init="true">
       </o-combo>
