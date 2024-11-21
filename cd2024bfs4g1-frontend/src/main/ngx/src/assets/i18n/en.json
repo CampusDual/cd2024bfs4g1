@@ -253,6 +253,8 @@
   "Bootcamps Asigned":"Bootcamps Asigned",
   "STUDENTS_IN_BOOTCAMP" : "Students enrolled in this Bootcamp",
   "BOOTCAMPS_IN_STUDENT" : "Bootcamps this student is enrolled in",
+  "LTUTORTYPE": "Tutor type",
+  "REQ_LTUTORTYPE":"Tutor type*",
   "STUDENT_FILES" : "Student files",
   "Student-Bootcamp status": "Student-Bootcamp status",
   "Bootcamp status":"Bootcamp status",
