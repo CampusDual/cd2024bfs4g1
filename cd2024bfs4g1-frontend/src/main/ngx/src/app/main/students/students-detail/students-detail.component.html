@@ -91,7 +91,7 @@
       </div>
     </o-row>
     <br>
-    <fieldset title="Fct" >
+    <fieldset title="Fct" class="marcos">
       <legend>Contacto</legend>
         <div class="telefono">
         <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
@@ -132,10 +132,9 @@
         </div>
     </mat-tab>
     <mat-tab class label="Fct">
-      
       <div class="grid-container">
-        <fieldset>
-          <legend>Fct</legend>
+        <fieldset title="fct" class="pepe">
+          <legend>Informacion Fct</legend>
         <div class="fc_school">
         <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
         <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
@@ -177,8 +176,9 @@
         <label for="LNOTES">{{'LNOTES' | oTranslate}}</label>
         <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
       </div>
-    </fieldset>
+        </fieldset>
     </div>
+    
     </mat-tab>
     <mat-tab label="Documents">
       <div class="documentsGrid">
