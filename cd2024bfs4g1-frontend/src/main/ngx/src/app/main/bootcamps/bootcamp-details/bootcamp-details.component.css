@@ -231,3 +231,13 @@ div.notification label  {
  .notification.hide {
    opacity: 0;
  }
+ .form-class{
+  width: 100%;
+  height: 100%;
+}
+.table_containerfichero {
+  width: 90%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0 10px;
+}
