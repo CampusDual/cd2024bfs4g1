@@ -32,5 +32,8 @@ export const SERVICE_CONFIG: Object = {
   'tutortype':{
     'path':'/tutortype'
   },
+  'tutorBootcamps':{
+    'path': '/tutorbootcamp'
+  },
 
 };
