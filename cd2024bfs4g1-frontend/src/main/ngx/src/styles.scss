@@ -231,7 +231,7 @@ label{
   color: #7ec117;
 }
 .mat-mdc-tab .mdc-tab__text-label, .mat-mdc-tab-link .mdc-tab__text-label {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .mat-mdc-tab-group.o-tab-ontimize > .mat-mdc-tab-header .mat-mdc-tab-label-container .mat-mdc-tab.mdc-tab--active span.tab-label span.gradient-layer {
@@ -288,6 +288,12 @@ label{
 .mat-mdc-tab-group .mdc-tab.mdc-tab--active, .mat-mdc-tab-group .mat-mdc-tab-link.mdc-tab--active {
   opacity: 1;
 }
+
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #7ec117;
+}
+
+
 
 .o-app-sidenav-image {
   width: 90%;
