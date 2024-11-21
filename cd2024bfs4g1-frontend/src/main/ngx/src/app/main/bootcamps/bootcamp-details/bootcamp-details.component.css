@@ -15,7 +15,7 @@ h3{
 }
 .tab{
   margin-top: 25px;
- 
+
 }
 .grid-container,
 .general_container {
@@ -217,7 +217,6 @@ div.notification label  {
 }
 
 .table_calendar{
-  overflow: hidden;
   width: 98%;
   height: 100%;
   margin: 0;

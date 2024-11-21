@@ -37,7 +37,7 @@
       <o-textarea-input attr="notes" required="no" max-length="200"></o-textarea-input>
     </div>
   </div>
-  <mat-tab-group class="tab" animationDuration="0ms">
+  <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight>
     <mat-tab label="Students and mentors">
       <div class="general_container">
         <div class="table_container">
@@ -159,7 +159,7 @@
       </div>
 
     </mat-tab>
-    <mat-tab label="Calendar">
+    <mat-tab label="Calendar" >
       <div class="table_calendar">
         <div class="calendar-container">
           <div class="container" *ngIf="months.length > 0">
