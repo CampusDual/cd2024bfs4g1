@@ -18,4 +18,5 @@ public class TutorBootcampDao extends OntimizeJdbcDaoSupport {
     public static final String TABLE_ID = "id";
     public static final String TUTOR_ID = "tutor_id";
     public static final String BOOTCAMP_ID = "bootcamp_id";
+    public static final String TUTOR_TYPE = "tutor_type";
 }

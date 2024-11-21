@@ -17,14 +17,6 @@
         <label for="LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
         <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
       </div>
-      <div class="tutorType">
-        <label for="tutor_type">{{'REQ_LTUTORTYPE' | oTranslate}}</label>
-        <o-combo attr="type" label="{{'LTUTORTYPE' | oTranslate}}" required="yes" translate="yes"
-          null-selection="false" [data]="[]" service="tutortype" entity="tutorType" keys="id"
-          columns="id;type" value-column="id" description-columns="type" query-on-init="true">
-        </o-combo>
-      </div>
-
     <div class="table_container">
 
       <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
