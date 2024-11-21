@@ -24,7 +24,7 @@
       <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes" (onBlur)="mostrar($event)"></o-nif-input>
       <div class="aviso" *ngIf="showNotice">
           <link rel="stylesheet"/>
-          <label for="dni" >El DNI escrito ya esta registrado <mat-icon svgIcon="ontimize:warning">warning</mat-icon></label>
+          <label for="dni" >{{'DNI_warning'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
       </div>
     </div>
     <div class="usuario">
