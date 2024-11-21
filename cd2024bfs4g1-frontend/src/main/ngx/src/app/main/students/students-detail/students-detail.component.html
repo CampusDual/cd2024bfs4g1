@@ -75,21 +75,22 @@
       </o-password-input>
     </div>
     </fieldset> -->
-    <o-row attr="row1" title="Otra prueba" icon="person_pin" class="marco" elevation="1s" class="marcos">
-      <div fxLayout="row wrap" fxLayoutGap="14px" fxFill>
-       
-        <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlex fxLayoutGap="14px">
-          
-          <o-text-input attr="name" width="260px" class="form-field"></o-text-input>
-          <o-text-input attr="surname1" width="160px" class="form-field"></o-text-input>
-         
-          <o-combo attr="spain_comunity"   [static-data]="dataArray"
-          [data]="valueSimple" required="yes"  searchable="yes"  value-column="key"
-          columns="key;value"  visible-columns="value" null-selection="false" separator=" - "
-            width="160px" class="form-field"></o-combo>
-        </div>
-      </div>
-    </o-row>
+    <fieldset title="Login" class="marcos">
+      <legend>Login</legend>
+
+    <div class="usuario">
+      <label for="usuario">{{'REQ_USER' | oTranslate}}</label>
+      <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"></o-text-input>
+    </div>
+    <div class="contraseña">
+      <label for="contraseña">{{'REQ_PASSWORD' | oTranslate}}</label>
+      <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8" [validators]="validatorsNewPasswordArray">
+        <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+        <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+        <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+      </o-password-input>
+    </div>
+    </fieldset>
     <br>
     <fieldset title="Fct" class="marcos">
       <legend>Contacto</legend>
@@ -167,7 +168,6 @@
         <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
       </div>
       <div class="udemy">
-        <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
         <div class="checkbox-container">
           <o-checkbox attr="udemy"></o-checkbox>
         </div>
@@ -181,11 +181,11 @@
     
     </mat-tab>
     <mat-tab label="Documents">
-      <div class="documentsGrid">
+        
 
       <o-form-layout-manager>
-
-        <div class="StudentsFicheros">
+        <div class="pepe">
+        <!-- <div class="StudentsFicheros"> -->
           <h3>{{ 'STUDENT_FILES' | oTranslate }}</h3>
           <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
             entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
@@ -209,12 +209,13 @@
               </o-file-input>
               <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
             </div>
-          </div>
+          <!-- </div> -->
+        </div>
+        <div class="pepe"></div>
       </o-form-layout-manager>
       <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup">
-  
-          <div class="container_students">
+          <!-- <div class="container_students"> -->
             <h3>{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
             <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
               entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
@@ -225,7 +226,7 @@
               <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
               <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
             </o-table>
-          </div>
+          <!-- </div> -->
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
         
@@ -234,7 +235,6 @@
         <label for="subida">{{ 'subida' | oTranslate }}</label>
       </div>
     
-  </div>   
     </mat-tab>
   </mat-tab-group>
 
