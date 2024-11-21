@@ -5,8 +5,8 @@
         class="general_table"
         attr="bootcampsTable" service="bootcamps"
         entity="bootcamp" keys="id"
-        columns="id;name;start_date;end_date;status"
-        visible-columns="name;start_date;end_date;status"
+        columns="id;name;start_date;end_date;status;codigo;op"
+        visible-columns="name;start_date;end_date;status;codigo"
         sort-columns="end_date:DESC"
         show-report-on-demand-option="false"
         show-charts-on-demand-option="false"
@@ -53,6 +53,16 @@
         content-align="center" title-align="center"
         >
         </o-table-column>
-    </o-table>
+        <o-table-column 
+        attr="codigo" title="codigo"
+        type="varchar" content-align="center" title-align="center"
+        >
+        </o-table-column>
+        <o-table-column 
+        attr="op" title="op"
+        type="varchar" content-align="center" title-align="center"
+        >
+        </o-table-column>
+        </o-table>
   </div>
   </o-form-layout-manager>
