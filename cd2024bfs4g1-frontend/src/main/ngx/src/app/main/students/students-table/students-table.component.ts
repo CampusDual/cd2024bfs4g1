@@ -18,13 +18,15 @@ export class StudentsTableComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
     let filters: Array<Expression> = [];
-  
+
     values.forEach(fil => {
+
+
       // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
-      const filterValue = fil.value != null ? fil.value.toString() : ''; 
-  
+      const filterValue = fil.value != null ? fil.value.toString() : '';
+
       if (filterValue) {  // Solo agrega el filtro si filterValue no está vacío
-        if (fil.attr === 'tutor' || fil.attr === 'udemy' || 
+        if (fil.attr === 'tutor' || fil.attr === 'udemy' ||
             fil.attr === 'employment_status_id' || fil.attr === 'student_status_id' || fil.attr === 'spain_comunity') {
           filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, filterValue));
         }
@@ -33,21 +35,14 @@ export class StudentsTableComponent {
         }
       }
     });
-  
+
     if (filters.length > 0) {
-      if (this.form.formGroup.value.slidertoggle) {
-        return filters.reduce((exp1, exp2) => 
-          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_OR)
-        );
-      } else {
-        return filters.reduce((exp1, exp2) => 
-          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
-        );
-      }
+
+        return filters.reduce((exp1, exp2) => FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND));
     } else {
       return null;
     }
   }
-    
-  
+
+
 }
