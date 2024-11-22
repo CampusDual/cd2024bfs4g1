@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.ITutorTypeService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorTypeDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -69,5 +70,9 @@ public class TutorTypeService implements ITutorTypeService {
            error.setCode(EntityResult.OPERATION_WRONG);
            return error;
         }
+    }
+    @Override
+    public AdvancedEntityResult tutorTypePaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.tutorTypeDao, keyMap, attrList, recordNumber, startIndex, orderBy);
     }
 }

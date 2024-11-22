@@ -4,6 +4,7 @@ import com.campusdual.cd2024bfs4g1.api.core.service.ITutorService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -45,5 +46,9 @@ public class TutorService implements ITutorService {
     @Override
     public EntityResult tutorDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.delete(tutorDao, keyMap);
+    }
+    @Override
+    public AdvancedEntityResult tutorPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.tutorDao, keyMap, attrList, recordNumber, startIndex, orderBy);
     }
 }

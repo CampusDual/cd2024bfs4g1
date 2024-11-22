@@ -27,7 +27,7 @@
             <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
               entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id" columns="id;bootcampname"
               visible-columns="bootcampname" detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
-              refresh-button="false">
+              refresh-button="false" pageable="true">
               <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
               <o-table-context-menu view-detail="false" edit="false" delete="false"
                 insert="false"></o-table-context-menu>
