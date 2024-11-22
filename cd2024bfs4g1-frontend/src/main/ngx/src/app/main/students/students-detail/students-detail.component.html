@@ -171,8 +171,6 @@
            [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
            (onError)="onError($event)">
          </o-file-input>
-  
-  
          <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
         </div>
          <o-table #documentsTable class="general_table_primera" attr="documentsTable" service="documents"
