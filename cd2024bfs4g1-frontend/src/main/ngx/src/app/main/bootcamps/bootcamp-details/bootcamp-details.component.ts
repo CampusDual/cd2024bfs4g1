@@ -44,6 +44,9 @@ export class BootcampDetailsComponent {
     const studentId = event.student_id;
     this.router.navigate(['/main/students', studentId])
   }
+  goToTutorDetail(tutor: any) {
+    this.router.navigate(['/main/tutors', tutor.tutor_id]);
+  }
 
   volver(e) {
     this.router.navigate(['./main/bootcamps']);

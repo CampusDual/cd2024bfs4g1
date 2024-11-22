@@ -8,6 +8,8 @@ import { EmploymentStatusDetailsComponent } from './employment-status-details/em
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { StudentStatusNewComponent } from './student-status-new/student-status-new.component';
 import { StudentStatusDetailsComponent } from './student-status-details/student-status-details.component';
+import { TutorTypeNewComponent } from './tutor-type-new/tutor-type-new.component';
+import { TutorTypeDetailsComponent } from './tutor-type-details/tutor-type-details.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { StudentStatusDetailsComponent } from './student-status-details/student-
     EmploymentStatusNewComponent,
     EmploymentStatusDetailsComponent,
     StudentStatusNewComponent,
-    StudentStatusDetailsComponent
+    StudentStatusDetailsComponent,
+    TutorTypeNewComponent,
+    TutorTypeDetailsComponent
   ],
   imports: [
     CommonModule,
