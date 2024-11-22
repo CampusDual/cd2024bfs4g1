@@ -294,6 +294,13 @@ label{
 }
 
 
+#tabGroup .mdc-tab.mdc-tab--active {
+    text-decoration: underline; /* Aplica el subrayado */
+    text-decoration-thickness: 1px; /* Grosor del subrayado */
+    text-decoration-color: #7ec117; /* Color del subrayado */
+    text-underline-offset: 4px; /* Baja el subrayado ligeramente */
+}
+
 
 .o-app-sidenav-image {
   width: 90%;
