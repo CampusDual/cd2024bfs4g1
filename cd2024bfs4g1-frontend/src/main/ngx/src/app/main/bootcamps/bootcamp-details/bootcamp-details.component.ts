@@ -18,6 +18,7 @@ export class BootcampDetailsComponent {
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
+  @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
@@ -45,9 +46,15 @@ export class BootcampDetailsComponent {
   goToStudentDetail(event: any) {
     const studentId = event.student_id;
     this.router.navigate(['/main/students', studentId])
+    this.clearTableSelection();
   }
   goToTutorDetail(tutor: any) {
     this.router.navigate(['/main/tutors', tutor.tutor_id]);
+  }
+  clearTableSelection(): void {
+    if (this.studentsTable) {
+      this.studentsTable.clearSelection();
+    }
   }
 
   volver(e) {
