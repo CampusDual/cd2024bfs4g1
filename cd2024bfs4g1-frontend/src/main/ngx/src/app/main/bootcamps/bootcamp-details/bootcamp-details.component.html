@@ -38,7 +38,7 @@
     </div>
   </div>
   <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight>
-    <mat-tab label="Students and mentors">
+    <mat-tab label="{{ 'StudentsAndMentors' | oTranslate }}">
       <div class="general_container">
         <div class="table_container">
           <o-form-layout-manager attr="addStudentLayout" mode="dialog">
@@ -92,7 +92,7 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Horarios">
+    <mat-tab label="{{ 'Schedule' | oTranslate }}">
       <div class="table_containerhorarios">
         <div class="table_horario">
           <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
@@ -118,7 +118,7 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Ficheros">
+    <mat-tab label="{{ 'Documents' | oTranslate }}">
       <div class="table_containerfichero">
         <div class="table_ficheros">
           <div class="upload-container">
@@ -139,7 +139,7 @@
 
           <o-form-layout-manager>
             <div>
-              <h3>Bootcamp {{ 'FILE' | oTranslate }}</h3>
+              <h3>{{ 'BootcampDoc' | oTranslate }}</h3>
               <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
                 entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name"
                 visible-columns="action;name" detail-mode="false" show-report-on-demand-option="false"
@@ -160,7 +160,7 @@
       </div>
 
     </mat-tab>
-    <mat-tab label="Calendar" >
+    <mat-tab label="{{ 'CALENDAR' | oTranslate }}">
       <div class="table_calendar">
         <div class="calendar-container">
           <div class="container" *ngIf="months.length > 0">
