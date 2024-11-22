@@ -148,7 +148,7 @@
       <div class="container_students">
         <h3>{{ 'STUDENT_FILES' | oTranslate }}</h3>
         <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
-          entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
+          entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="action;name"
           detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
           refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
           select-all-checkbox-visible="true" selection-mode="none" pagination-controls="no">
