@@ -31,7 +31,7 @@
         <label for="LDNI">{{'REQ_LDNI' | oTranslate}}</label>
         <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"></o-nif-input>
       </div>
-  
+
       <div >
         <label for="REQ_LBIRTHDATE">{{'REQ_LBIRTHDATE' | oTranslate}}</label>
         <o-date-input attr="birth_date" required="yes" text-input-enabled="no"  format="DD/MM/YYYY"></o-date-input>
@@ -102,7 +102,7 @@
         <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
         <o-email-input attr="personal_email" required="yes" ></o-email-input>
       </div>
-      
+
     </fieldset>
   </div>
 
@@ -123,7 +123,7 @@
         </o-combo>
       </div>
 
-      
+
 
       <div class="emailCampus">
         <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
@@ -133,8 +133,8 @@
         </div>
     </mat-tab>
     <mat-tab class label="Fct">
-      <div class="grid-container">
-        <fieldset title="fct" class="pepe">
+    <div class="fct-container">
+        <fieldset title="fct" class="fct-grid">
           <legend>Informacion Fct</legend>
         <div class="fc_school">
         <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
@@ -152,9 +152,9 @@
           (onValueChange)="throwChange(enddate)">
           <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
         </o-date-input>
-        
+
       </div>
-      
+
 
       <div class="LFCT_END">
         <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
@@ -163,6 +163,9 @@
           <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
         </o-date-input>
       </div>
+    </fieldset>
+    <fieldset title="User" class="user-grid">
+      <legend>User</legend>
       <div class="githubUser">
         <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
         <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
@@ -172,16 +175,18 @@
           <o-checkbox attr="udemy"></o-checkbox>
         </div>
       </div>
+    </fieldset>
+    <fieldset title="Notas" class="notes-grid">
+      <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
       <div class="notes">
-        <label for="LNOTES">{{'LNOTES' | oTranslate}}</label>
         <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
       </div>
         </fieldset>
-    </div>
-    
+  </div>
+
     </mat-tab>
     <mat-tab label="Documents">
-    <div class="documentsGrid">        
+    <div class="documentsGrid">
 
       <o-form-layout-manager>
         <fieldset title="Archivos subidos" class="marcos2">
@@ -244,7 +249,8 @@
       <div *ngIf="showMessage" class="notification">
         <label for="subida">{{ 'subida' | oTranslate }}</label>
       </div>
-    </div>
+
+  </div>
     </mat-tab>
   </mat-tab-group>
 

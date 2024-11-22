@@ -53,7 +53,7 @@ o-form {
   grid-template-columns: 1fr 1fr 1fr;
   border-radius: 15px;
   grid-column: 1/3;
-  
+
 }
 
 .datosPrincipales1{
@@ -68,7 +68,7 @@ o-form {
   grid-column: 3/4;
   padding-top: 20px;
   padding-right: 40px;
-  
+
 }
 
 .datos1 {
@@ -137,8 +137,50 @@ o-form {
 .emailCampus {
   grid-column: 3/3;
 }
+.fct-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  width: 96%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+  gap: 20px;
+}
 
-.fctSchool {
+.fct-grid {
+  border-radius: 15px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 20px;
+}
+.udemy
+{
+  padding-top: 20px;
+}
+.user-grid {
+  border-radius: 15px;
+  grid-column: 2 / 3;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 20px;
+}
+
+.notes-grid {
+  border-radius: 15px;
+  grid-column: 2 / 3;
+  grid-row: 2;
+  padding: 20px;
+}
+
+
+/* .fctSchool {
   grid-column: 1/2;
 }
 
@@ -175,7 +217,7 @@ o-form {
   grid-column: 1/3;
   grid-row: 3/7;
   width: auto;
-}
+} */
 
 /* .upload-container {
   grid-column: 1/2;
@@ -238,7 +280,7 @@ o-button {
 }
 
 .o-file-input{
-  grid-column: 1/2; 
+  grid-column: 1/2;
 }
 
 .o-form-toolbar-button{
