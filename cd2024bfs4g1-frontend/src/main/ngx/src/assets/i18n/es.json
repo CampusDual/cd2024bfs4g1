@@ -260,7 +260,8 @@
   "RSURNAME2":"Segundo apellido*",
   "USER*": "Nombre de Usuario*",
   "TUTOR": "Tutor",
-  "DNI_WARNING":"El DNI ya existe"
+  "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"El rago de fehcas no pertenece a la designada al bootcamp",
+  "DNI_WARNING":"El DNI ya existe",
   "LTUTORTYPE": "Tipo de tutor",
   "REQ_LTUTORTYPE":"Tipo de tutor*"
 }

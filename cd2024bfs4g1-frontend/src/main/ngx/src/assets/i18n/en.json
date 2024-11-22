@@ -257,12 +257,10 @@
   "REQ_LTUTORTYPE":"Tutor type*",
   "STUDENT_FILES" : "Student files",
   "Student-Bootcamp status": "Student-Bootcamp status",
-  "Bootcamp status":"Bootcamp status",
   "STATUS": "Status",
   "RSURNAME2": "Second Surname*",
   "Edit": "Edit",
   "TUTOR": "Mentor",
-  "STATUS": "Status",
-  "situation": "Situation",
+  "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"The date range does not belong to the bootcamp designation",
   "DNI_WARNING":"The ID already exist"
 }
