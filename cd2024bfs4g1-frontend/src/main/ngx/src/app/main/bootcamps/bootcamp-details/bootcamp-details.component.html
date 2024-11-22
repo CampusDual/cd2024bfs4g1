@@ -141,7 +141,7 @@
               <h3>Bootcamp {{ 'FILE' | oTranslate }}</h3>
               <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
                 entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name"
-                visible-columns="name" detail-mode="false" show-report-on-demand-option="false"
+                visible-columns="action;name" detail-mode="false" show-report-on-demand-option="false"
                 show-charts-on-demand-option="false" refresh-button="false" insert-button="false" quick-filter="false"
                 show-paginator-first-last-buttons="false" select-all-checkbox-visible="true" selection-mode="none"
                 pagination-controls="no">
