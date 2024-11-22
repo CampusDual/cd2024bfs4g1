@@ -263,5 +263,6 @@
   "Edit": "Edit",
   "TUTOR": "Mentor",
   "STATUS": "Status",
-  "situation": "Situation"
+  "situation": "Situation",
+  "DNI_WARNING":"The ID already exist"
 }
