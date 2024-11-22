@@ -3,357 +3,184 @@
   box-sizing: border-box;
 }
 
-o-form {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
+.grid-container,
+.table_container {
+  width: 96%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
 }
 
+fieldset {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #f5f0f2;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+  border: solid 1px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px
+}
 
-.grid-container {
+.fct-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
   width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
   border-radius: 15px;
   padding: 20px;
-  /* height: auto; */
+  gap: 20px;
 }
 
-
-.marcos {
+.fct-grid {
   border-radius: 15px;
-  background-color: #f5f0f2;
-  border: solid 1px;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.pepe {
-  border-radius: 15px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column: 1/4;
-  gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   padding: 20px;
 }
 
-
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
-  height: auto;
-  padding: 30px;
-}
-
-.datos {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-radius: 15px;
-  grid-column: 1/3;
-  
-}
-
-.datosPrincipales1{
-  grid-column: 1/3;
+.o-form-toolbar-button {
+  grid-column: 2/3;
   padding-left: 40px;
-  padding-top: 20px;
-  width: 70%;
-
 }
 
-.datosPrincipales2{
-  grid-column: 3/4;
-  padding-top: 20px;
-  padding-right: 40px;
-  
+input,
+select,
+textarea {
+  width: 100%;
 }
-
-.datos1 {
-  border-radius: 15px;
-  grid-column: 3/4;
-}
-
-
-
-.grouptab {
-  color: #f5f0f2;
-}
-
-.nombre {
-  grid-column: 1/ 2;
-}
-
-.apellido {
-  grid-column: 2 / 3;
-}
-
-.apellido2 {
-  grid-column: 3 / 4;
-}
-
-.dni {
-  grid-column: 1/ 2;
-}
-
-.usuario {
-  grid-column: 2/ 3;
-}
-
-.contraseña {
-  grid-column: 3 / 4;
-}
-
-.telefono {
-  grid-column: 1 / 2;
-}
-
-.employmentStatus {
-  grid-column: 1/2;
-}
-
-.status {
-  grid-column: 2/3;
-}
-
-.comunidad {
-  grid-column: 1/2;
-}
-
-.location {
-  grid-column: 2/3;
-}
-
-.fechaCumple {
-  grid-column: 3/4;
-}
-
-.email {
-  grid-column: 1/3;
-}
-
-.emailCampus {
-  grid-column: 3/3;
-}
-
-.fctSchool {
-  grid-column: 1/2;
-}
-
-.tutor {
-  grid-column: 2/3;
-}
-
-.fctStart {
-  grid-column: 1/2;
-}
-
-
-.fctEnd {
-  grid-column: 2/3;
-}
-
-.udemy {
-  grid-column: 3/3;
-  grid-row: 2/7;
+.udemy{
   width: 20%;
   padding-top: 22px;
   padding-left: 40px;
-
 }
-
-.githubUser {
-  grid-column: 2/3;
-  grid-row: 2/7;
-  width: auto;
-
-}
-
-.notes {
+.datos {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
   grid-column: 1/3;
-  grid-row: 3/7;
-  width: auto;
 }
 
-/* .upload-container {
-  grid-column: 1/2;
-  grid-row: 8/9;
+.datosPrincipales1 {
+  grid-column: 1 / 2; 
+  padding: 20px 40px;
+}
 
-} */
+.datosPrincipales2 {
+  grid-column: 2 / 3; 
+  padding: 20px 40px;
+}
+
+.datosPersonales {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1/4;
+  padding: 20px;
+  gap: 50%;
+}
+.user-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+  padding: 20px;
+}
 
 .documentsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
+  gap: 40px;
+  padding: 30px;
   background-color: #1a3459;
   border-radius: 5px;
-  gap: 40px;
-  padding-left: 10;
-  padding-top: 30px;
-  padding-right: 10;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-.StudentsFicheros {
-  width: 100%;
-  grid-column: 1/2;
+.mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #7ec117;
 }
-
-
-.fileInput {
-  width: 100%;
-  grid-column: 1/2;
-}
-
 .container_students {
-  height: auto;
-  width: 100%;
   grid-column: 1/2;
-  padding-left: 50px;
+  background-color: #f5f0f2;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
 }
-
 .estudiantesDocumentos{
   grid-column: 2/3;
-  padding-right: 50px;
+  border-radius: 10px;
+  background-color: #f5f0f2;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
 }
-
-.contenedorBootcamps {
-  width: 100%;
-  height: 50%;
-/*   grid-column: 2/3; */
-  /* grid-column: 2/3; */
+.fieldsetDoc{
+  padding: 30px;
+  border-radius: 5px;
+  height: 100%;
 }
-
-o-button {
-  flex-shrink: 0;
-  margin-bottom: 18px;
-  width: 80px;
-}
-.input-button-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.o-file-input{
-  grid-column: 1/2; 
-}
-
-.o-form-toolbar-button{
-  grid-column: 2/3;
-  padding-left: 40px;
-}
-
-.general_table {
+.general_table_primera{
   background-color: #f5f0f2;
 }
 
-.marcos2{
-color: #f5f0f2;
-border-radius: 15px;
-padding-left: 10px;
+
+.general_table_segunda{
+  background-color: #f5f0f2;
 }
-
-
-
-.primera {
-  grid-column: 1/2;
-  margin: 0%;
-  height: 100%;
+#tabGroup .mdc-tab.mdc-tab--active {
+  text-decoration: underline; 
+  text-decoration-thickness: 1px; 
+  text-decoration-color: #7ec117; 
+  text-underline-offset: 4px;
 }
-
-.segunda {
-
-  width: 100%;
-  margin: 0%;
-  height: 85%;
-}
-
-.selectedrow {
-  grid-column: 2/4;
-  width: 100%;
-}
-
-
 @media (max-width: 1500px) {
-
-  .grid-container,
-  .table_container {
-    width: 95%;
-    padding: 15px;
-  }
-
   .grid-container {
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    gap: 20px;
+    width: 95%;
+  }
+  .datos {
+    grid-column: 1 / 2;  
+  }
+  .login, .contacto {
+    grid-column: 2 / 3;  
+  }
+  .datosPrincipales1, .datosPrincipales2 {
+    grid-column: 1 / 2;
+    padding: 0;
+  }
+  .fct-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;  
+    width: 95%;
+  }
+  .fct-grid {
+    grid-column: 1 / 3;  
   }
 
-  .nombre,
-  .apellido2,
-  .usuario,
-  .telefono,
-  .status,
-  .location,
-  .email,
-  .fctSchool,
-  .fctStart,
-  .udemy {
-    grid-column: 1/2;
-  }
-
-  .apellido,
-  .dni,
-  .contraseña,
-  .employmentStatus,
-  .comunidad,
-  .fechaCumple,
-  .emailCampus,
-  .tutor,
-  .githubUser,
-  .fctEnd {
-    grid-column: 2/3;
+  .user-grid {
+    grid-column: 1 / 2;
   }
 
   .notes {
-    grid-column: 1/3;
+    grid-column: 1 / 2; 
   }
 
-  .table_container {
-    grid-column: 1/3;
-    grid-row: 12;
-  }
-
-  .primera {
-    grid-column: 1/5;
-  }
-
-  .selectedrow {
+  .fct-container fieldset {
     width: 100%;
-    grid-column: 1/5;
   }
-}
-
-
-div.notification label {
-  grid-column: 1/3;
-  grid-column: 1/3;
-  background-color: #8AB237;
-  color: white;
-  padding: 10px;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-.notification.hide {
-  opacity: 0;
-}
-
-.checkbox-container {
-  padding: 0;
 }
