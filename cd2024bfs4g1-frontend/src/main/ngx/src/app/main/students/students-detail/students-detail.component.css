@@ -154,7 +154,7 @@ textarea {
 
 .separadorFile{
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.7fr 1fr;
 }
 @media (max-width: 1500px) {
   .grid-container {
