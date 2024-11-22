@@ -44,11 +44,12 @@ export class BootcampDetailsComponent {
     });
   }
   goToStudentDetail(event: any) {
-    const studentId = event.student_id; 
-    const tab = 'table'; 
+    const studentId = event.student_id;
+    const tab = 'table';
     this.router.navigate(['/main/students'], {
-      queryParams: { studentId, tab } 
+      queryParams: { studentId, tab }
     });
+  this.clearTableSelection();
   }
   goToTutorDetail(tutor: any) {
     this.router.navigate(['/main/tutors', tutor.tutor_id]);
@@ -126,7 +127,7 @@ export class BootcampDetailsComponent {
   protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
     this.service.configureService(conf);
-    
+
   }
 
   protected configureDocuments() {
