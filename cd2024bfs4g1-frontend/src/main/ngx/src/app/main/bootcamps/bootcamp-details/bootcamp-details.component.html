@@ -1,7 +1,7 @@
-<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id" header-actions="R;U;D"
-  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
-  (onDataLoaded)="onBootcampChange($event);inicialDR()" >
-  <o-text-input  #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
+<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
+  header-actions="R;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
+  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
     <div class="especial nombre">
@@ -70,26 +70,6 @@
         </div>
 
 
-    <div class="list_container" >
-    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
-      <o-form-layout-dialog-options class="popup">
-      <h3> {{'Mentors' | oTranslate}}</h3>
-      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type"
-      quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
-      selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
-      insert-button-position="bottom" show-buttons-text="false" controls="false">
-      <o-list-item *ngFor="let tutor of list.dataArray">
-        <o-list-item-text
-          title="{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}"
-          primary-text="{{ tutor.email }}"
-          secondary-text="{{ tutor.tutor_name_type}}" (click)="goToTutorDetail(tutor)">
-        </o-list-item-text>
-      </o-list-item>
-      </o-list>
-    </o-form-layout-dialog-options>
-    </o-form-layout-manager>
-    </div>
-  </div>
         <div class="list_container">
           <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
             <o-form-layout-dialog-options class="popup">
