@@ -5,12 +5,12 @@
       (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
-  <mat-tab-group oTabGroup="material" color="primary">
-    <mat-tab label="Main data" >
+  <mat-tab-group oTabGroup="material" color="primary" id="tabGroup">
+    <mat-tab label="{{'Main data'|oTranslate}}" >
       <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no"/>
   <div class="grid-container">
     <fieldset title="Datos personales" class="datos">
-      <legend>Datos personales</legend>
+      <legend>{{"Personal data"|oTranslate}}</legend>
       <div class="datosPrincipales1">
       <div>
         <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
@@ -20,7 +20,7 @@
         <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
         <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
       </div>
-      <div >
+      <div>
         <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
         <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
       </div>
@@ -72,7 +72,7 @@
     <br>
     <div class="contacto">
     <fieldset title="Fct">
-      <legend>Contacto</legend>
+      <legend>{{"Contact"|oTranslate}}</legend>
         <div>
         <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
         <o-phone-input attr="phone" required="yes"></o-phone-input>
@@ -88,10 +88,10 @@
   </div>
     </mat-tab>
 
-    <mat-tab label="Employment Status">
-      <div class="grid-container">
+    <mat-tab label="{{'Employment status'|oTranslate}}">
+      <div class="grid-Employment">
         <fieldset title="Datos personales" class="datosPersonales">
-          <legend>Employment Status</legend>
+          <legend>{{"Personal data"|oTranslate}}</legend>
       <div>
         <label for="employment_status">{{'REQ_LEMSTATUS' | oTranslate}}</label>
         <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes" null-selection="false"
@@ -107,10 +107,10 @@
         </div>
     </mat-tab>
 
-    <mat-tab label="Fct">
+    <mat-tab label="{{'FCT Information'|oTranslate}}">
     <div class="fct-container">
         <fieldset title="fct" class="fct-grid">
-          <legend>Información FCT</legend>
+          <legend>{{"FCT Information"|oTranslate}}</legend>
         <div>
         <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
         <o-text-input attr="fct_school" required="no" max-length="100" (input)="toUpperCamelCase($event)"></o-text-input>
@@ -138,7 +138,7 @@
       </div>
     </fieldset>
     <fieldset title="User" class="user-grid">
-      <legend>Información adicional</legend>
+      <legend>{{'OtherInformation'|oTranslate}}</legend>
       <div class="githubUser">
         <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
         <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
@@ -158,7 +158,7 @@
   </div>
 
     </mat-tab>
-    <mat-tab label="Documents">
+    <mat-tab label="{{'Documents'|oTranslate}}">
       <div class="documentsGrid">
         <o-form-layout-manager>
              <div class="container_students">
