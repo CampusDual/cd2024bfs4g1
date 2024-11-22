@@ -253,13 +253,13 @@
   "DayEnd": "Fin del periodo",
   "time_end": "Hora salida*",
   "time_start": "Hora entrada*",
-  "LTUTORTYPE": "Tipo de tutor",
-   "REQ_LTUTORTYPE":"Tipo de tutor*",
   "HORARIO_EN_CONFLICTO":"Horario o fecha ya en uso",
   "Student-Bootcamp status":"Estado Estudiante-Bootcamp",
   "Bootcamp status":"Estado de bootcamp",
   "STATUS": "Estado",
   "RSURNAME2":"Segundo apellido*",
   "USER*": "Nombre de Usuario*",
-  "TUTOR": "Tutor"
+  "TUTOR": "Tutor",
+  "LTUTORTYPE": "Tipo de tutor",
+  "REQ_LTUTORTYPE":"Tipo de tutor*"
 }
