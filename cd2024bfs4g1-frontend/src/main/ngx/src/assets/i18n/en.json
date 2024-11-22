@@ -247,5 +247,13 @@
   "Bootcamps Asigned":"Bootcamps Asigned",
   "STUDENTS_IN_BOOTCAMP" : "Students enrolled in this Bootcamp",
   "BOOTCAMPS_IN_STUDENT" : "Bootcamps this student is enrolled in",
-  "STUDENT_FILES" : "Student files"
+  "STUDENT_FILES" : "Student files",
+  "Main data": "Main data",
+  "Personal data" : "Personal data",
+  "Contact" : "Contact",
+  "Employment status" : "Employment status",
+  "Documents" : "Documents",
+  "FCT Information" : "FCT Information",
+  "Notes" : "Notes",
+  "OtherInformation": "Other information"
 }

@@ -245,5 +245,13 @@
   "STUDENTS_IN_BOOTCAMP" : "Estudiantes inscritos en este bootcamp",
   "BOOTCAMPS_IN_STUDENT" : "Bootcamps a los que está inscrito este alumno",
   "STUDENT_FILES" : "Archivos de este alumno",
-  "Bootcamps Asigned": "Bootcamps Asignados"
+  "Bootcamps Asigned": "Bootcamps Asignados",
+  "Personal data" : "Datos personales",
+  "Contact" : "Contacto",
+  "Main data" : "Datos principales",
+  "Employment status": "Estado laboral",
+  "Documents" : "Documentos",
+  "FCT Information" : "Información FCT",
+  "Notes" : "Notas",
+  "OtherInformation": "Informacion adicional"
 }
