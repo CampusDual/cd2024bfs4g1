@@ -8,48 +8,59 @@ o-form {
   height: 100%;
   margin: 0 auto;
 }
+h3{
+  color: #1a3459;
+  font-size: 16px;
+  font-weight: bold;
+}
+.tab{
+  margin-top: 25px;
 
+}
 .grid-container,
-.table_container {
+.general_container {
   width: 96%;
   margin: 5px auto;
-  background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 20px;
 }
-
+.general_container{
+  margin-top: 25px;
+  display:grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 15px;
+  height: 90%;
+}
 .grid-container {
   display: grid;
   grid-template-columns: 2fr 2fr;
+  background-color: #f5f0f2;
   grid-template-rows: auto;
   gap: 10px;
+  padding: 20px;
+}
+.gridHorario{
+  grid-column: 1/2;
+  width: 100%;
 }
 
-.table_container {
-  max-height: 800px;
-  padding: 30px;
+.gridUpload{
+  grid-column: 2/3;
+  width: 100%;
 }
 
-.general_container{
-  display:grid;
-  grid-template-columns: 2fr 1fr;
-  width: 96%;
-  margin: 5px auto;
-  border-radius: 15px;
 
-}
 
 .list_container{
   grid-column: 2/3;
   display: flex;
   flex-direction: column;
-  width: 90%;
-  height: 105%;
+  width: 96%;
+  height: 90%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
   padding: 20px;
-  margin-left: 10%;
+  margin-left: 10px;
 }
 
 .table_container{
@@ -57,7 +68,7 @@ o-form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 105%;
+  height: 90%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
@@ -68,8 +79,26 @@ o-form {
   width: 98%;
   grid-column: 1/2;
   margin: 0;
+  background-color: #f5f0f2;
+  height: 50%;
 }
 
+.input-button-container{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap:10px;
+
+}
+.o-file-input{
+  margin-top: 10px;
+  grid-column: 1/2;
+}
+.o-form-toolbar-button{
+  margin-top: 10px;
+  width: 30%;
+  grid-column: 2/3;
+  margin-left: 20%;
+}
 .title{
   font-size:30px;
   padding: 30px;
@@ -85,10 +114,6 @@ o-form {
   grid-column: 2 / 3;
 }
 
-.fecha-fin {
-  grid-column: 3 / 4;
-}
-
 .descripcion {
   grid-column: 1 / 2;
 }
@@ -98,7 +123,7 @@ o-form {
 }
 
 .gridcalendario {
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
 }
 
 .calendar-container,
@@ -143,6 +168,105 @@ o-form {
 }
 
 
+mat-calendar {
+  width: 100%;
+  font-size: 0.9em;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+mat-calendar .mat-calendar-body-cell {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+mat-calendar .mat-calendar-arrow {
+  display: none;
+}
+
+div.notification label  {
+  background-color: #F64983;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.notification.hide {
+  opacity: 0;
+}
+.form-class{
+  width: 100%;
+  height: 100%;
+}
+.table_containerfichero {
+  width: 98%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 0 10px;
+}
+.table_containerhorarios{
+  width: 98%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 0 10px;
+}
+.input-button-container{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+.o-flie-input{
+  grid-column: 1/2;
+}
+.o-form-toolbar-button{
+  grid-column: 2/3;
+  width: 60%;
+  margin-left: 20%;
+}
+
+.table_calendar{
+  width: 98%;
+  height: 100%;
+  margin: 0;
+  margin-top: 25px;
+  border-radius: 15px;
+  padding: 20px;
+  padding-top: 0%;
+}
+
+.table_ficheros{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  margin: 0;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+}
+.table_horario{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  margin: 0;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+}
+.timetable_table{
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
 @media (max-width: 768px) {
   .grid-container,
   .table_container {
@@ -187,4 +311,34 @@ mat-calendar .mat-calendar-arrow {
   background-color: #f5f0f2;
   font-family: 'Roboto', sans-serif;
   height: auto;
+}
+
+
+
+
+div.notification label  {
+   background-color: #F64983;
+   color: white;
+   padding: 10px;
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+   opacity: 1;
+   transition: opacity 0.5s ease;
+ }
+
+ .notification.hide {
+   opacity: 0;
+ }
+ .form-class{
+  width: 100%;
+  height: 100%;
+}
+.table_containerfichero {
+  width: 90%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0 10px;
 }
