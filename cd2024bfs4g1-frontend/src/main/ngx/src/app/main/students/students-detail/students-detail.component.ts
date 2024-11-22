@@ -141,7 +141,7 @@ export class StudentsDetailComponent {
   }
   mostrar(event: any) {
 
-    console.log(event.srcElement.value);
+    
     this.getDNI(event.srcElement.value);
 
   }
@@ -153,15 +153,22 @@ export class StudentsDetailComponent {
     const columns = ['id'];
     this.service.query(filter, columns, 'student').subscribe(resp => {
       if (resp.code === 0){
-        console.log('DNI encontrado:');
-        console.log(resp.data.length);
+        this.showNotice=true;
         if(resp.data.length>1){
           this.showNotice=true;
+
+        }else if(resp.data.length==1){
+          let idStudent=this.idNumber.getValue();
+          let idQueryStudent= resp.data[0].id;
+          if(idStudent==idQueryStudent){
+            this.showNotice=false;
+          }else{
+            this.showNotice=true;
+          }
         }else{
           this.showNotice=false;
         }
       } else {
-        console.log(resp.message);
         this.showNotice=false;
       }
     });

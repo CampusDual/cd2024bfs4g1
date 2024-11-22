@@ -261,5 +261,6 @@
   "STATUS": "Estado",
   "RSURNAME2":"Segundo apellido*",
   "USER*": "Nombre de Usuario*",
-  "TUTOR": "Tutor"
+  "TUTOR": "Tutor",
+  "DNI_WARNING":"El DNI ya existe"
 }
