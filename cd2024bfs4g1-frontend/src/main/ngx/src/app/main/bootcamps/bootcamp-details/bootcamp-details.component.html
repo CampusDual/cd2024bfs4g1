@@ -44,13 +44,13 @@
           <o-form-layout-manager attr="addStudentLayout" mode="dialog">
             <o-form-layout-dialog-options class="popup">
               <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
-              <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
+              <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
                 service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
                 parent-keys="bootcamp_id:id;start_date;end_date"
                 columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
                 visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action"
                 sort-columns="name" query-rows="10" show-report-on-demand-option="false"
-                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="none"
+                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
                 detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
                   format="DD/MM/YYYY"></o-table-column>
@@ -59,7 +59,7 @@
                 </o-table-paginator>
                 <o-table-column attr="action" width="64px" tooltip="yes"
                   tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-                  <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
+                  <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)" 
                     icon="person_search"></o-table-cell-renderer-action>
                 </o-table-column>
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
