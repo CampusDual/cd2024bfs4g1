@@ -5,8 +5,8 @@
       (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
 
-  <mat-tab-group oTabGroup="material" color="primary">
-    <mat-tab label="Main data" >
+  <mat-tab-group oTabGroup="material" color="primary" id="tabGroup">
+    <mat-tab label="Main data">
       <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no"/>
   <div class="grid-container">
     <!-- <o-image id="student" attr="PHOTO" empty-image="assets/images/no-image.png" sql-type="OTHER" show-controls="no" height="180px"></o-image> -->
@@ -187,14 +187,21 @@
     </mat-tab>
     <mat-tab label="Documents">
     <div class="documentsGrid">
-
       <o-form-layout-manager>
-        <fieldset title="Archivos subidos" class="marcos2">
-          <legend>Archivos subidos</legend>
-        <div class="container_students">
-        <!-- <div class="StudentsFicheros"> -->
-          <h3>{{ 'STUDENT_FILES' | oTranslate }}</h3>
-          <o-table #documentsTable class="general_table primera" attr="documentsTable" service="documents"
+           <div class="container_students">
+         
+       <fieldset class="fieldsetDoc">
+       <legend>{{'STUDENT_FILES' | oTranslate}} </legend>
+       <div class="separadorFile">
+       <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}" service="documents"
+         entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
+         [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
+         (onError)="onError($event)">
+       </o-file-input>
+
+       <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
+      </div>
+       <o-table #documentsTable class="general_table_primera" attr="documentsTable" service="documents"
             entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
             detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
             refresh-button="false" insert-button="false" quick-filter="false" show-paginator-first-last-buttons="false"
@@ -207,30 +214,16 @@
                 icon="download"></o-table-cell-renderer-action>
             </o-table-column>
           </o-table>
-            <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
-            <div class="input-button-container">
-              <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}" service="documents"
-                entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5" split-upload="false" key="student_id"
-                [additional-data]="getFileData()" (input)="onFileUpload()" (onUpload)="onUploadFiles($event)"
-                (onError)="onError($event)">
-              </o-file-input>
-              <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}" color="primary"></o-button>
-
-            </div>
-
-          <!-- </div> -->
-        </div>
-      </fieldset>
+       </fieldset>
+         </div>
       </o-form-layout-manager>
+      <div class="estudiantesDocumentos">
+ 
       <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
         <o-form-layout-dialog-options class="popup">
-          <!-- <div class="container_students"> -->
-            <fieldset title="Archivos subidos" class="marcos2">
-              <legend>Archivos subidos</legend>
-            <div class="estudiantesDocumentos">
-
-            <h3>{{ 'BOOTCAMPS_IN_STUDENT' | oTranslate }}</h3>
-            <o-table class="general_table segunda" attr="bootcampsStudentTable" service="studentBootcamps"
+          <fieldset class="fieldsetDoc">
+            <legend align="right">{{'Bootcamps Asigned' | oTranslate}}</legend>
+            <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
               entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
               visible-columns="bootcampname" detail-mode="none" show-report-on-demand-option="false"
               show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
@@ -239,12 +232,11 @@
               <o-table-context-menu view-detail="false" edit="false" delete="false" insert="false"></o-table-context-menu>
               <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
             </o-table>
+          </fieldset>
 
-          </div>
-          <!-- </div> -->
-           </fieldset>
-        </o-form-layout-dialog-options>
+         </o-form-layout-dialog-options>
       </o-form-layout-manager>
+    </div>
 
       <div *ngIf="showMessage" class="notification">
         <label for="subida">{{ 'subida' | oTranslate }}</label>

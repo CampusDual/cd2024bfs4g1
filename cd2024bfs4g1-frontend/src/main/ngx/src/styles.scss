@@ -289,8 +289,18 @@ label{
   opacity: 1;
 }
 
+
+
 .mat-mdc-tab-group .mdc-tab.mdc-tab--active .mdc-tab__text-label {
   color: #7ec117;
+}
+
+
+#tabGroup .mdc-tab.mdc-tab--active {
+  text-decoration: underline; /* Subrayado */
+  text-decoration-thickness: 1px; /* Grosor del subrayado */
+  text-decoration-color: #7ec117; /* Color del subrayado */
+  text-underline-offset: 4px;
 }
 
 
