@@ -39,4 +39,7 @@ export const SERVICE_CONFIG: Object = {
     'path': '/employmentstatushistory'
   }
 
+  'studentbootcampstatus':{
+    'path': '/studentbootcampstatus'
+  }
 };

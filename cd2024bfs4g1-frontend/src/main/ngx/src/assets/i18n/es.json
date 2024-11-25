@@ -294,5 +294,11 @@
   "date_change":"Fecha del cambio",
   "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe",
   "Download" : "Descargar",
-  "Save": "Guardar"
+  "Save": "Guardar",
+  "DNI_WARNING":"El DNI ya existe",
+  "LSTUDENTBOOTCAMPSTATUS":"Estado de los alumnos en Bootcamp",
+  "LSTUDENTSBOOTCAMPSSTATUS":"Estado de los alumnos en Bootcamp",
+  "COMPUTABLE_TRUE":"computable",
+  "COMPUTABLE_FALSE":"No computable",
+  "student_bootcamp_status":"Estado del estudiante en bootcamp"
 }

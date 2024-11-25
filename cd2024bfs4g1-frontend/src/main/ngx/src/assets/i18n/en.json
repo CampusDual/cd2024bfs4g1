@@ -295,5 +295,12 @@
   "date_change":"Date change",
   "DUPLICATED_USRLOGIN_NAME":"Username already exists",
   "Download" : "Download",
-  "Save": "Save"
+  "Save": "Save",
+  "situation": "Situation",
+  "DNI_WARNING":"The ID already exist",
+  "LSTUDENTBOOTCAMPSTATUS":"StudentBootcampStatus",
+  "LSTUDENTSBOOTCAMPSSTATUS":"StudentBootcampStatus",
+  "COMPUTABLE_TRUE":"computable",
+  "COMPUTABLE_FALSE":"Not computable",
+  "student_bootcamp_status":"Studentbootcampstatus"
 }
