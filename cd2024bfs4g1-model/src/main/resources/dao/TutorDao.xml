@@ -12,5 +12,22 @@
         <Column>id</Column>
     </UpdateKeys>
     <GeneratedKey>id</GeneratedKey>
+    <Queries>
+        <Query id="default">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="t"/>
+            </AmbiguousColumns>
 
+            <Sentence>
+                <![CDATA[
+                        SELECT
+                        #COLUMNS#
+                        FROM
+                            ${mainschema}.tutors t
+                            left join ${mainschema}.usr_user uu ON t.user_id = uu.usr_id
+                            #WHERE#
+                    ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>
