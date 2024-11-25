@@ -271,6 +271,6 @@
   "REQ_LTUTORTYPE":"Tipo de tutor*",
   "LCodigo": "Codigo",
   "LOP":"OP",
-  "Codigo":"Codigo",
-  "OP":"OP"
+  "codigo":"Codigo",
+  "op":"OP"
 }
