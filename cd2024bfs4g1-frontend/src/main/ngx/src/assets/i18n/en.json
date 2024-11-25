@@ -117,6 +117,7 @@
   "LEMAIL": "Email",
   "REQ_LDNI": "ID*",
   "LDNI": "ID",
+  "DNI_warning":"DNI_warning",
   "REQ_LBIRTHDATE": "Birth date*",
   "LBIRTHDATE": "Birth date",
   "REQ_LPHONE": "Phone*",
@@ -265,5 +266,9 @@
   "TUTOR": "Mentor",
   "STATUS": "Status",
   "DNI_WARNING":"The ID already exists",
-  "BootcampDoc" : "Bootcamp documents"
+  "BootcampDoc" : "Bootcamp documents",
+  "LCodigo": "Code",
+  "LOP": "OP",
+  "Codigo":"Code",
+  "OP":"OP"
 }
