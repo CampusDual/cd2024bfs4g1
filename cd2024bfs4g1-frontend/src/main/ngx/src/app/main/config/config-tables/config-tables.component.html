@@ -1,33 +1,33 @@
 <o-form-layout-manager attr="configLayout" class="form-class">
-    <mat-tab-group animationDuration="0ms" class="mat-success">
-        <mat-tab label="{{ 'Student' | oTranslate }}">
-            <div class="config-container">
-                <o-form-layout-manager attr="configLaboral" mode="dialog" dialog-min-width="450px"
-                    dialog-min-height="200px" title="LEMPLOYMENTSTATUS">
-                    <div class="table_container">
-                        <h3 class="titulo_tablas">{{ 'LEMPLOYMENTSTATUS' | oTranslate }}</h3>
-                        <o-form-layout-dialog-options class="popup">
-                            <o-table #employmentStatusTable [quick-filter]="false" class="general_table" detail-form-route="employmentstatus/"
-                                insert-form-route="new" quick-filter="true" attr="employmentStatusTable"
-                                service="employmentstatus" entity="employmentStatus" keys="id" columns="id;situation"
-                                visible-columns="situation" sort-columns="situation"
-                                show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
-                                select-all-checkbox-visible="true" selection-mode="single" refresh-button="no" pagination-controls="false">
-                            </o-table>
-                        </o-form-layout-dialog-options>
-                    </div>
-                </o-form-layout-manager>
-                <o-form-layout-manager attr="configEstado" mode="dialog" dialog-min-width="450px"
-                    dialog-min-height="200px" title="LSTUDENTSTATUS">
-                    <div class="table_container">
-                        <h3 class="titulo_tablas">{{ 'LSTUDENTSTATUS' | oTranslate }}</h3>
-                        <o-form-layout-dialog-options class="popup">
-                            <o-table #studentStatusTable class="general_table" [quick-filter]="false" detail-form-route="studentstatus/"
-                                insert-form-route="new" quick-filter="true" attr="studentsStatusTable"
-                                service="studentstatus" entity="studentStatus" keys="id" columns="id;status"
-                                visible-columns="status" sort-columns="status" show-report-on-demand-option="false"
-                                translate="yes" show-charts-on-demand-option="false" select-all-checkbox-visible="true"
-                                selection-mode="single" refresh-button="no" pagination-controls="false">
+  <mat-tab-group animationDuration="0ms" class="mat-success">
+    <mat-tab label="{{ 'Student' | oTranslate }}">
+      <div class="config-container">
+        <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LEMPLOYMENTSTATUS">
+          <div class="table_container">
+            <h3 class="titulo_tablas">{{ 'LEMPLOYMENTSTATUS' | oTranslate }}</h3>
+            <o-form-layout-dialog-options class="popup">
+              <o-table #employmentStatusTable [quick-filter]="false" class="general_table"
+                      detail-form-route="employmentstatus/"
+                      insert-form-route="new" quick-filter="true" attr="employmentStatusTable"
+                      service="employmentstatus" entity="employmentStatus" keys="id" columns="id;situation"
+                      visible-columns="situation" sort-columns="situation"
+                      show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
+                      select-all-checkbox-visible="true" selection-mode="single" refresh-button="no"
+                      pagination-controls="false">
+              </o-table>
+            </o-form-layout-dialog-options>
+          </div>
+        </o-form-layout-manager>
+        <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LSTUDENTSTATUS">
+          <div class="table_container">
+            <h3 class="titulo_tablas">{{ 'LSTUDENTSTATUS' | oTranslate }}</h3>
+            <o-form-layout-dialog-options class="popup">
+              <o-table #studentStatusTable class="general_table" [quick-filter]="false"detail-form-route="studentstatus/"
+                      insert-form-route="new" quick-filter="true" attr="studentsStatusTable"
+                      service="studentstatus" entity="studentStatus" keys="id" columns="id;status"
+                      visible-columns="status" sort-columns="status" show-report-on-demand-option="false"
+                      translate="yes" show-charts-on-demand-option="false" select-all-checkbox-visible="true"
+                      selection-mode="single" refresh-button="no" pagination-controls="false">
 
               </o-table>
             </o-form-layout-dialog-options>
@@ -95,15 +95,14 @@
                 </o-form-layout-manager>
         </mat-tab>
         <mat-tab label="Bootcamp">
-            <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px"
-                dialog-min-height="200px" title="LATTENDANCESTATUS">
+            <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LATTENDANCESTATUS">
                 <div class="table_container">
                     <h3 class="titulo_tablas">{{ 'asistencia' | oTranslate }}</h3>
                     <o-form-layout-dialog-options class="popup">
                         <o-table #asistenciaTable attr="asistenciaTable" [quick-filter]="false" class="general_table"
                             detail-form-route="attendancestatus/" insert-form-route="new" service="attendance_status"
-                            entity="attendanceControl" keys="id" columns="id;abbreviation;description"
-                            visible-columns="abbreviation;description" sort-columns="abbreviation"
+                            entity="attendanceControl" keys="id" columns="id;abbreviation;description;color"
+                            visible-columns="abbreviation;description;color" sort-columns="abbreviation"
                             show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
                             select-all-checkbox-visible="true" selection-mode="single" refresh-button="false"
                             pagination-controls="false">
@@ -118,5 +117,5 @@
                 </div>
             </o-form-layout-manager>
         </mat-tab>
-      </mat-tab-group>
+    </mat-tab-group>
 </o-form-layout-manager>

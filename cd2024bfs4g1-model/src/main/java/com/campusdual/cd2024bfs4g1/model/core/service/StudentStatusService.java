@@ -74,7 +74,6 @@ public class StudentStatusService implements IStudentStatusService {
         try {
 
                 return this.daoHelper.delete(this.studentStatusDao, keyMap);
-
         } catch (Exception e) {
             throw new OntimizeJEERuntimeException("Unexpected error while deleting student status", e);
         }
