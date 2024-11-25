@@ -1,0 +1,1 @@
+ALTER TABLE public.tutors ADD user_id int4 NULL;
