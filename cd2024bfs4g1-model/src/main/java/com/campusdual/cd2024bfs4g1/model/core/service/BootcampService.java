@@ -5,6 +5,7 @@ import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
+import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -29,6 +30,7 @@ public class BootcampService implements IBootcampService {
     private StudentBootcampDao studentBootcampDao;
     @Autowired
     private TutorBootcampDao tutorBootcampDao;
+
 
     @Override
     public EntityResult bootcampQuery(Map<String, Object> keyMap, List<String> attrList)
@@ -117,4 +119,42 @@ public class BootcampService implements IBootcampService {
     public AdvancedEntityResult bootcampPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.bootcampDao, keyMap, attrList, recordNumber, startIndex, orderBy);
     }
+
+    @Override
+    public EntityResult bootcampDateQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        // Se obtienen las fechas de inicio y fin del rango mostrado en la interfaz
+        Date startDate = (Date) keyMap.get("startDate");
+        Date endDate = (Date) keyMap.get("endDate");
+
+        // Verificar que ambas fechas estén presentes
+        if (startDate == null || endDate == null) {
+            EntityResult error = new EntityResultMapImpl();
+            error.setCode(EntityResult.OPERATION_WRONG);
+            error.setMessage("MISSING_DATE_RANGE");
+            return error;
+        }
+
+        // Filtramos los bootcamps dentro del rango de fechas especificado
+        SQLStatementBuilder.BasicField startDateField = new SQLStatementBuilder.BasicField(BootcampDao.ATTR_START_DATE);
+        SQLStatementBuilder.BasicField endDateField = new SQLStatementBuilder.BasicField(BootcampDao.ATTR_FINISH_DATE);
+
+        // Se construyen las expresiones de fechas
+        SQLStatementBuilder.BasicExpression startDateCondition = new SQLStatementBuilder.BasicExpression(
+                startDateField, SQLStatementBuilder.BasicOperator.LESS_EQUAL_OP, endDate);
+        SQLStatementBuilder.BasicExpression endDateCondition = new SQLStatementBuilder.BasicExpression(
+                endDateField, SQLStatementBuilder.BasicOperator.MORE_EQUAL_OP, startDate);
+
+        // Condición final para asegurar que el bootcamp esté dentro del rango de fechas
+        SQLStatementBuilder.BasicExpression dateRangeCondition = new SQLStatementBuilder.BasicExpression(
+                startDateCondition, SQLStatementBuilder.BasicOperator.AND_OP, endDateCondition);
+
+        Map<String, Object> queryFilter = new HashMap<>();
+        queryFilter.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, dateRangeCondition);
+
+        // Realizamos la consulta
+        return this.daoHelper.query(this.bootcampDao, queryFilter, attrList);
+    }
+
+
+
 }

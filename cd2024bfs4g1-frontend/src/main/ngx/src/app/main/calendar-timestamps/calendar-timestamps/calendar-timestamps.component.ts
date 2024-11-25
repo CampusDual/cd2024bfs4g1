@@ -1,8 +1,8 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, Injector } from '@angular/core';
 import moment from 'moment';
-import { CalendarService } from '../calendar.service';
 import { Router } from '@angular/router';
 import 'moment/locale/es';
+import { OntimizeService } from 'ontimize-web-ngx';
 
 enum AbbrDayOfWeek {
   Dom = 0,
@@ -34,6 +34,7 @@ interface Day {
 })
 export class CalendarTimestampsComponent {
 
+  protected service: OntimizeService;
   weeksToShow = 3;
   startDate: Date;
   endDate: Date;
@@ -43,7 +44,7 @@ export class CalendarTimestampsComponent {
   weekDays: string[] = [];
   daysWithWeekDays: Day[] = [];
   allBootcamps: Bootcamp[] = [];
-  bootcamps: Bootcamp[] = [];
+  bootcamps: any[] = [];
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -53,31 +54,59 @@ export class CalendarTimestampsComponent {
   public selectedYear = this.currentYear;
   public selectedMonth = this.currentMonth;
 
-  constructor(private elementRef: ElementRef, private calendarService: CalendarService, private router: Router) {
+  constructor(
+    protected injector: Injector,
+    private elementRef: ElementRef,
+    private router: Router
+  ) {
     moment.locale('es');
     this.loadInitialDates();
     this.loadDays();
     this.loadYears();
-    this.calendarService.searchBootcamps().subscribe(
-      response => {
-        console.log('POST Response:', response);
-        response.data.map((bootcamp: any) => {
-          bootcamp.start_date = new Date(bootcamp.start_date);
-          bootcamp.end_date = new Date(bootcamp.end_date);
-        });
-        this.allBootcamps = response.data;
-        this.bootcamps = response.data;
-        console.log('Bootcamps:', this.bootcamps);
-        console.log('All Bootcamps:', this.allBootcamps);
-        this.filterBootcamps();
-      },
-      error => {
-        console.error('POST Error:', error);
-      }
-    );
+  
+    this.service = this.injector.get(OntimizeService);
+    this.configureService();
   }
 
-  queryBackend(): void {}
+  ngOnInit(){
+    this.loadBootcamps();
+  }
+
+  protected configureService() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration('bootcamps');
+    this.service.configureService(conf);
+  }
+
+
+
+  getBootcamps() {
+    if (this.service !== null) {
+      const filter = {
+        'startDate': this.startDate,
+        'endDate': this.endDate
+      };
+      const types = {
+        'startDate': 91,
+        'endDate': 91
+      };
+      const columns = ['id', 'name', 'start_date', 'end_date', 'status'];
+      this.service.query(filter, columns, 'bootcampDate', types).subscribe(resp => {
+        if (resp.code === 0) {
+          if(resp.data.length > 0){ //este if-else añadido
+            this.bootcamps = resp.data;
+          }else{
+            this.bootcamps = [];
+          }
+
+  
+        } else {
+          alert('Impossible to query data!');
+        }
+      });
+    }
+  }
+  
 
   loadInitialDates(): void {
     const startOfWeek = moment().startOf('isoWeek').subtract(1, 'week');
@@ -93,7 +122,7 @@ export class CalendarTimestampsComponent {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  loadDays(): void {
+  loadDays(): void { 
     this.daysWithWeekDays = [];
     let current = moment(this.startDate);
     const end = moment(this.endDate);
@@ -107,11 +136,7 @@ export class CalendarTimestampsComponent {
   }
 
   loadBootcamps(): void {
-    this.bootcamps = this.allBootcamps.filter(bootcamp => {
-      return moment(bootcamp.start_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
-             moment(bootcamp.end_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
-             (moment(bootcamp.start_date).isBefore(this.startDate) && moment(bootcamp.end_date).isAfter(this.endDate));
-    });
+    this.getBootcamps();
     console.log(`Is bootcamps empty: ${this.bootcamps.length == 0}`);
     this.bootcamps.map(bootcamp => {
       this.updateBootcampsGridColumns(bootcamp);
@@ -124,7 +149,9 @@ export class CalendarTimestampsComponent {
              moment(bootcamp.end_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
              (moment(bootcamp.start_date).isBefore(this.startDate) && moment(bootcamp.end_date).isAfter(this.endDate));
     });
+    console.log(`Bootcamps within the range: ${this.bootcamps.length}`);
   }
+  
 
   navigateToBootcampDetail(bootcampId: number): void {
     this.router.navigate(['/main/bootcamps', bootcampId]);
@@ -134,15 +161,15 @@ export class CalendarTimestampsComponent {
     this.startDate = moment(this.startDate).subtract(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.filterBootcamps();
+    this.loadBootcamps(); //añadio
     this.updateCurrentMonthAndYear(); 
   }
-
+  
   incSelectedWeek(): void {
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.filterBootcamps();
+    this.loadBootcamps(); //añadio
     this.updateCurrentMonthAndYear();
   }
 
@@ -163,10 +190,16 @@ export class CalendarTimestampsComponent {
     return bootcamp.name; 
   }
 
-  dateDifferenceInDays(date1: Date, date2: Date): number {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  dateDifferenceInDays(date1: any, date2: any): number {
+    const timeDiff = Math.abs(date2 - date1);
     return Math.ceil(timeDiff / (1000 * 3600 * 24)); 
   }
+
+
+  printDate(date: any): string{ //añadio
+    const tDate: Date = new Date(date);
+    return tDate.getDate()+"/"+(tDate.getMonth()+1)+"/"+tDate.getFullYear();
+  } 
 
   shouldHideDates(bootcamp: Bootcamp): boolean {
     const diffStart = this.dateDifferenceInDays(this.startDate, bootcamp.end_date);
@@ -196,7 +229,7 @@ export class CalendarTimestampsComponent {
     }
   }
 
-  updateDayGridColumns() {
+  updateDayGridColumns() { //verificar que no devuelva valores inesperados
     return `repeat(${this.daysWithWeekDays.length}, 1fr)`;
   }
 
@@ -267,3 +300,4 @@ export class CalendarTimestampsComponent {
 
 
 }
+
