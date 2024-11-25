@@ -3,6 +3,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 import com.campusdual.cd2024bfs4g1.api.core.service.ITutorBootcampService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -58,5 +59,11 @@ public class TutorBootcampService implements ITutorBootcampService {
     public EntityResult tutorBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException{
         return this.daoHelper.update(tutorDao, attrMap, keyMap);
     }
+
+    @Override
+    public AdvancedEntityResult tutorsWithBootcampPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.tutorBootcampDao, keyMap, attrList, recordNumber, startIndex, orderBy);
+    }
+
 
 }

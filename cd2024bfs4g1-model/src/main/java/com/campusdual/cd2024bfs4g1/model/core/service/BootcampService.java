@@ -5,6 +5,7 @@ import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -110,5 +111,10 @@ public class BootcampService implements IBootcampService {
         }else {
             return this.daoHelper.delete(this.bootcampDao, keyMap);
         }
+    }
+
+    @Override
+    public AdvancedEntityResult bootcampPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.bootcampDao, keyMap, attrList, recordNumber, startIndex, orderBy);
     }
 }
