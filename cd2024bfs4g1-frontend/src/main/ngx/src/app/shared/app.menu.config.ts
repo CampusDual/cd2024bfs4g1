@@ -12,7 +12,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
   },
   { id: 'students', name: 'Students', route: '/main/students', icon: 'groups' },
   { id: 'tutors', name: 'Mentors', route: '/main/tutors', icon: 'work' },
-  { id: 'personalinfo', name: 'Mis Datos', route:'/main/data', icon:'article'},
+  { id: 'personalinfo', name: 'Mis Datos', route:'/main/data/student', icon:'article'},
+  { id: 'personaltutorinfo', name: 'Mis Datos', route:'/main/data/tutor', icon:'article'},
   {id: 'config', name: 'Config', route: '/main/config', icon: 'tune' },
   { id: 'logout', name: 'LOGOUT', route: '/login', icon: 'power_settings_new', confirm: 'yes' }
 ];
