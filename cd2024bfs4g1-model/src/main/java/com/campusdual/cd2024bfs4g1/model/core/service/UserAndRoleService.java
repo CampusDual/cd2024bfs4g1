@@ -391,6 +391,7 @@ public class UserAndRoleService implements IUserAndRoleService {
 		return eR;
 	}
 
+
 	@Override
 	public EntityResult getClientPermissions() {
 		final Collection<GrantedAuthority> authorities = ((UserInformation) SecurityContextHolder.getContext().getAuthentication()
