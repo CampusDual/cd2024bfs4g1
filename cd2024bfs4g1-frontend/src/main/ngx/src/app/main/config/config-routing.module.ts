@@ -12,6 +12,7 @@ import { StudentBootcampStatusComponent } from './student-bootcamp-status/studen
 import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new/student-bootcamp-status-new.component';
 import { AttendanceStatusDetailsComponent } from './attendance-status-details/attendance-status-details.component';
 import { AttendanceStatusNewComponent } from './attendance-status-new/attendance-status-new.component';
+
 const routes: Routes = [
   {path:'', pathMatch:'full', component: ConfigTablesComponent},
   {path: 'employmentstatus/new',component: EmploymentStatusNewComponent},
