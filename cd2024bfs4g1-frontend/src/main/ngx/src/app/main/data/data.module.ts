@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { DataRoutingModule } from './data-routing.module';
 import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { PersonalTutorInfoComponent } from './personal-tutor-info/personal-tutor-info.component';
 
 
 
 
 @NgModule({
   declarations: [
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    PersonalTutorInfoComponent
 
   ],
   imports: [

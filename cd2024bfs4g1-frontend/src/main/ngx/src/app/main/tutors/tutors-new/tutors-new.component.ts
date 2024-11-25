@@ -10,8 +10,12 @@ import { OValidators } from 'ontimize-web-ngx';
 export class TutorsNewComponent {
   
   validatorsWithoutSpace: ValidatorFn[] = [];
+  validatorsNewPasswordArray: ValidatorFn[] = [];
 
   constructor() { 
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
   toUpperCamelCase(event: any) {
