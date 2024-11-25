@@ -168,7 +168,7 @@ public class TutorService implements ITutorService {
 
         EntityResult roleResult = this.daoHelper.query(this.roleDao, roleFilter, roleColumns);
         if(roleResult.isWrong() || roleResult.calculateRecordNumber() == 0){
-            return createErrorResult("STUDENT_ROLE_NOT_FOUND");
+            return createErrorResult("TUTOR_ROLE_NOT_FOUND");
         }
 
         Integer roleId = (Integer) roleResult.getRecordValues(0).get(RoleDao.ROL_ID);
