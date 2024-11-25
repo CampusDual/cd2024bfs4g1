@@ -49,6 +49,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'attendance':{
     'path': '/attendance'
-  }
+  },
 
+  'studentbootcampstatus':{
+    'path': '/studentbootcampstatus'
+  }
 };

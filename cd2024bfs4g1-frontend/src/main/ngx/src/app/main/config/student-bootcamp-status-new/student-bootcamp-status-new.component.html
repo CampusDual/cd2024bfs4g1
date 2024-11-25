@@ -1,0 +1,13 @@
+<o-form #student_bootcamp_status_new attr="studentbootcamptstatusTable"  service="studentbootcampstatus" entity="studentBootcampStatus" keys="id" show-header="no"
+header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)" confirm-exit="no">
+    <div class="grid-container">
+        <div>
+            <label for="LSTUDENTBOOTCAMPSTATUS">{{'LSTUDENTBOOTCAMPSTATUS' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="student_bootcamp_status" required="yes" max-length="100"></o-text-input>
+            <o-slide-toggle attr="computable" label="{{'LSLIDETOGGLE_COMPUTABLE' | oTranslate}}" read-only="no" tooltip="Si el estado se marca como computable, dicho estado se considera que indica que un estudiante todavía está en activo o ha finalizado correctamente el bootcamp. Si no es computable, implica que ha abandonado, ha sido expulsado u otra situación similar."></o-slide-toggle>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="student_bootcamp_status_new.insert()"></o-button>
+        </div>
+    </div>
+</o-form>

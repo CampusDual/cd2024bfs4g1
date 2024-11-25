@@ -1,0 +1,14 @@
+<o-form #student_bootcamp_status confirm-exit="no" attr="studentbootcamptstatusTable" service="studentbootcampstatus" entity="studentBootcampStatus" keys="id" show-header="no"
+    header-actions="I;U;D" show-header-navigation="no">
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden ></o-text-input>
+
+    <div class="grid-container">
+        <div>
+            <label for="LSTUDENTBOOTCAMPSTATUS">{{'LSTUDENTBOOTCAMPSTATUS' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="student_bootcamp_status" required="yes"></o-text-input>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button translate="yes" attr="updatebutton" id="update" type="RAISED" label="update" color="primary" (click)="student_bootcamp_status.update();student_bootcamp_status.closeDetail()"></o-button>
+        </div>
+    </div>
+</o-form>

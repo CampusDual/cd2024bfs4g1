@@ -1,6 +1,7 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentStatusService;
+import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentStatusDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +25,9 @@ public class StudentStatusService implements IStudentStatusService {
 
     @Autowired
     private StudentStatusDao studentStatusDao;
+
+    @Autowired
+    private StudentBootcampDao studentBootcampDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -65,16 +71,15 @@ public class StudentStatusService implements IStudentStatusService {
 
     @Override
     public EntityResult studentStatusDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-      try {
-           return this.daoHelper.delete(this.studentStatusDao, keyMap);
-       } catch (DataIntegrityViolationException e) {
-          EntityResult error = new EntityResultMapImpl();
-          error.setMessage("NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE");
-           error.setCode(EntityResult.OPERATION_WRONG);
-            return error;
-        }
+        try {
 
+                return this.daoHelper.delete(this.studentStatusDao, keyMap);
+
+        } catch (Exception e) {
+            throw new OntimizeJEERuntimeException("Unexpected error while deleting student status", e);
+        }
     }
+
     @Override
     public AdvancedEntityResult studentStatusPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.studentStatusDao, keyMap, attrList, recordNumber, startIndex, orderBy);
