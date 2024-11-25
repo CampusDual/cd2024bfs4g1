@@ -268,9 +268,16 @@
   "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"El rango de fechas no pertenece a la designada al bootcamp",
   "DNI_WARNING":"El DNI ya existe",
   "LTUTORTYPE": "Tipo de tutor",
-  "REQ_LTUTORTYPE":"Tipo de tutor*",
   "LCodigo": "Codigo",
   "LOP":"OP",
   "Codigo":"Codigo",
-  "OP":"OP"
+  "OP":"OP",
+  "REQ_LTUTORTYPE":"Tipo de tutor*",
+  "Personal data" : "Datos personales",
+  "Contact" : "Contacto",
+  "Main data" : "Datos principales",
+  "Employment status": "Estado laboral",
+  "FCT Information" : "Información FCT",
+  "Notes" : "Notas",
+  "OtherInformation": "Informacion adicional"
 }
