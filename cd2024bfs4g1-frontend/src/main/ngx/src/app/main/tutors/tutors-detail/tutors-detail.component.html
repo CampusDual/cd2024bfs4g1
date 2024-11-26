@@ -1,61 +1,78 @@
-<o-form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="I;U;D" show-header-navigation="no" >
-    <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no"/>
-<div class="grid-container" >
-  <div class="foto">
-    <o-image #tutorsPhoto attr="tutors_photo" empty-image="assets/images/no-image.png" 
-             sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)" 
-             max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-             label="PROFILE.EDIT_PHOTO" ></o-image>
-  </div>
-  
-      <div class="nombre">
-        <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
-        <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace"></o-text-input>
-      </div>
-      <div class="apellido">
-        <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-        <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace"></o-text-input>
-      </div>
-      <div class="apellido2">
-        <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-        <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)" ></o-text-input>
-      </div>
-      <div class="email">
-        <label for="LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
-        <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
-      </div>
-      <div class="usuario">
-        <label for="usuario">{{'REQ_USER' | oTranslate}}</label>
-        <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"></o-text-input>
-      </div>
-      <div class="contraseña">
-        <label for="contraseña">{{'REQ_PASSWORD' | oTranslate}}</label>
-        <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8" [validators]="validatorsNewPasswordArray">
-          <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
-          <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
-          <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
-        </o-password-input>
-      </div>
-    <div class="table_container">
-
-      <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
-        title="Bootcamp">
-        <o-form-layout-dialog-options class="popup">
-          <div>
-            <h3>{{ 'Bootcamps asigned' | oTranslate }}</h3>
-            <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
-              entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id" columns="id;bootcampname"
-              visible-columns="bootcampname" detail-mode="false" delete-button="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
-              refresh-button="false" pageable="true">
-              <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-              <o-table-context-menu view-detail="false" edit="false" delete="false"
-                insert="false"></o-table-context-menu>
-              <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-            </o-table>
+<o-form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="I;U;D"
+  show-header-navigation="no">
+  <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no" />
+  <div class="grid-container">
+    <div class="login">
+      <fieldset title="Datos personales" class="datos">
+        <legend>{{"Personal data"|oTranslate}}</legend>
+        <div class="datosPrincipales1">
+          <div class="foto">
+            <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER" class="avatar"
+              (onChange)="onImageChange($event)" max-file-size="409600"
+              accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
           </div>
-        </o-form-layout-dialog-options>
-      </o-form-layout-manager>
-
+          <div class="email">
+            <label for="LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
+            <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
+          </div>
+        </div>
+        <div class="datosPrincipales2">
+          <div class="nombre">
+            <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
+            <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"
+              [validators]="validatorsWithoutSpace"></o-text-input>
+          </div>
+          <div class="apellido">
+            <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
+            <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"
+              [validators]="validatorsWithoutSpace"></o-text-input>
+          </div>
+          <div class="apellido2">
+            <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+            <o-text-input attr="surname2" required="no" max-length="255"
+              (input)="toUpperCamelCase($event)"></o-text-input>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset title="Login" class="datos">
+        <legend>Login</legend>
+        <div>
+          <label for="usuario">{{'REQ_USER' | oTranslate}}</label>
+          <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name"
+            max-length="255"></o-text-input>
+        </div>
+        <div>
+          <label for="contraseña">{{'REQ_PASSWORD' | oTranslate}}</label>
+          <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8"
+            [validators]="validatorsNewPasswordArray">
+            <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+            <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+            <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+          </o-password-input>
+        </div>
+      </fieldset>
     </div>
+    <fieldset title="Bootcamps asigned" class="tabla">
+      <legend>{{ 'Bootcamps asigned' | oTranslate }}</legend>
+      <div class="table_container">
+        <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+          title="Bootcamp">
+          <o-form-layout-dialog-options class="popup">
+            <div>
+              <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
+                entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id" columns="id;bootcampname"
+                visible-columns="bootcampname" detail-mode="false" delete-button="false"
+                show-report-on-demand-option="false" show-charts-on-demand-option="false" refresh-button="false"
+                pageable="true">
+                <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+                <o-table-context-menu view-detail="false" edit="false" delete="false"
+                  insert="false"></o-table-context-menu>
+                <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+              </o-table>
+            </div>
+          </o-form-layout-dialog-options>
+        </o-form-layout-manager>
+      </div>
+    </fieldset>
   </div>
 </o-form>
