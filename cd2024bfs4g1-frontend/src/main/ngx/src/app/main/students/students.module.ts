@@ -11,13 +11,18 @@ import{MatIconModule} from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { EmploymentHistoryNewComponent } from './students-detail/employment-history-new/employment-history-new.component';
+import { EmploymentHistoryDetailsComponent } from './students-detail/employment-history-details/employment-history-details.component';
+
 
 @NgModule({
   declarations: [
     StudentsDetailComponent,
     StudentsNewComponent,
     StudentsTableComponent,
-    BootcampStudentAddComponent
+    BootcampStudentAddComponent,
+    EmploymentHistoryNewComponent,
+    EmploymentHistoryDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     StudentsRoutingModule
   ]
 })
-export class StudentsModule { 
+export class StudentsModule {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     // Registrar el ícono SVG 'thumb-up'
     this.matIconRegistry.addSvgIcon(

@@ -23,9 +23,12 @@ margin: 5px auto;
 background-color: #f5f0f2;
 border-radius: 15px;
 padding: 30px;
-display: grid;
-grid-template-columns: 1fr 1fr;
 gap: 15px;
+}
+
+p {
+  color: black;
+  margin-top: 0;
 }
 
 
@@ -144,6 +147,13 @@ padding-left: 20px;
 padding-bottom: 20px;
 padding-right: 20px;
 }
+.container_employment {
+  background-color: #f5f0f2;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 20px;
+  display: flex;
+  }
 .estudiantesDocumentos{
 grid-column: 2/3;
 border-radius: 10px;
@@ -232,4 +242,24 @@ grid-column: 1 / 3;
   justify-self: center;  /* Centra horizontalmente */
   align-self: center;  /* Centra verticalmente */
   margin-bottom: 40px;
+}
+.primera{
+  grid-column: 1/2;
+  margin: 0%;
+  height: 100%;
+}
+.aviso label{
+ color:rgb(244, 67, 54);
+ display: flex;
+ font-size: 11px;
+ height: 20PX;
+ letter-spacing: normal;
+ font-weight: 400;
+ line-height: 15px;
+ text-align: left;
+ text-size-adjust: 100%;
+ width: 542.453px
+}
+.aviso label mat-icon{
+ padding-bottom: 10px;
 }

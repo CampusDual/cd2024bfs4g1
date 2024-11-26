@@ -22,7 +22,7 @@ export class PersonalInfoComponent {
     this.configureService();
   }
 
-  protected configureService(){
+  protected configureService() {
     const conf = this.service.getDefaultServiceConfiguration('students');
     this.service.configureService(conf);
   }
@@ -42,7 +42,7 @@ export class PersonalInfoComponent {
 
       const columns = ['id','name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status_id',
         'birth_date', 'location', 'campus_email', 'personal_email', 'fct_school', 'tutor',
-        'fct_start', 'fct_end', 'udemy', 'github_user','user_id','usr_photo'
+        'fct_start', 'fct_end', 'udemy', 'github_user','user_id','usr_photo','employment_status'
       ];
 
       this.service.query(filter, columns, 'student').subscribe(resp => {
@@ -59,17 +59,17 @@ export class PersonalInfoComponent {
     if (!event || !this.UsrPhoto.currentFileName) {
       return;
     }
-  
+
     if (this.isUpdatingImage) {
       return;
     }
-  
+
     const base64String = event;
     const currentFileName = this.UsrPhoto.currentFileName || '';
-  
+
     const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
-  
+
     // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
       this.showAlert(); // Muestra la alerta de error
@@ -78,39 +78,39 @@ export class PersonalInfoComponent {
       this.isUpdatingImage = false;
       return;
     }
-  
+
     if (base64String) {
       const img = new Image();
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       img.src = `data:image/jpg;base64, ${base64String}`;
-  
+
       img.onload = () => {
         if (ctx) {
           const newWidth = 200;
           const newHeight = 200;
-  
+
           canvas.width = newWidth;
           canvas.height = newHeight;
-  
+
           ctx.drawImage(img, 0, 0, newWidth, newHeight);
           const modifiedImageBase64 = canvas.toDataURL('image/jpg');
-  
+
           this.isUpdatingImage = true;
           this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
           this.isUpdatingImage = false;
-  
+
           ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
         }
       };
-  
+
       img.onerror = () => {
         console.error('Error al cargar la imagen.');
       };
     }
   }
-  
-  
+
+
   showAlert() {
     if (this.dialogService) {
       this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');

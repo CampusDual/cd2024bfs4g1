@@ -1,4 +1,4 @@
-<o-form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D"
+<o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D"
   show-header-navigation="no">
   <div o-form-toolbar-buttons>
     <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
@@ -34,9 +34,13 @@
             </div>
           </div>
           <div class="datosPrincipales2">
-            <div>
+            <div class="dni">
               <label for="LDNI">{{'REQ_LDNI' | oTranslate}}</label>
-              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes"></o-nif-input>
+              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="yes" (onBlur)="mostrar($event)"></o-nif-input>
+              <div class="aviso" *ngIf="showNotice">
+                  <link rel="stylesheet"/>
+                  <label for="dni" >{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
+              </div>
             </div>
             <div>
               <label for="REQ_LBIRTHDATE">{{'REQ_LBIRTHDATE' | oTranslate}}</label>
@@ -89,6 +93,10 @@
                 <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
                 <o-email-input attr="personal_email" required="yes"></o-email-input>
               </div>
+              <div>
+                <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+                <o-email-input attr="campus_email" required="no"></o-email-input>
+              </div>
             </fieldset>
           </div>
         </div>
@@ -96,18 +104,36 @@
     </mat-tab>
     <mat-tab label="{{'Employment status'|oTranslate}}">
       <div class="grid-Employment">
-        <fieldset title="Datos personales" class="datosPersonales">
-          <legend>{{"Personal data"|oTranslate}}</legend>
-          <div>
-            <label for="employment_status">{{'REQ_LEMSTATUS' | oTranslate}}</label>
-            <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="yes" translate="yes"
-              null-selection="false" [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
-              columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
-            </o-combo>
+        <fieldset title="Historial laboral">
+          <legend>{{"Historial_Laboral"|oTranslate}}</legend>
+
+          <div class="container_employment">
+            <o-text-input attr="employment_status" label="{{'LEMSTATUS_ACTUAL' | oTranslate}}" translate="yes"
+            read-only="yes" service="employmentstatus" entity="employmentStatus" hidden></o-text-input>
+            <label for="employment_status">{{'LEMSTATUS_ACTUAL' | oTranslate}}: &nbsp;</label>
+            <p>{{form.getDataValue('employment_status').value}}</p>
           </div>
-          <div>
-            <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-            <o-email-input attr="campus_email" required="no"></o-email-input>
+
+          <div class="container_students">
+            <h3>{{ 'Historial_Laboral' | oTranslate }}</h3>
+            <o-form-layout-manager class="selectedrow" attr="employmentstatushistory" mode="dialog">
+              <o-form-layout-dialog-options class="popup"></o-form-layout-dialog-options>
+              <o-table class="general_table_primera" insert-form-route="new_employment_history"
+                attr="employmentstatushistory" service="employmentstatushistory" entity="employmentStatusHistory"
+                keys="id" parent-keys="student_id:id"
+                columns="id;student_id;situation;employment_status_id;status_date_change;description"
+                visible-columns="situation;status_date_change;description" show-report-on-demand-option="false"
+                show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
+                sort-columns="status_date_change:DESC" sort-columns="status_date_change:DESC" selection-mode="none"
+                pagination-controls="false">
+                <o-table-column attr="situation" title="situation" type="string" content-align="center"
+                  title-align="center">
+                </o-table-column>
+                <o-table-column attr="status_date_change" title="date" type="date" format="DD/MM/YYYY"
+                  content-align="center" title-align="center">
+                </o-table-column>
+              </o-table>
+            </o-form-layout-manager>
           </div>
         </fieldset>
       </div>
@@ -227,5 +253,3 @@
     </mat-tab>
   </mat-tab-group>
 </o-form>
-
-

@@ -38,10 +38,13 @@ export class StudentsDetailComponent {
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
-    this.configureService();
   }
 
-  protected configureService() {
+  protected configureServiceDocuments() {
+    const conf = this.service.getDefaultServiceConfiguration('documents');
+    this.service.configureService(conf);
+  }
+protected configureServiceStudent() {
     const conf = this.service.getDefaultServiceConfiguration('students');
     this.service.configureService(conf);
   }
@@ -122,6 +125,8 @@ export class StudentsDetailComponent {
   }
   // Método para manejar el evento de clic en la acción
   actionClick(event) {
+
+    this.configureServiceDocuments();
     // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
     this.service.query({ id: event.id }, ['name', 'base64'], 'myPersonalFilesContent').subscribe(res => {
       if (res.data && res.data.length) {
@@ -150,6 +155,8 @@ export class StudentsDetailComponent {
   }
 
   getDNI(dni:string) {
+
+    this.configureServiceStudent();
     const filter = {
       'dni': dni
     };

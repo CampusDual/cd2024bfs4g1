@@ -140,7 +140,7 @@
   "FILTERS": "FILTRADO",
   "surname1": "Primer apellido",
   "surname2": "Segundo apellido",
-  "tutor": "Tutor de FCT",
+  "tutor": "Tutor",
   "udemy": "Udemy",
   "employment_status": "Situación laboral",
   "student_status": "Estado del estudiante",
@@ -279,5 +279,8 @@
   "Employment status": "Estado laboral",
   "FCT Information" : "Información FCT",
   "Notes" : "Notas",
-  "OtherInformation": "Informacion adicional"
+  "OtherInformation": "Informacion adicional",
+  "LEMSTATUS_ACTUAL": "Estado laboral actual",
+  "Historial_Laboral": "Historial laboral",
+  "REQ_DATE":"Fecha del cambio de la situación laboral*"
 }
