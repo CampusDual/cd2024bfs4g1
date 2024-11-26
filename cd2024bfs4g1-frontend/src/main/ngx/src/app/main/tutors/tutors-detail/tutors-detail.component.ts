@@ -11,8 +11,8 @@ export class TutorsDetailComponent{
 
   validatorsWithoutSpace: ValidatorFn[] = [];
   isUpdatingImage: boolean = false;
-
-  @ViewChild("tutorsPhoto") tutorsPhoto: OImageComponent;
+  isUpdateOtherFile: boolean = false;
+  @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
   validatorsNewPasswordArray: ValidatorFn[] = [];
 
     constructor(protected dialogService: DialogService) {
@@ -29,61 +29,62 @@ export class TutorsDetailComponent{
       .join(' ');
   }
   onImageChange(event: any) {
-
-    if (!event || !this.tutorsPhoto.currentFileName) {
+    // Si no hay evento o el archivo no está definido, simplemente retorna
+    if (!event || !this.UsrPhoto.currentFileName) {
       return;
     }
-
+  
     if (this.isUpdatingImage) {
       return;
     }
-
+  
     const base64String = event;
-    const currentFileName = this.tutorsPhoto.currentFileName || '';
-
+    const currentFileName = this.UsrPhoto.currentFileName || '';
+  
     const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
-
-
+  
+    // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.showAlert();
+      this.showAlert(); // Muestra la alerta de error
       this.isUpdatingImage = true;
-      this.tutorsPhoto.setValue('');
+      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
       this.isUpdatingImage = false;
       return;
     }
-
+  
     if (base64String) {
       const img = new Image();
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       img.src = `data:image/jpg;base64, ${base64String}`;
-
+  
       img.onload = () => {
         if (ctx) {
           const newWidth = 200;
           const newHeight = 200;
-
+  
           canvas.width = newWidth;
           canvas.height = newHeight;
-
+  
           ctx.drawImage(img, 0, 0, newWidth, newHeight);
           const modifiedImageBase64 = canvas.toDataURL('image/jpg');
-
+  
           this.isUpdatingImage = true;
-          this.tutorsPhoto.setValue(modifiedImageBase64);
+          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
           this.isUpdatingImage = false;
-
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
         }
       };
-
+  
       img.onerror = () => {
         console.error('Error al cargar la imagen.');
       };
     }
   }
-
+  
+  
   showAlert() {
     if (this.dialogService) {
       this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
