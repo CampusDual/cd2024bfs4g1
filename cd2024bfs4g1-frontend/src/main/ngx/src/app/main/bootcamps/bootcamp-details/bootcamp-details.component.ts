@@ -127,7 +127,6 @@ export class BootcampDetailsComponent {
   protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
     this.service.configureService(conf);
-
   }
 
   protected configureDocuments() {
