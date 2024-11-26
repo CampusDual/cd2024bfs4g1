@@ -136,6 +136,15 @@ h3{
   gap: 15px;
 }
 
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a3459;
+  height: 100%;
+  overflow: hidden;
+}
+
+
 .calendar-container {
   align-items: flex-start;
   margin-top: 10px;
