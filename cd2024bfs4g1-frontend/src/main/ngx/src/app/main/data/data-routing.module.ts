@@ -9,7 +9,8 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:PersonalInfoComponent},
   {path: 'student',component: PersonalInfoComponent},
   {path: 'tutor',component: PersonalTutorInfoComponent},
-  {path: 'tutor/:bootcamp_id',component: BootcampStudentsTableComponent},
+  {path: 'tutor/:id',component: BootcampStudentsTableComponent},
+  
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

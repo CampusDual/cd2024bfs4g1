@@ -21,8 +21,8 @@ export class PersonalTutorInfoComponent {
   }
   goToDetail(event: any) {
     const bootcampId = event.bootcamp_id;
-    console.log('/main/data/tutor'+bootcampId)
-    this.router.navigate(['/main/data/tutor', bootcampId])
+    this.router.navigate(['/main/data/tutor', bootcampId]);
+    
   }
 
   protected configureService(){
