@@ -1,53 +1,57 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}">
-    <div class="main-container">
-        <o-form #form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="U;R"
-            columns="id;name">
-            <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
-            <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
-            <div class="grid-container">
-                <div class="nombre">
-                    <label for="name">{{'DNAME'|oTranslate}}</label>
-                    <o-text-input attr="name" max-length="255"></o-text-input>
-                </div>
-                <div class="apellido">
-                    <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
-                    <o-text-input attr="surname1" max-length="255"></o-text-input>
-                </div>
-                <div class="apellido2">
-                    <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-                    <o-text-input attr="surname2" max-length="255"></o-text-input>
-                </div>
-                <div class="email">
-                    <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
-                    <o-email-input attr="email"></o-email-input>
-                </div>
-                <div class="table_container">
-
-                    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" dialog-min-width="450px"
-                        dialog-min-height="200px" title="Bootcamp">
-                        <o-form-layout-dialog-options class="popup">
-                            <div>
-                                <h3>{{ 'Bootcamps asigned' | oTranslate }}</h3>
-                                <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
-                                    entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id"
-                                    columns="id;bootcamp_id;bootcampname" visible-columns="bootcampname"
-                                    detail-mode="false" delete-button="false" show-report-on-demand-option="false"
-                                    insert-button="false" show-charts-on-demand-option="false" refresh-button="false">
-                                    <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-                                    <o-table-context-menu view-detail="false" edit="false" delete="false"
-                                        insert="false"></o-table-context-menu>
-                                    <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-                                    <o-table-column attr="action" width="64px" tooltip="yes"
-                                        tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-                                        <o-table-cell-renderer-action (onClick)="goToDetail($event)"
-                                            icon="person_search"></o-table-cell-renderer-action>
-                                    </o-table-column>
-                                </o-table>
-                            </div>
-                        </o-form-layout-dialog-options>
-                    </o-form-layout-manager>
-                </div>
+    <o-form #form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="U;R" columns="id;name">
+        <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
+        <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
+        <div class="grid-container">
+            <div class="login">
+                <fieldset title="Datos personales" class="datos">
+                    <legend>{{"Personal data"|oTranslate}}</legend>
+                    <div class="foto">
+                        <o-image #tutorsPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
+                            class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                            accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
+                            label="PROFILE.EDIT_PHOTO"></o-image>
+                    </div>
+                    <div class="personal-data-fields datosPersonales">
+                        <div class="nombre" class="padding">
+                            <label for="name">{{'DNAME'|oTranslate}}</label>
+                            <p class="pmydata">{{form.getDataValue('name').value}}</p>
+                        </div>
+                        <div class="apellido" class="padding">
+                            <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
+                            <p class="pmydata">{{form.getDataValue('surname1').value}}</p>
+                        </div>
+                        <div class="apellido2" class="padding">
+                            <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+                            <p class="pmydata">{{form.getDataValue('surname2').value}}</p>
+                        </div>
+                        <div class="email" class="padding">
+                            <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
+                            <p class="pmydata">{{form.getDataValue('email').value}}</p>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
-        </o-form>
-    </div>
+            <fieldset title="Bootcamps asigned" class="tabla">
+                <legend>{{ 'Bootcamps asigned' | oTranslate }}</legend>
+                <div class="table_container">
+                    <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
+                        entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id"
+                        columns="id;bootcamp_id;bootcampname" visible-columns="bootcampname" detail-mode="false"
+                        delete-button="false" show-report-on-demand-option="false" insert-button="false"
+                        show-charts-on-demand-option="false" refresh-button="false">
+                        <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+                        <o-table-context-menu view-detail="false" edit="false" delete="false"
+                            insert="false"></o-table-context-menu>
+                        <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                        <o-table-column attr="action" width="64px" tooltip="yes"
+                            tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
+                            <o-table-cell-renderer-action (onClick)="goToDetail($event)"
+                                icon="person_search"></o-table-cell-renderer-action>
+                        </o-table-column>
+                    </o-table>
+                </div>
+            </fieldset>
+        </div>
+    </o-form>
 </o-form-layout-manager>
