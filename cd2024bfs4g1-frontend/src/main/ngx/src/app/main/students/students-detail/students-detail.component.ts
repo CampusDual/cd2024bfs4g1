@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { OFileInputComponent, OFormComponent, OntimizeService, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OntimizeService, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,6 +16,9 @@ export class StudentsDetailComponent {
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
+  @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
+  isUpdatingImage: boolean = false;
+  isUpdateOtherFile: boolean = false;
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   validatorsNewPasswordArray: ValidatorFn[] = [];
@@ -28,7 +31,7 @@ export class StudentsDetailComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location: Location, public injector: Injector) {
+  constructor(private router: Router, public location: Location, public injector: Injector,protected dialogService: DialogService) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
@@ -172,5 +175,67 @@ export class StudentsDetailComponent {
         this.showNotice=false;
       }
     });
+}
+onImageChange(event: any) {
+  // Si no hay evento o el archivo no está definido, simplemente retorna
+  if (!event || !this.UsrPhoto.currentFileName) {
+    return;
+  }
+
+  if (this.isUpdatingImage) {
+    return;
+  }
+
+  const base64String = event;
+  const currentFileName = this.UsrPhoto.currentFileName || '';
+
+  const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+  const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
+
+  // Validar si el nombre del archivo o la extensión son inválidos
+  if (!fileExtension || !validExtensions.includes(fileExtension)) {
+    this.showAlert(); // Muestra la alerta de error
+    this.isUpdatingImage = true;
+    this.UsrPhoto.setValue(''); // Limpia el valor del archivo
+    this.isUpdatingImage = false;
+    return;
+  }
+
+  if (base64String) {
+    const img = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    img.src = `data:image/jpg;base64, ${base64String}`;
+
+    img.onload = () => {
+      if (ctx) {
+        const newWidth = 200;
+        const newHeight = 200;
+
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+        const modifiedImageBase64 = canvas.toDataURL('image/jpg');
+
+        this.isUpdatingImage = true;
+        this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
+        this.isUpdatingImage = false;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
+      }
+    };
+
+    img.onerror = () => {
+      console.error('Error al cargar la imagen.');
+    };
+  }
+}
+
+
+showAlert() {
+  if (this.dialogService) {
+    this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
+  }
 }
 }

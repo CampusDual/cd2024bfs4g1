@@ -87,11 +87,8 @@
               <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
                 service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
                 parent-keys="bootcamp_id:id;start_date;end_date"
-                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action"
-                visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action"
-                query-rows="10" show-report-on-demand-option="false"
-                detail-mode="click" query-on-init="true" pageable="true"
-                >
+                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;usr_photo"
+                visible-columns="usr_photo;name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action" query-rows="10" show-report-on-demand-option="false" query-on-init="true" pageable="true" detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
                   format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -102,6 +99,9 @@
                   <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
                     icon="person_search"></o-table-cell-renderer-action>
                 </o-table-column>
+                <o-table-column attr="usr_photo" width="64px">
+                  <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
+                </o-table-column>
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 </o-table-context-menu>
               </o-table>
@@ -110,27 +110,31 @@
         </div>
 
 
-        <div class="list_container">
-          <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
-            <o-form-layout-dialog-options class="popup">
-              <h3> {{'Mentors' | oTranslate}}</h3>
-              <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id"
-                parent-keys="bootcamp_id:id" columns="id;name;surname1;surname2;email;tutor_name_type" quick-filter="false"
-                refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor"
-                detail-mode="false" selectable="false" detail-button-in-row="false" edit-button-in-row="false"
-                pagination-controls="false" page-size-options="5;10" insert-button-position="bottom"
-                show-buttons-text="false" controls="false">
-                <o-list-item *ngFor="let tutor of list.dataArray">
-                  <o-list-item-text title="{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}"
-                    primary-text="{{ tutor.email }}"
-                    secondary-text="{{ tutor.tutor_name_type }}">
-                  </o-list-item-text>
-                </o-list-item>
-              </o-list>
-            </o-form-layout-dialog-options>
-          </o-form-layout-manager>
+    <div class="list_container" >
+    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
+      <o-form-layout-dialog-options class="popup">
+      <h3> {{'Mentors' | oTranslate}}</h3>
+      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type;tutors_photo"
+      quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
+      selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
+      insert-button-position="bottom" show-buttons-text="false" controls="false">
+      <mat-card (click)="goToTutorDetail(tutor)" *ngFor="let tutor of list.dataArray">
+        <mat-card-header class="tutores">
+        <div mat-card-avatar >
+        <img src="data:image/png;base64, {{tutor.tutors_photo}}" *ngIf="tutor.tutors_photo"/>
+        <img src="./assets/images/no-image.png" *ngIf="!tutor.tutors_photo" />
         </div>
-      </div>
+        <mat-card-title >{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}</mat-card-title >
+        <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
+        <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
+        </mat-card-header>
+        </mat-card>
+
+      </o-list>
+    </o-form-layout-dialog-options>
+    </o-form-layout-manager>
+    </div>
+  </div>
     </mat-tab>
     <mat-tab label="{{ 'Schedule' | oTranslate }}">
       <div class="table_containerhorarios">

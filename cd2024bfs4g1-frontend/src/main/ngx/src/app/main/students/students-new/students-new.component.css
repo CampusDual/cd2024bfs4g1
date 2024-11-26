@@ -163,3 +163,10 @@ o-form {
   padding: 0;
 }
 
+.foto {
+  grid-column: 2 / 3;  /* Define la columna */
+  grid-row: 0;  /* Asegúrate de que esté en la fila 1 */
+  justify-self: center;  /* Centra horizontalmente */
+  align-self: center;  /* Centra verticalmente */
+  margin-bottom: 40px;
+}

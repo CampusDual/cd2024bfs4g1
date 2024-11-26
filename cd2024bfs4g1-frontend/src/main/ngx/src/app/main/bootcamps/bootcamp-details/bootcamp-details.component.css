@@ -82,7 +82,7 @@ h3{
   grid-column: 1/2;
   margin: 0;
   background-color: #f5f0f2;
-  
+
 }
 
 .input-button-container{
@@ -314,8 +314,19 @@ mat-calendar .mat-calendar-arrow {
   font-family: 'Roboto', sans-serif;
   height: auto;
 }
+o-list img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 
 
+}
+.tutores{
+  background-color: #f5f0f2;
+  box-shadow: none;
+  padding-top: 20px;
+}
 
 
 div.notification label  {
@@ -338,4 +349,27 @@ div.notification label  {
   width: 100%;
   height: 100%;
 }
+.table_containerfichero {
+  width: 90%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.timetable_table{
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+}
+o-list img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 
+
+
+}
+.tutores{
+  background-color: #f5f0f2;
+  box-shadow: none;
+  padding-top: 20px;
+}

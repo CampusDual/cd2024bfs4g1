@@ -11,6 +11,12 @@
         <fieldset title="Datos personales" class="datos">
           <legend>{{"Personal data"|oTranslate}}</legend>
           <div class="datosPrincipales1">
+            <div class="foto">
+              <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
+                       sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
+                       max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
+                       label="PROFILE.EDIT_PHOTO" ></o-image>
+            </div>
             <div>
               <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
               <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"

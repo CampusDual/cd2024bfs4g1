@@ -38,6 +38,7 @@
       student_bootcamp sb on s.id = sb.student_id
      inner join
       bootcamps b on sb.bootcamp_id = b.id
+      left join ${mainschema}.usr_user uu ON s.user_id = uu.usr_id
         inner join
      bootcamp_status bs on b.id = bs.id
      #WHERE#
