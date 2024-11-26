@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PersonalInfoComponent } from './personal-info/personal-info.component'
 import { PersonalTutorInfoComponent } from './personal-tutor-info/personal-tutor-info.component';
+import { BootcampStudentsTableComponent } from './personal-tutor-info/bootcamp-students-table/bootcamp-students-table.component';
 
 const routes: Routes = [
 
   {path:"",pathMatch:"full",component:PersonalInfoComponent},
   {path: 'student',component: PersonalInfoComponent},
   {path: 'tutor',component: PersonalTutorInfoComponent},
+  {path: 'tutor/:bootcamp_id',component: BootcampStudentsTableComponent},
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

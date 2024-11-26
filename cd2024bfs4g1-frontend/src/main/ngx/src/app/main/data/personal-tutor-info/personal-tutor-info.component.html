@@ -3,7 +3,7 @@
         <o-form #form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="U;R"
             columns="id;name">
             <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
-            <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden/>
+            <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
             <div class="grid-container">
                 <div class="nombre">
                     <label for="name">{{'DNAME'|oTranslate}}</label>
@@ -30,18 +30,22 @@
                                 <h3>{{ 'Bootcamps asigned' | oTranslate }}</h3>
                                 <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
                                     entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id"
-                                    columns="id;bootcampname" visible-columns="bootcampname" detail-mode="false"
-                                    delete-button="false" show-report-on-demand-option="false" insert-button="false"
-                                    show-charts-on-demand-option="false" refresh-button="false">
+                                    columns="id;bootcamp_id;bootcampname" visible-columns="bootcampname"
+                                    detail-mode="false" delete-button="false" show-report-on-demand-option="false"
+                                    insert-button="false" show-charts-on-demand-option="false" refresh-button="false">
                                     <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
                                     <o-table-context-menu view-detail="false" edit="false" delete="false"
                                         insert="false"></o-table-context-menu>
                                     <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                                    <o-table-column attr="action" width="64px" tooltip="yes"
+                                        tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
+                                        <o-table-cell-renderer-action (onClick)="goToDetail($event)"
+                                            icon="person_search"></o-table-cell-renderer-action>
+                                    </o-table-column>
                                 </o-table>
                             </div>
                         </o-form-layout-dialog-options>
                     </o-form-layout-manager>
-
                 </div>
             </div>
         </o-form>
