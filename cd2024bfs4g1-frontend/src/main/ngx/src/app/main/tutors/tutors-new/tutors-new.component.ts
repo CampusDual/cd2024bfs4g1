@@ -14,8 +14,12 @@ export class TutorsNewComponent {
   isUpdateOtherFile: boolean = false;
 
   @ViewChild("tutorsPhoto") tutorsPhoto: OImageComponent;
+validatorsNewPasswordArray: ValidatorFn[] = [];
 
   constructor(protected dialogService: DialogService) {
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
+    this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
 
@@ -32,22 +36,22 @@ export class TutorsNewComponent {
     if (this.isUpdatingImage) {
       return;
     }
-    
-    const base64String = event;
-    const currentFileName = this.tutorsPhoto.currentFileName; 
 
-  
-  const validExtensions = ['jpg', 'jpeg', 'png', 'gif']; 
+    const base64String = event;
+    const currentFileName = this.tutorsPhoto.currentFileName;
+
+
+  const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
   const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
 
   if (!validExtensions.includes(fileExtension)) {
-    
+
     this.showAlert();
-    
-    this.isUpdatingImage = true; 
-    this.tutorsPhoto.setValue(''); 
+
+    this.isUpdatingImage = true;
+    this.tutorsPhoto.setValue('');
     this.isUpdatingImage = false;
-    return; 
+    return;
   }
     if (base64String) {
       const img = new Image();
