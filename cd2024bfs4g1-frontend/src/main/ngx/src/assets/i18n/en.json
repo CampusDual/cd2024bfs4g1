@@ -81,6 +81,7 @@
   "start_date": "Start date",
   "end_date": "End date",
   "status": "Status",
+  "situation": "Situation",
   "phone": "Phone",
   "birth_date": "Birth date",
   "campus_email": "Campus email",
@@ -270,5 +271,14 @@
   "LCodigo": "Code",
   "LOP": "OP",
   "Codigo":"Code",
-  "OP":"OP"
+  "OP":"OP",
+  "BootcampDoc" : "Bootcamp documents",
+  "REQ_Estudiante": "Student*",
+  "Main data": "Main data",
+  "Personal data" : "Personal data",
+  "Contact" : "Contact",
+  "Employment status" : "Employment status",
+  "FCT Information" : "FCT Information",
+  "Notes" : "Notes",
+  "OtherInformation": "Other information"
 }
