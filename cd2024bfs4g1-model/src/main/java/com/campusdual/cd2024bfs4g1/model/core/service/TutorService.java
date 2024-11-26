@@ -53,46 +53,56 @@ public class TutorService implements ITutorService {
     public EntityResult tutorInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
         String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
-        //insertar datos alumno
+        String usrPhoto = (String) attrMap.remove(UserDao.PHOTO);
+
+        // Insertar datos del tutor
         EntityResult insertTutor = this.daoHelper.insert(this.tutorDao, attrMap);
-        if(insertTutor.isWrong()){
+        if (insertTutor.isWrong()) {
             return insertTutor;
-        }
-        //insertar en caso de null
-        if(usrLogin == null && usrPassword == null){
-            return insertTutor;
-        }
-        //crear mapa de atributos para insertar usuario
-        Map<String, Object> userAttrMap = new HashMap<>();
-        if(usrLogin != null){
-            userAttrMap.put(UserDao.LOGIN, usrLogin);
-        }
-        if(usrPassword != null){
-            userAttrMap.put(UserDao.PASSWORD, usrPassword);
         }
 
-        //insertamos usuario
+        // Insertar usuario si hay datos relacionados con usuario
+        if (usrLogin == null && usrPassword == null && usrPhoto == null) {
+            return insertTutor;
+        }
+
+        // Crear mapa de atributos para el usuario
+        Map<String, Object> userAttrMap = new HashMap<>();
+        if (usrLogin != null) {
+            userAttrMap.put(UserDao.LOGIN, usrLogin);
+        }
+        if (usrPassword != null) {
+            userAttrMap.put(UserDao.PASSWORD, usrPassword);
+        }
+        if (usrPhoto != null) {
+            userAttrMap.put(UserDao.PHOTO, usrPhoto);
+        }
+
+        // Insertamos usuario
         EntityResult insertUser = userAndRoleService.userInsert(userAttrMap);
-        if(insertUser.isWrong()){
+        if (insertUser.isWrong()) {
             return insertUser;
         }
 
         Integer userId = (Integer) insertUser.get(UserDao.USR_ID);
 
+        // Asignar rol de tutor al usuario
         EntityResult assignRoleResult = assignTutorRole(userId);
-        if(assignRoleResult.isWrong()){
+        if (assignRoleResult.isWrong()) {
             return assignRoleResult;
         }
 
+        // Actualizar la tabla de tutores con el ID del usuario
         Map<String, Object> attrTutorUser = new HashMap<>();
         attrTutorUser.put(TutorDao.USER_ID, userId);
         Map<String, Object> keyMap = new HashMap<>();
         keyMap.put(TutorDao.TU_ID, insertTutor.get(TutorDao.TU_ID));
 
         EntityResult updateTutorWithUser = this.daoHelper.update(this.tutorDao, attrTutorUser, keyMap);
-        if(updateTutorWithUser.isWrong()){
+        if (updateTutorWithUser.isWrong()) {
             return updateTutorWithUser;
         }
+
         return insertTutor;
     }
 
@@ -100,70 +110,94 @@ public class TutorService implements ITutorService {
     public EntityResult tutorUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
         String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
+        Object usrPhoto = attrMap.remove(UserDao.PHOTO);
+        if (usrPhoto != null && usrPhoto.equals("")) {
+            usrPhoto = null;
+        }
+
+        // Actualizar datos del tutor
         EntityResult updateTutor = this.daoHelper.update(this.tutorDao, attrMap, keyMap);
-        if(updateTutor.isWrong()){
+        if (updateTutor.isWrong()) {
             return updateTutor;
         }
-        if(usrLogin == null && usrPassword == null){
+
+        // Actualizar usuario si hay datos relacionados con el usuario
+        if (usrLogin == null && usrPassword == null && usrPhoto == null) {
             return updateTutor;
         }
-        //BUSCAMOS EL USUARIO
+
+        // Buscar el usuario asociado al tutor
         List<String> attrTutor = Arrays.asList(TutorDao.USER_ID);
         EntityResult queryTutor = this.daoHelper.query(tutorDao, keyMap, attrTutor);
-        if(queryTutor.isWrong() || queryTutor.isEmpty()){
+        if (queryTutor.isWrong() || queryTutor.isEmpty()) {
             return queryTutor;
         }
         Integer userId = (Integer) queryTutor.getRecordValues(0).get(TutorDao.USER_ID);
-        //SI LO ENCONTRAMOS LO ACTUALIZAMOS
-        if(userId != null){
+
+        // Si el usuario existe, actualizarlo
+        if (userId != null) {
             Map<String, Object> userAttrMap = new HashMap<>();
-            if(usrLogin != null){
+            if (usrLogin != null) {
                 userAttrMap.put(UserDao.LOGIN, usrLogin);
             }
-            if(usrPassword != null){
+            if (usrPassword != null) {
                 userAttrMap.put(UserDao.PASSWORD, usrPassword);
             }
+            if (usrPhoto != null) {
+                userAttrMap.put(UserDao.PHOTO, usrPhoto);
+            }
+
             Map<String, Object> userKeyMap = new HashMap<>();
             userKeyMap.put(UserDao.USR_ID, userId);
 
-            EntityResult userUpdateResult = userAndRoleService.userUpdate(userAttrMap,userKeyMap);
-            if(userUpdateResult.isWrong()){
+            EntityResult userUpdateResult = userAndRoleService.userUpdate(userAttrMap, userKeyMap);
+            if (userUpdateResult.isWrong()) {
                 return userUpdateResult;
             }
+
+            // Asignar rol de tutor al usuario
             EntityResult assignRoleResult = assignTutorRole(userId);
-            if(assignRoleResult.isWrong()){
+            if (assignRoleResult.isWrong()) {
                 return assignRoleResult;
             }
+
             return userUpdateResult;
-        }else{
+        } else {
+            // Si no existe el usuario, crearlo
             Map<String, Object> userAttrMap = new HashMap<>();
-            if(usrLogin != null){
+            if (usrLogin != null) {
                 userAttrMap.put(UserDao.LOGIN, usrLogin);
             }
-            if(usrPassword != null){
+            if (usrPassword != null) {
                 userAttrMap.put(UserDao.PASSWORD, usrPassword);
+            }
+            if (usrPhoto != null) {
+                userAttrMap.put(UserDao.PHOTO, usrPhoto);
             }
 
             EntityResult insertUser = userAndRoleService.userInsert(userAttrMap);
-
-            if(insertUser.isWrong()){
+            if (insertUser.isWrong()) {
                 return insertUser;
             }
+
             userId = (Integer) insertUser.get(UserDao.USR_ID);
 
+            // Actualizar la tabla de tutores con el ID del usuario
             Map<String, Object> attrTutorUser = new HashMap<>();
             attrTutorUser.put(TutorDao.USER_ID, userId);
 
             EntityResult updateTutorWithUser = this.daoHelper.update(this.tutorDao, attrTutorUser, keyMap);
-            if(updateTutorWithUser.isWrong()){
+            if (updateTutorWithUser.isWrong()) {
                 return updateTutorWithUser;
             }
+
+            // Asignar rol de tutor al usuario
             EntityResult assignRoleResult = assignTutorRole(userId);
-            if(assignRoleResult.isWrong()){
+            if (assignRoleResult.isWrong()) {
                 return assignRoleResult;
             }
-            return updateTutorWithUser;
 
+            return updateTutorWithUser;
         }
     }
 
