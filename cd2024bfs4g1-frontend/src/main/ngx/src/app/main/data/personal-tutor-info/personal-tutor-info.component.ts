@@ -1,4 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { OFormComponent, OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-web-ngx';
 import { MainService } from 'src/app/shared/services/main.service';
 
@@ -14,9 +15,14 @@ export class PersonalTutorInfoComponent {
   mainInfo: any = {};
   protected service: OntimizeService;
 
-  constructor(protected injector: Injector, private mainService: MainService) {
+  constructor(protected injector: Injector, private mainService: MainService,private router: Router) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
+  }
+  goToDetail(event: any) {
+    const bootcampId = event.bootcamp_id;
+    console.log('/main/data/tutor'+bootcampId)
+    this.router.navigate(['/main/data/tutor', bootcampId])
   }
 
   protected configureService(){
