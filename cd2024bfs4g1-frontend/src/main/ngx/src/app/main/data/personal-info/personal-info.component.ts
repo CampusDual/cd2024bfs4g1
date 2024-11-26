@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MainService } from 'src/app/shared/services/main.service';
-import { OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-personal-info',
@@ -8,54 +8,18 @@ import { OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-
   styleUrls: ['./personal-info.component.css']
 })
 export class PersonalInfoComponent {
-  student: any = {};
-  userId: number;
 
-  @ViewChild("userId") inputId: OTextInputComponent;
-
-
-
+  @ViewChild("userId") inputStudentId: OTextInputComponent;
+  @ViewChild("form") form: OFormComponent;
+  @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
+  isUpdatingImage: boolean = false;
+  isUpdateOtherFile: boolean = false;
   mainInfo: any = {};
   protected service: OntimizeService;
 
-
-  name: String;
-  surname1: String;
-  surname2: String;
-  dni: String;
-  phone: String;
-  employmentStatus: number;
-  birthDate: Date;
-  location: String;
-  campusEmail: String;
-  personalEmail: String;
-  fctSchool: String;
-  tutor: String;
-  fctStart: Date;
-  fctEnd: Date;
-  udemy: boolean;
-  githubUser: String;
-  user_id: number;
-
-
-
-
-
-
-  constructor(protected injector: Injector, private mainService: MainService) {
+  constructor(protected injector: Injector, private mainService: MainService,protected dialogService: DialogService) {
     this.service= this.injector.get(OntimizeService);
-  }
-
-
-  ngOnInit(){
     this.configureService();
-    
-    this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
-        this.userId = result.data.user_id;
-        this.inputId.setValue(this.userId);
-        this.mainInfo = result.data;
-        this.getMovements(this.mainInfo);
-    })
   }
 
   protected configureService(){
@@ -63,50 +27,95 @@ export class PersonalInfoComponent {
     this.service.configureService(conf);
   }
 
-  getMovements(data){
-    if(data.hasOwnProperty('usr_id') && this.service !== null){
+  ngOnInit(){
+    this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
+        this.inputStudentId.setValue(result.data.user_id);
+        this.getStudentData(result.data);
+    })
+  }
+
+  getStudentData(userData){
+    if(userData.hasOwnProperty('usr_id') && this.service !== null){
       const filter = {
-        'user_id': data['usr_id']
+        'user_id': userData['usr_id']
       };
 
-      const columns = ['name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status_id',
+      const columns = ['id','name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status_id',
         'birth_date', 'location', 'campus_email', 'personal_email', 'fct_school', 'tutor',
-        'fct_start', 'fct_end', 'udemy', 'github_user','user_id'
+        'fct_start', 'fct_end', 'udemy', 'github_user','user_id','usr_photo'
       ];
 
       this.service.query(filter, columns, 'student').subscribe(resp => {
         if(resp.code == 0){
-
-
-
-
-          this.name = resp.data[0].name;
-          this.surname1 = resp.data[0].surname1;
-          this.surname2 = resp.data[0].surname2;
-          this.dni = resp.data[0].dni;
-          this.phone = resp.data[0].phone;
-          this.employmentStatus = resp.data[0].employment_status; 
-          this.birthDate = resp.data[0].birth_date; 
-          this.location = resp.data[0].location; 
-          this.campusEmail = resp.data[0].campus_email; 
-          this.personalEmail = resp.data[0].personal_email; 
-          this.fctSchool = resp.data[0].fct_school; 
-          this.tutor = resp.data[0].tutor; 
-          this.fctStart = resp.data[0].fct_start; 
-          this.fctEnd = resp.data[0].fct_end; 
-          this.udemy = resp.data[0].udemy; 
-          this.githubUser = resp.data[0].github_user;
-
-
-          
+          this.form.setData(resp.data[0]);
         }else{
           alert('Error en query');
         }
       })
     }
   }
-
-
+  onImageChange(event: any) {
+    // Si no hay evento o el archivo no está definido, simplemente retorna
+    if (!event || !this.UsrPhoto.currentFileName) {
+      return;
+    }
+  
+    if (this.isUpdatingImage) {
+      return;
+    }
+  
+    const base64String = event;
+    const currentFileName = this.UsrPhoto.currentFileName || '';
+  
+    const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
+  
+    // Validar si el nombre del archivo o la extensión son inválidos
+    if (!fileExtension || !validExtensions.includes(fileExtension)) {
+      this.showAlert(); // Muestra la alerta de error
+      this.isUpdatingImage = true;
+      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
+      this.isUpdatingImage = false;
+      return;
+    }
+  
+    if (base64String) {
+      const img = new Image();
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      img.src = `data:image/jpg;base64, ${base64String}`;
+  
+      img.onload = () => {
+        if (ctx) {
+          const newWidth = 200;
+          const newHeight = 200;
+  
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+  
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+          const modifiedImageBase64 = canvas.toDataURL('image/jpg');
+  
+          this.isUpdatingImage = true;
+          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
+          this.isUpdatingImage = false;
+  
+          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
+        }
+      };
+  
+      img.onerror = () => {
+        console.error('Error al cargar la imagen.');
+      };
+    }
+  }
+  
+  
+  showAlert() {
+    if (this.dialogService) {
+      this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
+    }
+  }
 }
 
 

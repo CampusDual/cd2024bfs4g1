@@ -1,6 +1,13 @@
 <o-form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="I;U;D" show-header-navigation="no" >
     <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no"/>
-      <div class="grid-container">
+<div class="grid-container" >
+  <div class="foto">
+    <o-image #tutorsPhoto attr="tutors_photo" empty-image="assets/images/no-image.png" 
+             sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)" 
+             max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
+             label="PROFILE.EDIT_PHOTO" ></o-image>
+  </div>
+  
       <div class="nombre">
         <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
         <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace"></o-text-input>

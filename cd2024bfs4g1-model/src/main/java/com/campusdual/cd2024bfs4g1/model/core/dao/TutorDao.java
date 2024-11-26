@@ -18,5 +18,5 @@ public class TutorDao extends OntimizeJdbcDaoSupport {
     public static final String SURNAME2            = "surname2";
     public static final String EMAIL               = "email";
     public static final String ATTR_COMBOBOX_TUTOR = "tutor";
-
+    public static final String ATTR_TUTORS_PHOTO = "tutors_photo";
 }
