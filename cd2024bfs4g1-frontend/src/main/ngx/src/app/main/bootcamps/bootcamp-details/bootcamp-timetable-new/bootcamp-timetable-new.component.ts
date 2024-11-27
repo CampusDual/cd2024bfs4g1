@@ -61,14 +61,6 @@ export class BootcampTimetableNewComponent {
       this.bootcampTimetableForm.setFieldValue("day_end", endDate);
 
   }
-  
-
-
-
-
-
-
-
 
 }
 
