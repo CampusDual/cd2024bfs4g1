@@ -225,7 +225,6 @@
   "LSITUATION": "Situation",
   "REQ_Fecha Inicio/Fecha Fin": "Start date/End date*",
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
-  "REQ_Estudiante": "Student*",
   "Estudiante*" : "Student",
   "Student": "Student",
   "subida":"File uploaded successfully",
@@ -273,7 +272,6 @@
   "LOP": "OP",
   "Codigo":"Code",
   "OP":"OP",
-  "BootcampDoc" : "Bootcamp documents",
   "REQ_Estudiante": "Student*",
   "Main data": "Main data",
   "Personal data" : "Personal data",
@@ -284,5 +282,6 @@
   "OtherInformation": "Other information",
   "LEMSTATUS_ACTUAL": "Current employment status",
   "Historial_Laboral": "Employment history",
-  "REQ_DATE":"Date of Employment Status Change*"
+  "REQ_DATE":"Date of Employment Status Change*",
+  "Contacto":"Contact"
 }

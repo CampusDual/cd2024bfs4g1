@@ -1,11 +1,10 @@
-
  <o-form #form  attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D"
  show-header-navigation="no" after-insert-mode="new" confirm-exit="no">
  <mat-tab-group oTabGroup="material" color="primary" id="tabGroup">
    <mat-tab label="{{'Main data'|oTranslate}}">
      <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
      <div class="grid-container">
-       <fieldset title="Datos personales" class="datos">
+       <fieldset title="{{'Personal data'|oTranslate}}" class="datos">
          <legend>{{"Personal data"|oTranslate}}</legend>
          <div class="datosPrincipales1">
            <div class="foto">
@@ -80,7 +79,7 @@
          </fieldset>
          <br>
          <div class="contacto">
-           <fieldset title="Fct">
+           <fieldset title="{{'Contact'|oTranslate}}">
              <legend>{{"Contact"|oTranslate}}</legend>
              <div>
                <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
@@ -101,7 +100,7 @@
    </mat-tab>
    <mat-tab label="{{'FCT Information'|oTranslate}}">
      <div class="fct-container">
-       <fieldset title="fct" class="fct-grid">
+       <fieldset title="{{'FCT Information'|oTranslate}}" class="fct-grid">
          <legend>{{"FCT Information"|oTranslate}}</legend>
          <div>
            <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
@@ -130,7 +129,7 @@
            </o-date-input>
          </div>
        </fieldset>
-       <fieldset title="User" class="user-grid">
+       <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
          <legend>{{'OtherInformation'|oTranslate}}</legend>
          <div class="githubUser">
            <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
@@ -142,7 +141,7 @@
            </div>
          </div>
        </fieldset>
-       <fieldset title="Notas">
+       <fieldset title="{{'LNOTES'|oTranslate}}">
          <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
          <div class="notes">
            <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>

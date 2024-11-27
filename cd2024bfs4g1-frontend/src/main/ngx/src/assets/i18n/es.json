@@ -282,5 +282,6 @@
   "OtherInformation": "Informacion adicional",
   "LEMSTATUS_ACTUAL": "Estado laboral actual",
   "Historial_Laboral": "Historial laboral",
-  "REQ_DATE":"Fecha del cambio de la situación laboral*"
+  "REQ_DATE":"Fecha del cambio de la situación laboral*",
+  "Contacto":"Contacto"
 }

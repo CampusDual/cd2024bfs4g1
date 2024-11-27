@@ -182,6 +182,9 @@ background-color: #f5f0f2;
 
 .separadorFile{
 display:grid;
+grid-template-columns: 1.5fr 0.3fr;
+gap: 50px;
+  /* Centra horizontalmente */
 }
 @media (max-width: 1500px) {
 .grid-container {

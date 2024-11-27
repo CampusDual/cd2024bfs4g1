@@ -8,7 +8,7 @@
     <mat-tab label="{{'Main data'|oTranslate}}">
       <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
       <div class="grid-container">
-        <fieldset title="Datos personales" class="datos">
+        <fieldset title="{{'Personal data'|oTranslate}}" class="datos">
           <legend>{{"Personal data"|oTranslate}}</legend>
           <div class="datosPrincipales1">
             <div class="foto">
@@ -83,7 +83,7 @@
           </fieldset>
           <br>
           <div class="contacto">
-            <fieldset title="Fct">
+            <fieldset title="{{'Contact'|oTranslate}}">
               <legend>{{"Contact"|oTranslate}}</legend>
               <div>
                 <label for="REQ_LPHONE">{{'REQ_LPHONE' | oTranslate}}</label>
@@ -104,7 +104,7 @@
     </mat-tab>
     <mat-tab label="{{'Employment status'|oTranslate}}">
       <div class="grid-Employment">
-        <fieldset title="Historial laboral">
+        <fieldset title="{{'Historial_Laboral'|oTranslate}}">
           <legend>{{"Historial_Laboral"|oTranslate}}</legend>
 
           <div class="container_employment">
@@ -140,7 +140,7 @@
     </mat-tab>
     <mat-tab label="{{'FCT Information'|oTranslate}}">
       <div class="fct-container">
-        <fieldset title="fct" class="fct-grid">
+        <fieldset title="{{'FCT Information'|oTranslate}}" class="fct-grid">
           <legend>{{"FCT Information"|oTranslate}}</legend>
           <div>
             <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
@@ -169,7 +169,7 @@
             </o-date-input>
           </div>
         </fieldset>
-        <fieldset title="User" class="user-grid">
+        <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
           <legend>{{'OtherInformation'|oTranslate}}</legend>
           <div class="githubUser">
             <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
@@ -181,7 +181,7 @@
             </div>
           </div>
         </fieldset>
-        <fieldset title="Notas">
+        <fieldset title="{{'LNOTES' | oTranslate}}">
           <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
           <div class="notes">
             <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
@@ -199,7 +199,7 @@
       <div class="documentsGrid">
         <o-form-layout-manager>
           <div class="container_students">
-            <fieldset class="fieldsetDoc">
+            <fieldset title="{{'STUDENT_FILES' | oTranslate}}" class="fieldsetDoc">
               <legend>{{'STUDENT_FILES' | oTranslate}} </legend>
               <div class="separadorFile">
                 <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}"
@@ -230,7 +230,7 @@
         <div class="estudiantesDocumentos">
           <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
             <o-form-layout-dialog-options class="popup">
-              <fieldset class="fieldsetDoc">
+              <fieldset title="{{'Bootcamps Asigned' | oTranslate}}" class="fieldsetDoc">
                 <legend align="right">{{'Bootcamps Asigned' | oTranslate}}</legend>
                 <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
                   entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname"
