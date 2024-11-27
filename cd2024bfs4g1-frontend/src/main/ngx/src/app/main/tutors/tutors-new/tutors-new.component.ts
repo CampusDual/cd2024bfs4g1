@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DialogService, OImageComponent, OValidators } from 'ontimize-web-ngx';
 
 @Component({
@@ -15,8 +16,12 @@ export class TutorsNewComponent {
 
   @ViewChild("tutorsPhoto") tutorsPhoto: OImageComponent;
 
-  constructor(protected dialogService: DialogService) {
+  constructor(protected dialogService: DialogService, private router: Router) {
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
+  }
+
+  volver(e) {
+    this.router.navigate(['./main/bootcamps']);
   }
 
   toUpperCamelCase(event: any) {

@@ -3,6 +3,7 @@ import { DialogService, OFormComponent,OImageComponent,OntimizeService, OValidat
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students-new',
@@ -24,7 +25,7 @@ export class StudentsNewComponent {
   
 
 
-  constructor(protected injector: Injector,protected dialogService: DialogService) {
+  constructor(protected injector: Injector,protected dialogService: DialogService, private router : Router) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
@@ -32,6 +33,10 @@ export class StudentsNewComponent {
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
     this.configureService();
+  }
+
+  volver(e) {
+    this.router.navigate(['./main/students']);
   }
 
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
