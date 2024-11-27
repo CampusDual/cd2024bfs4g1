@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OFileInputComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
@@ -19,6 +19,7 @@ export class BootcampDetailsComponent {
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
+  
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
@@ -30,7 +31,9 @@ export class BootcampDetailsComponent {
     protected injector: Injector,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
-    private translateService: OTranslateService) {
+    private translateService: OTranslateService,
+    protected dialogService: DialogService
+   ) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
@@ -114,6 +117,7 @@ export class BootcampDetailsComponent {
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
   @ViewChild("dateRange") dateRange: ODateRangeInputComponent;
+  @ViewChild("list") list: OListComponent;
 
   selected = false;
   startAtDate: Date;
@@ -135,6 +139,11 @@ export class BootcampDetailsComponent {
     this.service.configureService(documentConf);
   }
 
+  protected configureTutorsBootcamp() {
+    const tutorBootcampConf = this.service.getDefaultServiceConfiguration('tutorBootcamps');
+    this.service.configureService(tutorBootcampConf);
+  }
+  
 
   onBootcampChange(event: any) {
     this.configureBootcamps();
@@ -252,4 +261,19 @@ export class BootcampDetailsComponent {
   refreshFileInput() {
     this.fileinput.clearValue();
   }
+  deleteTutorBootcamp(tutors: any) {
+
+    this.configureTutorsBootcamp();
+    this.dialogService.confirm('Confirm_dialog_title', 'Do_you_really_want_to_delete');
+    this.dialogService.dialogRef.afterClosed().subscribe( result => {
+      if(result) {
+        this.service.delete({id: tutors.id}, 'tutorBootcamp').subscribe(res => {
+          if (res.code === 0) {
+            this.list.reloadData();
+          }
+        });
+      } 
+    });
+    
+   } 
 }
