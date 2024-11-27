@@ -1,5 +1,3 @@
-ALTER TABLE public.tutors
-ADD COLUMN tutors_photo varchar NULL;
 
 INSERT INTO public.usr_role_server_permission (rol_id,srp_id)
 VALUES (3,4);
