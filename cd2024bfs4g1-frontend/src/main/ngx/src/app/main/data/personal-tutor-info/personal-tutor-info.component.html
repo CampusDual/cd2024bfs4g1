@@ -3,35 +3,35 @@
         <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
         <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
         <div class="grid-container">
-            <div class="login">
-                <fieldset title="Datos personales" class="datos">
-                    <legend>{{"Personal data"|oTranslate}}</legend>
-                    <div class="foto">
-                        <o-image #tutorsPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
-                            class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
-                            accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                            label="PROFILE.EDIT_PHOTO"></o-image>
+            
+            <fieldset title="Datos personales" class="datos">
+                <legend>{{"Personal data"|oTranslate}}</legend>
+                <div class="foto">
+                    <o-image #tutorsPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
+                    class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                    accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
+                    label="PROFILE.EDIT_PHOTO"></o-image>
+                </div>
+                <div class="personal-data-fields datosPersonales">
+                    <div class="nombre" class="padding">
+                        <label for="name">{{'DNAME'|oTranslate}}</label>
+                        <p class="pmydata">{{form.getDataValue('name').value}}</p>
                     </div>
-                    <div class="personal-data-fields datosPersonales">
-                        <div class="nombre" class="padding">
-                            <label for="name">{{'DNAME'|oTranslate}}</label>
-                            <p class="pmydata">{{form.getDataValue('name').value}}</p>
-                        </div>
-                        <div class="apellido" class="padding">
-                            <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
-                            <p class="pmydata">{{form.getDataValue('surname1').value}}</p>
-                        </div>
-                        <div class="apellido2" class="padding">
-                            <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-                            <p class="pmydata">{{form.getDataValue('surname2').value}}</p>
-                        </div>
-                        <div class="email" class="padding">
-                            <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
-                            <p class="pmydata">{{form.getDataValue('email').value}}</p>
-                        </div>
+                    <div class="apellido" class="padding">
+                        <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
+                        <p class="pmydata">{{form.getDataValue('surname1').value}}</p>
                     </div>
-                </fieldset>
-            </div>
+                    <div class="apellido2" class="padding">
+                        <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+                        <p class="pmydata">{{form.getDataValue('surname2').value}}</p>
+                    </div>
+                    <div class="email" class="padding">
+                        <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
+                        <p class="pmydata">{{form.getDataValue('email').value}}</p>
+                    </div>
+                </div>
+            </fieldset>
+            
             <fieldset title="Bootcamps asigned" class="tabla">
                 <legend>{{ 'Bootcamps asigned' | oTranslate }}</legend>
                 <div class="table_container">
