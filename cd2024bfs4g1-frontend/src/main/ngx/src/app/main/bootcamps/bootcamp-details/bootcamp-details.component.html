@@ -1,6 +1,6 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
         header-actions="R;U;D"
-        (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
+  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
         (onDataLoaded)="onBootcampChange($event);inicialDR()">
   <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
@@ -28,7 +28,7 @@
                          automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
                          show-week-numbers="true" mode="desktop">
       </o-daterange-input>
-    </div>
+  </div>
     <div class="especial descripcion">
       <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
       <o-textarea-input attr="description" required="no" max-length="200"></o-textarea-input>
@@ -40,39 +40,39 @@
   </div>
   <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight>
     <mat-tab label="{{ 'StudentsAndMentors' | oTranslate }}">
-      <div class="general_container">
-        <div class="table_container">
+  <div class="general_container">
+    <div class="table_container">
           <o-form-layout-manager class="formestudiantestut" attr="addStudentLayout" mode="dialog">
-            <o-form-layout-dialog-options class="popup">
-              <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
+        <o-form-layout-dialog-options class="popup">
+            <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
                        service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
                        parent-keys="bootcamp_id:id"
                        refresh-button="no"
-                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;usr_photo"
+            columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;usr_photo"
                        visible-columns="usr_photo;name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action"
                        sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
                        show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
                        detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
                                 format="DD/MM/YYYY"></o-table-column>
-                <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
-                <o-table-paginator page-size="20" page-size-options="10;20;40">
-                </o-table-paginator>
+            <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
+            <o-table-paginator page-size="20" page-size-options="10;20;40">
+            </o-table-paginator>
                 <o-table-column attr="action" width="64px" tooltip="yes"
                                 tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-                  <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
-                                                icon="person_search"></o-table-cell-renderer-action>
-                </o-table-column>
+              <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
+                icon="person_search"></o-table-cell-renderer-action>
+            </o-table-column>
                 <o-table-column attr="usr_photo" width="64px">
                   <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
                 </o-table-column>
-                <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
-                </o-table-context-menu>
-              </o-table>
-            </o-form-layout-dialog-options>
-          </o-form-layout-manager>
-        </div>
+            <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+            </o-table-context-menu>
+          </o-table>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
+    </div>
 
 
     <div class="list_container" >
@@ -88,11 +88,11 @@
         <div mat-card-avatar >
         <img src="data:image/png;base64, {{tutor.tutors_photo}}" *ngIf="tutor.tutors_photo"/>
         <img src="./assets/images/no-image.png" *ngIf="!tutor.tutors_photo" />
-        </div>
+            </div>
         <mat-card-title >{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}</mat-card-title >
         <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
         <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
-        </mat-card-header>
+          </mat-card-header>
         </mat-card>
 
       </o-list>
@@ -115,8 +115,8 @@
                        show-report-on-demand-option="false" show-charts-on-demand-option="false"
                        select-all-checkbox-visible="true" selection-mode="none" detail-mode="false"
                        detail-button-in-row-icon="">
-                <o-table-column attr="time_start" title="TimeStart" content-align="center"></o-table-column>
-                <o-table-column attr="time_end" title="TimeEnd" content-align="center"></o-table-column>
+                <o-table-column attr="time_start" title="TimeStart" type="timetz" content-align="center"></o-table-column>
+                <o-table-column attr="time_end" title="TimeEnd" type="timetz" content-align="center"></o-table-column>
                 <o-table-column attr="day_start" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="day_end" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
