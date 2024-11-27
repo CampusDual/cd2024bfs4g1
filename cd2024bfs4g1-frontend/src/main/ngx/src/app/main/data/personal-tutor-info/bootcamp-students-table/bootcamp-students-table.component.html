@@ -1,7 +1,6 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
     show-header-navigation="no" confirm-exit="false" show-header="no">
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
-    <div class="grid-container">
         <fieldset class="estudiantes">
             <legend>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</legend>
             <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
@@ -19,5 +18,5 @@
                 </o-table-context-menu>
             </o-table>
         </fieldset>
-    </div>
+    
 </o-form>
