@@ -8,11 +8,11 @@
 
 
       <label >{{ 'time_start' | oTranslate }}</label>
-      <o-hour-input attr="time_start" label="{{ 'TimeStart' | oTranslate }}" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24"></o-hour-input>
+      <o-hour-input #horai attr="time_start" label="{{ 'TimeStart' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
 
 
       <label >{{ 'time_end' | oTranslate }}</label>
-      <o-hour-input attr="time_end" label="{{ 'TimeEnd' | oTranslate }}" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24"></o-hour-input>
+      <o-hour-input #horaf attr="time_end" label="{{ 'TimeEnd' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
 
 
 
