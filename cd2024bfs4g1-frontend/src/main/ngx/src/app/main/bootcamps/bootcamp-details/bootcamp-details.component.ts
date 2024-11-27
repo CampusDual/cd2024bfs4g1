@@ -51,9 +51,18 @@ export class BootcampDetailsComponent {
     });
   this.clearTableSelection();
   }
+
   goToTutorDetail(tutor: any) {
-    this.router.navigate(['/main/tutors', tutor.tutor_id]);
+    const tutorId = tutor.tutor_id;
+    const tab = 'table';
+    this.router.navigate(['/main/tutors'], {
+      queryParams: {  tutorId, tab }
+    });
+  this.clearTableSelection();
   }
+  // goToTutorDetail(tutor: any) {
+  //   this.router.navigate(['/main/tutors', tutor.tutor_id]);
+  // }
   clearTableSelection(): void {
     if (this.studentsTable) {
       this.studentsTable.clearSelection();
