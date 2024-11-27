@@ -20,7 +20,8 @@
             <Sentence>
                 <![CDATA[
      select
-      #COLUMNS#
+      #COLUMNS#,
+      bt.time_start AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Madrid' as time_start_spain
      from
       bootcamp_timetable bt
      inner join
