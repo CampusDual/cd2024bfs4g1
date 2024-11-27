@@ -39,6 +39,7 @@ label {
 }
 .general_table {
   background-color: #f5f0f2;
+  box-shadow: 0 0px 0px;
 }
 
 .grid-container .table_container {
@@ -99,10 +100,8 @@ fieldset {
   grid-column: 1/3;
 }
 
-.login {
-  display: grid;
-  grid-template-columns:  1fr 1fr 1fr 1fr ;
-  grid-column: 1/3;
+.datos {
+  grid-column: 1/2;
 }
 .tabla {
   display: grid;
