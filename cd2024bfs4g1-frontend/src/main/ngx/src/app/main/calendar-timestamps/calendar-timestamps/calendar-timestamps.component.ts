@@ -78,8 +78,6 @@ export class CalendarTimestampsComponent {
     this.service.configureService(conf);
   }
 
-
-
   getBootcamps() {
     if (this.service !== null) {
       const filter = {
@@ -93,8 +91,8 @@ export class CalendarTimestampsComponent {
       const columns = ['id', 'name', 'start_date', 'end_date', 'status'];
       this.service.query(filter, columns, 'bootcampDate', types).subscribe(resp => {
         if (resp.code === 0) {
-          if(resp.data.length > 0){ //este if-else añadido
-            this.bootcamps = resp.data;
+          if(resp.data.length > 0){ 
+            this.bootcamps = resp.data.sort((val1,val2) => val1.start_date - val2.start_date);
           }else{
             this.bootcamps = [];
           }
