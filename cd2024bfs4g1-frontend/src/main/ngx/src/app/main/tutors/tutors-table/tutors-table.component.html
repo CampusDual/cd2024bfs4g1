@@ -2,7 +2,7 @@
     <div class="table_container">
         <h1 class="titulo_tablas">{{ 'Mentors' | oTranslate }}</h1>
             <o-table #tableTutors virtual-scroll="false" class="general_table" attr="tutorsTable" service="tutors" sort-columns="name"
-                entity="tutor" keys="id"
+                entity="tutor" keys="id" (onDataLoaded)="goToDetail()"
                 columns="id;name;surname1;surname2;email;usr_photo"
                 visible-columns="usr_photo;name;surname1;surname2;email" delete-button="false"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false"pageable="true">
