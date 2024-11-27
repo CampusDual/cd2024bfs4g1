@@ -35,6 +35,8 @@
       bootcamps b on tb.bootcamp_id = b.id
      inner join
       tutors_type tt on tb.tutor_type = tt.id
+     left join
+      bootcamp_status bs on bs.id=b.id
      #WHERE#
    ]]>
             </Sentence>
