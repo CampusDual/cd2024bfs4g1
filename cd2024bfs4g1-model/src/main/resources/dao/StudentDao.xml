@@ -27,8 +27,8 @@
                         FROM
                             ${mainschema}.students st
                             left join ${mainschema}.usr_user uu ON st.user_id = uu.usr_id
-                            inner join ${mainschema}.employment_status es on st.employment_status_id = es.id
-                            inner join ${mainschema}.student_status ss on st.student_status_id = ss.id
+                            left join ${mainschema}.employment_status es on st.employment_status_id = es.id
+                            left join ${mainschema}.student_status ss on st.student_status_id = ss.id
                             left join ${mainschema}.v_recent_employment_status vres on st.id = vres.student_id
                             #WHERE#
                     ]]>
