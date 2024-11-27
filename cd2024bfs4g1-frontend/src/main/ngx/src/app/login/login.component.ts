@@ -106,7 +106,10 @@ export class LoginComponent implements OnInit {
         redirectRoute = '/main';
         break;
       case 'student':
-        redirectRoute = '/main/data';
+        redirectRoute = '/main/data/student';
+        break;
+        case 'tutor':
+        redirectRoute = '/main/data/tutor';
         break;
       default:
         redirectRoute = this.redirect; 

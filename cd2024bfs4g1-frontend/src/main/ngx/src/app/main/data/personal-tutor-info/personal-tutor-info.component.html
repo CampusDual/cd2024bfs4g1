@@ -3,14 +3,14 @@
         <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
         <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
         <div class="grid-container">
-            
+
             <fieldset title="Datos personales" class="datos">
                 <legend>{{"Personal data"|oTranslate}}</legend>
                 <div class="foto">
                     <o-image #tutorsPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
-                    class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
-                    accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                    label="PROFILE.EDIT_PHOTO"></o-image>
+                        class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                        accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
+                        label="PROFILE.EDIT_PHOTO"></o-image>
                 </div>
                 <div class="personal-data-fields datosPersonales">
                     <div class="nombre" class="padding">
@@ -31,19 +31,23 @@
                     </div>
                 </div>
             </fieldset>
-            
+
             <fieldset title="Bootcamps asigned" class="tabla">
                 <legend>{{ 'Bootcamps asigned' | oTranslate }}</legend>
                 <div class="table_container">
                     <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
                         entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id"
-                        columns="id;bootcamp_id;bootcampname" visible-columns="bootcampname" detail-mode="false"
+                        columns="id;bootcamp_id;bootcampname;status" visible-columns="bootcampname;status" detail-mode="false"
                         delete-button="false" show-report-on-demand-option="false" insert-button="false"
                         show-charts-on-demand-option="false" refresh-button="false">
                         <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
                         <o-table-context-menu view-detail="false" edit="false" delete="false"
                             insert="false"></o-table-context-menu>
                         <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                        <o-table-column attr="status" title="status" type="string" content-align="center"
+                            title-align="center" tooltip="yes"
+                            tooltip-value="{{'BT_STATUS_TT'|oTranslate}}"><o-table-cell-renderer-translate></o-table-cell-renderer-translate>
+                        </o-table-column>
                         <o-table-column attr="action" width="64px" tooltip="yes"
                             tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
                             <o-table-cell-renderer-action (onClick)="goToDetail($event)"

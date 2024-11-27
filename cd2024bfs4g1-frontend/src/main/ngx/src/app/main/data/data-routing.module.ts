@@ -6,7 +6,6 @@ import { BootcampStudentsTableComponent } from './personal-tutor-info/bootcamp-s
 
 const routes: Routes = [
 
-  {path:"",pathMatch:"full",component:PersonalInfoComponent},
   {path: 'student',component: PersonalInfoComponent},
   {path: 'tutor',component: PersonalTutorInfoComponent},
   {path: 'tutor/:id',component: BootcampStudentsTableComponent},
