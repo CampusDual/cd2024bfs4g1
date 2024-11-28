@@ -17,7 +17,6 @@
               <o-text-input attr="name" required="yes" id="name" [validators]="validatorsWithoutSpace" max-length="255"
                 (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
-          </div>
           <div class="apellido">
             <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
             <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255"
@@ -28,6 +27,8 @@
             <o-text-input attr="surname2" required="no" max-length="255"
               (input)="toUpperCamelCase($event)"></o-text-input>
           </div>
+        </div>
+        <div class="datosPrincipales2">
           <div class="dni">
             <label for="dni">{{'LDNI' | oTranslate}}</label>
             <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
@@ -67,6 +68,7 @@
               </o-combo>
             </div>
           </div>
+        </div>
         </fieldset>
         <div class="login">
           <fieldset title="Login">
@@ -86,7 +88,7 @@
               </o-password-input>
             </div>
           </fieldset>
-        </div>
+          <br>
         <div class="contacto">
           <fieldset title="{{'Contact'|oTranslate}}">
             <legend>{{"Contact"|oTranslate}}</legend>
@@ -105,62 +107,60 @@
             </div>
           </fieldset>
         </div>
-      </div>
-      <mat-tab label="{{'FCT Information'|oTranslate}}">
-        <div class="fct-container">
-          <div>
-            <fieldset title="{{'FCT Information'|oTranslate}}" class="fct-grid">
-              <legend>{{"FCT Information"|oTranslate}}</legend>
-              <div class="fctSchool">
-                <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-                <o-text-input attr="fct_school" required="no" max-length="100"
-                  (input)="toUpperCamelCase($event)"></o-text-input>
-              </div>
-              <div class="tutor">
-                <label for="LTUTOR">{{'LTUTOR' | oTranslate}}</label>
-                <o-combo attr="tutor" service="tutors" entity="tutor" required="no" searchable="yes" value-column="id"
-                  columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="true"
-                  sortable="yes" sort="ASC">
-                </o-combo>
-              </div>
-              <div class="fctStart">
-                <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-                <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no " format="DD/MM/YYYY"
-                  (onValueChange)="throwChange(enddate)">
-                  <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-                </o-date-input>
-              </div>
-              <div class="fctEnd">
-                <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
-                <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
-                  text-input-enabled="no " (onValueChange)="throwChange2(startdate)">
-                  <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-                </o-date-input>
-              </div>
-            </fieldset>
-
-            <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
-              <legend>{{'OtherInformation'|oTranslate}}</legend>
-              <div class="githubUser">
-                <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-                <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
-              </div>
-              <div class="udemy">
-                <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
-                <div class="checkbox-container">
-                  <o-checkbox attr="udemy"></o-checkbox>
-                </div>
-              </div>
-            </fieldset>
-            <fieldset title="{{'LNOTES'|oTranslate}}">
-              <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
-              <div class="notes">
-                <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
-              </div>
-            </fieldset>
-          </div>
         </div>
-      </mat-tab>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{'FCT Information'|oTranslate}}">
+      <div class="fct-container">
+          <fieldset title="{{'FCT Information'|oTranslate}}" class="fct-grid">
+            <legend>{{"FCT Information"|oTranslate}}</legend>
+            <div class="fctSchool">
+              <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
+              <o-text-input attr="fct_school" required="no" max-length="100"
+                (input)="toUpperCamelCase($event)"></o-text-input>
+            </div>
+            <div class="tutor">
+              <label for="LTUTOR">{{'LTUTOR' | oTranslate}}</label>
+              <o-combo attr="tutor" service="tutors" entity="tutor" required="no" searchable="yes" value-column="id"
+                columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="true"
+                sortable="yes" sort="ASC">
+              </o-combo>
+            </div>
+            <div class="fctStart">
+              <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
+              <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no " format="DD/MM/YYYY"
+                (onValueChange)="throwChange(enddate)">
+                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+              </o-date-input>
+            </div>
+            <div class="fctEnd">
+              <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
+              <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
+                text-input-enabled="no " (onValueChange)="throwChange2(startdate)">
+                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+              </o-date-input>
+            </div>
+          </fieldset>
+
+          <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
+            <legend>{{'OtherInformation'|oTranslate}}</legend>
+            <div class="githubUser">
+              <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
+              <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+            </div>
+            <div class="udemy">
+              <div class="checkbox-container">
+                <o-checkbox attr="udemy"></o-checkbox>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset title="{{'LNOTES'|oTranslate}}">
+            <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
+            <div class="notes">
+              <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
+            </div>
+          </fieldset>
+        </div>
     </mat-tab>
   </mat-tab-group>
 </o-form>
