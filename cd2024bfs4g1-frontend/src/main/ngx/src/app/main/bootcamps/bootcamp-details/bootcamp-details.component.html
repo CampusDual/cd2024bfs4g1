@@ -1,121 +1,123 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
-        header-actions="R;U;D"
-  (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no" confirm-exit="false"
-        (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  header-actions="R;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
+  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
   <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
-    <div class="especial nombre">
+    <div class="nombre">
       <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
       <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
+    </div>
+    <div>
+      <label class="daterange">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
+      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" required="yes" format="DD/MM/YYYY"
+        automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
+        show-week-numbers="true" mode="desktop">
+      </o-daterange-input>
+    </div>
+    <div class="codigo">
+      <label for="LCODE">{{'LCODE' | oTranslate}}</label>
+      <o-text-input type="text" attr="codigo" required="no" max-length="200"></o-text-input>
+    </div>
+    <div class="op">
+      <label for="LOP">{{'LOP'| oTranslate}}</label>
+      <o-text-input type="text" attr="op" required="no" max-length="200"></o-text-input>
+    </div>
+    <div class="descripcion">
+      <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
+      <o-textarea-input attr="description" required="no" max-length="200"></o-textarea-input>
+    </div>
+    <div class="notas">
+      <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
+      <o-textarea-input attr="notes" required="no" max-length="200"></o-textarea-input>
     </div>
     <div class="especial fecha-inicio" hidden="true">
       <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
       <o-date-input #startdate class="fechas" attr="start_date" hidden="true" required="yes"
-                    format="DD/MM/YYYY"></o-date-input>
+        format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="especial fecha-fin" hidden="true">
       <!-- <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label> -->
       <o-date-input #enddate attr="end_date" required="yes" hidden="true" [validators]="validatorsArray"
-                    format="DD/MM/YYYY">
+        format="DD/MM/YYYY">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
       </o-date-input>
     </div>
 
-    <div>
-      <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
-      <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" required="yes" format="DD/MM/YYYY"
-                         automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
-                         show-week-numbers="true" mode="desktop">
-      </o-daterange-input>
-  </div>
-    <div class="especial descripcion">
-      <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
-      <o-textarea-input attr="description" required="no" max-length="200"></o-textarea-input>
-    </div>
-    <div class="especial notas">
-      <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
-      <o-textarea-input attr="notes" required="no" max-length="200"></o-textarea-input>
-    </div>
-    <div class="codigo">
-      <label for="LCODE">{{'LCODE' | oTranslate}}</label>
-      <o-text-input type="text" attr="Codigo" required="no" max-length="200"></o-text-input>
-    </div>
-    <div class="op">
-      <label for="LOP">{{'LOP'| oTranslate}}</label>
-      <o-text-input type="text" attr="OP" required="no" max-length="200"></o-text-input>
-    </div>
   </div>
   <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight>
     <mat-tab label="{{ 'StudentsAndMentors' | oTranslate }}">
-  <div class="general_container">
-    <div class="table_container">
+      <div class="general_container">
+        <div class="table_container">
           <o-form-layout-manager class="formestudiantestut" attr="addStudentLayout" mode="dialog">
-        <o-form-layout-dialog-options class="popup">
-            <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
+            <o-form-layout-dialog-options class="popup">
+              <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
-                       service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-                       parent-keys="bootcamp_id:id"
-                       refresh-button="no"
-                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
-                       visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
-                       sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
-                       show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
-                       detail-mode="click">
+                service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
+                refresh-button="no"
+                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
+                visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
+                sort-columns="name" query-rows="10" show-report-on-demand-option="false" query-on-init="true"
+                pageable="true" show-charts-on-demand-option="false" select-all-checkbox-visible="true"
+                selection-mode="multiple" detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
-                                format="DD/MM/YYYY"></o-table-column>
-            <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
-            <o-table-paginator page-size="20" page-size-options="10;20;40">
-            </o-table-paginator>
+                  format="DD/MM/YYYY"></o-table-column>
+                <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
+                <o-table-paginator page-size="20" page-size-options="10;20;40">
+                </o-table-paginator>
                 <o-table-column attr="action" width="64px" tooltip="yes"
-                                tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-              <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
-                icon="person_search"></o-table-cell-renderer-action>
-            </o-table-column>
-                <o-table-column attr="userphotostudent" width="64px">
-                  <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
+                  tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
+                  <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
+                    icon="person_search"></o-table-cell-renderer-action>
                 </o-table-column>
-            <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
-            </o-table-context-menu>
-          </o-table>
-        </o-form-layout-dialog-options>
-      </o-form-layout-manager>
-    </div>
+                <o-table-column attr="userphotostudent" width="64px">
+                  <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png"
+                    avatar="yes"> </o-table-cell-renderer-image>
+                </o-table-column>
+                <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+                </o-table-context-menu>
+              </o-table>
+            </o-form-layout-dialog-options>
+          </o-form-layout-manager>
+        </div>
 
 
-    <div class="list_container" >
-    <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
-      <o-form-layout-dialog-options class="popup">
-      <h3> {{'Mentors' | oTranslate}}</h3>
-      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type;userphototutor"
-        quick-filter="false" refresh-button="false" insert-button="true" delete-button="true" insert-form-route="new_tutor" detail-mode="true"
-        selectable="true" detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
-        insert-button-position="bottom" show-buttons-text="false" controls="false">
-        <mat-card #idTutorbootcamp  *ngFor="let tutor of list.dataArray">
-          <mat-card-header class="tutores">
-          <div mat-card-avatar >
-            <img src="data:image/png;base64, {{tutor.userphototutor}}" *ngIf="tutor.userphototutor"/>
-            <img src="./assets/images/no-image.png" *ngIf="!tutor.userphototutor" />
-          </div>
-          <mat-card-title ><a (click)="goToTutorDetail(tutor)">{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}</a></mat-card-title >
-          <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
-          <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
-          <mat-card-actions>
-            <button class="boton_eliminar" (click)="deleteTutorBootcamp(tutor)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm4-3h6v-2H9v2z"/>
-              </svg>
-            </button>
-          </mat-card-actions>
+        <div class="list_container">
+          <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
+            <o-form-layout-dialog-options class="popup">
+              <h3> {{'Mentors' | oTranslate}}</h3>
+              <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id"
+                parent-keys="bootcamp_id:id"
+                columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type;userphototutor" quick-filter="false"
+                refresh-button="false" insert-button="true" delete-button="true" insert-form-route="new_tutor"
+                detail-mode="true" selectable="true" detail-button-in-row="true" edit-button-in-row="false"
+                pagination-controls="false" insert-button-position="bottom" show-buttons-text="false" controls="false">
+                <mat-card #idTutorbootcamp *ngFor="let tutor of list.dataArray">
+                  <mat-card-header class="tutores">
+                    <div mat-card-avatar>
+                      <img src="data:image/png;base64, {{tutor.userphototutor}}" *ngIf="tutor.userphototutor" />
+                      <img src="./assets/images/no-image.png" *ngIf="!tutor.userphototutor" />
+                    </div>
+                    <mat-card-title><a (click)="goToTutorDetail(tutor)">{{ tutor.name }} {{ tutor.surname1 }} {{
+                        tutor.surname2 }}</a></mat-card-title>
+                    <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
+                    <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
+                    <mat-card-actions>
+                      <button class="boton_eliminar" (click)="deleteTutorBootcamp(tutor)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm4-3h6v-2H9v2z" />
+                        </svg>
+                      </button>
+                    </mat-card-actions>
 
-          </mat-card-header>
-        </mat-card>
+                  </mat-card-header>
+                </mat-card>
 
-  </o-list>
-    </o-form-layout-dialog-options>
-    </o-form-layout-manager>
-    </div>
-  </div>
+              </o-list>
+            </o-form-layout-dialog-options>
+          </o-form-layout-manager>
+        </div>
+      </div>
     </mat-tab>
     <mat-tab label="{{ 'Schedule' | oTranslate }}">
       <div class="table_containerhorarios">
@@ -123,16 +125,18 @@
           <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
             <o-form-layout-dialog-options class="popup">
               <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable"
-                       service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
-                       detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id"
-                       parent-keys="id_bootcamp:id;start_date;end_date"
-                       columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
-                       visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
-                       show-report-on-demand-option="false" show-charts-on-demand-option="false"
-                       select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" selection-mode="multiple"
-                       detail-button-in-row-icon="">
-                <o-table-column attr="time_start" title="TimeStart" type="string" format="HH:mm" content-align="center"></o-table-column>
-                <o-table-column attr="time_end" title="TimeEnd" type="string" format="HH:mm" content-align="center"></o-table-column>
+                service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
+                detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id"
+                parent-keys="id_bootcamp:id;start_date;end_date"
+                columns="id;id_bootcamp;time_start;time_end;day_start;day_end"
+                visible-columns="day_start;day_end;time_start;time_end" sort-columns="day_start"
+                show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" selection-mode="multiple"
+                detail-button-in-row-icon="">
+                <o-table-column attr="time_start" title="TimeStart" type="string" format="HH:mm"
+                  content-align="center"></o-table-column>
+                <o-table-column attr="time_end" title="TimeEnd" type="string" format="HH:mm"
+                  content-align="center"></o-table-column>
                 <o-table-column attr="day_start" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="day_end" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
@@ -150,12 +154,12 @@
             <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
             <div class="input-button-container">
               <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}"
-                            service="documents" entity="uploadBootcampDocument" max-file-size="1000000" multiple="yes"
-                            max-num-files="5" split-upload="false" key="bootcamp_id" [additional-data]="getFileData()"
-                            (input)="onFileUpload()" (onUpload)="onUploadFiles($event)" (onError)="onError($event)">
+                service="documents" entity="uploadBootcampDocument" max-file-size="1000000" multiple="yes"
+                max-num-files="5" split-upload="false" key="bootcamp_id" [additional-data]="getFileData()"
+                (input)="onFileUpload()" (onUpload)="onUploadFiles($event)" (onError)="onError($event)">
               </o-file-input>
               <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}"
-                        color="primary"></o-button>
+                color="primary"></o-button>
             </div>
           </div>
           <div *ngIf="showMessage" class="notification">
@@ -166,19 +170,17 @@
             <div>
               <h3>{{ 'BootcampDoc' | oTranslate }}</h3>
               <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
-                       entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name"
-                       visible-columns="action;name" detail-mode="false" show-report-on-demand-option="false"
-                       show-charts-on-demand-option="false" refresh-button="false" insert-button="false"
-                       quick-filter="false"
-                       show-paginator-first-last-buttons="false" select-all-checkbox-visible="true"
-                       selection-mode="none"
-                       pagination-controls="no">
+                entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name"
+                visible-columns="action;name" detail-mode="false" show-report-on-demand-option="false"
+                show-charts-on-demand-option="false" refresh-button="false" insert-button="false" quick-filter="false"
+                show-paginator-first-last-buttons="false" select-all-checkbox-visible="true" selection-mode="none"
+                pagination-controls="no">
                 <o-table-context-menu view-detail="false" edit="false" delete="false"
-                                      insert="false"></o-table-context-menu>
+                  insert="false"></o-table-context-menu>
                 <o-table-column attr="name" title="Document title"></o-table-column>
                 <o-table-column attr="action" width="10px">
                   <o-table-cell-renderer-action (onClick)="actionClick($event)"
-                                                icon="download"></o-table-cell-renderer-action>
+                    icon="download"></o-table-cell-renderer-action>
                 </o-table-column>
               </o-table>
             </div>

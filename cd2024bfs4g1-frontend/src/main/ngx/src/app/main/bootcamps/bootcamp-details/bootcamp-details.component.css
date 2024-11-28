@@ -1,10 +1,9 @@
 .tutores {
   display: grid;
-  grid-template-columns: 15% 70% 15% ;
+  grid-template-columns: 15% 70% 15%;
   align-items: center;
   gap: 8px;
   width: 100%;
-
 }
 
 .tutores div[mat-card-avatar] {
@@ -44,36 +43,36 @@
   box-shadow: none;
 
 
-  }
+}
 
-  .boton_eliminar svg {
-      z-index: 1;
-      height: 30px;
-      width: 30px;
-      fill:  #f24444;
-      justify-content: center;
-      align-items: flex-end;
+.boton_eliminar svg {
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  fill: #f24444;
+  justify-content: center;
+  align-items: flex-end;
 
-    }
+}
 
 
-    .boton_detalle {
-      border: none;
-      background-color:#F5F0F2;
-      border-radius: 10px;
-      box-shadow: none;
+.boton_detalle {
+  border: none;
+  background-color: #F5F0F2;
+  border-radius: 10px;
+  box-shadow: none;
 
-      }
+}
 
-      .boton_detalle svg {
-          z-index: 1;
-          height: 30px;
-          width: 30px;
-          fill: gray;
-          justify-content: center;
-          align-items: flex-end;
+.boton_detalle svg {
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  fill: gray;
+  justify-content: center;
+  align-items: flex-end;
 
-        }
+}
 
 
 
@@ -89,23 +88,26 @@ o-form {
 }
 
 
-h3{
+h3 {
   color: #1a3459;
   font-size: 16px;
   font-weight: bold;
 }
-.tab{
+
+.tab {
   margin-top: 25px;
 
 }
+
 .grid-container {
   width: 96%;
   margin: 5px auto;
   border-radius: 15px;
 }
-.general_container{
+
+.general_container {
   margin-top: 25px;
-  display:grid;
+  display: grid;
   grid-template-columns: 2fr 2fr;
   gap: 15px;
   width: 98%;
@@ -114,27 +116,60 @@ h3{
   padding: 0 10px;
   height: 90%;
 }
+
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
   background-color: #f5f0f2;
   grid-template-rows: auto;
   gap: 10px;
   padding: 20px;
 }
-.gridHorario{
+
+.nombre {
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+
+.daterange {
+  grid-column: 2 / 3;
+  grid-row: 1;
+}
+
+.codigo {
+  grid-column: 3 / 4;
+  grid-row: 1;
+}
+
+.op {
+  grid-column: 4 / 5;
+  grid-row: 1;
+}
+
+.descripcion {
+  grid-column: 1/3;
+  grid-row: 2;
+  width: 100%
+}
+
+.notas {
+  grid-column: 3 / 5;
+  grid-row: 2;
+}
+
+.gridHorario {
   grid-column: 1/2;
   width: 100%;
 }
 
-.gridUpload{
+.gridUpload {
   grid-column: 2/3;
   width: 100%;
 }
 
 
 
-.list_container{
+.list_container {
   grid-column: 2/3;
   display: flex;
   flex-direction: column;
@@ -145,10 +180,12 @@ h3{
   border-radius: 15px;
   padding: 20px;
 }
-.formestudiantestut{
+
+.formestudiantestut {
   max-height: 93%;
 }
-.table_container{
+
+.table_container {
   grid-column: 1/2;
   display: flex;
   flex-direction: column;
@@ -160,7 +197,7 @@ h3{
   padding: 20px;
 }
 
-.general_table{
+.general_table {
   width: 98%;
   grid-column: 1/2;
   margin: 0;
@@ -168,44 +205,31 @@ h3{
 
 }
 
-.input-button-container{
-  display:grid;
+.input-button-container {
+  display: grid;
   grid-template-columns: 2fr 1fr;
-  gap:10px;
+  gap: 10px;
 
 }
-.o-file-input{
+
+.o-file-input {
   margin-top: 10px;
   grid-column: 1/2;
 }
-.o-form-toolbar-button{
+
+.o-form-toolbar-button {
   margin-top: 10px;
   width: 30%;
   grid-column: 2/3;
   margin-left: 20%;
 }
-.title{
-  font-size:30px;
+
+.title {
+  font-size: 30px;
   padding: 30px;
   text-align: center;
 }
 
-
-.nombre {
-  grid-column: 1 / 2;
-}
-
-.fecha-inicio {
-  grid-column: 2 / 3;
-}
-
-.descripcion {
-  grid-column: 1 / 2;
-}
-
-.notas {
-  grid-column: 2 / 4;
-}
 
 .gridcalendario {
   grid-column: 1 / 3;
@@ -256,7 +280,8 @@ h3{
   box-sizing: border-box;
   margin-bottom: 45px;
 }
-.general_table{
+
+.general_table {
   box-shadow: none;
   width: 100%;
 }
@@ -278,7 +303,7 @@ mat-calendar .mat-calendar-arrow {
   display: none;
 }
 
-div.notification label  {
+div.notification label {
   background-color: #F64983;
   color: white;
   padding: 10px;
@@ -294,10 +319,12 @@ div.notification label  {
 .notification.hide {
   opacity: 0;
 }
-.form-class{
+
+.form-class {
   width: 100%;
   height: 100%;
 }
+
 .table_containerfichero {
   width: 98%;
   overflow-x: hidden;
@@ -305,28 +332,32 @@ div.notification label  {
   margin-top: 25px;
   padding: 0 10px;
 }
-.table_containerhorarios{
+
+.table_containerhorarios {
   width: 98%;
   overflow-x: hidden;
   margin: 0 auto;
   margin-top: 25px;
   padding: 0 10px;
 }
-.input-button-container{
+
+.input-button-container {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 10px;
 }
-.o-flie-input{
+
+.o-flie-input {
   grid-column: 1/2;
 }
-.o-form-toolbar-button{
+
+.o-form-toolbar-button {
   grid-column: 2/3;
   width: 60%;
   margin-left: 20%;
 }
 
-.table_calendar{
+.table_calendar {
   width: 98%;
   height: 100%;
   margin: 0;
@@ -336,7 +367,7 @@ div.notification label  {
   padding-top: 0%;
 }
 
-.table_ficheros{
+.table_ficheros {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -346,7 +377,8 @@ div.notification label  {
   border-radius: 15px;
   padding: 20px;
 }
-.table_horario{
+
+.table_horario {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -356,12 +388,15 @@ div.notification label  {
   border-radius: 15px;
   padding: 20px;
 }
-.timetable_table{
+
+.timetable_table {
   background-color: #f5f0f2;
   font-family: 'Roboto', sans-serif;
   height: 100%;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 1300px) {
+
   .grid-container,
   .table_container {
     width: 98%;
@@ -372,12 +407,34 @@ div.notification label  {
     grid-template-columns: 1fr;
   }
 
-  .nombre,
-  .fecha-inicio,
-  .fecha-fin,
-  .descripcion,
+  .nombre {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
+
+  .daterange {
+    grid-column: 2/3;
+    grid-row: 1;
+  }
+
+  .codigo {
+    grid-column: 1/2;
+    grid-row: 2;
+  }
+
+  .op {
+    grid-column: 2/3;
+    grid-row: 2;
+  }
+
+  .descripcion {
+    grid-column: 1/3;
+    grid-row: 3;
+  }
+
   .notas {
-    grid-column: auto;
+    grid-column: 1/3;
+    grid-row: 4;
   }
 
   .calendar-card {
@@ -401,12 +458,14 @@ mat-calendar .mat-calendar-body-cell {
 mat-calendar .mat-calendar-arrow {
   display: none;
 }
-.timetable_table{
+
+.timetable_table {
   background-color: #f5f0f2;
   font-family: 'Roboto', sans-serif;
   height: auto;
 }
-o-list img{
+
+o-list img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -414,30 +473,32 @@ o-list img{
 
 
 }
-.tutores{
+
+.tutores {
   background-color: #f5f0f2;
   box-shadow: none;
   padding-top: 20px;
 }
 
 
-div.notification label  {
-   background-color: #F64983;
-   color: white;
-   padding: 10px;
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   border-radius: 5px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-   opacity: 1;
-   transition: opacity 0.5s ease;
- }
+div.notification label {
+  background-color: #F64983;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
 
- .notification.hide {
-   opacity: 0;
- }
- .form-class{
+.notification.hide {
+  opacity: 0;
+}
+
+.form-class {
   width: 100%;
   height: 100%;
 }
@@ -446,13 +507,15 @@ div.notification label  {
   background-color: #f5f0f2;
   font-family: 'Roboto', sans-serif;
 }
-o-list img{
+
+o-list img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
-.tutores{
+
+.tutores {
   background-color: #f5f0f2;
   box-shadow: none;
   padding-top: 20px;
