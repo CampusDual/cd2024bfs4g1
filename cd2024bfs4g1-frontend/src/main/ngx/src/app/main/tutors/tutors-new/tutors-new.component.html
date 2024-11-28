@@ -6,19 +6,19 @@
       <legend>{{"Personal data"|oTranslate}}</legend>
       <div class="foto">
         <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER" class="avatar"
-        (onChange)="onImageChange($event)" max-file-size="409600"
-        accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+          (onChange)="onImageChange($event)" max-file-size="409600"
+          accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+          <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
       </div>
-
       <div class="nombre">
         <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
         <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"
-        [validators]="validatorsWithoutSpace"></o-text-input>
+          [validators]="validatorsWithoutSpace"></o-text-input>
       </div>
       <div class="apellido">
         <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
         <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"
-        [validators]="validatorsWithoutSpace"></o-text-input>
+          [validators]="validatorsWithoutSpace"></o-text-input>
       </div>
       <div class="apellido2">
         <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
@@ -31,20 +31,20 @@
     </fieldset>
     <fieldset class="datos">
       <legend>Login</legend>
-    <div class="usuario">
-      <label for="REQ_USER">{{'REQ_USER' | oTranslate}}</label>
-      <o-text-input attr="usr_login" required="yes" id="name" max-length="255"
-        [validators]="validatorsWithoutSpace"></o-text-input>
-    </div>
-    <div class="contraseña">
-      <label for="REQ_PASSWORD">{{'REQ_PASSWORD' | oTranslate}}</label>
-      <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8"
-        [validators]="validatorsNewPasswordArray">
-        <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
-        <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
-        <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
-      </o-password-input>
-    </div>
-  </fieldset>
+      <div class="usuario">
+        <label for="REQ_USER">{{'REQ_USER' | oTranslate}}</label>
+        <o-text-input attr="usr_login" required="yes" id="name" max-length="255"
+          [validators]="validatorsWithoutSpace"></o-text-input>
+      </div>
+      <div class="contraseña">
+        <label for="REQ_PASSWORD">{{'REQ_PASSWORD' | oTranslate}}</label>
+        <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8"
+          [validators]="validatorsNewPasswordArray">
+          <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+          <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+          <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+        </o-password-input>
+      </div>
+    </fieldset>
   </div>
 </o-form>
