@@ -33,39 +33,51 @@
 .dni {
   grid-column: 1 / 2;
 }
-.usuario{
+
+.usuario {
   grid-column: 2 / 3;
 }
-.contraseña{
+
+.contraseña {
   grid-column: 3 / 4;
 }
+
 .telefono {
   grid-column: 1 / 2;
 }
-.employmentStatus{
+
+.employmentStatus {
   grid-column: 2/3;
 }
-.status{
+
+.status {
   grid-column: 3/4;
 }
-.comunidad{
+
+.comunidad {
   grid-column: 1/2;
 }
-.location{
+
+.location {
   grid-column: 2/3;
 }
-.fechaCumple{
+
+.fechaCumple {
   grid-column: 3/4;
 }
-.email{
+
+.email {
   grid-column: 1/2;
 }
-.emailCampus{
+
+.emailCampus {
   grid-column: 2/3;
 }
+
 .fctSchool {
   grid-column: 1/2;
 }
+
 .tutor {
   grid-column: 2/3;
 }
@@ -83,20 +95,23 @@
   justify-self: center;
   align-self: center;
 }
+
 .githubUser {
   grid-column: 1/2;
 }
-.notes{
+
+.notes {
   grid-column: 3/4;
 }
+
 o-form {
   width: 100%;
   height: 100%;
   margin: 0 auto;
 }
 
-.aviso label{
-  color:rgb(244, 67, 54);
+.aviso label {
+  color: rgb(244, 67, 54);
   display: flex;
   font-size: 11px;
   height: 20PX;
@@ -107,13 +122,14 @@ o-form {
   text-size-adjust: 100%;
   width: 542.453px
 }
-.aviso label mat-icon{
+
+.aviso label mat-icon {
   padding-bottom: 10px;
 
 }
 
-.aviso label{
-  color:rgb(244, 67, 54);
+.aviso label {
+  color: rgb(244, 67, 54);
   display: flex;
   font-size: 11px;
   height: 20PX;
@@ -124,7 +140,8 @@ o-form {
   text-size-adjust: 100%;
   width: 542.453px
 }
-.aviso label mat-icon{
+
+.aviso label mat-icon {
   padding-bottom: 10px;
 }
 
@@ -145,9 +162,10 @@ o-form {
   .email,
   .fctSchool,
   .fctStart,
-  .tutor{
-   grid-column: 1/2 ;
+  .tutor {
+    grid-column: 1/2;
   }
+
   .apellido,
   .dni,
   .contraseña,
@@ -157,16 +175,17 @@ o-form {
   .emailCampus,
   .githubUser,
   .fctEnd,
-  .udemy{
-   grid-column: 2/3 ;
+  .udemy {
+    grid-column: 2/3;
   }
 
-  .notes{
+  .notes {
     grid-column: 1/3;
   }
 
 
 }
+
 .checkbox-container {
   padding: 0;
 }
@@ -182,7 +201,8 @@ o-form {
   /* Centra verticalmente */
   margin-bottom: 40px;
 }
-.p_info_foto{
+
+.p_info_foto {
   margin-top: 30px;
   font-size: 12px;
 }
@@ -197,7 +217,7 @@ fieldset {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px
-  }
+}
 
 .datos {
   display: grid;
@@ -241,6 +261,7 @@ fieldset {
   gap: 60px;
   padding: 20px;
   }
+
 
 .datos {
   display: grid;
