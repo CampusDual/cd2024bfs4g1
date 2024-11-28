@@ -269,6 +269,7 @@
   "DNI_WARNING":"The ID already exists",
   "BootcampDoc" : "Bootcamp documents",
   "LCODE": "Code",
+  "Codigo" : "Code",
   "LOP": "OP",
   "OP":"OP",
   "REQ_Estudiante": "Student*",
