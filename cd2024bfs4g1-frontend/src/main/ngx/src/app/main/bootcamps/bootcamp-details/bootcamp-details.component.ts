@@ -170,14 +170,26 @@ export class BootcampDetailsComponent {
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate: Date, view) => {
-    let date: Date = new Date(cellDate);
-    let startDate: Date = this.startDateInput.getValue();
-    let endDate: Date = this.endDateInput.getValue();
     if (view === "month") {
+      let date = new Date(cellDate);
+      date.setHours(0, 0, 0, 0);
+  
+      let startDate = this.startDateInput.getValue();
+      let endDate = this.endDateInput.getValue();
+  
+      if (startDate) {
+        startDate = new Date(startDate);
+        startDate.setHours(0, 0, 0, 0);
+      }
+      if (endDate) {
+        endDate = new Date(endDate);
+        endDate.setHours(0, 0, 0, 0);
+      }
+  
       if (startDate && endDate && date >= startDate && date <= endDate) {
-        if (startDate.toString() == date.getTime().toString()) {
+        if (date.getTime() === startDate.getTime()) {
           return "calendarcellStart";
-        } else if (endDate.toString() == date.getTime().toString()) {
+        } else if (date.getTime() === endDate.getTime()) {
           return "calendarcellEnd";
         } else {
           return "calendarcell";
@@ -186,7 +198,7 @@ export class BootcampDetailsComponent {
     }
     return '';
   };
-
+  
 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
