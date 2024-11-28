@@ -58,12 +58,14 @@
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
               <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
+            
             <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
             <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
               null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
               columns="id;status" value-column="id" description-columns="status" query-on-init="true">
             </o-combo>
           </div>
+
         </fieldset>
         <div class="login">
           <fieldset title="Login">
@@ -108,30 +110,28 @@
       <div class="grid-Employment">
         <fieldset title="Historial laboral">
           <legend>{{"Historial_Laboral"|oTranslate}}</legend>
-
           <div class="container_employment">
             <o-text-input attr="employment_status" label="{{'LEMSTATUS_ACTUAL' | oTranslate}}" translate="yes"
             read-only="yes" service="employmentstatus" entity="employmentStatus" hidden></o-text-input>
             <label for="employment_status">{{'LEMSTATUS_ACTUAL' | oTranslate}}: &nbsp;</label>
             <p>{{form.getDataValue('employment_status').value}}</p>
           </div>
-
           <div class="container_students">
             <h3>{{ 'Historial_Laboral' | oTranslate }}</h3>
-            <o-form-layout-manager class="selectedrow" attr="employmentstatushistory" mode="dialog">
+            <o-form-layout-manager attr="employmentstatushistory" mode="dialog">
               <o-form-layout-dialog-options class="popup"></o-form-layout-dialog-options>
               <o-table class="general_table_primera" insert-form-route="new_employment_history"
                 attr="employmentstatushistory" service="employmentstatushistory" entity="employmentStatusHistory"
-                keys="id" parent-keys="student_id:id"
+                keys="id" parent-keys="student_id:id"   (onDataLoaded)="refreshEmploymentStatus()"
                 columns="id;student_id;situation;employment_status_id;status_date_change;description"
                 visible-columns="situation;status_date_change;description" show-report-on-demand-option="false"
                 show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
                 sort-columns="status_date_change:DESC" sort-columns="status_date_change:DESC" selection-mode="none"
-                pagination-controls="false">
+                pagination-controls="false" selection-mode="multiple" select-all-checkbox-visible="true">
                 <o-table-column attr="situation" title="situation" type="string" content-align="center"
                   title-align="center">
                 </o-table-column>
-                <o-table-column attr="status_date_change" title="date" type="date" format="DD/MM/YYYY"
+                <o-table-column attr="status_date_change" title="date_change" type="date" format="DD/MM/YYYY"
                   content-align="center" title-align="center">
                 </o-table-column>
               </o-table>

@@ -17,6 +17,7 @@ export class StudentsDetailComponent {
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
+  @ViewChild("form") form: OFormComponent;
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
   validatorsArray: ValidatorFn[] = [];
@@ -238,11 +239,20 @@ onImageChange(event: any) {
     };
   }
 }
-
-
 showAlert() {
   if (this.dialogService) {
     this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
   }
+}
+isRefreshing: boolean = false;
+refreshEmploymentStatus() {
+  if (this.isRefreshing) {
+    return;
+  }
+  this.isRefreshing = true;
+  this.form.queryData({ id: this.idNumber.getValue() });
+  setTimeout(() => {
+    this.isRefreshing = false;
+  }, 500);
 }
 }
