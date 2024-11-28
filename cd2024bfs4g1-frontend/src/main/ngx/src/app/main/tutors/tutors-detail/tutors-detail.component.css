@@ -1,68 +1,51 @@
 * {
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
-  }
-  
-  o-form {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0 10px 10px;
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
-  .grid-container,
-  .table_container {
-    width: 96%;
-    margin: 5px auto;
-    background-color: #f5f0f2;
-    border-radius: 15px;
-    padding: 20px;
-    height: auto;
-  }
-  
-  .general_table{
-    width: 98%;
-    margin: 0;
-  }
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0px;
+}
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-    height: auto;
-  }
-  
-  .nombre {
-    grid-column: 1 / 2;
-  }
-  
-  .apellido {
-    grid-column: 2 / 3;
-  }
-  
-  .apellido2 {
-    grid-column: 1 / 2;
-  }
+o-form {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
 
-  .email{
-    grid-column: 2 / 3;
-  }
+label {
+  display: block;
+  margin: 10px 0 10px 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
 
-  .general_table {
-    background-color: #f5f0f2;
-  }
+.grid-container {
+  width: 90%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+  height: auto;
+}
 
-  .grid-container .table_container{
+.general_table {
+  width: 98%;
+  margin: 0;
+  box-shadow: 0px 0px 0px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  height: auto;
+}
+.general_table {
+  background-color: #f5f0f2;
+}
+ .grid-container .table_container{
     grid-column: 1 / 3;
   }
-  
+
   .foto {
     grid-column: 1 / 3;  /* Define la columna */
     grid-row: 0;  /* Asegúrate de que esté en la fila 1 */
@@ -80,13 +63,88 @@
       width: 95%;
       padding: 15px;
     }
-  
+
     .grid-container {
       grid-template-columns: 1fr 1fr;
     }
-  
+.table_container{
+  height: 100%;
+}
+.general_table {
+  width: 100%;
+  height: 100%;
+}
 
+.foto {
+  grid-column: 1 / 3;
+  /* Define la columna */
+  grid-row: 0;
+  /* Asegúrate de que esté en la fila 1 */
+  justify-self: center;
+  /* Centra horizontalmente */
+  align-self: center;
+  /* Centra verticalmente */
+  margin-bottom: 40px;
+}
+
+.grid-container {
+  width: 96%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 15px;
+}
+
+
+fieldset {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #f5f0f2;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+  border: solid 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-column: 1/2;
+  width: 100%;
+}
+
+.datosPrincipales1 {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.datosPrincipales2 {
+  grid-column: 2 / 3;
+}
+.tabla{
+  grid-column: 2/3;
+  grid-row: 1/3;
+  width: auto;
+}
+@media (max-width: 1250px) {
+
+  .datos,
+  .tabla{
+    grid-column: 1/4;
   }
-  
-  
-  
+  .tabla{
+    grid-row: 3/4;
+  }
+  .datosPrincipales1,
+  .datosPrincipales2{
+    grid-column: 1/3;
+  }
+
+}

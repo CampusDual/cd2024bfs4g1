@@ -1,30 +1,36 @@
-<o-form #tutorsform  attr="tutorsNew" service="tutors" entity="tutor" header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)"
-        after-insert-mode="new" confirm-exit="no">
-  <div class="grid-container" >
-    <div class="foto">
-      <o-image #tutorsPhoto attr="tutors_photo" empty-image="assets/images/no-image.png" 
-               sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)" 
-               max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-               label="PROFILE.EDIT_PHOTO" ></o-image>
-               <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
-    </div>
-    
-    <div class="nombre">
-      <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
-      <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace" ></o-text-input>
-    </div>
-    <div class="apellido">
-      <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-      <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)" [validators]="validatorsWithoutSpace"></o-text-input>
-    </div>
-    <div class="apellido2">
-      <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-      <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)" ></o-text-input>
-    </div>
-    <div class="email">
-      <label for="email">{{'REQ_LEMAIL'|oTranslate}}</label>
-      <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
-    </div>
+<o-form #tutorsform attr="tutorsNew" service="tutors" entity="tutor" header-actions="R;I;U;D"
+  show-header-navigation="no" after-insert-mode="new" confirm-exit="no">
+
+  <div class="grid-container">
+    <fieldset class="datos">
+      <legend>{{"Personal data"|oTranslate}}</legend>
+      <div class="foto">
+        <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER" class="avatar"
+        (onChange)="onImageChange($event)" max-file-size="409600"
+        accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+      </div>
+
+      <div class="nombre">
+        <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
+        <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"
+        [validators]="validatorsWithoutSpace"></o-text-input>
+      </div>
+      <div class="apellido">
+        <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
+        <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"
+        [validators]="validatorsWithoutSpace"></o-text-input>
+      </div>
+      <div class="apellido2">
+        <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+        <o-text-input attr="surname2" required="no" max-length="255" (input)="toUpperCamelCase($event)"></o-text-input>
+      </div>
+      <div class="email">
+        <label for="email">{{'REQ_LEMAIL'|oTranslate}}</label>
+        <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
+      </div>
+    </fieldset>
+    <fieldset class="datos">
+      <legend>Login</legend>
     <div class="usuario">
       <label for="REQ_USER">{{'REQ_USER' | oTranslate}}</label>
       <o-text-input attr="usr_login" required="yes" id="name" max-length="255"
@@ -39,5 +45,6 @@
         <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
       </o-password-input>
     </div>
+  </fieldset>
   </div>
 </o-form>

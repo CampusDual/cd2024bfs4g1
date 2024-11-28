@@ -10,14 +10,18 @@ import { DialogService, OImageComponent, OValidators } from 'ontimize-web-ngx';
 export class TutorsDetailComponent{
 
   validatorsWithoutSpace: ValidatorFn[] = [];
-  isUpdatingImage: boolean = false; 
+  isUpdatingImage: boolean = false;
+  isUpdateOtherFile: boolean = false;
+  @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
+  validatorsNewPasswordArray: ValidatorFn[] = [];
 
-  @ViewChild("tutorsPhoto") tutorsPhoto: OImageComponent;
-  
-  constructor(protected dialogService: DialogService) {
-    this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
+    constructor(protected dialogService: DialogService) {
+      this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
+      this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
+      this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
+      this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
   }
-  
+
   toUpperCamelCase(event: any) {
     event.target.value = event.target.value
       .split(' ')
@@ -25,8 +29,8 @@ export class TutorsDetailComponent{
       .join(' ');
   }
   onImageChange(event: any) {
-
-    if (!event || !this.tutorsPhoto.currentFileName) {
+    // Si no hay evento o el archivo no está definido, simplemente retorna
+    if (!event || !this.UsrPhoto.currentFileName) {
       return;
     }
   
@@ -35,16 +39,16 @@ export class TutorsDetailComponent{
     }
   
     const base64String = event;
-    const currentFileName = this.tutorsPhoto.currentFileName || '';
+    const currentFileName = this.UsrPhoto.currentFileName || '';
   
     const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
   
-    
+    // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.showAlert(); 
+      this.showAlert(); // Muestra la alerta de error
       this.isUpdatingImage = true;
-      this.tutorsPhoto.setValue(''); 
+      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
       this.isUpdatingImage = false;
       return;
     }
@@ -67,10 +71,10 @@ export class TutorsDetailComponent{
           const modifiedImageBase64 = canvas.toDataURL('image/jpg');
   
           this.isUpdatingImage = true;
-          this.tutorsPhoto.setValue(modifiedImageBase64); 
+          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
           this.isUpdatingImage = false;
   
-          ctx.clearRect(0, 0, canvas.width, canvas.height); 
+          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
         }
       };
   
@@ -79,6 +83,7 @@ export class TutorsDetailComponent{
       };
     }
   }
+  
   
   showAlert() {
     if (this.dialogService) {
