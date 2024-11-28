@@ -1,7 +1,7 @@
 <o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}">
   <div class="main-container">
     <o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="U;R"
-      columns="id;name">
+      columns="id;name" undo-button="no">
       <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
       <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden="true" />
       <div class="grid-container">
