@@ -1,0 +1,41 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+  body{
+    background-color: #1a3459;
+  }
+  .estudiantes {
+    margin: 50px 10px;  
+  }
+  
+  fieldset {
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #1a3459;
+    border: solid 2px #7ec117;
+    border-radius: 15px;
+    margin: 10px;
+  }
+  legend{
+    color: #7ec117;
+  }
+  o-form {
+    width: 100%;
+    height: 100%;
+    background-color: #1a3459;
+    
+  }
+  .table_container {
+    width: 100%;
+    border-radius: 15px;
+    height: auto;
+    
+  }
+  
+  .general_table{
+    background-color: #f5f0f2;
+    width: 100%;
+    margin: 0;
+    
+  }

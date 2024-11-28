@@ -1,0 +1,22 @@
+<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
+    show-header-navigation="no" confirm-exit="false" show-header="no">
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+        <fieldset class="estudiantes">
+            <legend>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</legend>
+            <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
+                service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
+                columns="bootcamp_id;id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date"
+                visible-columns="name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date" query-rows="10"
+                show-report-on-demand-option="false" detail-mode="false" query-on-init="true" pageable="true"
+                insert-button="false" delete-button="false" refresh-button="false" selection-mode="none">
+                <o-table-column attr="sb_start_date" title="start_date" type="date"
+                    format="DD/MM/YYYY"></o-table-column>
+                <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
+                <o-table-paginator page-size="20" page-size-options="10;20;40">
+                </o-table-paginator>
+                <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+                </o-table-context-menu>
+            </o-table>
+        </fieldset>
+    
+</o-form>
