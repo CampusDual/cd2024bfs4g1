@@ -66,12 +66,13 @@ label {
   grid-row: 0;  /* Asegúrate de que esté en la fila 1 */
   justify-self: center;  /* Centra horizontalmente */
   align-self: center;  /* Centra verticalmente */
+  justify-items: center;
   margin-bottom: 40px;
 }
-
 .p_info_foto{
   margin-top: 30px;
   font-size: 12px;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 1250px) {
