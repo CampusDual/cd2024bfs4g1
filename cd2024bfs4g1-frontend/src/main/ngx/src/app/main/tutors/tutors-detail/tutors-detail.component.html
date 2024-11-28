@@ -2,7 +2,7 @@
   show-header-navigation="no">
   <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no" />
   <div class="grid-container">
-
+    
       <fieldset title="Datos personales" class="datos">
         <legend>{{"Personal data"|oTranslate}}</legend>
         <div class="datosPrincipales1">
@@ -11,6 +11,7 @@
               (onChange)="onImageChange($event)" max-file-size="409600"
               accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
           </div>
+          <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
           <div class="email">
             <label for="LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
             <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
@@ -51,7 +52,7 @@
           </o-password-input>
         </div>
       </fieldset>
-
+    
     <fieldset title="Bootcamps asigned" class="tabla">
       <legend>{{ 'Bootcamps asigned' | oTranslate }}</legend>
       <div class="table_container">
