@@ -1,4 +1,4 @@
-<o-form #tutorsform  attr="tutorsNew" service="tutors" entity="tutor" header-actions="R;I;U;D" show-header-navigation="no"
+<o-form #tutorsform  attr="tutorsNew" service="tutors" entity="tutor" header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)"
         after-insert-mode="new" confirm-exit="no">
   <div class="grid-container" >
     <div class="foto">
