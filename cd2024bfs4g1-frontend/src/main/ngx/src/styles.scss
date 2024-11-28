@@ -119,7 +119,8 @@ button.mat-mdc-raised-button.mat-primary,
 .o-button button.mat-mdc-button,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary,
 .o-button button.mat-mdc-outlined-button,
-button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent
+button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
+.list_container .o-list-container .add-button
 {
   border: none;
   background-color: #8AB237;
@@ -144,7 +145,8 @@ button.mat-mdc-raised-button.mat-primary:hover,
 .o-button button.mat-mdc-button:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary:hover,
 .o-button button.mat-mdc-outlined-button:hover,
-button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent:hover {
+button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent:hover,
+.list_container .o-list-container .add-button:hover  {
   border: 2px solid #8AB237;
   background-color: #1a3459;
   border-radius: 10px;
@@ -321,10 +323,12 @@ background: none;
 }
 .list_container .o-list-container .add-button {
   position: absolute;
-  right: 3px;
-  top:-91px;
-  background-color:#7ec117;
-  color:#1a3459;
+  right: 20px;
+  top:-40px;
+
+  border-radius: 8px;
+  width: 100px;
+  height: 30px;
 }
 
 o-column.o-column .o-container > .o-container-title span{
