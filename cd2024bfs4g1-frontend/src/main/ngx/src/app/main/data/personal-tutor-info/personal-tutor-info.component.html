@@ -36,7 +36,7 @@
                 <legend>{{ 'Bootcamps asigned' | oTranslate }}</legend>
                 <div class="table_container">
                     <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
-                        entity="tutorsWithBootcamp" keys="id" parent-keys="tutor_id:id"
+                        entity="tutorsWithBootcampNotFinished" keys="id" parent-keys="tutor_id:id"
                         columns="id;bootcamp_id;bootcampname;status" visible-columns="bootcampname;status" detail-mode="false"
                         delete-button="false" show-report-on-demand-option="false" insert-button="false"
                         show-charts-on-demand-option="false" refresh-button="false">
