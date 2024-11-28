@@ -38,7 +38,7 @@
           <div class="datosPrincipales2">
             <div class="dni">
               <label for="LDNI">{{'LDNI' | oTranslate}}</label>
-              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no" (onBlur)="mostrar($event)"></o-nif-input>
+              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}"  (input)="toUpperCase($event)" read-only="no" required="no" (onBlur)="mostrar($event)"></o-nif-input>
               <div class="aviso" *ngIf="showNotice">
                   <link rel="stylesheet"/>
                   <label for="dni" >{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
