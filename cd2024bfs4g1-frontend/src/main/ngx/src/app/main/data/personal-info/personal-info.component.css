@@ -55,6 +55,7 @@ fieldset {
   display: flex;   
   align-items: center;
   justify-content: center;
+  color: #1a3459;
 }
 .foto_centrada{
   display: block;
