@@ -21,7 +21,7 @@
   display: flex;   
   align-items: center;
   justify-content: center;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 
@@ -46,6 +46,18 @@ fieldset {
   padding: 20px;
   border: solid 2px #1a3459;
   border-radius: 15px;
+}
+.p_info_foto{
+  font-size: 12px;
+  grid-column: 1 / 4; 
+  justify-self: center;
+  align-self: center;
+  display: flex;   
+  align-items: center;
+  justify-content: center;
+}
+.foto_centrada{
+  display: block;
 }
 @media (max-width: 1024px) {
   .grid-container {

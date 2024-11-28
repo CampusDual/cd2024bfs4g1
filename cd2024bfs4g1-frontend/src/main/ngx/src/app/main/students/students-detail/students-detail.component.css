@@ -263,3 +263,7 @@ grid-column: 1 / 3;
 .aviso label mat-icon{
  padding-bottom: 10px;
 }
+.p_info_foto{
+  margin-top: 30px;
+  font-size: 12px;
+}
