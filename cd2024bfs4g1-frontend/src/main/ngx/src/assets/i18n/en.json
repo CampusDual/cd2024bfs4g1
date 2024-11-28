@@ -284,5 +284,6 @@
   "REQ_DATE":"Date of Employment Status Change*",
   "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"The date range does not belong to the one designated for the bootcamp",
   "Confirm_dialog_title":"Confirm dialog",
-  "Do_you_really_want_to_delete":"Do you really want to delete?"
+  "Do_you_really_want_to_delete":"Do you really want to delete?",
+  "Info_foto":"It is recommended to use a square photo (1:1)"
 }

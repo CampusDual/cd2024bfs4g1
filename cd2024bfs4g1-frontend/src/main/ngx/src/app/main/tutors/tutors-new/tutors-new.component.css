@@ -52,7 +52,10 @@ label {
   margin-bottom: 40px;
 }
 
-
+.p_info_foto{
+  margin-top: 30px;
+  font-size: 12px;
+}
 
 @media (max-width: 1250px) {
 

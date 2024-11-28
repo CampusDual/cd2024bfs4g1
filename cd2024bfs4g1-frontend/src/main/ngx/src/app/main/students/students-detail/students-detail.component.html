@@ -16,7 +16,9 @@
                        sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
                        max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
                        label="PROFILE.EDIT_PHOTO" ></o-image>
+                       <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
             </div>
+
             <div>
               <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
               <o-text-input attr="name" [validators]="validatorsWithoutSpace" required="yes" id="name" max-length="255"
