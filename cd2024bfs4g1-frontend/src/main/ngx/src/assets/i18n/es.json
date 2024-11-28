@@ -269,6 +269,7 @@
   "DNI_WARNING":"El DNI ya existe",
   "LTUTORTYPE": "Tipo de tutor",
   "LCODE": "Código",
+  "Codigo" : "Código",
   "LOP":"OP",
   "OP":"OP",
   "REQ_LTUTORTYPE":"Tipo de tutor*",
