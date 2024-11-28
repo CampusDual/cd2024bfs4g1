@@ -1,3 +1,77 @@
+.tutores {
+  display: grid;
+  grid-template-columns: 15% 70% 15% ; 
+  align-items: center; 
+  gap: 8px;
+  width: 100%; 
+}
+
+.tutores div[mat-card-avatar] {
+  grid-column: 1; 
+  width: 100%; 
+}
+
+.tutores mat-card-title, 
+.tutores mat-card-subtitle {
+  grid-column: 2; 
+  overflow: hidden; 
+  white-space: normal; 
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.tutores .boton_detalle {
+  grid-column: 3; 
+  justify-self: center; 
+}
+
+.tutores .boton_eliminar {
+  grid-column: 4;
+  justify-self: center; 
+}
+
+
+
+.boton_eliminar {  
+  border: none;
+  background-color: #F5F0F2;
+  border-radius: 10px;
+  box-shadow: none; 
+  
+
+  }
+  
+  .boton_eliminar svg {
+      z-index: 1;
+      height: 30px;
+      width: 30px;
+      fill:  #f24444;
+      justify-content: center;
+      align-items: flex-end;
+      
+    }
+
+
+    .boton_detalle {  
+      border: none;
+      background-color:#F5F0F2;
+      border-radius: 10px;
+      box-shadow: none; 
+ 
+      }
+      
+      .boton_detalle svg {
+          z-index: 1;
+          height: 30px;
+          width: 30px;
+          fill: gray;
+          justify-content: center;
+          align-items: flex-end;
+          
+        }
+
+
+
 * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
@@ -8,6 +82,8 @@ o-form {
   height: 100%;
   margin: 0 auto;
 }
+
+
 h3{
   color: #1a3459;
   font-size: 16px;

@@ -49,8 +49,8 @@
                        service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
                        parent-keys="bootcamp_id:id"
                        refresh-button="no"
-            columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;usr_photo"
-                       visible-columns="usr_photo;name;surname1;surname2;personal_email;status;sb_start_date;sb_end_date;action"
+                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;usr_photo"
+                       visible-columns="usr_photo;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
                        sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
                        show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
                        detail-mode="click">
@@ -80,22 +80,30 @@
       <o-form-layout-dialog-options class="popup">
       <h3> {{'Mentors' | oTranslate}}</h3>
       <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type;tutors_photo"
-      quick-filter="false" refresh-button="false" insert-button="true" delete-button="false" insert-form-route="new_tutor" detail-mode="false"
-      selectable="false" detail-button-in-row="false" edit-button-in-row="false" pagination-controls="false" page-size-options="5;10"
-      insert-button-position="bottom" show-buttons-text="false" controls="false">
-      <mat-card (click)="goToTutorDetail(tutor)" *ngFor="let tutor of list.dataArray">
-        <mat-card-header class="tutores">
-        <div mat-card-avatar >
-        <img src="data:image/png;base64, {{tutor.tutors_photo}}" *ngIf="tutor.tutors_photo"/>
-        <img src="./assets/images/no-image.png" *ngIf="!tutor.tutors_photo" />
-            </div>
-        <mat-card-title >{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}</mat-card-title >
-        <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
-        <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
+        quick-filter="false" refresh-button="false" insert-button="true" delete-button="true" insert-form-route="new_tutor" detail-mode="true"
+        selectable="true" detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
+        insert-button-position="bottom" show-buttons-text="false" controls="false">
+        <mat-card #idTutorbootcamp  *ngFor="let tutor of list.dataArray">
+          <mat-card-header class="tutores">
+          <div mat-card-avatar >
+            <img src="data:image/png;base64, {{tutor.tutors_photo}}" *ngIf="tutor.tutors_photo"/>
+            <img src="./assets/images/no-image.png" *ngIf="!tutor.tutors_photo" />
+          </div>
+          <mat-card-title ><a (click)="goToTutorDetail(tutor)">{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}</a></mat-card-title >
+          <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
+          <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
+          <mat-card-actions>
+            <button class="boton_eliminar" (click)="deleteTutorBootcamp(tutor)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm4-3h6v-2H9v2z"/>
+              </svg>
+            </button>
+          </mat-card-actions>
+
           </mat-card-header>
         </mat-card>
 
-      </o-list>
+  </o-list>
     </o-form-layout-dialog-options>
     </o-form-layout-manager>
     </div>
@@ -186,5 +194,4 @@
       </div>
     </mat-tab>
   </mat-tab-group>
-
 </o-form>

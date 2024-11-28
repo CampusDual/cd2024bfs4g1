@@ -225,7 +225,6 @@
   "LSITUATION": "Situation",
   "REQ_Fecha Inicio/Fecha Fin": "Start date/End date*",
   "Fecha Inicio/Fecha Fin*": "Start date/End date*",
-  "REQ_Estudiante": "Student*",
   "Estudiante*" : "Student",
   "Student": "Student",
   "subida":"File uploaded successfully",
@@ -273,6 +272,7 @@
   "LOP": "OP",
   "Codigo":"Code",
   "OP":"OP",
+  "REQ_Estudiante": "Student*",
   "Main data": "Main data",
   "Personal data" : "Personal data",
   "Contact" : "Contact",
@@ -283,5 +283,7 @@
   "LEMSTATUS_ACTUAL": "Current employment status",
   "Historial_Laboral": "Employment history",
   "REQ_DATE":"Date of Employment Status Change*",
-  "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"The date range does not belong to the one designated for the bootcamp"
+  "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"The date range does not belong to the one designated for the bootcamp",
+  "Confirm_dialog_title":"Confirm dialog",
+  "Do_you_really_want_to_delete":"Do you really want to delete?"
 }

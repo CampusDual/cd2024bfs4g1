@@ -282,5 +282,7 @@
   "OtherInformation": "Informacion adicional",
   "LEMSTATUS_ACTUAL": "Estado laboral actual",
   "Historial_Laboral": "Historial laboral",
-  "REQ_DATE":"Fecha del cambio de la situación laboral*"
+  "REQ_DATE":"Fecha del cambio de la situación laboral*",
+  "Confirm_dialog_title":"Diálogo de confirmación",
+  "Do_you_really_want_to_delete":"Seguro que quieres borrarlo?"
 }
