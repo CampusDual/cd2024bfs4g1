@@ -65,5 +65,10 @@ public class TutorBootcampService implements ITutorBootcampService {
         return this.daoHelper.paginationQuery(this.tutorBootcampDao, keyMap, attrList, recordNumber, startIndex, orderBy);
     }
 
+    @Override
+    public EntityResult tutorsWithBootcampNotFinishedQuery(Map<String, Object> keysValues, List<String> attributes) {
+        return this.daoHelper.query(tutorBootcampDao, keysValues, attributes,"not_finished");
+    }
+
 
 }
