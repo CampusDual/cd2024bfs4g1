@@ -55,9 +55,10 @@
             <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
                        service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-                       parent-keys="bootcamp_id:id;start_date;end_date"
-                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;usr_photo"
-                       visible-columns="usr_photo;name;status;sb_start_date;sb_end_date;action"
+                       parent-keys="bootcamp_id:id"
+                       refresh-button="no"
+                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
+                       visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
                        sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
                        show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
                        detail-mode="click">
@@ -71,7 +72,7 @@
               <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
                 icon="person_search"></o-table-cell-renderer-action>
             </o-table-column>
-                <o-table-column attr="usr_photo" width="64px">
+                <o-table-column attr="userphotostudent" width="64px">
                   <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
                 </o-table-column>
             <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
@@ -86,15 +87,15 @@
     <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
       <o-form-layout-dialog-options class="popup">
       <h3> {{'Mentors' | oTranslate}}</h3>
-      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type;tutors_photo"
+      <o-list #list attr="tutorBootcampList" service="tutorBootcamps" entity="tutorsWithBootcamp" keys="id" parent-keys="bootcamp_id:id" columns="id;tutor_id;name;surname1;surname2;email;tutor_name_type;userphototutor"
         quick-filter="false" refresh-button="false" insert-button="true" delete-button="true" insert-form-route="new_tutor" detail-mode="true"
         selectable="true" detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
         insert-button-position="bottom" show-buttons-text="false" controls="false">
         <mat-card #idTutorbootcamp  *ngFor="let tutor of list.dataArray">
           <mat-card-header class="tutores">
           <div mat-card-avatar >
-            <img src="data:image/png;base64, {{tutor.tutors_photo}}" *ngIf="tutor.tutors_photo"/>
-            <img src="./assets/images/no-image.png" *ngIf="!tutor.tutors_photo" />
+            <img src="data:image/png;base64, {{tutor.userphototutor}}" *ngIf="tutor.userphototutor"/>
+            <img src="./assets/images/no-image.png" *ngIf="!tutor.userphototutor" />
           </div>
           <mat-card-title ><a (click)="goToTutorDetail(tutor)">{{ tutor.name }} {{ tutor.surname1 }} {{ tutor.surname2 }}</a></mat-card-title >
           <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
