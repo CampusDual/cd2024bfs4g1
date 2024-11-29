@@ -39,10 +39,10 @@
         <div class="calendar">
             <div *ngFor="let bootcamp of bootcamps"
                  class="bootcamp"
-                 [title]="getTooltip(bootcamp)"
                  [ngStyle]="updateBootcampsGridColumns(bootcamp)"
-                 (click)="navigateToBootcampDetail(bootcamp.id)">
-                <div style="display: flex; justify-content: space-between;" matTooltipClass="my-tooltip" matTooltip="{{bootcamp.name}},&#10;  Fecha de inicio: {{bootcamp.start_date|date:'dd/MM/yyyy'}},&#10; Fecha de fin: {{bootcamp.end_date|date:'dd/MM/yyyy'}}">
+                 (click)="navigateToBootcampDetail(bootcamp.id)"
+                 matTooltipClass="my-tooltip" matTooltip="{{bootcamp.name}},&#10;  Fecha de inicio: {{bootcamp.start_date|date:'dd/MM/yyyy'}},&#10; Fecha de fin: {{bootcamp.end_date|date:'dd/MM/yyyy'}}">
+                <div style="display: flex; justify-content: space-between;">
                     <div *ngIf="!shouldHideDates(bootcamp)" style="color: #C0C0C0">{{printDate(bootcamp.start_date)}}</div>
                     <div style="flex-grow: 1; text-align: center;">
                         <div>{{getDisplayName(bootcamp)}}</div>
