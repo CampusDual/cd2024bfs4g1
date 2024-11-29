@@ -44,7 +44,7 @@
         </div>
         <div>
           <label for="contraseña">{{'REQ_PASSWORD' | oTranslate}}</label>
-          <o-password-input attr="usr_password" required="yes" show-password-button="true" in-length="8"
+          <o-password-input attr="usr_password" required="yes" show-password-button="false" in-length="8"
             [validators]="validatorsNewPasswordArray">
             <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
             <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
