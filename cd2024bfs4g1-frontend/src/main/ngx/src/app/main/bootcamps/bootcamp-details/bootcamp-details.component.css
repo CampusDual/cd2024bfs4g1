@@ -395,7 +395,7 @@ div.notification label {
   height: 100%;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
 
   .grid-container,
   .table_container {
@@ -403,7 +403,6 @@ div.notification label {
     padding: 15px;
   }
 
-@media (max-width: 1200px) {
   .general_container {
     display: flex;
     flex-direction: column;
@@ -463,7 +462,7 @@ div.notification label {
     margin: 0 auto;
   }
 }
-
+}
 
 mat-calendar {
   width: 100%;
