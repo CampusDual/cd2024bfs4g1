@@ -49,18 +49,27 @@ public class StudentService implements IStudentService {
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 		if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
-	Date startDate = (Date) attrMap.get(studentDao.FCT_START);
-	Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
-	if (finishDate.before(startDate)) {
-		EntityResult error = new EntityResultMapImpl();
-		error.setCode(EntityResult.OPERATION_WRONG);
-		error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
-		return error;
-	}
-}
+	    Date startDate = (Date) attrMap.get(studentDao.FCT_START);
+	    Date finishDate = (Date) attrMap.get(studentDao.FCT_END);
+	    if (finishDate.before(startDate)) {
+		  EntityResult error = new EntityResultMapImpl();
+		  error.setCode(EntityResult.OPERATION_WRONG);
+		  error.setMessage("END_DATE_MORE_THAN_INIT_DATE");
+		  return error;
+	    }
+        }
 		String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
 		String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
 		String usrPhoto = (String) attrMap.remove(UserDao.PHOTO);
+		Map<String, Object> studentMap = new HashMap<>();
+		if (usrLogin != null){
+			studentMap.put(UserDao.LOGIN, usrLogin);
+			EntityResult query  = this.daoHelper.query(this.studentDao, studentMap,Arrays.asList(UserDao.USR_ID));
+			if (!query.isEmpty()){
+				return createErrorResult("DUPLICATED_USRLOGIN_NAME");
+			}
+		}
+
 		//insertar datos alumno
 		EntityResult insertStudent = this.daoHelper.insert(this.studentDao, attrMap);
 		if(insertStudent.isWrong()){
