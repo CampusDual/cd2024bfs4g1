@@ -17,7 +17,7 @@
         <Query id="default">
             <AmbiguousColumns>
                 <AmbiguousColumn name="id" prefix="st"/>
-                <AmbiguousColumn name="status" prefix="st"/>
+                <AmbiguousColumn name="statusstudent" prefix="ss" databaseName="status"/>
             </AmbiguousColumns>
 
             <Sentence>

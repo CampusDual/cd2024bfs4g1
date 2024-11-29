@@ -47,8 +47,8 @@
             <div>
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
-                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;v_employment_status_id;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;student_status_id;usr_photo"
+                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;statusstudent;udemy;
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;statusstudent;usr_photo"
                 visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()">
                 <o-table-column attr="name" title="Name"></o-table-column>
@@ -56,7 +56,7 @@
                 <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
                 <o-table-column attr="dni" title="DNI"></o-table-column>
                 <o-table-column attr="personal_email" title="Email"></o-table-column>
-                <o-table-column attr="status" type="translate" title="status"></o-table-column>
+                <o-table-column attr="statusstudent" type="translate" title="status"></o-table-column>
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 <o-table-column attr="usr_photo" width="64px">
                         <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
