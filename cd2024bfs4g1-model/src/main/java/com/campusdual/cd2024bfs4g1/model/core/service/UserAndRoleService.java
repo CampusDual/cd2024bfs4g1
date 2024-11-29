@@ -380,12 +380,16 @@ public class UserAndRoleService implements IUserAndRoleService {
 
 
 		Integer userId = (Integer) userInfo.getOtherData().get("usr_id");
+		String usrPhoto = (String) userInfo.getOtherData().get("usr_photo");
 
 		if(userId == null){
 			throw new OntimizeJEERuntimeException("UserID not found");
 		}
 
 		usrMap.put("usr_id", userId);
+		usrMap.put("usr_photo", usrPhoto);
+
+
 		eR.putAll(usrMap);
 
 		return eR;
