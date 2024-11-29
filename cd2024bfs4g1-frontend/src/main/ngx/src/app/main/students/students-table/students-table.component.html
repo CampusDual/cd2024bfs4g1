@@ -47,8 +47,8 @@
             <div>
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
             <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
-                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;statusstudent;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;statusstudent;usr_photo"
+                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;v_employment_status_id;statusstudent;udemy;spain_comunity;
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;email;surnames;spain_comunity;location;situation;user_id;statusstudent;v_employment_status_id;usr_photo"
                 visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()">
                 <o-table-column attr="name" title="Name"></o-table-column>
@@ -57,14 +57,12 @@
                 <o-table-column attr="dni" title="DNI"></o-table-column>
                 <o-table-column attr="personal_email" title="Email"></o-table-column>
                 <o-table-column attr="statusstudent" type="translate" title="status"></o-table-column>
+                <o-table-column attr="situation" type="translate" title="situation"></o-table-column>
+                <!--<o-table-column attr="udemy" title="udemy"></o-table-column>
+                <o-table-column attr="tutor" title="tutor"></o-table-column>-->
+                <o-table-column attr="spain_comunity" title="spain_comunity"></o-table-column>
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 <o-table-column attr="usr_photo" width="64px">
                         <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
                 </o-table-column>
                 </o-table-context-menu>
-                <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-              </o-table>
-            </div>
-        </o-form>
-    </div>
-</o-form-layout-manager>
