@@ -38,13 +38,13 @@
               <label for="dni">{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon> </label>
             </div>
           </div>
-          <div class="employmentStatus">
+<!--           <div class="employmentStatus">
             <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
             <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="no" translate="yes"
               null-selection="true" [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
               columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
             </o-combo>
-          </div>
+          </div> -->
 
           <div class="fechaCumple">
             <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
@@ -117,7 +117,7 @@
             <div class="fctSchool">
               <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
               <o-text-input attr="fct_school" required="no" max-length="100"
-                (input)="toUpperCamelCase($event)"></o-text-input>
+                ></o-text-input>
             </div>
             <div class="tutor">
               <label for="LTUTOR">{{'LTUTOR' | oTranslate}}</label>
