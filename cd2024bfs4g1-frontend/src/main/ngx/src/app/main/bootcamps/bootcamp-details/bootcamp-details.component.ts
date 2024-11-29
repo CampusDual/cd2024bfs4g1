@@ -104,6 +104,8 @@ export class BootcampDetailsComponent {
     };
 
     this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
+    
+
   }
 
 
@@ -155,6 +157,7 @@ export class BootcampDetailsComponent {
   
 
   onBootcampChange(event: any) {
+    this.studentsTable.refresh();
     this.configureBootcamps();
     const bootcampId = event.id;
     const filter = { id: bootcampId };
