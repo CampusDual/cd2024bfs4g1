@@ -55,7 +55,7 @@
             <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
                        service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-                       parent-keys="bootcamp_id:id"
+                       parent-keys="bootcamp_id:id; start_date; end_date"
                        refresh-button="no"
                        columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
                        visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"

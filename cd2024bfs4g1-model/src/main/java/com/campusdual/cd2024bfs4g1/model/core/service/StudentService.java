@@ -60,12 +60,15 @@ public class StudentService implements IStudentService {
         }
 		String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
 		String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
-		String usrPhoto = (String) attrMap.remove(UserDao.PHOTO);
-		Map<String, Object> studentMap = new HashMap<>();
-		if (usrLogin != null){
-			studentMap.put(UserDao.LOGIN, usrLogin);
-			EntityResult query  = this.daoHelper.query(this.studentDao, studentMap,Arrays.asList(UserDao.USR_ID));
-			if (!query.isEmpty()){
+		Object usrPhoto = attrMap.remove(UserDao.PHOTO);
+
+
+		Map<String, Object> userKeyMap2 = new HashMap<>();
+		if(usrLogin != null) {
+			userKeyMap2.put(UserDao.LOGIN, usrLogin);
+
+			EntityResult queryUser = this.daoHelper.query(studentDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+			if (!queryUser.isEmpty()) {
 				return createErrorResult("DUPLICATED_USRLOGIN_NAME");
 			}
 		}
@@ -144,6 +147,18 @@ public class StudentService implements IStudentService {
 		String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
 		String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
 		Object usrPhoto = attrMap.remove(UserDao.PHOTO);
+
+
+		Map<String, Object> userKeyMap2 = new HashMap<>();
+		if(usrLogin != null) {
+			userKeyMap2.put(UserDao.LOGIN, usrLogin);
+
+			EntityResult queryUser = this.daoHelper.query(studentDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+			if (queryUser.isEmpty()) {
+				return createErrorResult("DUPLICATED_USRLOGIN_NAME");
+			}
+		}
+
 		if (usrPhoto != null && usrPhoto.equals("")) {
 			usrPhoto = null;
 		}
