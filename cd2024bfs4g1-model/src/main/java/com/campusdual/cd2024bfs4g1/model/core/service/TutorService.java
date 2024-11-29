@@ -11,12 +11,10 @@ import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("TutorService")
 @Lazy
@@ -51,20 +49,28 @@ public class TutorService implements ITutorService {
         String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
         String usrPhoto = (String) attrMap.remove(UserDao.PHOTO);
 
+        Map<String, Object> userKeyMap = new HashMap<>();
+        if(usrLogin != null){
+            userKeyMap.put(UserDao.LOGIN,usrLogin);
+
+            EntityResult queryUser = this.daoHelper.query(tutorDao, userKeyMap, Arrays.asList(UserDao.USR_ID));
+            if(!queryUser.isEmpty()){
+                return createErrorResult("DUPLICATED_USRLOGIN_NAME");
+            }
+        }
         // Insertar datos del tutor
         EntityResult insertTutor = this.daoHelper.insert(this.tutorDao, attrMap);
         if (insertTutor.isWrong()) {
             return insertTutor;
         }
-
         // Insertar usuario si hay datos relacionados con usuario
         if (usrLogin == null && usrPassword == null && usrPhoto == null) {
             return insertTutor;
         }
-
         // Crear mapa de atributos para el usuario
         Map<String, Object> userAttrMap = new HashMap<>();
         if (usrLogin != null) {
+           //if(usrLogin. )
             userAttrMap.put(UserDao.LOGIN, usrLogin);
         }
         if (usrPassword != null) {
@@ -74,11 +80,9 @@ public class TutorService implements ITutorService {
             userAttrMap.put(UserDao.PHOTO, usrPhoto);
         }
 
-        // Insertamos usuario
         EntityResult insertUser = userAndRoleService.userInsert(userAttrMap);
-        if (insertUser.isWrong()) {
-            return insertUser;
-        }
+
+
 
         Integer userId = (Integer) insertUser.get(UserDao.USR_ID);
 
@@ -107,6 +111,17 @@ public class TutorService implements ITutorService {
         String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
         String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
         Object usrPhoto = attrMap.remove(UserDao.PHOTO);
+
+        Map<String, Object> userKeyMap2 = new HashMap<>();
+        if(usrLogin != null) {
+            userKeyMap2.put(UserDao.LOGIN, usrLogin);
+
+            EntityResult queryUser = this.daoHelper.query(tutorDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+            if (!queryUser.isEmpty()) {
+                return createErrorResult("DUPLICATED_USRLOGIN_NAME");
+            }
+        }
+
         if (usrPhoto != null && usrPhoto.equals("")) {
             usrPhoto = null;
         }
