@@ -287,5 +287,6 @@
   "Confirm_dialog_title":"Confirm dialog",
   "Do_you_really_want_to_delete":"Do you really want to delete?",
   "Info_foto":"It is recommended to use a square photo (1:1)",
-  "date_change":"Date change"
+  "date_change":"Date change",
+  "DUPLICATED_USRLOGIN_NAME": "The Username already exists"
 }
