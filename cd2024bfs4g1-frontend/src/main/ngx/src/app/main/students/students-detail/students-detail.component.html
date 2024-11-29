@@ -58,7 +58,7 @@
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
               <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
-            
+
             <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
             <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
               null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
@@ -197,7 +197,7 @@
 
 
     </mat-tab>
-    <mat-tab label="{{'Documents'|oTranslate}}">
+    <mat-tab label="{{'DocumentsBootcamps'|oTranslate}}">
       <div class="documentsGrid">
         <o-form-layout-manager>
           <div class="container_students">
