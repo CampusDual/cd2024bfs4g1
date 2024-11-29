@@ -38,13 +38,6 @@
               <label for="dni">{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon> </label>
             </div>
           </div>
-<!--           <div class="employmentStatus">
-            <label for="employment_status">{{'LEMSTATUS' | oTranslate}}</label>
-            <o-combo attr="employment_status_id" label="{{'LEMSTATUS' | oTranslate}}" required="no" translate="yes"
-              null-selection="true" [data]="[]" service="employmentstatus" entity="employmentStatus" keys="id"
-              columns="id;situation" value-column="id" description-columns="situation" query-on-init="true">
-            </o-combo>
-          </div> -->
 
           <div class="fechaCumple">
             <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
@@ -80,7 +73,7 @@
             </div>
             <div class="contraseña">
               <label for="REQ_PASSWORD">{{'PASSWORD' | oTranslate}}</label>
-              <o-password-input attr="usr_password" required="no" show-password-button="true" in-length="8"
+              <o-password-input attr="usr_password" required="no" show-password-button="false" in-length="8"
                 [validators]="validatorsNewPasswordArray">
                 <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
                 <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
@@ -163,5 +156,3 @@
     </mat-tab>
   </mat-tab-group>
 </o-form>
-
-
