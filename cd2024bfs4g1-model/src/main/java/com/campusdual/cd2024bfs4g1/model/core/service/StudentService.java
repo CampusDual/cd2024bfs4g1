@@ -154,7 +154,7 @@ public class StudentService implements IStudentService {
 			userKeyMap2.put(UserDao.LOGIN, usrLogin);
 
 			EntityResult queryUser = this.daoHelper.query(studentDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
-			if (queryUser.isEmpty()) {
+			if (!queryUser.isEmpty()) {
 				return createErrorResult("DUPLICATED_USRLOGIN_NAME");
 			}
 		}
