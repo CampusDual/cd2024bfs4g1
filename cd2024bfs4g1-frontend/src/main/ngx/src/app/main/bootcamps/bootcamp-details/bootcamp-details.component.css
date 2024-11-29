@@ -107,8 +107,8 @@ h3 {
 
 .general_container {
   margin-top: 25px;
-  display: grid;
-  grid-template-columns: 2fr 2fr;
+  display:grid;
+  grid-template-columns: 3fr 1fr;
   gap: 15px;
   width: 98%;
   margin: 0 auto;
@@ -183,6 +183,7 @@ h3 {
 
 .formestudiantestut {
   max-height: 93%;
+  height: 100%;
 }
 
 .table_container {
@@ -202,7 +203,8 @@ h3 {
   grid-column: 1/2;
   margin: 0;
   background-color: #f5f0f2;
-
+  height: 90%;
+  padding: 20px 0;
 }
 
 .input-button-container {
@@ -395,7 +397,7 @@ div.notification label {
   height: 100%;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
 
   .grid-container,
   .table_container {
@@ -403,8 +405,11 @@ div.notification label {
     padding: 15px;
   }
 
-  .grid-container {
-    grid-template-columns: 1fr;
+  .general_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
   }
 
   .nombre {
@@ -439,9 +444,27 @@ div.notification label {
 
   .calendar-card {
     width: 100%;
+  .table_container,
+  .list_container {
+    width: 100%;
+  }
+
+  .o-table,
+  .o-list {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .mat-card {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .boton_eliminar {
+    margin: 0 auto;
   }
 }
-
+}
 
 mat-calendar {
   width: 100%;
@@ -478,6 +501,7 @@ o-list img {
   background-color: #f5f0f2;
   box-shadow: none;
   padding-top: 20px;
+  overflow: hidden;
 }
 
 
