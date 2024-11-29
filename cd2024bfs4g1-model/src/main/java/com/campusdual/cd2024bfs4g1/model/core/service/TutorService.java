@@ -24,6 +24,9 @@ public class TutorService implements ITutorService {
     private TutorDao tutorDao;
 
     @Autowired
+    private UserDao userDao;
+
+    @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Autowired
@@ -53,7 +56,7 @@ public class TutorService implements ITutorService {
         if(usrLogin != null){
             userKeyMap.put(UserDao.LOGIN,usrLogin);
 
-            EntityResult queryUser = this.daoHelper.query(tutorDao, userKeyMap, Arrays.asList(UserDao.USR_ID));
+            EntityResult queryUser = this.daoHelper.query(userDao, userKeyMap, Arrays.asList(UserDao.USR_ID));
             if(!queryUser.isEmpty()){
                 return createErrorResult("DUPLICATED_USRLOGIN_NAME");
             }
@@ -116,7 +119,7 @@ public class TutorService implements ITutorService {
         if(usrLogin != null) {
             userKeyMap2.put(UserDao.LOGIN, usrLogin);
 
-            EntityResult queryUser = this.daoHelper.query(tutorDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+            EntityResult queryUser = this.daoHelper.query(userDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
             if (!queryUser.isEmpty()) {
                 return createErrorResult("DUPLICATED_USRLOGIN_NAME");
             }

@@ -27,6 +27,9 @@ public class StudentService implements IStudentService {
 	private StudentDao studentDao;
 
 	@Autowired
+	private UserDao userDao;
+
+	@Autowired
 	private DefaultOntimizeDaoHelper daoHelper;
 
 	@Autowired
@@ -67,7 +70,7 @@ public class StudentService implements IStudentService {
 		if(usrLogin != null) {
 			userKeyMap2.put(UserDao.LOGIN, usrLogin);
 
-			EntityResult queryUser = this.daoHelper.query(studentDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+			EntityResult queryUser = this.daoHelper.query(userDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
 			if (!queryUser.isEmpty()) {
 				return createErrorResult("DUPLICATED_USRLOGIN_NAME");
 			}
@@ -153,7 +156,7 @@ public class StudentService implements IStudentService {
 		if(usrLogin != null) {
 			userKeyMap2.put(UserDao.LOGIN, usrLogin);
 
-			EntityResult queryUser = this.daoHelper.query(studentDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+			EntityResult queryUser = this.daoHelper.query(userDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
 			if (!queryUser.isEmpty()) {
 				return createErrorResult("DUPLICATED_USRLOGIN_NAME");
 			}
