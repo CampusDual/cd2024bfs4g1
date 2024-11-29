@@ -84,6 +84,7 @@
   height: 40px;
   overflow: hidden;
   border: 1px solid #8AB237;
+  cursor: pointer;
 }
 
 .bootcamp:hover{
