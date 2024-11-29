@@ -183,6 +183,7 @@ h3 {
 
 .formestudiantestut {
   max-height: 93%;
+  height: 100%;
 }
 
 .table_container {
@@ -202,7 +203,8 @@ h3 {
   grid-column: 1/2;
   margin: 0;
   background-color: #f5f0f2;
-
+  height: 90%;
+  padding: 20px 0;
 }
 
 .input-button-container {
