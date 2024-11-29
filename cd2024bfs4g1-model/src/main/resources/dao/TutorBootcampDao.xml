@@ -20,6 +20,7 @@
                 <AmbiguousColumn name="tutorname" prefix="t" databaseName="name" />
                 <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
                 <AmbiguousColumn name="tutor_name_type" prefix="tt" databaseName="type" />
+                <AmbiguousColumn name="userphototutor" prefix="uu" databaseName="usr_photo" />
 
             </AmbiguousColumns>
 
@@ -29,6 +30,8 @@
       #COLUMNS#
      from
       tutors t
+     left join
+      ${mainschema}.usr_user uu ON t.user_id = uu.usr_id
      inner join
       tutor_bootcamp tb on t.id = tb.tutor_id
      inner join
@@ -60,6 +63,7 @@
       tutors t
      inner join
       tutor_bootcamp tb on t.id = tb.tutor_id
+      left join ${mainschema}.usr_user uu ON t.user_id = uu.usr_id
      inner join
       bootcamps b on tb.bootcamp_id = b.id
      inner join
