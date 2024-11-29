@@ -107,8 +107,8 @@ h3 {
 
 .general_container {
   margin-top: 25px;
-  display: grid;
-  grid-template-columns: 2fr 2fr;
+  display:grid;
+  grid-template-columns: 3fr 1fr;
   gap: 15px;
   width: 98%;
   margin: 0 auto;
@@ -500,6 +500,7 @@ o-list img {
   background-color: #f5f0f2;
   box-shadow: none;
   padding-top: 20px;
+  overflow: hidden;
 }
 
 
