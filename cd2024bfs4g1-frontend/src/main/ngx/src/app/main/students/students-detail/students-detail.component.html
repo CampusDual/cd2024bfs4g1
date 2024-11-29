@@ -38,7 +38,7 @@
           <div class="datosPrincipales2">
             <div class="dni">
               <label for="LDNI">{{'LDNI' | oTranslate}}</label>
-              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}"  (input)="toUpperCase($event)" read-only="no" required="no" (onBlur)="mostrar($event)"></o-nif-input>
+              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no" (onBlur)="mostrar($event)"></o-nif-input>
               <div class="aviso" *ngIf="showNotice">
                   <link rel="stylesheet"/>
                   <label for="dni" >{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
@@ -58,11 +58,11 @@
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
               <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
-
+            
             <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
             <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
               null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
-              columns="id;status" value-column="id" description-columns="status" query-on-init="true">
+              columns="id;status" value-column="id" description-columns="status" query-on-init="true" sort="ASC">
             </o-combo>
           </div>
 
@@ -77,7 +77,7 @@
             </div>
             <div>
               <label for="contraseña">{{'PASSWORD' | oTranslate}}</label>
-              <o-password-input attr="usr_password" required="no" show-password-button="false" in-length="8"
+              <o-password-input attr="usr_password" required="no" show-password-button="true" in-length="8"
                 [validators]="validatorsNewPasswordArray">
                 <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
                 <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
@@ -197,7 +197,7 @@
 
 
     </mat-tab>
-    <mat-tab label="{{'DocumentsBootcamps'|oTranslate}}">
+    <mat-tab label="{{'Documents'|oTranslate}}">
       <div class="documentsGrid">
         <o-form-layout-manager>
           <div class="container_students">

@@ -57,7 +57,7 @@
               <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
               <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
                 null-selection="true" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
-                columns="id;status" value-column="id" description-columns="status" query-on-init="true">
+                columns="id;status" value-column="id" description-columns="status" query-on-init="true" sort="ASC">
               </o-combo>
             </div>
           </div>
