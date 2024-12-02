@@ -1,6 +1,6 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextInputComponent, OUserInfoService, ServiceResponse } from 'ontimize-web-ngx';
 import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class PersonalTutorInfoComponent {
   mainInfo: any = {};
   protected service: OntimizeService;
 
-  constructor(protected injector: Injector, private mainService: MainService,private router: Router,protected dialogService: DialogService) {
+  constructor(protected injector: Injector, private mainService: MainService,private router: Router,protected dialogService: DialogService,private oUserInfoService:OUserInfoService) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
   }
@@ -37,6 +37,13 @@ export class PersonalTutorInfoComponent {
         this.inputTutorId.setValue(result.data.user_id);
         this.getTutorData(result.data);
     })
+    this.mainService.getUserInfo().subscribe(result=>{
+      this.oUserInfoService.setUserInfo({
+        username: result.data['usr_login'],
+        avatar: "data:image/png;base64,"+result.data['usr_photo']
+   
+     });
+     });
   }
 
   getTutorData(userData){
@@ -111,6 +118,8 @@ export class PersonalTutorInfoComponent {
         console.error('Error al cargar la imagen.');
       };
     }
+
+    
   }
 
 

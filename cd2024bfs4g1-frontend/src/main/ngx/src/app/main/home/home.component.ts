@@ -1,7 +1,9 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ODateInputComponent, OntimizeService } from 'ontimize-web-ngx';
+import { ODateInputComponent, OntimizeService, OUserInfoService } from 'ontimize-web-ngx';
+import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
   selector: 'home',
@@ -19,14 +21,26 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private actRoute: ActivatedRoute,
-    protected injector: Injector
+    protected injector: Injector,
+    private oUserInfoService:OUserInfoService,
+    private mainService: MainService,
+    private domSanitizer:DomSanitizer
   ) {
     this.service = this.injector.get(OntimizeService);
     this.configureService();
     this.dateClass.bind(this);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.mainService.getUserInfo().subscribe(result=>{
+     this.oUserInfoService.setUserInfo({
+       username: result.data['usr_name'],
+       avatar: "data:image/png;base64,"+result.data['usr_photo']
+  
+    });
+    });
+  
+   }
 
   protected configureService() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');

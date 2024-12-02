@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MainService } from 'src/app/shared/services/main.service';
-import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextInputComponent, ServiceResponse } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextInputComponent, OUserInfoService, ServiceResponse } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-personal-info',
@@ -16,10 +16,12 @@ export class PersonalInfoComponent {
   isUpdateOtherFile: boolean = false;
   mainInfo: any = {};
   protected service: OntimizeService;
+  avatar: any
 
-  constructor(protected injector: Injector, private mainService: MainService,protected dialogService: DialogService) {
+  constructor(protected injector: Injector, private mainService: MainService,protected dialogService: DialogService,private oUserInfoService: OUserInfoService) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
+    
   }
 
   protected configureService() {
@@ -32,6 +34,15 @@ export class PersonalInfoComponent {
         this.inputStudentId.setValue(result.data.user_id);
         this.getStudentData(result.data);
     })
+
+ this.mainService.getUserInfo().subscribe(result=>{
+  this.oUserInfoService.setUserInfo({
+    username: result.data['usr_login'],
+    avatar: "data:image/png;base64,"+result.data['usr_photo']
+
+ });
+ });
+ 
   }
 
   getStudentData(userData){
