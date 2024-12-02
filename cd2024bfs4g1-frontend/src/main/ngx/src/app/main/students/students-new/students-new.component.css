@@ -19,6 +19,13 @@
   grid-template-columns: 1fr 1fr
 }
 
+.sepGitUdemy {
+  display: grid;
+  grid-column: 1 fr 1 fr;
+  gap: 110px;
+}
+
+
 .nombre {
   grid-column: 1/ 2;
 }

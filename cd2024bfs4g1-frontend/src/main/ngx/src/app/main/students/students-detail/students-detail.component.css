@@ -74,6 +74,20 @@ grid-column: 2/3;
 padding-left: 40px;
 }
 
+.sepGitUdemy {
+  display: grid;
+  grid-column: 1 fr 1 fr;
+  gap: 110px;
+}
+
+.github {
+  grid-column: 1/2;
+}
+
+.udemy {
+  padding-top: 20px;
+  grid-column: 2/3;
+}
 
 input,
 select,
