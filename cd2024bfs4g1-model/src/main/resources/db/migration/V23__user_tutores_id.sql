@@ -36,23 +36,23 @@ INSERT into troutes (id,permissionid,enabled,id_rolename)
 
 
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('19','bootcamps',	false,	false	,4);
+	VALUES ('19','bootcamps',false,false,4);
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('20','students'	,false	,false	,4;
+	VALUES ('20','students'	,false,false,4);
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('21','config',	false,	false,	4);
+	VALUES ('21','config',false,false,4);
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('22','tutors',	false,	false,	4);
+	VALUES ('22','tutors',false,false,4);
 
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('18','personalinfo'	,false,	false,	4);
+	VALUES ('18','personalinfo'	,false,	false,4);
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('26','personaltutorinfo',	true,	true,	4);
+	VALUES ('26','personaltutorinfo',true,true,4);
 
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('30','admin',	false	,false,	4);
+	VALUES ('30','admin',false,false,4);
 INSERT into tmenu (id,attr,visible,enabled,id_rolename)
-	VALUES ('17','home',	false,	false	,4);
+	VALUES ('17','home',false,false,4);
 
 
 
