@@ -1,5 +1,8 @@
 ALTER TABLE public.tutors ADD user_id int4 NULL;
 
+INSERT INTO public.usr_role (rol_id,rol_name,rol_xml_client_permission,rol_json_client_permission,rol_notes)
+    values (4 ,'tutor', '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>'
+    ,'{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }' , 'Rol for tutors');
 
 INSERT INTO public.usr_role_server_permission (rol_id,srp_id)
 	VALUES (4,1);
@@ -52,6 +55,4 @@ INSERT into tmenu (attr,visible,enabled,id_rolename)
 	VALUES (17,'home',	false,	false	,4);
 
 
-INSERT INTO public.usr_role (rol_id,rol_name,rol_xml_client_permission,rol_json_client_permission,rol_notes)
-    values (4 ,'tutor', '<?xml version="1.0" encoding="UTF-8"?><security><MENU><ELEMENT attr="admin"><Enabled restricted="yes"/><Visible restricted="yes"/></ELEMENT></MENU></security>'
-    ,'{ "menu": [{ "attr": "admin", "visible": false, "enabled": false }] }' , 'Rol for tutors');
+
