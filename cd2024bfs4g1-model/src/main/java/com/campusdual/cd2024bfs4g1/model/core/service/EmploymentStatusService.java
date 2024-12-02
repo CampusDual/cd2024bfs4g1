@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IEmploymentStatusService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.EmploymentStatusDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -69,5 +70,9 @@ public class EmploymentStatusService implements IEmploymentStatusService {
            error.setCode(EntityResult.OPERATION_WRONG);
            return error;
         }
+    }
+    @Override
+    public AdvancedEntityResult employmentStatusPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+        return this.daoHelper.paginationQuery(this.employmentStatusDao, keyMap, attrList, recordNumber, startIndex, orderBy);
     }
 }

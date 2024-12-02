@@ -7,6 +7,8 @@ import com.campusdual.cd2024bfs4g1.api.core.service.IUserAndRoleService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.*;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
+import com.ontimize.jee.common.db.AdvancedEntityResult;
+import com.ontimize.jee.common.db.NullValue;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -58,13 +60,14 @@ public class StudentService implements IStudentService {
 }
 		String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
 		String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
+		String usrPhoto = (String) attrMap.remove(UserDao.PHOTO);
 		//insertar datos alumno
 		EntityResult insertStudent = this.daoHelper.insert(this.studentDao, attrMap);
 		if(insertStudent.isWrong()){
 			return insertStudent;
 		}
 		//insertar en caso de null
-		if(usrLogin == null && usrPassword == null){
+		if(usrLogin == null && usrPassword == null && usrPhoto == null){
 			return insertStudent;
 		}
 		//crear mapa de atributos para insertar usuario
@@ -74,6 +77,9 @@ public class StudentService implements IStudentService {
 		}
 		if(usrPassword != null){
 			userAttrMap.put(UserDao.PASSWORD, usrPassword);
+		}
+		if(usrPhoto != null){
+			userAttrMap.put(UserDao.PHOTO,usrPhoto);
 		}
 
 		//insertamos usuario
@@ -108,101 +114,112 @@ public class StudentService implements IStudentService {
 	@Override
 	public EntityResult studentUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
 
-			EntityResult query = this.daoHelper.query(this.studentDao, keyMap,
-					Arrays.asList(studentDao.FCT_START, studentDao.FCT_END));
+		// Consultar las fechas de inicio y fin actuales
+		EntityResult query = this.daoHelper.query(this.studentDao, keyMap,
+				Arrays.asList(StudentDao.FCT_START, StudentDao.FCT_END));
+		Map<String, Object> mapResult = query.getRecordValues(0);
 
-			Map<String, Object> mapResult = query.getRecordValues(0);
-
-		if((attrMap.get(studentDao.FCT_START) != null) && attrMap.get(studentDao.FCT_END) != null) {
-
-			Date currentStartDate = (Date) mapResult.get(studentDao.FCT_START);
-			Date currentFinishDate = (Date) mapResult.get(studentDao.FCT_END);
-			Date newStartDate = (Date) attrMap.getOrDefault(studentDao.FCT_START, currentStartDate);
-			Date newFinishDate = (Date) attrMap.getOrDefault(studentDao.FCT_END, currentFinishDate);
+		// Validar las fechas de inicio y fin si están presentes en los atributos
+		if (attrMap.get(StudentDao.FCT_START) != null && attrMap.get(StudentDao.FCT_END) != null) {
+			Date currentStartDate = (Date) mapResult.get(StudentDao.FCT_START);
+			Date currentFinishDate = (Date) mapResult.get(StudentDao.FCT_END);
+			Date newStartDate = (Date) attrMap.getOrDefault(StudentDao.FCT_START, currentStartDate);
+			Date newFinishDate = (Date) attrMap.getOrDefault(StudentDao.FCT_END, currentFinishDate);
 
 			if (newFinishDate.before(newStartDate)) {
 				return createErrorResult("END_DATE_MORE_THAN_INIT_DATE");
 			}
 		}
 
+		// Manejar los datos del usuario
 		String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
 		String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
-		//ACTUALIZAMOS SOLO LOS DATOS DEL ESTUDIANTE
+		Object usrPhoto = attrMap.remove(UserDao.PHOTO);
+		if (usrPhoto != null && usrPhoto.equals("")) {
+			usrPhoto = null;
+		}
+
+		// Actualizar los datos del estudiante
 		EntityResult updateStudent = this.daoHelper.update(this.studentDao, attrMap, keyMap);
-		if(updateStudent.isWrong()){
+		if (updateStudent.isWrong()) {
 			return updateStudent;
 		}
-		//ACTUALIZAMOS LOS DATOS DEL USUARIO si hay cambios en el usuario
-		if(usrLogin == null && usrPassword == null){
+
+		// Actualizar los datos del usuario si hay cambios
+		if (usrLogin == null && usrPassword == null && usrPhoto == null) {
 			return updateStudent;
 		}
-		//BUSCAMOS EL USUARIO
+
+		// Consultar el ID del usuario asociado al estudiante
 		List<String> attrStudent = Arrays.asList(StudentDao.USER_ID);
 		EntityResult queryStudent = this.daoHelper.query(studentDao, keyMap, attrStudent);
-		if(queryStudent.isWrong() || queryStudent.isEmpty()){
+		if (queryStudent.isWrong() || queryStudent.isEmpty()) {
 			return queryStudent;
 		}
 		Integer userId = (Integer) queryStudent.getRecordValues(0).get(StudentDao.USER_ID);
-		//SI LO ENCONTRAMOS LO ACTUALIZAMOS
-		if(userId != null){
+
+		// Si el usuario existe, actualizar los datos del usuario
+		if (userId != null) {
 			Map<String, Object> userAttrMap = new HashMap<>();
-			if(usrLogin != null){
+			if (usrLogin != null) {
 				userAttrMap.put(UserDao.LOGIN, usrLogin);
 			}
-			if(usrPassword != null){
+			if (usrPassword != null) {
 				userAttrMap.put(UserDao.PASSWORD, usrPassword);
+			}
+			if (usrPhoto != null) {
+				userAttrMap.put(UserDao.PHOTO, usrPhoto);
 			}
 			Map<String, Object> userKeyMap = new HashMap<>();
 			userKeyMap.put(UserDao.USR_ID, userId);
 
-			EntityResult userUpdateResult = userAndRoleService.userUpdate(userAttrMap,userKeyMap);
-			if(userUpdateResult.isWrong()){
+			EntityResult userUpdateResult = userAndRoleService.userUpdate(userAttrMap, userKeyMap);
+			if (userUpdateResult.isWrong()) {
 				return userUpdateResult;
 			}
 
-			//asignar rol de estudiante al user
+			// Asignar rol de estudiante al usuario
 			EntityResult assignRoleResult = assignStudentRole(userId);
-			if(assignRoleResult.isWrong()){
+			if (assignRoleResult.isWrong()) {
 				return assignRoleResult;
 			}
 			return userUpdateResult;
-		}else{
-			//SI NO SE ENCUENTRA SE INSERTA
+		} else {
+			// Si el usuario no existe, insertar un nuevo usuario
 			Map<String, Object> userAttrMap = new HashMap<>();
-			if(usrLogin != null){
+			if (usrLogin != null) {
 				userAttrMap.put(UserDao.LOGIN, usrLogin);
 			}
-			if(usrPassword != null){
+			if (usrPassword != null) {
 				userAttrMap.put(UserDao.PASSWORD, usrPassword);
+			}
+			if (usrPhoto != null) {
+				userAttrMap.put(UserDao.PHOTO, usrPhoto);
 			}
 
 			EntityResult insertUser = userAndRoleService.userInsert(userAttrMap);
-
-			if(insertUser.isWrong()){
+			if (insertUser.isWrong()) {
 				return insertUser;
 			}
 			userId = (Integer) insertUser.get(UserDao.USR_ID);
 
-			//actualizar la tabla estudiantes con id de usuario
+			// Actualizar la tabla estudiantes con el ID del usuario
 			Map<String, Object> attrStudentUser = new HashMap<>();
 			attrStudentUser.put(StudentDao.USER_ID, userId);
 
 			EntityResult updateStudentWithUser = this.daoHelper.update(this.studentDao, attrStudentUser, keyMap);
-			if(updateStudentWithUser.isWrong()){
+			if (updateStudentWithUser.isWrong()) {
 				return updateStudentWithUser;
 			}
 
-			//asignar rol de estudiante al usuario
+			// Asignar rol de estudiante al usuario
 			EntityResult assignRoleResult = assignStudentRole(userId);
-			if(assignRoleResult.isWrong()){
+			if (assignRoleResult.isWrong()) {
 				return assignRoleResult;
 			}
 
 			return updateStudentWithUser;
-
 		}
-
-
 	}
 
 	@Override
@@ -249,5 +266,10 @@ public class StudentService implements IStudentService {
 		error.setCode(EntityResult.OPERATION_WRONG);
 		error.setMessage(message);
 		return error;
+	}
+
+	@Override
+	public AdvancedEntityResult studentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+		return this.daoHelper.paginationQuery(this.studentDao, keyMap, attrList, recordNumber, startIndex, orderBy);
 	}
 }

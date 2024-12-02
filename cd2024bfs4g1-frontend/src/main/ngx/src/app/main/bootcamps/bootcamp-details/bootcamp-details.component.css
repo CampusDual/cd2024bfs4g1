@@ -1,3 +1,81 @@
+.tutores {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.tutores div[mat-card-avatar] {
+  grid-column: 1;
+  width: 100%;
+}
+
+.tutores mat-card-title,
+.tutores mat-card-subtitle {
+  grid-column: 2;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.tutores mat-card-title a{
+  cursor: pointer;
+}
+
+.tutores .boton_detalle {
+  grid-column: 3;
+  justify-self: center;
+}
+
+.tutores .boton_eliminar {
+  grid-column: 4;
+  justify-self: center;
+}
+
+
+
+.boton_eliminar {
+  border: none;
+  background-color: #F5F0F2;
+  border-radius: 10px;
+  box-shadow: none;
+
+
+}
+
+.boton_eliminar svg {
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  fill: #f24444;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+
+.boton_detalle {
+  border: none;
+  background-color: #F5F0F2;
+  border-radius: 10px;
+  box-shadow: none;
+
+}
+
+.boton_detalle svg {
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  fill: gray;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+
+
 * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
@@ -9,96 +87,154 @@ o-form {
   margin: 0 auto;
 }
 
-.grid-container,
-.table_container {
+
+h3 {
+  color: #1a3459;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tab {
+  margin-top: 25px;
+
+}
+
+.grid-container {
   width: 96%;
   margin: 5px auto;
-  background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 20px;
+}
+
+.general_container {
+  margin-top: 25px;
+  display:grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 15px;
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 0 10px;
+  height: 90%;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #f5f0f2;
   grid-template-rows: auto;
   gap: 10px;
+  padding: 20px;
 }
 
-.table_container {
-  max-height: 800px;
-  padding: 30px;
+.nombre {
+  grid-column: 1 / 2;
+  grid-row: 1;
 }
 
-.general_container{
-  display:grid;
-  grid-template-columns: 2fr 1fr;
-  width: 96%;
-  margin: 5px auto;
-  border-radius: 15px;
-
+.daterange {
+  grid-column: 2 / 3;
+  grid-row: 1;
 }
 
-.list_container{
+.codigo {
+  grid-column: 3 / 4;
+  grid-row: 1;
+}
+
+.op {
+  grid-column: 4 / 5;
+  grid-row: 1;
+}
+
+.descripcion {
+  grid-column: 1/3;
+  grid-row: 2;
+  width: 100%
+}
+
+.notas {
+  grid-column: 3 / 5;
+  grid-row: 2;
+}
+
+.gridHorario {
+  grid-column: 1/2;
+  width: 100%;
+}
+
+.gridUpload {
+  grid-column: 2/3;
+  width: 100%;
+}
+
+
+
+.list_container {
   grid-column: 2/3;
   display: flex;
   flex-direction: column;
-  width: 90%;
-  height: 105%;
+  width: 100%;
+  height: 100%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
   padding: 20px;
-  margin-left: 10%;
 }
 
-.table_container{
+.formestudiantestut {
+  max-height: 93%;
+  height: 100%;
+}
+
+.table_container {
   grid-column: 1/2;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 105%;
+  height: 100%;
   margin: 0;
   background-color: #f5f0f2;
   border-radius: 15px;
   padding: 20px;
 }
 
-.general_table{
+.general_table {
   width: 98%;
   grid-column: 1/2;
   margin: 0;
+  background-color: #f5f0f2;
+  height: 90%;
+  padding: 20px 0;
 }
 
-.title{
-  font-size:30px;
+.input-button-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+
+}
+
+.o-file-input {
+  margin-top: 10px;
+  grid-column: 1/2;
+}
+
+.o-form-toolbar-button {
+  margin-top: 10px;
+  width: 30%;
+  grid-column: 2/3;
+  margin-left: 20%;
+}
+
+.title {
+  font-size: 30px;
   padding: 30px;
   text-align: center;
 }
 
 
-.nombre {
-  grid-column: 1 / 2;
-}
-
-.fecha-inicio {
-  grid-column: 2 / 3;
-}
-
-.fecha-fin {
-  grid-column: 3 / 4;
-}
-
-.descripcion {
-  grid-column: 1 / 2;
-}
-
-.notas {
-  grid-column: 2 / 4;
-}
-
 .gridcalendario {
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
 }
 
 .calendar-container,
@@ -108,6 +244,15 @@ o-form {
   justify-content: center;
   gap: 15px;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a3459;
+  height: 100%;
+  overflow: hidden;
+}
+
 
 .calendar-container {
   align-items: flex-start;
@@ -137,33 +282,10 @@ o-form {
   box-sizing: border-box;
   margin-bottom: 45px;
 }
-.general_table{
+
+.general_table {
   box-shadow: none;
   width: 100%;
-}
-
-@media (max-width: 768px) {
-  .grid-container,
-  .table_container {
-    width: 98%;
-    padding: 15px;
-  }
-
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
-
-  .nombre,
-  .fecha-inicio,
-  .fecha-fin,
-  .descripcion,
-  .notas {
-    grid-column: auto;
-  }
-
-  .calendar-card {
-    width: 100%;
-  }
 }
 
 
@@ -181,4 +303,244 @@ mat-calendar .mat-calendar-body-cell {
 
 mat-calendar .mat-calendar-arrow {
   display: none;
+}
+
+div.notification label {
+  background-color: #F64983;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.notification.hide {
+  opacity: 0;
+}
+
+.form-class {
+  width: 100%;
+  height: 100%;
+}
+
+.table_containerfichero {
+  width: 98%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 0 10px;
+}
+
+.table_containerhorarios {
+  width: 98%;
+  overflow-x: hidden;
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 0 10px;
+}
+
+.input-button-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+.o-flie-input {
+  grid-column: 1/2;
+}
+
+.o-form-toolbar-button {
+  grid-column: 2/3;
+  width: 60%;
+  margin-left: 20%;
+}
+
+.table_calendar {
+  width: 98%;
+  height: 100%;
+  margin: 0;
+  margin-top: 25px;
+  border-radius: 15px;
+  padding: 20px;
+  padding-top: 0%;
+}
+
+.table_ficheros {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  margin: 0;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.table_horario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  margin: 0;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.timetable_table {
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
+
+@media (max-width: 1200px) {
+
+  .grid-container,
+  .table_container {
+    width: 98%;
+    padding: 15px;
+  }
+
+  .general_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .nombre {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
+
+  .daterange {
+    grid-column: 2/3;
+    grid-row: 1;
+  }
+
+  .codigo {
+    grid-column: 1/2;
+    grid-row: 2;
+  }
+
+  .op {
+    grid-column: 2/3;
+    grid-row: 2;
+  }
+
+  .descripcion {
+    grid-column: 1/3;
+    grid-row: 3;
+  }
+
+  .notas {
+    grid-column: 1/3;
+    grid-row: 4;
+  }
+
+  .calendar-card {
+    width: 100%;
+  .table_container,
+  .list_container {
+    width: 100%;
+  }
+
+  .o-table,
+  .o-list {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .mat-card {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .boton_eliminar {
+    margin: 0 auto;
+  }
+}
+}
+
+mat-calendar {
+  width: 100%;
+  font-size: 0.9em;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+mat-calendar .mat-calendar-body-cell {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+mat-calendar .mat-calendar-arrow {
+  display: none;
+}
+
+.timetable_table {
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+  height: auto;
+}
+
+o-list img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+
+
+}
+
+.tutores {
+  background-color: #f5f0f2;
+  box-shadow: none;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+
+div.notification label {
+  background-color: #F64983;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.notification.hide {
+  opacity: 0;
+}
+
+.form-class {
+  width: 100%;
+  height: 100%;
+}
+
+.timetable_table{
+  background-color: #f5f0f2;
+  font-family: 'Roboto', sans-serif;
+}
+
+o-list img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tutores {
+  background-color: #f5f0f2;
+  box-shadow: none;
+  padding-top: 20px;
 }

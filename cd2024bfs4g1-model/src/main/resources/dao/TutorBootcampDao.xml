@@ -19,6 +19,39 @@
                 <AmbiguousColumn name="name" prefix="t"/>
                 <AmbiguousColumn name="tutorname" prefix="t" databaseName="name" />
                 <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
+                <AmbiguousColumn name="tutor_name_type" prefix="tt" databaseName="type" />
+                <AmbiguousColumn name="userphototutor" prefix="uu" databaseName="usr_photo" />
+
+            </AmbiguousColumns>
+
+            <Sentence>
+                <![CDATA[
+     select
+      #COLUMNS#
+     from
+      tutors t
+     left join
+      ${mainschema}.usr_user uu ON t.user_id = uu.usr_id
+     inner join
+      tutor_bootcamp tb on t.id = tb.tutor_id
+     inner join
+      bootcamps b on tb.bootcamp_id = b.id
+     inner join
+      tutors_type tt on tb.tutor_type = tt.id
+     left join
+      bootcamp_status bs on bs.id=b.id
+     #WHERE#
+   ]]>
+            </Sentence>
+        </Query>
+        <Query id="not_finished">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="tb"/>
+                <AmbiguousColumn name="name" prefix="t"/>
+                <AmbiguousColumn name="tutorname" prefix="t" databaseName="name" />
+                <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
+                <AmbiguousColumn name="tutor_name_type" prefix="tt" databaseName="type" />
+                <AmbiguousColumn name="status" prefix="bs"/>
 
             </AmbiguousColumns>
 
@@ -30,9 +63,16 @@
       tutors t
      inner join
       tutor_bootcamp tb on t.id = tb.tutor_id
+      left join ${mainschema}.usr_user uu ON t.user_id = uu.usr_id
      inner join
       bootcamps b on tb.bootcamp_id = b.id
-     #WHERE#
+     inner join
+      tutors_type tt on tb.tutor_type = tt.id
+     join
+      bootcamp_status bs on bs.id=b.id
+      And bs.status !='Finished'
+           #WHERE#
+
    ]]>
             </Sentence>
         </Query>

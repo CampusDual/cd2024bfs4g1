@@ -19,16 +19,14 @@
                 <AmbiguousColumn name="name" prefix="s"/>
                 <AmbiguousColumn name="start_date" prefix="b"/>
                 <AmbiguousColumn name="end_date" prefix="b"/>
-                <AmbiguousColumn name="start_date" prefix="sb"/>
-                <AmbiguousColumn name="end_date" prefix="sb"/>
                 <AmbiguousColumn name="studentname" prefix="s" databaseName="name" />
                 <AmbiguousColumn name="bootcampname" prefix="b" databaseName="name" />
                 <AmbiguousColumn name="sb_start_date" prefix="sb" databaseName="start_date"/>
                 <AmbiguousColumn name="sb_end_date" prefix="sb" databaseName="end_date"/>
-                <AmbiguousColumn name="start_date" prefix="b" databaseName="start_date"/>
-                <AmbiguousColumn name="end_date" prefix="b" databaseName="end_date"/>
                 <AmbiguousColumn name="status" prefix="sb" />
-                <AmbiguousColumn name="status" prefix="s"/>
+                <AmbiguousColumn name="statusinbootcamp" prefix="sb" databaseName="status"/>
+                <AmbiguousColumn name="bootcampstatus" prefix="bs" databaseName="status"/>
+                <AmbiguousColumn name="userphotostudent" prefix="uu" databaseName="usr_photo"/>
             </AmbiguousColumns>
 
             <Sentence>
@@ -41,6 +39,9 @@
       student_bootcamp sb on s.id = sb.student_id
      inner join
       bootcamps b on sb.bootcamp_id = b.id
+      left join ${mainschema}.usr_user uu ON s.user_id = uu.usr_id
+        inner join
+     bootcamp_status bs on b.id = bs.id
      #WHERE#
    ]]>
             </Sentence>

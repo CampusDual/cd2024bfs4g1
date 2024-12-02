@@ -1,17 +1,23 @@
-* { font-family: 'Roboto', sans-serif; }
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
 .grid-container{
   width: 96%;
   margin: 5px auto;
   background-color: #f5f0f2;
   border-radius: 15px;
-  padding: 20px;
-  height: auto;
+  padding: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 10px;
-  height: auto;
+  gap: 15px;
 }
+
+.user-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
 .nombre {
   grid-column: 1/ 2;
 }
@@ -57,23 +63,28 @@
 .emailCampus{
   grid-column: 2/3;
 }
-.fctSchool{
-  grid-column: 3/4;
-}
-.tutor{
+.fctSchool {
   grid-column: 1/2;
 }
-.fctStart{
+.tutor {
   grid-column: 2/3;
 }
-.fctEnd{
-  grid-column: 3/4;
-}
-.udemy{
+
+.fctStart {
   grid-column: 1/2;
 }
-.githubUser{
+
+.fctEnd {
   grid-column: 2/3;
+}
+
+.udemy {
+  grid-column: 2/3;
+  justify-self: center;
+  align-self: center;
+}
+.githubUser {
+  grid-column: 1/2;
 }
 .notes{
   grid-column: 3/4;
@@ -84,8 +95,38 @@ o-form {
   margin: 0 auto;
 }
 
+.aviso label{
+  color:rgb(244, 67, 54);
+  display: flex;
+  font-size: 11px;
+  height: 20PX;
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 542.453px
+}
+.aviso label mat-icon{
+  padding-bottom: 10px;
 
+}
 
+.aviso label{
+  color:rgb(244, 67, 54);
+  display: flex;
+  font-size: 11px;
+  height: 20PX;
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 542.453px
+}
+.aviso label mat-icon{
+  padding-bottom: 10px;
+}
 
 @media (max-width: 1250px) {
 
@@ -129,3 +170,159 @@ o-form {
 .checkbox-container {
   padding: 0;
 }
+
+.foto {
+  grid-column: 2 / 3;  /* Define la columna */
+  grid-row: 0;  /* Asegúrate de que esté en la fila 1 */
+  justify-self: center;  /* Centra horizontalmente */
+  align-self: center;  /* Centra verticalmente */
+  margin-bottom: 40px;
+}
+.p_info_foto{
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+fieldset {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #f5f0f2;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+  border: solid 1px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px
+  }
+
+.datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-column: 1/3;
+}
+
+.datosPrincipales1 {
+  grid-column: 1 / 2;
+  padding: 20px 40px;
+}
+
+
+.datosPrincipales2 {
+  grid-column: 2 / 3;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fct-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  width: 96%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+  gap: 20px;
+  }
+
+.fct-grid {
+  border-radius: 15px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 20px;
+  }
+
+
+
+
+.datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-column: 1/3;
+}
+
+.datosPrincipales1 {
+  grid-column: 1 / 2;
+  padding: 20px 40px;
+}
+
+
+.datosPrincipales2 {
+  grid-column: 2 / 3;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fct-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  width: 96%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+  gap: 20px;
+  }
+
+.fct-grid {
+  border-radius: 15px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 20px;
+  }
+
+.datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-column: 1/3;
+}
+
+.datosPrincipales1 {
+  grid-column: 1 / 2;
+  padding: 20px 40px;
+}
+
+
+.datosPrincipales2 {
+  grid-column: 2 / 3;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fct-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  width: 96%;
+  margin: 5px auto;
+  background-color: #f5f0f2;
+  border-radius: 15px;
+  padding: 20px;
+  gap: 20px;
+  }
+
+.fct-grid {
+  border-radius: 15px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 20px;
+  }

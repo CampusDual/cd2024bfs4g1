@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
@@ -15,6 +15,11 @@ import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, Ontimize
 })
 export class BootcampDetailsComponent {
   @ViewChild('bootcampDetailForm') bootcampDetailForm:OFormComponent;
+  @ViewChild("idNumber") idNumber: OTextInputComponent;
+  @ViewChild("documentsTable") documentsTable: OTableComponent;
+  @ViewChild("fileinput") fileinput: OFileInputComponent;
+  @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
+  
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
@@ -26,11 +31,12 @@ export class BootcampDetailsComponent {
     protected injector: Injector,
     private _adapter: DateAdapter<any>,
     @Inject(MAT_DATE_LOCALE) private _locale: string,
-    private translateService: OTranslateService) {
+    private translateService: OTranslateService,
+    protected dialogService: DialogService
+   ) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
-    this.configureService();
     this.dateClass.bind(this);
     this._locale = this.translateService.getCurrentLang();
     this._adapter.setLocale(this._locale);
@@ -42,7 +48,28 @@ export class BootcampDetailsComponent {
   }
   goToStudentDetail(event: any) {
     const studentId = event.student_id;
-    this.router.navigate(['/main/students', studentId])
+    const tab = 'table';
+    this.router.navigate(['/main/students'], {
+      queryParams: { studentId, tab }
+    });
+  this.clearTableSelection();
+  }
+
+  goToTutorDetail(tutor: any) {
+    const tutorId = tutor.tutor_id;
+    const tab = 'table';
+    this.router.navigate(['/main/tutors'], {
+      queryParams: {  tutorId, tab }
+    });
+  this.clearTableSelection();
+  }
+  // goToTutorDetail(tutor: any) {
+  //   this.router.navigate(['/main/tutors', tutor.tutor_id]);
+  // }
+  clearTableSelection(): void {
+    if (this.studentsTable) {
+      this.studentsTable.clearSelection();
+    }
   }
 
   volver(e) {
@@ -77,6 +104,8 @@ export class BootcampDetailsComponent {
     };
 
     this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
+    
+
   }
 
 
@@ -99,6 +128,7 @@ export class BootcampDetailsComponent {
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
   @ViewChild("dateRange") dateRange: ODateRangeInputComponent;
+  @ViewChild("list") list: OListComponent;
 
   selected = false;
   startAtDate: Date;
@@ -109,12 +139,26 @@ export class BootcampDetailsComponent {
 
   ngOnInit() { }
 
-  protected configureService() {
+  protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
     this.service.configureService(conf);
+
   }
 
+  protected configureDocuments() {
+    const documentConf = this.service.getDefaultServiceConfiguration('documents');
+    this.service.configureService(documentConf);
+  }
+
+  protected configureTutorsBootcamp() {
+    const tutorBootcampConf = this.service.getDefaultServiceConfiguration('tutorBootcamps');
+    this.service.configureService(tutorBootcampConf);
+  }
+  
+
   onBootcampChange(event: any) {
+    this.studentsTable.refresh();
+    this.configureBootcamps();
     const bootcampId = event.id;
     const filter = { id: bootcampId };
 
@@ -138,14 +182,26 @@ export class BootcampDetailsComponent {
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate: Date, view) => {
-    let date: Date = new Date(cellDate);
-    let startDate: Date = this.startDateInput.getValue();
-    let endDate: Date = this.endDateInput.getValue();
     if (view === "month") {
+      let date = new Date(cellDate);
+      date.setHours(0, 0, 0, 0);
+  
+      let startDate = this.startDateInput.getValue();
+      let endDate = this.endDateInput.getValue();
+  
+      if (startDate) {
+        startDate = new Date(startDate);
+        startDate.setHours(0, 0, 0, 0);
+      }
+      if (endDate) {
+        endDate = new Date(endDate);
+        endDate.setHours(0, 0, 0, 0);
+      }
+  
       if (startDate && endDate && date >= startDate && date <= endDate) {
-        if (startDate.toString() == date.getTime().toString()) {
+        if (date.getTime() === startDate.getTime()) {
           return "calendarcellStart";
-        } else if (endDate.toString() == date.getTime().toString()) {
+        } else if (date.getTime() === endDate.getTime()) {
           return "calendarcellEnd";
         } else {
           return "calendarcell";
@@ -154,7 +210,7 @@ export class BootcampDetailsComponent {
     }
     return '';
   };
-
+  
 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
@@ -170,4 +226,78 @@ export class BootcampDetailsComponent {
     }
   }
 
+  getFileData() {
+    if (this.idNumber) {
+      return { bootcamp_id: this.idNumber.getValue() };
+    } else {
+      return null;
+    }
+  }
+
+
+  showMessage = false;
+
+  onUploadFiles(event) {
+    this.documentsTable.refresh();
+    this.fileinput.clearValue();
+
+    this.showMessage = true;
+
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
+  }
+
+  onFileUpload() {
+
+  }
+
+  onError(event) {
+
+    if (event.status === 507) {
+      this.showError("event");
+    }
+
+  }
+  showError(event: any) {
+    console.log(event);
+  }
+  // Método para manejar el evento de clic en la acción
+  actionClick(event) {
+    this.configureDocuments();
+    // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
+    this.service.query({ id: event.id }, ['name', 'base64'], 'bootcampFilesContent').subscribe(res => {
+      if (res.data && res.data.length) {
+        // Si se encuentran datos, se extrae el nombre del archivo y el contenido en base64.
+        let filename = res.data[0].name;
+        let base64 = res.data[0].base64;
+        // Se crea un enlace temporal para descargar el archivo.
+        const src = `data:text/csv;base64,${base64}`;
+        const link = document.createElement("a");
+        link.href = src;
+        link.download = filename;
+        link.click();
+        link.remove();
+      }
+    });
+
+  }
+  refreshFileInput() {
+    this.fileinput.clearValue();
+  }
+  deleteTutorBootcamp(tutors: any) {
+
+    this.configureTutorsBootcamp();
+    this.dialogService.confirm('Confirm_dialog_title', 'Do_you_really_want_to_delete');
+    this.dialogService.dialogRef.afterClosed().subscribe( result => {
+      if(result) {
+        this.service.delete({id: tutors.id}, 'tutorBootcamp').subscribe(res => {
+          if (res.code === 0) {
+            this.list.reloadData();
+          }
+        });
+      } 
+    });
+    
+   } 
 }

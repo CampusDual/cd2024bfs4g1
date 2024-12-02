@@ -82,14 +82,17 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (result: ServiceResponse) => {
           this.userInfoService.storeUserInfo(result.data);
-          let avatar = './assets/images/user_profile.png';
+          let avatar = './assets/images/ontimize.png';
+
           if (result.data['usr_photo']) {
-            (avatar as any) = this.domSanitizer.bypassSecurityTrustResourceUrl('data:image/*;base64,' + result.data['usr_photo']);
+            (avatar as any) = ('data:image/*;base64,' + result.data['usr_photo']);
           }
-          this.oUserInfoService.setUserInfo({
-            username: result.data['usr_name'],
-            avatar: avatar
-          });
+
+
+         this.oUserInfoService.setUserInfo({
+                 username: result.data['usr_name'],
+                    avatar: avatar
+                      });
           const userRole = result.data['rol_name'];
           this.redirectUserBasedOnRole(userRole);
         }
@@ -106,7 +109,10 @@ export class LoginComponent implements OnInit {
         redirectRoute = '/main';
         break;
       case 'student':
-        redirectRoute = '/main/data';
+        redirectRoute = '/main/data/student';
+        break;
+        case 'tutor':
+        redirectRoute = '/main/data/tutor';
         break;
       default:
         redirectRoute = this.redirect; 

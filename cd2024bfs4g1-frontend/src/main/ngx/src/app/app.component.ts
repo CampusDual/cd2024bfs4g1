@@ -22,6 +22,9 @@ export class AppComponent implements OnInit {
     if (this.ontimizeMatIconRegistry.addOntimizeSvgIcon) {
       this.ontimizeMatIconRegistry.addOntimizeSvgIcon('nodo', 'assets/images/faviconNS-AZUL.svg');
     }
+    if (this.ontimizeMatIconRegistry.addOntimizeSvgIcon) {
+      this.ontimizeMatIconRegistry.addOntimizeSvgIcon('warning', 'assets/icons/warning.svg');
+    }
   }
 
 }

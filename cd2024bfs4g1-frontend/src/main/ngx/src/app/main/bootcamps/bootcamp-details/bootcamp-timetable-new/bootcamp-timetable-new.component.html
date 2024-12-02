@@ -1,0 +1,40 @@
+<div class="popup1" >
+    <o-form #bootcampTimetableForm service="bootcampTimetable" entity="bootcampTimetable" editable-detail="no" show-header="no" confirm-exit="false" 
+      undo-button="false" label-header-align="center" after-insert-mode="new"
+      (onInitialMode)="inicialDR()">
+      <o-text-input attr="id_bootcamp" sql-type="INTEGER" enabled="no"  hidden="true" ></o-text-input> 
+      <o-date-input  #startDateBootcamp attr="start_date" enabled="no" format="DD/MM/YYYY" hidden="true"></o-date-input>
+      <o-date-input #endDateBootcamp attr="end_date" enabled="no" format="DD/MM/YYYY" hidden="true"></o-date-input>
+
+
+      <label >{{ 'time_start' | oTranslate }}</label>
+      <o-hour-input #horai attr="time_start" label="{{ 'TimeStart' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
+
+
+      <label >{{ 'time_end' | oTranslate }}</label>
+      <o-hour-input #horaf attr="time_end" label="{{ 'TimeEnd' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
+
+
+
+      <div class="especial fecha-inicio">
+        <o-date-input #startdate label-visible="false" class="fechas" attr="day_start" required="yes" format="DD/MM/YYYY" hidden="true"
+         ></o-date-input>
+      </div>
+      <div class="especial fecha-fin">
+        <o-date-input #enddate label-visible="false" attr="day_end" required="yes"  hidden="true"
+          format="DD/MM/YYYY">
+        </o-date-input>
+      </div>
+      <div fxLayout="column" layout-padding>
+          <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
+          <o-daterange-input attr="dateRangeBootcamp" read-only="no"
+            required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)"
+            show-week-numbers="true" mode="desktop"  >
+          </o-daterange-input>
+      </div>
+      <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
+          (click)="addTimetableBootcamp()"></o-button>
+      </div>
+    </o-form>
+  </div>

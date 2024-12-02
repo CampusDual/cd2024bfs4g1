@@ -20,14 +20,23 @@ export const SERVICE_CONFIG: Object = {
   'employmentstatus':{
     'path': '/employmentstatus'
   },
-  'tutors': {
-    'path': '/tutors',
+  'tutors':{
+    'path': '/tutors'
+  },
+  'studentstatus':{
+    'path': '/studentstatus'
+  },
+  'bootcampTimetable':{
+    'path':'/bootcamptimetable'
+  },
+  'tutortype':{
+    'path':'/tutortype'
   },
   'tutorBootcamps':{
     'path': '/tutorbootcamp'
   },
-  'studentstatus':{
-    'path': '/studentstatus'
+  'employmentstatushistory':{
+    'path': '/employmentstatushistory'
   }
 
 };
