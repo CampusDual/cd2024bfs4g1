@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: ':id',component: BootcampDetailsComponent},
   {path:':id_timetable/newTimetable', component: BootcampTimetableNewComponent},
   {path:':bootcamp_id/new_Session_Bootcamp', component: NewSessionBootcampComponent},
-  {path:':bootcamp_id/update_Session_Bootcamp', component: UpdateSessionBootcampComponent},
+  {path:':bootcamp_id/:id', component: UpdateSessionBootcampComponent},
   {path:':bootcamp_id/new', component: StudentBootcampAddComponent},
   {path:':bootcamp_id/new_tutor', component: TutorBootcampAddComponent},
   {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent}
