@@ -289,5 +289,9 @@
   "Do_you_really_want_to_delete":"Seguro que quieres borrarlo?",
   "Info_foto":"Se recomienda una foto cuadrada(1:1)",
   "date_change":"Fecha del cambio",
-  "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe"
+  "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe",
+  "date_change":"Fecha del cambio",
+  "link_ico":"Abrir link de sesión",
+  "session_name":"Nombre",
+  "session_date": "Fecha"
 }

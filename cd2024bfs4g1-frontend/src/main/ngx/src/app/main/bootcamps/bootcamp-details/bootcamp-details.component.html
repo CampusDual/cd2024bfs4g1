@@ -206,18 +206,15 @@
     <div class="table_sesions general_table">
       <div class="calendar-container">
       <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table"
-      service="sessionBootcamp" insert-form-route="" pagination-controls=""
-      detail-mode="none" update-button="false" entity="sessionBootcamp" keys="id"
+      service="sessionBootcamp"
+      entity="sessionBootcamp" keys="id"
       parent-keys="id_bootcamp:id"
-      columns="id;session_name;session_date;password;status"
-      visible-columns="session_name;session_date;password;Link"
-      show-report-on-demand-option="false" show-charts-on-demand-option="false"
-      select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" selection-mode="multiple"
-      detail-button-in-row-icon="">
+      columns="id;session_name;session_date;password;status;link"
+      visible-columns="session_name;session_date;password;Link">
       <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
       <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
                   tooltip-value="{{'link_ico'| oTranslate}}">
-                  <o-table-cell-renderer-action (onclick)="openLink($event)"
+                  <o-table-cell-renderer-action (onClick)="openLink($event)"
                     icon="link"></o-table-cell-renderer-action>
       </o-table-column>
       <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>

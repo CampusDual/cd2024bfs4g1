@@ -300,12 +300,22 @@ export class BootcampDetailsComponent {
     });
 
    }
-   openLink(event:any){
-
-    const link = event.data.link;
-    window.open('https://www.google.com');
-    console.log("QWFQWWEFQWEFQWWEFQFEQWEFQWEFQWEF HOLA");
-    console.log(link);
-
-   }
+   
+   openLink(event: any): void {
+    const link = event?.link;
+  
+    if (!link) {
+     
+      this.showAlert()
+      return;
+    }
+  
+    window.open(link, '_blank');
+  }
+  
+  showAlert() {
+    if (this.dialogService) {
+      this.dialogService.error('Error en el link', 'El link no existe o  no es válido');
+    }
+  }
 }
