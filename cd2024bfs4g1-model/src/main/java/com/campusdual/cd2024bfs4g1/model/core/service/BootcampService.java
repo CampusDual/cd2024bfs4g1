@@ -158,6 +158,23 @@ public class BootcampService implements IBootcampService {
         return this.daoHelper.query(this.bootcampDao, queryFilter, attrList);
     }
 
+    @Override
+    public EntityResult futureBootcampQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+
+        SQLStatementBuilder.BasicField startDateField = new SQLStatementBuilder.BasicField(BootcampDao.ATTR_START_DATE);
+        SQLStatementBuilder.BasicField currentDate = new SQLStatementBuilder.BasicField("CURRENT_DATE");
+
+        // Crear la condición para obtener los bootcamps cuyo start_date sea posterior a la fecha actual
+        SQLStatementBuilder.BasicExpression startDateCondition = new SQLStatementBuilder.BasicExpression(
+                startDateField, SQLStatementBuilder.BasicOperator.MORE_OP, currentDate);
+
+        Map<String, Object> queryFilter = new HashMap<>();
+        queryFilter.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY, startDateCondition);
+
+        // Ejecutar la consulta con la condición aplicada (en este caso usando el alias "futureBootcamps")
+        return this.daoHelper.query(this.bootcampDao, queryFilter, attrList, "futureBootcamps");
+    }
+
 
 
 }

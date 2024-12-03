@@ -317,4 +317,14 @@ public class StudentService implements IStudentService {
 	public AdvancedEntityResult studentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
 		return this.daoHelper.paginationQuery(this.studentDao, keyMap, attrList, recordNumber, startIndex, orderBy);
 	}
+
+	@Override
+	public EntityResult commercialStudentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
+		return this.daoHelper.query(this.studentDao, keysMap, attributes, "commercialStudent");
+	}
+
+	@Override
+	public AdvancedEntityResult commercialStudentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+		return this.daoHelper.paginationQuery(this.studentDao, keyMap, attrList, recordNumber, startIndex, orderBy, "commercialStudent");
+	}
 }

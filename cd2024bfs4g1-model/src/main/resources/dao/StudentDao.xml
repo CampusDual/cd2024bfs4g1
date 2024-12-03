@@ -25,6 +25,44 @@
                     ]]>
             </Sentence>
         </Query>
+        <Query id="commercialStudent">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id" prefix="cs"/>
+                <AmbiguousColumn name="name" prefix="cs"/>
+                <AmbiguousColumn name="surname1" prefix="cs"/>
+                <AmbiguousColumn name="personal_email" prefix="cs"/>
+                <AmbiguousColumn name="dni" prefix="cs"/>
+                <AmbiguousColumn name="surname2" prefix="cs"/>
+                <AmbiguousColumn name="birth_date" prefix="cs"/>
+                <AmbiguousColumn name="phone" prefix="cs"/>
+                <AmbiguousColumn name="campus_email" prefix="cs"/>
+                <AmbiguousColumn name="fct_school" prefix="cs"/>
+                <AmbiguousColumn name="fct_start" prefix="cs"/>
+                <AmbiguousColumn name="fct_end" prefix="cs"/>
+                <AmbiguousColumn name="tutor" prefix="cs"/>
+                <AmbiguousColumn name="udemy" prefix="cs"/>
+                <AmbiguousColumn name="github_user" prefix="cs"/>
+                <AmbiguousColumn name="notes" prefix="cs"/>
+                <AmbiguousColumn name="email" prefix="cs"/>
+                <AmbiguousColumn name="surnames" prefix="cs"/>
+                <AmbiguousColumn name="spain_comunity" prefix="cs"/>
+                <AmbiguousColumn name="location" prefix="cs"/>
+                <AmbiguousColumn name="employment_status_id" prefix="cs"/>
+                <AmbiguousColumn name="user_id" prefix="cs"/>
+                <AmbiguousColumn name="student_status_id" prefix="cs"/>
+                <AmbiguousColumn name="status" prefix="cs"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                        SELECT
+                        #COLUMNS#
+                        FROM
+                            ${mainschema}.v_commercial_students cs
+                            left join ${mainschema}.v_students_with_bootcamps sb on sb.id=cs.id
+                            #WHERE#
+                    ]]>
+            </Sentence>
+        </Query>
     </Queries>
 
 </JdbcEntitySetup>

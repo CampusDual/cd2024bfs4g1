@@ -299,5 +299,9 @@
   "Download" : "Descargar",
   "Save": "Guardar",
   "nota":"Notas",
-  "Acceso":"Accesos"
+  "Acceso":"Accesos",
+  "nota":"Notas",
+  "LCONTACTSTATUS": "Estado del Contacto",
+  "LCONTACTEDSTUDENTS": "Estudiantes contactados",
+  "Commercial Section": "Sección comercial"
 }
