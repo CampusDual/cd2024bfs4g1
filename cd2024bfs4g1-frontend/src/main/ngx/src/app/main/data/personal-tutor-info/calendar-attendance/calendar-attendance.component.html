@@ -1,0 +1,59 @@
+<div class="calendar-timestamps-container">
+    <div class="calendar-container">
+        <div class="date-item-container">
+            <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
+            <div class="years" *ngFor="let year of years">
+                <div class="months">
+                    <div *ngIf="isSameMonthRange()">
+                        <div class="date-item month">
+                            {{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}
+                        </div>
+                    </div>
+                    <div *ngIf="!isSameMonthRange()">
+                        <div class="two-months">
+                            <span>{{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}</span>
+                            <span>{{ getMonthName(endDate) }} {{ endDate | date: 'yyyy' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <o-button color="white" (click)="incSelectedWeek()" icon="arrow_forward"></o-button>
+        </div>
+
+        <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
+            <div class="student days">{{'Alumno' | oTranslate}}</div>
+            <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{
+                        'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.day),
+                        'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.day),
+                        'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.day)
+                    }">
+                <div>{{dayWithWeekDays.day}}</div>
+                <div>{{dayWithWeekDays.dayOfWeek}}</div>
+            </div>
+        </div>
+        <div class="calendar">
+            <div *ngFor="let student of students" class="student_row days"
+                [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
+                <div>{{ student.name }} {{ student.surname1 }} {{ student.surname2 }}</div>
+                <div *ngFor="let dayWithWeekDay of daysWithWeekDays">
+                    <div class="center-select" *ngIf="isBootcampInRange(dayWithWeekDay.fullDate)"
+                        [matTooltip]="getSelectedTooltip(student, dayWithWeekDay)" matTooltipPosition="below">
+                        <mat-select class="custom-select"
+                            [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)"
+                            (selectionChange)="onSelectChange($event, student, dayWithWeekDay)">
+                            <mat-option *ngFor="let status of statusData" [value]="status.id">
+                                {{ status.abbreviation }}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="button-container">
+            <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
+        </div>
+    </div>
+</div>

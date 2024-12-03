@@ -1,0 +1,266 @@
+.calendar-timestamps-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.date-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.sidebar {
+  height: 100%;
+  background-color: #f5f0f2;
+  width: 100px;
+}
+
+.date-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f0f2;
+  width: calc(100% - 120px);
+  overflow-y: hidden;
+  padding: 10px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #f5f0f2;
+}
+
+.years {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+}
+
+.months {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+}
+
+.days {
+  display: grid;
+}
+
+
+
+.bootcamp:hover {
+  background-color: #C8DBC2;
+}
+
+.year {
+  color: #1a3459;
+  font-weight: 900;
+}
+
+.month {
+  color: #1a3459;
+  font-weight: 900;
+}
+
+.two-months {
+  color: #1a3459;
+  font-weight: 900;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #f5f0f2;
+}
+
+
+.day {
+  background-color: #1a3459;
+  color: #f5f0f2;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.student {
+  background-color: #1a3459;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px;
+  height: 80%;
+  border-radius: 5px;
+}
+
+.student_row {
+  color: #1a3459;
+  border: #1a3459 solid 1px;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+.small {
+  font-size: 10px;
+}
+
+.medium {
+  font-size: 14px;
+}
+
+.large {
+  font-size: 18px;
+}
+
+.position {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-start-end {
+  color: #C0C0C0;
+}
+
+.bootcamp-name {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.bootcamp-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.day-combos {
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+
+
+.day-combo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+}
+
+select {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid black;
+  background-color: #f5f0f2;
+  color: #1a3459;
+  text-align: center;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border: 2px solid #8AB237;
+}
+
+option {
+  padding: 5px;
+}
+
+select option {
+  text-align: justify;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.day-combo-empty {
+  flex: 1;
+  background-color: transparent;
+}
+
+.date-item-container.days {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-row: 1;
+  gap: 5px;
+  min-width: 1550px;
+ 
+}
+
+.student_row.days {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-row: 1;
+  gap: 5px;
+  min-width: 1550px;
+  overflow-x: hidden;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-select {
+  width: 80px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  text-align: center;
+}
+
+.mat-select-panel {
+  min-width: 100px;
+}
+
+.mat-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.center-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
