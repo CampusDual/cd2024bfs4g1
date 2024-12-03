@@ -204,20 +204,27 @@
     </mat-tab>
   <mat-tab label="{{ 'Sesiones' | oTranslate }}">
     <div class="table_sesions">
+      <div class="calendar-container">
       <o-table class="" virtual-scroll="false" attr=""
       service="" insert-form-route="" pagination-controls=""
       detail-mode="none" update-button="false" entity="" keys="id"
       parent-keys="id_bootcamp:id"
-      columns="id;session_name;session_date"
-      visible-columns="id;session_name;session_date"
+      columns="id;session_name;session_date;password;link"
+      visible-columns="id;session_name;session_date;password;link_ico"
       show-report-on-demand-option="false" show-charts-on-demand-option="false"
       select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" selection-mode="multiple"
       detail-button-in-row-icon="">
       <o-table-column attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
+      <o-table-column attr="link" width="64px" tooltip="yes"
+                  tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
+                  <o-table-cell-renderer-action 
+                    icon="link_ico"></o-table-cell-renderer-action>
+                </o-table-column>
       <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
       </o-table-context-menu>
     </o-table>
     </div>
+  </div>
   </mat-tab>
   </mat-tab-group>
 </o-form>
