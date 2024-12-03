@@ -202,10 +202,12 @@
         </div>
       </div>
     </mat-tab>
+<o-form-layout-manager  attr="popupNewSession" mode="dialog">
+  <o-form-layout-dialog-options class="popup">
   <mat-tab label="{{ 'Sesiones' | oTranslate }}">
     <div class="table_sesions general_table">
       <div class="calendar-container">
-      <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table"
+      <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" insert-form-route="new_Session_Bootcamp" edit-form-route="update_Session_Bootcamp"
       service="sessionBootcamp"
       entity="sessionBootcamp" keys="id"
       parent-keys="id_bootcamp:id"
@@ -225,5 +227,7 @@
     </div>
   </div>
   </mat-tab>
+  </o-form-layout-dialog-options >
+</o-form-layout-manager >
   </mat-tab-group>
 </o-form>

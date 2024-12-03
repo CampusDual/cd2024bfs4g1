@@ -305,11 +305,9 @@ export class BootcampDetailsComponent {
     const link = event?.link;
   
     if (!link) {
-     
       this.showAlert()
       return;
     }
-  
     window.open(link, '_blank');
   }
   
