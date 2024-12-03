@@ -1,14 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import {  DialogService, Expression, FilterExpressionUtils, OTableComponent } from 'ontimize-web-ngx';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { DialogService, Expression, FilterExpressionUtils, OTableComponent } from 'ontimize-web-ngx';
 
 @Component({
-  selector: 'app-bootcamp-students-table',
-  templateUrl: './bootcamp-students-table.component.html',
-  styleUrls: ['./bootcamp-students-table.component.css']
+  selector: 'app-personal-info-sessions',
+  templateUrl: './personal-info-sessions.component.html',
+  styleUrls: ['./personal-info-sessions.component.css']
 })
-export class BootcampStudentsTableComponent {
-  @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
+export class PersonalInfoSessionsComponent {
+
+  @ViewChild('sessionsTable', { static: true }) table: OTableComponent;
   selectedStatuses: string[] = ['Started', 'Pending'];
   constructor(
     protected dialogService: DialogService
@@ -46,7 +47,7 @@ export class BootcampStudentsTableComponent {
       return '';
     }
 
-    sessionFilters: Expression | null = null;
+  sessionFilters: Expression | null = null;
 
   onComboChange(selectedStatuses: string[]): void {
     if (selectedStatuses.length === 0) {

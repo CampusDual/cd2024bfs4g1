@@ -3,9 +3,10 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogService, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, Expression, FilterExpressionUtils, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -19,12 +20,14 @@ export class BootcampDetailsComponent {
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
-
+  @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
+  selectedStatuses: string[] = ['Started', 'Pending']; 
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
+  sessionsTable: any;
 
   constructor(private router: Router,
     private actRoute: ActivatedRoute,
@@ -57,9 +60,7 @@ export class BootcampDetailsComponent {
     this.router.navigate([`/main/tutors/${tutorId}`]);
   this.clearTableSelection();
   }
-  // goToTutorDetail(tutor: any) {
-  //   this.router.navigate(['/main/tutors', tutor.tutor_id]);
-  // }
+
   clearTableSelection(): void {
     if (this.studentsTable) {
       this.studentsTable.clearSelection();
@@ -112,12 +113,6 @@ export class BootcampDetailsComponent {
     this.bootcampDetailForm.setFieldValue("end_date", endDate);
 
 }
-  // throwChange(enddate: ODateInputComponent) {
-  //   enddate.getControl().updateValueAndValidity();
-  // }
- // throwChange2(startdate: ODateInputComponent) {
-   // startdate.getControl().updateValueAndValidity();
- // }
 
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
@@ -131,7 +126,9 @@ export class BootcampDetailsComponent {
 
 
 
-  ngOnInit() { }
+  ngOnInit() {
+
+   }
 
   protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
@@ -229,6 +226,7 @@ export class BootcampDetailsComponent {
   }
 
 
+
   showMessage = false;
 
   onUploadFiles(event) {
@@ -256,16 +254,13 @@ export class BootcampDetailsComponent {
   showError(event: any) {
     console.log(event);
   }
-  // Método para manejar el evento de clic en la acción
+
   actionClick(event) {
     this.configureDocuments();
-    // Se realiza una consulta al servicio personalDocumentService para obtener los datos del archivo correspondiente al evento de clic.
     this.service.query({ id: event.id }, ['name', 'base64'], 'bootcampFilesContent').subscribe(res => {
       if (res.data && res.data.length) {
-        // Si se encuentran datos, se extrae el nombre del archivo y el contenido en base64.
         let filename = res.data[0].name;
         let base64 = res.data[0].base64;
-        // Se crea un enlace temporal para descargar el archivo.
         const src = `data:text/csv;base64,${base64}`;
         const link = document.createElement("a");
         link.href = src;
@@ -294,4 +289,86 @@ export class BootcampDetailsComponent {
     });
 
    }
+
+   openLink(event: any): void {
+    const link = event?.link;
+
+    if (!link) {
+      this.showAlert()
+      return;
+    }
+    window.open(link, '_blank');
+  }
+
+  showAlert() {
+    if (this.dialogService) {
+      this.dialogService.error('Error en el link', 'El link no existe o  no es válido');
+    }
+  }
+  getRowClass(rowData: any): string {
+    const today = new Date();
+    const sessionDate = new Date(rowData.session_date); 
+    if (isNaN(sessionDate.getTime())) {
+      console.error('Invalid date format:', rowData.session_date);
+      return ''; 
+    }
+    if (sessionDate.toDateString() === today.toDateString()) {
+      return 'highlight-today'; 
+    }
+    return '';
+  }
+
+  sessionFilters: Expression | null = null;
+
+
+  onComboChange(selectedStatuses: string[]): void {
+    if (selectedStatuses.length === 0) {
+      this.sessionFilters = null;
+    } else {
+      const filter = [{ attr: 'status', value: selectedStatuses }];
+      this.table.queryData(filter); 
+    }
+  }
+  createFilter(values: Array<{ attr: string, value: any }>): Expression {
+    const filters: Array<Expression> = [];
+
+    values.forEach(fil => {
+      if (fil.value) {
+        if (fil.attr === 'status') {
+          if (Array.isArray(fil.value) && fil.value.length > 0) {
+            const statusFilters = fil.value.map(status =>
+              FilterExpressionUtils.buildExpressionEquals(fil.attr, status)
+            );
+            filters.push(statusFilters.reduce((exp1, exp2) =>
+              FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_OR)
+            ));
+          } else {
+            filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
+          }
+        }
+      }
+    });
+
+    return filters.length > 0
+      ? filters.reduce((exp1, exp2) =>
+          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND))
+      : null;
+  }
+
+
+
+
+  toggleFinished(event: MatSlideToggleChange): void {
+    if (event.checked) {
+      // Si el toggle está activado, añadir 'Finished'
+      this.selectedStatuses = ['Started', 'Pending', 'Finished'];
+    } else {
+      // Si el toggle está desactivado, solo mantener 'Started' y 'Pending'
+      this.selectedStatuses = ['Started', 'Pending'];
+    }
+  }
+
+
+
+
 }
