@@ -2,7 +2,7 @@
     <mat-tab-group animationDuration="0ms" class="mat-success">
         <mat-tab label="{{ 'LSTATUS' | oTranslate }}">
             <div class="config-container">
-                <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+                <o-form-layout-manager attr="configLaboral" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
                     title="LEMPLOYMENTSTATUS">
                     <div class="table_container" >
                         <h3 class="titulo_tablas">{{ 'LEMPLOYMENTSTATUS' | oTranslate }}</h3>
@@ -17,7 +17,7 @@
                         </o-form-layout-dialog-options>
                     </div>
                 </o-form-layout-manager>
-                <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+                <o-form-layout-manager attr="configEstado" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
                     title="LSTUDENTSTATUS">
                     <div class="table_container">
                         <h3 class="titulo_tablas">{{ 'LSTUDENTSTATUS' | oTranslate }}</h3>
@@ -36,7 +36,7 @@
             </div>
         </mat-tab>
         <mat-tab label="{{ 'TUTOR' | oTranslate }}">
-                <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+                <o-form-layout-manager attr="configTutor" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
                     title="LTUTORTYPE">
                     <div class="table_container" >
                         <h3 class="titulo_tablas">{{ 'LTUTORTYPE' | oTranslate }}</h3>
@@ -51,6 +51,20 @@
                         </o-form-layout-dialog-options>
                     </div>
                 </o-form-layout-manager>
+        </mat-tab>
+        <mat-tab label="Bootcamp">
+            <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px" dialog-min-height="200px">
+                <div class="table_container">
+                    <h3 class="titulo_tablas">{{ 'asistencia' | oTranslate }}</h3>
+                    <o-form-layout-dialog-options class="popup">
+                        <o-table #asistenciaTable attr="asistenciaTable" [quick-filter]="false" class="general_table" detail-form-route=""
+                         insert-form-route="new" service="" entity="" keys="" columns=""
+                         visible-columns="" sort-columns="" show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
+                         select-all-checkbox-visible="true" selection-mode="single" refresh-button="false" pagination-controls="false">
+                        </o-table>
+                    </o-form-layout-dialog-options>
+                </div>
+            </o-form-layout-manager>
         </mat-tab>
       </mat-tab-group>
 </o-form-layout-manager>

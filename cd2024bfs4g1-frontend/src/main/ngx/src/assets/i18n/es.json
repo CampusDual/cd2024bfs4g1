@@ -81,8 +81,8 @@
   "name": "Nombre",
   "start_date": "Fecha de inicio",
   "end_date": "Fecha de fin",
-  "status": "Estado",
-  "situation": "Situación",
+  "status": "Estado del estudiante",
+  "situation": "Estado laboral",
   "phone": "Teléfono",
   "birth_date": "Fecha de nacimiento",
   "campus_email": "Correo electrónico del campus",
@@ -158,7 +158,7 @@
   "NEW_BC": "Nuevo bootcamp",
   "LAST_SURNAME": "Segundo apellido",
   "Schedule" : "Horario",
-  "type" : "Nombre del tipo",
+  "type" : "Tipo del tutor",
   "FIRST_SURNAME": "Primer apellido",
   "personal_email": "Correo electrónico",
   "Active": "Activo",
@@ -288,5 +288,6 @@
   "Confirm_dialog_title":"Diálogo de confirmación",
   "Do_you_really_want_to_delete":"Seguro que quieres borrarlo?",
   "Info_foto":"Se recomienda una foto cuadrada(1:1)",
-  "date_change":"Fecha del cambio"
+  "date_change":"Fecha del cambio",
+  "asistencia" : "Control de asistencia"
 }
