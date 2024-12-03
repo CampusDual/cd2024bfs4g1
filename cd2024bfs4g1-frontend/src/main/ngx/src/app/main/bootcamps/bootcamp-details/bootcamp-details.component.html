@@ -49,18 +49,17 @@
       <div class="general_container">
         <div class="table_container">
           <o-form-layout-manager class="formestudiantestut" attr="addStudentLayout" mode="dialog">
-        <o-form-layout-dialog-options class="popup">
-            <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
+            <o-form-layout-dialog-options class="popup">
+              <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="true" attr="studentsBootcampTable"
-                       service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-                       parent-keys="bootcamp_id:id"
-                       refresh-button="no"
-                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
-                       visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
-                       default-visible-columns="userphotostudent;name;sb_start_date;sb_end_date;action"
-                       sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
-                       show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
-                       detail-mode="click">
+                service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
+                refresh-button="no"
+                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
+                visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
+                default-visible-columns="userphotostudent;name;sb_start_date;sb_end_date;action" sort-columns="name"
+                query-rows="10" show-report-on-demand-option="false" query-on-init="true" pageable="true"
+                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
+                detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
                   format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -120,6 +119,20 @@
         </div>
       </div>
     </mat-tab>
+    <mat-tab label="{{ 'CALENDAR' | oTranslate }}">
+      <div class="table_calendar">
+        <div class="calendar-container">
+          <div class="container" *ngIf="months.length > 0">
+            <div class="button-container">
+              <mat-card class="calendar-card" *ngFor="let month of months">
+                <mat-calendar [dateClass]="dateClass" #picker [startAt]="month">
+                </mat-calendar>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
     <mat-tab label="{{ 'Schedule' | oTranslate }}">
       <div class="table_containerhorarios">
         <div class="table_horario">
@@ -148,6 +161,8 @@
         </div>
       </div>
     </mat-tab>
+
+
     <mat-tab label="{{ 'Documents' | oTranslate }}">
       <div class="table_containerfichero">
         <div class="table_ficheros">
@@ -189,20 +204,6 @@
         </div>
       </div>
 
-    </mat-tab>
-    <mat-tab label="{{ 'CALENDAR' | oTranslate }}">
-      <div class="table_calendar">
-        <div class="calendar-container">
-          <div class="container" *ngIf="months.length > 0">
-            <div class="button-container">
-              <mat-card class="calendar-card" *ngFor="let month of months">
-                <mat-calendar [dateClass]="dateClass" #picker [startAt]="month">
-                </mat-calendar>
-              </mat-card>
-            </div>
-          </div>
-        </div>
-      </div>
     </mat-tab>
   </mat-tab-group>
 </o-form>
