@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogService, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, Expression, FilterExpressionUtils, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 
@@ -19,6 +19,7 @@ export class BootcampDetailsComponent {
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
+  @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
 
   months: Date[] = [];
 
@@ -131,7 +132,9 @@ export class BootcampDetailsComponent {
 
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.applyDateFilter();
+   }
 
   protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
@@ -292,6 +295,57 @@ export class BootcampDetailsComponent {
         });
       }
     });
+
+   }
+
+   openLink(event: any): void {
+    const link = event?.link;
+
+    if (!link) {
+      this.showAlert()
+      return;
+    }
+    window.open(link, '_blank');
+  }
+
+  showAlert() {
+    if (this.dialogService) {
+      this.dialogService.error('Error en el link', 'El link no existe o  no es válido');
+    }
+  }
+  getRowClass(rowData: any): string {
+    const today = new Date();
+    const sessionDate = new Date(rowData.session_date); // Convierte a Date si es necesario
+    if (isNaN(sessionDate.getTime())) {
+      console.error('Invalid date format:', rowData.session_date);
+      return ''; // Si la fecha es inválida, no aplica ninguna clase
+    }
+    if (sessionDate.toDateString() === today.toDateString()) {
+      return 'highlight-today'; // Nombre de la clase que se aplicará a la fila
+    }
+    return '';
+  }
+
+  showFutureSessions = true; // Por defecto, muestra presentes y futuras
+  sessionFilters: Expression | null = null; // Filtros para la tabla
+  applyDateFilter(): void {
+    const today = moment().startOf('day').toISOString(); // Fecha de inicio de hoy
+
+    if (this.showFutureSessions) {
+      // Filtro para sesiones presentes y futuras
+      this.sessionFilters = FilterExpressionUtils.buildExpressionLike('status', 'Finished');
+    } else {
+      // Sin filtro de fecha, muestra todo
+      this.sessionFilters = null;
+    }
+  }
+
+  onToggleChange(event: any): void {
+    const isPast = event.checked;
+    const filter = { past: isPast };
+    this.table.queryData(filter);
+  }
+
 
    }
 }

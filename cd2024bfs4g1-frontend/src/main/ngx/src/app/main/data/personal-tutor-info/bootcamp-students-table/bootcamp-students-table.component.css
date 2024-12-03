@@ -39,3 +39,19 @@
     margin: 0;
     
   }
+
+  .student-sesion-grid {
+    border-radius: 15px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    align-items: center;
+    }
+
+    @media (max-width: 1200px) {
+      .student-sesion-grid {
+          grid-template-columns: 1fr; 
+      }
+  }

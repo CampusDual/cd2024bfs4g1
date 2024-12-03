@@ -1,0 +1,15 @@
+<div class="popup1" >
+    <o-form #newSessionPopup service="sessionBootcamp" entity="sessionBootcamp" show-header="no" confirm-exit="false" 
+      undo-button="false" label-header-align="center" after-insert-mode="new">
+      <o-text-input attr="id" sql-type="INTEGER" enabled="no"  hidden="true" ></o-text-input>
+      <o-text-input attr="id_bootcamp" sql-type="INTEGER" enabled="no"  hidden="true" ></o-text-input> 
+      <o-text-input attr="session_name"></o-text-input> 
+      <o-date-input attr="session_date" ></o-date-input>
+      <o-text-input attr="password"></o-text-input>
+      <o-text-input attr="link"></o-text-input> 
+      <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
+          (click)="addNewSession()"></o-button>
+      </div>
+    </o-form>
+  </div>

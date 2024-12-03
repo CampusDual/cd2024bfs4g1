@@ -200,5 +200,43 @@
         </div>
       </div>
     </mat-tab>
+
+    <o-form-layout-manager attr="popupNewSession" mode="dialog">
+      <o-form-layout-dialog-options class="popup">
+        <mat-tab label="{{ 'Sesiones' | oTranslate }}">
+          <div class="table_sesions general_table">
+            <div class="calendar-container">
+
+
+              <div class="" fxLayout="column" fxLayoutGap="8px">
+                <o-slide-toggle #sliderTog attr="" label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no"></o-slide-toggle>
+              </div>
+              
+              <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session" 
+                       service="sessionBootcamp"
+                       entity="sessionBootcamp" keys="id"
+                       parent-keys="id_bootcamp:id"
+                       columns="id;session_name;session_date;password;status;link;status"
+                       visible-columns="session_name;session_date;password;status;Link"
+                       select-all-checkbox-visible="true" selection-mode="multiple"
+                       [row-class]="getRowClass">
+                <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
+                <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+                                tooltip-value="{{'link_ico'| oTranslate}}">
+                  <o-table-cell-renderer-action (onClick)="openLink($event)" icon="link"></o-table-cell-renderer-action>
+                </o-table-column>
+                <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
+                <o-table-column class="center" attr="password" title="password"></o-table-column>
+                <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
+                </o-table-context-menu>
+              </o-table>
+            </div>
+          </div>
+        </mat-tab>
+
+      </o-form-layout-dialog-options>
+    </o-form-layout-manager>
+    
+    
   </mat-tab-group>
 </o-form>

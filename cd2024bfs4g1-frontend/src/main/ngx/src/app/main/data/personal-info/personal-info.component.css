@@ -5,31 +5,30 @@
   border-radius: 15px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr; /* Tres columnas en pantallas grandes */
   gap: 10px;
 }
 
-.datosPersonales {
-  grid-column: 1 / -1;  
+.datosPersonales,
+.sesiones {
+  grid-column: 1 / -1; /* Hace que ocupen el ancho completo */
 }
 
 .foto {
-  grid-column: 1 / 4; 
+  grid-column: 1 / 4;
   justify-self: center;
   align-self: center;
-  margin-bottom: 0; 
-  display: flex;   
+  margin-bottom: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
 }
 
-
-
 .personal-data-fields {
   display: flex;
-  flex-wrap: wrap;  
-  gap: 15px;  
+  flex-wrap: wrap;
+  gap: 15px;
   justify-content: space-evenly;
 }
 
@@ -37,7 +36,8 @@ p {
   color: black;
   margin-top: 0;
 }
-p:last-child{
+
+p:last-child {
   margin-bottom: 0;
 }
 
@@ -45,23 +45,34 @@ fieldset {
   border-radius: 15px;
   padding: 20px;
   border: solid 2px #1a3459;
-  border-radius: 15px;
 }
-.p_info_foto{
+
+.p_info_foto {
   font-size: 12px;
-  grid-column: 1 / 4; 
+  grid-column: 1 / 4;
   justify-self: center;
   align-self: center;
-  display: flex;   
+  display: flex;
   align-items: center;
   justify-content: center;
   color: #1a3459;
 }
-.foto_centrada{
+
+.foto_centrada {
   display: block;
 }
+
+.sesiones {
+  margin-top: 0;
+}
+
 @media (max-width: 1024px) {
   .grid-container {
-    grid-template-columns: 1fr  ; 
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
   }
+}
+
+.o-table {
+  width: 97%;
+  height: 90%;
 }
