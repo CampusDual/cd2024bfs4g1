@@ -8,6 +8,9 @@ import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextI
   styleUrls: ['./personal-info.component.css']
 })
 export class PersonalInfoComponent {
+openLink($event: any) {
+throw new Error('Method not implemented.');
+}
 
   @ViewChild("userId") inputStudentId: OTextInputComponent;
   @ViewChild("form") form: OFormComponent;

@@ -11,10 +11,9 @@
           <div class="personal-data-grid">
             <div class="foto">
               <o-image class="foto_centrada" #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
-                       sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
-                       max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                       label="PROFILE.EDIT_PHOTO" ></o-image>
-                       
+                sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+
             </div>
             <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
             <div class="personal-data-fields">
@@ -96,6 +95,26 @@
             <label for="LGITHUB_USER">{{ 'LGITHUB_USER' | oTranslate }}</label>
             <p class="pmydata">{{form.getDataValue('github_user').value}}</p>
           </div>
+        </fieldset>
+        <fieldset class="sesiones" title="{{ 'Sesiones' | oTranslate }}">
+          <legend>{{ 'Sesiones' | oTranslate }}</legend>
+          <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table"
+            insert-form-route="new_Session_Bootcamp" edit-form-route="update_Session_Bootcamp" service="sessionBootcamp"
+            entity="sessionBootcamp" keys="id" parent-keys="id_bootcamp:id"
+            columns="id;session_name;session_date;password;status;link;status"
+            visible-columns="session_name;session_date;password;status;Link" select-all-checkbox-visible="true"
+            selection-mode="multiple">
+            <o-table-column class="center" attr="session_date" title="session_date" type="date"
+              format="DD/MM/YYYY"></o-table-column>
+            <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+              tooltip-value="{{'link_ico'| oTranslate}}">
+              <o-table-cell-renderer-action (onClick)="openLink($event)" icon="link"></o-table-cell-renderer-action>
+            </o-table-column>
+            <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
+            <o-table-column class="center" attr="password" title="password"></o-table-column>
+            <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
+            </o-table-context-menu>
+          </o-table>
         </fieldset>
       </div>
     </o-form>
