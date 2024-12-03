@@ -39,6 +39,6 @@ export const SERVICE_CONFIG: Object = {
     'path': '/employmentstatushistory'
   },
   'sessionBootcamp':{
-    'path': '/sessionBootcamp'
+    'path': '/sessionbootcamp'
   }
 };
