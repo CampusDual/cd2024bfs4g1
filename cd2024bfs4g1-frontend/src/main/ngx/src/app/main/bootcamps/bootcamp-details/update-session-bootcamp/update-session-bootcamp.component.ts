@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { OFormComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-update-session-bootcamp',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
 })
 export class UpdateSessionBootcampComponent {
 
-
+  @ViewChild("updateSessionPopup") updateSessionPopup:OFormComponent;
   updateNewSession(){
-
+    this.updateSessionPopup.update();
+    this.updateSessionPopup.closeDetail();
   }
 
 }
