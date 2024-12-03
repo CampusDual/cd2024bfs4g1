@@ -205,12 +205,12 @@
   <mat-tab label="{{ 'Sesiones' | oTranslate }}">
     <div class="table_sesions">
       <div class="calendar-container">
-      <o-table class="" virtual-scroll="false" attr=""
-      service="" insert-form-route="" pagination-controls=""
-      detail-mode="none" update-button="false" entity="" keys="id"
+      <o-table class="" virtual-scroll="false" attr="sessionBootcamp_table"
+      service="sessionBootcamp" insert-form-route="" pagination-controls=""
+      detail-mode="none" update-button="false" entity="sessionBootcamp" keys="id"
       parent-keys="id_bootcamp:id"
       columns="id;session_name;session_date;password;link"
-      visible-columns="id;session_name;session_date;password;link_ico"
+      visible-columns="id;session_name;session_date;password"
       show-report-on-demand-option="false" show-charts-on-demand-option="false"
       select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" selection-mode="multiple"
       detail-button-in-row-icon="">
