@@ -2,6 +2,7 @@
     show-header-navigation="no" confirm-exit="false" show-header="no">
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
         <fieldset class="estudiantes">
+            <div>
             <legend>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</legend>
             <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
                 service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
@@ -17,6 +18,27 @@
                 <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                 </o-table-context-menu>
             </o-table>
+            </div>
+            <div>
+                <legend></legend>
+            </div>
+            <div>
+                <legend>{{ 'Sesiones' | oTranslate }}</legend>
+                    <div class="table_sesions">
+                      <o-table class="" virtual-scroll="false" attr=""
+                      service="" insert-form-route="" pagination-controls=""
+                      detail-mode="none" update-button="false" entity="" keys="id"
+                      parent-keys="id_bootcamp:id"
+                      columns="id;session_name;session_date"
+                      visible-columns="id;session_name;session_date" query-rows="10"
+                      show-report-on-demand-option="false"
+                      selection-mode="none" detail-mode="false" selection-mode="multiple"
+                      detail-button-in-row-icon="">
+                      <o-table-column attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
+                      <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
+                      </o-table-context-menu>
+                    </o-table>
+                    </div>
+            </div>
         </fieldset>
-    
 </o-form>
