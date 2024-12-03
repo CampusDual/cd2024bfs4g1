@@ -299,5 +299,8 @@ export class BootcampDetailsComponent {
       } 
     });
     
-   } 
+   }
+   openLink(event:any){
+      
+   }
 }

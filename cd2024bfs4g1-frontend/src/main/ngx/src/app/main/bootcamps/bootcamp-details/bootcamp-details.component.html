@@ -209,17 +209,19 @@
       service="sessionBootcamp" insert-form-route="" pagination-controls=""
       detail-mode="none" update-button="false" entity="sessionBootcamp" keys="id"
       parent-keys="id_bootcamp:id"
-      columns="id;session_name;session_date;password"
-      visible-columns="id;session_name;session_date;password"
+      columns="id;session_name;session_date;password;status"
+      visible-columns="session_name;session_date;password;Link"
       show-report-on-demand-option="false" show-charts-on-demand-option="false"
       select-all-checkbox-visible="true" selection-mode="none" detail-mode="false" selection-mode="multiple"
       detail-button-in-row-icon="">
-      <o-table-column attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
-      <o-table-column attr="link" width="64px" tooltip="yes"
-                  tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-                  <o-table-cell-renderer-action 
-                    icon="link_ico"></o-table-cell-renderer-action>
-                </o-table-column>
+      <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
+      <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+                  tooltip-value="{{'link_ico'| oTranslate}}">
+                  <o-table-cell-renderer-action (onclick)="openLink($event)"
+                    icon="link"></o-table-cell-renderer-action>
+      </o-table-column>
+      <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
+      <o-table-column class="center" attr="password" title="password"></o-table-column>
       <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
       </o-table-context-menu>
     </o-table>
