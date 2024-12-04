@@ -30,8 +30,8 @@ export class BootcampStudentAddComponent {
   }
 
   addStudentBootcamp() {
-      this.studentBootcampForm.insert();
-      this.studentBootcampForm.closeDetail();
+    this.studentBootcampForm.insert();
+    this.studentBootcampForm.closeDetail();
   }
 
 
@@ -59,25 +59,7 @@ export class BootcampStudentAddComponent {
   
     this.studentBootcampForm.setFieldValue("dateRangeBootcamp", this.selected);
   }
-
-  throwChange($event: any) {
-
-      let startDate = moment($event.newValue.startDate).local();  
-      let endDate = moment($event.newValue.endDate).local();
   
-      this.studentBootcampForm.setFieldValue("start_date", startDate);
-      this.studentBootcampForm.setFieldValue("end_date", endDate);
-    
-  }
-  generateMonths(startDate: Date, endDate: Date) {
-    this.months = [];
-    const current = new Date(startDate);
-    current.setDate(1);
-    while (current <= endDate) {
-      this.months.push(new Date(current));
-      current.setMonth(current.getMonth() + 1);
-    }
-  }
   onBootcampChange(event: any) {
   this.configureBootcamps();
   const bootcampId = event;
@@ -90,7 +72,6 @@ export class BootcampStudentAddComponent {
       this.startDateInput.setValue(startDate);
       this.endDateInput.setValue(endDate);
       this.startAtDate = startDate;
-      this.generateMonths(startDate, endDate);
       this.inicialDR();
       this.selected = true;
 
