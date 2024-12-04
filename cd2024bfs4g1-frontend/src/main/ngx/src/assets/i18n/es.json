@@ -292,5 +292,6 @@
   "Info_foto":"Se recomienda una foto cuadrada(1:1)",
   "date_change":"Fecha del cambio",
   "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe",
-  "Download" : "Descargar"
+  "Download" : "Descargar",
+  "Save": "Guardar"
 }
