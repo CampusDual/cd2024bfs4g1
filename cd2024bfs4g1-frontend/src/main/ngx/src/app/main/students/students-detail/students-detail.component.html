@@ -46,7 +46,7 @@
             </div>
             <div>
               <label for="REQ_LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>
-              <o-date-input attr="birth_date" required="no" text-input-enabled="no" format="DD/MM/YYYY"></o-date-input>
+              <o-date-input attr="birth_date" required="no" format="DD/MM/YYYY"></o-date-input>
             </div>
             <div>
               <label for="LSPAINCOMUNITY">{{'LSPAINCOMUNITY' | oTranslate}}</label>
@@ -158,14 +158,14 @@
           </div>
           <div>
             <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
-            <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no " format="DD/MM/YYYY"
+            <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
               (onValueChange)="throwChange(enddate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
           </div>
           <div>
             <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-            <o-date-input #enddate attr="fct_end" required="no" text-input-enabled="no " [validators]="validatorsArray"
+            <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
               format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
