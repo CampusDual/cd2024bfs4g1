@@ -58,8 +58,8 @@
                     <h3 class="titulo_tablas">{{ 'asistencia' | oTranslate }}</h3>
                     <o-form-layout-dialog-options class="popup">
                         <o-table #asistenciaTable attr="asistenciaTable" [quick-filter]="false" class="general_table" detail-form-route=""
-                         insert-form-route="new" service="" entity="" keys="" columns=""
-                         visible-columns="" sort-columns="" show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
+                         insert-form-route="" service="asistencia_status" entity="attendanceControl" keys="id" columns="id;abreviatura;description"
+                         visible-columns="abreviatura;description" sort-columns="abreviatura" show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
                          select-all-checkbox-visible="true" selection-mode="single" refresh-button="false" pagination-controls="false">
                         </o-table>
                     </o-form-layout-dialog-options>
