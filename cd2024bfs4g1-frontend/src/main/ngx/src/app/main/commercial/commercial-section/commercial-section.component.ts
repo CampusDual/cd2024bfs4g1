@@ -8,17 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './commercial-section.component.html',
   styleUrls: ['./commercial-section.component.css']
 })
-
 export class CommercialSectionComponent {
 
 
   @ViewChild('tableStudents') tableComponent: OTableComponent;
   form!: OFormComponent;
-  dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   detailId !: Number;
-
-  // Valor predeterminado (opcional)
-  valueSimple = "Madrid";
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
@@ -41,6 +36,7 @@ export class CommercialSectionComponent {
 
   }
 
+
   openStudentDetail(studentId: string) {
     console.log(`Abriendo detalle del estudiante con ID: ${studentId}`);
 
@@ -61,30 +57,28 @@ export class CommercialSectionComponent {
   }
 
   // Método para construir el filtro (sin cambios)
-  createFilter(values: Array<{ attr: string, value: any }>): Expression {
-    let filters: Array<Expression> = [];
-
-    values.forEach(fil => {
-      // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
-      const filterValue = fil.value != null ? fil.value.toString() : '';
-
-      if (filterValue) {  // Solo agrega el filtro si filterValue no está vacío
-        if (fil.attr === 'tutor' || fil.attr === 'udemy' ||
-            fil.attr === 'v_employment_status_id' || fil.attr === 'student_status_id' || fil.attr === 'spain_comunity') {
-          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, filterValue));
+  createFilter(values: Array<{ attr: string, value: any }>): Expression | null {
+    const filters: Array<Expression> = values
+      .filter(fil => fil.value != null && fil.value.toString().trim() !== '') // Filtra valores no nulos ni vacíos
+      .map(fil => {
+        const filterValue = fil.value.toString().trim();
+        switch (fil.attr) {
+          case 'bootcamp':
+          case 'student_status_id':
+            return FilterExpressionUtils.buildExpressionLike(fil.attr, filterValue);
+          case 'id':
+            return FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue);
+          default:
+            return null;
         }
-        if (fil.attr === 'id') {
-          filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue));
-        }
-      }
-    });
+      })
+      .filter((expr): expr is Expression => expr !== null); // Elimina posibles nulos del mapeo
 
-    if (filters.length > 0) {
-      return filters.reduce((exp1, exp2) =>
-        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
-      );
-    } else {
-      return null;
-    }
+    // Si hay filtros, combina usando AND, si no devuelve null.
+    return filters.length > 0
+      ? filters.reduce((exp1, exp2) =>
+          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+        )
+      : null;
   }
 }
