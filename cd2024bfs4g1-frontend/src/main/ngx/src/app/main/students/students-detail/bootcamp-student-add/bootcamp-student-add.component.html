@@ -1,11 +1,46 @@
-<o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" after-insert-mode="new" confirm-exit="no" >
-    <o-text-input attr="student_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
-    <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps"
+<div class="popup1" >
+    <o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" confirm-exit="false"
+    undo-button="false" label-header-align="center" after-insert-mode="new"
+    (onDataLoaded)="candidate();inicialDR()">
+    <o-text-input attr="student_id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
+    <label >Bootcamps</label>
+    <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps" keys="id"
         entity="bootcamp" visible-columns="name" searchable="yes" sortable="yes"
-        sort="ASC" null-selection="no">
+        sort="ASC" null-selection="no" (onChange)="onBootcampChange($event)" >
     </o-combo>
-    
-    <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
-        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="studentBootcampForm.insert();studentBootcampForm.closeDetail()"></o-button>
+    <o-text-input attr="status" enabled="no" hidden = "true"></o-text-input>
+
+    <div class="especial fecha-inicio">
+        <o-date-input #startdate  elabel-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" hidden
+        ></o-date-input>
     </div>
-</o-form>
+
+    <div class="especial fecha-fin">
+        <o-date-input #enddate  label-visible="false" attr="end_date" required="yes"
+        format="DD/MM/YYYY" hidden>
+        </o-date-input>
+    </div>
+
+    <div fxLayout="column" layout-padding>
+        <o-daterange-input attr="dateRangeBootcamp" read-only="yes" service="bootcamps" hidden
+        entity="bootcamp" required="yes" format="DD/MM/YYYY"  automatic-binding="false"
+        show-week-numbers="true" mode="desktop" label-visible="false" >
+        </o-daterange-input>
+    </div>
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap>
+        <o-button class="boton_popup" attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
+        (click)="addStudentBootcamp()"></o-button>
+    </div>
+
+    </o-form>
+</div>
+
+
+
+
+
+
+
+
+
+
