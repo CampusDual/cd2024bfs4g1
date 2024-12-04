@@ -1,5 +1,5 @@
-<o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D"
-  (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
+<o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="I"
+  (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no" (onDataLoaded)="setcomunity()">
   <mat-tab-group oTabGroup="material" color="primary" id="tabGroup">
     <mat-tab label="{{'Main data'|oTranslate}}">
       <div class="grid-container">
