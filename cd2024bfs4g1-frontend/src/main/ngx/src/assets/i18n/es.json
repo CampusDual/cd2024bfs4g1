@@ -40,7 +40,7 @@
   "password": "Contraseña",
   "profile": "Perfil",
   "PROFILE": "Perfil",
-  "PROFILE.EDIT_PHOTO": "Editar foto",
+  "PROFILE.EDIT_PHOTO": "Editar foto de perfil",
   "profiles": "Roles",
   "REMEMBER_ME": "Recuérdame",
   "rol-data-section": "Datos del rol",
@@ -169,6 +169,7 @@
   "STUDENTS_DATA":"Datos del alumno",
   "ADD_ST_BC": "Añadir a un alumno a un bootcamp",
   "BOOTCAMP_DETAILS": "Detalles de un bootcamp",
+  "Detalle" : "Botón para ir al detalle",
   "Bootcamp name": "Nombre del bootcamp",
   "Go back": "Volver",
   "NOT_ELIGIBLE": "No apto",
@@ -279,6 +280,7 @@
   "Employment status": "Estado laboral",
   "FCT Information" : "Información FCT",
   "usr_photo" : "Foto",
+  "userphotostudent" : "Foto",
   "DocumentsAndBootc" : "Documentos y bootcamps asignados",
   "Notes" : "Notas",
   "OtherInformation": "Información adicional",
@@ -289,5 +291,6 @@
   "Do_you_really_want_to_delete":"Seguro que quieres borrarlo?",
   "Info_foto":"Se recomienda una foto cuadrada(1:1)",
   "date_change":"Fecha del cambio",
-  "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe"
+  "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe",
+  "Download" : "Descargar"
 }
