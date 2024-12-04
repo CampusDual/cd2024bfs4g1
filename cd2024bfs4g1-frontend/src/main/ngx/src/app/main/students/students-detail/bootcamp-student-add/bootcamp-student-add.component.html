@@ -6,12 +6,12 @@
     <label >Bootcamps</label>
     <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps" keys="id"
         entity="bootcamp" visible-columns="name" searchable="yes" sortable="yes"
-        sort="ASC" null-selection="no" (onValueChange)="onBootcampChange($event)" >
+        sort="ASC" null-selection="no" (onChange)="onBootcampChange($event)" >
     </o-combo>
     <o-text-input attr="status" enabled="no" hidden = "true"></o-text-input>
 
     <div class="especial fecha-inicio">
-        <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" 
+        <o-date-input #startdate  elabel-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" 
         ></o-date-input>
     </div>
 

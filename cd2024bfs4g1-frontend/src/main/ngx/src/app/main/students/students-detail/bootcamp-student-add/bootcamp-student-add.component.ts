@@ -20,6 +20,9 @@ export class BootcampStudentAddComponent {
   $event: any;
   service: any;
 
+  constructor(public injector: Injector){
+    this.service = this.injector.get(OntimizeService);
+  }
   protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
     this.service.configureService(conf);
@@ -77,7 +80,7 @@ export class BootcampStudentAddComponent {
   }
   onBootcampChange(event: any) {
   this.configureBootcamps();
-  const bootcampId = event.id;
+  const bootcampId = event;
   const filter = { id: bootcampId };
   this.service.query(filter, ['id', 'start_date', 'end_date'], 'bootcamp').subscribe(resp => {
     if (resp.code === 0 && resp.data.length > 0) {
@@ -88,12 +91,14 @@ export class BootcampStudentAddComponent {
       this.endDateInput.setValue(endDate);
       this.startAtDate = startDate;
       this.generateMonths(startDate, endDate);
+      this.inicialDR();
       this.selected = true;
 
     } else {
       alert('No se encontraron datos para este bootcamp.');
     }
   });
+  
   this.selected = false;
 }
 
