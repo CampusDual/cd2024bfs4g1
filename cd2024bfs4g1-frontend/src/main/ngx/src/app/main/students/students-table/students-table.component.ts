@@ -91,5 +91,5 @@ export class StudentsTableComponent {
     }
   }
 
-  
+
 }
