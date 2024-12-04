@@ -52,9 +52,9 @@
             <o-form-layout-dialog-options class="popup">
               <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="true" attr="studentsBootcampTable"
-                service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
+                service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
                 refresh-button="no"
-                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;action;userphotostudent"
+                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;userphotostudent"
                 visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
                 default-visible-columns="userphotostudent;name;sb_start_date;sb_end_date;action" sort-columns="name"
                 query-rows="10" show-report-on-demand-option="false" query-on-init="true" pageable="true"
@@ -65,7 +65,7 @@
                 <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-paginator page-size="20" page-size-options="10;20;40">
                 </o-table-paginator>
-                <o-table-column attr="action" width="64px" tooltip="yes"
+                <o-table-column attr="Detalle" width="64px" tooltip="yes"
                   tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
                   <o-table-cell-renderer-action (onClick)="goToStudentDetail($event)"
                     icon="person_search"></o-table-cell-renderer-action>
@@ -194,7 +194,7 @@
                 <o-table-context-menu view-detail="false" edit="false" delete="false"
                   insert="false"></o-table-context-menu>
                 <o-table-column attr="name" title="Document title"></o-table-column>
-                <o-table-column attr="action" width="10px">
+                <o-table-column attr="Download" width="10px">
                   <o-table-cell-renderer-action (onClick)="actionClick($event)"
                     icon="download"></o-table-cell-renderer-action>
                 </o-table-column>

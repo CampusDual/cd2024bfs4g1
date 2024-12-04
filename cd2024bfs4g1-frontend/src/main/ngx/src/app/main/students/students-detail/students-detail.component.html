@@ -77,7 +77,7 @@
             </div>
             <div>
               <label for="contraseña">{{'PASSWORD' | oTranslate}}</label>
-              <o-password-input attr="usr_password" required="no" show-password-button="true" in-length="8"
+              <o-password-input attr="usr_password" required="no" in-length="8"
                 [validators]="validatorsNewPasswordArray">
                 <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
                 <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
@@ -221,7 +221,7 @@
                 <o-table-context-menu view-detail="false" edit="false" delete="false"
                   insert="false"></o-table-context-menu>
                 <o-table-column attr="name" title="Document title"></o-table-column>
-                <o-table-column attr="action" width="10px">
+                <o-table-column attr="Download" width="10px">
                   <o-table-cell-renderer-action (onClick)="actionClick($event)"
                     icon="download"></o-table-cell-renderer-action>
                 </o-table-column>
