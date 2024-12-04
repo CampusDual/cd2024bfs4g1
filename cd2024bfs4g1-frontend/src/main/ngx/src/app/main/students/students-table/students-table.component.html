@@ -7,12 +7,12 @@
 
                 <div class="filter_style">
 
-                    <o-combo #type attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no" service="tutors"
+                    <o-combo #type class="tutor" attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no" service="tutors"
                         entity="tutor" keys="id" columns="id;name;surname1;surname2" value-column="id"
                         query-on-init="true" visible-columns="name;surname1;surname2" translate="yes"
                         null-selection="true" sort="ASC"></o-combo>
 
-                    <o-combo attr="bootcamps_id" label="Bootcamps" read-only="no" service="bootcamps" entity="bootcamp"
+                    <o-combo attr="bootcamps_id" class="bootcamp" label="Bootcamps" read-only="no" service="bootcamps" entity="bootcamp"
                         keys="id" columns="id;name" value-column="id" query-on-init="true" searchable="yes"
                         visible-columns="name" translate="yes" null-selection="true" sort="ASC"></o-combo>
 
@@ -21,18 +21,18 @@
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
                         visible-columns="label" translate="yes" sort="ASC"></o-combo>
 
-                    <o-combo attr="v_employment_status_id" label="LEMSTATUS" required="no" translate="yes"
+                    <o-combo attr="v_employment_status_id" class="estadoL" label="LEMSTATUS" required="no" translate="yes"
                         null-selection="true" read-only="false" service="employmentstatus" entity="employmentStatus"
                         keys="id" columns="id;situation" value-column="id" description-columns="situation"
                         query-on-init="true">
                     </o-combo>
 
-                    <o-combo attr="student_status_id" label="LSTATUS" null-selection="true" service="studentstatus"
+                    <o-combo attr="student_status_id" class="estado" label="LSTATUS" null-selection="true" service="studentstatus"
                         entity="studentStatus" keys="id" columns="id;status" value-column="id" visible-columns="status"
                         read-only="no" sort="ASC">
                     </o-combo>
 
-                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
+                    <o-combo class="comunidad" attr="spain_comunity" read-only="no" service="students"
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
                         visible-columns="value" searchable="yes" sort="ASC"></o-combo>
 
