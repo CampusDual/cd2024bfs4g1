@@ -57,6 +57,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.authService.clearSessionData();
     }
+    if (this.isHolidaySeason()) {
+      this.createSnow(1500); // Cantidad de Nieve
+    }
+
   }
 
   public login() {
@@ -126,6 +130,39 @@ export class LoginComponent implements OnInit {
         console.error('Email or password is wrong.');
         break;
       default: break;
+    }
+  }
+
+  private isHolidaySeason(): boolean {// Control de fechas de nieve
+    const today = new Date();
+    const start = new Date(today.getFullYear(), 11, 1); 
+    const end = new Date(today.getFullYear() + 1, 0, 6); 
+    return today >= start && today <= end;
+  }
+
+  private getRandomValue(max: number, min: number = 1): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  private createSnow(density: number): void {
+    const snowContainer = document.querySelector('.snow-container');
+
+    for (let i = 0; i < density; i++) {
+      const snowFlake = document.createElement('span');
+      const horizontalPosition = `${this.getRandomValue(100)}%`;
+      const fallDelay = `${this.getRandomValue(10)}s`;
+      const fallDuration = `${this.getRandomValue(20, 5)}s`;
+      const flakeSize = `${this.getRandomValue(7, 1)}px`;
+      const flakeOpacity = Math.random().toFixed(2);
+
+      snowFlake.classList.add('snow');
+      snowFlake.style.opacity = flakeOpacity;
+      snowFlake.style.width = flakeSize;
+      snowFlake.style.height = flakeSize;
+      snowFlake.style.animation = `fall ${fallDuration} ${fallDelay} linear infinite`;
+      snowFlake.style.right = horizontalPosition;
+
+      snowContainer?.appendChild(snowFlake);
     }
   }
 }
