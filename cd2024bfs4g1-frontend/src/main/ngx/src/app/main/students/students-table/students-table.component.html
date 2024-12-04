@@ -12,7 +12,7 @@
                         query-on-init="true" visible-columns="name;surname1;surname2" translate="yes"
                         null-selection="true" sort="ASC"></o-combo>
 
-                    <o-combo attr="bootcamp_id" label="Bootcamps" read-only="no" service="bootcamps"
+                    <o-combo attr="bootcamps_id" label="Bootcamps" read-only="no" service="bootcamps"
                         entity="bootcamp" keys="id" columns="id;name" value-column="id" query-on-init="true" searchable="yes"
                         visible-columns="name" translate="yes" null-selection="true" sort="ASC"></o-combo>
 
@@ -43,7 +43,7 @@
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
-                    filters="tutor:tutor;bootcamp_id:bootcamp_id;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;v_employment_status_id:v_employment_status_id;"
+                    filters="tutor:tutor;bootcamps_id:bootcamps_id;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;v_employment_status_id:v_employment_status_id;"
                     [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
                     [expression-builder]="createFilter"></o-filter-builder>
             </o-column-collapsible>
@@ -53,7 +53,7 @@
                 <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable"
                     service="students" sort-columns="name" entity="student" keys="id"
                     columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;user_id;statusstudent;usr_photo"
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;user_id;status;usr_photo;bootcamps_id"
                     visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false"
                     pageable="true" show-report-on-demand-option="false" show-charts-on-demand-option="false"
                     (onDataLoaded)="goToDetail()">
@@ -62,7 +62,7 @@
                     <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
                     <o-table-column attr="dni" title="DNI"></o-table-column>
                     <o-table-column attr="personal_email" title="Email"></o-table-column>
-                    <o-table-column attr="statusstudent" type="translate" title="status"></o-table-column>
+                    <o-table-column attr="status" type="translate" title="status"></o-table-column>
                     <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
                         <o-table-column attr="usr_photo" width="64px">
                             <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png"
