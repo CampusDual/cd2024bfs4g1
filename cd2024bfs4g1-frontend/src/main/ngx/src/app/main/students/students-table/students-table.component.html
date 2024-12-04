@@ -21,7 +21,7 @@
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
                         visible-columns="label" translate="yes" sort="ASC"></o-combo>
 
-                    <o-combo attr="v_employment_status_id" label="LEMSTATUS" required="no" translate="yes"
+                    <o-combo attr="v_employment_status_id" class="estadoL" label="LEMSTATUS" required="no" translate="yes"
                         null-selection="true" read-only="false" service="employmentstatus" entity="employmentStatus"
                         keys="id" columns="id;situation" value-column="id" description-columns="situation"
                         query-on-init="true">
