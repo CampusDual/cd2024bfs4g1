@@ -14,16 +14,19 @@ import { UpdateSessionBootcampComponent } from './bootcamp-details/update-sessio
 
 const routes: Routes = [
 
-
+  
   {path:"",pathMatch:"full",component:BootcampListComponent},
   {path: 'new',component: BootcampNewComponent},
   {path: ':id',component: BootcampDetailsComponent},
-  {path:':id_timetable/newTimetable', component: BootcampTimetableNewComponent},
-  {path:':bootcamp_id/new_Session_Bootcamp', component: NewSessionBootcampComponent},
-  {path:':bootcamp_id/:id', component: UpdateSessionBootcampComponent},
-  {path:':bootcamp_id/new', component: StudentBootcampAddComponent},
   {path:':bootcamp_id/new_tutor', component: TutorBootcampAddComponent},
+  {path:':id_timetable/newTimetable', component: BootcampTimetableNewComponent},
+  {path:':bootcamp_id/session/new', component: NewSessionBootcampComponent},
+  {path:':bootcamp_id/session/:id', component: UpdateSessionBootcampComponent},
+  {path:':bootcamp_id/new', component: StudentBootcampAddComponent},
   {path:':bootcamp_id/:id', component: StudentBootcampDetailComponent}
+ 
+  
+
 
 ];
 @NgModule({
