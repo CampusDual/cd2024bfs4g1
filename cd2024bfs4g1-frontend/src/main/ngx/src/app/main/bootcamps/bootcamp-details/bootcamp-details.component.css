@@ -5,6 +5,10 @@
   gap: 8px;
   width: 100%;
 }
+.highlight-today {
+  background-color: red !important; /* Cambia a cualquier color que prefieras */
+  color: red !important; /* Color del texto */
+}
 
 .tutores div[mat-card-avatar] {
   grid-column: 1;
@@ -557,3 +561,4 @@ o-list img {
   box-shadow: none;
   padding-top: 20px;
 }
+

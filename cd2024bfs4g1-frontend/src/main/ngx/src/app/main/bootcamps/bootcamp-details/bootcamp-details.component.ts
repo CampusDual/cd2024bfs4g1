@@ -316,4 +316,12 @@ export class BootcampDetailsComponent {
       this.dialogService.error('Error en el link', 'El link no existe o  no es válido');
     }
   }
+  getRowClass(rowData: any): string {
+    const today = new Date();
+    const sessionDate = new Date(rowData.session_date); // Asegúrate de que session_date esté en el formato adecuado
+    if (sessionDate.toDateString() === today.toDateString()) {
+      return 'highlight-today'; // Nombre de la clase que se aplicará a la fila
+    }
+    return '';
+  }
 }
