@@ -293,5 +293,6 @@
   "Info_foto":"It is recommended to use a square photo (1:1)",
   "date_change":"Date change",
   "DUPLICATED_USRLOGIN_NAME":"Username already exists",
-  "Download" : "Download"
+  "Download" : "Download",
+  "Save": "Save"
 }
