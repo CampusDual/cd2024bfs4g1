@@ -7,13 +7,17 @@
     padding: 6px;
 }
 
+
 .config-container {
     display: grid;
     grid-template-columns: 2fr 2fr; 
     grid-template-rows: auto;
     gap: 10px;
-    height: auto;
+
+    
 }
+
+
 .table_container{
     grid-column: 1 / 2;
     max-width: 100%;
@@ -37,7 +41,13 @@
     }
 
   }
-  .form-class{
+  .form-class .mat-success{
     width: 100%;
     height: 100%;
+    background-color: #1a3459;
+    overflow: hidden;
+    margin-left: -5px;
+    margin-top: -5px;
+    margin: 0 auto;
+
   }
