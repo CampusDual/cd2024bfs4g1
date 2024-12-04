@@ -13,11 +13,18 @@ export class BootcampStudentAddComponent {
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
 
-
- 
+  months: Date[] = [];
+  startAtDate: Date;
 
   public selected = {};
   $event: any;
+  service: any;
+
+  protected configureBootcamps() {
+    const conf = this.service.getDefaultServiceConfiguration('bootcamps');
+    this.service.configureService(conf);
+
+  }
 
   addStudentBootcamp() {
       this.studentBootcampForm.insert();
@@ -59,29 +66,36 @@ export class BootcampStudentAddComponent {
       this.studentBootcampForm.setFieldValue("end_date", endDate);
     
   }
-  // onBootcampChange(event: any) {
-  // this.bootcampTable.refresh();
-  // this.configureBootcamps();
-  // const bootcampId = event.id;
-  // const filter = { id: bootcampId };
+  generateMonths(startDate: Date, endDate: Date) {
+    this.months = [];
+    const current = new Date(startDate);
+    current.setDate(1);
+    while (current <= endDate) {
+      this.months.push(new Date(current));
+      current.setMonth(current.getMonth() + 1);
+    }
+  }
+  onBootcampChange(event: any) {
+  this.configureBootcamps();
+  const bootcampId = event.id;
+  const filter = { id: bootcampId };
+  this.service.query(filter, ['id', 'start_date', 'end_date'], 'bootcamp').subscribe(resp => {
+    if (resp.code === 0 && resp.data.length > 0) {
+      const bootcamp = resp.data[0];
+      const startDate = new Date(bootcamp.start_date);
+      const endDate = new Date(bootcamp.end_date);
+      this.startDateInput.setValue(startDate);
+      this.endDateInput.setValue(endDate);
+      this.startAtDate = startDate;
+      this.generateMonths(startDate, endDate);
+      this.selected = true;
 
-  // this.service.query(filter, ['id', 'start_date', 'end_date'], 'bootcamp').subscribe(resp => {
-  //   if (resp.code === 0 && resp.data.length > 0) {
-  //     const bootcamp = resp.data[0];
-  //     const startDate = new Date(bootcamp.start_date);
-  //     const endDate = new Date(bootcamp.end_date);
-
-  //     this.startDateInput.setValue(startDate);
-  //     this.endDateInput.setValue(endDate);
-  //     this.startAtDate = startDate;
-  //     this.selected = true;
-
-  //   } else {
-  //     alert('No se encontraron datos para este bootcamp.');
-  //   }
-  // });
-  // this.selected = false;
-// }
+    } else {
+      alert('No se encontraron datos para este bootcamp.');
+    }
+  });
+  this.selected = false;
+}
 
 }
 

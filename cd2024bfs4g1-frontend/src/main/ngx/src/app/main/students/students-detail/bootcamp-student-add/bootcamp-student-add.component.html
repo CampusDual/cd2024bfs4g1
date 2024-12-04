@@ -1,22 +1,22 @@
 <div class="popup1" >
     <o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" confirm-exit="false"
-      undo-button="false" label-header-align="center" after-insert-mode="new"
-      (onDataLoaded)="candidate();inicialDR()">
-      <o-text-input attr="student_id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
-      <label >Bootcamps</label>
-      <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps"
+    undo-button="false" label-header-align="center" after-insert-mode="new"
+    (onDataLoaded)="candidate();inicialDR()">
+    <o-text-input attr="student_id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
+    <label >Bootcamps</label>
+    <o-combo attr="bootcamp_id" label="Bootcamps" value-column="id" columns="id;name" service="bootcamps" keys="id"
         entity="bootcamp" visible-columns="name" searchable="yes" sortable="yes"
-        sort="ASC" null-selection="no">
+        sort="ASC" null-selection="no" (onValueChange)="onBootcampChange($event)" >
     </o-combo>
     <o-text-input attr="status" enabled="no" hidden = "true"></o-text-input>
 
     <div class="especial fecha-inicio">
-        <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" hidden="true"
+        <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" 
         ></o-date-input>
     </div>
 
     <div class="especial fecha-fin">
-        <o-date-input #enddate  label-visible="false" attr="end_date" required="yes" hidden="true"
+        <o-date-input #enddate  label-visible="false" attr="end_date" required="yes"
         format="DD/MM/YYYY">
         </o-date-input>
     </div>
