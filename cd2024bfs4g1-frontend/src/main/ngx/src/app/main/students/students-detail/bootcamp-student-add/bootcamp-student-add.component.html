@@ -11,19 +11,19 @@
     <o-text-input attr="status" enabled="no" hidden = "true"></o-text-input>
 
     <div class="especial fecha-inicio">
-        <o-date-input #startdate  elabel-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" 
+        <o-date-input #startdate  elabel-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" hidden
         ></o-date-input>
     </div>
 
     <div class="especial fecha-fin">
         <o-date-input #enddate  label-visible="false" attr="end_date" required="yes"
-        format="DD/MM/YYYY">
+        format="DD/MM/YYYY" hidden>
         </o-date-input>
     </div>
 
     <div fxLayout="column" layout-padding>
         <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
-        <o-daterange-input attr="dateRangeBootcamp" read-only="no" service="bootcamps" (onValueChange)="throwChange($event)"
+        <o-daterange-input attr="dateRangeBootcamp" read-only="yes" service="bootcamps" (onValueChange)="throwChange($event)"
         entity="bootcamp" required="yes" format="DD/MM/YYYY"  automatic-binding="false"
         show-week-numbers="true" mode="desktop" label-visible="false" >
         </o-daterange-input>
