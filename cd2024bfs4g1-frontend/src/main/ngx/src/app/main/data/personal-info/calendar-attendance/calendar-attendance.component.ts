@@ -14,7 +14,7 @@ enum AbbrDayOfWeek {
   Sab = 6,
 }
 
-interface Bootcamp {
+interface Student {
   id: number;
   name: string;
   start_date: Date;
@@ -40,7 +40,7 @@ export class CalendarAttendanceComponent {
     { id: 'N', description: 'No asistido' },
     { id: 'J', description: 'Justificado' }
   ];
-  
+
   weeksToShow = 1;
   startDate: Date;
   endDate: Date;
@@ -49,8 +49,8 @@ export class CalendarAttendanceComponent {
   days: number[] = [];
   weekDays: string[] = [];
   daysWithWeekDays: Day[] = [];
-  allBootcamps: Bootcamp[] = [];
-  bootcamps: any[] = [];
+  allStudents: Student[] = [];
+  students: any[] = [];
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -69,48 +69,81 @@ export class CalendarAttendanceComponent {
     this.loadInitialDates();
     this.loadDays();
     this.loadYears();
-  
-    this.service = this.injector.get(OntimizeService);
-    this.configureService();
-  }
 
-  ngOnInit(){
-    this.loadBootcamps();
-  }
+    this.service = this.injector.get(OntimizeService);}
 
-  protected configureService() {
+  ngOnInit() {
+   
+    this.loadStudents();
+    this.configureBootcamps();
+  }
+  protected configureBootcamps() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
     this.service.configureService(conf);
   }
+  protected configureStudents() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration('studentBootcamps');
+    this.service.configureService(conf);
+  }
 
-  getBootcamps() {
+
+
+  /*  getBootcamps() {
+     if (this.service !== null) {
+       const filter = {
+         'startDate': this.startDate,
+         'endDate': this.endDate
+       };
+       const types = {
+         'startDate': 91,
+         'endDate': 91
+       };
+       const columns = ['id', 'name', 'start_date', 'end_date', 'status'];
+       this.service.query(filter, columns, 'bootcampDate', types).subscribe(resp => {
+         if (resp.code === 0) {
+           if(resp.data.length > 0){ 
+             this.bootcamps = resp.data.sort((val1,val2) => val1.start_date - val2.start_date);
+           }else{
+             this.bootcamps = [];
+           }
+ 
+   
+         } else {
+           alert('Impossible to query data!');
+         }
+       });
+     }
+   } */
+
+  loadStudents(): void {
+    this.configureStudents();
+    this.getStudents();
+    this.students.map(student => {
+    });
+  }
+  getStudents() {
     if (this.service !== null) {
-      const filter = {
-        'startDate': this.startDate,
-        'endDate': this.endDate
-      };
-      const types = {
-        'startDate': 91,
-        'endDate': 91
-      };
-      const columns = ['id', 'name', 'start_date', 'end_date', 'status'];
-      this.service.query(filter, columns, 'bootcampDate', types).subscribe(resp => {
-        if (resp.code === 0) {
-          if(resp.data.length > 0){ 
-            this.bootcamps = resp.data.sort((val1,val2) => val1.start_date - val2.start_date);
-          }else{
-            this.bootcamps = [];
-          }
+      const columns = ['id', 'name', 'surname1', 'surname2']; // Ajusta las columnas según tu modelo
 
-  
+      this.service.query({}, columns, 'studentsWithBootcamp').subscribe(resp => {
+        if (resp.code === 0) {
+          if (resp.data.length > 0) {
+            this.students = resp.data; // Guarda los estudiantes obtenidos
+            console.log('Estudiantes cargados:', this.students);
+          } else {
+            this.students = [];
+            console.log('No hay estudiantes disponibles.');
+          }
         } else {
-          alert('Impossible to query data!');
+          alert('Error al cargar los datos de los estudiantes.');
         }
       });
     }
   }
-  
+
+
 
   loadInitialDates(): void {
     const startOfWeek = moment().startOf('isoWeek').subtract(1, 'week');
@@ -126,7 +159,7 @@ export class CalendarAttendanceComponent {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  loadDays(): void { 
+  loadDays(): void {
     this.daysWithWeekDays = [];
     let current = moment(this.startDate);
     const end = moment(this.endDate);
@@ -139,38 +172,33 @@ export class CalendarAttendanceComponent {
     }
   }
 
-  loadBootcamps(): void {
-    this.getBootcamps();
-    console.log(`Is bootcamps empty: ${this.bootcamps.length == 0}`);
-    this.bootcamps.map(bootcamp => {
-    });
-  }
 
-  filterBootcamps(): void {
-    this.bootcamps = this.allBootcamps.filter(bootcamp => {
-      return moment(bootcamp.start_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
-             moment(bootcamp.end_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
-             (moment(bootcamp.start_date).isBefore(this.startDate) && moment(bootcamp.end_date).isAfter(this.endDate));
-    });
-    console.log(`Bootcamps within the range: ${this.bootcamps.length}`);
-  }
-  
 
- 
+  /*  filterBootcamps(): void {
+     this.bootcamps = this.allBootcamps.filter(bootcamp => {
+       return moment(bootcamp.start_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
+         moment(bootcamp.end_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
+         (moment(bootcamp.start_date).isBefore(this.startDate) && moment(bootcamp.end_date).isAfter(this.endDate));
+     });
+     console.log(`Bootcamps within the range: ${this.bootcamps.length}`);
+   } */
+
+
+
 
   decSelectedWeek(): void {
     this.startDate = moment(this.startDate).subtract(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.loadBootcamps(); //añadio
-    this.updateCurrentMonthAndYear(); 
+    this.loadStudents(); 
+    this.updateCurrentMonthAndYear();
   }
-  
+
   incSelectedWeek(): void {
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.loadBootcamps(); //añadio
+    this.loadStudents();
     this.updateCurrentMonthAndYear();
   }
 
@@ -184,14 +212,14 @@ export class CalendarAttendanceComponent {
 
   dateDifferenceInDays(date1: any, date2: any): number {
     const timeDiff = Math.abs(date2 - date1);
-    return Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+    return Math.ceil(timeDiff / (1000 * 3600 * 24));
   }
 
 
-  printDate(date: any): string{ //añadio
+  printDate(date: any): string { //añadio
     const tDate: Date = new Date(date);
-    return tDate.getDate()+"/"+(tDate.getMonth()+1)+"/"+tDate.getFullYear();
-  } 
+    return tDate.getDate() + "/" + (tDate.getMonth() + 1) + "/" + tDate.getFullYear();
+  }
 
 
 
@@ -240,11 +268,7 @@ export class CalendarAttendanceComponent {
     return dayOfWeek === 'Sab' || dayOfWeek === 'Dom';
   }
 
-  getTooltip(bootcamp: any): string {
-    const startMonthYear = bootcamp.start_date.toLocaleString('default', { month: 'long', year: 'numeric' });
-    const endMonthYear = bootcamp.end_date.toLocaleString('default', { month: 'long', year: 'numeric' });
-    return startMonthYear;
-  }
+
 
 
 }
