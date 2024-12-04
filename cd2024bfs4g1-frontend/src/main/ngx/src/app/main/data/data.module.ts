@@ -5,6 +5,7 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { PersonalTutorInfoComponent } from './personal-tutor-info/personal-tutor-info.component';
 import { BootcampStudentsTableComponent } from './personal-tutor-info/bootcamp-students-table/bootcamp-students-table.component';
+import { CalendarAttendanceComponent } from './personal-info/calendar-attendance/calendar-attendance.component';
 
 
 
@@ -13,7 +14,8 @@ import { BootcampStudentsTableComponent } from './personal-tutor-info/bootcamp-s
   declarations: [
     PersonalInfoComponent,
     PersonalTutorInfoComponent,
-    BootcampStudentsTableComponent
+    BootcampStudentsTableComponent,
+    CalendarAttendanceComponent
 
   ],
   imports: [

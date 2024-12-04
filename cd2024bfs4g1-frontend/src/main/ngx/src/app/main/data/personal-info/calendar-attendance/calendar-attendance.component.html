@@ -1,0 +1,59 @@
+<div class="calendar-timestamps-container">
+    <div class="calendar-container">
+        <!-- Contenedor anclado: Botones y días -->
+        <div class="sticky-header">
+            <div class="date-item-container">
+                <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
+
+                <div class="years" *ngFor="let year of years">
+                    <div class="months">
+                        <div *ngIf="isSameMonthRange()">
+                            <div class="date-item month">
+                                {{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}
+                            </div>
+                        </div>
+                        <div *ngIf="!isSameMonthRange()">
+                            <div class="two-months">
+                                <span>{{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}</span>
+                                <span>{{ getMonthName(endDate) }} {{ endDate | date: 'yyyy' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <o-button color="white" (click)="incSelectedWeek()" icon="arrow_forward"></o-button>
+            </div>
+
+            <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
+                <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{
+                        'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.day),
+                        'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.day),
+                        'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.day)
+                     }">
+                    <div>{{dayWithWeekDays.day}}</div>
+                    <div>{{dayWithWeekDays.dayOfWeek}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido desplazable -->
+        <div class="calendar">
+            <div *ngFor="let bootcamp of bootcamps" class="bootcamp-row">
+                <div class="day-combos">
+                    <!-- Combos para días laborales (Lunes a Viernes) -->
+                    <div *ngFor="let day of ['Lun', 'Mar', 'Mie', 'Jue', 'Vie']" class="day-combo">
+                        <o-combo [static-data]="statusData" 
+                                 value-column="id" 
+                                 columns="id,description" 
+                                 visible-columns="id">
+                        </o-combo>
+                    </div>
+                    <!-- Columnas vacías para Sábado y Domingo -->
+                    <div class="day-combo-empty"></div>
+                    <div class="day-combo-empty"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
