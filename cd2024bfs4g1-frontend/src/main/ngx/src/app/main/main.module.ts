@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CommercialSectionComponent } from './commercial-section/commercial-section.component';
 
 @NgModule({
   imports: [
@@ -15,8 +14,7 @@ import { CommercialSectionComponent } from './commercial-section/commercial-sect
   ],
   declarations: [
     MainComponent,
-    ProfileComponent,
-    CommercialSectionComponent
+    ProfileComponent
   ]
 })
 export class MainModule { }
