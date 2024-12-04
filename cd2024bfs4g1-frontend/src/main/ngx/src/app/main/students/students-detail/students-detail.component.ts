@@ -18,6 +18,8 @@ export class StudentsDetailComponent {
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
   @ViewChild("form") form: OFormComponent;
+  @ViewChild("bootcampsStudentTable") bootcampTable: OTableComponent;
+  selected = false;
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
   validatorsArray: ValidatorFn[] = [];
@@ -255,4 +257,12 @@ refreshEmploymentStatus() {
     this.isRefreshing = false;
   }, 500);
 }
+protected configureBootcamps() {
+  const conf = this.service.getDefaultServiceConfiguration('bootcamps');
+  this.service.configureService(conf);
+
+}
+
+
+  
 }
