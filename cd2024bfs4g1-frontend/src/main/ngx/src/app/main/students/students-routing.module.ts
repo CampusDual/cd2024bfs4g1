@@ -11,12 +11,10 @@ import { EmploymentHistoryDetailsComponent } from './students-detail/employment-
 const routes: Routes = [
   { path:'', pathMatch:'full', component: StudentsTableComponent},
   { path:"new", component:StudentsNewComponent},
+  { path:":student_id/new", component:BootcampStudentAddComponent},
   { path:":student_id/new_employment_history", component:EmploymentHistoryNewComponent},
   { path:":student_id/:id", component:EmploymentHistoryDetailsComponent},
-  { path:":id", component:StudentsDetailComponent},
-  { path:":student_id/new", component:BootcampStudentAddComponent},
- 
-
+  { path:":id", component:StudentsDetailComponent}
 ];
 
 @NgModule({
