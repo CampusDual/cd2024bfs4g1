@@ -1,0 +1,26 @@
+CREATE TABLE public.asistencia_status (
+    id serial4 NOT NULL,
+    abreviatura varchar(1) NOT NULL,
+    descripcion varchar(50) NOT NULL,
+    CONSTRAINT asistencia_status_pkey PRIMARY KEY (id),
+    CONSTRAINT asistencia_status_abreviatura_unique UNIQUE (abreviatura)
+);
+
+CREATE TABLE public.asistencia (
+    id serial4 NOT NULL,
+    estudiante_id int4 NOT NULL,
+    bootcamp_id int4 NOT NULL,
+    fecha date NOT NULL,
+    asistencia_status_id int4 NOT NULL DEFAULT 1,
+    CONSTRAINT asistencia_pkey PRIMARY KEY (id),
+    CONSTRAINT asistencia_estudiante_fk FOREIGN KEY (estudiante_id) REFERENCES public.students(id),
+    CONSTRAINT asistencia_bootcamp_fk FOREIGN KEY (bootcamp_id) REFERENCES public.bootcamps(id),
+    CONSTRAINT asistencia_status_fk FOREIGN KEY (asistencia_status_id) REFERENCES public.asistencia_status(id)
+);
+
+INSERT INTO public.asistencia_status (abreviatura, descripcion)
+VALUES
+(' ', 'Sin marcar'),
+('S', 'Si'),
+('N', 'No'),
+('J', 'Justificada');
