@@ -364,3 +364,12 @@ o-column.o-column .o-container > .o-container-title span{
 
   margin: 16px;
 }
+.o-form .o-form-toolbar .o-form-toolbar-header 
+.mat-toolbar-tools .o-form-toolbar-button, .o-form .o-form-toolbar 
+.o-form-toolbar-header .mat-toolbar-tools .o-form-toolbar-button[disabled]{
+  border-radius:10px;
+}
+.o-form .o-form-toolbar button.mat-mdc-outlined-button, .ontimize-table.o-table .o-table-container
+ .o-table-toolbar .buttons .o-table-button button.mat-mdc-outlined-button{
+  border-radius: 10px;
+ }
