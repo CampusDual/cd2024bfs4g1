@@ -40,6 +40,9 @@ public class TutorService implements ITutorService {
     @Autowired
     private RoleDao roleDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public EntityResult tutorQuery(Map<String, Object> keyMap, List<String> attributes) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(tutorDao, keyMap, attributes);
@@ -51,6 +54,15 @@ public class TutorService implements ITutorService {
         String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
         String usrPhoto = (String) attrMap.remove(UserDao.PHOTO);
 
+        Map<String, Object> userKeyMap2 = new HashMap<>();
+        if(usrLogin != null) {
+            userKeyMap2.put(UserDao.LOGIN, usrLogin);
+
+            EntityResult queryUser = this.daoHelper.query(userDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+            if (!queryUser.isEmpty()) {
+                return createErrorResult("DUPLICATED_USRLOGIN_NAME");
+            }
+        }
         // Insertar datos del tutor
         EntityResult insertTutor = this.daoHelper.insert(this.tutorDao, attrMap);
         if (insertTutor.isWrong()) {
@@ -107,6 +119,17 @@ public class TutorService implements ITutorService {
         String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
         String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
         Object usrPhoto = attrMap.remove(UserDao.PHOTO);
+
+        Map<String, Object> userKeyMap2 = new HashMap<>();
+        if(usrLogin != null) {
+            userKeyMap2.put(UserDao.LOGIN, usrLogin);
+
+            EntityResult queryUser = this.daoHelper.query(userDao, userKeyMap2, Arrays.asList(UserDao.USR_ID));
+            if (!queryUser.isEmpty()) {
+                return createErrorResult("DUPLICATED_USRLOGIN_NAME");
+            }
+        }
+
         if (usrPhoto != null && usrPhoto.equals("")) {
             usrPhoto = null;
         }

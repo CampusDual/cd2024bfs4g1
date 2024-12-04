@@ -1,5 +1,5 @@
-<o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="R;I;U;D"
-  (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no">
+<o-form #studentsform attr="studentsNew" service="students" entity="student" keys="id" header-actions="I"
+  (onInsert)="volver($event)" show-header-navigation="no" confirm-exit="no" (onDataLoaded)="setcomunity()">
   <mat-tab-group oTabGroup="material" color="primary" id="tabGroup">
     <mat-tab label="{{'Main data'|oTranslate}}">
       <div class="grid-container">
@@ -17,51 +17,52 @@
               <o-text-input attr="name" required="yes" id="name" [validators]="validatorsWithoutSpace" max-length="255"
                 (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
-          <div class="apellido">
-            <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-            <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255"
-              (input)="toUpperCamelCase($event)"></o-text-input>
-          </div>
-          <div class="apellido2">
-            <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-            <o-text-input attr="surname2" required="no" max-length="255"
-              (input)="toUpperCamelCase($event)"></o-text-input>
-          </div>
-        </div>
-        <div class="datosPrincipales2">
-          <div class="dni">
-            <label for="dni">{{'LDNI' | oTranslate}}</label>
-            <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
-              (input)="toUpperCase($event)" (onBlur)="mostrar($event)"></o-nif-input>
-            <div class="aviso" *ngIf="showNotice">
-              <link rel="stylesheet" />
-              <label for="dni">{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon> </label>
+            <div class="apellido">
+              <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
+              <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255"
+                (input)="toUpperCamelCase($event)"></o-text-input>
+            </div>
+            <div class="apellido2">
+              <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+              <o-text-input attr="surname2" required="no" max-length="255"
+                (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
           </div>
+          <div class="datosPrincipales2">
+            <div class="dni">
+              <label for="dni">{{'LDNI' | oTranslate}}</label>
+              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
+                (input)="toUpperCase($event)" (onBlur)="mostrar($event)"></o-nif-input>
+              <div class="aviso" *ngIf="showNotice">
+                <link rel="stylesheet" />
+                <label for="dni">{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon> </label>
+              </div>
+            </div>
 
-          <div class="fechaCumple">
-            <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
-            <o-date-input attr="birth_date" required="no" text-input-enabled="no" format="DD/MM/YYYY"></o-date-input>
-          </div>
-          <div class="comunidad">
-            <label for="spain_comunity">{{'LSPAINCOMUNITY' | oTranslate}}</label>
-            <o-combo attr="spain_comunity" [static-data]="dataArray" [data]="valueSimple" required="no" searchable="yes"
-              value-column="key" columns="key;value" visible-columns="value" null-selection="no"></o-combo>
-          </div>
-          <div class="location">
-            <label for="location">{{'LLOCATION' | oTranslate}}</label>
-            <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
-          </div>
-          <div class="status">
-            <div class="studentStatus">
-              <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
-              <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
-                null-selection="true" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
-                columns="id;status" value-column="id" description-columns="status" query-on-init="true" sort="ASC">
-              </o-combo>
+            <div class="fechaCumple">
+              <label for="birth_date">{{'LBIRTHDATE' | oTranslate}}</label>
+              <o-date-input attr="birth_date" required="no" format="DD/MM/YYYY"></o-date-input>
+            </div>
+            <div class="comunidad">
+              <label for="spain_comunity">{{'LSPAINCOMUNITY' | oTranslate}}</label>
+              <o-combo attr="spain_comunity" [static-data]="dataArray" required="no"
+                searchable="yes" value-column="key" columns="key;value" visible-columns="value"
+                null-selection="no"></o-combo>
+            </div>
+            <div class="location">
+              <label for="location">{{'LLOCATION' | oTranslate}}</label>
+              <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
+            </div>
+            <div class="status">
+              <div class="studentStatus">
+                <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
+                <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
+                  null-selection="true" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
+                  columns="id;status" value-column="id" description-columns="status" query-on-init="true" sort="ASC">
+                </o-combo>
+              </div>
             </div>
           </div>
-        </div>
         </fieldset>
         <div class="login">
           <fieldset title="Login">
@@ -82,77 +83,76 @@
             </div>
           </fieldset>
           <br>
-        <div class="contacto">
-          <fieldset title="{{'Contact'|oTranslate}}">
-            <legend>{{"Contact"|oTranslate}}</legend>
-            <div class="telefono">
-              <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
-              <o-phone-input attr="phone" required="no" automatic-binding="false"
-                [data]="'+34 000000000'"></o-phone-input>
-            </div>
-            <div class="email">
-              <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
-              <o-email-input attr="personal_email" required="yes"></o-email-input>
-            </div>
-            <div class="emailCampus">
-              <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-              <o-email-input attr="campus_email" required="no"></o-email-input>
-            </div>
-          </fieldset>
-        </div>
+          <div class="contacto">
+            <fieldset title="{{'Contact'|oTranslate}}">
+              <legend>{{"Contact"|oTranslate}}</legend>
+              <div class="telefono">
+                <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
+                <o-phone-input attr="phone" required="no" automatic-binding="false"
+                  [data]="'+34 000000000'"></o-phone-input>
+              </div>
+              <div class="email">
+                <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
+                <o-email-input attr="personal_email" required="yes"></o-email-input>
+              </div>
+              <div class="emailCampus">
+                <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+                <o-email-input attr="campus_email" required="no"></o-email-input>
+              </div>
+            </fieldset>
+          </div>
         </div>
       </div>
     </mat-tab>
     <mat-tab label="{{'FCT Information'|oTranslate}}">
       <div class="fct-container">
-          <fieldset title="{{'FCT Information'|oTranslate}}" class="fct-grid">
-            <legend>{{"FCT Information"|oTranslate}}</legend>
-            <div class="fctSchool">
-              <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-              <o-text-input attr="fct_school" required="no" max-length="100"
-                ></o-text-input>
+        <fieldset title="{{'FCT Information'|oTranslate}}" class="fct-grid">
+          <legend>{{"FCT Information"|oTranslate}}</legend>
+          <div class="fctSchool">
+            <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
+            <o-text-input attr="fct_school" required="no" max-length="100"></o-text-input>
+          </div>
+          <div class="tutor">
+            <label for="LTUTOR">{{'LTUTOR' | oTranslate}}</label>
+            <o-combo attr="tutor" service="tutors" entity="tutor" required="no" searchable="yes" value-column="id"
+              columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="true"
+              sortable="yes" sort="ASC">
+            </o-combo>
+          </div>
+          <div class="fctStart">
+            <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
+            <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
+              (onValueChange)="throwChange(enddate)">
+              <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+            </o-date-input>
+          </div>
+          <div class="fctEnd">
+            <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
+            <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
+              (onValueChange)="throwChange2(startdate)">
+              <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
+            </o-date-input>
+          </div>
+        </fieldset>
+        <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
+          <legend>{{'OtherInformation'|oTranslate}}</legend>
+          <div class="githubUser">
+            <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
+            <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+          </div>
+          <div class="udemy">
+            <div class="checkbox-container">
+              <o-checkbox attr="udemy"></o-checkbox>
             </div>
-            <div class="tutor">
-              <label for="LTUTOR">{{'LTUTOR' | oTranslate}}</label>
-              <o-combo attr="tutor" service="tutors" entity="tutor" required="no" searchable="yes" value-column="id"
-                columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="true"
-                sortable="yes" sort="ASC">
-              </o-combo>
-            </div>
-            <div class="fctStart">
-              <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-              <o-date-input #startdate attr="fct_start" required="no" text-input-enabled="no " format="DD/MM/YYYY"
-                (onValueChange)="throwChange(enddate)">
-                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-              </o-date-input>
-            </div>
-            <div class="fctEnd">
-              <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
-              <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
-                text-input-enabled="no " (onValueChange)="throwChange2(startdate)">
-                <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
-              </o-date-input>
-            </div>
-          </fieldset>
-          <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
-            <legend>{{'OtherInformation'|oTranslate}}</legend>
-            <div class="githubUser">
-              <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-              <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
-            </div>
-            <div class="udemy">
-              <div class="checkbox-container">
-                <o-checkbox attr="udemy"></o-checkbox>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset title="{{'LNOTES'|oTranslate}}">
-            <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
-            <div class="notes">
-              <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
-            </div>
-          </fieldset>
-        </div>
+          </div>
+        </fieldset>
+        <fieldset title="{{'LNOTES'|oTranslate}}">
+          <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
+          <div class="notes">
+            <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
+          </div>
+        </fieldset>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </o-form>

@@ -38,11 +38,14 @@ export class StudentsNewComponent {
   volver(e) {
     this.router.navigate(['./main/students']);
   }
-
+ 
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
+  setcomunity(){
 
-  // Valor predeterminado (opcional)
-  valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
+    this.formStudents.setFieldValue('spain_comunity','Galicia')
+    
+  }
+  
 
   protected configureService() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
