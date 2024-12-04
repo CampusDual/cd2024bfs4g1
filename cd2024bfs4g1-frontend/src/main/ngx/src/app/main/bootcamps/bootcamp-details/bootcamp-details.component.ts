@@ -318,10 +318,15 @@ export class BootcampDetailsComponent {
   }
   getRowClass(rowData: any): string {
     const today = new Date();
-    const sessionDate = new Date(rowData.session_date); // Asegúrate de que session_date esté en el formato adecuado
+    const sessionDate = new Date(rowData.session_date); // Convierte a Date si es necesario
+    if (isNaN(sessionDate.getTime())) {
+      console.error('Invalid date format:', rowData.session_date);
+      return ''; // Si la fecha es inválida, no aplica ninguna clase
+    }
     if (sessionDate.toDateString() === today.toDateString()) {
       return 'highlight-today'; // Nombre de la clase que se aplicará a la fila
     }
     return '';
   }
+  
 }

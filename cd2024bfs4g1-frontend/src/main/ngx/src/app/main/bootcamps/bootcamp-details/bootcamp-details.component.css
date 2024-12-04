@@ -5,9 +5,14 @@
   gap: 8px;
   width: 100%;
 }
+/* styles.css o styles.scss */
 .highlight-today {
   background-color: red !important; /* Cambia a cualquier color que prefieras */
-  color: red !important; /* Color del texto */
+  color: white !important; /* Asegúrate de que sea visible */
+}
+::ng-deep .highlight-today {
+  background-color: red !important;
+  color: white !important;
 }
 
 .tutores div[mat-card-avatar] {
