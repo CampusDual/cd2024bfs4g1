@@ -22,8 +22,7 @@
     </div>
 
     <div fxLayout="column" layout-padding>
-        <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
-        <o-daterange-input attr="dateRangeBootcamp" read-only="yes" service="bootcamps" (onValueChange)="throwChange($event)"
+        <o-daterange-input attr="dateRangeBootcamp" read-only="yes" service="bootcamps" hidden
         entity="bootcamp" required="yes" format="DD/MM/YYYY"  automatic-binding="false"
         show-week-numbers="true" mode="desktop" label-visible="false" >
         </o-daterange-input>
