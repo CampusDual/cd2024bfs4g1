@@ -19,7 +19,7 @@ export class BootcampDetailsComponent {
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
-  
+
   months: Date[] = [];
 
   validatorsArray: ValidatorFn[] = [];
@@ -48,19 +48,13 @@ export class BootcampDetailsComponent {
   }
   goToStudentDetail(event: any) {
     const studentId = event.student_id;
-    const tab = 'table';
-    this.router.navigate(['/main/students'], {
-      queryParams: { studentId, tab }
-    });
+    this.router.navigate([`/main/students/${studentId}`]);
   this.clearTableSelection();
   }
 
   goToTutorDetail(tutor: any) {
     const tutorId = tutor.tutor_id;
-    const tab = 'table';
-    this.router.navigate(['/main/tutors'], {
-      queryParams: {  tutorId, tab }
-    });
+    this.router.navigate([`/main/tutors/${tutorId}`]);
   this.clearTableSelection();
   }
   // goToTutorDetail(tutor: any) {
@@ -104,7 +98,7 @@ export class BootcampDetailsComponent {
     };
 
     this.bootcampDetailForm.setFieldValue("dateRangeBootcampDetail", this.selectedDateRange);
-    
+
 
   }
 
@@ -154,7 +148,7 @@ export class BootcampDetailsComponent {
     const tutorBootcampConf = this.service.getDefaultServiceConfiguration('tutorBootcamps');
     this.service.configureService(tutorBootcampConf);
   }
-  
+
 
   onBootcampChange(event: any) {
     this.studentsTable.refresh();
@@ -185,10 +179,10 @@ export class BootcampDetailsComponent {
     if (view === "month") {
       let date = new Date(cellDate);
       date.setHours(0, 0, 0, 0);
-  
+
       let startDate = this.startDateInput.getValue();
       let endDate = this.endDateInput.getValue();
-  
+
       if (startDate) {
         startDate = new Date(startDate);
         startDate.setHours(0, 0, 0, 0);
@@ -197,7 +191,7 @@ export class BootcampDetailsComponent {
         endDate = new Date(endDate);
         endDate.setHours(0, 0, 0, 0);
       }
-  
+
       if (startDate && endDate && date >= startDate && date <= endDate) {
         if (date.getTime() === startDate.getTime()) {
           return "calendarcellStart";
@@ -210,7 +204,7 @@ export class BootcampDetailsComponent {
     }
     return '';
   };
-  
+
 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
@@ -296,8 +290,8 @@ export class BootcampDetailsComponent {
             this.list.reloadData();
           }
         });
-      } 
+      }
     });
-    
-   } 
+
+   }
 }
