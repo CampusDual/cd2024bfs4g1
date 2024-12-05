@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,10 @@ public class SessionBootcampService implements ISessionBootcampService {
 
     @Override
     public EntityResult sessionBootcampQuery(Map<String, Object> keyMap, List<String> attributes) throws OntimizeJEERuntimeException {
-        return this.daoHelper.query(this.sessionBootcampDao,keyMap,attributes);
+        Boolean isPast = (Boolean) keyMap.remove("past");
+        if (isPast != null) { if (isPast) {  keyMap.put("status", Arrays.asList("Finished", "Started", "Pending")); }
+        else {  keyMap.put("status", Arrays.asList("Started", "Pending")); } }
+        return this.daoHelper.query(this.sessionBootcampDao, keyMap, attributes);
     }
 
     @Override

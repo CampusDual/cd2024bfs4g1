@@ -5,15 +5,6 @@
   gap: 8px;
   width: 100%;
 }
-/* styles.css o styles.scss */
-.highlight-today {
-  background-color: red !important; /* Cambia a cualquier color que prefieras */
-  color: white !important; /* Asegúrate de que sea visible */
-}
-::ng-deep .highlight-today {
-  background-color: red !important;
-  color: white !important;
-}
 
 .tutores div[mat-card-avatar] {
   grid-column: 1;
@@ -565,5 +556,9 @@ o-list img {
   background-color: #f5f0f2;
   box-shadow: none;
   padding-top: 20px;
+}
+
+::ng-deep o-table .highlight-today {
+  background-color: #89b23713; /* Color de fondo suave (un azul muy claro) */
 }
 

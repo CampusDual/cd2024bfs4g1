@@ -207,11 +207,9 @@
         <mat-tab label="{{ 'Sesiones' | oTranslate }}">
           <div class="table_sesions general_table">
             <div class="calendar-container">
-              <div class="filter-container">
-                <mat-checkbox [(ngModel)]="showFutureSessions" (change)="applyDateFilter()">
-                  {{ 'Show Past Sessions' | oTranslate }}
-                </mat-checkbox>
-              </div>
+              <o-form header-actions="">
+                <o-slide-toggle attr="past" label="Show past sessions" (onChange)="onToggleChange($event)"></o-slide-toggle>
+              </o-form>
               <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session" 
                        service="sessionBootcamp"
                        entity="sessionBootcamp" keys="id"

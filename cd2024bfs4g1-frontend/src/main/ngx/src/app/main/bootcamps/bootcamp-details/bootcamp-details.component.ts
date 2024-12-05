@@ -19,6 +19,7 @@ export class BootcampDetailsComponent {
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
+  @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
 
   months: Date[] = [];
 
@@ -343,6 +344,12 @@ export class BootcampDetailsComponent {
       // Sin filtro de fecha, muestra todo
       this.sessionFilters = null;
     }
+  }
+
+  onToggleChange(event: any): void {
+    const isPast = event.checked;
+    const filter = { past: isPast };
+    this.table.queryData(filter); 
   }
   
 }
