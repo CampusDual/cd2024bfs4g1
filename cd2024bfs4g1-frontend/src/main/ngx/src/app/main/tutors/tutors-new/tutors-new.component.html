@@ -32,13 +32,13 @@
     <fieldset class="datos">
       <legend>Login</legend>
       <div class="usuario">
-        <label for="REQ_USER">{{'REQ_USER' | oTranslate}}</label>
-        <o-text-input attr="usr_login" required="yes" id="name" max-length="255"
+        <label for="REQ_USER">{{'USER' | oTranslate}}</label>
+        <o-text-input attr="usr_login" required="no" id="name" max-length="255"
           [validators]="validatorsWithoutSpace"></o-text-input>
       </div>
       <div class="contraseña">
-        <label for="REQ_PASSWORD">{{'REQ_PASSWORD' | oTranslate}}</label>
-        <o-password-input attr="usr_password" required="yes" show-password-button="false" in-length="8"
+        <label for="REQ_PASSWORD">{{'PASSWORD' | oTranslate}}</label>
+        <o-password-input attr="usr_password" required="no" show-password-button="false" in-length="8"
           [validators]="validatorsNewPasswordArray">
           <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
           <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
