@@ -1,6 +1,6 @@
 <o-form #form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
-  header-actions="I;U;D" (onDelete)="volver($event)" show-header-navigation="no"
-  confirm-exit="false" >
+  header-actions="R;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
+  confirm-exit="false" (onDataLoaded)="inicialDR()">
   <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
