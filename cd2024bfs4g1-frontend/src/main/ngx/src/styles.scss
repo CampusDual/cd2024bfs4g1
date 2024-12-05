@@ -326,7 +326,6 @@ background: none;
   background-color:#7ec117;
   color:#1a3459;
 }
-
 o-column.o-column .o-container > .o-container-title span{
   color: #1a3459;
 }
@@ -373,3 +372,9 @@ o-column.o-column .o-container > .o-container-title span{
  .o-table-toolbar .buttons .o-table-button button.mat-mdc-outlined-button{
   border-radius: 10px;
  }
+
+ .mat-mdc-fab.mat-primary, .mat-mdc-mini-fab.mat-primary, .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-container-color: #7ec117;
+  --mat-mdc-fab-color: #1a3459;
+  margin-bottom: 20px;
+}

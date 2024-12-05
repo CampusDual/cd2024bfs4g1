@@ -12,11 +12,10 @@
           <legend>{{"Personal data"|oTranslate}}</legend>
           <div class="datosPrincipales1">
             <div class="foto">
-              <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
-                       sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
-                       max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                       label="PROFILE.EDIT_PHOTO" ></o-image>
-                       <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
+              <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
+                class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+              <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
             </div>
 
             <div>
@@ -38,10 +37,11 @@
           <div class="datosPrincipales2">
             <div class="dni">
               <label for="LDNI">{{'LDNI' | oTranslate}}</label>
-              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no" (onBlur)="mostrar($event)"></o-nif-input>
+              <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
+                (onBlur)="mostrar($event)"></o-nif-input>
               <div class="aviso" *ngIf="showNotice">
-                  <link rel="stylesheet"/>
-                  <label for="dni" >{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
+                <link rel="stylesheet" />
+                <label for="dni">{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
               </div>
             </div>
             <div>
@@ -58,7 +58,7 @@
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
               <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
-            
+
             <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
             <o-combo attr="student_status_id" label="{{'LSTATUS' | oTranslate}}" required="no" translate="yes"
               null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
@@ -112,7 +112,7 @@
           <legend>{{"Historial_Laboral"|oTranslate}}</legend>
           <div class="container_employment">
             <o-text-input attr="employment_status" label="{{'LEMSTATUS_ACTUAL' | oTranslate}}" translate="yes"
-            read-only="yes" service="employmentstatus" entity="employmentStatus" hidden></o-text-input>
+              read-only="yes" service="employmentstatus" entity="employmentStatus" hidden></o-text-input>
             <label for="employment_status">{{'LEMSTATUS_ACTUAL' | oTranslate}}: &nbsp;</label>
             <p>{{form.getDataValue('employment_status').value}}</p>
           </div>
@@ -122,7 +122,7 @@
               <o-form-layout-dialog-options class="popup"></o-form-layout-dialog-options>
               <o-table class="general_table_primera" insert-form-route="new_employment_history"
                 attr="employmentstatushistory" service="employmentstatushistory" entity="employmentStatusHistory"
-                keys="id" parent-keys="student_id:id"   (onDataLoaded)="refreshEmploymentStatus()"
+                keys="id" parent-keys="student_id:id" (onDataLoaded)="refreshEmploymentStatus()"
                 columns="id;student_id;situation;employment_status_id;status_date_change;description"
                 visible-columns="situation;status_date_change;description" show-report-on-demand-option="false"
                 show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
@@ -165,8 +165,8 @@
           </div>
           <div>
             <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-            <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray"
-              format="DD/MM/YYYY" (onValueChange)="throwChange2(startdate)">
+            <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
+              (onValueChange)="throwChange2(startdate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
           </div>
@@ -184,10 +184,12 @@
           </div>
         </fieldset>
         <fieldset title="Notas">
-          <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
-          <div class="notes">
-            <o-textarea-input attr="notes" required="no" max-length="1000"></o-textarea-input>
+          <div class="general_container">
+            <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
+
           </div>
+
+
         </fieldset>
       </div>
       <div *ngIf="showMessage" class="notification">
@@ -235,14 +237,15 @@
               <fieldset class="fieldsetDoc">
                 <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
                 <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
-                  entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id" columns="id;bootcampname;status;start_date;end_date"
-                  visible-columns="bootcampname;status;start_date;end_date" detail-mode="none" show-report-on-demand-option="false"
-                  show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
-                  selection-mode="none" insert-form-route="new">
+                  entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
+                  columns="id;bootcampname;status;start_date;end_date"
+                  visible-columns="bootcampname;status;start_date;end_date" detail-mode="none"
+                  show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                  select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
                   <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
                   <o-table-context-menu view-detail="false" edit="false" delete="false"
                     insert="false"></o-table-context-menu>
-                  <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column> 
+                  <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
                   <o-table-column attr="start_date" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
                   <o-table-column attr="end_date" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
                 </o-table>
@@ -254,6 +257,26 @@
           <label for="subida">{{ 'subida' | oTranslate }}</label>
         </div>
       </div>
+    </mat-tab>
+    <mat-tab label="{{'LNOTE' | oTranslate}}">
+
+      <o-form-layout-manager class="selectedrow" mode="dialog">
+        <o-form-layout-dialog-options class="popup">
+          <o-list #list attr="notesList" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
+            delete-button="true" insert-form-route="new_note" columns="id;nota;id_students;fecha" quick-filter="false"
+            refresh-button="false" insert-button="true" delete-button="true" detail-mode="true" selectable="true"
+            detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
+            insert-button-position="" show-buttons-text="false" controls="false">
+            <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
+              <mat-card-header >
+                <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
+                <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+
+          </o-list>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
     </mat-tab>
   </mat-tab-group>
 </o-form>
