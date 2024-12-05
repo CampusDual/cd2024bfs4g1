@@ -13,6 +13,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { EmploymentHistoryNewComponent } from './students-detail/employment-history-new/employment-history-new.component';
 import { EmploymentHistoryDetailsComponent } from './students-detail/employment-history-details/employment-history-details.component';
+import { NotesAddComponent } from './students-detail/notes-add/notes-add.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { EmploymentHistoryDetailsComponent } from './students-detail/employment-
     StudentsTableComponent,
     BootcampStudentAddComponent,
     EmploymentHistoryNewComponent,
-    EmploymentHistoryDetailsComponent
+    EmploymentHistoryDetailsComponent,
+    NotesAddComponent
   ],
   imports: [
     CommonModule,

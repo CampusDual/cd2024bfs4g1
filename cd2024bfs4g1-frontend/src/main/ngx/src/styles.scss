@@ -324,22 +324,22 @@ label{
 background: none;
 }
 .list_container .o-list-container {
-  position: relative; 
+  position: relative;
 }
 
 .list_container .o-list-container .add-button {
-  position: absolute; 
-  right: 10px;        
-  top: -40px;          
+  position: absolute;
+  right: 10px;
+  top: -40px;
   background-color: #8AB237;
   color: #1a3459;
   border-radius: 8px;
   width: 100px;
   height: 30px;
-  display: flex;      
+  display: flex;
   justify-content: center;
   align-items: center;
- 
+
 }
 
 o-column.o-column .o-container > .o-container-title span{
@@ -379,8 +379,8 @@ o-column.o-column .o-container > .o-container-title span{
 
   margin: 16px;
 }
-.o-form .o-form-toolbar .o-form-toolbar-header 
-.mat-toolbar-tools .o-form-toolbar-button, .o-form .o-form-toolbar 
+.o-form .o-form-toolbar .o-form-toolbar-header
+.mat-toolbar-tools .o-form-toolbar-button, .o-form .o-form-toolbar
 .o-form-toolbar-header .mat-toolbar-tools .o-form-toolbar-button[disabled]{
   border-radius:10px;
 }
@@ -389,3 +389,11 @@ o-column.o-column .o-container > .o-container-title span{
   border-radius: 10px;
  }
 
+
+
+
+ .mat-mdc-fab.mat-primary, .mat-mdc-mini-fab.mat-primary, .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-container-color: #7ec117;
+  --mat-mdc-fab-color: #1a3459;
+  margin-bottom: 20px;
+}
