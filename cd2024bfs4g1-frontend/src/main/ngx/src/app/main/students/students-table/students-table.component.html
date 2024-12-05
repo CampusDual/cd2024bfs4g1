@@ -27,12 +27,6 @@
                         query-on-init="true">
                     </o-combo>
 
-                    <o-combo attr="v_employment_status_id" class="estadoL" label="LEMSTATUS" required="no" translate="yes"
-                        null-selection="true" read-only="false" service="employmentstatus" entity="employmentStatus"
-                        keys="id" columns="id;situation" value-column="id" description-columns="situation"
-                        query-on-init="true">
-                    </o-combo>
-
                     <o-combo attr="student_status_id" class="estado" label="LSTATUS" null-selection="true" service="studentstatus"
                         entity="studentStatus" keys="id" columns="id;status" value-column="id" visible-columns="status"
                         read-only="no" sort="ASC">
@@ -45,7 +39,7 @@
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
                             label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
-                    </div>
+                </div>
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
