@@ -27,7 +27,7 @@
                         'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.day),
                         'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.day),
                         'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.day)
-                     }">
+                    }">
                 <div>{{dayWithWeekDays.day}}</div>
                 <div>{{dayWithWeekDays.dayOfWeek}}</div>
             </div>
@@ -36,10 +36,16 @@
             <div *ngFor="let student of students" class="student_row days"
                 [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
                 <div>{{ student.name}} {{student.surname1}} {{student.surname2}}</div>
-                <div *ngFor="let day of ['Lun', 'Mar', 'Mie', 'Jue', 'Vie']">
-                   <div>prueba</div>
+                <div *ngFor="let day of ['Lun', 'Mar', 'Mie', 'Jue', 'Vie']" class="day-combo">
+                    <div class="center-select">
+                        <select class="center-select__input">
+                            <option *ngFor="let status of statusData" [value]="status.id">
+                                {{ status.abreviatura }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
-              
+
 
             </div>
         </div>
