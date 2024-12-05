@@ -14,7 +14,7 @@
     <Queries>
         <Query id="default">
             <AmbiguousColumns>
-                <AmbiguousColumn name="id" prefix="s"/>
+                <AmbiguousColumn name="id" prefix="n"/>
 
             </AmbiguousColumns>
 
