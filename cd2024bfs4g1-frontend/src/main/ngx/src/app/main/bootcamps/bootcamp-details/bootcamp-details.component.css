@@ -305,7 +305,7 @@ mat-calendar .mat-calendar-arrow {
 }
 
 div.notification label {
-  background-color: #F64983;
+  background-color: #8AB237;
   color: white;
   padding: 10px;
   position: fixed;
@@ -396,12 +396,46 @@ div.notification label {
   height: 100%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
+
+  .table_container{
+    display: flex;
+    overflow: visible;
+    padding-bottom: 40px;
+  }
+  .table_container {
+
+    padding: 15px;
+  }
+  .list_container{
+    grid-column: 1/2;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .list_container mat-card {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 16px;
+    box-sizing: border-box;
+    display: inline-flex;
+    box-shadow: none;
+  }
+
+
 
   .grid-container,
   .table_container {
-    width: 98%;
+    width: 100%;
     padding: 15px;
+    grid-template-columns: 1fr;
   }
 
   .general_container {
@@ -443,26 +477,26 @@ div.notification label {
 
   .calendar-card {
     width: 100%;
-  .table_container,
-  .list_container {
-    width: 100%;
-  }
+    .table_container,
+    .list_container {
+      width: 100%;
+    }
 
-  .o-table,
-  .o-list {
-    max-width: 100%;
-    overflow-x: auto;
-  }
+    .o-table,
+    .o-list {
+      max-width: 100%;
+      overflow-x: auto;
+    }
 
-  .mat-card {
-    width: 100%;
-    margin-bottom: 15px;
-  }
+    .mat-card {
+      width: 100%;
+      margin-bottom: 15px;
+    }
 
-  .boton_eliminar {
-    margin: 0 auto;
+    .boton_eliminar {
+      margin: 0 auto;
+    }
   }
-}
 }
 
 mat-calendar {
@@ -505,7 +539,7 @@ o-list img {
 
 
 div.notification label {
-  background-color: #F64983;
+  background-color: #8AB237;
   color: white;
   padding: 10px;
   position: fixed;
@@ -526,7 +560,7 @@ div.notification label {
   height: 100%;
 }
 
-.timetable_table{
+.timetable_table {
   background-color: #f5f0f2;
   font-family: 'Roboto', sans-serif;
 }
