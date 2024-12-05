@@ -15,21 +15,12 @@
 
     <Queries>
         <Query id="default">
-            <AmbiguousColumns>
-                <AmbiguousColumn name="id" prefix="st"/>
-                <AmbiguousColumn name="statusstudent" prefix="ss" databaseName="status"/>
-            </AmbiguousColumns>
-
             <Sentence>
                 <![CDATA[
                         SELECT
                         #COLUMNS#
                         FROM
-                            ${mainschema}.students st
-                            left join ${mainschema}.usr_user uu ON st.user_id = uu.usr_id
-                            left join ${mainschema}.employment_status es on st.employment_status_id = es.id
-                            left join ${mainschema}.student_status ss on st.student_status_id = ss.id
-                            left join ${mainschema}.v_recent_employment_status vres on st.id = vres.student_id
+                            ${mainschema}.v_students_with_bootcamps
                             #WHERE#
                     ]]>
             </Sentence>

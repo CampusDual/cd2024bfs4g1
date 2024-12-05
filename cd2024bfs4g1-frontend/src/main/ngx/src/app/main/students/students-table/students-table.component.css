@@ -32,18 +32,11 @@
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
-
-
 }
-
-
 .filter_style {
   display: grid;
   /*grid-template-columns: repeat(6, 1fr);*/
   grid-template-columns: 1.5fr 1.5fr 0.8fr 1fr 1.5fr 1.5fr;
-  gap: 15px;
-  /*grid-template-columns: repeat(6, 1fr);*/
-  grid-template-columns: 1.5fr 1.5fr 0.8fr 1fr 1.5fr 1fr;
   gap: 15px;
   background-color: #f5f0f2;
   padding: 25px 30px 3px 30px;
@@ -52,7 +45,6 @@
   width: 93%;
   margin: 5px auto;
   box-sizing: border-box;
-
 }
 
 .filter_style o-text-input,
@@ -61,11 +53,43 @@
   width: 70%;
 }
 
-/* .centered-actions {
+.centered-actions {
   grid-column: 1 / -1;
   justify-content: center;
   margin-top: 10px;
-} */
+}
 
+.tutor{
+  grid-column: 1/2;
+}
+.bootcamps{
+  grid-column: 2/3;
+}
+.udemy{
+  grid-column: 3/4;
+}
+.estadoL{
+  grid-column: 4/5;
+}
+.estado{
+  grid-column: 5/6;
+}
+.comunidad{
+  grid-column: 6/7;
+}
 
-
+@media(max-width: 900px){
+  .filter_style {
+    /*grid-template-columns: repeat(6, 1fr);*/
+    grid-template-columns: 1.5fr 1.5fr 1.5fr;
+  }
+  .estadoL{
+    grid-column: 1/2;
+  }
+  .estado{
+    grid-column: 2/3;
+  }
+  .comunidad{
+    grid-column: 3/4;
+  }
+}
