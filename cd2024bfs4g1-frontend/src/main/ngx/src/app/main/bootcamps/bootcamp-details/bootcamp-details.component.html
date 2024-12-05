@@ -202,14 +202,20 @@
         </div>
       </div>
     </mat-tab>
+
     <o-form-layout-manager attr="popupNewSession" mode="dialog">
       <o-form-layout-dialog-options class="popup">
         <mat-tab label="{{ 'Sesiones' | oTranslate }}">
+
+  
+
+
+
           <div class="table_sesions general_table">
             <div class="calendar-container">
-              <o-form header-actions="">
-                <o-slide-toggle attr="past" label="Show past sessions" (onChange)="onToggleChange($event)"></o-slide-toggle>
-              </o-form>
+              <div class="" fxLayout="column" fxLayoutGap="8px">
+                <o-slide-toggle #sliderTog attr="" label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no"></o-slide-toggle>
+              </div>
               <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session" 
                        service="sessionBootcamp"
                        entity="sessionBootcamp" keys="id"
@@ -231,6 +237,7 @@
             </div>
           </div>
         </mat-tab>
+
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
     
