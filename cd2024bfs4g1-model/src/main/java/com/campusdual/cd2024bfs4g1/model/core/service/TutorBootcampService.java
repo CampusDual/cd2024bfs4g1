@@ -38,7 +38,7 @@ public class TutorBootcampService implements ITutorBootcampService {
         } catch (DuplicateKeyException e) {
             EntityResult entityResultError = new EntityResultMapImpl();
             entityResultError.setCode(EntityResult.OPERATION_WRONG);
-            entityResultError.setMessage("Error, this already exists");
+            entityResultError.setMessage("ERROR_TUTOR_ALREADY_EXISTS_IN_THIS_BOOTCAMPS");
             return entityResultError;
         } catch (Exception generalException) {
             throw generalException;
