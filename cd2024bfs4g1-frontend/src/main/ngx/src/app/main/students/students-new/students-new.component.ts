@@ -22,6 +22,7 @@ export class StudentsNewComponent {
   validatorsNewPasswordArray: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
   showNotice: boolean =false;
+valueSimple: any;
   
 
 
