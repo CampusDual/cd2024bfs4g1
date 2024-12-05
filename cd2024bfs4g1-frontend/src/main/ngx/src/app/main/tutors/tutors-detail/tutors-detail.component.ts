@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, ValidatorFn } from '@angular/forms';
 import { DialogService, OImageComponent, OValidators } from 'ontimize-web-ngx';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tutors-detail',
@@ -15,7 +17,8 @@ export class TutorsDetailComponent{
   @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
   validatorsNewPasswordArray: ValidatorFn[] = [];
 
-    constructor(protected dialogService: DialogService) {
+
+    constructor(protected dialogService: DialogService,private router: Router, public location: Location) {
       this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
       this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
       this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
@@ -84,6 +87,9 @@ export class TutorsDetailComponent{
     }
   }
   
+  mostrarBoton: boolean = true; ngOnInit() {
+    this.mostrarBoton = /\d+$/.test(this.router.url);
+  }
   
   showAlert() {
     if (this.dialogService) {

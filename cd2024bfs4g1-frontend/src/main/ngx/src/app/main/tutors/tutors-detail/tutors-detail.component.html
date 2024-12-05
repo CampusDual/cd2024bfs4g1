@@ -1,5 +1,9 @@
 <o-form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="I;U;D"
   show-header-navigation="no">
+  <div o-form-toolbar-buttons>
+    <o-button attr="backButton" class="botonlegendario" type="RAISED" icon="keyboard_backspace" label="Go back"
+      (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
+  </div>
   <o-text-input hidden attr="id" sql-type="INTEGER" enabled="no" />
   <div class="grid-container">
 
@@ -38,13 +42,13 @@
       <fieldset title="Login" class="datos">
         <legend>Login</legend>
         <div>
-          <label for="usuario">{{'REQ_USER' | oTranslate}}</label>
-          <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="yes" id="name"
+          <label for="usuario">{{'USER' | oTranslate}}</label>
+          <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="no" id="name"
             max-length="255"></o-text-input>
         </div>
         <div>
-          <label for="contraseña">{{'REQ_PASSWORD' | oTranslate}}</label>
-          <o-password-input attr="usr_password" required="yes" show-password-button="false" in-length="8"
+          <label for="contraseña">{{'PASSWORD' | oTranslate}}</label>
+          <o-password-input attr="usr_password" required="no" show-password-button="false" in-length="8"
             [validators]="validatorsNewPasswordArray">
             <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
             <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>

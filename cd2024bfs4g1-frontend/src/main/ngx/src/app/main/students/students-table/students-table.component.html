@@ -1,34 +1,38 @@
-<o-form-layout-manager  #formLayoutManager attr="studentsTableLayout" mode="tab"  title="{{'Students' | oTranslate}}">
+<o-form-layout-manager #formLayoutManager attr="studentsTableLayout" mode="tab" title="{{'Students' | oTranslate}}">
     <o-form-layout-tabgroup-options label-columns="name;surname1"></o-form-layout-tabgroup-options>
     <div class="table_container">
         <o-form editable-detail="no" show-header="no" layout-align="start stretch" class="students-filters-form" fxFill>
-            <o-column-collapsible  title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" elevation="10"
+            <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" elevation="10"
                 icon="filter_list" class="collapsible-2">
 
                 <div class="filter_style">
 
-                    <o-combo #type attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no"
-                        service="tutors" entity="tutor" keys="id"
-                        columns="id;name;surname1;surname2" value-column="id" query-on-init="true"
-                        visible-columns="name;surname1;surname2" translate="yes" null-selection="true" sort="ASC"></o-combo>
+                    <o-combo #type class="tutor" attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no" service="tutors"
+                        entity="tutor" keys="id" columns="id;name;surname1;surname2" value-column="id"
+                        query-on-init="true" visible-columns="name;surname1;surname2" translate="yes"
+                        null-selection="true" sort="ASC"></o-combo>
 
-                    <o-combo attr="v_employment_status_id" label="LEMSTATUS" required="no" translate="yes"
-                        null-selection="true" read-only="false" service="employmentstatus"
-                        entity="employmentStatus" keys="id" columns="id;situation" value-column="id"
-                        description-columns="situation" query-on-init="true">
-                    </o-combo>
+                    <o-combo attr="bootcamps_id" class="bootcamp" label="Bootcamps" read-only="no" service="bootcamps" entity="bootcamp"
+                        keys="id" columns="id;name" value-column="id" query-on-init="true" searchable="yes"
+                        visible-columns="name" translate="yes" null-selection="true" sort="ASC"></o-combo>
 
-                    <o-combo class= "udemy" #type attr="udemy" read-only="no"
+                    <o-combo class="udemy" #type attr="udemy" read-only="no"
                         [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
                         service="students" entity="student" columns="udemy" value-column="value" keys="id"
                         visible-columns="label" translate="yes" sort="ASC"></o-combo>
 
-                    <o-combo attr="student_status_id" label="LSTATUS" null-selection="true" service="studentstatus"
+                    <o-combo attr="v_employment_status_id" class="estadoL" label="LEMSTATUS" required="no" translate="yes"
+                        null-selection="true" read-only="false" service="employmentstatus" entity="employmentStatus"
+                        keys="id" columns="id;situation" value-column="id" description-columns="situation"
+                        query-on-init="true">
+                    </o-combo>
+
+                    <o-combo attr="student_status_id" class="estado" label="LSTATUS" null-selection="true" service="studentstatus"
                         entity="studentStatus" keys="id" columns="id;status" value-column="id" visible-columns="status"
                         read-only="no" sort="ASC">
                     </o-combo>
 
-                    <o-combo class="spain_comunity" attr="spain_comunity" read-only="no" service="students"
+                    <o-combo class="comunidad" attr="spain_comunity" read-only="no" service="students"
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
                         visible-columns="value" searchable="yes" sort="ASC"></o-combo>
 
@@ -39,31 +43,33 @@
                 </div>
 
                 <o-filter-builder #filterBuilder attr="thefilter"
-                    filters="tutor:tutor;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;v_employment_status_id:v_employment_status_id;"
+                    filters="tutor:tutor;bootcamps_id:bootcamps_id;udemy:udemy;student_status_id:student_status_id;spain_comunity:spain_comunity;v_employment_status_id:v_employment_status_id;"
                     [target]="tableStudents" query-on-change="yes" query-on-change-delay="500"
                     [expression-builder]="createFilter"></o-filter-builder>
             </o-column-collapsible>
 
             <div>
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
-            <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
-                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;user_id;statusstudent;usr_photo"
-                visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false" pageable="true"
-                show-report-on-demand-option="false" show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()">
-                <o-table-column attr="name" title="Name"></o-table-column>
-                <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
-                <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
-                <o-table-column attr="dni" title="DNI"></o-table-column>
-                <o-table-column attr="personal_email" title="Email"></o-table-column>
-                <o-table-column attr="statusstudent" type="translate" title="status"></o-table-column>
-                <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
-                <o-table-column attr="usr_photo" width="64px">
-                        <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png" avatar="yes"> </o-table-cell-renderer-image>
-                </o-table-column>
-                </o-table-context-menu>
-                <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-              </o-table>
+                <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable"
+                    service="students" sort-columns="name" entity="student" keys="id"
+                    columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;udemy;
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;user_id;status;usr_photo;bootcamps_id"
+                    visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false"
+                    pageable="true" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                    (onDataLoaded)="goToDetail()">
+                    <o-table-column attr="name" title="Name"></o-table-column>
+                    <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
+                    <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
+                    <o-table-column attr="dni" title="DNI"></o-table-column>
+                    <o-table-column attr="personal_email" title="Email"></o-table-column>
+                    <o-table-column attr="status" type="translate" title="status"></o-table-column>
+                    <o-table-context-menu insert="false" edit="false" view-detail="false" delete="false">
+                        <o-table-column attr="usr_photo" width="64px">
+                            <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png"
+                                avatar="yes"> </o-table-cell-renderer-image>
+                        </o-table-column>
+                    </o-table-context-menu>
+                </o-table>
             </div>
         </o-form>
     </div>

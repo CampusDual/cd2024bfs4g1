@@ -116,6 +116,15 @@ fieldset {
   grid-row: 1/3;
   width: auto;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a3459;
+  height: 100%;
+  overflow: hidden;
+}
+
 @media (max-width: 1250px) {
 
   .datos,

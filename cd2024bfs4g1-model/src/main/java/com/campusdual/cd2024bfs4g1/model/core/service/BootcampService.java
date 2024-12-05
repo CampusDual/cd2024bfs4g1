@@ -103,9 +103,12 @@ public class BootcampService implements IBootcampService {
     @Override
     public EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         Map<String,Object> deletekey = new Hashtable<>();
+        Map<String,Object> deletekey2 = new Hashtable<>();
         deletekey.put(StudentBootcampDao.BOOTCAMP_ID,keyMap.get(BootcampDao.ATTR_ID));
+        deletekey2.put(TutorBootcampDao.BOOTCAMP_ID,keyMap.get(BootcampDao.ATTR_ID));
         EntityResult query = this.daoHelper.query(this.studentBootcampDao,deletekey,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
-        if(!query.isEmpty()){
+        EntityResult query2 = this.daoHelper.query(this.tutorBootcampDao,deletekey2,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
+        if(!query.isEmpty()||!query2.isEmpty()){
             EntityResult error = new EntityResultMapImpl();
             error.setCode(EntityResult.OPERATION_WRONG);
             error.setMessage("BOOTCAMP_HAS_STUDENTS");
