@@ -206,16 +206,14 @@
     <o-form-layout-manager attr="popupNewSession" mode="dialog">
       <o-form-layout-dialog-options class="popup">
         <mat-tab label="{{ 'Sesiones' | oTranslate }}">
-
-  
-
-
-
           <div class="table_sesions general_table">
             <div class="calendar-container">
+
+
               <div class="" fxLayout="column" fxLayoutGap="8px">
                 <o-slide-toggle #sliderTog attr="" label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no"></o-slide-toggle>
               </div>
+              
               <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session" 
                        service="sessionBootcamp"
                        entity="sessionBootcamp" keys="id"
