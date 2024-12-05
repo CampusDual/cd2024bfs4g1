@@ -1,6 +1,5 @@
 <div class="calendar-timestamps-container">
     <div class="calendar-container">
-        <!-- Contenedor anclado: Botones y días -->
         <div class="sticky-header">
             <div class="date-item-container">
                 <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
@@ -35,25 +34,16 @@
                 </div>
             </div>
         </div>
-
-        <!-- Contenido desplazable -->
         <div class="calendar">
             <div *ngFor="let student of students" class="bootcamp-row">
-                <div class="day-combos">
-                    <!-- Combos para días laborales (Lunes a Viernes) -->
-                    <div *ngFor="let day of ['Lun', 'Mar', 'Mie', 'Jue', 'Vie']" class="day-combo">
-                        <o-combo [static-data]="statusData" 
-                                 value-column="id" 
-                                 columns="id,description" 
-                                 visible-columns="id">
-                        </o-combo>
-                    </div>
-                    <!-- Columnas vacías para Sábado y Domingo -->
-                    <div class="day-combo-empty"></div>
-                    <div class="day-combo-empty"></div>
+                <div *ngFor="let day of ['Lun', 'Mar', 'Mie', 'Jue', 'Vie']" class="day-combo">
+                    <button class="button">
+                        {{ student.name }}
+                    </button>
                 </div>
+
+                <div class="day-combo-empty"></div>
+                <div class="day-combo-empty"></div>
             </div>
         </div>
     </div>
-</div>
-

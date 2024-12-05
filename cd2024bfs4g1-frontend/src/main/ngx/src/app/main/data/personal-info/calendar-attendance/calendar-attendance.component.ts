@@ -1,8 +1,8 @@
-import { Component, ElementRef, HostListener, Injector } from '@angular/core';
+import { Component, ElementRef, HostListener, Injector, Input, ViewChild } from '@angular/core';
 import moment from 'moment';
 import { Router } from '@angular/router';
 import 'moment/locale/es';
-import { OntimizeService } from 'ontimize-web-ngx';
+import { OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
 
 enum AbbrDayOfWeek {
   Dom = 0,
@@ -34,6 +34,10 @@ interface Day {
 })
 export class CalendarAttendanceComponent {
   protected service: OntimizeService;
+
+  @Input('bootcampId')
+  bootcampId : number;
+ 
 
   statusData = [
     { id: 'S', description: 'Asistido' },
@@ -73,10 +77,13 @@ export class CalendarAttendanceComponent {
     this.service = this.injector.get(OntimizeService);}
 
   ngOnInit() {
-   
     this.loadStudents();
     this.configureBootcamps();
+    console.log(this.bootcampId);
   }
+  
+  
+
   protected configureBootcamps() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
@@ -125,12 +132,15 @@ export class CalendarAttendanceComponent {
   }
   getStudents() {
     if (this.service !== null) {
-      const columns = ['id', 'name', 'surname1', 'surname2']; // Ajusta las columnas según tu modelo
-
+      const columns = ['id', 'name', 'surname1', 'surname2']; 
+/* 
+      const filter = {
+        'bootcamp_id': this.bootcampId
+      } */
       this.service.query({}, columns, 'studentsWithBootcamp').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
-            this.students = resp.data; // Guarda los estudiantes obtenidos
+            this.students = resp.data;
             console.log('Estudiantes cargados:', this.students);
           } else {
             this.students = [];
@@ -216,7 +226,7 @@ export class CalendarAttendanceComponent {
   }
 
 
-  printDate(date: any): string { //añadio
+  printDate(date: any): string { 
     const tDate: Date = new Date(date);
     return tDate.getDate() + "/" + (tDate.getMonth() + 1) + "/" + tDate.getFullYear();
   }
@@ -234,13 +244,11 @@ export class CalendarAttendanceComponent {
     return this.capitalizeFirstLetter(month);
   }
 
-  updateDayGridColumns() { //verificar que no devuelva valores inesperados
+  updateDayGridColumns() { 
     return `repeat(7, 1fr)`;
   }
 
-  updateBootcampsGridColumnsContainer() {
-    return `repeat(7, 1fr)`;
-  }
+ 
 
 
   updateDayCSSForCurrentDay(day: number) {
