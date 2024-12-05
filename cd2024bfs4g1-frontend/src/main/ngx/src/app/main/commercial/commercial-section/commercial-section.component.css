@@ -61,6 +61,13 @@
     width: 70%;
   }
 
+  .slide-container {
+    width: 40%;
+    margin: auto;
+    background-color: #f5f0f2;
+    border-radius: 15px;
+  }
+
   /* .centered-actions {
     grid-column: 1 / -1;
     justify-content: center;
