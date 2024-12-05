@@ -129,7 +129,8 @@ button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent
 }
 
 .ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base,
-.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent {
+.ontimize-table.o-table .o-table-container .o-table-toolbar .buttons .o-table-button button:not([disabled]).mat-mdc-button-base.mat-accent,
+.o-form .o-form-toolbar button:not([disabled]).mat-mdc-button-base.mat-primary {
   border: none;
   background-color: #8AB237;
   border-radius: 10px;
@@ -373,3 +374,4 @@ o-column.o-column .o-container > .o-container-title span{
  .o-table-toolbar .buttons .o-table-button button.mat-mdc-outlined-button{
   border-radius: 10px;
  }
+
