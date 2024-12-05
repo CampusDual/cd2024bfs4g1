@@ -60,12 +60,21 @@
     min-width: 100%;
     width: 70%;
   }
+  
+  .label_toggle {
+    color: #1a3459;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 10px;
+  }
 
   .slide-container {
     width: 40%;
     margin: auto;
     background-color: #f5f0f2;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
   }
 
   /* .centered-actions {
