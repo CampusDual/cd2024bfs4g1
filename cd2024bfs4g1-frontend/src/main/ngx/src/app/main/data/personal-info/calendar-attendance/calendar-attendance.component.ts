@@ -77,10 +77,13 @@ export class CalendarAttendanceComponent {
     this.service = this.injector.get(OntimizeService);}
 
   ngOnInit() {
-    this.loadStudents();
     this.configureBootcamps();
-    console.log(this.bootcampId);
   }
+  ngOnChanges() {
+        this.loadStudents();    
+        console.log(this.bootcampId);
+ 
+      }
   
   
 
@@ -133,15 +136,16 @@ export class CalendarAttendanceComponent {
   getStudents() {
     if (this.service !== null) {
       const columns = ['id', 'name', 'surname1', 'surname2']; 
-/* 
+ 
       const filter = {
         'bootcamp_id': this.bootcampId
-      } */
-      this.service.query({}, columns, 'studentsWithBootcamp').subscribe(resp => {
+      }
+      this.service.query(filter, columns, 'studentsWithBootcamp').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
             this.students = resp.data;
             console.log('Estudiantes cargados:', this.students);
+            console.log(this.bootcampId);
           } else {
             this.students = [];
             console.log('No hay estudiantes disponibles.');

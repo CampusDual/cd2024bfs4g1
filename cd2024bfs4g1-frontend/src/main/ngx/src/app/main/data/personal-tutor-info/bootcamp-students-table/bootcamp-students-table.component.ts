@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { OTextInputComponent } from 'ontimize-web-ngx';
+import { OFormCacheClass, OFormComponent, OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bootcamp-students-table',
@@ -9,10 +9,10 @@ import { OTextInputComponent } from 'ontimize-web-ngx';
 export class BootcampStudentsTableComponent {
   
   bootcampId: number;
-  @ViewChild('bootcampId') bootcampIdComp: OTextInputComponent
+  @ViewChild('bootcampDetailForm') bootcampDetailForm: OFormComponent;
 
   loadBootcamp() {
-    this.bootcampId= this.bootcampIdComp.getValue();
-    
+    this.bootcampId= this.bootcampDetailForm.getFieldValue("id");
+    console.log(this.bootcampId);
   }
 }
