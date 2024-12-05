@@ -13,11 +13,10 @@
           <legend>{{"Personal data"|oTranslate}}</legend>
           <div class="datosPrincipales1">
             <div class="foto">
-              <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
-                       sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
-                       max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                       label="PROFILE.EDIT_PHOTO" ></o-image>
-                       <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
+              <o-image #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
+                class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+              <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
             </div>
 
             <div>
@@ -78,6 +77,7 @@
               columns="id;status" value-column="id" description-columns="status" query-on-init="true" sort="ASC">
             </o-combo>
           </div>
+
         </fieldset>
       </div>
         <div class="gridDatos">
@@ -245,6 +245,91 @@
             </o-date-input>
           </div>
         </fieldset>
+        <fieldset title="User" class="user-grid">
+          <legend>{{'OtherInformation'|oTranslate}}</legend>
+          <div class="githubUser">
+            <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
+            <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+          </div>
+          <div class="udemy">
+            <div class="checkbox-container">
+              <o-checkbox attr="udemy"></o-checkbox>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset title="Notas">
+          <div class="general_container">
+            <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
+
+          </div>
+
+
+        </fieldset>
+      </div>
+      <div *ngIf="showMessage" class="notification">
+        <label for="subida">{{ 'subida' | oTranslate }}</label>
+      </div>
+
+
+
+    </mat-tab>
+    <mat-tab label="{{'DocumentsAndBootc'|oTranslate}}">
+      <div class="documentsGrid">
+        <o-form-layout-manager>
+          <div class="container_students">
+            <fieldset class="fieldsetDoc">
+              <legend>{{'STUDENT_FILES' | oTranslate}} </legend>
+              <div class="separadorFile">
+                <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}"
+                  service="documents" entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5"
+                  split-upload="false" key="student_id" [additional-data]="getFileData()" (input)="onFileUpload()"
+                  (onUpload)="onUploadFiles($event)" (onError)="onError($event)">
+                </o-file-input>
+                <o-button class="o-form-toolbar-button" (click)="refreshFileInput()" label="{{ 'CLEAR' | oTranslate }}"
+                  color="primary"></o-button>
+              </div>
+              <o-table #documentsTable class="general_table_primera" attr="documentsTable" service="documents"
+                entity="studentdocument" keys="id" parent-keys="student_id:id" columns="id;name" visible-columns="name"
+                detail-mode="false" show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                refresh-button="false" insert-button="false" quick-filter="false"
+                show-paginator-first-last-buttons="false" select-all-checkbox-visible="true" selection-mode="none"
+                pagination-controls="no">
+                <o-table-context-menu view-detail="false" edit="false" delete="false"
+                  insert="false"></o-table-context-menu>
+                <o-table-column attr="name" title="Document title"></o-table-column>
+                <o-table-column attr="Download" width="10px">
+                  <o-table-cell-renderer-action (onClick)="actionClick($event)"
+                    icon="download"></o-table-cell-renderer-action>
+                </o-table-column>
+              </o-table>
+            </fieldset>
+          </div>
+        </o-form-layout-manager>
+        <div class="estudiantesDocumentos">
+          <o-form-layout-manager class="selectedrow" attr="addBootcampLayout" mode="dialog">
+            <o-form-layout-dialog-options class="popup">
+              <fieldset class="fieldsetDoc">
+                <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
+                <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
+                  entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
+                  columns="id;bootcampname;status;start_date;end_date"
+                  visible-columns="bootcampname;status;start_date;end_date" detail-mode="none"
+                  show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                  select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
+                  <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+                  <o-table-context-menu view-detail="false" edit="false" delete="false"
+                    insert="false"></o-table-context-menu>
+                  <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                  <o-table-column attr="start_date" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
+                  <o-table-column attr="end_date" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
+                </o-table>
+              </fieldset>
+            </o-form-layout-dialog-options>
+          </o-form-layout-manager>
+        </div>
+        <div *ngIf="showMessage" class="notification">
+          <label for="subida">{{ 'subida' | oTranslate }}</label>
+        </div>
         <div class="notes">
           <fieldset title="Notas">
             <legend for="LNOTES">{{'LNOTES' | oTranslate}}</legend>
@@ -255,6 +340,26 @@
       <div *ngIf="showMessage" class="notification">
         <label for="subida">{{ 'subida' | oTranslate }}</label>
       </div>
+    </mat-tab>
+    <mat-tab label="{{'LNOTE' | oTranslate}}">
+
+      <o-form-layout-manager class="selectedrow" mode="dialog">
+        <o-form-layout-dialog-options class="popup">
+          <o-list #list attr="notesList" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
+            delete-button="true" insert-form-route="new_note" columns="id;nota;id_students;fecha" quick-filter="false"
+            refresh-button="false" insert-button="true" delete-button="true" detail-mode="true" selectable="true"
+            detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
+            insert-button-position="" show-buttons-text="false" controls="false">
+            <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
+              <mat-card-header >
+                <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
+                <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+
+          </o-list>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
     </mat-tab>
   </mat-tab-group>
 </o-form>
