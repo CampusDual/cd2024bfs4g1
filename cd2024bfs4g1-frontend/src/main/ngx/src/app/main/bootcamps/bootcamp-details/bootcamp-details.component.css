@@ -400,14 +400,12 @@ div.notification label {
 
   .table_container{
     display: flex;
-    overflow: visible; 
+    overflow: visible;
     padding-bottom: 40px;
   }
-  
   .table_container {
 
     padding: 15px;
-   
   }
   .list_container{
     grid-column: 1/2;
@@ -417,20 +415,20 @@ div.notification label {
     justify-content: center;
     padding: 16px;
     box-sizing: border-box;
-    width: auto; 
-    height: auto; 
+    width: auto;
+    height: auto;
     overflow: visible;
   }
 
   .list_container mat-card {
-    flex: 0 0 auto; 
-    width: 300px; 
+    flex: 0 0 auto;
+    width: 300px;
     margin-right: 16px;
     box-sizing: border-box;
-    display:inline-flex;
+    display: inline-flex;
     box-shadow: none;
   }
- 
+
 
 
   .grid-container,
@@ -479,26 +477,26 @@ div.notification label {
 
   .calendar-card {
     width: 100%;
-  .table_container,
-  .list_container {
-    width: 100%;
-  }
+    .table_container,
+    .list_container {
+      width: 100%;
+    }
 
-  .o-table,
-  .o-list {
-    max-width: 100%;
-    overflow-x: auto;
-  }
+    .o-table,
+    .o-list {
+      max-width: 100%;
+      overflow-x: auto;
+    }
 
-  .mat-card {
-    width: 100%;
-    margin-bottom: 15px;
-  }
+    .mat-card {
+      width: 100%;
+      margin-bottom: 15px;
+    }
 
-  .boton_eliminar {
-    margin: 0 auto;
+    .boton_eliminar {
+      margin: 0 auto;
+    }
   }
-}
 }
 
 mat-calendar {
@@ -562,7 +560,7 @@ div.notification label {
   height: 100%;
 }
 
-.timetable_table{
+.timetable_table {
   background-color: #f5f0f2;
   font-family: 'Roboto', sans-serif;
 }
