@@ -37,7 +37,7 @@ export const SERVICE_CONFIG: Object = {
   },
   'employmentstatushistory':{
     'path': '/employmentstatushistory'
-  }
+  },
 
   'studentbootcampstatus':{
     'path': '/studentbootcampstatus'
