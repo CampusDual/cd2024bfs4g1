@@ -23,26 +23,23 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    margin-bottom: 10px;
   }
   
   .calendar-container {
     display: flex;
-    width: 50%;
     flex-direction: column;
     background-color: #f5f0f2;
-    overflow-y: auto;
+    width: calc(100% - 120px);
+    overflow-y: scroll;
     padding: 10px;
-    max-height: 80vh;
-    gap: 10px;
-}
+    width: 100%;
+    border-radius: 15px;
+  }
 
   
   
-  .calendar {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+
 
   .date-item {
     display: flex;
@@ -87,15 +84,7 @@
   .bootcamp:hover{
     background-color:#C8DBC2;
   }
-  .button{
-    border-radius: 10px;
-    box-shadow: 0 0px 0px;
-    background-color: #f5f0f2;
-    cursor: pointer;
-    text-align: center;
-    margin: 0 5px;
-    width: 110px;
-  }
+ 
   .year {
     color: #1a3459;
     font-weight: 900;
@@ -122,10 +111,27 @@
   
   .day {
     background-color: #1a3459;
-    color: #fff;
+    color: #f5f0f2;
     text-align: center;
     padding: 5px;
     border-radius: 5px;
+  }
+  .student {
+    background-color: #1a3459;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    height: 80%;
+    border-radius: 5px;
+  }
+  .student_row {
+    color: #1a3459;
+    border: #1a3459 solid 1px;
+    text-align: center;
+    padding: 5px;
   }
   
   .small {
@@ -165,25 +171,11 @@
     gap: 10px;
 }
 
-.day-combo {
-    flex: 1;
-}
-
-.day-combo-empty {
-  flex: 1; 
-  background-color: transparent; 
-}
 
 .date-item-container.days {
   display: grid;
-    grid-template-columns: repeat(7, 1fr); 
+    grid-template-columns: repeat(8, 1fr);
+    grid-row: 1;
     gap: 5px;
 }
-.sticky-header {
-  position: sticky;
-  top: 0; 
-  z-index: 10; 
-  background-color: #f5f0f2; 
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-}
+

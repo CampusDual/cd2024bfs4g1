@@ -249,8 +249,7 @@ export class CalendarAttendanceComponent {
   }
 
   updateDayGridColumns() { 
-    return `repeat(7, 1fr)`;
-  }
+    return `2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;  }
 
  
 
