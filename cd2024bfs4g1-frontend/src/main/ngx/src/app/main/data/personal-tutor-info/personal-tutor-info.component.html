@@ -24,9 +24,14 @@
                         <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
                         <p class="pmydata">{{form.getDataValue('surname1').value}}</p>
                     </div>
-                    <div class="apellido2" class="padding">
-                        <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-                        <p class="pmydata">{{form.getDataValue('surname2').value}}</p>
+                    <div class="apellido2 padding">
+                        <label for="surname2">{{ 'LSURNAME2' | oTranslate }}</label>
+                        <p class="pmydata" *ngIf="form.getDataValue('surname2').value; else emptySurname"> 
+                            {{ form.getDataValue('surname2').value }}
+                        </p>
+                        <ng-template #emptySurname>
+                            <p class="pmydata empty">{{ ' ' }}</p>
+                        </ng-template>
                     </div>
                     <div class="email" class="padding">
                         <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
