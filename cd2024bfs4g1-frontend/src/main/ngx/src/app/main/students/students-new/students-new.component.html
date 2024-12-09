@@ -29,6 +29,17 @@
             </div>
           </div>
           <div class="datosPrincipales2">
+            <div class="sepGitUdemy">
+              <div class="githubUser">
+                <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
+                <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+              </div>
+              <div class="udemy">
+                <div class="checkbox-container">
+                  <o-checkbox attr="udemy"></o-checkbox>
+                </div>
+              </div>
+            </div>
             <div class="dni">
               <label for="dni">{{'LDNI' | oTranslate}}</label>
               <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
@@ -45,7 +56,7 @@
             </div>
             <div class="comunidad">
               <label for="spain_comunity">{{'LSPAINCOMUNITY' | oTranslate}}</label>
-              <o-combo attr="spain_comunity" [static-data]="dataArray" required="no"
+              <o-combo attr="spain_comunity" [static-data]="dataArray" [data]="valueSimple" required="no"
                 searchable="yes" value-column="key" columns="key;value" visible-columns="value"
                 null-selection="no"></o-combo>
             </div>
@@ -83,24 +94,24 @@
             </div>
           </fieldset>
           <br>
-          <div class="contacto">
-            <fieldset title="{{'Contact'|oTranslate}}">
-              <legend>{{"Contact"|oTranslate}}</legend>
-              <div class="telefono">
-                <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
-                <o-phone-input attr="phone" required="no" automatic-binding="false"
-                  [data]="'+34 000000000'"></o-phone-input>
-              </div>
-              <div class="email">
-                <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
-                <o-email-input attr="personal_email" required="yes"></o-email-input>
-              </div>
-              <div class="emailCampus">
-                <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-                <o-email-input attr="campus_email" required="no"></o-email-input>
-              </div>
-            </fieldset>
-          </div>
+        <div class="contacto">
+          <fieldset title="{{'Contact'|oTranslate}}">
+            <legend>{{"Contact"|oTranslate}}</legend>
+            <div class="telefono">
+              <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
+              <o-phone-input attr="phone" required="no" automatic-binding="false"
+                [data]="'+34 000000000'"></o-phone-input>
+            </div>
+            <div class="email">
+              <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
+              <o-email-input attr="personal_email" required="yes"></o-email-input>
+            </div>
+            <div class="emailCampus">
+              <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+              <o-email-input attr="campus_email" required="no"></o-email-input>
+            </div>
+          </fieldset>
+        </div>
         </div>
       </div>
     </mat-tab>
@@ -121,7 +132,7 @@
           </div>
           <div class="fctStart">
             <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-            <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
+            <o-date-input #startdate attr="fct_start" required="no"  format="DD/MM/YYYY"
               (onValueChange)="throwChange(enddate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
@@ -129,21 +140,9 @@
           <div class="fctEnd">
             <label for="fct_end">{{'LFCT_END' | oTranslate}}</label>
             <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
-              (onValueChange)="throwChange2(startdate)">
+              text-input-enabled="no " (onValueChange)="throwChange2(startdate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
-          </div>
-        </fieldset>
-        <fieldset title="{{'OtherInformation'|oTranslate}}" class="user-grid">
-          <legend>{{'OtherInformation'|oTranslate}}</legend>
-          <div class="githubUser">
-            <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-            <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
-          </div>
-          <div class="udemy">
-            <div class="checkbox-container">
-              <o-checkbox attr="udemy"></o-checkbox>
-            </div>
           </div>
         </fieldset>
         <fieldset title="{{'LNOTES'|oTranslate}}">
