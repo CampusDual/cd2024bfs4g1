@@ -22,7 +22,7 @@ interface Student {
   status: string;
 }
 
-interface AttendanceStatus{
+interface AttendanceStatus {
   id: number,
   abreviatura: string,
   descripcion: string
@@ -31,6 +31,7 @@ interface AttendanceStatus{
 interface Day {
   day: number;
   dayOfWeek: string;
+  fullDate: Date;
 }
 
 @Component({
@@ -42,7 +43,7 @@ export class CalendarAttendanceComponent {
   protected service: OntimizeService;
 
   @Input('bootcampId')
-  bootcampId : number;
+  bootcampId: number;
 
   weeksToShow = 1;
   startDate: Date;
@@ -74,16 +75,17 @@ export class CalendarAttendanceComponent {
     this.loadDays();
     this.loadYears();
 
-    this.service = this.injector.get(OntimizeService);}
+    this.service = this.injector.get(OntimizeService);
+  }
 
   ngOnInit() {
     this.loadAttendanceStatus();
     this.configureBootcamps();
   }
   ngOnChanges() {
-        this.loadStudents();
-        console.log(this.bootcampId);
-      }
+    this.loadStudents();
+    console.log(this.bootcampId);
+  }
 
 
 
@@ -99,7 +101,7 @@ export class CalendarAttendanceComponent {
   }
   protected configureAttendanceStatus() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf = this.service.getDefaultServiceConfiguration('asistencia_status');
+    const conf = this.service.getDefaultServiceConfiguration('attendance_status');
     this.service.configureService(conf);
   }
 
@@ -141,7 +143,7 @@ export class CalendarAttendanceComponent {
   }
   getAttendanceStatus() {
     if (this.service !== null) {
-      const columns = ['id', 'abreviatura', 'descripcion'];
+      const columns = ['id', 'abbreviation', 'description'];
 
       this.service.query({}, columns, 'attendanceControl').subscribe(resp => {
         if (resp.code === 0) {
@@ -159,16 +161,19 @@ export class CalendarAttendanceComponent {
     }
   }
 
+  //Obtener primer y último dia de la semana actual
   loadInitialDates(): void {
     const startOfWeek = moment().startOf('isoWeek');
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
   }
 
+  //Obtener año actual
   loadYears(): void {
     this.years = [this.selectedYear];
   }
 
+  //Mayuscula
   capitalizeFirstLetter(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
@@ -181,6 +186,7 @@ export class CalendarAttendanceComponent {
       this.daysWithWeekDays.push({
         day: current.date(),
         dayOfWeek: AbbrDayOfWeek[current.day()],
+        fullDate: current.clone().toDate()
       });
       current.add(1, 'days');
     }
@@ -246,7 +252,8 @@ export class CalendarAttendanceComponent {
   }
 
   updateDayGridColumns() {
-    return `3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;  }
+    return `3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
+  }
 
 
 
@@ -276,7 +283,13 @@ export class CalendarAttendanceComponent {
     return dayOfWeek === 'Sab' || dayOfWeek === 'Dom';
   }
 
-
+  onSelectChange(event: any, student: Student, day: Day): void {
+    const selectedStatus = event.target.value;
+    console.log('Estudiante:', student);
+    console.log('Estado seleccionado:', selectedStatus);
+    console.log('Fecha:', day.fullDate);
+    console.log('ID del Bootcamp:', this.bootcampId);
+  }
 
 
 }
