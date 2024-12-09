@@ -87,8 +87,6 @@ export class CalendarAttendanceComponent {
     console.log(this.bootcampId);
   }
 
-
-
   protected configureBootcamps() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
@@ -178,6 +176,7 @@ export class CalendarAttendanceComponent {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
+  //Almacena objetos Day en un array
   loadDays(): void {
     this.daysWithWeekDays = [];
     let current = moment(this.startDate);
@@ -192,17 +191,7 @@ export class CalendarAttendanceComponent {
     }
   }
 
-
-  /*  filterBootcamps(): void {
-     this.bootcamps = this.allBootcamps.filter(bootcamp => {
-       return moment(bootcamp.start_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
-         moment(bootcamp.end_date).isBetween(this.startDate, this.endDate, undefined, '[]') ||
-         (moment(bootcamp.start_date).isBefore(this.startDate) && moment(bootcamp.end_date).isAfter(this.endDate));
-     });
-     console.log(`Bootcamps within the range: ${this.bootcamps.length}`);
-   } */
-
-
+  //ir a semana anterior
   decSelectedWeek(): void {
     this.startDate = moment(this.startDate).subtract(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
@@ -211,6 +200,7 @@ export class CalendarAttendanceComponent {
     this.updateCurrentMonthAndYear();
   }
 
+    //ir a semana posterior
   incSelectedWeek(): void {
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
@@ -219,27 +209,20 @@ export class CalendarAttendanceComponent {
     this.updateCurrentMonthAndYear();
   }
 
+  //Actualizar mes y año
   updateCurrentMonthAndYear(): void {
     this.selectedYear = moment(this.startDate).year();
     this.selectedMonth = moment(this.startDate).month();
-
     this.loadYears();
   }
 
-
-  dateDifferenceInDays(date1: any, date2: any): number {
-    const timeDiff = Math.abs(date2 - date1);
-    return Math.ceil(timeDiff / (1000 * 3600 * 24));
-  }
-
-
+  //Fecha a string dd/mm/aaaa
   printDate(date: any): string {
     const tDate: Date = new Date(date);
     return tDate.getDate() + "/" + (tDate.getMonth() + 1) + "/" + tDate.getFullYear();
   }
 
-
-
+  //Comporbar si pertenecen al mismo mes
   isSameMonthRange(): boolean {
     const startMonth = moment(this.startDate).month();
     const endMonth = moment(this.endDate).month();
@@ -251,13 +234,12 @@ export class CalendarAttendanceComponent {
     return this.capitalizeFirstLetter(month);
   }
 
+  //Tamaño columnas grid
   updateDayGridColumns() {
     return `3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
   }
 
-
-
-
+  //Cambiar color al dia actual (background)
   updateDayCSSForCurrentDay(day: number) {
     if (moment().isSame(moment(this.startDate).date(day), 'day')) {
       return '#8AB237';
@@ -265,6 +247,7 @@ export class CalendarAttendanceComponent {
     return '#1a3459';
   }
 
+  //Cambiar color al dia actual (color)
   updateDayCSSFontColorForCurrentDay(day: number) {
     if (moment().isSame(moment(this.startDate).date(day), 'day')) {
       return 'black';
@@ -272,6 +255,7 @@ export class CalendarAttendanceComponent {
     return 'white';
   }
 
+    //Cambiar color al dia actual (font)
   updateDayCSSFontWeightForCurrentDay(day: number) {
     if (moment().isSame(moment(this.startDate).date(day), 'day')) {
       return 'bold';
@@ -279,6 +263,7 @@ export class CalendarAttendanceComponent {
     return 'normal';
   }
 
+  //Comprobar si es sabado o Domingo
   isWeekend(dayOfWeek: string): boolean {
     return dayOfWeek === 'Sab' || dayOfWeek === 'Dom';
   }
