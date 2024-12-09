@@ -1,0 +1,20 @@
+<div>
+    <o-form #notesForm service="notes" entity="notes" show-header="no" confirm-exit="false"
+      undo-button="false" label-header-align="center" after-insert-mode="close">
+      <o-text-input attr="id_students" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+
+      <div class="espaciador">
+        <label>{{ todayDate }}</label>
+      </div>
+      <!-- Campo de texto -->
+      <label for="LNOTE" class="espaciador">{{'LNOTE' | oTranslate}}</label>
+      <o-text-input attr="nota" sql-type="VARCHAR" required="yes"></o-text-input>
+
+      <o-date-input #date  label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
+      <!-- Botón de acción -->
+      <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+        <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="addNotes()"></o-button>
+      </div>
+
+    </o-form>
+  </div>
