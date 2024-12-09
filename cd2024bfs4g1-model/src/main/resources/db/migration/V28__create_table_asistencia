@@ -1,22 +1,21 @@
-CREATE TABLE public.asistencia_status (
-	id serial4 NOT NULL,
-	abreviatura varchar(1) NOT NULL,
-	descripcion varchar(50) NOT NULL
+CREATE TABLE public.attendance_status (
+    id serial4 primary key,
+    abbreviation varchar(1) NOT NULL,
+    description varchar(50) NOT NULL
 );
 
-CREATE TABLE public.asistencia (
-	id serial4 NOT NULL,
-	estudiante_id int4 NOT NULL,
-	bootcamp_id int4 NOT NULL,
-	fecha date NOT NULL,
-	asistencia_status_id int4 DEFAULT 1 NOT NULL,
-	CONSTRAINT asistencia_pkey PRIMARY KEY (id),
-	CONSTRAINT asistencia_bootcamp_fk FOREIGN KEY (bootcamp_id) REFERENCES public.bootcamps(id),
-	CONSTRAINT asistencia_estudiante_fk FOREIGN KEY (estudiante_id) REFERENCES public.students(id),
-	CONSTRAINT asistencia_status_fk FOREIGN KEY (asistencia_status_id) REFERENCES public.asistencia_status(id)
+CREATE TABLE public.attendance (
+    id serial4 primary key,
+    student_id int4 NOT NULL,
+    bootcamp_id int4 NOT NULL,
+    date date NOT NULL,
+    attendance_status_id int4 DEFAULT 1 NOT NULL,
+    CONSTRAINT attendance_bootcamp_fk FOREIGN KEY (bootcamp_id) REFERENCES public.bootcamps(id),
+    CONSTRAINT attendance_student_fk FOREIGN KEY (student_id) REFERENCES public.students(id),
+    CONSTRAINT attendance_status_fk FOREIGN KEY (attendance_status_id) REFERENCES public.attendance_status(id)
 );
 
-INSERT INTO public.asistencia_status (abreviatura, descripcion)
+INSERT INTO public.attendance_status (abbreviation, description)
 VALUES
 (' ', 'Sin marcar'),
 ('S', 'Si'),
