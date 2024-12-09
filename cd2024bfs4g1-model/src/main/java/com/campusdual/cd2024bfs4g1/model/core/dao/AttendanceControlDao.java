@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @ConfigurationFile(configurationFile = "dao/AttendanceControlDao.xml", configurationFilePlaceholder = "dao/placeholders.properties")
 public class AttendanceControlDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
-    public static final String ATTR_ABREVIATURA = "abreviatura";
-    public static final String ATTR_DESCRIPCION = "descripcion";
+    public static final String ATTR_ABBREVIATION = "abbreviation";
+    public static final String ATTR_DESCRIPCION = "description";
 }
