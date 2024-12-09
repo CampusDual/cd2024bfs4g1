@@ -23,6 +23,8 @@ export class BootcampDetailsComponent {
 
   months: Date[] = [];
 
+  form!: OFormComponent; //nuevo para filtro
+
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
@@ -346,6 +348,37 @@ export class BootcampDetailsComponent {
     this.table.queryData(filter);
   }
 
+  toggleActive: boolean = false;
 
-   }
+  createFilter(values: Array<{ attr: string, value: any }>): Expression {
+    let filters: Array<Expression> = [];
+
+
+    values.forEach(fil => {
+      if (fil.value) {
+        if (['session_name', 'session_date', 'link', 'password', 'status'].includes(fil.attr)) {
+          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, fil.value));
+        }
+        if (fil.attr === 'id') {
+          filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, fil.value));
+        }
+      }
+    });
+
+
+    if (!this.toggleActive) {
+      filters.push(FilterExpressionUtils.buildExpressionNotEquals('status', 'finished'));
+    }
+
+
+    if (filters.length > 0) {
+      return filters.reduce((exp1, exp2) =>
+        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
+      );
+    } else {
+      return null;
+    }
+  }
+
+
 }

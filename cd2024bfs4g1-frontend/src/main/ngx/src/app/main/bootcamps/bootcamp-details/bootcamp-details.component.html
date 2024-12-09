@@ -208,15 +208,20 @@
             <div class="calendar-container">
 
 
-              <div class="" fxLayout="column" fxLayoutGap="8px">
-                <o-slide-toggle #sliderTog attr="" label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no"></o-slide-toggle>
+              <div class="filter_style" fxLayout="column" fxLayoutGap="8px">
+                <o-slide-toggle
+                  #sliderTog  label="{{'SLIDE_SEARCH' | oTranslate}}" read-only="no">
+                </o-slide-toggle>
+                <o-filter-builder #filterBuilder attr="thefilter" filters="session_name:session_name;session_date:session_date;password:password;status:status;link:link;id"
+                 [target]="sessionsTable" query-on-change="yes" query-on-change-delay="500"
+                [expression-builder]="createFilter"></o-filter-builder>
               </div>
-              
-              <o-table class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session" 
+
+              <o-table #sessionsTable class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
                        service="sessionBootcamp"
                        entity="sessionBootcamp" keys="id"
                        parent-keys="id_bootcamp:id"
-                       columns="id;session_name;session_date;password;status;link;status"
+                       columns="id;session_name;session_date;password;status;link"
                        visible-columns="session_name;session_date;password;status;Link"
                        select-all-checkbox-visible="true" selection-mode="multiple"
                        [row-class]="getRowClass">
@@ -236,7 +241,7 @@
 
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
-    
-    
+
+
   </mat-tab-group>
 </o-form>
