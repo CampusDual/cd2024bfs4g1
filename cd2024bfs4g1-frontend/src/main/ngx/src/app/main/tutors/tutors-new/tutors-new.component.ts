@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ValidatorFn } from '@angular/forms';
 import { DialogService, OImageComponent, OValidators } from 'ontimize-web-ngx';
 
@@ -15,11 +16,15 @@ export class TutorsNewComponent {
   @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
   validatorsNewPasswordArray: ValidatorFn[] = [];
 
-  constructor(protected dialogService: DialogService) {
+  constructor(protected dialogService: DialogService, private router: Router) {
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
+  }
+
+  volver(e) {
+    this.router.navigate(['./main/tutors']);
   }
 
   toUpperCamelCase(event: any) {
