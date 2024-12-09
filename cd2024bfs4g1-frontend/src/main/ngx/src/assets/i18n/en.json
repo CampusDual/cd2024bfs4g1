@@ -290,5 +290,8 @@
   "Do_you_really_want_to_delete":"Do you really want to delete?",
   "Info_foto":"It is recommended to use a square photo (1:1)",
   "date_change":"Date change",
-  "asistencia" : "Attendance control"
+  "asistencia" : "Attendance control",
+  "REQ_LABBREVIATION" : "Abbreviation*",
+  "REQ_LDESCRIPTION" : "Description*",
+  "LATTENDANCESTATUS" : "Estado de asistencia"
 }

@@ -290,5 +290,8 @@
   "Info_foto":"Se recomienda una foto cuadrada(1:1)",
   "date_change":"Fecha del cambio",
   "asistencia" : "Control de asistencia",
-  "abreviatura" : "Abreviatura"
+  "abreviatura" : "Abreviatura",
+  "REQ_LABBREVIATION" : "Abreviatura*",
+  "REQ_LDESCRIPTION" : "Descripción*",
+  "LATTENDANCESTATUS" : "Attendance status"
 }

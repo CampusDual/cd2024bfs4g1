@@ -56,12 +56,12 @@
         </mat-tab>
         <mat-tab label="Bootcamp">
             <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px"
-                dialog-min-height="200px">
+                dialog-min-height="200px" title="LATTENDANCESTATUS">
                 <div class="table_container">
                     <h3 class="titulo_tablas">{{ 'asistencia' | oTranslate }}</h3>
                     <o-form-layout-dialog-options class="popup">
                         <o-table #asistenciaTable attr="asistenciaTable" [quick-filter]="false" class="general_table"
-                            detail-form-route="" insert-form-route="" service="attendance_status"
+                            detail-form-route="attendancestatus/" insert-form-route="new" service="attendance_status"
                             entity="attendanceControl" keys="id" columns="id;abbreviation;description"
                             visible-columns="abbreviation;description" sort-columns="abbreviation"
                             show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
