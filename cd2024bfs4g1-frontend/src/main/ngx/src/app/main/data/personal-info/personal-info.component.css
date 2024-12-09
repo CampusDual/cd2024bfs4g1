@@ -3,34 +3,65 @@
   margin: 5px auto;
   background-color: #f5f0f2;
   border-radius: 15px;
+  gap: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .datosPersonales {
-  grid-column: 1 / -1;  
+  grid-column: 1/3  
 }
 
 .foto {
-  grid-column: 1 / 4; 
-  justify-self: center;
-  align-self: center;
-  margin-bottom: 0; 
-  display: flex;   
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
+  margin-top: -30px; /* Ajusta el valor negativo según sea necesario */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente la imagen */
+  align-items: flex-start; /* Asegura que la imagen se mantenga en la parte superior */
+}
+
+.separatorCol {
+  padding-top: 0; /* Elimina cualquier padding innecesario */
 }
 
 
+.datosPrincipales2{
+  height: 31%;
+}
+
 
 .personal-data-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.nombre{
   display: flex;
-  flex-wrap: wrap;  
-  gap: 15px;  
-  justify-content: space-evenly;
+  gap:10px
+}
+
+.apellido{
+  display: flex;
+  gap:10px
+}
+
+.apellido2{
+  display: flex;
+  gap:10px
+}
+
+.dni{
+  display:flex;
+  gap:10px;
+}
+
+.telefono{
+  display:flex;
+  gap:10px;
+}
+
+.separatorCol{
+  padding-top: -50%;
 }
 
 p {
@@ -47,21 +78,11 @@ fieldset {
   border: solid 2px #1a3459;
   border-radius: 15px;
 }
-.p_info_foto{
-  font-size: 12px;
-  grid-column: 1 / 4; 
-  justify-self: center;
-  align-self: center;
-  display: flex;   
-  align-items: center;
-  justify-content: center;
-  color: #1a3459;
-}
-.foto_centrada{
-  display: block;
-}
+
+
 @media (max-width: 1024px) {
   .grid-container {
     grid-template-columns: 1fr  ; 
   }
 }
+
