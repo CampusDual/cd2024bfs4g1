@@ -160,7 +160,7 @@ export class CalendarAttendanceComponent {
   }
 
   loadInitialDates(): void {
-    const startOfWeek = moment().startOf('isoWeek').subtract(1, 'week');
+    const startOfWeek = moment().startOf('isoWeek');
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
   }
