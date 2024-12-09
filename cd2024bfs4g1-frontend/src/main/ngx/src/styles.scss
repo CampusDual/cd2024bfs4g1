@@ -393,3 +393,6 @@ o-column.o-column .o-container > .o-container-title span{
 .o-table .o-table-container .mat-mdc-table .mat-mdc-row .mat-mdc-cell {
    text-align: center;
  }
+ input[type="checkbox"]:checked {
+  accent-color: #8AB237;
+}

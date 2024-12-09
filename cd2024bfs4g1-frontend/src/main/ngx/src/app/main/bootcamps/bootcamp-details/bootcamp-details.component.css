@@ -241,6 +241,7 @@ h3 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  justify-content: flex-end;
 }
 
 :host {
@@ -595,3 +596,6 @@ o-list img {
   background-color: #89b23713; /* Color de fondo suave (un azul muy claro) */
 }
 
+.check-filtro{
+  background-color: #F5F0F2;
+}

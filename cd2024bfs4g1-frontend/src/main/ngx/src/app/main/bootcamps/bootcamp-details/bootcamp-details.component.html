@@ -230,8 +230,7 @@
                 >
                 </o-combo>
 
-                <!-- Toggle checkbox to add/remove Finished -->
-                <label>
+                <label class="check-filtro">
                   <input type="checkbox" (change)="toggleFinished($event)" />{{ "Add 'Finished'" | oTranslate }}
                 </label>
 
@@ -260,7 +259,7 @@
                        [row-class]="getRowClass"
                        sort-columns="session_date:ASC"
                        >
-                       
+
                 <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
                                 tooltip-value="{{'link_ico'| oTranslate}}">
