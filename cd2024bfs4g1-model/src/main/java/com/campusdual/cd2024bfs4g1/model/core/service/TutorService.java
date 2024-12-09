@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("TutorService")
 @Lazy
@@ -242,7 +239,19 @@ public class TutorService implements ITutorService {
 
     @Override
     public EntityResult tutorDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        return this.daoHelper.delete(tutorDao, keyMap);
+        Map<String,Object> deletekey = new Hashtable<>();
+        deletekey.put(TutorBootcampDao.TUTOR_ID,keyMap.get(StudentDao.STU_ID));
+        EntityResult query = this.daoHelper.query(this.tutorBootcampDao,deletekey,Arrays.asList(TutorBootcampDao.TUTOR_ID));
+
+
+        if(!query.isEmpty()){
+            EntityResult error = new EntityResultMapImpl();
+            error.setCode(EntityResult.OPERATION_WRONG);
+            error.setMessage("TUTOR_HAS_BOOTCAMPS");
+            return error;
+        }else {
+            return this.daoHelper.delete(this.tutorDao, keyMap);
+        }
     }
 
     private EntityResult createErrorResult(String message) {

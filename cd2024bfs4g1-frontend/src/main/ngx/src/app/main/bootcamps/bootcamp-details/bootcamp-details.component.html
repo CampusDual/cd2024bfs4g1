@@ -1,6 +1,6 @@
-<o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
+<o-form #form attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
   header-actions="R;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
-  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  confirm-exit="false" (onDataLoaded)="inicialDR()">
   <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
@@ -11,7 +11,7 @@
     <div>
       <label class="daterange">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
       <o-daterange-input #dateRange attr="dateRangeBootcampDetail" read-only="no" required="yes" format="DD/MM/YYYY"
-        automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no "
+        automatic-binding="false" (onValueChange)="throwChange($event)" text-input-enabled="no"
         show-week-numbers="true" mode="desktop">
       </o-daterange-input>
     </div>
@@ -51,15 +51,14 @@
           <o-form-layout-manager class="formestudiantestut" attr="addStudentLayout" mode="dialog">
             <o-form-layout-dialog-options class="popup">
               <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
-              <o-table #studentsTable class="general_table" virtual-scroll="true" attr="studentsBootcampTable"
-                service="studentBootcamps" entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id;start_date;end_date"
-                refresh-button="no"
-                columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;userphotostudent"
-                visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;action"
-                default-visible-columns="userphotostudent;name;sb_start_date;sb_end_date;action" sort-columns="name"
-                query-rows="10" show-report-on-demand-option="false" query-on-init="true" pageable="true"
-                show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
-                detail-mode="click">
+              <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
+                       service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+                       parent-keys="bootcamp_id:id;start_date;end_date"
+                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;Detalle;userphotostudent"
+                       visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;Detalle"
+                       sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
+                       show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
+                       detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
                   format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -161,8 +160,6 @@
         </div>
       </div>
     </mat-tab>
-
-
     <mat-tab label="{{ 'Documents' | oTranslate }}">
       <div class="table_containerfichero">
         <div class="table_ficheros">
@@ -181,13 +178,12 @@
           <div *ngIf="showMessage" class="notification">
             <label for="subida">{{ 'subida' | oTranslate }}</label>
           </div>
-
           <o-form-layout-manager>
             <div>
               <h3>{{ 'BootcampDoc' | oTranslate }}</h3>
               <o-table #documentsTable class="general_table" attr="documentsTable" service="documents"
                 entity="bootcampdocument" keys="id" parent-keys="bootcamp_id:id" columns="id;name"
-                visible-columns="action;name" detail-mode="false" show-report-on-demand-option="false"
+                visible-columns="Download;name" detail-mode="false" show-report-on-demand-option="false"
                 show-charts-on-demand-option="false" refresh-button="false" insert-button="false" quick-filter="false"
                 show-paginator-first-last-buttons="false" select-all-checkbox-visible="true" selection-mode="none"
                 pagination-controls="no">
@@ -203,7 +199,6 @@
           </o-form-layout-manager>
         </div>
       </div>
-
     </mat-tab>
   </mat-tab-group>
 </o-form>

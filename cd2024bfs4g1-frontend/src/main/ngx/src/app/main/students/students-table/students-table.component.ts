@@ -69,12 +69,12 @@ export class StudentsTableComponent {
       const filterValue = fil.value != null ? fil.value.toString() : '';
 
       if (filterValue) {  // Solo agrega el filtro si filterValue no está vacío
-        if (fil.attr === 'tutor' || fil.attr === 'udemy' ||
-            fil.attr === 'v_employment_status_id' || fil.attr === 'student_status_id' || fil.attr === 'spain_comunity') {
-          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, filterValue));
-        }
-        if (fil.attr === 'id') {
+        if (fil.attr === 'id' || fil.attr === 'tutor' || fil.attr === 'udemy' ||
+          fil.attr === 'v_employment_status_id' || fil.attr === 'student_status_id' || fil.attr === 'spain_comunity') {
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue));
+        }
+        if (fil.attr === 'bootcamps_id') {
+          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr,"|"+filterValue+"|"));
         }
       }
     });
@@ -87,6 +87,4 @@ export class StudentsTableComponent {
       return null;
     }
   }
-
-  
 }

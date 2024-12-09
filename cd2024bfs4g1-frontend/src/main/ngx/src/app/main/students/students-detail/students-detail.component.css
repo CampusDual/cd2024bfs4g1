@@ -183,6 +183,15 @@ background-color: #f5f0f2;
 .separadorFile{
 display:grid;
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a3459;
+  height: 100%;
+  overflow: hidden;
+}
+
 @media (max-width: 1500px) {
 .grid-container {
 display: grid;
