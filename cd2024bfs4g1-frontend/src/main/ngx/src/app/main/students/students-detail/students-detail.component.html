@@ -111,9 +111,9 @@
         <fieldset title="Historial laboral">
           <legend>{{"Historial_Laboral"|oTranslate}}</legend>
           <div class="container_employment">
-            <o-text-input attr="v_employment_status_id" label="{{'LEMSTATUS_ACTUAL' | oTranslate}}" translate="yes"
+            <o-text-input attr="employment_status" label="{{'LEMSTATUS_ACTUAL' | oTranslate}}" translate="yes"
             read-only="yes" service="employmentstatus" entity="employmentStatus" hidden></o-text-input>
-            <label for="v_employment_status_id">{{'LEMSTATUS_ACTUAL' | oTranslate}}: &nbsp;</label>
+            <label for="employment_status">{{'LEMSTATUS_ACTUAL' | oTranslate}}: &nbsp;</label>
             <p>{{form.getDataValue('employment_status').value}}</p>
           </div>
           <div class="container_students">
