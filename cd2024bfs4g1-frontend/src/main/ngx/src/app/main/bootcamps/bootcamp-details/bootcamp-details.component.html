@@ -240,15 +240,15 @@
 
 
               <o-filter-builder
-                #filterBuilder
-                attr="thefilter"
-                filters="session_name:session_name;session_date:session_date;password:password;status:status;link:link;id"
-                [target]="sessionsTable"
-                query-on-change="yes"
-                query-on-change-delay="500"
-                [expression-builder]="createFilter"
-                sort="session_date:ASC">
-              </o-filter-builder>
+              #filterBuilder
+              attr="thefilter"
+              filters="session_name:session_name;session_date:session_date;password:password;status:status;link:link;id"
+              [target]="sessionsTable"
+              query-on-change="yes"
+              query-on-change-delay="500"
+              [expression-builder]="createFilter"
+              sort="session_date:ASC">
+            </o-filter-builder>
 
               <o-table #sessionsTable class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
                        service="sessionBootcamp"
@@ -259,7 +259,7 @@
                        select-all-checkbox-visible="true" selection-mode="multiple"
                        [row-class]="getRowClass"
                        sort-columns="session_date:ASC"
-              >
+                       >
                 <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
                                 tooltip-value="{{'link_ico'| oTranslate}}">
@@ -276,5 +276,7 @@
 
       </o-form-layout-dialog-options>
     </o-form-layout-manager>
+
+
   </mat-tab-group>
 </o-form>
