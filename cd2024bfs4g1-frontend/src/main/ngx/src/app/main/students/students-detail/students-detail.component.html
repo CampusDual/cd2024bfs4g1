@@ -361,5 +361,25 @@
         </o-form-layout-dialog-options>
       </o-form-layout-manager>
     </mat-tab>
+    <mat-tab label="{{'LNOTE' | oTranslate}}">
+
+      <o-form-layout-manager class="selectedrow" mode="dialog">
+        <o-form-layout-dialog-options class="popup">
+          <o-list #list attr="notesList" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
+            delete-button="true" insert-form-route="new_note" columns="id;nota;id_students;fecha" quick-filter="false"
+            refresh-button="false" insert-button="true" delete-button="true" detail-mode="true" selectable="true"
+            detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
+            insert-button-position="" show-buttons-text="false" controls="false">
+            <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
+              <mat-card-header >
+                <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
+                <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+
+          </o-list>
+        </o-form-layout-dialog-options>
+      </o-form-layout-manager>
+    </mat-tab>
   </mat-tab-group>
 </o-form>
