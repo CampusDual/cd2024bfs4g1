@@ -25,9 +25,6 @@ public class SessionBootcampService implements ISessionBootcampService {
 
     @Override
     public EntityResult sessionBootcampQuery(Map<String, Object> keyMap, List<String> attributes) throws OntimizeJEERuntimeException {
-        Boolean isPast = (Boolean) keyMap.remove("past");
-        if (isPast != null) { if (isPast) {  keyMap.put("status", Arrays.asList("Finished", "Started", "Pending")); }
-        else {  keyMap.put("status", Arrays.asList("Started", "Pending")); } }
         return this.daoHelper.query(this.sessionBootcampDao, keyMap, attributes);
     }
 
