@@ -13,17 +13,9 @@ enum AbbrDayOfWeek {
   Vie = 5,
   Sab = 6,
 }
-interface Element {
-
-  student_id: number;
-  bootcamp_id : number;
-  status: number;
-  date : Date;
- 
-}
 
 interface Student {
-  id: number;
+  student_id: number;
   name: string;
   start_date: Date;
   end_date: Date;
@@ -64,8 +56,7 @@ export class CalendarAttendanceComponent {
   allStudents: Student[] = [];
   students: any[] = [];
   statusData: any[] = [];
-  //public attendance: any[] = [];
-  public attendance = new Map<String, Element>();
+  attendance: any[] = [];
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -126,7 +117,7 @@ export class CalendarAttendanceComponent {
   }
   getStudents() {
     if (this.service !== null) {
-      const columns = ['id', 'name', 'surname1', 'surname2'];
+      const columns = ['student_id', 'name', 'surname1', 'surname2'];
 
       const filter = {
         'bootcamp_id': this.bootcampId
@@ -215,7 +206,7 @@ export class CalendarAttendanceComponent {
     this.updateCurrentMonthAndYear();
   }
 
-    //ir a semana posterior
+  //ir a semana posterior
   incSelectedWeek(): void {
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
@@ -270,7 +261,7 @@ export class CalendarAttendanceComponent {
     return 'white';
   }
 
-    //Cambiar color al dia actual (font)
+  //Cambiar color al dia actual (font)
   updateDayCSSFontWeightForCurrentDay(day: number) {
     if (moment().isSame(moment(this.startDate).date(day), 'day')) {
       return 'bold';
@@ -284,30 +275,37 @@ export class CalendarAttendanceComponent {
   }
 
   onSelectChange(event: any, student: Student, day: Day): void {
-    const selectedStatus = event.target.value;
+    const selectedStatus = parseInt(event.target.value, 10);
+    console.log('Estudiante:', student);
+    console.log('Estado seleccionado:', selectedStatus);
+    console.log('Fecha:', day.fullDate);
+    console.log('ID del Bootcamp:', this.bootcampId);
 
-    let newElement: Element = {
-      student_id: student.id,
+    let newElement = {
+      student_id: student.student_id,
       bootcamp_id: this.bootcampId,
       status: selectedStatus,
-      date: day.fullDate
+      date: this.printDate(day.fullDate)
     };
 
-
-   // this.attendance[student.id + ":" + this.printDate(day.fullDate)] = newElement;
-   this.attendance.set(student.id + ":" + this.printDate(day.fullDate), newElement);
-
+    this.attendance[student.student_id + ":" + this.printDate(day.fullDate)] = newElement;
+    console.log(this.attendance);
   }
 
   onButtonClick() {
- this.configureAttendance();
- this.service.insert({av:this.attendance},'attendance').subscribe(
-  response => {
-    console.log('Asistencias enviadas', response);
-  },
-  error => {
-    console.error('Error al enviar asistencias:', error);
+    this.configureAttendance();
+    const attendanceArray = Object.values(this.attendance);
+    this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
+      response => {
+        console.log('Asistencias procesadas:', response);
+        alert('Asistencias guardadas correctamente.');
+      },
+      error => {
+        console.error('Error al procesar asistencias:', error);
+        alert('Error al guardar asistencias.');
+      }
+    );
+
   }
-);
+
 }
-  }
