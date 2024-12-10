@@ -56,7 +56,9 @@ export class CalendarAttendanceComponent {
   allStudents: Student[] = [];
   students: any[] = [];
   statusData: any[] = [];
+  attendanceModified: any[] = [];
   attendance: any[] = [];
+  slectedItem: any [][]=[]
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -81,6 +83,7 @@ export class CalendarAttendanceComponent {
 
   ngOnInit() {
     this.loadAttendanceStatus();
+    this.loadAttendance();
     this.configureBootcamps();
   }
   ngOnChanges() {
@@ -162,6 +165,52 @@ export class CalendarAttendanceComponent {
           alert('Error al cargar los datos de los estatus de asistencia.');
         }
       });
+    }
+  }
+
+  loadAttendance(): void {
+    this.configureAttendance();
+    this.getAttendance();
+    this.attendance.map(attendance => {
+    });
+  }
+  getAttendance() {
+    if (this.service !== null) {
+      const columns = ['id', 'student_id', 'bootcamp_id', 'date', 'attendance_status_id'];
+
+      const filter = {
+        'bootcamp_id': this.bootcampId
+      }
+
+      this.service.query(filter, columns, 'attendance').subscribe(resp => {
+        if (resp.code === 0) {
+          if (resp.data.length > 0) {
+            this.attendance = resp.data; // Asignar correctamente los datos a statusData
+            console.log('Datos de asistencia cargados:', this.attendance);
+          } else {
+            this.attendance = [];
+            console.log('No hay datos de asistencia disponibles.');
+          }
+        } else {
+          alert('Error al cargar los datos de asistencia.');
+        }
+      });
+    }
+  }
+
+  getAttendanceAbbreviation(studentId: number, date: Date, attendanceData: any[], statusData: any[]): string | null {
+    // Buscamos la asistencia del estudiante para la fecha dada
+    const attendanceRecord = attendanceData.find(record => {
+      return record.student_id === studentId && moment(record.date).isSame(date, 'day');
+    });
+  
+    // Si encontramos una asistencia, buscamos su abreviatura en statusData
+    if (attendanceRecord) {
+      const status = statusData.find(status => status.id === attendanceRecord.attendance_status_id);
+      return status ? status.abbreviation : null;
+    } else {
+      // Si no hay asistencia registrada, retornamos null o una abreviatura por defecto
+      return null; // Puedes reemplazar null por una abreviatura por defecto si lo prefieres
     }
   }
 
@@ -288,13 +337,13 @@ export class CalendarAttendanceComponent {
       date: this.printDate(day.fullDate)
     };
 
-    this.attendance[student.student_id + ":" + this.printDate(day.fullDate)] = newElement;
-    console.log(this.attendance);
+    this.attendanceModified[student.student_id + ":" + this.printDate(day.fullDate)] = newElement;
+    console.log(this.attendanceModified);
   }
 
   onButtonClick() {
     this.configureAttendance();
-    const attendanceArray = Object.values(this.attendance);
+    const attendanceArray = Object.values(this.attendanceModified);
     this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
       response => {
         console.log('Asistencias procesadas:', response);
