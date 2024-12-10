@@ -11,10 +11,9 @@
           <div class="personal-data-grid">
             <div class="foto">
               <o-image class="foto_centrada" #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
-                       sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
-                       max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                       label="PROFILE.EDIT_PHOTO" ></o-image>
-                       
+                sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                accept-file-type="image/png,image/jpeg,image/gif,image/jpg" label="PROFILE.EDIT_PHOTO"></o-image>
+
             </div>
             <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
             <div class="personal-data-fields">

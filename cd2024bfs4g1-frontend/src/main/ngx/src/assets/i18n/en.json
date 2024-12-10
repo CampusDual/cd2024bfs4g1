@@ -293,5 +293,8 @@
   "asistencia" : "Attendance control",
   "REQ_LABBREVIATION" : "Abbreviation*",
   "REQ_LDESCRIPTION" : "Description*",
-  "LATTENDANCESTATUS" : "Estado de asistencia"
+  "LATTENDANCESTATUS" : "Attendance status",
+  "AttendanceSave" : "Save Attendance",
+  "Estudiante" : "Student",
+  "Asistencia" : "Attendance"
 }

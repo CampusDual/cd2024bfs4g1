@@ -243,3 +243,7 @@ select option {
     overflow-x: hidden; /* Asegúrate de que el contenido adicional no se ajuste */
 }
 
+.button-container {
+  text-align: center; /* Center align the button */
+  margin-top: 20px; /* Add some margin from the top */
+}

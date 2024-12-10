@@ -293,5 +293,8 @@
   "abreviatura" : "Abreviatura",
   "REQ_LABBREVIATION" : "Abreviatura*",
   "REQ_LDESCRIPTION" : "Descripción*",
-  "LATTENDANCESTATUS" : "Attendance status"
+  "LATTENDANCESTATUS" : "Estado de asistencia",
+  "AttendanceSave" : "Guardar Asistencia",
+  "Estudiante" : "Estudiante",
+  "Asistencia" : "Asistencia"
 }
