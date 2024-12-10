@@ -58,7 +58,7 @@ export class CalendarAttendanceComponent {
   statusData: any[] = [];
   attendanceModified: any[] = [];
   attendance: any[] = [];
-  slectedItem: any [][]=[]
+  attendanceMap: { [key: string]: number } = {};
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -198,22 +198,6 @@ export class CalendarAttendanceComponent {
     }
   }
 
-  getAttendanceAbbreviation(studentId: number, date: Date, attendanceData: any[], statusData: any[]): string | null {
-    // Buscamos la asistencia del estudiante para la fecha dada
-    const attendanceRecord = attendanceData.find(record => {
-      return record.student_id === studentId && moment(record.date).isSame(date, 'day');
-    });
-  
-    // Si encontramos una asistencia, buscamos su abreviatura en statusData
-    if (attendanceRecord) {
-      const status = statusData.find(status => status.id === attendanceRecord.attendance_status_id);
-      return status ? status.abbreviation : null;
-    } else {
-      // Si no hay asistencia registrada, retornamos null o una abreviatura por defecto
-      return null; // Puedes reemplazar null por una abreviatura por defecto si lo prefieres
-    }
-  }
-
   //Obtener primer y último dia de la semana actual
   loadInitialDates(): void {
     const startOfWeek = moment().startOf('isoWeek');
@@ -291,7 +275,7 @@ export class CalendarAttendanceComponent {
 
   //Tamaño columnas grid
   updateDayGridColumns() {
-    return `fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
+    return `3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
   }
 
   //Cambiar color al dia actual (background)
@@ -347,6 +331,7 @@ export class CalendarAttendanceComponent {
     this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
       response => {
         console.log('Asistencias procesadas:', response);
+        this.attendanceModified = [];
         alert('Asistencias guardadas correctamente.');
       },
       error => {

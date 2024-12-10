@@ -38,15 +38,13 @@
                 <div>{{ student.name}} {{student.surname1}} {{student.surname2}}</div>
                 <div *ngFor="let dayWithWeekDay of daysWithWeekDays" class="day-combo">
                     <div class="center-select">
-                        <select class="center-select__input" (change)="onSelectChange($event, student, dayWithWeekDay)" [(ngModel)]="slectedItem[student.id][dayWithWeekDay]">
+                        <select class="center-select__input" (change)="onSelectChange($event, student, dayWithWeekDay)" [(ngModel)]="attendanceMap[student.student_id + ':' + dayWithWeekDay.fullDate]">
                             <option *ngFor="let status of statusData" [value]="status.id">
                                 {{ status.abbreviation }}
                             </option>
                         </select>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="button-container">
