@@ -146,6 +146,8 @@
   "student_status": "Estado del estudiante",
   "CLEAR": "Limpiar",
   "FILTER": "Filtrar",
+  "STUDENT_HAS_STATUS": "El estudiante tiene al menos un estado laboral",
+  "STUDENT_HAS_NOTES": "El estudiante tiene al menos una nota",
   "SLIDE_SEARCH": "Búsqueda conjunta",
   "SLIDE_TT": "Activa la búsqueda para campos complejos",
   "LOCALE_gal": "GAL",
