@@ -37,6 +37,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'employmentstatushistory':{
     'path': '/employmentstatushistory'
+  },
+  'notes':{    
+     'path': '/notes'
   }
 
 };
