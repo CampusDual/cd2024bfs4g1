@@ -13,5 +13,6 @@ public class AttendanceDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID =          "id";
     public static final String ATTR_STUDENT_ID =  "student_id";
     public static final String ATTR_BOOTCAMP_ID = "bootcamp_id";
+    public static final String ATTR_STATUS_ID =    "attendance_status_id";
     public static final String ATTR_DATE =        "date";
 }

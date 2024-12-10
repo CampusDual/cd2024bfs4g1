@@ -56,6 +56,7 @@ export class CalendarAttendanceComponent {
   allStudents: Student[] = [];
   students: any[] = [];
   statusData: any[] = [];
+  attendance: any[] = [];
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -102,6 +103,11 @@ export class CalendarAttendanceComponent {
   protected configureAttendanceStatus() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration('attendance_status');
+    this.service.configureService(conf);
+  }
+  protected configureAttendance() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration('attendance');
     this.service.configureService(conf);
   }
 
@@ -252,7 +258,7 @@ export class CalendarAttendanceComponent {
   }
 
   updateDayGridColumns() {
-    return `3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
+    return `fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
   }
 
 
@@ -289,8 +295,29 @@ export class CalendarAttendanceComponent {
     console.log('Estado seleccionado:', selectedStatus);
     console.log('Fecha:', day.fullDate);
     console.log('ID del Bootcamp:', this.bootcampId);
+
+    let newElement = {
+      student_id: student.id,
+      bootcamp_id: this.bootcampId,
+      status: selectedStatus,
+      date: day.fullDate
+    };
+
+
+    this.attendance[student.id + ":" + this.printDate(day.fullDate)] = newElement;
+    console.log(this.attendance);
+
   }
 
-
+  onButtonClick() {
+ this.configureAttendance();
+ this.service.insert({ data: this.attendance },'attendance').subscribe(
+  response => {
+    console.log('Asistencias enviadas', response);
+  },
+  error => {
+    console.error('Error al enviar asistencias:', error);
+  }
+);
 }
-
+  }

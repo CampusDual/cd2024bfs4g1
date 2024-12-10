@@ -30,6 +30,8 @@ public class AttendanceService implements IAttendanceService {
 
     @Override
     public EntityResult attendanceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+
+
         return this.daoHelper.insert(this.attendanceDao, attrMap);
     }
 

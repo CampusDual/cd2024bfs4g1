@@ -231,5 +231,15 @@ select option {
     grid-template-columns: repeat(8, 1fr);
     grid-row: 1;
     gap: 5px;
+    min-width: 1650px; /* Ancho mínimo total del grid */
+    overflow-x: hidden; /* Asegúrate de que el contenido adicional no se ajuste */
+}
+.student_row.days {
+  display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-row: 1;
+    gap: 5px;
+    min-width: 1650px; /* Ancho mínimo total del grid */
+    overflow-x: hidden; /* Asegúrate de que el contenido adicional no se ajuste */
 }
 

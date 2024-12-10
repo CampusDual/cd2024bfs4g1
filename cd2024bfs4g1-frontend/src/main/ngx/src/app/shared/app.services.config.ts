@@ -40,6 +40,9 @@ export const SERVICE_CONFIG: Object = {
   },
   'attendance_status':{
     'path': '/attendance_status'
+  },
+  'attendance':{
+    'path': '/attendance'
   }
 
 };
