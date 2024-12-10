@@ -158,6 +158,8 @@
   "SLIDE_TT": "Enable search for complex fields",
   "LOCALE_gal": "GAL",
   "BOOTCAMP_HAS_STUDENTS":"The bootcamp that you want to delete has students or mentors",
+  "STUDENT_HAS_STATUS": "This student has at least one employment status assigned",
+  "STUDENT_HAS_NOTES": "This student has at least one note assigned",
   "description":"Description",
   "notes":"Notes",
   "First Surname": "First surname",
