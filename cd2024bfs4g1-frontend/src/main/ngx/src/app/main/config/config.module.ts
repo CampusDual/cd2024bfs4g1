@@ -10,6 +10,8 @@ import { StudentStatusNewComponent } from './student-status-new/student-status-n
 import { StudentStatusDetailsComponent } from './student-status-details/student-status-details.component';
 import { TutorTypeNewComponent } from './tutor-type-new/tutor-type-new.component';
 import { TutorTypeDetailsComponent } from './tutor-type-details/tutor-type-details.component';
+import { AttendanceStatusDetailsComponent } from './attendance-status-details/attendance-status-details.component';
+import { AttendanceStatusNewComponent } from './attendance-status-new/attendance-status-new.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { TutorTypeDetailsComponent } from './tutor-type-details/tutor-type-detai
     StudentStatusNewComponent,
     StudentStatusDetailsComponent,
     TutorTypeNewComponent,
-    TutorTypeDetailsComponent
+    TutorTypeDetailsComponent,
+    AttendanceStatusDetailsComponent,
+    AttendanceStatusNewComponent
   ],
   imports: [
     CommonModule,
