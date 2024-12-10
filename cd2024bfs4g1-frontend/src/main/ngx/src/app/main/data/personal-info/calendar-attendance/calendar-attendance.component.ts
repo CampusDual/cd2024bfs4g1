@@ -13,6 +13,14 @@ enum AbbrDayOfWeek {
   Vie = 5,
   Sab = 6,
 }
+interface Element {
+
+  student_id: number;
+  bootcamp_id : number;
+  status: number;
+  date : Date;
+ 
+}
 
 interface Student {
   id: number;
@@ -56,7 +64,8 @@ export class CalendarAttendanceComponent {
   allStudents: Student[] = [];
   students: any[] = [];
   statusData: any[] = [];
-  attendance: any[] = [];
+  //public attendance: any[] = [];
+  public attendance = new Map<String, Element>();
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -276,12 +285,8 @@ export class CalendarAttendanceComponent {
 
   onSelectChange(event: any, student: Student, day: Day): void {
     const selectedStatus = event.target.value;
-    console.log('Estudiante:', student);
-    console.log('Estado seleccionado:', selectedStatus);
-    console.log('Fecha:', day.fullDate);
-    console.log('ID del Bootcamp:', this.bootcampId);
 
-    let newElement = {
+    let newElement: Element = {
       student_id: student.id,
       bootcamp_id: this.bootcampId,
       status: selectedStatus,
@@ -289,14 +294,14 @@ export class CalendarAttendanceComponent {
     };
 
 
-    this.attendance[student.id + ":" + this.printDate(day.fullDate)] = newElement;
-    console.log(this.attendance);
+   // this.attendance[student.id + ":" + this.printDate(day.fullDate)] = newElement;
+   this.attendance.set(student.id + ":" + this.printDate(day.fullDate), newElement);
 
   }
 
   onButtonClick() {
  this.configureAttendance();
- this.service.insert({ data: this.attendance },'attendance').subscribe(
+ this.service.insert({av:this.attendance},'attendance').subscribe(
   response => {
     console.log('Asistencias enviadas', response);
   },

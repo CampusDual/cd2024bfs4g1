@@ -14,13 +14,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 @Service("AttendanceService")
 @Lazy
 public class AttendanceService implements IAttendanceService {
-  @Autowired
-  private DefaultOntimizeDaoHelper daoHelper;
-  @Autowired
-  private AttendanceDao attendanceDao;
+    @Autowired
+    private DefaultOntimizeDaoHelper daoHelper;
+    @Autowired
+    private AttendanceDao attendanceDao;
 
 
     @Override
@@ -31,8 +32,7 @@ public class AttendanceService implements IAttendanceService {
     @Override
     public EntityResult attendanceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 
-
-        return this.daoHelper.insert(this.attendanceDao, attrMap);
+        return null;
     }
 
     @Override
