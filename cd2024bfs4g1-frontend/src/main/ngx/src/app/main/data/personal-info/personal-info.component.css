@@ -6,7 +6,7 @@
   gap: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
 }
 
 .datosPersonales {
@@ -14,11 +14,22 @@
 }
 
 .foto {
-  margin-top: -30px; /* Ajusta el valor negativo según sea necesario */
+  margin-top: -30px; /* Ajusta según sea necesario */
   display: flex;
-  justify-content: center; /* Centra horizontalmente la imagen */
-  align-items: flex-start; /* Asegura que la imagen se mantenga en la parte superior */
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Suaviza la transición */
+  width: 70%;
 }
+
+.foto:hover {
+  box-shadow: 0 0 20px 10px #1a3459; /* Crea el efecto de aura */
+  transform: scale(0.9); /* Agranda ligeramente la imagen al pasar el ratón */
+  background-color: #1a3459;
+  border-radius: 50%;
+}
+
 
 .separatorCol {
   padding-top: 0; /* Elimina cualquier padding innecesario */
@@ -29,6 +40,11 @@
   height: 26%;
 }
 
+.fraseInfo{
+  color: gray;
+  padding-top: 20px;
+  font-size: 20px;
+}
 
 .personal-data-fields {
   display: grid;
