@@ -14,17 +14,17 @@
             </div>
             <div class="nombre">
               <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
-              <o-text-input attr="name" required="yes" id="name" [validators]="validatorsWithoutSpace" max-length="255"
+              <o-text-input attr="name" required="yes" id="name" [validators]="validatorsWithoutSpace" max-length="150"
                 (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
             <div class="apellido">
               <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-              <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="255"
+              <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="150"
                 (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
             <div class="apellido2">
               <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-              <o-text-input attr="surname2" required="no" max-length="255"
+              <o-text-input attr="surname2" required="no" max-length="150"
                 (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <div class="sepGitUdemy">
               <div class="githubUser">
                 <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-                <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+                <o-text-input attr="github_user" required="no" max-length="150"></o-text-input>
               </div>
               <div class="udemy">
                 <div class="checkbox-container">
@@ -80,12 +80,12 @@
             <legend>Login</legend>
             <div class="usuario">
               <label for="REQ_USER">{{'USER' | oTranslate}}</label>
-              <o-text-input attr="usr_login" required="no" id="name" max-length="255"
+              <o-text-input attr="usr_login" required="no" id="name" max-length="50"
                 [validators]="validatorsWithoutSpace"></o-text-input>
             </div>
             <div class="contraseña">
               <label for="REQ_PASSWORD">{{'PASSWORD' | oTranslate}}</label>
-              <o-password-input attr="usr_password" required="no" show-password-button="false" in-length="8"
+              <o-password-input attr="usr_password" required="no" max-length="60" show-password-button="false" in-length="8"
                 [validators]="validatorsNewPasswordArray">
                 <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
                 <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
@@ -104,11 +104,11 @@
             </div>
             <div class="email">
               <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
-              <o-email-input attr="personal_email" required="yes"></o-email-input>
+              <o-email-input attr="personal_email" max-length="200" required="yes"></o-email-input>
             </div>
             <div class="emailCampus">
               <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-              <o-email-input attr="campus_email" required="no"></o-email-input>
+              <o-email-input attr="campus_email" max-length="200" required="no"></o-email-input>
             </div>
           </fieldset>
         </div>

@@ -87,7 +87,7 @@
               <div class="usuario">
                 <label for="usuario">{{'USER' | oTranslate}}</label>
                 <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="no" id="name"
-                  max-length="255"></o-text-input>
+                  max-length="50"></o-text-input>
               </div>
               <div class="contraseña">
                 <label for="contraseña">{{'PASSWORD' | oTranslate}}</label>
@@ -109,11 +109,11 @@
               </div>
               <div>
                 <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
-                <o-email-input attr="personal_email" required="yes"></o-email-input>
+                <o-email-input attr="personal_email" max-length="200" required="yes"></o-email-input>
               </div>
               <div>
                 <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-                <o-email-input attr="campus_email" required="no"></o-email-input>
+                <o-email-input attr="campus_email" max-length="200" required="no"></o-email-input>
               </div>
             </fieldset>
           </div>
