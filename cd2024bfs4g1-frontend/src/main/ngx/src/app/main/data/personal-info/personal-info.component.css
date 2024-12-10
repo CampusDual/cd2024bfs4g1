@@ -20,7 +20,7 @@
   align-items: flex-start;
   border-radius: 50%; /* Hace que la imagen sea circular */
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Suaviza la transición */
-  width: 70%;
+  width: 200px;
 }
 
 .foto:hover {
