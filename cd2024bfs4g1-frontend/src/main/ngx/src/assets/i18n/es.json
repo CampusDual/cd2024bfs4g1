@@ -149,7 +149,7 @@
   "SLIDE_SEARCH": "Búsqueda conjunta",
   "SLIDE_TT": "Activa la búsqueda para campos complejos",
   "LOCALE_gal": "GAL",
-  "BOOTCAMP_HAS_STUDENTS":"El bootcamp que quieres borrar tiene alumnos asignados",
+  "BOOTCAMP_HAS_STUDENTS":"El bootcamp que quieres borrar tiene alumnos o tutores asignados",
   "description":"Descripción",
   "notes":"Notas",
   "First Surname": "Primer apellido",

@@ -68,7 +68,7 @@
             </div>
             <div>
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
-              <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-text-input attr="location" required="no" max-length="30" (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
 
             <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
