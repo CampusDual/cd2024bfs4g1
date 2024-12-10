@@ -18,23 +18,23 @@
           <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
           <div class="email">
             <label for="LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
-            <o-email-input attr="email" required="yes" [validators]="validatorsWithoutSpace"></o-email-input>
+            <o-email-input attr="email" required="yes" max-length="200" [validators]="validatorsWithoutSpace"></o-email-input>
           </div>
         </div>
         <div class="datosPrincipales2">
           <div class="nombre">
             <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
-            <o-text-input attr="name" required="yes" id="name" max-length="255" (input)="toUpperCamelCase($event)"
+            <o-text-input attr="name" required="yes" id="name" max-length="150" (input)="toUpperCamelCase($event)"
               [validators]="validatorsWithoutSpace"></o-text-input>
           </div>
           <div class="apellido">
             <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-            <o-text-input attr="surname1" required="yes" max-length="255" (input)="toUpperCamelCase($event)"
+            <o-text-input attr="surname1" required="yes" max-length="150" (input)="toUpperCamelCase($event)"
               [validators]="validatorsWithoutSpace"></o-text-input>
           </div>
           <div class="apellido2">
             <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-            <o-text-input attr="surname2" required="no" max-length="255"
+            <o-text-input attr="surname2" required="no" max-length="150"
               (input)="toUpperCamelCase($event)"></o-text-input>
           </div>
         </div>
@@ -44,11 +44,11 @@
         <div>
           <label for="usuario">{{'USER' | oTranslate}}</label>
           <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="no" id="name"
-            max-length="255"></o-text-input>
+            max-length="50"></o-text-input>
         </div>
         <div>
           <label for="contraseña">{{'PASSWORD' | oTranslate}}</label>
-          <o-password-input attr="usr_password" required="no" show-password-button="false" in-length="8"
+          <o-password-input attr="usr_password" required="no" max-length="60" show-password-button="false" in-length="8"
             [validators]="validatorsNewPasswordArray">
             <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
             <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>

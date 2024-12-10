@@ -6,7 +6,7 @@
   <div class="grid-container">
     <div class="nombre">
       <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
-      <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
+      <o-text-input [validators]="validatorsWithoutSpace" attr="name" max-length="100" required="yes"></o-text-input>
     </div>
     <div>
       <label class="daterange">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
@@ -25,7 +25,7 @@
     </div>
     <div class="descripcion">
       <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
-      <o-textarea-input attr="description" required="no" max-length="200"></o-textarea-input>
+      <o-textarea-input attr="description" required="no" max-length="150"></o-textarea-input>
     </div>
     <div class="notas">
       <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
