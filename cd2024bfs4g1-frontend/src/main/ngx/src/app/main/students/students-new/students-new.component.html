@@ -62,6 +62,11 @@
                 </o-combo>
               </div>
             </div>
+            <div class="LinkedIn">
+              <label for="LinkedIn">{{'LinkedIn' | oTranslate}}</label>
+              <o-text-input attr="Linkedin" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-button attr="LinkedInbutton" name="linkedinButton" text="Visitar LinkedIn" icon="fa fa-linkedin" action="goToLinkedIn" tooltip="Haz clic para ir al perfil de LinkedIn" class="btn btn-primary">ir a LinkedIn</o-button>
+            </div>
           </div>
         </fieldset>
         <div class="login">

@@ -175,7 +175,9 @@ showAlert() {
     this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
   }
 }
-
+goToLinkedIn() {
+  window.open('https://www.linkedin.com/in/tu-perfil', '_blank');
+}
 }
 
 
