@@ -6,7 +6,7 @@
   gap: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr;
 }
 
 .datosPersonales {
@@ -26,7 +26,7 @@
 
 
 .datosPrincipales2{
-  height: 31%;
+  height: 26%;
 }
 
 
@@ -60,13 +60,68 @@
   gap:10px;
 }
 
+.fechaCumple{
+  display:flex;
+  gap:10px;
+}
+
+.location{
+  display:flex;
+  gap:10px;
+}
+
+.employmentStatus{
+  display: flex;
+  gap: 10px;
+}
+
+.emailCampus{
+  display:flex;
+  gap: 10px;
+}
+
+.email{
+  display:flex;
+  gap: 5px;
+}
+
+.fctSchool{
+  display:flex;
+  gap: 10px;
+}
+
+.tutor{
+  display:flex;
+  gap:10px;
+}
+
+.fctStart{
+  display: flex;
+  gap:10px;
+}
+
+.fctEnd{
+  display:flex;
+  gap:10px;
+}
+
+.udemy{
+  display:flex;
+  gap: 10px;
+}
+
+.githubUser{
+  display:flex;
+  gap:10px;
+}
+
 .separatorCol{
   padding-top: -50%;
 }
 
 p {
   color: black;
-  margin-top: 0;
+  margin-top: 0px;
 }
 p:last-child{
   margin-bottom: 0;
