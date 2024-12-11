@@ -76,6 +76,7 @@ export class StudentsTableComponent {
         if (fil.attr === 'bootcamps_id') {
           filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr,"|"+filterValue+"|"));
         }
+        filters.push(FilterExpressionUtils.buildExpressionMoreEqual("validos", 1));
       }
     });
 
