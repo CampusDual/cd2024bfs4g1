@@ -1,3 +1,14 @@
+INSERT INTO public.troutes (id, permissionid, enabled, id_rolename) VALUES(33, 'commercial-permission', true, 1);
+INSERT INTO public.troutes (id, permissionid, enabled, id_rolename) VALUES(34, 'commercial-permission', true, 2);
+INSERT INTO public.troutes (id, permissionid, enabled, id_rolename) VALUES(35, 'commercial-permission', false, 3);
+INSERT INTO public.troutes (id, permissionid, enabled, id_rolename) VALUES(36, 'commercial-permission', false, 4);
+
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename) VALUES('31', 'commercialsection', true, true, 1);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename) VALUES('32', 'commercialsection', true, true, 2);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename) VALUES('33', 'commercialsection', false, false, 3);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename) VALUES('34', 'commercialsection', false, false, 4);
+
+
 CREATE OR REPLACE VIEW public.v_commercial_students
 AS WITH estados AS (
          SELECT s_1.id AS student_id,
