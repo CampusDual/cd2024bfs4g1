@@ -298,5 +298,6 @@
   "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe",
   "Download" : "Descargar",
   "Save": "Guardar",
-  "nota":"Notas"
+  "nota":"Notas",
+  "Acceso":"Accesos"
 }
