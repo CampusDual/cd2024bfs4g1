@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FilterExpressionUtils, Expression, OFormComponent, OFormLayoutManagerComponent, OTableComponent } from 'ontimize-web-ngx';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-students-table',
@@ -22,6 +23,7 @@ export class StudentsTableComponent {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
     this.route.queryParams.subscribe(params => {
       const tab = params['tab'];
       const studentId = params['studentId'];
@@ -60,22 +62,29 @@ export class StudentsTableComponent {
     }
   }
 
-  // Método para construir el filtro (sin cambios)
+  checked: boolean = true;
+
+  toggleFinished(event: MatSlideToggleChange): void {
+    this.checked = event.checked;
+    this.tableComponent.refresh();
+  }
+
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
     let filters: Array<Expression> = [];
-
+    const isCheck = this.checked;
     values.forEach(fil => {
-      // Convierte fil.value a una cadena, o a una cadena vacía si es null o undefined
       const filterValue = fil.value != null ? fil.value.toString() : '';
 
-      if (filterValue) {  // Solo agrega el filtro si filterValue no está vacío
+      if (filterValue) {
         if (fil.attr === 'id' || fil.attr === 'tutor' || fil.attr === 'udemy' ||
           fil.attr === 'v_employment_status_id' || fil.attr === 'student_status_id' || fil.attr === 'spain_comunity') {
           filters.push(FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue));
         }
         if (fil.attr === 'bootcamps_id') {
-          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr,"|"+filterValue+"|"));
+          filters.push(FilterExpressionUtils.buildExpressionLike(fil.attr, "|" + filterValue + "|"));
         }
+      }
+      if (isCheck === true) {
         filters.push(FilterExpressionUtils.buildExpressionMoreEqual("validos", 1));
       }
     });
@@ -89,3 +98,6 @@ export class StudentsTableComponent {
     }
   }
 }
+
+
+

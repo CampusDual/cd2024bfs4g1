@@ -300,8 +300,8 @@
   "Save": "Guardar",
   "nota":"Notas",
   "Acceso":"Accesos",
-  "nota":"Notas",
   "LCONTACTSTATUS": "Estado del Contacto",
   "LCONTACTEDSTUDENTS": "Estudiantes contactados",
-  "Commercial Section": "Sección comercial"
+  "Commercial Section": "Sección comercial",
+  "ActiveStudents":"Mostrar solo estudiantes activos"
 }

@@ -302,8 +302,8 @@
   "TUTOR_HAS_BOOTCAMPS":"The mentor has assigned bootcamps and cannot be deleted",
   "nota":"Notes",
   "Acceso":"Access",
-  "nota":"Notes",
   "LCONTACTSTATUS": "Contact status",
   "LCONTACTEDSTUDENTS": "Contacted students",
   "Commercial Section": "Commercial Section"
+  "ActiveStudents":"Show only active students"
 }
