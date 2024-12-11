@@ -34,7 +34,10 @@
                     <o-combo class="comunidad" attr="spain_comunity" read-only="no" service="students"
                         entity="student" columns="spain_comunity" [static-data]="dataArray" value-column="key"
                         visible-columns="value" searchable="yes" sort="ASC"></o-combo>
-
+                      
+                        <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
+                        <o-slide-toggle attr="slidetoggle" label="Estudiantes activos" label-position="before" [data]="true" read-only="no"></o-slide-toggle>
+                        </div>
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
                         <o-button attr="clear" [oFilterBuilderClear]="filterBuilder" type="STROKED"
                             label="{{'CLEAR' | oTranslate}}" layout-padding color="primary"></o-button>
@@ -49,14 +52,14 @@
 
             <div>
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
-            <o-table #tableStudents virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
-                sort-columns="name" entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;v_employment_status_id;
+            <o-table #tableStudents sort-columns="name:ASC" virtual-scroll="false" class="general_table" attr="studentsTable" service="students"
+                entity="student" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;v_employment_status_id;
                 campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;user_id;status;usr_photo;bootcamps_id"
                 visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()">
-                <o-table-column attr="name" title="Name"></o-table-column>
-                <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
-                <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
+                <o-table-column attr="name" title="Name" sortable="true"></o-table-column>
+                <o-table-column attr="surname1" title="FIRST_SURNAME" sortable="true"></o-table-column>
+                <o-table-column attr="surname2" title="LAST_SURNAME" sortable="true"></o-table-column>
                 <o-table-column attr="dni" title="DNI"></o-table-column>
                 <o-table-column attr="personal_email" title="Email"></o-table-column>
                 <o-table-column attr="status" type="translate" title="status"></o-table-column>
