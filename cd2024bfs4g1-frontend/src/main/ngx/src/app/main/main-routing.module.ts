@@ -21,8 +21,8 @@ export const routes: Routes = [
       { path: 'students', loadChildren: () => import('./students/students.module').then(m => m.StudentsModule), data: {oPermission: {permissionId: 'students-permission', restrictedPermissionsRedirect: '/main/home'}} },
       { path: 'tutors', loadChildren: () => import('./tutors/tutors.module').then(m => m.TutorsModule), data: {oPermission: {permissionId: 'tutor-permission', restrictedPermissionsRedirect: '/main/home'}}},
       { path: 'data', loadChildren: () => import('./data/data.module').then(m => m.DataModule), data: {oPermission: {permissionId: 'data-permission', restrictedPermissionsRedirect: '/main/home'}}},
+      { path: 'commercial', loadChildren: () => import('./commercial/commercial.module').then(m => m.CommercialModule), data: {oPermission: {permissionId: 'commercial-permission', restrictedPermissionsRedirect: '/main/home'}}},
       { path: 'config', loadChildren: () => import('./config/config.module').then(m => m.ConfigModule), data: {oPermission: {permissionId: 'config-permission', restrictedPermissionsRedirect: '/main/home'}}}
-
     ]
   }
 ];
