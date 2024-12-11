@@ -302,5 +302,6 @@
   "LSTUDENTSBOOTCAMPSSTATUS":"StudentBootcampStatus",
   "COMPUTABLE_TRUE":"computable",
   "COMPUTABLE_FALSE":"Not computable",
-  "student_bootcamp_status":"Studentbootcampstatus"
+  "student_bootcamp_status":"Student Bootcamp Status",
+  "LSLIDETOGGLE_COMPUTABLE":"Computable or not computable"
 }
