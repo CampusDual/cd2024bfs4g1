@@ -62,6 +62,8 @@ export class CalendarAttendanceComponent {
   studentMap = new Map<number, Map<string, number>>();
 
   backendResponse: any;
+  startBootcampDate: Date;
+  endBootcampsDate: Date;
 
   private currentDate = Date.now();
   private currentYear = moment(this.currentDate).year();
@@ -91,7 +93,8 @@ export class CalendarAttendanceComponent {
     console.log("Id de bootcamp"+this.bootcampId);
     this.loadStudents();
     this.loadAttendance();
-    
+    this.getBootcampDates();
+
   }
 
   protected configureBootcamps() {
@@ -320,7 +323,7 @@ export class CalendarAttendanceComponent {
 
   onSelectChange(event: any, student: Student, day: Day): void {
     const selectedStatus = event.value;
-    
+
     let newElement = {
       student_id: student.student_id,
       bootcamp_id: this.bootcampId,
@@ -356,13 +359,46 @@ export class CalendarAttendanceComponent {
   }
 
   getAttendanceOfDay(student: number, day: Date): number {
- 
+
     if(this.studentMap.get(student)){
       return this.studentMap.get(student).get(this.printDate(day));
     }else{
       return null;
     }
- 
+
   }
 
+getBootcampDates(): void {
+  this.configureBootcamps();
+  if (this.service && this.bootcampId) {
+    const columns = ['start_date', 'end_date'];
+
+    const filter = {
+      'id': this.bootcampId
+    }
+    this.service.query(filter, columns, 'bootcamp').subscribe(resp => {
+      if (resp.code === 0) {
+        if (resp.data.length > 0) {
+
+          this.startBootcampDate = resp.data[0].start_date;
+          this.endBootcampsDate = resp.data[0].end_date;
+
+
+        } else {
+        alert('La longitud de la respuesta es 0.');
+
+        }
+      } else {
+        alert('Error al cargar las fechas.');
+      }
+    });
+  }
+
+  }
+
+
+isBootcampInRange(date: Date) : boolean {
+ console.log(this.startBootcampDate + "FECHASSSSS " + this.endBootcampsDate);
+ return date >= this.startBootcampDate && date <= this.endBootcampsDate;
+}
 }
