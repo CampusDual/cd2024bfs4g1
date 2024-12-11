@@ -59,6 +59,8 @@ export class CalendarAttendanceComponent {
   attendanceModified: any[] = [];
   attendance: any[] = [];
   attendanceMap: { [key: string]: number } = {};
+  studentMap = new Map<number, Map<string, number>>();
+
   backendResponse: any;
 
   private currentDate = Date.now();
@@ -83,11 +85,11 @@ export class CalendarAttendanceComponent {
 
   ngOnInit() {
     this.loadAttendanceStatus();
-    this.loadAttendance();
     this.configureBootcamps();
   }
   ngOnChanges() {
     this.loadStudents();
+    this.loadAttendance();
     console.log(this.bootcampId);
   }
 
@@ -115,11 +117,9 @@ export class CalendarAttendanceComponent {
   loadStudents(): void {
     this.configureStudents();
     this.getStudents();
-    this.students.map(student => {
-    });
   }
   getStudents() {
-    if (this.service !== null) {
+    if (this.service && this.bootcampId) {
       const columns = ['student_id', 'name', 'surname1', 'surname2'];
 
       const filter = {
@@ -129,6 +129,10 @@ export class CalendarAttendanceComponent {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
             this.students = resp.data;
+            this.students.map(student => {
+              let newAttendanceMap= new Map<string, number>();
+              this.studentMap.set(student.student_id,newAttendanceMap);
+            });
             console.log('Estudiantes cargados:', this.students);
             console.log(this.bootcampId);
           } else {
@@ -171,11 +175,9 @@ export class CalendarAttendanceComponent {
   loadAttendance(): void {
     this.configureAttendance();
     this.getAttendance();
-    this.attendance.map(attendance => {
-    });
   }
   getAttendance() {
-    if (this.service !== null) {
+    if (this.service && this.bootcampId) {
       const columns = ['id', 'student_id', 'bootcamp_id', 'date', 'attendance_status_id'];
 
       const filter = {
@@ -186,6 +188,14 @@ export class CalendarAttendanceComponent {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
             this.attendance = resp.data; // Asignar correctamente los datos a statusData
+            this.attendance.map(status => {
+              if(this.studentMap.get(status.student_id)){
+                let dayMap = this.studentMap.get(status.student_id);
+                dayMap.set( this.printDate(status.date), status.attendance_status_id);
+                this.studentMap.set(status.student_id, dayMap);
+              }
+            });
+            console.log('malla:', this.studentMap);
             console.log('Datos de asistencia cargados:', this.attendance);
           } else {
             this.attendance = [];
@@ -330,7 +340,7 @@ export class CalendarAttendanceComponent {
     const selectedStatus = this.statusData.find(status => status.id === this.attendanceMap[key]);
     return selectedStatus ? selectedStatus.description : null; // Retorna null si no hay selección.
   }
-  
+
 
   onButtonClick() {
     this.configureAttendance();
@@ -347,6 +357,10 @@ export class CalendarAttendanceComponent {
       }
     );
 
+  }
+
+  getAttendanceOfDay(student: number, day: Date): number {
+    return this.studentMap.get(student).get(this.printDate(day));
   }
 
 }
