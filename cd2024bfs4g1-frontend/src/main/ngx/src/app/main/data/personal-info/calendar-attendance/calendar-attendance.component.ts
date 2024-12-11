@@ -325,6 +325,13 @@ export class CalendarAttendanceComponent {
     console.log(this.attendanceModified);
   }
 
+  getSelectedTooltip(student: any, dayWithWeekDay: any): string | null {
+    const key = `${student.student_id}:${dayWithWeekDay.fullDate}`;
+    const selectedStatus = this.statusData.find(status => status.id === this.attendanceMap[key]);
+    return selectedStatus ? selectedStatus.description : null; // Retorna null si no hay selección.
+  }
+  
+
   onButtonClick() {
     this.configureAttendance();
     const attendanceArray = Object.values(this.attendanceModified);

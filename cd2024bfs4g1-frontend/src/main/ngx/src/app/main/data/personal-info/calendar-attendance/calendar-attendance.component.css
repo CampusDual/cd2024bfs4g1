@@ -1,176 +1,175 @@
 .calendar-timestamps-container {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
 
-  .date-rows {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
+.date-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+}
 
-  .sidebar {
-    height: 100%;
-    background-color: #f5f0f2;
-    width: 100px;
-  }
+.sidebar {
+  height: 100%;
+  background-color: #f5f0f2;
+  width: 100px;
+}
 
-  .date-item-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
+.date-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
 
-  .calendar-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #f5f0f2;
-    width: calc(100% - 120px);
-    overflow-y: scroll;
-    padding: 10px;
-    width: 100%;
-    border-radius: 15px;
-  }
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f0f2;
+  width: calc(100% - 120px);
+  overflow-y: scroll;
+  padding: 10px;
+  width: 100%;
+  border-radius: 15px;
+}
 
+.date-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #f5f0f2;
+}
 
+.years {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+}
 
+.months {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+}
 
+.days {
+  display: grid;
+}
 
-  .date-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border-radius: 4px;
-    text-align: left;
-    background-color: #f5f0f2;
-  }
+.bootcamp {
+  grid-column-start: var(--start-day);
+  grid-column-end: var(--end-day);
+  background-color: #D9EAD3;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid #8AB237;
+  cursor: pointer;
+}
 
-  .years {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    width: 100%;
-  }
+.bootcamp:hover {
+  background-color: #C8DBC2;
+}
 
-  .months {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    width: 100%;
-  }
+.year {
+  color: #1a3459;
+  font-weight: 900;
+}
 
-  .days {
-    display: grid;
-  }
+.month {
+  color: #1a3459;
+  font-weight: 900;
+}
 
-  .bootcamp {
-    grid-column-start: var(--start-day);
-    grid-column-end: var(--end-day);
-    background-color: #D9EAD3;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    height: 40px;
-    overflow: hidden;
-    border: 1px solid #8AB237;
-    cursor: pointer;
-  }
-
-  .bootcamp:hover{
-    background-color:#C8DBC2;
-  }
-
-  .year {
-    color: #1a3459;
-    font-weight: 900;
-  }
-
-  .month {
-    color: #1a3459;
-    font-weight: 900;
-  }
-
-  .two-months{
-    color: #1a3459;
-    font-weight: 900;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border-radius: 4px;
-    text-align: left;
-    background-color: #f5f0f2;
-  }
+.two-months {
+  color: #1a3459;
+  font-weight: 900;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  text-align: left;
+  background-color: #f5f0f2;
+}
 
 
-  .day {
-    background-color: #1a3459;
-    color: #f5f0f2;
-    text-align: center;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  .student {
-    background-color: #1a3459;
-    color: #fff;
-    text-align: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 15px;
-    padding: 5px;
-    height: 80%;
-    border-radius: 5px;
-  }
-  .student_row {
-    color: #1a3459;
-    border: #1a3459 solid 1px;
-    text-align: center;
-    align-items: center;
-    padding: 5px;
-    gap: 5px;
-  }
+.day {
+  background-color: #1a3459;
+  color: #f5f0f2;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
 
-  .small {
-    font-size: 10px;
-  }
+.student {
+  background-color: #1a3459;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px;
+  height: 80%;
+  border-radius: 5px;
+}
 
-  .medium {
-    font-size: 14px;
-  }
+.student_row {
+  color: #1a3459;
+  border: #1a3459 solid 1px;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
 
-  .large {
-    font-size: 18px;
-  }
+.small {
+  font-size: 10px;
+}
 
-  .position {
-    display: flex;
-    justify-content: space-between;
-  }
+.medium {
+  font-size: 14px;
+}
 
-  .date-start-end {
-    color: #C0C0C0;
-  }
+.large {
+  font-size: 18px;
+}
 
-  .bootcamp-name {
-    flex-grow: 1;
-    text-align: center;
-  }
-  .bootcamp-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+.position {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-start-end {
+  color: #C0C0C0;
+}
+
+.bootcamp-name {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.bootcamp-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .day-combos {
-    display: flex;
-    flex-grow: 1;
-    gap: 10px;
+  display: flex;
+  flex-grow: 1;
+  gap: 10px;
 }
 
 
@@ -210,17 +209,6 @@ select option {
   padding-right: 50px;
 }
 
-.center-select {
-  display: block;
-  position: relative;
-}
-
-.center-select__input {
-  -webkit-appearance: none;
-  width: 100%;
-}
-
-
 .day-combo-empty {
   flex: 1;
   background-color: transparent;
@@ -228,22 +216,62 @@ select option {
 
 .date-item-container.days {
   display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-row: 1;
-    gap: 5px;
-    min-width: 1650px; /* Ancho mínimo total del grid */
-    overflow-x: hidden; /* Asegúrate de que el contenido adicional no se ajuste */
+  grid-template-columns: repeat(8, 1fr);
+  grid-row: 1;
+  gap: 5px;
+  min-width: 1650px;
+  overflow-x: hidden;
 }
+
 .student_row.days {
   display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-row: 1;
-    gap: 5px;
-    min-width: 1650px; /* Ancho mínimo total del grid */
-    overflow-x: hidden; /* Asegúrate de que el contenido adicional no se ajuste */
+  grid-template-columns: repeat(8, 1fr);
+  grid-row: 1;
+  gap: 5px;
+  min-width: 1650px;
+  overflow-x: hidden;
 }
 
 .button-container {
-  text-align: center; /* Center align the button */
-  margin-top: 20px; /* Add some margin from the top */
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-select {
+  width: 80px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  text-align: center;
+}
+
+.mat-select-panel {
+  min-width: 100px;
+}
+
+.mat-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.center-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
 }
