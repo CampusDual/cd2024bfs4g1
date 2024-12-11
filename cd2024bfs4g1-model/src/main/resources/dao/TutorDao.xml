@@ -26,6 +26,7 @@
                             ${mainschema}.tutors t
                             left join ${mainschema}.usr_user uu ON t.user_id = uu.usr_id
                             #WHERE#
+                            #ORDER#
                     ]]>
             </Sentence>
         </Query>

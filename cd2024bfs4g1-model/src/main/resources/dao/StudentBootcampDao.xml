@@ -43,6 +43,7 @@
         inner join
      bootcamp_status bs on b.id = bs.id
      #WHERE#
+     #ORDER#
    ]]>
             </Sentence>
         </Query>

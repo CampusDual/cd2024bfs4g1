@@ -27,6 +27,7 @@
      inner join
       bootcamp_document bd on d.id = bd.document_id
      #WHERE#
+     #ORDER#
    ]]>
             </Sentence>
         </Query>

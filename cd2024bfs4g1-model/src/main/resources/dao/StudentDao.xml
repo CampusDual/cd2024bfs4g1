@@ -22,6 +22,7 @@
                         FROM
                             ${mainschema}.v_students_with_bootcamps
                             #WHERE#
+                            #ORDER#
                     ]]>
             </Sentence>
         </Query>
