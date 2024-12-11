@@ -36,20 +36,19 @@
             <h3 class="titulo_tablas">{{ 'LSTUDENTSBOOTCAMPSSTATUS' | oTranslate }}</h3>
             <o-form-layout-dialog-options class="popup">
               <o-table #studentStatusTable class="general_table" [quick-filter]="false"
-                       detail-form-route="studentbootcampstatus/"
-                       insert-form-route="new" quick-filter="true" attr="studentbootcamptstatusTable"
-                       virtual-scroll="false"
-                       service="studentbootcampstatus" entity="studentBootcampStatus" keys="id"
-                       columns="id;student_bootcamp_status;computable"
-                       visible-columns="student_bootcamp_status;computable" sort-columns="student_bootcamp_status"
-                       show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
-                       select-all-checkbox-visible="true" pagination-controls="false"
-                       selection-mode="single" refresh-button="no">
+                detail-form-route="studentbootcampstatus/"
+                insert-form-route="new" quick-filter="true" attr="studentbootcamptstatusTable"
+                virtual-scroll="false"
+                service="studentbootcampstatus" entity="studentBootcampStatus" keys="id"
+                columns="id;student_bootcamp_status;computable"
+                visible-columns="student_bootcamp_status;computable" sort-columns="student_bootcamp_status"
+                show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
+                select-all-checkbox-visible="true" pagination-controls="false"
+                selection-mode="single" refresh-button="no">
 
 
                 <o-table-column attr="computable" title="computable">
-                  <o-table-cell-renderer-boolean render-false-value="COMPUTABLE_FALSE"
-                                                 render-true-value="COMPUTABLE_TRUE">
+                  <o-table-cell-renderer-boolean render-false-value="COMPUTABLE_FALSE" render-true-value="COMPUTABLE_TRUE">
                   </o-table-cell-renderer-boolean>
                 </o-table-column>
 
