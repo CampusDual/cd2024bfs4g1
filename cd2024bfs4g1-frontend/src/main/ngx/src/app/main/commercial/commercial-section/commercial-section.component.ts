@@ -32,10 +32,10 @@ export class CommercialSectionComponent {
     }
   }
 
-  // Método para construir el filtro (sin cambios)
+ 
   createFilter(values: Array<{ attr: string, value: any }>): Expression | null {
     const filters: Array<Expression> = values
-      .filter(fil => fil.value != null && fil.value.toString().trim() !== '') // Filtra valores no nulos ni vacíos
+      .filter(fil => fil.value != null && fil.value.toString().trim() !== '') 
       .map(fil => {
         var filterValue = fil.value;
 
@@ -59,9 +59,8 @@ export class CommercialSectionComponent {
             return null;
         }
       })
-      .filter((expr): expr is Expression => expr !== null); // Elimina posibles nulos del mapeo
+      .filter((expr): expr is Expression => expr !== null); 
 
-    // Si hay filtros, combina usando AND, si no devuelve null.
     return filters.length > 0
       ? filters.reduce((exp1, exp2) =>
           FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND)
