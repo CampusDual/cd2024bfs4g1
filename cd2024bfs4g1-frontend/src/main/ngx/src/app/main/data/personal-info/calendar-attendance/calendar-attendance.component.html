@@ -42,7 +42,7 @@
                          matTooltipPosition="below">
                         <mat-select 
                             class="custom-select"
-                            [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay)" 
+                            [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)" 
                             (selectionChange)="onSelectChange($event, student, dayWithWeekDay)">
                             <mat-option *ngFor="let status of statusData" 
                                         [value]="status.id">

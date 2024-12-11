@@ -46,6 +46,7 @@ public class AttendanceService implements IAttendanceService {
 
                 for (Map<String, Object> attendanceRecord : attendanceData) {
 
+                    int statusId = (int) attendanceRecord.get("status");
                     String dateString = (String) attendanceRecord.get("date");
                     Date date = null;
                     try {
@@ -56,7 +57,7 @@ public class AttendanceService implements IAttendanceService {
                         continue;
                     }
                     attendanceRecord.put("date", date);
-
+                    attendanceRecord.put("attendance_status_id", statusId);
                     Map<String, Object> filter = Map.of(
                             "student_id", attendanceRecord.get("student_id"),
                             "bootcamp_id", attendanceRecord.get("bootcamp_id"),

@@ -88,9 +88,10 @@ export class CalendarAttendanceComponent {
     this.configureBootcamps();
   }
   ngOnChanges() {
+    console.log("Id de bootcamp"+this.bootcampId);
     this.loadStudents();
     this.loadAttendance();
-    console.log(this.bootcampId);
+    
   }
 
   protected configureBootcamps() {
@@ -129,10 +130,6 @@ export class CalendarAttendanceComponent {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
             this.students = resp.data;
-            this.students.map(student => {
-              let newAttendanceMap= new Map<string, number>();
-              this.studentMap.set(student.student_id,newAttendanceMap);
-            });
             console.log('Estudiantes cargados:', this.students);
             console.log(this.bootcampId);
           } else {
@@ -191,6 +188,10 @@ export class CalendarAttendanceComponent {
             this.attendance.map(status => {
               if(this.studentMap.get(status.student_id)){
                 let dayMap = this.studentMap.get(status.student_id);
+                dayMap.set( this.printDate(status.date), status.attendance_status_id);
+                this.studentMap.set(status.student_id, dayMap);
+              }else{
+                let dayMap = new Map<string, number>();
                 dayMap.set( this.printDate(status.date), status.attendance_status_id);
                 this.studentMap.set(status.student_id, dayMap);
               }
@@ -318,12 +319,8 @@ export class CalendarAttendanceComponent {
   }
 
   onSelectChange(event: any, student: Student, day: Day): void {
-    const selectedStatus = parseInt(event.target.value, 10);
-    console.log('Estudiante:', student);
-    console.log('Estado seleccionado:', selectedStatus);
-    console.log('Fecha:', day.fullDate);
-    console.log('ID del Bootcamp:', this.bootcampId);
-
+    const selectedStatus = event.value;
+    
     let newElement = {
       student_id: student.student_id,
       bootcamp_id: this.bootcampId,
@@ -360,7 +357,13 @@ export class CalendarAttendanceComponent {
   }
 
   getAttendanceOfDay(student: number, day: Date): number {
-    return this.studentMap.get(student).get(this.printDate(day));
+ 
+    if(this.studentMap.get(student)){
+      return this.studentMap.get(student).get(this.printDate(day));
+    }else{
+      return null;
+    }
+ 
   }
 
 }
