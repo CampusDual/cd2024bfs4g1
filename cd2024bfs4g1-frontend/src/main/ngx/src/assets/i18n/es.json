@@ -294,5 +294,6 @@
   "date_change":"Fecha del cambio",
   "DUPLICATED_USRLOGIN_NAME": "El nombre de usuario ya existe",
   "Download" : "Descargar",
-  "Save": "Guardar"
+  "Save": "Guardar",
+  "ActiveStudents":"Mostrar solo estudiantes activos"
 }
