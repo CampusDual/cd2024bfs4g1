@@ -1,6 +1,7 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MainService } from 'src/app/shared/services/main.service';
 import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextInputComponent, OUserInfoService, ServiceResponse } from 'ontimize-web-ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-info',
@@ -8,6 +9,9 @@ import { DialogService, OFormComponent, OImageComponent, OntimizeService, OTextI
   styleUrls: ['./personal-info.component.css']
 })
 export class PersonalInfoComponent {
+openLink($event: any) {
+throw new Error('Method not implemented.');
+}
 
   @ViewChild("userId") inputStudentId: OTextInputComponent;
   @ViewChild("form") form: OFormComponent;
@@ -18,12 +22,16 @@ export class PersonalInfoComponent {
   protected service: OntimizeService;
   avatar: any
 
-  constructor(protected injector: Injector, private mainService: MainService,protected dialogService: DialogService,private oUserInfoService: OUserInfoService) {
+  constructor(protected injector: Injector,private router: Router, private mainService: MainService,protected dialogService: DialogService,private oUserInfoService: OUserInfoService) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
     
   }
-
+  goToDetail(event: any) {
+    const bootcampId = event.bootcamp_id;
+    this.router.navigate(['/main/data/student', bootcampId]);
+    
+  }
   protected configureService() {
     const conf = this.service.getDefaultServiceConfiguration('students');
     this.service.configureService(conf);
@@ -121,12 +129,13 @@ export class PersonalInfoComponent {
     }
   }
 
-
   showAlert() {
     if (this.dialogService) {
       this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
     }
   }
+
+
 }
 
 

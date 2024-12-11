@@ -9,6 +9,8 @@ import { BootcampNewComponent } from './bootcamp-new/bootcamp-new.component';
 import { StudentBootcampDetailComponent } from './bootcamp-details/student-bootcamp-detail/student-bootcamp-detail.component';
 import { BootcampTimetableNewComponent } from './bootcamp-details/bootcamp-timetable-new/bootcamp-timetable-new.component';
 import { TutorBootcampAddComponent } from './bootcamp-details/tutor-bootcamp-add/tutor-bootcamp-add.component';
+import { NewSessionBootcampComponent } from './bootcamp-details/new-session-bootcamp/new-session-bootcamp.component';
+import { UpdateSessionBootcampComponent } from './bootcamp-details/update-session-bootcamp/update-session-bootcamp.component';
 
 
 
@@ -20,7 +22,9 @@ import { TutorBootcampAddComponent } from './bootcamp-details/tutor-bootcamp-add
     BootcampNewComponent,
     StudentBootcampDetailComponent,
     BootcampTimetableNewComponent,
-    TutorBootcampAddComponent
+    TutorBootcampAddComponent,
+    NewSessionBootcampComponent,
+    UpdateSessionBootcampComponent
 
   ],
   imports: [

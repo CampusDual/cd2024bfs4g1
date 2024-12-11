@@ -397,3 +397,11 @@ o-column.o-column .o-container > .o-container-title span{
   --mat-mdc-fab-color: #1a3459;
   margin-bottom: 20px;
 }
+
+.o-table .o-table-container .mat-mdc-table .mat-mdc-row .mat-mdc-cell {
+   text-align: center;
+ }
+ input[type="checkbox"]:checked {
+  accent-color: #8AB237;
+}
+
