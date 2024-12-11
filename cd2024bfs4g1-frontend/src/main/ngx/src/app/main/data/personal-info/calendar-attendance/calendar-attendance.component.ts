@@ -333,11 +333,10 @@ export class CalendarAttendanceComponent {
   }
 
   getSelectedTooltip(student: any, dayWithWeekDay: any): string | null {
-    const key = `${student.student_id}:${dayWithWeekDay.fullDate}`;
-    const selectedStatus = this.statusData.find(status => status.id === this.attendanceMap[key]);
+    const attendanceStatusId = this.getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate);
+    const selectedStatus = this.statusData.find(status => status.id === attendanceStatusId);
     return selectedStatus ? selectedStatus.description : null; // Retorna null si no hay selección.
   }
-
 
   onButtonClick() {
     this.configureAttendance();
