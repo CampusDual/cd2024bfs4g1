@@ -300,10 +300,10 @@
   "Download" : "Download",
   "Save": "Save",
   "TUTOR_HAS_BOOTCAMPS":"The mentor has assigned bootcamps and cannot be deleted",
+  "ActiveStudents":"Show only active students",
   "nota":"Notes",
   "Acceso":"Access",
   "LCONTACTSTATUS": "Contact status",
   "LCONTACTEDSTUDENTS": "Contacted students",
   "Commercial Section": "Commercial Section"
-  "ActiveStudents":"Show only active students"
 }
