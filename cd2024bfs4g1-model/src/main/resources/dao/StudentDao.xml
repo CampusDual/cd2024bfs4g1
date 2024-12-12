@@ -44,8 +44,6 @@
                 <AmbiguousColumn name="udemy" prefix="cs"/>
                 <AmbiguousColumn name="github_user" prefix="cs"/>
                 <AmbiguousColumn name="notes" prefix="cs"/>
-                <AmbiguousColumn name="email" prefix="cs"/>
-                <AmbiguousColumn name="surnames" prefix="cs"/>
                 <AmbiguousColumn name="spain_comunity" prefix="cs"/>
                 <AmbiguousColumn name="location" prefix="cs"/>
                 <AmbiguousColumn name="employment_status_id" prefix="cs"/>
