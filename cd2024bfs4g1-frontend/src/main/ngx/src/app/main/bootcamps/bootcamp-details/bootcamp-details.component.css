@@ -614,3 +614,17 @@ o-list img {
   padding: 25px; 
   background-color: #f5f0f2; 
 }
+
+.pa2{
+  display: none;
+}
+.boton_eliminar:hover .pa2{
+  display: block;
+}
+.boton_eliminar:hover .pa1{
+  display: none;
+}
+.cont-bot{
+  padding-top: 16px ;
+  padding-right: 0px;
+}
