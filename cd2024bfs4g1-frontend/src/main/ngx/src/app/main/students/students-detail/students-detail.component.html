@@ -1,4 +1,4 @@
-<o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="I;U;D"
+<o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="U;D"
   show-header-navigation="no">
   <div o-form-toolbar-buttons>
     <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
@@ -36,17 +36,7 @@
             </div>
           </div>
           <div class="datosPrincipales2">
-            <div class="sepGitUdemy">
-              <div class="githubUser">
-                <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-                <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
-              </div>
-              <div class="udemy">
-                <div class="checkbox-container">
-                  <o-checkbox attr="udemy"></o-checkbox>
-                </div>
-              </div>
-            </div>
+
             <div class="dni">
               <label for="LDNI">{{'LDNI' | oTranslate}}</label>
               <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
@@ -68,7 +58,7 @@
             </div>
             <div>
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
-              <o-text-input attr="location" required="no" (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-text-input attr="location" required="no" max-length="30" (input)="toUpperCamelCase($event)"></o-text-input>
             </div>
 
             <label for="student_status">{{'LSTATUS' | oTranslate}}</label>
@@ -79,15 +69,15 @@
           </div>
 
         </fieldset>
-      </div>
+       </div>
         <div class="gridDatos">
           <div class="login">
             <fieldset title="Login">
-              <legend>Login</legend>
+              <legend>{{"Acceso"|oTranslate}}</legend>
               <div class="usuario">
                 <label for="usuario">{{'USER' | oTranslate}}</label>
                 <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="no" id="name"
-                  max-length="255"></o-text-input>
+                  max-length="50"></o-text-input>
               </div>
               <div class="contraseña">
                 <label for="contraseña">{{'PASSWORD' | oTranslate}}</label>
@@ -97,6 +87,17 @@
                   <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
                   <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
                 </o-password-input>
+              </div>
+              <div class="sepGitUdemy">
+                <div class="githubUser">
+                  <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
+                  <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
+                </div>
+                <div class="udemy">
+                  <div class="checkbox-container">
+                    <o-checkbox attr="udemy"></o-checkbox>
+                  </div>
+                </div>
               </div>
             </fieldset>
           </div>
@@ -109,11 +110,11 @@
               </div>
               <div>
                 <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
-                <o-email-input attr="personal_email" required="yes"></o-email-input>
+                <o-email-input attr="personal_email" max-length="200" required="yes"></o-email-input>
               </div>
-              <div>
+              <div class="correoCampus">
                 <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-                <o-email-input attr="campus_email" required="no"></o-email-input>
+                <o-email-input attr="campus_email" max-length="200" required="no"></o-email-input>
               </div>
             </fieldset>
           </div>
@@ -218,43 +219,31 @@
       <div class="fct-container">
         <fieldset title="fct" class="fct-grid">
           <legend>{{"FCT Information"|oTranslate}}</legend>
-          <div>
+          <div class="fct">
             <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
             <o-text-input attr="fct_school" required="no" max-length="100"
               (input)="toUpperCamelCase($event)"></o-text-input>
           </div>
-          <div>
+          <div class="fct">
             <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
             <o-combo attr="tutor" service="tutors" entity="tutor" required="no" searchable="yes" value-column="id"
               columns="id;name;surname1;surname2" visible-columns="name;surname1;surname2" null-selection="true"
               sortable="yes" sort="ASC">
             </o-combo>
           </div>
-          <div>
+          <div class="fct">
             <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
             <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
               (onValueChange)="throwChange(enddate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
           </div>
-          <div>
+          <div class="fct">
             <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
             <o-date-input #enddate attr="fct_end" required="no" [validators]="validatorsArray" format="DD/MM/YYYY"
               (onValueChange)="throwChange2(startdate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>
-          </div>
-        </fieldset>
-        <fieldset title="User" class="user-grid">
-          <legend>{{'OtherInformation'|oTranslate}}</legend>
-          <div class="githubUser">
-            <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-            <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
-          </div>
-          <div class="udemy">
-            <div class="checkbox-container">
-              <o-checkbox attr="udemy"></o-checkbox>
-            </div>
           </div>
         </fieldset>
       </div>

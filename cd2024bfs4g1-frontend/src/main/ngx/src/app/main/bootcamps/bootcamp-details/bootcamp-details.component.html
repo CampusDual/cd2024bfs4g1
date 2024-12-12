@@ -6,7 +6,7 @@
   <div class="grid-container">
     <div class="nombre">
       <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
-      <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
+      <o-text-input [validators]="validatorsWithoutSpace" attr="name" max-length="100" required="yes"></o-text-input>
     </div>
     <div>
       <label class="daterange">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
@@ -25,19 +25,17 @@
     </div>
     <div class="descripcion">
       <label for="LDESPCRIPTION">{{'LDESPCRIPTION' | oTranslate}}</label>
-      <o-textarea-input attr="description" required="no" max-length="200"></o-textarea-input>
+      <o-textarea-input attr="description" required="no" max-length="150"></o-textarea-input>
     </div>
     <div class="notas">
       <label for="LNOTE">{{'LNOTE' | oTranslate}}</label>
       <o-textarea-input attr="notes" required="no" max-length="200"></o-textarea-input>
     </div>
     <div class="especial fecha-inicio" hidden="true">
-      <!-- <label for="LSTARTDATE">{{'LSTARTDATE' | oTranslate}}</label> -->
       <o-date-input #startdate class="fechas" attr="start_date" hidden="true" required="yes"
         format="DD/MM/YYYY"></o-date-input>
     </div>
     <div class="especial fecha-fin" hidden="true">
-      <!-- <label for="LENDDATE">{{'LENDDATE' | oTranslate}}</label> -->
       <o-date-input #enddate attr="end_date" required="yes" hidden="true" [validators]="validatorsArray"
         format="DD/MM/YYYY">
         <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
@@ -79,7 +77,6 @@
             </o-form-layout-dialog-options>
           </o-form-layout-manager>
         </div>
-
 
         <div class="list_container">
           <o-form-layout-manager attr="addTutorsLayout" mode="dialog" title="Mentors">
@@ -200,5 +197,89 @@
         </div>
       </div>
     </mat-tab>
+    <o-form-layout-manager attr="popupNewSession" mode="dialog">
+      <o-form-layout-dialog-options class="popup">
+        <mat-tab label="{{ 'Sesiones' | oTranslate }}">
+          <div class="table_sesions general_table">
+            <div class="calendar-container">
+              <o-column>
+
+                <o-combo
+                  attr="status"
+                  (valueChange)="onComboChange($event)"
+                  read-only="no"
+                  service="sessionBootcamps"
+                  entity="sessionBootcamps"
+                  keys="id"
+                  [static-data]="[{ id: 1, status: 'Started' }, { id: 2, status: 'Pending' }, { id: 3, status: 'Finished' }]"
+                  [data]="selectedStatuses"
+                  columns="id;status"
+                  value-column="status"
+                  query-on-init="true"
+                  visible-columns="status"
+                  translate="yes"
+                  null-selection=""
+                  layout-padding
+                  multiple="yes"
+                  hidden="yes"
+                >
+                </o-combo>
+                <div class="aligned-container">
+                  <label for="filetitle">{{ 'filetitle' | oTranslate }}</label>
+                  <div class="toggle">
+                    <mat-slide-toggle (change)="toggleFinished($event)">
+                      {{ "Add 'Finished'" | oTranslate }}
+                    </mat-slide-toggle>
+                  </div>
+                </div>
+              </o-column>
+
+
+
+              <o-filter-builder
+              #filterBuilder
+              attr="thefilter"
+              filters="session_name:session_name;session_date:session_date;password:password;status:status;link:link;id"
+              [target]="sessionsTable"
+              query-on-change="yes"
+              query-on-change-delay="500"
+              [expression-builder]="createFilter"
+              sort="session_date:ASC">
+            </o-filter-builder>
+
+              <o-table #sessionsTable class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
+                       service="sessionBootcamp"
+                       entity="sessionBootcamp" keys="id"
+                       parent-keys="id_bootcamp:id"
+                       columns="id;session_name;session_date;password;status;link"
+                       visible-columns="session_name;session_date;password;status;Link"
+                       select-all-checkbox-visible="true" selection-mode="multiple"
+                       [row-class]="getRowClass"
+                       sort-columns="session_date"
+                       >
+
+                <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
+                <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+                                tooltip-value="{{'link_ico'| oTranslate}}">
+                  <o-table-cell-renderer-action (onClick)="openLink($event)" icon="link"></o-table-cell-renderer-action>
+                </o-table-column>
+                <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
+                <o-table-column class="center" attr="password" title="password"></o-table-column>
+                <o-table-column class="center" attr="status" title="status"
+                type="string" content-align="center" title-align="center"
+                ><o-table-cell-renderer-translate></o-table-cell-renderer-translate>
+                </o-table-column>
+
+                <o-table-context-menu insert="true" edit="false" view-detail="false" delete="true">
+                </o-table-context-menu>
+              </o-table>
+            </div>
+          </div>
+        </mat-tab>
+
+      </o-form-layout-dialog-options>
+    </o-form-layout-manager>
+
+
   </mat-tab-group>
 </o-form>

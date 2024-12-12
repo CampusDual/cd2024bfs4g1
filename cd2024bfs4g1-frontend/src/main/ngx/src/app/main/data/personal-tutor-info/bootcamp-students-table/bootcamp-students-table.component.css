@@ -6,9 +6,9 @@
     background-color: #1a3459;
   }
   .estudiantes {
-    margin: 50px 10px;  
+    margin: 50px 10px;
   }
-  
+
   fieldset {
     border-radius: 15px;
     padding: 10px;
@@ -24,18 +24,55 @@
     width: 100%;
     height: 100%;
     background-color: #1a3459;
-    
+
   }
   .table_container {
     width: 100%;
     border-radius: 15px;
     height: auto;
-    
+
   }
-  
+
   .general_table{
     background-color: #f5f0f2;
     width: 100%;
     margin: 0;
-    
+
   }
+  ::ng-deep o-table .highlight-today {
+    background-color: #89b23713;
+  }
+
+
+
+.student-sesion-grid {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.student-sesion-grid fieldset {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #1a3459;
+  border: solid 2px #7ec117;
+  border-radius: 15px;
+  margin: 10px;
+}
+.aligned-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1a3459;
+  align-items: center;
+}
+.label{
+    color: #7ec117;
+    font-size: 16px;
+    font-weight: bold;
+}
+.label-alumnos{
+  color: #7ec117;
+}

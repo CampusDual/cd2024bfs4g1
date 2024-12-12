@@ -38,8 +38,11 @@ export const SERVICE_CONFIG: Object = {
   'employmentstatushistory':{
     'path': '/employmentstatushistory'
   },
-  'notes':{    
+  'notes':{
      'path': '/notes'
+  },
+  'sessionBootcamp':{
+    'path': '/sessionbootcamp'
   }
 
 };

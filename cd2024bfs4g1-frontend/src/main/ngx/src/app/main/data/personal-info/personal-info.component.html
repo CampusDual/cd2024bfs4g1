@@ -4,39 +4,38 @@
       columns="id;name" undo-button="no">
       <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
       <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden="true" />
-      <div class="grid-container">
 
+      <div class="grid-container">
         <fieldset class="datosPersonales" title="{{'Personal Data' | oTranslate}}">
           <legend>{{'Personal Data' | oTranslate}}</legend>
-          <div class="personal-data-grid">
-            <div class="foto">
-              <o-image class="foto_centrada" #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
-                       sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)"
-                       max-file-size="409600" accept-file-type="image/png,image/jpeg,image/gif,image/jpg"
-                       label="PROFILE.EDIT_PHOTO" ></o-image>
-                       
-            </div>
-            <p class="p_info_foto">{{'Info_foto' | oTranslate}}</p>
-            <div class="personal-data-fields">
+          <div class="personal-data-fields">
+            <div class="separatorCol">
               <div class="nombre">
-                <label for="name">{{'DNAME'|oTranslate}}</label>
+                <label for="name">{{'DNAME'|oTranslate}} :</label>
                 <p class="pmydata">{{form.getDataValue('name').value}}</p>
               </div>
               <div class="apellido">
-                <label for="surname1">{{'DSURNAME1'|oTranslate}}</label>
+                <label for="surname1">{{'DSURNAME1'|oTranslate}} :</label>
                 <p class="pmydata">{{form.getDataValue('surname1').value}}</p>
               </div>
               <div class="apellido2">
-                <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
+                <label for="surname2">{{'LSURNAME2' | oTranslate}} :</label>
                 <p class="pmydata">{{form.getDataValue('surname2').value}}</p>
               </div>
               <div class="dni">
-                <label for="LDNI">{{'DDNI' | oTranslate}}</label>
+                <label for="LDNI">{{'DDNI' | oTranslate}} :</label>
                 <p class="pmydata">{{form.getDataValue('dni').value}}</p>
               </div>
               <div class="telefono">
-                <label for="LPHONE">{{'DPHONE' | oTranslate}}</label>
+                <label for="LPHONE">{{'DPHONE' | oTranslate}} :</label>
                 <p class="pmydata">{{form.getDataValue('phone').value}}</p>
+              </div>
+            </div>
+            <div class="separatorCol">
+              <div class="foto">
+                <o-image class="foto_centrada" #UsrPhoto attr="usr_photo" empty-image="assets/images/no-image.png"
+                  sql-type="OTHER" class="avatar" (onChange)="onImageChange($event)" max-file-size="409600"
+                  accept-file-type="image/png,image/jpeg,image/gif,image/jpg" show-controls="No"></o-image>
               </div>
             </div>
           </div>
@@ -45,56 +44,84 @@
         <fieldset class="datosPrincipales1" title="{{'Academic Data' | oTranslate}}">
           <legend>{{'Academic Data' | oTranslate}}</legend>
           <div class="employmentStatus">
-            <label for="employment_status">{{'DEMSTATUS' | oTranslate}}</label>
+            <label for="employment_status">{{'DEMSTATUS' | oTranslate}} :</label>
             <p class="pmydata">{{form.getDataValue('employment_status').value}}</p>
           </div>
           <div class="fechaCumple">
-            <label for="LBIRTHDATE">{{'DBIRTHDATE' | oTranslate}}</label>
+            <label for="LBIRTHDATE">{{'DBIRTHDATE' | oTranslate}} :</label>
             <p class="pmydata">{{form.getDataValue('birth_date').value | date:'dd/MM/yyyy'}}</p>
           </div>
           <div class="location">
-            <label for="location">{{'LLOCATION' | oTranslate}}</label>
+            <label for="location">{{'LLOCATION' | oTranslate}} :</label>
             <p class="pmydata">{{form.getDataValue('location').value}}</p>
           </div>
           <div class="emailCampus">
-            <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+            <label for="LCAMPUS_EMAIL">{{'LCAMPUS_EMAIL' | oTranslate}} :</label>
             <p class="pmydata">{{form.getDataValue('campus_email').value}}</p>
           </div>
           <div class="email">
-            <label for="LEMAIL">{{'DEMAIL'|oTranslate}}</label>
+            <label for="LEMAIL">{{'DEMAIL'|oTranslate}} :</label>
             <p class="pmydata">{{form.getDataValue('personal_email').value}}</p>
           </div>
         </fieldset>
 
-        <fieldset class="fct-container" title="{{'FCT Information' | oTranslate}}">
-          <legend>{{'FCT Information' | oTranslate}}</legend>
-          <div class="fctSchool">
-            <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}}</label>
-            <p class="pmydata">{{form.getDataValue('fct_school').value}}</p>
-          </div>
-          <div class="tutor">
-            <label for="tutor">{{'LTUTOR' | oTranslate}}</label>
-            <p class="pmydata">{{form.getDataValue('tutor').value}}</p>
-          </div>
-          <div class="fctStart">
-            <label for="LFCT_START">{{'LFCT_START' | oTranslate}}</label>
-            <p class="pmydata">{{form.getDataValue('fct_start').value | date:'dd/MM/yyyy'}}</p>
-          </div>
-          <div class="fctEnd">
-            <label for="LFCT_END">{{'LFCT_END' | oTranslate}}</label>
-            <p class="pmydata">{{form.getDataValue('fct_end').value | date:'dd/MM/yyyy'}}</p>
-          </div>
-        </fieldset>
+        <div>
+          <fieldset class="fct-container" title="{{'FCT Information' | oTranslate}}">
+            <legend>{{'FCT Information' | oTranslate}}</legend>
+            <div class="fctSchool">
+              <label for="fct_school">{{'LFCT_SCHOOL' | oTranslate}} :</label>
+              <p class="pmydata">{{form.getDataValue('fct_school').value}}</p>
+            </div>
+            <div class="tutor">
+              <label for="tutor">{{'LTUTOR' | oTranslate}} :</label>
+              <p class="pmydata">{{form.getDataValue('tutor').value}}</p>
+            </div>
+            <div class="fctStart">
+              <label for="LFCT_START">{{'LFCT_START' | oTranslate}} :</label>
+              <p class="pmydata">{{form.getDataValue('fct_start').value | date:'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="fctEnd">
+              <label for="LFCT_END">{{'LFCT_END' | oTranslate}} :</label>
+              <p class="pmydata">{{form.getDataValue('fct_end').value | date:'dd/MM/yyyy'}}</p>
+            </div>
+          </fieldset>
+        
+          <fieldset class="datosPrincipales2" title="{{'Additional Information' | oTranslate}}">
+            <legend>{{'Additional Information' | oTranslate}}</legend>
+            <div class="udemy">
+              <label for="LUDEMY">{{'LUDEMY' | oTranslate}} :</label>
+              <p class="pmydata">{{form.getDataValue('udemy').value ? 'Yes' : 'No'}}</p>
+            </div>
+            <div class="githubUser">
+              <label for="LGITHUB_USER">{{ 'LGITHUB_USER' | oTranslate }} :</label>
+              <p class="pmydata">{{form.getDataValue('github_user').value}}</p>
+            </div>
+          </fieldset>
+        </div>
 
-        <fieldset class="datosPrincipales2" title="{{'Additional Information' | oTranslate}}">
-          <legend>{{'Additional Information' | oTranslate}}</legend>
-          <div class="udemy">
-            <label for="LUDEMY">{{'LUDEMY' | oTranslate}}</label>
-            <p class="pmydata">{{form.getDataValue('udemy').value ? 'Yes' : 'No'}}</p>
-          </div>
-          <div class="githubUser">
-            <label for="LGITHUB_USER">{{ 'LGITHUB_USER' | oTranslate }}</label>
-            <p class="pmydata">{{form.getDataValue('github_user').value}}</p>
+        <fieldset class="tabla fila-completa" title="{{ 'Bootcamps Asigned' | oTranslate }}">
+          <legend>{{ 'Bootcamps Asigned' | oTranslate }}</legend>
+          <div class="table_container">
+            <o-table class="general_table" attr="studentBootcampsTable" service="studentBootcamps"
+              entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
+              columns="id;bootcamp_id;bootcampname" visible-columns="bootcampname;Detalle"
+              default-visible-columns="bootcampname;status;Detalle" detail-mode="false"
+              delete-button="false" show-report-on-demand-option="false" insert-button="false"
+              show-charts-on-demand-option="false" refresh-button="false">
+              <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+              <o-table-context-menu view-detail="false" edit="false" delete="false"
+                  insert="false"></o-table-context-menu>
+              <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+              <o-table-column attr="status" title="status" type="string" content-align="center"
+                  title-align="center" tooltip="yes"
+                  tooltip-value="{{'BT_STATUS_TT'|oTranslate}}"><o-table-cell-renderer-translate></o-table-cell-renderer-translate>
+                <o-table-column attr="Detalle" width="64px" tooltip="yes"
+                                tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
+                  <o-table-cell-renderer-action (onClick)="goToDetail($event)"
+                                                icon="person_search"></o-table-cell-renderer-action>
+                </o-table-column>
+              </o-table-column>
+            </o-table>
           </div>
         </fieldset>
       </div>

@@ -33,6 +33,12 @@ public class StudentService implements IStudentService {
 	private StudentBootcampDao studentBootcampDao;
 
 	@Autowired
+	private NotesDao notesDao;
+
+	@Autowired
+	private EmploymentStatusHistoryDao employmentStatusHistoryDao;
+
+	@Autowired
 	private IUserAndRoleService userAndRoleService;
 
 	@Autowired
@@ -251,13 +257,28 @@ public class StudentService implements IStudentService {
 		Map<String,Object> deletekey = new Hashtable<>();
 		deletekey.put(StudentBootcampDao.STUDENT_ID,keyMap.get(StudentDao.STU_ID));
 		EntityResult query = this.daoHelper.query(this.studentBootcampDao,deletekey,Arrays.asList(StudentBootcampDao.STUDENT_ID));
-
+		Map<String,Object> deletekey2 = new Hashtable<>();
+		deletekey2.put(NotesDao.ATTR_ID_STUDENTS,keyMap.get(StudentDao.STU_ID));
+		EntityResult query2 = this.daoHelper.query(this.notesDao,deletekey2,Arrays.asList(NotesDao.ATTR_ID_STUDENTS));
+		Map<String,Object> deletekey3 = new Hashtable<>();
+		deletekey3.put(EmploymentStatusHistoryDao.ATTR_STUDENT_ID,keyMap.get(StudentDao.STU_ID));
+		EntityResult query3 = this.daoHelper.query(this.employmentStatusHistoryDao,deletekey3,Arrays.asList(EmploymentStatusHistoryDao.ATTR_STUDENT_ID));
 
 		if(!query.isEmpty()){
 			EntityResult error = new EntityResultMapImpl();
 			error.setCode(EntityResult.OPERATION_WRONG);
 			error.setMessage("STUDENT_HAS_BOOTCAMPS");
 			return error;
+		} else if(!query2.isEmpty()){
+			EntityResult error2 = new EntityResultMapImpl();
+			error2.setCode(EntityResult.OPERATION_WRONG);
+			error2.setMessage("STUDENT_HAS_NOTES");
+			return error2;
+		}else if(!query3.isEmpty()){
+			EntityResult error3 = new EntityResultMapImpl();
+			error3.setCode(EntityResult.OPERATION_WRONG);
+			error3.setMessage("STUDENT_HAS_STATUS");
+			return error3;
 		}else {
 			return this.daoHelper.delete(this.studentDao, keyMap);
 		}
@@ -295,5 +316,15 @@ public class StudentService implements IStudentService {
 	@Override
 	public AdvancedEntityResult studentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
 		return this.daoHelper.paginationQuery(this.studentDao, keyMap, attrList, recordNumber, startIndex, orderBy);
+	}
+
+	@Override
+	public EntityResult commercialStudentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
+		return this.daoHelper.query(this.studentDao, keysMap, attributes, "commercialStudent");
+	}
+
+	@Override
+	public AdvancedEntityResult commercialStudentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
+		return this.daoHelper.paginationQuery(this.studentDao, keyMap, attrList, recordNumber, startIndex, orderBy, "commercialStudent");
 	}
 }

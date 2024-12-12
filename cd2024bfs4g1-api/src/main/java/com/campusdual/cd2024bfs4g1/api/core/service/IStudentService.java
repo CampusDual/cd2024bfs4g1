@@ -19,4 +19,7 @@ public interface IStudentService {
 
     AdvancedEntityResult studentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException;
 
+    EntityResult commercialStudentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException;
+
+    AdvancedEntityResult commercialStudentPaginationQuery(Map<String, Object> keyMap, List<?> attrList, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException;
 }

@@ -3,41 +3,145 @@
   margin: 5px auto;
   background-color: #f5f0f2;
   border-radius: 15px;
+  gap: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
 }
 
-.datosPersonales {
-  grid-column: 1 / -1;  
+.datosPersonales,
+.sesiones {
+  grid-column: 1 / 3;
 }
 
 .foto {
-  grid-column: 1 / 4; 
-  justify-self: center;
-  align-self: center;
-  margin-bottom: 0; 
-  display: flex;   
-  align-items: center;
+  margin-top: -30px; /* Ajusta según sea necesario */
+  display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  align-items: flex-start;
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Suaviza la transición */
+  width: 200px;
+}
+
+.foto:hover {
+  box-shadow: 0 0 20px 10px #1a3459; /* Crea el efecto de aura */
+  transform: scale(0.9); /* Agranda ligeramente la imagen al pasar el ratón */
+  background-color: #1a3459;
+  border-radius: 50%;
 }
 
 
+.separatorCol {
+  padding-top: 0; /* Elimina cualquier padding innecesario */
+}
+
+
+.datosPrincipales2{
+  height: 26%;
+}
+
+.fraseInfo{
+  color: gray;
+  padding-top: 20px;
+  font-size: 20px;
+}
 
 .personal-data-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.nombre{
   display: flex;
-  flex-wrap: wrap;  
-  gap: 15px;  
-  justify-content: space-evenly;
+  gap:10px
+}
+
+.apellido{
+  display: flex;
+  gap:10px
+}
+
+.apellido2{
+  display: flex;
+  gap:10px
+}
+
+.dni{
+  display:flex;
+  gap:10px;
+}
+
+.telefono{
+  display:flex;
+  gap:10px;
+}
+
+.fechaCumple{
+  display:flex;
+  gap:10px;
+}
+
+.location{
+  display:flex;
+  gap:10px;
+}
+
+.employmentStatus{
+  display: flex;
+  gap: 10px;
+}
+
+.emailCampus{
+  display:flex;
+  gap: 10px;
+}
+
+.email{
+  display:flex;
+  gap: 5px;
+}
+
+.fctSchool{
+  display:flex;
+  gap: 10px;
+}
+
+.tutor{
+  display:flex;
+  gap:10px;
+}
+
+.fctStart{
+  display: flex;
+  gap:10px;
+}
+
+.fctEnd{
+  display:flex;
+  gap:10px;
+}
+
+.udemy{
+  display:flex;
+  gap: 10px;
+}
+
+.githubUser{
+  display:flex;
+  gap:10px;
+}
+
+.separatorCol{
+  padding-top: -50%;
 }
 
 p {
   color: black;
-  margin-top: 0;
+  margin-top: 0px;
 }
-p:last-child{
+
+p:last-child {
   margin-bottom: 0;
 }
 
@@ -47,21 +151,38 @@ fieldset {
   border: solid 2px #1a3459;
   border-radius: 15px;
 }
-.p_info_foto{
-  font-size: 12px;
-  grid-column: 1 / 4; 
-  justify-self: center;
-  align-self: center;
-  display: flex;   
-  align-items: center;
-  justify-content: center;
-  color: #1a3459;
+
+.sesiones {
+  margin-top: 0;
 }
-.foto_centrada{
-  display: block;
-}
+
 @media (max-width: 1024px) {
   .grid-container {
-    grid-template-columns: 1fr  ; 
+    grid-template-columns: 1fr 1fr; 
   }
+
+  .foto {
+    width: 180px; 
+    height: 180px;
+  }
+
+  fieldset {
+    padding: 18px; 
+  }
+
+  .o-table {
+    width: 95%; 
+  }
+}
+
+.o-table {
+  width: 97%;
+  background-color: #f5f0f2;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.fila-completa {
+  grid-column: 1 / -1; 
+  margin-top: 20px; 
 }
