@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OntimizeService, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -262,7 +262,28 @@ protected configureBootcamps() {
   this.service.configureService(conf);
 
 }
+protected configureNotes() {
+  const conf = this.service.getDefaultServiceConfiguration('notes');
+  this.service.configureService(conf);
 
+}
+@ViewChild("list") list: OListComponent;
+
+deleteNotes(notas: any) {
+
+  this.configureNotes();
+  this.dialogService.confirm('Confirm_dialog_title', 'Do_you_really_want_to_delete');
+  this.dialogService.dialogRef.afterClosed().subscribe( result => {
+    if(result) {
+      this.service.delete({id: notas.id}, 'notes').subscribe(res => {
+        if (res.code === 0) {
+          this.list.reloadData();
+        }
+      });
+    }
+  });
+
+ }
 
   
 }

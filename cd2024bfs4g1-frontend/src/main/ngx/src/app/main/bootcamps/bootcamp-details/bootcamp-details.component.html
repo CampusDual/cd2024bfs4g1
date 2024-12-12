@@ -98,11 +98,10 @@
                         tutor.surname2 }}</a></mat-card-title>
                     <mat-card-subtitle>{{ tutor.email }} </mat-card-subtitle>
                     <mat-card-subtitle>{{ tutor.tutor_name_type}} </mat-card-subtitle>
-                    <mat-card-actions>
-                      <button class="boton_eliminar" (click)="deleteTutorBootcamp(tutor)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm4-3h6v-2H9v2z" />
-                        </svg>
+                    <mat-card-actions class="cont-bot">
+                      <button class="boton_eliminar" (click)="deleteTutorBootcamp(tutor)" >
+                        <mat-icon class="pa1" svgIcon="ontimize:papelera1"></mat-icon>
+                        <mat-icon class="pa2" svgIcon="ontimize:papelera"></mat-icon>
                       </button>
                     </mat-card-actions>
 
