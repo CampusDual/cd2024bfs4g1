@@ -42,13 +42,3 @@ AS SELECT bootcamps.id,bootcamps.name,bootcamps.start_date,bootcamps.end_date,bo
         END AS status
    FROM bootcamps
    order by name collate "es-ES-x-icu";
-
-CREATE OR REPLACE VIEW public.sessions_status
-AS SELECT sessions.id,sessions.id_bootcamp,sessions.session_name,sessions.session_date,sessions.link,sessions.password,
-        CASE
-            WHEN sessions.session_date::date < CURRENT_DATE THEN 'Finished'::text
-            WHEN sessions.session_date::date = CURRENT_DATE THEN 'Started'::text
-            ELSE 'Pending'::text
-        END AS status
-   FROM sessions
-   order by session_name collate "es-ES-x-icu";
