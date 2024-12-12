@@ -27,8 +27,6 @@ AS SELECT bootcamps.id,bootcamps.name,bootcamps.start_date,bootcamps.end_date,bo
    FROM bootcamps
    order by name collate "es-ES-x-icu";
 
-drop view pending_bootcamps;
-
 CREATE OR REPLACE VIEW public.pending_bootcamps
    AS SELECT bootcamp_status.id,bootcamp_status.name,bootcamp_status.start_date,bootcamp_status.end_date,bootcamp_status.description,bootcamp_status.notes,bootcamp_status.codigo,bootcamp_status.op,bootcamp_status.status
       FROM bootcamp_status
