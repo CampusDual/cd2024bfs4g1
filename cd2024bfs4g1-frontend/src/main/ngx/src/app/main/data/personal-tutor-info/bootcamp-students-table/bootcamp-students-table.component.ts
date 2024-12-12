@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {  DialogService, Expression, FilterExpressionUtils, OTableComponent } from 'ontimize-web-ngx';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { OFormCacheClass, OFormComponent, OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-bootcamp-students-table',
@@ -8,11 +9,18 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   styleUrls: ['./bootcamp-students-table.component.css']
 })
 export class BootcampStudentsTableComponent {
+  bootcampId: number;
+  @ViewChild('bootcampDetailForm') bootcampDetailForm: OFormComponent;
+
   @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
   selectedStatuses: string[] = ['Started', 'Pending'];
   constructor(
     protected dialogService: DialogService
    ) {
+  }
+
+  loadBootcamp() {
+    this.bootcampId= this.bootcampDetailForm.getFieldValue("id");
   }
 
   openLink(event: any): void {

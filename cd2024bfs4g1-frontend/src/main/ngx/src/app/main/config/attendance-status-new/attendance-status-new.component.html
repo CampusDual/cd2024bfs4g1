@@ -1,0 +1,16 @@
+<o-form #attendance_status_new attr="attendance_status_new"  service="attendance_status" entity="attendanceControl" keys="id" show-header="no"
+header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)" confirm-exit="no">
+    <div class="grid-container">
+        <div>
+            <label for="REQ_LABBREVIATION">{{'REQ_LABBREVIATION' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="abbreviation" required="yes" max-length="1"></o-text-input>
+        </div>
+        <div>
+            <label for="REQ_LDESCRIPTION">{{'REQ_LDESCRIPTION' | oTranslate}}</label>
+            <o-text-input label-visible="false" attr="description" required="yes" max-length="50"></o-text-input>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button  translate="yes" attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="attendance_status_new.insert()"></o-button>
+        </div>
+    </div>
+</o-form>
