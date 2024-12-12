@@ -255,7 +255,7 @@
       <o-form-layout-manager class="selectedrow" mode="dialog">
         <o-form-layout-dialog-options class="popup">
           <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
-            delete-button="true" insert-form-route="new_note" columns="id;nota;id_students;fecha" quick-filter="false"
+            delete-button="true" insert-form-route="new_note" delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
             refresh-button="false" insert-button="true" delete-button="true" detail-mode="true" selectable="true"
             detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
             insert-button-position="" show-buttons-text="false" controls="false">
@@ -263,6 +263,13 @@
               <mat-card-header >
                 <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
                 <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
+                <mat-card-actions>
+                  <button class="boton_eliminar" (click)="deleteNotes(notas)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm4-3h6v-2H9v2z" />
+                    </svg>
+                  </button>
+                </mat-card-actions>
               </mat-card-header>
             </mat-card>
 
