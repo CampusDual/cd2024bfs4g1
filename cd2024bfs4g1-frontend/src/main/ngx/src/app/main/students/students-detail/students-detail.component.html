@@ -122,7 +122,7 @@
 
       </div>
     </mat-tab>
-    <mat-tab label="{{'DocumentsAndBootc'|oTranslate}}">
+    <mat-tab label="{{'Documents'|oTranslate}}">
       <div class="documentsGrid">
         <o-form-layout-manager>
           <div class="container_students">
@@ -154,31 +154,33 @@
             </fieldset>
           </div>
         </o-form-layout-manager>
-        <div class="estudiantesDocumentos">
-          <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
-            <o-form-layout-dialog-options class="popup">
-              <fieldset class="fieldsetDoc">
-                <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
-                <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
-                  entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
-                  columns="id;bootcampname;status;start_date;end_date"
-                  visible-columns="bootcampname;status;start_date;end_date" detail-mode="none"
-                  show-report-on-demand-option="false" show-charts-on-demand-option="false"
-                  select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
-                  <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
-                  <o-table-context-menu view-detail="false" edit="false" delete="false"
-                    insert="false"></o-table-context-menu>
-                  <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
-                  <o-table-column attr="start_date" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
-                  <o-table-column attr="end_date" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
-                </o-table>
-              </fieldset>
-            </o-form-layout-dialog-options>
-          </o-form-layout-manager>
         </div>
-        <div *ngIf="showMessage" class="notification">
-          <label for="subida">{{ 'subida' | oTranslate }}</label>
-        </div>
+    </mat-tab>
+    <mat-tab label="{{'BootcAsig'|oTranslate}}">
+      <div class="estudiantesDocumentos">
+        <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
+          <o-form-layout-dialog-options class="popup">
+            <fieldset class="fieldsetDoc">
+              <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
+              <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
+                entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
+                columns="id;bootcampname;status;start_date;end_date"
+                visible-columns="bootcampname;status;start_date;end_date" detail-mode="none"
+                show-report-on-demand-option="false" show-charts-on-demand-option="false"
+                select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
+                <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
+                <o-table-context-menu view-detail="false" edit="false" delete="false"
+                  insert="false"></o-table-context-menu>
+                <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                <o-table-column attr="start_date" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
+                <o-table-column attr="end_date" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
+              </o-table>
+            </fieldset>
+          </o-form-layout-dialog-options>
+        </o-form-layout-manager>
+      </div>
+      <div *ngIf="showMessage" class="notification">
+        <label for="subida">{{ 'subida' | oTranslate }}</label>
       </div>
     </mat-tab>
     <mat-tab label="{{'Employment status'|oTranslate}}">

@@ -144,8 +144,6 @@ padding: 20px;
 
 
 .documentsGrid {
-display: grid;
-grid-template-columns: 1fr 1fr;
 gap: 40px;
 padding: 30px;
 background-color: #1a3459;
