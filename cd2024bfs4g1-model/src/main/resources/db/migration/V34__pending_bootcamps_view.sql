@@ -53,7 +53,6 @@ AS WITH estados AS (
     s.udemy,
     s.github_user,
     s.notes,
-    s.surnames,
     s.spain_comunity,
     s.location,
     s.employment_status_id,
