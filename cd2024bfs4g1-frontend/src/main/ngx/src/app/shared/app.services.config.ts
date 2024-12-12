@@ -43,6 +43,12 @@ export const SERVICE_CONFIG: Object = {
   },
   'sessionBootcamp':{
     'path': '/sessionbootcamp'
+  },
+  'attendance_status':{
+    'path': '/attendance_status'
+  },
+  'attendance':{
+    'path': '/attendance'
   }
 
 };
