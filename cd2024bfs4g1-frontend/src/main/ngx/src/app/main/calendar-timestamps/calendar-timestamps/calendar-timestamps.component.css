@@ -10,6 +10,9 @@
   align-items: center;
   padding: 5px;
   margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background-color: #f5f0f2;
 }
 
 .sidebar {
