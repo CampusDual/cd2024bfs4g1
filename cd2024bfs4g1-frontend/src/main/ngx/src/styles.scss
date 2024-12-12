@@ -392,6 +392,7 @@ o-column.o-column .o-container > .o-container-title span{
 
 
 
+
  .mat-mdc-fab.mat-primary, .mat-mdc-mini-fab.mat-primary, .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
   --mdc-fab-container-color: #7ec117;
   --mat-mdc-fab-color: #1a3459;
@@ -405,3 +406,8 @@ o-column.o-column .o-container > .o-container-title span{
   accent-color: #8AB237;
 }
 
+
+
+.mat-mdc-option .mat-pseudo-checkbox-minimal {
+  display: none;
+}
