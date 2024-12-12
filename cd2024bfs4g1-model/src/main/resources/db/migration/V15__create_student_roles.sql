@@ -1,19 +1,31 @@
 
-CREATE TABLE public.tmenu(id varchar(100),attr VARCHAR(100),visible BOOLEAN,enabled BOOLEAN,id_rolename INTEGER)
+CREATE TABLE public.tmenu(id varchar(100),attr VARCHAR(100),visible BOOLEAN,enabled BOOLEAN,id_rolename INTEGER);
 INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
-    VALUES ('1', 'admin', true, true, 1),
-           ('2', 'admin', false, false, 2),
-           ('3', 'admin', false, false, 3),
-           ('4', 'bootcamps', true, true, 1),
-           ('5', 'bootcamps', true, true, 2),
-           ('6', 'bootcamps', false, false, 3),
-           ('7', 'students', true, true, 2),
-           ('8', 'students', false, false, 3),
-           ('9', 'home', false, false, 3),
-           ('10', 'students', true, true, 1),
-           ('11', 'personalinfo', true, true, 3),
-           ('12', 'personalinfo', false, false, 2),
-           ('13', 'personalinfo', false, false, 1);
+    VALUES ('1', 'admin', true, true, 1);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('2', 'admin', false, false, 2);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('3', 'admin', false, false, 3);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('4', 'bootcamps', true, true, 1);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('5', 'bootcamps', true, true, 2);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('6', 'bootcamps', false, false, 3);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('7', 'students', true, true, 2);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('8', 'students', false, false, 3);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('9', 'home', false, false, 3);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('10', 'students', true, true, 1);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('11', 'personalinfo', true, true, 3);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('12', 'personalinfo', false, false, 2);
+INSERT INTO public.tmenu (id, attr, visible, enabled, id_rolename)
+   VALUES ('13', 'personalinfo', false, false, 1);
 INSERT INTO public.tmenu (id,attr,visible,enabled,id_rolename)
 	VALUES ('14','config',true,true,1);
 INSERT INTO public.tmenu (id,attr,visible,enabled,id_rolename)
