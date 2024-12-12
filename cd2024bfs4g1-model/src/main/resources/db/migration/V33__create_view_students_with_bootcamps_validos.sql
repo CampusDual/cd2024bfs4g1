@@ -43,8 +43,6 @@ AS SELECT bootcamps.id,bootcamps.name,bootcamps.start_date,bootcamps.end_date,bo
    FROM bootcamps
    order by name collate "es-ES-x-icu";
 
-drop view sessions_status;
-
 CREATE OR REPLACE VIEW public.sessions_status
 AS SELECT sessions.id,sessions.id_bootcamp,sessions.session_name,sessions.session_date,sessions.link,sessions.password,
         CASE
