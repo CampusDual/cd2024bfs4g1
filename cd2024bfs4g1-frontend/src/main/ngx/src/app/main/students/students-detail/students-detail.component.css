@@ -197,7 +197,10 @@ background-color: #f5f0f2;
 display:grid;
 grid-template-columns: 2.5fr 0.5fr;
 }
-
+.cont-card{
+  display: flex;
+  flex-direction: row;
+}
 :host {
   display: flex;
   flex-direction: column;
@@ -365,11 +368,9 @@ div.notification label {
 
 .boton_eliminar {
   border: none;
-  background-color: #F5F0F2;
   border-radius: 10px;
   box-shadow: none;
-
-
+  background-color: white;
 }
 
 .boton_eliminar svg {
@@ -379,5 +380,20 @@ div.notification label {
   fill: #f24444;
   justify-content: center;
   align-items: flex-end;
-
+}
+.pa2{
+  display: none;
+}
+.boton_eliminar:hover .pa2{
+  display: block;
+}
+.boton_eliminar:hover .pa1{
+  display: none;
+}
+.cont-bot{
+  padding-top: 16px ;
+  padding-right: 0px;
+}
+.head{
+  padding-left: 10px;
 }

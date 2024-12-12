@@ -25,6 +25,12 @@ export class AppComponent implements OnInit {
     if (this.ontimizeMatIconRegistry.addOntimizeSvgIcon) {
       this.ontimizeMatIconRegistry.addOntimizeSvgIcon('warning', 'assets/icons/warning.svg');
     }
+    if (this.ontimizeMatIconRegistry.addOntimizeSvgIcon) {
+      this.ontimizeMatIconRegistry.addOntimizeSvgIcon('papelera', 'assets/icons/papelera.svg');
+    }
+    if (this.ontimizeMatIconRegistry.addOntimizeSvgIcon) {
+      this.ontimizeMatIconRegistry.addOntimizeSvgIcon('papelera1', 'assets/icons/papelerareciclaje.svg');
+    }
   }
 
 }
