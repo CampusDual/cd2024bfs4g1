@@ -255,15 +255,23 @@
       <o-form-layout-manager class="selectedrow" mode="dialog">
         <o-form-layout-dialog-options class="popup">
           <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
-            delete-button="true" insert-form-route="new_note" columns="id;nota;id_students;fecha" quick-filter="false"
+            delete-button="true" insert-form-route="new_note" delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
             refresh-button="false" insert-button="true" delete-button="true" detail-mode="true" selectable="true"
             detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
             insert-button-position="" show-buttons-text="false" controls="false">
             <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
-              <mat-card-header >
-                <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
-                <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
-              </mat-card-header>
+              <div class="cont-card">
+                <mat-card-actions class="cont-bot">
+                  <button class="boton_eliminar" (click)="deleteNotes(notas)" >
+                    <mat-icon class="pa1" svgIcon="ontimize:papelera1"></mat-icon>
+                    <mat-icon class="pa2" svgIcon="ontimize:papelera"></mat-icon>
+                  </button>
+                </mat-card-actions>
+                <mat-card-header class="head" >
+                  <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
+                  <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
+                </mat-card-header>
+              </div>
             </mat-card>
 
           </o-list>
