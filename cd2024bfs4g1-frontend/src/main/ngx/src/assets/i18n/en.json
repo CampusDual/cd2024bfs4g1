@@ -82,6 +82,7 @@
   "start_date": "Start date",
   "end_date": "End date",
   "status": "Student status",
+  "status_session": "Session status",
   "situation": "Employment status",
   "phone": "Phone",
   "birth_date": "Birth date",
