@@ -1,3 +1,10 @@
+.button-container{
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap:20px;
+}
+
 .calendar-timestamps-container {
   display: flex;
   flex-direction: row;
@@ -221,10 +228,6 @@ select option {
   overflow-x: hidden;
 }
 
-.button-container {
-  text-align: center;
-  margin-top: 20px;
-}
 
 .custom-select {
   width: 80px;
@@ -264,3 +267,4 @@ select option {
   justify-content: center;
   font-size: 16px;
 }
+

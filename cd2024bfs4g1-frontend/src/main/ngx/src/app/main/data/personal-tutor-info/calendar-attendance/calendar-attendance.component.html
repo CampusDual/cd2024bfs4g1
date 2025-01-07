@@ -1,5 +1,9 @@
 <div class="calendar-timestamps-container">
     <div class="calendar-container">
+        <div class="button-container">
+            <o-button (click)="goToToday()" label="today"></o-button>
+            <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
+        </div>
         <div class="date-item-container">
             <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
             <div class="years" *ngFor="let year of years">
@@ -52,8 +56,5 @@
         </div>
 
 
-        <div class="button-container">
-            <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
-        </div>
     </div>
 </div>
