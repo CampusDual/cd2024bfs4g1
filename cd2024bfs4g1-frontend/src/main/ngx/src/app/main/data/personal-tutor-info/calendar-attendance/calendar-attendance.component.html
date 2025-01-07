@@ -36,24 +36,48 @@
                 <div>{{dayWithWeekDays.dayOfWeek}}</div>
             </div>
         </div>
-        <div class="calendar">
-            <div *ngFor="let student of students" class="student_row days"
-                [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
-                <div>{{ student.name }} {{ student.surname1 }} {{ student.surname2 }}</div>
-                <div *ngFor="let dayWithWeekDay of daysWithWeekDays">
-                    <div class="center-select" *ngIf="isBootcampInRange(dayWithWeekDay.fullDate)"
-                        [matTooltip]="getSelectedTooltip(student, dayWithWeekDay)" matTooltipPosition="below">
-                        <mat-select class="custom-select"
-                            [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)"
-                            (selectionChange)="onSelectChange($event, student, dayWithWeekDay)">
-                            <mat-option *ngFor="let status of statusData" [value]="status.id">
-                                {{ status.abbreviation }}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                </div>
+       <div class="calendar">
+        <div
+          *ngFor="let student of students"
+          class="student_row days"
+          [ngStyle]="{'grid-template-columns': updateDayGridColumns()}"
+        >
+          <div>
+            {{ student.name }} {{ student.surname1 }} {{ student.surname2 }}
+          </div>
+          <div *ngFor="let dayWithWeekDay of daysWithWeekDays">
+            <div
+              class="center-select"
+              *ngIf="isBootcampInRange(dayWithWeekDay.fullDate)"
+              [matTooltip]="getSelectedTooltip(student, dayWithWeekDay)"
+              matTooltipPosition="below"
+
+            >
+              <!-- MAT-SELECT CORREGIDO -->
+              <mat-select
+                class="custom-select"
+                [ngStyle]="{
+                  'background-color': getBackgroundColor(
+                    getAbbreviationByStatusId(
+                      getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)
+                    )
+                  )
+                }"
+                [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)"
+                (selectionChange)="onSelectChange($event, student, dayWithWeekDay)"
+              >
+                <mat-option
+                  *ngFor="let status of statusData"
+                  [value]="status.id"
+                  [ngStyle]="{ 'background-color': getBackgroundColor(status.abbreviation) }"
+                >
+                  {{ status.abbreviation }}
+                </mat-option>
+              </mat-select>
             </div>
+          </div>
         </div>
+      </div>
 
 
     </div>

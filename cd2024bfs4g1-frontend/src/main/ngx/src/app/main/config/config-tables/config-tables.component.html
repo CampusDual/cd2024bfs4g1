@@ -53,18 +53,23 @@
                 </o-form-layout-manager>
         </mat-tab>
         <mat-tab label="Bootcamp">
-            <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px"
-                dialog-min-height="200px" title="LATTENDANCESTATUS">
+            <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LATTENDANCESTATUS">
                 <div class="table_container">
                     <h3 class="titulo_tablas">{{ 'asistencia' | oTranslate }}</h3>
                     <o-form-layout-dialog-options class="popup">
                         <o-table #asistenciaTable attr="asistenciaTable" [quick-filter]="false" class="general_table"
                             detail-form-route="attendancestatus/" insert-form-route="new" service="attendance_status"
-                            entity="attendanceControl" keys="id" columns="id;abbreviation;description"
-                            visible-columns="abbreviation;description" sort-columns="abbreviation"
+                            entity="attendanceControl" keys="id" columns="id;abbreviation;description;color"
+                            visible-columns="abbreviation;description;color" sort-columns="abbreviation"
                             show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
                             select-all-checkbox-visible="true" selection-mode="single" refresh-button="false"
                             pagination-controls="false">
+                            <o-table-column attr="color" title="{{ 'Color' | oTranslate }}">
+                                <ng-template let-row="row" let-index="index">
+                                    <input type="color" [value]="row.color" disabled />
+                                </ng-template>
+                            </o-table-column>
+        
                         </o-table>
                     </o-form-layout-dialog-options>
                 </div>

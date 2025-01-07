@@ -12,6 +12,12 @@
             <label for="REQ_LDESCRIPTION">{{'REQ_LDESCRIPTION' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="description" required="yes" max-length="50"></o-text-input>
         </div>
+        <div>
+            <label for="colorPicker">{{'SelectColor' | oTranslate}}</label>
+            <input id="colorPicker" type="color" [(ngModel)]="selectedColor" />
+            <p>{{'SelectedColor' | oTranslate}} {{ selectedColor }}</p>
+            <o-text-input hidden [data]="selectedColor" attr="color"></o-text-input>
+        </div>
         <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
             <o-button translate="yes" attr="updatebutton" id="update" type="RAISED" label="update" color="primary" (click)="attendance_status_details.update();attendance_status_details.closeDetail()"></o-button>
         </div>

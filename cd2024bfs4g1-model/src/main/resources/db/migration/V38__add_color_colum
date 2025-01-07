@@ -1,0 +1,1 @@
+ALTER TABLE public.attendance_status ADD color char(7) DEFAULT '#FFFFFF' NOT NULL;
