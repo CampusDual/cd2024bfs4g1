@@ -1,9 +1,20 @@
 <div class="calendar-timestamps-container">
     <div class="calendar-container">
         <div class="button-container">
+            <button (click)="openAttendanceDialog()">{{'Multiple Selección' | oTranslate}}</button>
             <o-button (click)="goToToday()" label="today"></o-button>
             <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
         </div>
+
+        <ng-template #attendanceDialog>
+            <h2 mat-dialog-title>Registrar Asistencia</h2>
+            <mat-dialog-content>
+                Selector Dia
+                <o-date-input></o-date-input>
+                Selector Tipo Asistencia
+            </mat-dialog-content>
+        </ng-template>
+
         <div class="date-item-container">
             <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
             <div class="years" *ngFor="let year of years">

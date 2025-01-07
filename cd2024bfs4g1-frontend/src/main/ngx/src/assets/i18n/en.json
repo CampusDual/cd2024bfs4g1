@@ -327,5 +327,6 @@
   "asistenciasSave":"Attendance saved correctly.",
   "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted",
   "SelectColor": "Select a color:  ",
-  "SelectedColor": "Selected color:"
+  "SelectedColor": "Selected color:",
+  "Multiple Selection" : "Multiple Selection"
 }

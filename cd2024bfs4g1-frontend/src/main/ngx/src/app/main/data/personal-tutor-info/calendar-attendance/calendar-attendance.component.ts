@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import 'moment/locale/es';
 import { OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
 import { OSnackBarConfig, SnackBarService } from 'ontimize-web-ngx';
+import { MatDialog } from '@angular/material/dialog';
 
 enum AbbrDayOfWeek {
   Dom = 0,
@@ -41,6 +42,7 @@ interface Day {
   styleUrls: ['./calendar-attendance.component.css']
 })
 export class CalendarAttendanceComponent {
+  @ViewChild('attendanceDialog') attendanceDialog: any;
   protected service: OntimizeService;
 
   @Input('bootcampId')
@@ -77,7 +79,8 @@ export class CalendarAttendanceComponent {
     protected snackBarService: SnackBarService,
     protected injector: Injector,
     private elementRef: ElementRef,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     moment.locale('es');
     this.loadInitialDates();
@@ -415,6 +418,8 @@ export class CalendarAttendanceComponent {
     this.updateCurrentMonthAndYear(); 
   }
   
+
+  openAttendanceDialog() {
+    this.dialog.open(this.attendanceDialog);
+  }
 }
-
-
