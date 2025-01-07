@@ -323,5 +323,6 @@
   "Estudiante" : "Student",
   "Asistencia" : "Attendance",
   "abbreviation" : "Abbreviation",
-  "Alumno" : "Student"
+  "Alumno" : "Student",
+  "asistenciasSave":"Assists saved correctly."
 }

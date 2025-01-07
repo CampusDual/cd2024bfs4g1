@@ -339,7 +339,7 @@ export class CalendarAttendanceComponent {
     this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
       response => {
         this.attendanceModified = [];
-        this.snackBarService.open('Asistencias guardadas correctamente.');
+        this.snackBarService.open('asistenciasSave');
         this.loadAttendance();
       },
       error => {

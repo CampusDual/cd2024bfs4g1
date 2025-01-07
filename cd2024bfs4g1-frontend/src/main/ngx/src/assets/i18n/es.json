@@ -321,5 +321,6 @@
   "Estudiante" : "Estudiante",
   "Asistencia" : "Asistencia",
   "abbreviation" : "Abreviatura",
-  "Alumno" : "Alumno"
+  "Alumno" : "Alumno",
+  "asistenciasSave":"Asistencias guardadas correctamente."
 }
