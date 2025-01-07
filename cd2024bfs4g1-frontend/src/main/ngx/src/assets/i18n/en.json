@@ -319,8 +319,10 @@
   "REQ_LDESCRIPTION" : "Description*",
   "LATTENDANCESTATUS" : "Attendance status",
   "AttendanceSave" : "Save Attendance",
+  "today":"Go today",
   "Estudiante" : "Student",
   "Asistencia" : "Attendance",
   "abbreviation" : "Abbreviation",
-  "Alumno" : "Student"
+  "Alumno" : "Student",
+  "asistenciasSave":"Attendance saved correctly."
 }

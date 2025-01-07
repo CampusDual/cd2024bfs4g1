@@ -317,8 +317,10 @@
   "REQ_LDESCRIPTION" : "Descripción*",
   "LATTENDANCESTATUS" : "Estado de asistencia",
   "AttendanceSave" : "Guardar Asistencia",
+  "today":"Ir a Dia actual",
   "Estudiante" : "Estudiante",
   "Asistencia" : "Asistencia",
   "abbreviation" : "Abreviatura",
-  "Alumno" : "Alumno"
+  "Alumno" : "Alumno",
+  "asistenciasSave":"Asistencias guardadas correctamente."
 }

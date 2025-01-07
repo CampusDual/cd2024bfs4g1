@@ -339,7 +339,7 @@ export class CalendarAttendanceComponent {
     this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
       response => {
         this.attendanceModified = [];
-        this.snackBarService.open('Asistencias guardadas correctamente.');
+        this.snackBarService.open('asistenciasSave');
         this.loadAttendance();
       },
       error => {
@@ -389,4 +389,16 @@ export class CalendarAttendanceComponent {
   isBootcampInRange(date: Date): boolean {
     return date >= this.startBootcampDate && date <= this.endBootcampsDate;
   }
+
+  goToToday(): void {
+    const startOfWeek = moment().startOf('isoWeek');
+    this.startDate = startOfWeek.toDate();
+    this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
+    this.loadDays(); 
+    this.loadStudents(); 
+    this.updateCurrentMonthAndYear(); 
+  }
+  
 }
+
+
