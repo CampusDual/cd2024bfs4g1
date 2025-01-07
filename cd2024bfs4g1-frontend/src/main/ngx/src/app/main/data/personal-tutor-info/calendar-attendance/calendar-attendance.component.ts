@@ -47,7 +47,7 @@ export class CalendarAttendanceComponent {
   selectedStatus: number = 1;
   selectedStartDate : Date;
   selectedEndDate : Date;
-  
+
   protected service: OntimizeService;
 
   @Input('bootcampId')
@@ -369,8 +369,8 @@ export class CalendarAttendanceComponent {
   getBackgroundColor(abbreviation: string): string {
     const status = this.statusData.find(s => s.abbreviation === abbreviation);
     return status ? status.color : '#F5F0F2';
-    
-  } 
+
+  }
   getAttendanceOfDay(student: number, day: Date): number {
 
     if (this.studentMap.get(student)) {
@@ -440,8 +440,8 @@ export class CalendarAttendanceComponent {
     const dates = [];
     let currentDate = new Date(this.selectedStartDate);
     while (currentDate <= this.selectedEndDate) {
-      dates.push(new Date(currentDate));  
-      currentDate.setDate(currentDate.getDate() + 1);  
+      dates.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
     }
 
     return dates;
@@ -449,7 +449,7 @@ export class CalendarAttendanceComponent {
   submitAttendance() {
    const dateRange = this.iterateDateRange();
    console.log('Date Range:', dateRange);
-    
+
    this.attendanceModified = [];
 
    for (const day of dateRange) {
@@ -463,7 +463,7 @@ export class CalendarAttendanceComponent {
       this.attendanceModified[student.student_id + ":" + this.printDate(day)] = newElement;
     }
    }
-  
+
     this.onButtonClick();
     this.loadDays();
     this.updateCurrentMonthAndYear();
