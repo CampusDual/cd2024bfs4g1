@@ -389,4 +389,16 @@ export class CalendarAttendanceComponent {
   isBootcampInRange(date: Date): boolean {
     return date >= this.startBootcampDate && date <= this.endBootcampsDate;
   }
+
+  goToToday(): void {
+    const startOfWeek = moment().startOf('isoWeek');
+    this.startDate = startOfWeek.toDate();
+    this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
+    this.loadDays(); 
+    this.loadStudents(); 
+    this.updateCurrentMonthAndYear(); 
+  }
+  
 }
+
+
