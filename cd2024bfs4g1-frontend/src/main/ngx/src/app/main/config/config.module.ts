@@ -28,7 +28,7 @@ import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new
     TutorTypeNewComponent,
     TutorTypeDetailsComponent,
     AttendanceStatusDetailsComponent,
-    AttendanceStatusNewComponent
+    AttendanceStatusNewComponent,
     StudentBootcampStatusComponent,
     StudentBootcampStatusNewComponent
   ],
