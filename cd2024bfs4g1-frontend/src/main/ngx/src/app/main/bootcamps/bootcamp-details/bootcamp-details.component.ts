@@ -15,6 +15,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 })
 export class BootcampDetailsComponent {
+
   @ViewChild('bootcampDetailForm') bootcampDetailForm:OFormComponent;
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
@@ -23,6 +24,7 @@ export class BootcampDetailsComponent {
   @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
   selectedStatuses: string[] = ['Started', 'Pending']; 
   months: Date[] = [];
+  bootcampId: number;
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
@@ -219,10 +221,12 @@ export class BootcampDetailsComponent {
 
   getFileData() {
     if (this.idNumber) {
+      this.bootcampId = this.idNumber.getValue();
       return { bootcamp_id: this.idNumber.getValue() };
     } else {
       return null;
     }
+    
   }
 
 
@@ -368,6 +372,9 @@ export class BootcampDetailsComponent {
     }
   }
 
+  loadBootcamp() {
+    this.bootcampId= this.bootcampDetailForm.getFieldValue("id");
+  }
 
 
 

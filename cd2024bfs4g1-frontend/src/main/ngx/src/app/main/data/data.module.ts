@@ -8,7 +8,8 @@ import { BootcampStudentsTableComponent } from './personal-tutor-info/bootcamp-s
 import { PersonalInfoSessionsComponent } from './personal-info/personal-info-sessions/personal-info-sessions.component';
 import { UpdateSessionTutorComponent } from './personal-tutor-info/update-session-bootcamp/update-session-tutor.component';
 import { NewSessionBootcampComponent } from './personal-tutor-info/new-session-bootcamp/new-session-bootcamp.component';
-import { CalendarAttendanceComponent } from './personal-tutor-info/calendar-attendance/calendar-attendance.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +19,13 @@ import { CalendarAttendanceComponent } from './personal-tutor-info/calendar-atte
     UpdateSessionTutorComponent,
     PersonalInfoSessionsComponent,
     NewSessionBootcampComponent,
-    CalendarAttendanceComponent
 
   ],
   imports: [
     CommonModule,
     OntimizeWebModule,
-    DataRoutingModule
+    DataRoutingModule,
+    SharedModule
   ]
 })
 export class DataModule { }
