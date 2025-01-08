@@ -160,10 +160,11 @@ export class CalendarAttendanceComponent {
     if (this.service !== null) {
       const columns = ['id', 'abbreviation', 'description','color'];
 
+
       this.service.query({}, columns, 'attendanceControl').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
-            this.statusData = resp.data; // Asignar correctamente los datos a statusData
+            this.statusData = resp.data.sort((a, b) => a.id - b.id); // Asignar correctamente los datos a statusData
           } else {
             this.statusData = [];
           }
@@ -426,11 +427,20 @@ export class CalendarAttendanceComponent {
   }
 
   submitAttendance() {
-    this.configureAttendance();
-    console.log('Selected Date:', this.selectedDate);
-    console.log('Selected Status:', this.selectedStatus);
-    console.log('start date:', this.startDate);
-    console.log('end date:', this.endDate);
+
+    this.attendanceModified = [];
+    for (const student of this.students) {
+      let newElement = {
+        student_id: student.student_id,
+        bootcamp_id: this.bootcampId,
+        status: this.selectedStatus,
+        date: this.printDate(this.selectedDate)
+      };
+      this.attendanceModified[student.student_id + ":" + this.printDate(this.selectedDate)] = newElement;
+    }
+    this.onButtonClick();
+    this.loadDays();
+    this.updateCurrentMonthAndYear();
   }
 
 }
