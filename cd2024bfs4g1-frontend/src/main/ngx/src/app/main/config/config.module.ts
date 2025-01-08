@@ -25,10 +25,10 @@ import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new
     StudentStatusDetailsComponent,
     TutorTypeNewComponent,
     TutorTypeDetailsComponent,
-    StudentBootcampStatusComponent,
-    StudentBootcampStatusNewComponent,
     AttendanceStatusDetailsComponent,
     AttendanceStatusNewComponent
+    StudentBootcampStatusComponent,
+    StudentBootcampStatusNewComponent
   ],
   imports: [
     CommonModule,
