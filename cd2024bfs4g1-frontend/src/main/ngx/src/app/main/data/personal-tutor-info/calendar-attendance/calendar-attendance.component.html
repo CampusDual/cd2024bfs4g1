@@ -1,32 +1,32 @@
 <div class="calendar-timestamps-container">
     <div class="calendar-container">
         <div class="button-container">
-            <o-button (click)="openAttendanceDialog()" label="Multiple Selección"></o-button>
+            <o-button (click)="openAttendanceDialog()" label="Multiple Selection"></o-button>
             <o-button (click)="goToToday()" label="today"></o-button>
             <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
         </div>
 
         <ng-template #attendanceDialog>
-            <h2 mat-dialog-title>Registrar Asistencia</h2>
+            <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
             <mat-dialog-content>
-                <mat-form-field>
-                    <mat-label>Fecha</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+                <mat-form-field class="center-select">
+                    <mat-label>{{'session_date' | oTranslate}}</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Estado</mat-label>
-                    <mat-select [(ngModel)]="selectedStatus">
-                        <mat-option *ngFor="let status of attendanceStatuses" [value]="status.id">
+                <mat-form-field class="center-select">
+                    <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
+                    <mat-select [(ngModel)]="selectedStatus" required>
+                        <mat-option *ngFor="let status of statusData" [value]="status.id">
                             {{ status.abbreviation }} - {{ status.description }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </mat-dialog-content>
-            <mat-dialog-actions>
-                <button mat-button mat-dialog-close>Cancelar</button>
-                <button mat-raised-button color="primary" (click)="submitAttendance()">Guardar</button>
+            <mat-dialog-actions class="center-select">
+                <button mat-button mat-dialog-close>{{'Cancelar' | oTranslate}}</button>
+                <button mat-raised-button (click)="submitAttendance()">{{'Save' | oTranslate}}</button>
             </mat-dialog-actions>
         </ng-template>
 

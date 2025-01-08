@@ -43,9 +43,8 @@ interface Day {
 })
 export class CalendarAttendanceComponent {
   @ViewChild('attendanceDialog') attendanceDialog: any;
-  attendanceStatuses: any[] = [];
-  selectedDate: Date | null = null;
-  selectedStatus: number | null = null;
+  selectedDate: Date = new Date();
+  selectedStatus: number = 1;
 
   protected service: OntimizeService;
 
@@ -428,7 +427,10 @@ export class CalendarAttendanceComponent {
   }
 
   submitAttendance() {
-    
+    console.log('Selected Date:', this.selectedDate);
+    console.log('Selected Status:', this.selectedStatus);
+    console.log('start date:', this.startDate);
+    console.log('end date:', this.endDate);
   }
 
 }

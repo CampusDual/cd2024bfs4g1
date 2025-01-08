@@ -326,7 +326,7 @@
   "STUDENT_HAS_DOCUMENTS":"Este estudiante tiene documentos y no puede ser eliminado",
   "SelectColor": "Selecciona un color:  ",
   "SelectedColor": "Color seleccionado:",
-  "Multiple Selection" : "Multiple Selection"
-
-
+  "Multiple Selection" : "Multiple Selección",
+  "Cancelar" : "Cancelar",
+  "Registrar Asistencia" : "Registrar Asistencia"
 }

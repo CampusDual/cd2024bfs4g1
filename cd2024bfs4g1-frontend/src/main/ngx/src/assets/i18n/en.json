@@ -328,5 +328,7 @@
   "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted",
   "SelectColor": "Select a color:  ",
   "SelectedColor": "Selected color:",
-  "Multiple Selection" : "Multiple Selection"
+  "Multiple Selection" : "Multiple Selection",
+  "Cancelar" : "Cancel",
+  "Registrar Asistencia" : "Register Attendance"
 }

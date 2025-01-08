@@ -1,7 +1,7 @@
 .button-container{
   padding: 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   gap:20px;
 }
 
@@ -265,6 +265,11 @@ select option {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.h1-spacing {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
 }
 
 .mat-select-trigger {
