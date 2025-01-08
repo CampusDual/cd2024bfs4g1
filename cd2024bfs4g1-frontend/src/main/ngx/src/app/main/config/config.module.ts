@@ -14,8 +14,6 @@ import { StudentBootcampStatusComponent } from './student-bootcamp-status/studen
 import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new/student-bootcamp-status-new.component';
 import { AttendanceStatusDetailsComponent } from './attendance-status-details/attendance-status-details.component';
 import { AttendanceStatusNewComponent } from './attendance-status-new/attendance-status-new.component';
-import { StudentBootcampStatusComponent } from './student-bootcamp-status/student-bootcamp-status.component';
-import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new/student-bootcamp-status-new.component';
 
 
 @NgModule({
