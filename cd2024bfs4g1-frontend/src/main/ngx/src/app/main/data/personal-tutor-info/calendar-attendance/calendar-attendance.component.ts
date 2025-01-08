@@ -248,6 +248,7 @@ export class CalendarAttendanceComponent {
 
   //ir a semana anterior
   decSelectedWeek(): void {
+    this.attendanceModified = [];
     this.startDate = moment(this.startDate).subtract(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
@@ -257,6 +258,7 @@ export class CalendarAttendanceComponent {
 
   //ir a semana posterior
   incSelectedWeek(): void {
+    this.attendanceModified = [];
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
@@ -416,6 +418,7 @@ export class CalendarAttendanceComponent {
   }
 
   goToToday(): void {
+    this.attendanceModified = [];
     const startOfWeek = moment().startOf('isoWeek');
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
