@@ -416,17 +416,17 @@ export class CalendarAttendanceComponent {
     const startOfWeek = moment().startOf('isoWeek');
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
-    this.loadDays(); 
-    this.loadStudents(); 
-    this.updateCurrentMonthAndYear(); 
+    this.loadDays();
+    this.loadStudents();
+    this.updateCurrentMonthAndYear();
   }
-  
 
   openAttendanceDialog() {
     this.dialog.open(this.attendanceDialog);
   }
 
   submitAttendance() {
+    this.configureAttendance();
     console.log('Selected Date:', this.selectedDate);
     console.log('Selected Status:', this.selectedStatus);
     console.log('start date:', this.startDate);
