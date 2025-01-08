@@ -1,7 +1,7 @@
 <div class="calendar-timestamps-container">
     <div class="calendar-container">
         <div class="button-container">
-            <button (click)="openAttendanceDialog()">{{'Multiple Selección' | oTranslate}}</button>
+            <o-button (click)="openAttendanceDialog()" label="Multiple Selección"></o-button>
             <o-button (click)="goToToday()" label="today"></o-button>
             <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
         </div>
@@ -9,10 +9,25 @@
         <ng-template #attendanceDialog>
             <h2 mat-dialog-title>Registrar Asistencia</h2>
             <mat-dialog-content>
-                Selector Dia
-                <o-date-input></o-date-input>
-                Selector Tipo Asistencia
+                <mat-form-field>
+                    <mat-label>Fecha</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <mat-select [(ngModel)]="selectedStatus">
+                        <mat-option *ngFor="let status of attendanceStatuses" [value]="status.id">
+                            {{ status.abbreviation }} - {{ status.description }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </mat-dialog-content>
+            <mat-dialog-actions>
+                <button mat-button mat-dialog-close>Cancelar</button>
+                <button mat-raised-button color="primary" (click)="submitAttendance()">Guardar</button>
+            </mat-dialog-actions>
         </ng-template>
 
         <div class="date-item-container">

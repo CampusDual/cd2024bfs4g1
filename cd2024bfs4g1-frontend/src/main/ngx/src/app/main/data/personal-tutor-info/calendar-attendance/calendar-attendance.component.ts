@@ -43,6 +43,10 @@ interface Day {
 })
 export class CalendarAttendanceComponent {
   @ViewChild('attendanceDialog') attendanceDialog: any;
+  attendanceStatuses: any[] = [];
+  selectedDate: Date | null = null;
+  selectedStatus: number | null = null;
+
   protected service: OntimizeService;
 
   @Input('bootcampId')
@@ -422,4 +426,9 @@ export class CalendarAttendanceComponent {
   openAttendanceDialog() {
     this.dialog.open(this.attendanceDialog);
   }
+
+  submitAttendance() {
+    
+  }
+
 }
