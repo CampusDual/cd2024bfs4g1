@@ -45,7 +45,9 @@ export class CalendarAttendanceComponent {
   @ViewChild('attendanceDialog') attendanceDialog: any;
   selectedDate: Date = new Date();
   selectedStatus: number = 1;
-
+  selectedStartDate : Date;
+  selectedEndDate : Date;
+  
   protected service: OntimizeService;
 
   @Input('bootcampId')
@@ -426,21 +428,43 @@ export class CalendarAttendanceComponent {
     this.dialog.open(this.attendanceDialog);
   }
 
-  submitAttendance() {
+  iterateDateRange() {
+    if (!this.selectedStartDate || !this.selectedEndDate) {
+      console.error('Por favor selecciona ambas fechas.');
+      return;
+    }
 
-    this.attendanceModified = [];
+    const dates = [];
+    let currentDate = new Date(this.selectedStartDate);
+    while (currentDate <= this.selectedEndDate) {
+      dates.push(new Date(currentDate));  
+      currentDate.setDate(currentDate.getDate() + 1);  
+    }
+
+    return dates;
+  }
+  submitAttendance() {
+   const dateRange = this.iterateDateRange();
+   console.log('Date Range:', dateRange);
+    
+   this.attendanceModified = [];
+
+   for (const day of dateRange) {
     for (const student of this.students) {
       let newElement = {
         student_id: student.student_id,
         bootcamp_id: this.bootcampId,
         status: this.selectedStatus,
-        date: this.printDate(this.selectedDate)
+        date: this.printDate(day)
       };
-      this.attendanceModified[student.student_id + ":" + this.printDate(this.selectedDate)] = newElement;
+      this.attendanceModified[student.student_id + ":" + this.printDate(day)] = newElement;
     }
+   }
+  
     this.onButtonClick();
     this.loadDays();
     this.updateCurrentMonthAndYear();
+    this.dialog.closeAll();
   }
 
 }

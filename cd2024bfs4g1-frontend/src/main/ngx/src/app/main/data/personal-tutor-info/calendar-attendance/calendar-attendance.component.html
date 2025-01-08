@@ -9,12 +9,15 @@
         <ng-template #attendanceDialog>
             <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
             <mat-dialog-content>
-                <mat-form-field class="center-select">
-                    <mat-label>{{'session_date' | oTranslate}}</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
+                <mat-form-field appearance="fill">
+                    <mat-label>{{ 'Seleccionar Rango de Fechas' | oTranslate }}</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input matStartDate placeholder="Fecha de inicio" [(ngModel)]="selectedStartDate">
+                      <input matEndDate placeholder="Fecha de fin" [(ngModel)]="selectedEndDate">
+                    </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
                 <mat-form-field class="center-select">
                     <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
                     <mat-select [(ngModel)]="selectedStatus" required>
