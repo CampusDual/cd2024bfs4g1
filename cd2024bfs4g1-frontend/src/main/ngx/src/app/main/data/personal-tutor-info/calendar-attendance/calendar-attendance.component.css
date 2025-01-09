@@ -76,7 +76,7 @@
 }
 
 .custom-select .mat-select-panel {
-  background-color: #fff !important; /* Cambia el color del panel desplegable */
+  background-color: #fff ; /* Cambia el color del panel desplegable */
 }
 
 .bootcamp:hover {
