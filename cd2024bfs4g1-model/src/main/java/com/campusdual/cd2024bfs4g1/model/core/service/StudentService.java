@@ -8,7 +8,6 @@ import com.campusdual.cd2024bfs4g1.model.core.dao.*;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
-import com.ontimize.jee.common.db.NullValue;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -49,6 +48,9 @@ public class StudentService implements IStudentService {
 
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	private StudentDocumentDao studentDocumentDao;
 
 	@Override
 	public EntityResult studentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
@@ -263,6 +265,10 @@ public class StudentService implements IStudentService {
 		Map<String,Object> deletekey3 = new Hashtable<>();
 		deletekey3.put(EmploymentStatusHistoryDao.ATTR_STUDENT_ID,keyMap.get(StudentDao.STU_ID));
 		EntityResult query3 = this.daoHelper.query(this.employmentStatusHistoryDao,deletekey3,Arrays.asList(EmploymentStatusHistoryDao.ATTR_STUDENT_ID));
+		Map<String,Object> deletekey4 = new Hashtable<>();
+		deletekey4.put(StudentDocumentDao.ATTR_ID_STUDENT,keyMap.get(StudentDao.STU_ID));
+		EntityResult query4 = this.daoHelper.query(this.studentDocumentDao,deletekey4,Arrays.asList(StudentDocumentDao.ATTR_ID_STUDENT));
+
 
 		if(!query.isEmpty()){
 			EntityResult error = new EntityResultMapImpl();
@@ -279,6 +285,11 @@ public class StudentService implements IStudentService {
 			error3.setCode(EntityResult.OPERATION_WRONG);
 			error3.setMessage("STUDENT_HAS_STATUS");
 			return error3;
+		}else if(!query4.isEmpty()){
+			EntityResult error4 = new EntityResultMapImpl();
+			error4.setCode(EntityResult.OPERATION_WRONG);
+			error4.setMessage("STUDENT_HAS_DOCUMENTS");
+			return error4;
 		}else {
 			return this.daoHelper.delete(this.studentDao, keyMap);
 		}
