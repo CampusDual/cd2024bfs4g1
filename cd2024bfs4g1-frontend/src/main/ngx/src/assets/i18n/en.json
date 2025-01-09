@@ -325,6 +325,8 @@
   "abbreviation" : "Abbreviation",
   "Alumno" : "Student",
   "asistenciasSave":"Attendance saved correctly.",
+  "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted"
+
   "SelectColor": "Select a color:  ",
   "SelectedColor": "Selected color:"
 }
