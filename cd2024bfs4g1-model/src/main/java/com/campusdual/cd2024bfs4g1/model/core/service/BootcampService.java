@@ -1,10 +1,7 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IBootcampService;
-import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
-import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
-import com.campusdual.cd2024bfs4g1.model.core.dao.TutorBootcampDao;
-import com.campusdual.cd2024bfs4g1.model.core.dao.TutorDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.*;
 import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -30,6 +27,8 @@ public class BootcampService implements IBootcampService {
     private StudentBootcampDao studentBootcampDao;
     @Autowired
     private TutorBootcampDao tutorBootcampDao;
+    @Autowired
+    private BootcampDocumentDao bootcampDocumentDao;
 
 
     @Override
@@ -104,14 +103,22 @@ public class BootcampService implements IBootcampService {
     public EntityResult bootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         Map<String,Object> deletekey = new Hashtable<>();
         Map<String,Object> deletekey2 = new Hashtable<>();
+        Map<String,Object> deletekey3 = new Hashtable<>();
         deletekey.put(StudentBootcampDao.BOOTCAMP_ID,keyMap.get(BootcampDao.ATTR_ID));
         deletekey2.put(TutorBootcampDao.BOOTCAMP_ID,keyMap.get(BootcampDao.ATTR_ID));
+        deletekey3.put(BootcampDocumentDao.ATTR_ID_BOOTCAMP,keyMap.get(BootcampDao.ATTR_ID));
         EntityResult query = this.daoHelper.query(this.studentBootcampDao,deletekey,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
         EntityResult query2 = this.daoHelper.query(this.tutorBootcampDao,deletekey2,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
+        EntityResult query3 = this.daoHelper.query(this.bootcampDocumentDao,deletekey3,Arrays.asList(StudentBootcampDao.BOOTCAMP_ID));
         if(!query.isEmpty()||!query2.isEmpty()){
             EntityResult error = new EntityResultMapImpl();
             error.setCode(EntityResult.OPERATION_WRONG);
             error.setMessage("BOOTCAMP_HAS_STUDENTS");
+            return error;
+        }else if(!query.isEmpty()||!query3.isEmpty()){
+            EntityResult error = new EntityResultMapImpl();
+            error.setCode(EntityResult.OPERATION_WRONG);
+            error.setMessage("BOOTCAMP_HAS_DOCUMENTS");
             return error;
         }else {
             return this.daoHelper.delete(this.bootcampDao, keyMap);
