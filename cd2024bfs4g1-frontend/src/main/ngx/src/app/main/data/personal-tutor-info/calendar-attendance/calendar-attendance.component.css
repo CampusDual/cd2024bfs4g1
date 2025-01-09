@@ -71,7 +71,13 @@
   display: grid;
 }
 
+.custom-select {
+  background-color: #fff; /* Cambia el color de fondo del botón select */
+}
 
+.custom-select .mat-select-panel {
+  background-color: #fff ; /* Cambia el color del panel desplegable */
+}
 
 .bootcamp:hover {
   background-color: #C8DBC2;

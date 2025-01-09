@@ -152,7 +152,7 @@ export class CalendarAttendanceComponent {
   }
   getAttendanceStatus() {
     if (this.service !== null) {
-      const columns = ['id', 'abbreviation', 'description'];
+      const columns = ['id', 'abbreviation', 'description','color'];
 
       this.service.query({}, columns, 'attendanceControl').subscribe(resp => {
         if (resp.code === 0) {
@@ -301,6 +301,8 @@ export class CalendarAttendanceComponent {
     return 'white';
   }
 
+  updateCSSfaultInfo
+
   //Cambiar color al dia actual (font)
   updateDayCSSFontWeightForCurrentDay(day: number) {
     if (moment().isSame(moment(this.startDate).date(day), 'day')) {
@@ -316,7 +318,9 @@ export class CalendarAttendanceComponent {
 
   onSelectChange(event: any, student: Student, day: Day): void {
     const selectedStatus = event.value;
-
+    console.log(event);
+    console.log(student);
+    console.log(day);
     let newElement = {
       student_id: student.student_id,
       bootcamp_id: this.bootcampId,
@@ -325,6 +329,8 @@ export class CalendarAttendanceComponent {
     };
 
     this.attendanceModified[student.student_id + ":" + this.printDate(day.fullDate)] = newElement;
+
+    this.studentMap.get(student.student_id).set(this.printDate(day.fullDate),selectedStatus);
   }
 
   getSelectedTooltip(student: any, dayWithWeekDay: any): string | null {
@@ -349,6 +355,11 @@ export class CalendarAttendanceComponent {
     );
   }
 
+  getBackgroundColor(abbreviation: string): string {
+    const status = this.statusData.find(s => s.abbreviation === abbreviation);
+    return status ? status.color : '#F5F0F2';
+    
+  } 
   getAttendanceOfDay(student: number, day: Date): number {
 
     if (this.studentMap.get(student)) {
@@ -357,6 +368,11 @@ export class CalendarAttendanceComponent {
       return null;
     }
 
+  }
+
+  getAbbreviationByStatusId(statusId: number): string {
+    const status = this.statusData.find(s => s.id === statusId);
+    return status ? status.abbreviation : 'N/A'; // Devuelve 'N/A' si no se encuentra
   }
 
   getBootcampDates(): void {
