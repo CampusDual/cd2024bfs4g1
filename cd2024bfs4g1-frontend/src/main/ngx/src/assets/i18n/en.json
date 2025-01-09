@@ -325,6 +325,8 @@
   "abbreviation" : "Abbreviation",
   "Alumno" : "Student",
   "asistenciasSave":"Attendance saved correctly.",
+  "NOT_DELETABLE_TUTOR_TYPE_IS_IN_USE": "The mentor type you want to delete is in use",
+  "TUTOR_TYPE_CANNOT_BE_EMPTY": "The mentor type cannot be empty"
   "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted",
   "SelectColor": "Select a color:  ",
   "SelectedColor": "Selected color:",
