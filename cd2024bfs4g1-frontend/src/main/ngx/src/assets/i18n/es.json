@@ -328,5 +328,7 @@
   "SelectedColor": "Color seleccionado:",
   "Multiple Selection" : "Multiple Selección",
   "Cancelar" : "Cancelar",
-  "Registrar Asistencia" : "Registrar Asistencia"
+  "Registrar Asistencia" : "Registrar Asistencia",
+  "Attendance_Warning": "Esta acción sobreescribirá todos los registros de asistencia en ese rango de días.",
+  "Attendance_Range": "Seleccionar Rango de Fechas"
 }

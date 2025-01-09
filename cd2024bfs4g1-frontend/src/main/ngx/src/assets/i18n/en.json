@@ -330,5 +330,7 @@
   "SelectedColor": "Selected color:",
   "Multiple Selection" : "Multiple Selection",
   "Cancelar" : "Cancel",
-  "Registrar Asistencia" : "Register Attendance"
+  "Registrar Asistencia" : "Register Attendance",
+  "Attendance_Warning" : "This action will overwrite all attendance records in that day range.",
+  "Attendance_Range" : "Select date range"
 }
