@@ -25,6 +25,7 @@ interface Bootcamp {
 interface Day {
   day: number;
   dayOfWeek: string;
+  date: Date;
 }
 
 @Component({
@@ -128,6 +129,7 @@ export class CalendarTimestampsComponent {
       this.daysWithWeekDays.push({
         day: current.date(),
         dayOfWeek: AbbrDayOfWeek[current.day()],
+        date: current.toDate()
       });
       current.add(1, 'days');
     }
@@ -265,22 +267,28 @@ export class CalendarTimestampsComponent {
     }
   }
 
-  updateDayCSSForCurrentDay(day: number) {
-    if (moment().isSame(moment(this.startDate).date(day), 'day')) {
+  isToday(day: Date): boolean {
+    day.setHours(0, 0, 0, 0);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return day.getTime() == today.getTime();
+  }
+  updateDayCSSForCurrentDay(day: Date) {
+    if (this.isToday(day)) {
       return '#8AB237';
     }
     return '#1a3459';
   }
 
-  updateDayCSSFontColorForCurrentDay(day: number) {
-    if (moment().isSame(moment(this.startDate).date(day), 'day')) {
+  updateDayCSSFontColorForCurrentDay(day: Date) {
+    if (this.isToday(day)) {
       return 'black';
     }
     return 'white';
   }
 
-  updateDayCSSFontWeightForCurrentDay(day: number) {
-    if (moment().isSame(moment(this.startDate).date(day), 'day')) {
+  updateDayCSSFontWeightForCurrentDay(day: Date) {
+    if (this.isToday(day)) {
       return 'bold';
     }
     return 'normal';
