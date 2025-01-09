@@ -80,6 +80,7 @@ public class StudentStatusService implements IStudentStatusService {
         }
     }
 
+
     @Override
     public AdvancedEntityResult studentStatusPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.studentStatusDao, keyMap, attrList, recordNumber, startIndex, orderBy);
