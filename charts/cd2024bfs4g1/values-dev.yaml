@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
   ## provided as basic setup. replace as needed
   repository: ghcr.io/campusdual/cd2024bfs4g1
-  version: dev367590f
+  version: devada4edb
 imagePullSecrets: 
   - name: "github-ecr-cred" 
 nameOverride: ""
