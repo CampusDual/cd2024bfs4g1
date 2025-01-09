@@ -7,31 +7,41 @@
         </div>
 
         <ng-template #attendanceDialog>
-            <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
-            <mat-dialog-content>
-                <mat-form-field appearance="fill">
-                    <mat-label>{{ 'Seleccionar Rango de Fechas' | oTranslate }}</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                      <input matStartDate placeholder="Fecha de inicio" [(ngModel)]="selectedStartDate">
-                      <input matEndDate placeholder="Fecha de fin" [(ngModel)]="selectedEndDate">
-                    </mat-date-range-input>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
+          <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
+          <mat-dialog-content>
+              <div class="center-content">
+                  <mat-form-field class="fixed-size">
+                      <mat-label>{{ 'Seleccionar Rango de Fechas' | oTranslate }}</mat-label>
+                      <mat-date-range-input [rangePicker]="picker">
+                          <input matStartDate placeholder="Fecha de inicio" [(ngModel)]="selectedStartDate">
+                          <input matEndDate placeholder="Fecha de fin" [(ngModel)]="selectedEndDate">
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker></mat-date-range-picker>
                   </mat-form-field>
-                <mat-form-field class="center-select">
-                    <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
-                    <mat-select [(ngModel)]="selectedStatus" required>
-                        <mat-option *ngFor="let status of statusData" [value]="status.id">
-                            {{ status.abbreviation }} - {{ status.description }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </mat-dialog-content>
-            <mat-dialog-actions class="center-select">
-                <button mat-button mat-dialog-close>{{'Cancelar' | oTranslate}}</button>
-                <button mat-raised-button (click)="submitAttendance()">{{'Save' | oTranslate}}</button>
-            </mat-dialog-actions>
-        </ng-template>
+              </div>
+              <div class="center-content">
+                  <mat-form-field class="fixed-size">
+                      <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
+                      <mat-select [(ngModel)]="selectedStatus" required>
+                          <mat-option *ngFor="let status of statusData" [value]="status.id">
+                              {{ status.abbreviation }} - {{ status.description }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+      
+              <mat-label class="warning">
+                  <mat-icon>warning</mat-icon>
+                  {{'Esta acción sobreescribirá todos los registros de asistencia en ese rango de días.' | oTranslate}}
+              </mat-label>
+          </mat-dialog-content>
+          <mat-dialog-actions class="center-select">
+              <button mat-button mat-dialog-close>{{'Cancelar' | oTranslate}}</button>
+              <button mat-raised-button (click)="submitAttendance()">{{'Save' | oTranslate}}</button>
+          </mat-dialog-actions>
+      </ng-template>
+      
 
         <div class="date-item-container">
             <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
