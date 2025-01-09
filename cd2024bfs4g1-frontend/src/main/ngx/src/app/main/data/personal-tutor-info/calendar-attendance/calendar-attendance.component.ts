@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import 'moment/locale/es';
 import { OntimizeService, OTextInputComponent } from 'ontimize-web-ngx';
 import { OSnackBarConfig, SnackBarService } from 'ontimize-web-ngx';
+import { MatDialog } from '@angular/material/dialog';
 
 enum AbbrDayOfWeek {
   Dom = 0,
@@ -41,6 +42,12 @@ interface Day {
   styleUrls: ['./calendar-attendance.component.css']
 })
 export class CalendarAttendanceComponent {
+  @ViewChild('attendanceDialog') attendanceDialog: any;
+  selectedDate: Date = new Date();
+  selectedStatus: number = 1;
+  selectedStartDate : Date;
+  selectedEndDate : Date;
+
   protected service: OntimizeService;
 
   @Input('bootcampId')
@@ -77,7 +84,8 @@ export class CalendarAttendanceComponent {
     protected snackBarService: SnackBarService,
     protected injector: Injector,
     private elementRef: ElementRef,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     moment.locale('es');
     this.loadInitialDates();
@@ -154,10 +162,11 @@ export class CalendarAttendanceComponent {
     if (this.service !== null) {
       const columns = ['id', 'abbreviation', 'description','color'];
 
+
       this.service.query({}, columns, 'attendanceControl').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
-            this.statusData = resp.data; // Asignar correctamente los datos a statusData
+            this.statusData = resp.data.sort((a, b) => a.id - b.id); // Asignar correctamente los datos a statusData
           } else {
             this.statusData = [];
           }
@@ -239,6 +248,7 @@ export class CalendarAttendanceComponent {
 
   //ir a semana anterior
   decSelectedWeek(): void {
+    this.attendanceModified = [];
     this.startDate = moment(this.startDate).subtract(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
@@ -248,6 +258,7 @@ export class CalendarAttendanceComponent {
 
   //ir a semana posterior
   incSelectedWeek(): void {
+    this.attendanceModified = [];
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
@@ -358,8 +369,8 @@ export class CalendarAttendanceComponent {
   getBackgroundColor(abbreviation: string): string {
     const status = this.statusData.find(s => s.abbreviation === abbreviation);
     return status ? status.color : '#F5F0F2';
-    
-  } 
+
+  }
   getAttendanceOfDay(student: number, day: Date): number {
 
     if (this.studentMap.get(student)) {
@@ -407,14 +418,56 @@ export class CalendarAttendanceComponent {
   }
 
   goToToday(): void {
+    this.attendanceModified = [];
     const startOfWeek = moment().startOf('isoWeek');
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
-    this.loadDays(); 
-    this.loadStudents(); 
-    this.updateCurrentMonthAndYear(); 
+    this.loadDays();
+    this.loadStudents();
+    this.updateCurrentMonthAndYear();
   }
-  
+
+  openAttendanceDialog() {
+    this.dialog.open(this.attendanceDialog);
+  }
+
+  iterateDateRange() {
+    if (!this.selectedStartDate || !this.selectedEndDate) {
+      console.error('Por favor selecciona ambas fechas.');
+      return;
+    }
+
+    const dates = [];
+    let currentDate = new Date(this.selectedStartDate);
+    while (currentDate <= this.selectedEndDate) {
+      dates.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return dates;
+  }
+  submitAttendance() {
+   const dateRange = this.iterateDateRange();
+   console.log('Date Range:', dateRange);
+
+   this.attendanceModified = [];
+
+   for (const day of dateRange) {
+    for (const student of this.students) {
+      let newElement = {
+        student_id: student.student_id,
+        bootcamp_id: this.bootcampId,
+        status: this.selectedStatus,
+        date: this.printDate(day)
+      };
+      this.attendanceModified[student.student_id + ":" + this.printDate(day)] = newElement;
+    }
+   }
+
+    this.onButtonClick();
+    this.loadDays();
+    this.updateCurrentMonthAndYear();
+    this.dialog.closeAll();
+  }
+
 }
-
-
