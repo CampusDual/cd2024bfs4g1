@@ -322,5 +322,7 @@
   "Asistencia" : "Asistencia",
   "abbreviation" : "Abreviatura",
   "Alumno" : "Alumno",
-  "asistenciasSave":"Asistencias guardadas correctamente."
+  "asistenciasSave":"Asistencias guardadas correctamente.",
+  "NOT_DELETABLE_TUTOR_TYPE_IS_IN_USE": "El tipo de tutor que quieres eliminar esta ya en uso",
+  "TUTOR_TYPE_CANNOT_BE_EMPTY": "El tipo de tutor no puede estar vacio"
 }
