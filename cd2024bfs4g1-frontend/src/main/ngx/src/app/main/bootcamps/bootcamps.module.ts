@@ -11,6 +11,7 @@ import { BootcampTimetableNewComponent } from './bootcamp-details/bootcamp-timet
 import { TutorBootcampAddComponent } from './bootcamp-details/tutor-bootcamp-add/tutor-bootcamp-add.component';
 import { NewSessionBootcampComponent } from './bootcamp-details/new-session-bootcamp/new-session-bootcamp.component';
 import { UpdateSessionBootcampComponent } from './bootcamp-details/update-session-bootcamp/update-session-bootcamp.component';
+import { SharedModule } from "../../shared/shared.module";
 
 
 
@@ -30,7 +31,8 @@ import { UpdateSessionBootcampComponent } from './bootcamp-details/update-sessio
   imports: [
     CommonModule,
     OntimizeWebModule,
-    BootcampsRoutingModule
-  ]
+    BootcampsRoutingModule,
+    SharedModule
+]
 })
 export class BootcampsModule { }
