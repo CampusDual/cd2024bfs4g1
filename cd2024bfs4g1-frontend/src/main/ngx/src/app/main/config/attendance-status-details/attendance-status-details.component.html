@@ -1,5 +1,5 @@
 <o-form #attendance_status_details confirm-exit="no" attr="attendance_details_status" service="attendance_status" entity="attendanceControl" keys="id" show-header="no"
-    header-actions="I;U;D" show-header-navigation="no">
+    header-actions="I;U;D" show-header-navigation="no" (onDataLoaded)="cargarColor()">
 
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
 
@@ -16,7 +16,7 @@
             <label for="colorPicker">{{'SelectColor' | oTranslate}}</label>
             <input id="colorPicker" type="color" [(ngModel)]="selectedColor" />
             <p>{{'SelectedColor' | oTranslate}} {{ selectedColor }}</p>
-            <o-text-input hidden [data]="selectedColor" attr="color"></o-text-input>
+            <o-text-input #colorselecionado hidden [data]="selectedColor" attr="color"></o-text-input>
         </div>
         <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
             <o-button translate="yes" attr="updatebutton" id="update" type="RAISED" label="update" color="primary" (click)="attendance_status_details.update();attendance_status_details.closeDetail()"></o-button>

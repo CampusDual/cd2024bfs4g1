@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { OTextInputComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-attendance-status-details',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./attendance-status-details.component.css']
 })
 export class AttendanceStatusDetailsComponent {
-  selectedColor: string = '#ffffff';
+
+  @ViewChild("colorselecionado") colorselecionado: OTextInputComponent;
+  selectedColor: any;
+
+  cargarColor() {
+    this.selectedColor=this.colorselecionado.getValue();
+  }
 }
