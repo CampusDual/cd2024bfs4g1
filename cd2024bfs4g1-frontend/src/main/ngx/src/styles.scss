@@ -436,6 +436,12 @@ o-column.o-column .o-container > .o-container-title span{
 
 }
 
+
+.mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix{
+  padding-bottom: 4px;
+  padding-top: 10px;
+}
+
 .mat-calendar-body-selected{
   background-color: #1a3459;
 }
