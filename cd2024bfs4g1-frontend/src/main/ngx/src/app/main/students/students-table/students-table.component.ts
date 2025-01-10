@@ -62,7 +62,7 @@ export class StudentsTableComponent {
     }
   }
 
-  checked: boolean = true;
+  checked: boolean = false;
 
   toggleFinished(event: MatSlideToggleChange): void {
     this.checked = event.checked;
