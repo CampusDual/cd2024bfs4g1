@@ -53,6 +53,8 @@
                     [expression-builder]="createFilter.bind(this)"></o-filter-builder>
             </o-column-collapsible>
 
+
+
             <div>
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
                 <o-table #tableStudents sort-columns="name:ASC" virtual-scroll="false" class="general_table"
@@ -61,7 +63,9 @@
                 campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;user_id;status;usr_photo;bootcamps_id;validos;bootcamps_id"
                     visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone"
                     delete-button="false" pageable="true" show-report-on-demand-option="false"
-                    show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()">
+                    show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()" context-menu="false">
+
+                    <o-table-button attr="csv_buttom" label="{{ 'IMPORT_CSV' | oTranslate }}" icon="upload" (onClick)="onImportCsv()"></o-table-button>
                     <o-table-column attr="name" title="Name" sortable="true"></o-table-column>
                     <o-table-column attr="surname1" title="FIRST_SURNAME" sortable="true"></o-table-column>
                     <o-table-column attr="surname2" title="LAST_SURNAME" sortable="true"></o-table-column>

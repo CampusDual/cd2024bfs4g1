@@ -26,7 +26,24 @@
     justify-content: center;
 }
 
-@media (max-width: 1250px) {
+
+  .rounded-container {
+    background-color: #f8f4f4;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 95%; 
+    margin-left: auto; 
+    margin-right: auto;
+    gap: 10px;
+  }
+
+  @media (max-width: 1250px) {
     .config-container{
       grid-template-columns: 1fr; 
     }
@@ -40,7 +57,11 @@
       max-height: 100%;
     }
 
+    .rounded-container{
+      max-width: 73%;
+    }
   }
+
   .form-class .mat-success{
     width: 100%;
     height: 100%;
@@ -51,3 +72,4 @@
     margin: 0 auto;
 
   }
+

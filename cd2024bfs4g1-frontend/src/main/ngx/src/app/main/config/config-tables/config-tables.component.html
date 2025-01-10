@@ -1,36 +1,49 @@
 <o-form-layout-manager attr="configLayout" class="form-class">
-  <mat-tab-group animationDuration="0ms" class="mat-success">
-    <mat-tab label="{{ 'Student' | oTranslate }}">
-      <div class="config-container">
-        <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LEMPLOYMENTSTATUS">
-          <div class="table_container">
-            <h3 class="titulo_tablas">{{ 'LEMPLOYMENTSTATUS' | oTranslate }}</h3>
-            <o-form-layout-dialog-options class="popup">
-              <o-table #employmentStatusTable [quick-filter]="false" class="general_table"
-                      detail-form-route="employmentstatus/"
-                      insert-form-route="new" quick-filter="true" attr="employmentStatusTable"
-                      service="employmentstatus" entity="employmentStatus" keys="id" columns="id;situation"
-                      visible-columns="situation" sort-columns="situation"
-                      show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
-                      select-all-checkbox-visible="true" selection-mode="single" refresh-button="no"
-                      pagination-controls="false">
-              </o-table>
-            </o-form-layout-dialog-options>
-          </div>
+    <mat-tab-group animationDuration="0ms" class="mat-success">
+        <mat-tab label="{{ 'Student' | oTranslate }}">
+            <o-form-layout-manager attr="configDocuments" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+            title="DOCUMENTS">
+            <h3 class="titulo_tablas">{{ 'DOCUMENTATION' | oTranslate }}</h3>
+            <div class="rounded-container">
+                <o-button attr="myButton" class="btn_down_csv" label="{{'Plantilla_CSV' | oTranslate}}" icon="download"
+                    (onClick)="downloadCsvTemplate()"></o-button>
+                <o-button attr="myButton" class="btn_down_csv" label="{{'Ejemplo_CSV' | oTranslate}}" icon="download"
+                    (onClick)="downloadCsvExample()"></o-button>
+            </div>
         </o-form-layout-manager>
-        <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LSTUDENTSTATUS">
-          <div class="table_container">
-            <h3 class="titulo_tablas">{{ 'LSTUDENTSTATUS' | oTranslate }}</h3>
-            <o-form-layout-dialog-options class="popup">
-              <o-table #studentStatusTable class="general_table" [quick-filter]="false"detail-form-route="studentstatus/"
-                      insert-form-route="new" quick-filter="true" attr="studentsStatusTable"
-                      service="studentstatus" entity="studentStatus" keys="id" columns="id;status"
-                      visible-columns="status" sort-columns="status" show-report-on-demand-option="false"
-                      translate="yes" show-charts-on-demand-option="false" select-all-checkbox-visible="true"
-                      selection-mode="single" refresh-button="no" pagination-controls="false">
+            <div class="config-container">
+                <o-form-layout-manager attr="configLaboral" mode="dialog" dialog-min-width="450px"
+                    dialog-min-height="200px" title="LEMPLOYMENTSTATUS">
+                    <div class="table_container">
+                        <h3 class="titulo_tablas">{{ 'LEMPLOYMENTSTATUS' | oTranslate }}</h3>
+                        <o-form-layout-dialog-options class="popup">
+                            <o-table #employmentStatusTable [quick-filter]="false" class="general_table"
+                                detail-form-route="employmentstatus/" insert-form-route="new" quick-filter="true"
+                                attr="employmentStatusTable" service="employmentstatus" entity="employmentStatus"
+                                keys="id" columns="id;situation" visible-columns="situation" sort-columns="situation"
+                                show-report-on-demand-option="false" translate="yes"
+                                show-charts-on-demand-option="false" select-all-checkbox-visible="true"
+                                selection-mode="single" refresh-button="no" pagination-controls="false">
+                            </o-table>
+                        </o-form-layout-dialog-options>
+                    </div>
+                </o-form-layout-manager>
+                <o-form-layout-manager attr="configEstado" mode="dialog" dialog-min-width="450px"
+                    dialog-min-height="200px" title="LSTUDENTSTATUS">
+                    <div class="table_container">
+                        <h3 class="titulo_tablas">{{ 'LSTUDENTSTATUS' | oTranslate }}</h3>
+                        <o-form-layout-dialog-options class="popup">
+                            <o-table #studentStatusTable class="general_table" [quick-filter]="false"
+                                detail-form-route="studentstatus/" insert-form-route="new" quick-filter="true"
+                                attr="studentsStatusTable" service="studentstatus" entity="studentStatus" keys="id"
+                                columns="id;status" visible-columns="status" sort-columns="status"
+                                show-report-on-demand-option="false" translate="yes"
+                                show-charts-on-demand-option="false" select-all-checkbox-visible="true"
+                                selection-mode="single" refresh-button="no" pagination-controls="false">
 
               </o-table>
             </o-form-layout-dialog-options>
+            
           </div>
           <div class="table_container">
             <h3 class="titulo_tablas">{{ 'LSTUDENTSBOOTCAMPSSTATUS' | oTranslate }}</h3>
@@ -55,23 +68,24 @@
                     </div>
                 </o-form-layout-manager>
             </div>
+
         </mat-tab>
         <mat-tab label="{{ 'LTUTOR' | oTranslate }}">
-                <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
-                    title="LTUTORTYPE">
-                    <div class="table_container" >
-                        <h3 class="titulo_tablas">{{ 'LTUTORTYPE' | oTranslate }}</h3>
-                        <o-form-layout-dialog-options class="popup">
-                            <o-table #tutorTypeTable [quick-filter]="false" class="general_table" detail-form-route="tutortype/"
-                                insert-form-route="new" quick-filter="true" attr="tutorTypeTable"
-                                service="tutortype" entity="tutorType" keys="id" columns="id;type"
-                                visible-columns="type" sort-columns="Type"
-                                show-report-on-demand-option="false" translate="yes" show-charts-on-demand-option="false"
-                                select-all-checkbox-visible="true" selection-mode="single" refresh-button="no" pagination-controls="false">
-                            </o-table>
-                        </o-form-layout-dialog-options>
-                    </div>
-                </o-form-layout-manager>
+            <o-form-layout-manager attr="configLayout" mode="dialog" dialog-min-width="450px" dialog-min-height="200px"
+                title="LTUTORTYPE">
+                <div class="table_container">
+                    <h3 class="titulo_tablas">{{ 'LTUTORTYPE' | oTranslate }}</h3>
+                    <o-form-layout-dialog-options class="popup">
+                        <o-table #tutorTypeTable [quick-filter]="false" class="general_table"
+                            detail-form-route="tutortype/" insert-form-route="new" quick-filter="true"
+                            attr="tutorTypeTable" service="tutortype" entity="tutorType" keys="id" columns="id;type"
+                            visible-columns="type" sort-columns="Type" show-report-on-demand-option="false"
+                            translate="yes" show-charts-on-demand-option="false" select-all-checkbox-visible="true"
+                            selection-mode="single" refresh-button="no" pagination-controls="false">
+                        </o-table>
+                    </o-form-layout-dialog-options>
+                </div>
+            </o-form-layout-manager>
         </mat-tab>
         <mat-tab label="Bootcamp">
             <o-form-layout-manager attr="configAsistencia" mode="dialog" dialog-min-width="450px" dialog-min-height="200px" title="LATTENDANCESTATUS">
