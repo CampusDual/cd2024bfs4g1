@@ -331,5 +331,7 @@
   "Cancelar" : "Cancelar",
   "Registrar Asistencia" : "Registrar Asistencia",
   "Attendance_Warning": "Esta acción sobreescribirá todos los registros de asistencia en ese rango de días.",
-  "Attendance_Range": "Seleccionar Rango de Fechas"
+  "Attendance_Range": "Seleccionar Rango de Fechas",
+  "NOT_DELETABLE_TUTOR_TYPE_IS_IN_USE": "El tipo de tutor que quieres eliminar esta ya en uso",
+  "TUTOR_TYPE_CANNOT_BE_EMPTY": "El tipo de tutor no puede estar vacio"
 }
