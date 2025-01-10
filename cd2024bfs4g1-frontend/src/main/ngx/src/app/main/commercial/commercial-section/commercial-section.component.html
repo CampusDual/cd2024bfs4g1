@@ -37,7 +37,7 @@
                 <h1 class="titulo_tablas">{{ 'LCONTACTEDSTUDENTS' | oTranslate }}</h1>
             <o-table #tableCommercial virtual-scroll="false" class="general_table" attr="commercialTable" service="students" entity="commercialStudent"
                 sort-columns="name" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status_id;udemy;status;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;student_status_id;bootcamps_id"
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;student_status_id;bootcamps_id"
                 visible-columns="name;surname1;surname2;personal_email;phone;status" insert-button="false" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" detail-mode="none" (onClick)="goToDetail($event)">
                 <o-table-column attr="name" title="Name"></o-table-column>
