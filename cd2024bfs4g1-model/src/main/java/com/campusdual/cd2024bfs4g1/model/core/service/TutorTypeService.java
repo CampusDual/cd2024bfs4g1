@@ -46,7 +46,7 @@ public class TutorTypeService implements ITutorTypeService {
     public EntityResult tutorTypeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 
         if (isEmptyField(attrMap, TutorTypeDao.ATTR_TYPE)) {
-            return createErrorResult("EMPLOYMENT_STATUS_CANNOT_BE_EMPTY");
+            return createErrorResult("TUTOR_TYPE_CANNOT_BE_EMPTY");
         }
         return this.daoHelper.insert(this.tutorTypeDao, attrMap);
     }
@@ -55,7 +55,7 @@ public class TutorTypeService implements ITutorTypeService {
     public EntityResult tutorTypeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
 
         if (isEmptyField(attrMap, TutorTypeDao.ATTR_TYPE)) {
-            return createErrorResult("EMPLOYMENT_STATUS_CANNOT_BE_EMPTY");
+            return createErrorResult("TUTOR_TYPE_CANNOT_BE_EMPTY");
         }
         return this.daoHelper.update(this.tutorTypeDao, attrMap, keyMap);
     }
@@ -66,7 +66,7 @@ public class TutorTypeService implements ITutorTypeService {
            return this.daoHelper.delete(this.tutorTypeDao, keyMap);
        } catch (DataIntegrityViolationException e) {
            EntityResult error = new EntityResultMapImpl();
-           error.setMessage("NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE");
+           error.setMessage("NOT_DELETABLE_TUTOR_TYPE_IS_IN_USE");
            error.setCode(EntityResult.OPERATION_WRONG);
            return error;
         }
