@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Map;
+
 @Service("NotesService")
-@Lazy public class NotesService implements INotesService {
+@Lazy
+public class NotesService implements INotesService {
 
     @Autowired
     private NotesDao notesDao;
@@ -23,15 +25,11 @@ import java.util.Map;
     CdUtils cdUtils;
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+
     @Override
     public EntityResult notesInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
-        if(attrMap.get(notesDao.ATTR_NOTA).toString().length() <= 500 ){
-            return this.daoHelper.insert(this.notesDao, attrMap);
-        }else{
-            return cdUtils.getWrongEntityResult("CARACTERS_EXCEEDED");
-        }
+        return this.daoHelper.insert(this.notesDao, attrMap);
     }
-
 
 
     @Override
