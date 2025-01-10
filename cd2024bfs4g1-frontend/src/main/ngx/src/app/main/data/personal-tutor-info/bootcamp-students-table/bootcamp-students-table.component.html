@@ -1,5 +1,5 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
-  show-header-navigation="no" confirm-exit="false" show-header="no" (onDataLoaded)="loadBootcamp()">
+  show-header-navigation="no" confirm-exit="false" show-header="no" (onDataLoaded)="loadData()">
   <o-text-input #bootcampIdComp attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
   <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center" animationDuration="0ms">
     <mat-tab label="{{'Estudiante'|oTranslate}}">
