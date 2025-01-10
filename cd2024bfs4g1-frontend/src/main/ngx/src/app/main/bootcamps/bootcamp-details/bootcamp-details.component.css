@@ -388,7 +388,7 @@ div.notification label {
   height: 100%;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1750px) {
 
   .table_container{
     overflow: visible;
