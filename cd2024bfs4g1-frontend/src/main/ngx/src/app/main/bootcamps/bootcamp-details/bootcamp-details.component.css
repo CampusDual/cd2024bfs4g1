@@ -197,11 +197,11 @@ h3 {
 }
 
 .general_table {
-  width: 98%;
-  grid-column: 1/2;
-  margin: 0;
+  box-shadow: none;
+  width: 100%;
+  height: auto; 
+  overflow-x: auto; 
   background-color: #f5f0f2;
-  height: 90%;
   padding: 20px 0;
 }
 
@@ -279,13 +279,6 @@ h3 {
   box-sizing: border-box;
   margin-bottom: 45px;
 }
-
-.general_table {
-  box-shadow: none;
-  width: 100%;
-  height: 100%;
-}
-
 
 mat-calendar {
   width: 100%;
@@ -395,16 +388,11 @@ div.notification label {
   height: 100%;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1750px) {
 
   .table_container{
-    display: flex;
     overflow: visible;
     padding-bottom: 40px;
-  }
-  .table_container {
-
-    padding: 15px;
   }
   .list_container{
     grid-column: 1/2;
