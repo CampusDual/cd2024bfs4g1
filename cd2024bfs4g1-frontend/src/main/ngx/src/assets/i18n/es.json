@@ -249,6 +249,7 @@
   "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "El estado laboral debe tener nombre",
   "STATUS_NAME_CANNOT_BE_EMPTY": "El estado debe tener nombre",
   "TimeTable": "Horario",
+  "Timetable": "Horario",
   "BT_STATUS_TT": "Estado general del bootcamp",
   "STU_SEARCH_TT": "Ir a detalles del estudiante",
   "dateRangeBootcamp" : "Fecha de inicio/Fecha de fin",
