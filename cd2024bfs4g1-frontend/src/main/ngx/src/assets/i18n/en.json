@@ -336,7 +336,7 @@
   "COMPUTABLE_TRUE":"Computable",
   "COMPUTABLE_FALSE":"Not computable",
   "student_bootcamp_status":"Student bootcamp status",
-  "LSLIDETOGGLE_COMPUTABLE":"Computable or not computable",
+  "LSLIDETOGGLE_COMPUTABLE":"Not computable or computable ",
   "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted",
   "SelectColor": "Select a color:  ",
   "Multiple Selection" : "Multiple Selection",
