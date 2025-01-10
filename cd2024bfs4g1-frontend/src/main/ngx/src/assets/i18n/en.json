@@ -325,6 +325,7 @@
   "abbreviation" : "Abbreviation",
   "Alumno" : "Student",
   "asistenciasSave":"Attendance saved correctly.",
+  "CARACTERS_EXCEEDED":"Note too long (500 characters maximum)",
   "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted",
   "SelectColor": "Select a color:  ",
   "SelectedColor": "Selected color:",

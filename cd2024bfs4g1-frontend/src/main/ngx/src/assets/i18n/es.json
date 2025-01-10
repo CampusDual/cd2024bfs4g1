@@ -323,6 +323,7 @@
   "abbreviation" : "Abreviatura",
   "Alumno" : "Alumno",
   "asistenciasSave":"Asistencias guardadas correctamente.",
+  "CARACTERS_EXCEEDED":"Nota demasiado larga (500 caracteres máximos)",
   "STUDENT_HAS_DOCUMENTS":"Este estudiante tiene documentos y no puede ser eliminado",
   "SelectColor": "Selecciona un color:  ",
   "SelectedColor": "Color seleccionado:",
