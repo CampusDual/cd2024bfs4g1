@@ -43,13 +43,13 @@ throw new Error('Method not implemented.');
         this.getStudentData(result.data);
     })
 
- this.mainService.getUserInfo().subscribe(result=>{
-  this.oUserInfoService.setUserInfo({
-    username: result.data['usr_login'],
-    avatar: "data:image/png;base64,"+result.data['usr_photo']
+    this.mainService.getUserInfo().subscribe(result => {
+      this.oUserInfoService.setUserInfo({
+        username: result.data['usr_login'],
+        avatar: "data:image/png;base64," + result.data['usr_photo']
 
- });
- });
+      });
+    });
  
   }
 
@@ -59,7 +59,7 @@ throw new Error('Method not implemented.');
         'user_id': userData['usr_id']
       };
 
-      const columns = ['id','name', 'surname1', 'surname2', 'dni', 'phone', 'employment_status_id',
+      const columns = ['id','name', 'surname1', 'surname2', 'dni', 'phone',
         'birth_date', 'location', 'campus_email', 'personal_email', 'fct_school', 'tutor_name_surname',
         'fct_start', 'fct_end', 'udemy', 'github_user','user_id','usr_photo','employment_status'
       ];
