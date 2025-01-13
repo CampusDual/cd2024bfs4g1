@@ -431,3 +431,13 @@ o-column.o-column .o-container > .o-container-title span{
   --mdc-list-list-item-hover-label-text-color: #7ec117;
 
 }
+
+.mat-calendar-body-selected{
+  background-color: #1a3459;
+}
+.mat-calendar-body-in-range::before{
+  background-color: #8AB237;
+}
+.mat-calendar-body-cell-content.mat-focus-indicator{
+  border-radius: 50%;
+}
