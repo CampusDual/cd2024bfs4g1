@@ -1,9 +1,13 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentService;
 import com.campusdual.cd2024bfs4g1.api.core.service.IUserAndRoleService;
+import com.campusdual.cd2024bfs4g1.model.core.CdUtils;
 import com.campusdual.cd2024bfs4g1.model.core.dao.*;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
@@ -17,6 +21,8 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service("StudentService")
 @Lazy
@@ -56,6 +62,175 @@ public class StudentService implements IStudentService {
 	public EntityResult studentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
 		return this.daoHelper.query(this.studentDao, keysMap, attributes);
 	}
+
+	@Override
+	public EntityResult studentMultipleCheckQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
+		Map<String, Object> queryMap = new HashMap<>();
+		List<Map> students = (List<Map>) keysMap.get("students");
+		EntityResult result = new EntityResultMapImpl();
+
+		List<String> errors = new ArrayList<>();
+
+		for (Map student : students) {
+			String name = (String) student.get("name");
+			if (name != null && name.length() > 255) {
+				errors.add("VAL_NAME_MAX_CHAR:" + name);
+			}
+
+			String surname1 = (String) student.get("surname1");
+			if (surname1 != null && surname1.length() > 255) {
+				errors.add("VAL_SURNAME1_MAX_CHAR:" + name);
+			}
+
+			String surname2 = (String) student.get("surname2");
+			if (surname2 != null && surname2.length() > 255) {
+				errors.add("VAL_SURNAME2_MAX_CHAR:" + surname2);
+			}
+
+			String dni = (String) student.get("dni");
+			if (dni != null) {
+
+				if (dni.length() > 9) {
+					errors.add("VAL_DNI_MAX_CHAR:" + dni);
+				} else {
+					String dniPattern = "^[0-9]{8}[A-Za-z]$";
+					String nifPattern = "^[A-HJ-NP-S]{1}[0-9]{8}$";
+					Pattern dniRegex = Pattern.compile(dniPattern);
+					Matcher dniMatcher = dniRegex.matcher(dni);
+					Pattern nifRegex = Pattern.compile(nifPattern);
+					Matcher nifMatcher = nifRegex.matcher(dni);
+
+					if (!dniMatcher.matches() && !nifMatcher.matches()) {
+						errors.add("VAL_DNI_OR_NIF_INVALID_FORMAT:" + dni);
+					}
+				}
+			}
+
+			String personal_email = (String) student.get("personal_email");
+			if (personal_email != null) {
+				if (personal_email.length() > 255) {
+					errors.add("VAL_PERSONAL_EMAIL_MAX_CHAR:" + personal_email );
+				}
+				if (!personal_email.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+					errors.add("VAL_PERSONAL_EMAIL_FORMAT_NOT_VALID:" + personal_email );
+				}
+			}
+
+			String campus_email = (String) student.get("campus_email");
+			if (campus_email != null) {
+				if (campus_email.length() > 255) {
+					errors.add("VAL_CAMPUS_EMAIL_MAX_CHAR:" + campus_email );
+				}
+				if (!campus_email.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+					errors.add("VAL_CAMPUS_EMAIL_FORMAT_NOT_VALID:" + campus_email );
+				}
+			}
+
+			String location = (String) student.get("location");
+			if (location != null && location.length() > 20) {
+				errors.add("VAL_LOCATION_MAX_CHAR:" + location );
+			}
+
+			String phone = (String) student.get("phone");
+			if (phone != null) {
+				if (phone.length() > 20) {
+					errors.add("VAL_PHONE_MAX_CHAR:" + phone );
+				}
+				// Expresión regular corregida
+				if (!phone.matches("^\\+\\d{1,4}\\s?\\d{6,15}$")) {
+					errors.add("VAL_PHONE_MAX_CHAR:" + phone );
+				}
+			}
+
+			List<String> spainComunitys = Arrays.asList(
+					"Andalucía", "Aragón", "Asturias", "Baleares", "Canarias", "Cantabria",
+					"Castilla La Mancha", "Castilla y León", "Cataluña", "Comunidad Valenciana",
+					"Euskadi", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra",
+					"La Rioja", "Ceuta", "Melilla", "Others"
+			);
+
+
+				String spain_comunity = (String) student.get("spain_comunity");
+				if (spain_comunity != null) {
+					if (spain_comunity.length() > 30) {
+						errors.add("VAL_SPAIN_COMUNITY_MAX_CHAR:" + spain_comunity );
+					} else if (!spainComunitys.contains(spain_comunity)) {
+						errors.add("VAL_SPAIN_COMUNITY_NOT_VALID:" + spain_comunity);
+					}
+				}
+
+			String birthDate = (String) student.get("birth_date");
+			if (birthDate != null) {
+				try {
+					LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				} catch (DateTimeParseException e) {
+					errors.add("VAL_BIRTH_DATE_FORMAT_NOT_VALID:" + birthDate);
+				}
+			}
+		}
+
+		if (errors.size() > 0) {
+			return new EntityResultMapImpl() {{
+				put("errors", errors);
+			}};
+		}
+
+		for (Map student : students) {
+			String dni = (String) student.get("dni");
+
+			if (dni != null) {
+				queryMap.put(StudentDao.DNI, dni);
+				EntityResult queryResult = this.daoHelper.query(this.studentDao, queryMap, Arrays.asList(StudentDao.STU_ID));
+
+				if (!queryResult.isEmpty()) {
+					result.addRecord(student);
+				}
+			}
+		}
+
+		return result;
+	}
+
+
+
+	@Override
+	public EntityResult studentCsvInsert(Map<String, Object> keysMap) throws OntimizeJEERuntimeException {
+		EntityResult insertResult = new EntityResultMapImpl(); // Resultado final de la operación
+		List<Map<String, Object>> students = (List<Map<String, Object>>) keysMap.get("students"); // Lista de estudiantes
+
+		if (students == null || students.isEmpty()) {
+			insertResult.setCode(EntityResult.OPERATION_WRONG);
+			insertResult.setMessage("No students data provided for insertion.");
+			return insertResult;
+		}
+
+		for (Map<String, Object> student : students) {
+			try {
+				// Inicializar el valor de "udemy" en false si no está presente
+				if (!student.containsKey("udemy")) {
+					student.put("udemy", false); // Establece un valor predeterminado
+				}
+
+				// Realizamos la inserción de cada estudiante
+				EntityResult singleInsertResult = this.daoHelper.insert(this.studentDao, student);
+
+				if (singleInsertResult.getCode() == EntityResult.OPERATION_SUCCESSFUL) {
+					insertResult.addRecord(student); // Agregamos el estudiante al resultado final
+				} else {
+					insertResult.setCode(EntityResult.OPERATION_WRONG);
+					insertResult.setMessage("Error inserting some records.");
+				}
+			} catch (Exception e) {
+				insertResult.setCode(EntityResult.OPERATION_WRONG);
+				insertResult.setMessage("Error inserting student: " + e.getMessage());
+			}
+		}
+
+		return insertResult;
+	}
+
+
+
 
 	@Override
 	public EntityResult studentInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
@@ -323,6 +498,7 @@ public class StudentService implements IStudentService {
 		error.setMessage(message);
 		return error;
 	}
+
 
 	@Override
 	public AdvancedEntityResult studentPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException {
