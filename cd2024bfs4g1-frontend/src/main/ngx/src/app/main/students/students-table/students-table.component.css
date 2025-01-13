@@ -78,6 +78,7 @@
   grid-column: 6/7;
 }
 
+
 @media(max-width: 900px){
   .filter_style {
     /*grid-template-columns: repeat(6, 1fr);*/

@@ -321,7 +321,7 @@
   "today":"Ir a Dia actual",
   "Estudiante" : "Estudiante",
   "Asistencia" : "Asistencia",
-  "abbreviation" : "Abbreviation",
+  "abbreviation" : "Abreviatura",
   "Alumno" : "Alumno",
   "DOCUMENTATION": "Documentación",
   "Plantilla_CSV": "Plantilla CSV",
@@ -373,6 +373,8 @@
   "BOOTCAMP_HAS_DOCUMENTS":"El bootcamp que quieres borrar tiene documentos asignados",
   "link":"Link",
   "popUp_COMPUTABLE":"Si el estado se marca como computable, dicho estado se considera que indica que un estudiante todavía está en activo o ha finalizado correctamente el bootcamp. Si no es computable, implica que ha abandonado, ha sido expulsado u otra situación similar.",
+  "Select_Date" : "Selecciona la fecha",
+  "Select_Status" : "Selecciona el estado",
   "IMPORT_CSV" : "Importar CSV",
   "VAL_DNI_OR_NIF_INVALID_FORMAT": "El DNI o NIF no tiene el formato válido. Asegúrate de que sea un DNI (8 dígitos seguidos de una letra) o un NIF (una letra seguida de 8 dígitos).",
   "students_summary":"Estudiantes"
