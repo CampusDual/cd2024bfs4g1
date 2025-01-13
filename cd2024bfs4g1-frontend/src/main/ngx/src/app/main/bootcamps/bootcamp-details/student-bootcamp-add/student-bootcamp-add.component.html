@@ -8,21 +8,15 @@
       entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
     </o-combo>
     <label for="REQ_LSTATUS">{{'REQ_LSTATUS' | oTranslate}}</label>
-    <o-combo attr="status" required="yes" label-visible="false" translate="yes" [static-data]="[
-    { key: 'Candidato' },
-    { key: 'Contactado' },
-    { key: 'Confirmado' },
-    { key: 'Cancelado' },
-    { key: 'Activo' },
-    { key: 'Finalizado contratable' },
-    { key: 'Finalizado no contratable' },
-    { key: 'No finalizado' }
-  ]" value-column="key" columns="key" visible-columns="key" required="yes" null-selection="false">
+    <o-combo attr="status_id" label="REQ_LSTATUS" required="no" translate="yes"
+    null-selection="true" read-only="false" service="studentbootcampstatus"
+    entity="studentBootcampStatus" keys="id" columns="id;student_bootcamp_status" value-column="id"
+    description-columns="student_bootcamp_status" query-on-init="true">
     </o-combo>
 
     <div class="especial fecha-inicio">
       <o-date-input #startdate label-visible="false" class="fechas" attr="start_date" required="yes" format="DD/MM/YYYY" hidden="true"
-       ></o-date-input>
+      ></o-date-input>
     </div>
 
     <div class="especial fecha-fin">

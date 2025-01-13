@@ -327,6 +327,13 @@
   "Llegada" : "Llegada del estudiante",
   "Salida" : "Salida del estudiante",
   "CARACTERS_EXCEEDED":"Nota demasiado larga (500 caracteres máximos)",
+  "DNI_WARNING":"El DNI ya existe",
+  "LSTUDENTBOOTCAMPSTATUS":"Estado de los alumnos en Bootcamp",
+  "LSTUDENTSBOOTCAMPSSTATUS":"Estado de los alumnos en Bootcamp",
+  "COMPUTABLE_TRUE":"Computable",
+  "COMPUTABLE_FALSE":"No computable",
+  "student_bootcamp_status":"Estado del estudiante en bootcamp",
+  "LSLIDETOGGLE_COMPUTABLE":"No computable o computable ",
   "STUDENT_HAS_DOCUMENTS":"Este estudiante tiene documentos y no puede ser eliminado",
   "SelectColor": "Selecciona un color:  ",
   "SelectedColor": "Color seleccionado:",
@@ -338,6 +345,6 @@
   "NOT_DELETABLE_TUTOR_TYPE_IS_IN_USE": "El tipo de tutor que quieres eliminar esta ya en uso",
   "TUTOR_TYPE_CANNOT_BE_EMPTY": "El tipo de tutor no puede estar vacio",
   "BOOTCAMP_HAS_DOCUMENTS":"El bootcamp que quieres borrar tiene documentos asignados",
-  "link":"Link"
-
+  "link":"Link",
+  "popUp_COMPUTABLE":"Si el estado se marca como computable, dicho estado se considera que indica que un estudiante todavía está en activo o ha finalizado correctamente el bootcamp. Si no es computable, implica que ha abandonado, ha sido expulsado u otra situación similar."
 }

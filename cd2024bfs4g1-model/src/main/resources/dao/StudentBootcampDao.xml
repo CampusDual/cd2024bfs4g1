@@ -24,7 +24,7 @@
                 <AmbiguousColumn name="sb_start_date" prefix="sb" databaseName="start_date"/>
                 <AmbiguousColumn name="sb_end_date" prefix="sb" databaseName="end_date"/>
                 <AmbiguousColumn name="status" prefix="sb" />
-                <AmbiguousColumn name="statusinbootcamp" prefix="sb" databaseName="status"/>
+                <AmbiguousColumn name="student_status" prefix="sbs" databaseName="student_bootcamp_status"/>
                 <AmbiguousColumn name="bootcampstatus" prefix="bs" databaseName="status"/>
                 <AmbiguousColumn name="userphotostudent" prefix="uu" databaseName="usr_photo"/>
             </AmbiguousColumns>
@@ -34,14 +34,16 @@
      select
       #COLUMNS#
      from
-      students s
+     students s
      inner join
-      student_bootcamp sb on s.id = sb.student_id
+     student_bootcamp sb on s.id = sb.student_id
+     left join student_bootcamp_status sbs on sb.status_id = sbs.id
      inner join
-      bootcamps b on sb.bootcamp_id = b.id
-      left join ${mainschema}.usr_user uu ON s.user_id = uu.usr_id
-        inner join
+     bootcamps b on sb.bootcamp_id = b.id
+     left join ${mainschema}.usr_user uu ON s.user_id = uu.usr_id
+     inner join
      bootcamp_status bs on b.id = bs.id
+
      #WHERE#
      #ORDER#
    ]]>
