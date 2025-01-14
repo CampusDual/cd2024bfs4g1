@@ -7,8 +7,8 @@
     <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students" label-visible="false"
       entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
     </o-combo>
-    <label for="REQ_LSTATUS">{{'REQ_LSTATUS' | oTranslate}}</label>
-    <o-combo attr="status_id" label="REQ_LSTATUS" required="no" translate="yes"
+    <label for="STATUS">{{'STATUS' | oTranslate}}</label>
+    <o-combo attr="status_id" label="STATUS" required="no" translate="yes"
     null-selection="true" read-only="false" service="studentbootcampstatus"
     entity="studentBootcampStatus" keys="id" columns="id;student_bootcamp_status" value-column="id"
     description-columns="student_bootcamp_status" query-on-init="true">
