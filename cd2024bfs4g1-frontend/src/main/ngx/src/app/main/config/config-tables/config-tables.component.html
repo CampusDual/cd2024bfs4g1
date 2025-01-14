@@ -120,7 +120,8 @@
                         <h3 class="titulo_tablas">{{ 'LHOLIDAYS' | oTranslate }}</h3>
                         <o-form-layout-dialog-options class="popup">
                             <o-table #holidayTable attr="holidaysTable" [quick-filter]="false"
-                                class="general_table"  insert-form-route="new"
+                                class="general_table"  
+                                detail-form-route="holidays/" insert-form-route="new"
                                 service="holidays" entity="holidays" keys="id"
                                 columns="id;name;holiday_date"
                                 visible-columns="name;holiday_date" 

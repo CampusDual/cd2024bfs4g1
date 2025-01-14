@@ -14,6 +14,8 @@ import { StudentBootcampStatusComponent } from './student-bootcamp-status/studen
 import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new/student-bootcamp-status-new.component';
 import { AttendanceStatusDetailsComponent } from './attendance-status-details/attendance-status-details.component';
 import { AttendanceStatusNewComponent } from './attendance-status-new/attendance-status-new.component';
+import { HolidaysDetailsComponent } from './holidays-details/holidays-details.component';
+import { HolidaysNewComponent } from './holidays-new/holidays-new.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { AttendanceStatusNewComponent } from './attendance-status-new/attendance
     AttendanceStatusDetailsComponent,
     AttendanceStatusNewComponent,
     StudentBootcampStatusComponent,
-    StudentBootcampStatusNewComponent
+    StudentBootcampStatusNewComponent,
+    HolidaysDetailsComponent,
+    HolidaysNewComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,8 @@ import { StudentBootcampStatusComponent } from './student-bootcamp-status/studen
 import { StudentBootcampStatusNewComponent } from './student-bootcamp-status-new/student-bootcamp-status-new.component';
 import { AttendanceStatusDetailsComponent } from './attendance-status-details/attendance-status-details.component';
 import { AttendanceStatusNewComponent } from './attendance-status-new/attendance-status-new.component';
+import { HolidaysDetailsComponent } from './holidays-details/holidays-details.component';
+import { HolidaysNewComponent } from './holidays-new/holidays-new.component';
 const routes: Routes = [
   {path:'', pathMatch:'full', component: ConfigTablesComponent},
   {path: 'employmentstatus/new',component: EmploymentStatusNewComponent},
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path: 'tutortype/:id',component: TutorTypeDetailsComponent},
   {path: 'studentbootcampstatus/new',component: StudentBootcampStatusNewComponent},
   {path: 'studentbootcampstatus/:id',component: StudentBootcampStatusComponent},
+  {path: 'holidays/:id',component: HolidaysDetailsComponent},
+  {path: 'holidays/new',component: HolidaysNewComponent}
 ];
 
 @NgModule({
