@@ -46,7 +46,6 @@
                 <AmbiguousColumn name="notes" prefix="cs"/>
                 <AmbiguousColumn name="spain_comunity" prefix="cs"/>
                 <AmbiguousColumn name="location" prefix="cs"/>
-                <AmbiguousColumn name="employment_status_id" prefix="cs"/>
                 <AmbiguousColumn name="user_id" prefix="cs"/>
                 <AmbiguousColumn name="student_status_id" prefix="cs"/>
                 <AmbiguousColumn name="status" prefix="cs"/>
