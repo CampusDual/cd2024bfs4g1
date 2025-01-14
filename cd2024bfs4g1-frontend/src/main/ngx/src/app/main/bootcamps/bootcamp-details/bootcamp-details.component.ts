@@ -294,19 +294,9 @@ export class BootcampDetailsComponent {
 
    }
 
-   openLink(event: any): void {
-    const link = event?.link;
-
-    if (!link) {
-      this.showAlert()
-      return;
-    }
-    window.open(link, '_blank');
-  }
-
   showAlert() {
     if (this.dialogService) {
-      this.dialogService.error('Error en el link', 'El link no existe o  no es válido');
+      this.dialogService.error('Error en el link', 'El link no existe o no es válido');
     }
   }
   getRowClass(rowData: any): string {

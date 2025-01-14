@@ -251,16 +251,16 @@
                        entity="sessionBootcamp" keys="id"
                        parent-keys="id_bootcamp:id"
                        columns="id;session_name;session_date;password;status;link"
-                       visible-columns="session_name;session_date;password;status;Link"
+                       visible-columns="session_name;session_date;password;status;link"
                        select-all-checkbox-visible="true" selection-mode="multiple"
                        [row-class]="getRowClass"
                        sort-columns="session_date"
                        >
 
                 <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
-                <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+                <o-table-column class="center" attr="link" width="64px" tooltip="yes"
                                 tooltip-value="{{'link_ico'| oTranslate}}">
-                  <o-table-cell-renderer-action (onClick)="openLink($event)" icon="link"></o-table-cell-renderer-action>
+                  <app-o-table-cell-renderer-link></app-o-table-cell-renderer-link>
                 </o-table-column>
                 <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
                 <o-table-column class="center" attr="password" title="password"></o-table-column>
