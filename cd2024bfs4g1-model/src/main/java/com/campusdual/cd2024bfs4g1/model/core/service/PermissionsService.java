@@ -50,6 +50,16 @@ public class PermissionsService implements IPermissionsService {
         return(result);
     }
 
+    @Override
+    public EntityResult menuQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.menuDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
+        return this.daoHelper.query(this.routesDao, keyMap, attrList);
+    }
+
     /**
      * Cast a Map to a String with Json structure.
      *
