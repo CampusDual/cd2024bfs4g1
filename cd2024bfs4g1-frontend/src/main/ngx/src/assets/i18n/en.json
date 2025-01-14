@@ -380,6 +380,8 @@
   "VAL_DNI_OR_NIF_INVALID_FORMAT": "The DNI or NIF has an invalid format. Ensure it is a DNI (8 digits followed by a letter) or a NIF (a letter followed by 8 digits).",
   "Select_Date" : "Select date",
   "Select_Status" : "Select status",
-  "students_summary": "Students"
-
+  "students_summary": "Students",
+  "LHOLIDAYS":"Holidays management",
+  "festivos":"Holidays",
+  "holiday_date":"Holiday date"
 }
