@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.mainService.getUserInfo().subscribe(result=>{
      this.oUserInfoService.setUserInfo({
-       username: result.data['usr_name'],
+       username: result.data['usr_login'],
        avatar: "data:image/png;base64,"+result.data['usr_photo']
   
     });
