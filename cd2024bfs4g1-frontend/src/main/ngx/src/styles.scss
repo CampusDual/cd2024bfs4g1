@@ -121,7 +121,7 @@ button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary,
 .o-button button.mat-mdc-outlined-button,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
-.list_container .o-list-container .add-button
+.list_container .o-list-container .add-button, .boton-angular
 {
   border: none;
   background-color: #8AB237;
@@ -148,7 +148,8 @@ button.mat-mdc-raised-button.mat-primary:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary:hover,
 .o-button button.mat-mdc-outlined-button:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent:hover,
-.list_container .o-list-container .add-button:hover {
+.list_container .o-list-container .add-button:hover,
+.boton-angular:hover {
   border: 2px solid #8AB237;
   background-color: #1a3459;
   border-radius: 10px;
@@ -441,3 +442,4 @@ o-column.o-column .o-container > .o-container-title span{
 .mat-calendar-body-cell-content.mat-focus-indicator{
   border-radius: 50%;
 }
+
