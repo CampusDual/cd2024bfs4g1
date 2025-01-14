@@ -36,7 +36,7 @@
 .filter_style {
   display: grid;
   /*grid-template-columns: repeat(6, 1fr);*/
-  grid-template-columns: 1.5fr 1.5fr 0.8fr 1fr 1.5fr 1.5fr;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr;
   gap: 15px;
   background-color: #f5f0f2;
   padding: 25px 30px 3px 30px;
@@ -78,18 +78,8 @@
   grid-column: 6/7;
 }
 
-@media(max-width: 900px){
+@media(max-width: 1197px){
   .filter_style {
-    /*grid-template-columns: repeat(6, 1fr);*/
-    grid-template-columns: 1.5fr 1.5fr 1.5fr;
-  }
-  .estadoL{
-    grid-column: 1/2;
-  }
-  .estado{
-    grid-column: 2/3;
-  }
-  .comunidad{
-    grid-column: 3/4;
+    grid-template-columns: 2fr 2fr;
   }
 }

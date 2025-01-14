@@ -3,9 +3,13 @@
       undo-button="false" label-header-align="center" after-insert-mode="new">
       <o-text-input attr="id" sql-type="INTEGER" enabled="no"  hidden="true" ></o-text-input>
       <o-text-input attr="id_bootcamp" sql-type="INTEGER" enabled="no"  hidden="true" ></o-text-input>
+      <label>{{ 'session_name' | oTranslate }}</label>
       <o-text-input attr="session_name"></o-text-input>
+      <label>{{ 'session_date' | oTranslate }}</label>
       <o-date-input attr="session_date" ></o-date-input>
+      <label>{{ 'password' | oTranslate }}</label>
       <o-text-input attr="password"></o-text-input>
+      <label>{{ 'link' | oTranslate }}</label>
       <o-text-input attr="link"></o-text-input>
       <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
         <o-button attr="update-button" id="Update" type="RAISED" label="Update" color="primary"

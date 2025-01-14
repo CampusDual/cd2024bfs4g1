@@ -417,6 +417,9 @@ o-column.o-column .o-container > .o-container-title span{
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
+.mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-form-field-infix .mat-mdc-floating-label {
+  display: none;
+}
 .notification-bg {
   --mdc-snackbar-container-color: #8AB237;
   padding: 16px;
@@ -431,6 +434,12 @@ o-column.o-column .o-container > .o-container-title span{
   font-size: 20px;
   --mdc-list-list-item-hover-label-text-color: #7ec117;
 
+}
+
+
+.mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix{
+  padding-bottom: 4px;
+  padding-top: 10px;
 }
 
 .mat-calendar-body-selected{

@@ -9,6 +9,7 @@
         <ng-template #attendanceDialog>
           <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
           <mat-dialog-content>
+              <label class="center-content">{{'Select_Date' | oTranslate}}</label>
               <div class="center-content">
                   <mat-form-field class="fixed-size">
                       <mat-label>{{ 'Attendance_Range' | oTranslate }}</mat-label>
@@ -20,6 +21,7 @@
                       <mat-date-range-picker #picker></mat-date-range-picker>
                   </mat-form-field>
               </div>
+              <label class="center-content">{{'Select_Status' | oTranslate}}</label>
               <div class="center-content">
                   <mat-form-field class="fixed-size">
                       <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
