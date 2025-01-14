@@ -27,8 +27,8 @@ const routes: Routes = [
   {path: 'tutortype/:id',component: TutorTypeDetailsComponent},
   {path: 'studentbootcampstatus/new',component: StudentBootcampStatusNewComponent},
   {path: 'studentbootcampstatus/:id',component: StudentBootcampStatusComponent},
+  {path: 'holidays/new',component: HolidaysNewComponent},
   {path: 'holidays/:id',component: HolidaysDetailsComponent},
-  {path: 'holidays/new',component: HolidaysNewComponent}
 ];
 
 @NgModule({

@@ -119,16 +119,17 @@
                     <div class="table_container">
                         <h3 class="titulo_tablas">{{ 'LHOLIDAYS' | oTranslate }}</h3>
                         <o-form-layout-dialog-options class="popup">
-                            <o-table #holidayTable attr="holidaysTable" [quick-filter]="false"
-                                class="general_table"  
-                                detail-form-route="holidays/" insert-form-route="new"
-                                service="holidays" entity="holidays" keys="id"
-                                columns="id;name;holiday_date"
-                                visible-columns="name;holiday_date" 
-                                show-report-on-demand-option="false" translate="yes"
+                            <o-table #holidayTable attr="holidaysTable" [quick-filter]="false" class="general_table"
+                                detail-form-route="holidays/" insert-form-route="new" service="holidays"
+                                entity="holidays" keys="id" columns="id;name;holiday_date"
+                                visible-columns="name;holiday_date" show-report-on-demand-option="false" translate="yes"
                                 show-charts-on-demand-option="false" select-all-checkbox-visible="true"
                                 selection-mode="single" refresh-button="false" pagination-controls="false">
+                                <o-table-column attr="holiday_date" title="holiday_date" type="date" format="DD/MM/YYYY"
+                                    content-align="center" title-align="center">
+                                </o-table-column>
                             </o-table>
+
                         </o-form-layout-dialog-options>
                     </div>
                 </o-form-layout-manager>

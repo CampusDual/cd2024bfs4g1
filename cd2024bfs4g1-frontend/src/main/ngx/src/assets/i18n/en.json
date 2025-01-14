@@ -383,5 +383,6 @@
   "students_summary": "Students",
   "LHOLIDAYS":"Holidays management",
   "festivos":"Holidays",
-  "holiday_date":"Holiday date"
+  "holiday_date":"Holiday date",
+  "REQ_LHOLIDAY_DATE":"Holiday date*"
 }

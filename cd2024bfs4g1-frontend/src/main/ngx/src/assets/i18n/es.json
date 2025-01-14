@@ -381,5 +381,7 @@
   "students_summary":"Estudiantes",
   "LHOLIDAYS":"Gestión de festivos",
   "festivos":"Holidays",
-  "holiday_date":"Fecha del festivo"
+  "holiday_date":"Fecha del festivo",
+  "REQ_LHOLIDAY_DATE":"Fecha del festivo*"
+
 }
