@@ -128,6 +128,12 @@ export class CalendarAttendanceComponent {
     this.service.configureService(conf);
   }
 
+  protected configureHolidays() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration('holidays');
+    this.service.configureService(conf);
+  }
+
   loadStudents(): void {
     this.configureStudents();
     this.getStudents();

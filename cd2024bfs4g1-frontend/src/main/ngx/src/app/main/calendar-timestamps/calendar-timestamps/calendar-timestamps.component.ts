@@ -36,8 +36,10 @@ interface Day {
 export class CalendarTimestampsComponent {
 
   protected service: OntimizeService;
+  
   weeksToShow = 3;
   startDate: Date;
+  holidayDate: Date;
   endDate: Date;
   years: number[] = [];
   months: string[] = [];
@@ -54,6 +56,7 @@ export class CalendarTimestampsComponent {
 
   public selectedYear = this.currentYear;
   public selectedMonth = this.currentMonth;
+  holidays: any;
 
   constructor(
     protected injector: Injector,
@@ -66,6 +69,8 @@ export class CalendarTimestampsComponent {
     this.loadYears();
   
     this.service = this.injector.get(OntimizeService);
+ 
+   
     this.configureService();
   }
 
@@ -76,10 +81,17 @@ export class CalendarTimestampsComponent {
   protected configureService() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
+    this.service.configureService(conf);    
+  
+  }
+
+  protected configureHolidaysService(){
+    const conf = this.service.getDefaultServiceConfiguration('holidays');
     this.service.configureService(conf);
   }
 
   getBootcamps() {
+    this.configureService();
     if (this.service !== null) {
       const filter = {
         'startDate': this.startDate,
@@ -104,7 +116,52 @@ export class CalendarTimestampsComponent {
         }
       });
     }
+    this.getHolidays(this.startDate,this.endDate);
   }
+
+  getHolidays(startDate: Date, endDate: Date) {
+    this.configureHolidaysService();
+    if (this.service !== null) {
+     
+      const filter =    {
+        "@basic_expression": {
+            "lop": {
+                "lop": "holiday_date",
+                "op": ">=",
+                "rop": startDate.getTime()
+            },
+            "op": "AND",
+            "rop": {
+                "lop": "holiday_date",
+                "op": "<=",
+                "rop": endDate.getTime()
+            }
+        }
+    };
+
+    const types = {
+      'holiday_date': 91     
+    };
+
+      const columns = ['id', 'name', 'holiday_date'];
+      this.service.query(filter, columns, 'holidays',types).subscribe(resp => {
+        if (resp.code === 0) {
+          if(resp.data.length > 0){ 
+            console.log(resp.data);
+            this.holidays= resp.data;
+          }else{
+            this.holidays = {}; //json
+          }
+
+  
+        } else {
+          alert('Impossible to query data!');
+        }
+      });
+    }
+  }
+
+
   
 
   loadInitialDates(): void {
@@ -273,11 +330,17 @@ export class CalendarTimestampsComponent {
     today.setHours(0, 0, 0, 0);
     return day.getTime() == today.getTime();
   }
-  updateDayCSSForCurrentDay(day: Date) {
+  updateDayCSSForCurrentDay(day: Date) { // 
     if (this.isToday(day)) {
       return '#8AB237';
+    }else if(this.holidays && this.holidays.filter(holiday => { 
+      return holiday.holiday_date  == day.getTime()
+    }).length == 1 ){
+      return 'red';
+    }else{
+      return '#1a3459';
     }
-    return '#1a3459';
+   
   }
 
   updateDayCSSFontColorForCurrentDay(day: Date) {
