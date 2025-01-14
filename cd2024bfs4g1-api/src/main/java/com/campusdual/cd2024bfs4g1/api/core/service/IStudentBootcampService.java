@@ -22,4 +22,6 @@ public interface IStudentBootcampService {
     EntityResult studentBootcampUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     AdvancedEntityResult studentsWithBootcampPaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException;
 
+    EntityResult studentsWithComputableQuery(Map<String, Object> keysValues, List<String> attributes);
+
 }
