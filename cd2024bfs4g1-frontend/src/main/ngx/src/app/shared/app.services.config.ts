@@ -53,5 +53,9 @@ export const SERVICE_CONFIG: Object = {
 
   'studentbootcampstatus':{
     'path': '/studentbootcampstatus'
+  },
+
+  'holidays':{
+    'path': '/holidays'
   }
 };

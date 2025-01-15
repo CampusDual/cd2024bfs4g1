@@ -378,6 +378,10 @@
   "Select_Status" : "Selecciona el estado",
   "IMPORT_CSV" : "Importar CSV",
   "VAL_DNI_OR_NIF_INVALID_FORMAT": "El DNI o NIF no tiene el formato válido. Asegúrate de que sea un DNI (8 dígitos seguidos de una letra) o un NIF (una letra seguida de 8 dígitos).",
-  "students_summary":"Estudiantes"
+  "students_summary":"Estudiantes",
+  "LHOLIDAYS":"Gestión de festivos",
+  "festivos":"Holidays",
+  "holiday_date":"Fecha del festivo",
+  "REQ_LHOLIDAY_DATE":"Fecha del festivo*"
 
 }
