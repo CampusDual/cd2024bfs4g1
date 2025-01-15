@@ -42,7 +42,7 @@
       </o-date-input>
     </div>
   </div>
-  <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight>
+  <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight (selectedTabChange)="onTabChange($event)">
     <mat-tab label="{{ 'StudentsAndMentors' | oTranslate }}">
       <div class="general_container">
         <div class="table_container">
@@ -133,7 +133,7 @@
         <div class="table_horario">
           <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
             <o-form-layout-dialog-options class="popup">
-              <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable"
+              <o-table #bootcampTimetable class="timetable_table" virtual-scroll="false" attr="bootcampTimetable"
                 service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
                 detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id"
                 parent-keys="id_bootcamp:id;start_date;end_date"
@@ -196,7 +196,7 @@
         </div>
       </div>
     </mat-tab>
-    <o-form-layout-manager attr="popupNewSession" title="Session" mode="dialog">
+    <o-form-layout-manager attr="popupNewSession" title="Session" mode="dialog"  >
       <o-form-layout-dialog-options class="popup">
         <mat-tab label="{{ 'Sesiones' | oTranslate }}">
           <div class="table_sesions general_table">
