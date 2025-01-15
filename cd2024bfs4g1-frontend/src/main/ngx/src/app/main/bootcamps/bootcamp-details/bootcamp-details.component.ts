@@ -7,6 +7,7 @@ import { DialogService, Expression, FilterExpressionUtils, OFileInputComponent, 
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { CalendarAttendanceComponent } from '../../data/personal-tutor-info/calendar-attendance/calendar-attendance.component';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -361,9 +362,10 @@ export class BootcampDetailsComponent {
       this.selectedStatuses = ['Started', 'Pending'];
     }
   }
-
+  @ViewChild('asistencia', { static: true }) asistencia!: CalendarAttendanceComponent;
   loadBootcamp() {
     this.bootcampId= this.bootcampDetailForm.getFieldValue("id");
+    this.asistencia.refresh();
   }
 
 

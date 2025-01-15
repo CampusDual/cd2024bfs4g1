@@ -22,7 +22,7 @@ interface Student {
   start_date: Date;
   end_date: Date;
   status: string;
-  
+
 }
 
 interface AttendanceStatus {
@@ -46,8 +46,8 @@ export class CalendarAttendanceComponent {
   @ViewChild('attendanceDialog') attendanceDialog: any;
   selectedDate: Date = new Date();
   selectedStatus: number = 1;
-  selectedStartDate : Date;
-  selectedEndDate : Date;
+  selectedStartDate: Date;
+  selectedEndDate: Date;
 
   protected service: OntimizeService;
 
@@ -95,7 +95,11 @@ export class CalendarAttendanceComponent {
 
     this.service = this.injector.get(OntimizeService);
   }
-
+  refresh() {
+    this.loadStudents();
+    this.loadAttendance();
+    this.getBootcampDates();
+  }
   ngOnInit() {
     this.loadAttendanceStatus();
     this.configureBootcamps();
@@ -140,31 +144,31 @@ export class CalendarAttendanceComponent {
   }
   getStudents() {
     if (this.service && this.bootcampId) {
-        const columns = ['student_id', 'name', 'surname1', 'surname2', 'computable'];
-        const filter = { 'bootcamp_id': this.bootcampId };
+      const columns = ['student_id', 'name', 'surname1', 'surname2', 'computable'];
+      const filter = { 'bootcamp_id': this.bootcampId };
 
-        this.service.query(filter, columns, 'studentsWithComputable').subscribe(resp => {
-            if (resp.code === 0) {
-                if (resp.data.length > 0) {
-                    console.log('Respuesta con computable:', resp.data);
+      this.service.query(filter, columns, 'studentsWithComputable').subscribe(resp => {
+        if (resp.code === 0) {
+          if (resp.data.length > 0) {
+            console.log('Respuesta con computable:', resp.data);
 
-                    this.students = resp.data.map((stu: any) => {
-                        return {
-                            ...stu,
-                            isComputable: stu.computable
-                        };
-                    });
-                } else {
-                    this.students = [];
-                }
-            } else {
-                this.snackBarService.open('Error al cargar los datos de los estudiantes.');
-            }
-        });
+            this.students = resp.data.map((stu: any) => {
+              return {
+                ...stu,
+                isComputable: stu.computable
+              };
+            });
+          } else {
+            this.students = [];
+          }
+        } else {
+          this.snackBarService.open('Error al cargar los datos de los estudiantes.');
+        }
+      });
     }
-}
+  }
 
-  
+
 
   loadAttendanceStatus(): void {
     this.configureAttendanceStatus();
@@ -174,7 +178,7 @@ export class CalendarAttendanceComponent {
   }
   getAttendanceStatus() {
     if (this.service !== null) {
-      const columns = ['id', 'abbreviation', 'description','color'];
+      const columns = ['id', 'abbreviation', 'description', 'color'];
 
 
       this.service.query({}, columns, 'attendanceControl').subscribe(resp => {
@@ -355,7 +359,7 @@ export class CalendarAttendanceComponent {
 
     this.attendanceModified[student.student_id + ":" + this.printDate(day.fullDate)] = newElement;
 
-    this.studentMap.get(student.student_id).set(this.printDate(day.fullDate),selectedStatus);
+    this.studentMap.get(student.student_id).set(this.printDate(day.fullDate), selectedStatus);
   }
 
   getSelectedTooltip(student: any, dayWithWeekDay: any): string | null {
@@ -461,22 +465,22 @@ export class CalendarAttendanceComponent {
     return dates;
   }
   submitAttendance() {
-   const dateRange = this.iterateDateRange();
-   console.log('Date Range:', dateRange);
+    const dateRange = this.iterateDateRange();
+    console.log('Date Range:', dateRange);
 
-   this.attendanceModified = [];
+    this.attendanceModified = [];
 
-   for (const day of dateRange) {
-    for (const student of this.students) {
-      let newElement = {
-        student_id: student.student_id,
-        bootcamp_id: this.bootcampId,
-        status: this.selectedStatus,
-        date: this.printDate(day)
-      };
-      this.attendanceModified[student.student_id + ":" + this.printDate(day)] = newElement;
+    for (const day of dateRange) {
+      for (const student of this.students) {
+        let newElement = {
+          student_id: student.student_id,
+          bootcamp_id: this.bootcampId,
+          status: this.selectedStatus,
+          date: this.printDate(day)
+        };
+        this.attendanceModified[student.student_id + ":" + this.printDate(day)] = newElement;
+      }
     }
-   }
 
     this.onButtonClick();
     this.loadDays();
