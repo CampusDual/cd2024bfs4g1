@@ -14,6 +14,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { EmploymentHistoryNewComponent } from './students-detail/employment-history-new/employment-history-new.component';
 import { EmploymentHistoryDetailsComponent } from './students-detail/employment-history-details/employment-history-details.component';
 import { NotesAddComponent } from './students-detail/notes-add/notes-add.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,14 +26,16 @@ import { NotesAddComponent } from './students-detail/notes-add/notes-add.compone
     BootcampStudentAddComponent,
     EmploymentHistoryNewComponent,
     EmploymentHistoryDetailsComponent,
-    NotesAddComponent
+    NotesAddComponent,
   ],
   imports: [
     CommonModule,
     RouterOutlet,
     MatIconModule,
     OntimizeWebModule,
-    StudentsRoutingModule
+    StudentsRoutingModule,
+    MatSnackBarModule,
+    HttpClientModule
   ]
 })
 export class StudentsModule {

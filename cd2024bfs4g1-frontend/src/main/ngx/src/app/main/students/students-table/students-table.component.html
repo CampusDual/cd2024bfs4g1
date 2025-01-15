@@ -7,38 +7,57 @@
 
                 <div class="filter_style">
 
-                    <o-combo #type class="tutor" attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no"
-                        service="tutors" entity="tutor" keys="id" columns="id;name;surname1;surname2" value-column="id"
-                        query-on-init="true" visible-columns="name;surname1;surname2" translate="yes"
-                        null-selection="true" sort="ASC"></o-combo>
-                    <o-combo attr="bootcamps_id" class="bootcamp" label="Bootcamps" read-only="no" service="bootcamps"
-                        entity="bootcamp" keys="id" columns="id;name" value-column="id" query-on-init="true"
-                        searchable="yes" visible-columns="name" translate="yes" null-selection="true"
-                        sort="ASC"></o-combo>
-
-                    <o-combo class="udemy" #type attr="udemy" read-only="no"
-                        [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
-                        service="students" entity="student" columns="udemy" value-column="value" keys="id"
-                        visible-columns="label" translate="yes" sort="ASC"></o-combo>
-
-                    <o-combo attr="v_employment_status_id" class="estadoL" label="LEMSTATUS" required="no"
-                        translate="yes" null-selection="true" read-only="false" service="employmentstatus"
-                        entity="employmentStatus" keys="id" columns="id;situation" value-column="id"
-                        description-columns="situation" query-on-init="true">
-                    </o-combo>
-
-                    <o-combo attr="student_status_id" class="estado" label="LSTATUS" null-selection="true"
-                        service="studentstatus" entity="studentStatus" keys="id" columns="id;status" value-column="id"
-                        visible-columns="status" read-only="no" sort="ASC">
-                    </o-combo>
-
-                    <o-combo class="comunidad" attr="spain_comunity" read-only="no" service="students" entity="student"
-                        columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
-                        searchable="yes" sort="ASC"></o-combo>
+                    <div class="combo-container">
+                        <label for="tutorCombo" class="combo-placeholder">{{'LMENTOR' | oTranslate}}</label>
+                        <o-combo #type id="tutorCombo" class="tutor" attr="tutor" label="{{'LMENTOR' | oTranslate}}" read-only="no"
+                                 service="tutors" entity="tutor" keys="id" columns="id;name;surname1;surname2" value-column="id"
+                                 query-on-init="true" visible-columns="name;surname1;surname2" translate="yes"
+                                 null-selection="true" sort="ASC"></o-combo>
+                      </div>
+                      
+                      <div class="combo-container">
+                        <label for="bootcampCombo" class="combo-placeholder">Bootcamps</label>
+                        <o-combo id="bootcampCombo" attr="bootcamps_id" class="bootcamp" label="Bootcamps" read-only="no" service="bootcamps"
+                                 entity="bootcamp" keys="id" columns="id;name" value-column="id" query-on-init="true"
+                                 searchable="yes" visible-columns="name" translate="yes" null-selection="true"
+                                 sort="ASC"></o-combo>
+                      </div>
+                      
+                      <div class="combo-container">
+                        <label for="udemyCombo" class="combo-placeholder">Udemy</label>
+                        <o-combo id="udemyCombo" class="udemy" #type attr="udemy" read-only="no"
+                                 [static-data]="[{'value': 'true', 'label': 'Active' | oTranslate},{'value': 'false', 'label': 'Inactive' | oTranslate}]"
+                                 service="students" entity="student" columns="udemy" value-column="value" keys="id"
+                                 visible-columns="label" translate="yes" sort="ASC"></o-combo>
+                      </div>
+                      
+                      <div class="combo-container">
+                        <label for="statusCombo" class="combo-placeholder">{{'LEMSTATUS' | oTranslate}}</label>
+                        <o-combo id="statusCombo" attr="v_employment_status_id" class="estadoL" label="LEMSTATUS" required="no"
+                                 translate="yes" null-selection="true" read-only="false" service="employmentstatus"
+                                 entity="employmentStatus" keys="id" columns="id;situation" value-column="id"
+                                 description-columns="situation" query-on-init="true">
+                        </o-combo>
+                      </div>
+                      
+                      <div class="combo-container">
+                        <label for="studentStatusCombo" class="combo-placeholder">{{'LSTATUS' | oTranslate}}</label>
+                        <o-combo id="studentStatusCombo" attr="student_status_id" class="estado" label="LSTATUS" null-selection="true"
+                                 service="studentstatus" entity="studentStatus" keys="id" columns="id;status" value-column="id"
+                                 visible-columns="status" read-only="no" sort="ASC">
+                        </o-combo>
+                      </div>
+                      
+                      <div class="combo-container">
+                        <label for="communityCombo" class="combo-placeholder">{{'LSPAINCOMUNITY' | oTranslate}}</label>
+                        <o-combo id="communityCombo" class="comunidad" attr="spain_comunity" read-only="no" service="students" entity="student"
+                                 columns="spain_comunity" [static-data]="dataArray" value-column="key" visible-columns="value"
+                                 searchable="yes" sort="ASC"></o-combo>
+                      </div>
 
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
                         <label>{{ "ActiveStudents" | oTranslate }}</label>
-                        <mat-slide-toggle (change)="toggleFinished($event)" checked="true">
+                        <mat-slide-toggle (change)="toggleFinished($event)" checked="false">
                         </mat-slide-toggle>
                     </div>
                     <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
@@ -53,15 +72,19 @@
                     [expression-builder]="createFilter.bind(this)"></o-filter-builder>
             </o-column-collapsible>
 
+
+
             <div>
                 <h1 class="titulo_tablas">{{ 'Students' | oTranslate }}</h1>
                 <o-table #tableStudents sort-columns="name:ASC" virtual-scroll="false" class="general_table"
                     attr="studentsTable" service="students" entity="student" keys="id"
                     columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;student_status_id;v_employment_status_id;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;user_id;status;usr_photo;bootcamps_id;validos;bootcamps_id"
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;user_id;status;usr_photo;bootcamps_id;validos;bootcamps_id"
                     visible-columns="usr_photo;name;surname1;surname2;dni;personal_email;phone"
                     delete-button="false" pageable="true" show-report-on-demand-option="false"
-                    show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()">
+                    show-charts-on-demand-option="false" (onDataLoaded)="goToDetail()" context-menu="false">
+
+                    <o-table-button attr="csv_buttom" label="{{ 'IMPORT_CSV' | oTranslate }}" icon="upload" (onClick)="onImportCsv()"></o-table-button>
                     <o-table-column attr="name" title="Name" sortable="true"></o-table-column>
                     <o-table-column attr="surname1" title="FIRST_SURNAME" sortable="true"></o-table-column>
                     <o-table-column attr="surname2" title="LAST_SURNAME" sortable="true"></o-table-column>

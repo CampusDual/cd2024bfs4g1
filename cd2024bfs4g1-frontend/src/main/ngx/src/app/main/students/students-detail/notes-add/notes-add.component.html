@@ -8,7 +8,7 @@
       </div>
       <!-- Campo de texto -->
       <label for="LNOTE" class="espaciador">{{'LNOTE' | oTranslate}}</label>
-      <o-text-input attr="nota" sql-type="VARCHAR" required="yes"></o-text-input>
+      <o-text-input attr="nota" sql-type="VARCHAR" required="yes" max-length="2500"></o-text-input>
 
       <o-date-input #date  label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
       <!-- Botón de acción -->

@@ -1,5 +1,5 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
-  show-header-navigation="no" confirm-exit="false" show-header="no" (onDataLoaded)="loadBootcamp()">
+  show-header-navigation="no" confirm-exit="false" show-header="no" (onDataLoaded)="loadData()">
   <o-text-input #bootcampIdComp attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
   <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center" animationDuration="0ms">
     <mat-tab label="{{'Estudiante'|oTranslate}}">
@@ -71,14 +71,14 @@
           <o-table #sessionsTable class="general_table" virtual-scroll="false" attr="sessionBootcamp_table"
             detail-form-route="session" service="sessionBootcamp" entity="sessionBootcamp" keys="id"
             parent-keys="id_bootcamp:id" columns="id;session_name;session_date;password;status;link"
-            visible-columns="session_name;session_date;password;status;Link" select-all-checkbox-visible="true"
+            visible-columns="session_name;session_date;password;status;link" select-all-checkbox-visible="true"
             selection-mode="multiple" [row-class]="getRowClass" sort-columns="session_date" virtual-scroll="true"
             context-menu="false" show-report-on-demand-option="false" show-charts-on-demand-option="false">
 
             <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
-            <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+            <o-table-column class="center" attr="link" width="64px" tooltip="yes"
                             tooltip-value="{{'link_ico'| oTranslate}}">
-              <o-table-cell-renderer-action (onClick)="openLink($event)" icon="link"></o-table-cell-renderer-action>
+                            <app-o-table-cell-renderer-link></app-o-table-cell-renderer-link>
             </o-table-column>
             <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
             <o-table-column class="center" attr="password" title="password"></o-table-column>

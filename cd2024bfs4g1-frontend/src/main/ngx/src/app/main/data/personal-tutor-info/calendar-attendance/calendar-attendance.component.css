@@ -1,3 +1,10 @@
+.button-container{
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  gap:20px;
+}
+
 .calendar-timestamps-container {
   display: flex;
   flex-direction: row;
@@ -64,7 +71,13 @@
   display: grid;
 }
 
+.custom-select {
+  background-color: #fff; /* Cambia el color de fondo del botón select */
+}
 
+.custom-select .mat-select-panel {
+  background-color: #fff ; /* Cambia el color del panel desplegable */
+}
 
 .bootcamp:hover {
   background-color: #C8DBC2;
@@ -221,10 +234,6 @@ select option {
   overflow-x: hidden;
 }
 
-.button-container {
-  text-align: center;
-  margin-top: 20px;
-}
 
 .custom-select {
   width: 80px;
@@ -258,9 +267,32 @@ select option {
   align-items: center;
 }
 
+.h1-spacing {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+
 .mat-select-trigger {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
+}
+.warning {
+  display: flex;
+  align-items: center;
+  color: red; 
+  font-size: 12px;
+  margin-top: 5px;
+  gap: 5px; 
+}
+.fixed-size {
+  width: 300px; 
+  margin: 0 auto; 
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
 }

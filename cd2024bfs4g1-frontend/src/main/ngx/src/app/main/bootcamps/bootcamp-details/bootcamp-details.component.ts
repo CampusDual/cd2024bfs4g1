@@ -15,6 +15,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 })
 export class BootcampDetailsComponent {
+
   @ViewChild('bootcampDetailForm') bootcampDetailForm:OFormComponent;
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
@@ -23,6 +24,7 @@ export class BootcampDetailsComponent {
   @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
   selectedStatuses: string[] = ['Started', 'Pending']; 
   months: Date[] = [];
+  bootcampId: number;
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
@@ -219,10 +221,12 @@ export class BootcampDetailsComponent {
 
   getFileData() {
     if (this.idNumber) {
+      this.bootcampId = this.idNumber.getValue();
       return { bootcamp_id: this.idNumber.getValue() };
     } else {
       return null;
     }
+    
   }
 
 
@@ -290,19 +294,9 @@ export class BootcampDetailsComponent {
 
    }
 
-   openLink(event: any): void {
-    const link = event?.link;
-
-    if (!link) {
-      this.showAlert()
-      return;
-    }
-    window.open(link, '_blank');
-  }
-
   showAlert() {
     if (this.dialogService) {
-      this.dialogService.error('Error en el link', 'El link no existe o  no es válido');
+      this.dialogService.error('Error en el link', 'El link no existe o no es válido');
     }
   }
   getRowClass(rowData: any): string {
@@ -368,6 +362,9 @@ export class BootcampDetailsComponent {
     }
   }
 
+  loadBootcamp() {
+    this.bootcampId= this.bootcampDetailForm.getFieldValue("id");
+  }
 
 
 

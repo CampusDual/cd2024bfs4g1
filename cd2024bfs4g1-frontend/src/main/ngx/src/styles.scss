@@ -121,7 +121,7 @@ button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary,
 .o-button button.mat-mdc-outlined-button,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
-.list_container .o-list-container .add-button
+.list_container .o-list-container .add-button, .boton-angular
 {
   border: none;
   background-color: #8AB237;
@@ -148,7 +148,8 @@ button.mat-mdc-raised-button.mat-primary:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary:hover,
 .o-button button.mat-mdc-outlined-button:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent:hover,
-.list_container .o-list-container .add-button:hover {
+.list_container .o-list-container .add-button:hover,
+.boton-angular:hover {
   border: 2px solid #8AB237;
   background-color: #1a3459;
   border-radius: 10px;
@@ -415,3 +416,39 @@ o-column.o-column .o-container > .o-container-title span{
 .mat-mdc-card{
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
+
+.mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-form-field-infix .mat-mdc-floating-label {
+  display: none;
+}
+.notification-bg {
+  --mdc-snackbar-container-color: #8AB237;
+  padding: 16px;
+}
+.notification-error{
+  --mdc-snackbar-container-color: #ff0000;
+  padding: 16px;
+}
+
+ mat-list-item .mat-mdc-list-item-title {
+  color:  #7ec117;
+  font-size: 20px;
+  --mdc-list-list-item-hover-label-text-color: #7ec117;
+
+}
+
+
+.mat-mdc-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix{
+  padding-bottom: 4px;
+  padding-top: 10px;
+}
+
+.mat-calendar-body-selected{
+  background-color: #1a3459;
+}
+.mat-calendar-body-in-range::before{
+  background-color: #8AB237;
+}
+.mat-calendar-body-cell-content.mat-focus-indicator{
+  border-radius: 50%;
+}
+

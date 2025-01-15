@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
-import { AppearanceService } from 'ontimize-web-ngx';
+import { AppearanceService, OntimizeService, OUserInfoService } from 'ontimize-web-ngx';
 import { Component, OnInit, Injector, ViewChild, Inject } from '@angular/core';
 import { OntimizeMatIconRegistry } from 'ontimize-web-ngx';
+import { MainService } from './shared/services/main.service';
 
 @Component({
   selector: 'o-app',
@@ -9,8 +10,13 @@ import { OntimizeMatIconRegistry } from 'ontimize-web-ngx';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  protected service: OntimizeService;
   ontimizeMatIconRegistry: OntimizeMatIconRegistry;
-  constructor(private router: Router, protected appearanceService: AppearanceService,protected injector: Injector) {
+  iniciliced = 0;
+  constructor(private router: Router, protected appearanceService: AppearanceService,protected injector: Injector, 
+    private oUserInfoService:OUserInfoService,
+    private mainService: MainService) {
+      this.service = this.injector.get(OntimizeService)
     this.ontimizeMatIconRegistry = this.injector.get(OntimizeMatIconRegistry);
     if(window['__ontimize'] !== undefined && window['__ontimize']['redirect'] !== undefined) {
       let redirectTo = window['__ontimize']['redirect'];
@@ -33,4 +39,17 @@ export class AppComponent implements OnInit {
     }
   }
 
+ updateAvatar(){
+  this.mainService.getUserInfo().subscribe(result=>{
+    this.oUserInfoService.setUserInfo({
+      username: result.data['usr_login'],
+      avatar: "data:image/png;base64,"+result.data['usr_photo']
+   });
+   });
+ }
+  ngAfterViewInit(){
+    setTimeout(()=>this.updateAvatar(),1000);
+    setTimeout(()=>this.updateAvatar(),5000);
+ 
+}
 }

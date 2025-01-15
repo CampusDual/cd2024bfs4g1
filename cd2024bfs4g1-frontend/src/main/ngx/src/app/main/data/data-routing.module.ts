@@ -9,12 +9,12 @@ import { NewSessionBootcampComponent } from './personal-tutor-info/new-session-b
 
 const routes: Routes = [
 
-  {path: 'student',component: PersonalInfoComponent},
-  {path: 'tutor',component: PersonalTutorInfoComponent},
-  {path: 'tutor/:id',component: BootcampStudentsTableComponent},
-  {path: 'student/:id',component: PersonalInfoSessionsComponent},
-  {path: 'tutor/:id_bootcamp/session/new', component: NewSessionBootcampComponent},
-  {path: 'tutor/:id_bootcamp/session/:id', component: UpdateSessionTutorComponent}
+  {path: 'student',component: PersonalInfoComponent, data: {oPermission: {permissionId: 'data-student-permission', restrictedPermissionsRedirect: '/login'}}},
+  {path: 'tutor',component: PersonalTutorInfoComponent, data: {oPermission: {permissionId: 'data-tutor-permission', restrictedPermissionsRedirect: '/login'}}},
+  {path: 'tutor/:id',component: BootcampStudentsTableComponent, data: {oPermission: {permissionId: 'bootcamp-student-permission', restrictedPermissionsRedirect: '/main/home'}}},
+  {path: 'student/:id',component: PersonalInfoSessionsComponent, data: {oPermission: {permissionId: 'sessions-student-permission', restrictedPermissionsRedirect: '/main/home'}}},
+  {path: 'tutor/:id_bootcamp/session/new', component: NewSessionBootcampComponent, data: {oPermission: {permissionId: 'new-session-permission', restrictedPermissionsRedirect: '/login'}}},
+  {path: 'tutor/:id_bootcamp/session/:id', component: UpdateSessionTutorComponent, data: {oPermission: {permissionId: 'update-session-permission', restrictedPermissionsRedirect: '/login'}}}
 
 ];
 @NgModule({

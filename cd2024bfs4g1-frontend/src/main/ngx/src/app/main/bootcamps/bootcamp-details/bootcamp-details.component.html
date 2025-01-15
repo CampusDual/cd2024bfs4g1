@@ -50,13 +50,13 @@
             <o-form-layout-dialog-options class="popup">
               <h3>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</h3>
               <o-table #studentsTable class="general_table" virtual-scroll="false" attr="studentsBootcampTable"
-                       service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
-                       parent-keys="bootcamp_id:id;start_date;end_date"
-                       columns="id;name;surname1;surname2;personal_email;student_id;status;sb_start_date;sb_end_date;Detalle;userphotostudent"
-                       visible-columns="userphotostudent;name;surname1;surname2;status;sb_start_date;sb_end_date;Detalle"
-                       sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
-                       show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
-                       detail-mode="click">
+                      service="studentBootcamps" entity="studentsWithBootcamp" keys="id"
+                      parent-keys="bootcamp_id:id;start_date;end_date"
+                      columns="id;name;surname1;surname2;personal_email;student_id;student_status;sb_start_date;sb_end_date;Detalle;userphotostudent"
+                      visible-columns="userphotostudent;name;surname1;surname2;student_status;sb_start_date;sb_end_date;Detalle"
+                      sort-columns="name" query-rows="10" show-report-on-demand-option="false"query-on-init="true" pageable="true"
+                      show-charts-on-demand-option="false" select-all-checkbox-visible="true" selection-mode="multiple"
+                      detail-mode="click">
                 <o-table-column attr="sb_start_date" title="start_date" type="date"
                   format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -251,16 +251,16 @@
                        entity="sessionBootcamp" keys="id"
                        parent-keys="id_bootcamp:id"
                        columns="id;session_name;session_date;password;status;link"
-                       visible-columns="session_name;session_date;password;status;Link"
+                       visible-columns="session_name;session_date;password;status;link"
                        select-all-checkbox-visible="true" selection-mode="multiple"
                        [row-class]="getRowClass"
                        sort-columns="session_date"
                        >
 
                 <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
-                <o-table-column class="center" attr="Link" width="64px" tooltip="yes"
+                <o-table-column class="center" attr="link" width="64px" tooltip="yes"
                                 tooltip-value="{{'link_ico'| oTranslate}}">
-                  <o-table-cell-renderer-action (onClick)="openLink($event)" icon="link"></o-table-cell-renderer-action>
+                  <app-o-table-cell-renderer-link></app-o-table-cell-renderer-link>
                 </o-table-column>
                 <o-table-column class="center" attr="session_name" title="session_name"></o-table-column>
                 <o-table-column class="center" attr="password" title="password"></o-table-column>
@@ -274,6 +274,9 @@
               </o-table>
             </div>
           </div>
+        </mat-tab>
+        <mat-tab label="{{'Asistencia'|oTranslate}}">
+          <app-calendar-attendance [bootcampId]="bootcampId"></app-calendar-attendance>
         </mat-tab>
 
       </o-form-layout-dialog-options>

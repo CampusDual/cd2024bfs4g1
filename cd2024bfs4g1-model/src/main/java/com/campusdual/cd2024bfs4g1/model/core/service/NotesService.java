@@ -2,6 +2,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.INotesService;
 
+import com.campusdual.cd2024bfs4g1.model.core.CdUtils;
 import com.campusdual.cd2024bfs4g1.model.core.dao.NotesDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -10,21 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Map;
+
 @Service("NotesService")
-@Lazy public class NotesService implements INotesService {
+@Lazy
+public class NotesService implements INotesService {
 
     @Autowired
     private NotesDao notesDao;
 
+    CdUtils cdUtils;
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+
     @Override
     public EntityResult notesInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.insert(this.notesDao, attrMap);
     }
-
 
 
     @Override

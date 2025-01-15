@@ -128,6 +128,7 @@
           <div class="container_students">
             <fieldset class="fieldsetDoc">
               <legend>{{'STUDENT_FILES' | oTranslate}} </legend>
+              <label>{{'Upload Document' | oTranslate}}</label>
               <div class="separadorFile">
                 <o-file-input class="o-file-input" #fileinput attr="file" label="{{ 'Upload Document' | oTranslate }}"
                   service="documents" entity="upload" max-file-size="1000000" multiple="yes" max-num-files="5"
@@ -162,16 +163,18 @@
           <o-form-layout-dialog-options class="popup">
             <fieldset class="fieldsetDoc">
               <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
-              <o-table class="general_table_segunda" attr="bootcampsStudentTable" service="studentBootcamps"
+              <o-table class="general_table_segunda" attr="bootcampsStudentTable" sort-columns="status:ASC;start_date:ASC" service="studentBootcamps"
                 entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
-                columns="id;bootcampname;status;start_date;end_date"
-                visible-columns="bootcampname;status;start_date;end_date" detail-mode="none"
+                columns="id;bootcampname;status;start_date;end_date;sb_start_date;sb_end_date"
+                visible-columns="bootcampname;status;start_date;end_date;sb_start_date;sb_end_date" detail-mode="none"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false"
                 select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
                 <o-table-context-menu view-detail="false" edit="false" delete="false"
                   insert="false"></o-table-context-menu>
                 <o-table-column attr="bootcampname" title="Bootcamp name"></o-table-column>
+                <o-table-column attr="sb_start_date" title="Llegada" type="date" format="DD/MM/YYYY"></o-table-column>
+                <o-table-column attr="sb_end_date" title="Salida" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="start_date" title="DayStart" type="date" format="DD/MM/YYYY"></o-table-column>
                 <o-table-column attr="end_date" title="DayEnd" type="date" format="DD/MM/YYYY"></o-table-column>
               </o-table>
@@ -200,7 +203,7 @@
               <o-table class="general_table_primera" insert-form-route="new_employment_history"
                 attr="employmentstatushistory" service="employmentstatushistory" entity="employmentStatusHistory"
                 keys="id" parent-keys="student_id:id" (onDataLoaded)="refreshEmploymentStatus()"
-                columns="id;student_id;situation;employment_status_id;status_date_change;description"
+                columns="id;student_id;situation;status_date_change;description"
                 visible-columns="situation;status_date_change;description" show-report-on-demand-option="false"
                 show-charts-on-demand-option="false" select-all-checkbox-visible="true" quick-filter="false"
                 sort-columns="status_date_change:DESC" sort-columns="status_date_change:DESC" selection-mode="none"

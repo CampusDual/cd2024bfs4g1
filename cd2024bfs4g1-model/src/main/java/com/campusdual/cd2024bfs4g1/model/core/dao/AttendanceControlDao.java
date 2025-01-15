@@ -12,4 +12,5 @@ public class AttendanceControlDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID = "id";
     public static final String ATTR_ABBREVIATION = "abbreviation";
     public static final String ATTR_DESCRIPCION = "description";
+    public static final String ATTR_COLOR = "color";
 }

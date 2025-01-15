@@ -1,5 +1,50 @@
 <div class="calendar-timestamps-container">
     <div class="calendar-container">
+        <div class="button-container">
+            <o-button (click)="openAttendanceDialog()" label="Multiple Selection"></o-button>
+            <o-button (click)="goToToday()" label="today"></o-button>
+            <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
+        </div>
+
+        <ng-template #attendanceDialog>
+          <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
+          <mat-dialog-content>
+              <label class="center-content">{{'Select_Date' | oTranslate}}</label>
+              <div class="center-content">
+                  <mat-form-field class="fixed-size">
+                      <mat-label>{{ 'Attendance_Range' | oTranslate }}</mat-label>
+                      <mat-date-range-input [rangePicker]="picker">
+                          <input matStartDate [(ngModel)]="selectedStartDate">
+                          <input matEndDate  [(ngModel)]="selectedEndDate">
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+              </div>
+              <label class="center-content">{{'Select_Status' | oTranslate}}</label>
+              <div class="center-content">
+                  <mat-form-field class="fixed-size">
+                      <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
+                      <mat-select [(ngModel)]="selectedStatus" required>
+                          <mat-option *ngFor="let status of statusData" [value]="status.id">
+                              {{ status.abbreviation }} - {{ status.description }}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <mat-label class="warning">
+                  <mat-icon>warning</mat-icon>
+                  {{'Attendance_Warning' | oTranslate}}
+              </mat-label>
+          </mat-dialog-content>
+          <mat-dialog-actions class="center-select">
+              <button class="boton-angular"  mat-dialog-close>{{'Cancelar' | oTranslate}}</button>
+              <button class="boton-angular" (click)="submitAttendance()">{{'Save' | oTranslate}}</button>
+          </mat-dialog-actions>
+      </ng-template>
+
+
         <div class="date-item-container">
             <o-button color="white" (click)="decSelectedWeek()" icon="arrow_back"></o-button>
             <div class="years" *ngFor="let year of years">
@@ -17,7 +62,6 @@
                     </div>
                 </div>
             </div>
-
             <o-button color="white" (click)="incSelectedWeek()" icon="arrow_forward"></o-button>
         </div>
 
@@ -32,28 +76,51 @@
                 <div>{{dayWithWeekDays.dayOfWeek}}</div>
             </div>
         </div>
-        <div class="calendar">
-            <div *ngFor="let student of students" class="student_row days"
-                [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
-                <div>{{ student.name }} {{ student.surname1 }} {{ student.surname2 }}</div>
-                <div *ngFor="let dayWithWeekDay of daysWithWeekDays">
-                    <div class="center-select" *ngIf="isBootcampInRange(dayWithWeekDay.fullDate)"
-                        [matTooltip]="getSelectedTooltip(student, dayWithWeekDay)" matTooltipPosition="below">
-                        <mat-select class="custom-select"
-                            [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)"
-                            (selectionChange)="onSelectChange($event, student, dayWithWeekDay)">
-                            <mat-option *ngFor="let status of statusData" [value]="status.id">
-                                {{ status.abbreviation }}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                </div>
+       <div class="calendar">
+        <div
+          *ngFor="let student of students"
+          class="student_row days"
+          [ngStyle]="{'grid-template-columns': updateDayGridColumns()}"
+        >
+          <div>
+            {{ student.name }} {{ student.surname1 }} {{ student.surname2 }}
+          </div>
+          <div *ngFor="let dayWithWeekDay of daysWithWeekDays">
+            <div
+              class="center-select"
+              *ngIf="isBootcampInRange(dayWithWeekDay.fullDate)"
+              [matTooltip]="getSelectedTooltip(student, dayWithWeekDay)"
+              matTooltipPosition="below"
+
+            >
+              <!-- MAT-SELECT CORREGIDO -->
+              <mat-select
+                class="custom-select"
+                [ngStyle]="{
+                  'background-color': getBackgroundColor(
+                    getAbbreviationByStatusId(
+                      getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)
+                    )
+                  )
+                }"
+                [value]="getAttendanceOfDay(student.student_id, dayWithWeekDay.fullDate)"
+                (selectionChange)="onSelectChange($event, student, dayWithWeekDay)"
+              >
+                <mat-option
+                  *ngFor="let status of statusData"
+                  [value]="status.id"
+                  [ngStyle]="{ 'background-color': getBackgroundColor(status.abbreviation) }"
+                >
+                  {{ status.abbreviation }}
+                </mat-option>
+              </mat-select>
             </div>
+          </div>
         </div>
+      </div>
 
 
-        <div class="button-container">
-            <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
-        </div>
     </div>
 </div>
+
+

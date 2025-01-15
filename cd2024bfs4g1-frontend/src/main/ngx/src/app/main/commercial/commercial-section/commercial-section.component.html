@@ -5,19 +5,27 @@
             <o-column-collapsible title="{{'FILTERS' | oTranslate}}" appearance="legacy" expanded="no" elevation="10"
                       icon="filter_list" class="collapsible-2">
     <div class="filter_style">
-        <o-combo attr="bootcamps_id" class="bootcamp" label="Bootcamps" read-only="no" service="bootcamps" entity="futureBootcamp"
-                keys="id" columns="id;name" value-column="id" query-on-init="true" searchable="yes"
-                visible-columns="name" translate="yes" null-selection="true" sort="ASC" ></o-combo>
-
-        <o-combo attr="student_status_id" label="LSTATUS" null-selection="true" service="studentstatus"
-                 entity="studentStatus" keys="id" columns="id;status" value-column="id" visible-columns="status"
-                 read-only="no" sort="ASC">
-        </o-combo>
-
-        <o-combo attr="status" label="LCONTACTSTATUS" null-selection="true" multiple="true"  [static-data]="dataArray" service="students"
-                 entity="commercialStudent"  columns="status" value-column="key" visible-columns="value"
-                 read-only="no" sort="ASC">
-        </o-combo>
+        <div class="combo-container">
+            <label for="bootcampsCombo" class="combo-placeholder">Bootcamps</label>
+            <o-combo id="bootcampsCombo" attr="bootcamps_id" class="bootcamp" label="Bootcamps" read-only="no"
+                     service="bootcamps" entity="futureBootcamp" keys="id" columns="id;name" value-column="id"
+                     query-on-init="true" searchable="yes" visible-columns="name" translate="yes" null-selection="true"
+                     sort="ASC"></o-combo>
+          </div>
+          
+          <div class="combo-container">
+            <label for="studentStatusCombo" class="combo-placeholder">{{'LSTATUS' | oTranslate}}</label>
+            <o-combo id="studentStatusCombo" attr="student_status_id" label="LSTATUS" null-selection="true"
+                     service="studentstatus" entity="studentStatus" keys="id" columns="id;status" value-column="id"
+                     visible-columns="status" read-only="no" sort="ASC"></o-combo>
+          </div>
+          
+          <div class="combo-container">
+            <label for="contactStatusCombo" class="combo-placeholder">{{'LCONTACTSTATUS' | oTranslate}}</label>
+            <o-combo id="contactStatusCombo" attr="status" label="LCONTACTSTATUS" null-selection="true" multiple="true"
+                     [static-data]="dataArray" service="students" entity="commercialStudent" columns="status"
+                     value-column="key" visible-columns="value" read-only="no" sort="ASC"></o-combo>
+          </div>
 
         <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
             <o-button attr="clear" [oFilterBuilderClear]="commercialFilterBuilder" type="STROKED"
@@ -36,8 +44,8 @@
             <div>
                 <h1 class="titulo_tablas">{{ 'LCONTACTEDSTUDENTS' | oTranslate }}</h1>
             <o-table #tableCommercial virtual-scroll="false" class="general_table" attr="commercialTable" service="students" entity="commercialStudent"
-                sort-columns="name" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;employment_status_id;udemy;status;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;notes;spain_comunity;location;student_status_id;bootcamps_id"
+                sort-columns="name" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;udemy;status;
+                campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;student_status_id;bootcamps_id"
                 visible-columns="name;surname1;surname2;personal_email;phone;status" insert-button="false" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" detail-mode="none" (onClick)="goToDetail($event)">
                 <o-table-column attr="name" title="Name"></o-table-column>
