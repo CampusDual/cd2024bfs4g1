@@ -1,0 +1,20 @@
+<o-form #holidays_details confirm-exit="no" attr="holidays_details" service="holidays" entity="holidays" keys="id"
+    show-header="no" header-actions="I;U;D" show-header-navigation="no">
+    <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+
+    <div class="grid-container">
+        <div>
+            <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
+            <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
+        </div>
+        <div>
+            <label for="REQ_LHOLIDAY_DATE">{{'REQ_LHOLIDAY_DATE' | oTranslate}}</label>
+            <o-date-input #enddate attr="holiday_date" required="yes" format="DD/MM/YYYY">
+            </o-date-input>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button translate="yes" attr="updatebutton" id="update" type="RAISED" label="update" color="primary"
+                (click)="holidays_details.update();holidays_details.closeDetail()"></o-button>
+        </div>
+    </div>
+</o-form>

@@ -5,6 +5,12 @@
   gap:20px;
 }
 
+.no-computable {
+  background-color: rgb(255, 108, 108); 
+  color: white;           
+}
+
+
 .calendar-timestamps-container {
   display: flex;
   flex-direction: row;

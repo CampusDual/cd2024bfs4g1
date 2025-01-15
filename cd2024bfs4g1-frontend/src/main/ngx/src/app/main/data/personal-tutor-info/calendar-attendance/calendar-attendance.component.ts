@@ -22,6 +22,7 @@ interface Student {
   start_date: Date;
   end_date: Date;
   status: string;
+  
 }
 
 interface AttendanceStatus {
@@ -127,30 +128,43 @@ export class CalendarAttendanceComponent {
     this.service.configureService(conf);
   }
 
+  protected configureHolidays() {
+    // Configure the service using the configuration defined in the `app.services.config.ts` file
+    const conf = this.service.getDefaultServiceConfiguration('holidays');
+    this.service.configureService(conf);
+  }
+
   loadStudents(): void {
     this.configureStudents();
     this.getStudents();
   }
   getStudents() {
     if (this.service && this.bootcampId) {
-      const columns = ['student_id', 'name', 'surname1', 'surname2'];
+        const columns = ['student_id', 'name', 'surname1', 'surname2', 'computable'];
+        const filter = { 'bootcamp_id': this.bootcampId };
 
-      const filter = {
-        'bootcamp_id': this.bootcampId
-      }
-      this.service.query(filter, columns, 'studentsWithBootcamp').subscribe(resp => {
-        if (resp.code === 0) {
-          if (resp.data.length > 0) {
-            this.students = resp.data;
-          } else {
-            this.students = [];
-          }
-        } else {
-          this.snackBarService.open('Error al cargar los datos de los estudiantes.');
-        }
-      });
+        this.service.query(filter, columns, 'studentsWithComputable').subscribe(resp => {
+            if (resp.code === 0) {
+                if (resp.data.length > 0) {
+                    console.log('Respuesta con computable:', resp.data);
+
+                    this.students = resp.data.map((stu: any) => {
+                        return {
+                            ...stu,
+                            isComputable: stu.computable
+                        };
+                    });
+                } else {
+                    this.students = [];
+                }
+            } else {
+                this.snackBarService.open('Error al cargar los datos de los estudiantes.');
+            }
+        });
     }
-  }
+}
+
+  
 
   loadAttendanceStatus(): void {
     this.configureAttendanceStatus();

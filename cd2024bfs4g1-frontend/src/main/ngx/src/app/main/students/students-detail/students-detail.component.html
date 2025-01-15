@@ -159,7 +159,7 @@
     </mat-tab>
     <mat-tab label="{{'BootcAsig'|oTranslate}}">
       <div class="estudiantesDocumentos">
-        <o-form-layout-manager class="selectedrow" attr="addStudentLayout" mode="dialog">
+        <o-form-layout-manager class="selectedrow" title="AsignarBoot" attr="addStudentLayout" mode="dialog">
           <o-form-layout-dialog-options class="popup">
             <fieldset class="fieldsetDoc">
               <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
@@ -198,7 +198,7 @@
           </div>
           <div class="container_students">
             <h3>{{ 'Historial_Laboral' | oTranslate }}</h3>
-            <o-form-layout-manager attr="employmentstatushistory" mode="dialog">
+            <o-form-layout-manager attr="employmentstatushistory" title="StudentLaboralStat" mode="dialog">
               <o-form-layout-dialog-options class="popup"></o-form-layout-dialog-options>
               <o-table class="general_table_primera" insert-form-route="new_employment_history"
                 attr="employmentstatushistory" service="employmentstatushistory" entity="employmentStatusHistory"
@@ -255,7 +255,7 @@
     </mat-tab>
     <mat-tab label="{{'LNOTE' | oTranslate}}">
 
-      <o-form-layout-manager class="selectedrow" mode="dialog">
+      <o-form-layout-manager class="selectedrow" title="NewNote" mode="dialog">
         <o-form-layout-dialog-options class="popup">
           <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
             delete-button="true" insert-form-route="new_note" delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
