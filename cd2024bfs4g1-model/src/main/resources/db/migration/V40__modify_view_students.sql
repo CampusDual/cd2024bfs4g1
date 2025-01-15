@@ -1,3 +1,5 @@
+ALTER TABLE students ADD COLUMN "linkedin" varchar(255);
+
 DROP VIEW IF EXISTS v_students_with_bootcamps;
 
 CREATE OR REPLACE VIEW public.v_students_with_bootcamps
