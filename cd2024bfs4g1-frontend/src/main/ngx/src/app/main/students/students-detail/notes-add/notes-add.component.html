@@ -6,12 +6,10 @@
       <div class="espaciador">
         <label>{{ todayDate }}</label>
       </div>
-      <!-- Campo de texto -->
-      <label for="LNOTE" class="espaciador">{{'LNOTE' | oTranslate}}</label>
+      <label for="LNOTE" class="espaciador">{{'Note' | oTranslate}}</label>
       <o-text-input attr="nota" sql-type="VARCHAR" required="yes" max-length="2500"></o-text-input>
 
       <o-date-input #date  label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
-      <!-- Botón de acción -->
       <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
         <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary" (click)="addNotes()"></o-button>
       </div>
