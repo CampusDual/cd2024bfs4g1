@@ -136,7 +136,5 @@ ORDER BY
 
 
 --DROP student columns
-ALTER TABLE public.students DROP COLUMN surnames;
-
 ALTER TABLE public.students
 DROP COLUMN employment_status_id;
