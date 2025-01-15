@@ -289,7 +289,7 @@
   "Employment status" : "Employment status",
   "FCT Information" : "FCT Information",
   "Notes" : "Notes",
-  "OtherInformation": "Other information",
+  "OtherInformation": "Aditional information",
   "LEMSTATUS_ACTUAL": "Current employment status",
   "Historial_Laboral": "Employment history",
   "REQ_DATE":"Date of change*",
@@ -390,5 +390,6 @@
   "StudentLaboralStat" : "Student laboral status",
   "NewNote" : "New note",
   "Note" : "Note",
-  "Session" : "Session"
+  "Session" : "Session",
+  "AcaData" : "Academic data"
 }
