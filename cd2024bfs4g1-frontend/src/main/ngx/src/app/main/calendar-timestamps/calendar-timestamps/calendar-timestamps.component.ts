@@ -161,8 +161,13 @@ export class CalendarTimestampsComponent {
     }
   }
 
-
-  
+  getHolidayTooltip(day: Date): string {
+    if (Array.isArray(this.holidays)) {
+      const holiday = this.holidays.find((h: any) => h.holiday_date === day.getTime());
+      return holiday ? holiday.name : ''; 
+    }
+    return ''; 
+  }
 
   loadInitialDates(): void {
     const startOfWeek = moment().startOf('isoWeek').subtract(1, 'week');
@@ -333,7 +338,7 @@ export class CalendarTimestampsComponent {
   updateDayCSSForCurrentDay(day: Date) { // 
     if (this.isToday(day)) {
       return '#8AB237';
-    }else if(this.holidays && this.holidays.filter(holiday => { 
+    }else if(Array.isArray(this.holidays) && this.holidays.filter(holiday => { 
       return holiday.holiday_date  == day.getTime()
     }).length == 1 ){
       return 'red';

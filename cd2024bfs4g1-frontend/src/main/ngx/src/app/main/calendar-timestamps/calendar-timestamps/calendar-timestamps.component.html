@@ -8,13 +8,13 @@
                     <div class="months">
                         <div *ngIf="isSameMonthRange()">
                             <div class="date-item month">
-                              {{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}
+                                {{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}
                             </div>
                         </div>
                         <div *ngIf="!isSameMonthRange()">
                             <div class="two-months">
-                              <span>{{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}</span>
-                              <span>{{ getMonthName(endDate) }} {{ endDate | date: 'yyyy' }}</span>
+                                <span>{{ getMonthName(startDate) }} {{ startDate | date: 'yyyy' }}</span>
+                                <span>{{ getMonthName(endDate) }} {{ endDate | date: 'yyyy' }}</span>
                             </div>
                         </div>
                     </div>
@@ -24,30 +24,29 @@
             </div>
 
             <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
-                <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day"
-                     [ngStyle]="{
-                        'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.date),
-                        'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.date),
-                        'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.date)
-                     }">
-                    <div>{{dayWithWeekDays.day}}</div>
-                    <div>{{dayWithWeekDays.dayOfWeek}}</div>
+                <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{
+                            'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.date),
+                            'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.date),
+                            'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.date)
+                        }" matTooltip="{{ getHolidayTooltip(dayWithWeekDays.date) }}" matTooltipClass="my-tooltip">
+                    <div>{{ dayWithWeekDays.day }}</div>
+                    <div>{{ dayWithWeekDays.dayOfWeek }}</div>
                 </div>
             </div>
         </div>
 
         <div class="calendar">
-            <div *ngFor="let bootcamp of bootcamps"
-                 class="bootcamp"
-                 [ngStyle]="updateBootcampsGridColumns(bootcamp)"
-                 (click)="navigateToBootcampDetail(bootcamp.id)"
-                 matTooltipClass="my-tooltip" matTooltip="{{bootcamp.name}},&#10;  Fecha de inicio: {{bootcamp.start_date|date:'dd/MM/yyyy'}},&#10; Fecha de fin: {{bootcamp.end_date|date:'dd/MM/yyyy'}}">
+            <div *ngFor="let bootcamp of bootcamps" class="bootcamp" [ngStyle]="updateBootcampsGridColumns(bootcamp)"
+                (click)="navigateToBootcampDetail(bootcamp.id)" matTooltipClass="my-tooltip"
+                matTooltip="{{bootcamp.name}},&#10;  Fecha de inicio: {{bootcamp.start_date|date:'dd/MM/yyyy'}},&#10; Fecha de fin: {{bootcamp.end_date|date:'dd/MM/yyyy'}}">
                 <div style="display: flex; justify-content: space-between;">
-                    <div *ngIf="!shouldHideDates(bootcamp)" style="color: #1a3459">{{printDate(bootcamp.start_date)}}</div>
+                    <div *ngIf="!shouldHideDates(bootcamp)" style="color: #1a3459">{{printDate(bootcamp.start_date)}}
+                    </div>
                     <div style="flex-grow: 1; text-align: center;">
                         <div>{{getDisplayName(bootcamp)}}</div>
                     </div>
-                    <div *ngIf="!shouldHideDates(bootcamp)" style="color: #1a3459">{{printDate(bootcamp.end_date)}}</div>
+                    <div *ngIf="!shouldHideDates(bootcamp)" style="color: #1a3459">{{printDate(bootcamp.end_date)}}
+                    </div>
                 </div>
             </div>
         </div>

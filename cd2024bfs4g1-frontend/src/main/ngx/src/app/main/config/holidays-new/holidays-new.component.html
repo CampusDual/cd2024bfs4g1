@@ -3,11 +3,11 @@
     <div class="grid-container">
         <div>
             <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
-            <o-text-input attr="name" label-visible="false" required="yes"></o-text-input>
+            <o-text-input [validators]="validatorsWithoutSpace" attr="name" label-visible="false" required="yes"></o-text-input>
         </div>
         <div>
             <label for="REQ_LHOLIDAY_DATE">{{'REQ_LHOLIDAY_DATE' | oTranslate}}</label>
-            <o-date-input attr="holiday_date" required="yes" format="DD/MM/YYYY">
+            <o-date-input  attr="holiday_date" required="yes" format="DD/MM/YYYY">
             </o-date-input>
         </div>
         <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">

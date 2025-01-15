@@ -14,7 +14,7 @@ public interface IHolidaysService {
 
     EntityResult holidaysQuery(Map<String, Object> keysValues, List<String> attributes);
 
-
+    EntityResult holidaysUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
 
 
 }

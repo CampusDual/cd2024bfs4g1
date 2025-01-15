@@ -5,7 +5,7 @@
     <div class="grid-container">
         <div>
             <label for="REQ_LNAME">{{'REQ_LNAME' | oTranslate}}</label>
-            <o-text-input label-visible="false" attr="name" required="yes"></o-text-input>
+            <o-text-input [validators]="validatorsWithoutSpace" attr="name" required="yes"></o-text-input>
         </div>
         <div>
             <label for="REQ_LHOLIDAY_DATE">{{'REQ_LHOLIDAY_DATE' | oTranslate}}</label>

@@ -4,6 +4,7 @@ import com.campusdual.cd2024bfs4g1.api.core.service.IHolidaysService;
 import com.campusdual.cd2024bfs4g1.model.core.CdUtils;
 import com.campusdual.cd2024bfs4g1.model.core.dao.HolidaysDao;
 import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class HolidaysService implements IHolidaysService {
     @Override
     public EntityResult holidaysQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(this.holidaysDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult holidaysUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.holidaysDao, attrMap, keyMap);
     }
 
 }
