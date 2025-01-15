@@ -1,3 +1,5 @@
+ALTER TABLE student_bootcamp ADD COLUMN "status_id" int4;
+
 CREATE OR REPLACE VIEW public.bootcamp_status
 AS SELECT b.id,
     b.name,
