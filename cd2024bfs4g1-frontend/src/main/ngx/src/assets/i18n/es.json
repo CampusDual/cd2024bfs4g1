@@ -388,6 +388,7 @@
   "LHOLIDAYS":"Gestión de festivos",
   "festivos":"Holidays",
   "holiday_date":"Fecha del festivo",
-  "REQ_LHOLIDAY_DATE":"Fecha del festivo*"
+  "REQ_LHOLIDAY_DATE":"Fecha del festivo*",
+  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "El tipo de tutor que quieres eliminar es el por defecto"
 
 }

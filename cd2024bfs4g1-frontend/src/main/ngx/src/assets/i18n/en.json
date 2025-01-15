@@ -385,11 +385,11 @@
   "festivos":"Holidays",
   "holiday_date":"Holiday date",
   "REQ_LHOLIDAY_DATE":"Holiday date*",
-  "students_summary": "Students",
   "AsignarBoot" : "Assign bootcamps",
   "StudentLaboralStat" : "Student laboral status",
   "NewNote" : "New note",
   "Note" : "Note",
   "Session" : "Session",
-  "AcaData" : "Academic data"
+  "AcaData" : "Academic data",
+  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "The default mentor type cannot be deleted"
 }
