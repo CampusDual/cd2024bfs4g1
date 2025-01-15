@@ -289,10 +289,10 @@
   "Employment status" : "Employment status",
   "FCT Information" : "FCT Information",
   "Notes" : "Notes",
-  "OtherInformation": "Other information",
+  "OtherInformation": "Aditional information",
   "LEMSTATUS_ACTUAL": "Current employment status",
   "Historial_Laboral": "Employment history",
-  "REQ_DATE":"Date of Employment Status Change*",
+  "REQ_DATE":"Date of change*",
   "HORARIO_FUERA_DE_RANGO_DEL_BOOTCAMP":"The date range does not belong to the one designated for the bootcamp",
   "Confirm_dialog_title":"Confirm dialog",
   "Do_you_really_want_to_delete":"Do you really want to delete?",
@@ -384,5 +384,12 @@
   "LHOLIDAYS":"Holidays management",
   "festivos":"Holidays",
   "holiday_date":"Holiday date",
-  "REQ_LHOLIDAY_DATE":"Holiday date*"
+  "REQ_LHOLIDAY_DATE":"Holiday date*",
+  "AsignarBoot" : "Assign bootcamps",
+  "StudentLaboralStat" : "Student laboral status",
+  "NewNote" : "New note",
+  "Note" : "Note",
+  "Session" : "Session",
+  "AcaData" : "Academic data",
+  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "The default mentor type cannot be deleted"
 }
