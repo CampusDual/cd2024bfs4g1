@@ -87,21 +87,56 @@ protected configureServiceStudent() {
   throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
+  todayDate: string = '';
+  todayTimestamp: number = 0;
+  @ViewChild('notesForm') notesForm: OFormComponent;
+  @ViewChild('date') date: ODateInputComponent;
 
-  mostrarBoton: boolean = true; 
+
+
+  ngAfterViewInit() {
+    if (this.date) {
+      this.date.setValue(this.todayTimestamp);
+      console.log("TiSt"+this.todayTimestamp);
+      console.log("Date: "+ this.date.getValue().toString());
+    }
+  }
+  @ViewChild("studentIdNote") studentIdNote: OTextInputComponent;
+
+  setIdStudent(event: any) {
+    this.studentIdNote.setValue(this.idNumber.getValue());
+
+  }
+  addNotes(event: any) {
+
+    this.notesForm.insert();
+
+  }
+
+  mostrarBoton: boolean = true;
   selectedTabIndex: number = 0;
 
   ngOnInit() {
     this.mostrarBoton = /\d+$/.test(this.router.url);
-  
+    const today = new Date();
+    const day = today.getDate().toString().padStart(2, '0');
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const year = today.getFullYear();
+    this.todayDate = `${day}/${month}/${year}`;
+
+
+    const [dd, mm, yyyy] = this.todayDate.split('/').map(Number);
+    const parsedDate = new Date(yyyy, mm - 1, dd);
+    this.todayTimestamp = parsedDate.getTime();
+
     const source = this.route.snapshot.queryParamMap.get('source');
     if (source === 'commercial') {
       setTimeout(() => this.setTabIndexByName('LNOTE'), 0);
     }
   }
-  
+
   setTabIndexByName(tabName: string): void {
-    const translatedName = this.traductor.get(tabName);  
+    const translatedName = this.traductor.get(tabName);
   console.log(`Traducción de "${tabName}": ${translatedName}`);
 
     const tabArray = this.tabs.toArray();
@@ -186,7 +221,7 @@ protected configureServiceStudent() {
   }
   mostrar(event: any) {
 
-    
+
     this.getDNI(event.srcElement.value);
 
   }
@@ -319,5 +354,9 @@ deleteNotes(notas: any) {
 
  }
 
-  
+ focusnote(){
+
+ }
+
+
 }

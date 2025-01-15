@@ -1,4 +1,4 @@
-<o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="U;D"
+<o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="U;D" after-insert-mode="detail"
   show-header-navigation="no">
   <div o-form-toolbar-buttons>
     <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
@@ -6,7 +6,7 @@
   </div>
   <mat-tab-group oTabGroup="material" color="primary" id="tabGroup" animationDuration="0ms" [selectedIndex]="selectedTabIndex">
     <mat-tab label="{{'Main data'|oTranslate}}">
-      <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
+      <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" (onValueChange)="setIdStudent($event)" />
       <div class="grid-container">
         <div class="datosPrincipales">
         <fieldset title="Datos personales" class="datos">
@@ -253,13 +253,24 @@
         </fieldset>
       </div>
     </mat-tab>
-    <mat-tab label="{{'LNOTE' | oTranslate}}">
+    <mat-tab label="{{'LCOMMENTS' | oTranslate}}" >
+      <div class="fct-container2">
+      <fieldset>
+        <legend>{{"LCOMMENTS"|oTranslate}}</legend>
+        <o-form #notesForm service="notes" entity="notes" show-header="no" confirm-exit="false" (keydown.enter)="addNotes($event)" after-insert-mode="detail"
+          undo-button="false" label-header-align="center" parent-keys="id:id_students" >
+          <o-text-input #studentIdNote attr="id_students" sql-type="INTEGER" hidden></o-text-input>
+          <o-textarea-input class="commentsa" attr="nota" sql-type="VARCHAR" required="yes" max-length="2500" autofocus ></o-textarea-input>
+          <o-date-input #date label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
+        </o-form>
+        <div class="botonSalvar">
+          <o-button attr="save" icon="save" label="Guardar" (click)="addNotes($event)"></o-button>
+      </div>
 
-      <o-form-layout-manager class="selectedrow" title="NewNote" mode="dialog">
-        <o-form-layout-dialog-options class="popup">
-          <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="true"
-            delete-button="true" insert-form-route="new_note" delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
-            refresh-button="false" insert-button="true" delete-button="true" detail-mode="true" selectable="true"
+      </fieldset>
+          <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="false"
+            delete-button="true"  delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
+            refresh-button="false" detail-mode="true" selectable="true"
             detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
             insert-button-position="" show-buttons-text="false" controls="false">
             <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
@@ -272,16 +283,13 @@
                 </mat-card-actions>
                 <mat-card-header class="head" >
                   <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
-                  <mat-card-subtitle class="fromatotexto">{{ notas.nota }} </mat-card-subtitle>
+                  <mat-card-subtitle class="fromatotexto" [innerHTML]="notas.nota.split('\n').join('<br/>')"></mat-card-subtitle>
                 </mat-card-header>
               </div>
             </mat-card>
-
           </o-list>
-        </o-form-layout-dialog-options>
-      </o-form-layout-manager>
+      </div>
     </mat-tab>
-
   </mat-tab-group>
   <div *ngIf="showMessage" class="notification">
     <label for="subida">{{ 'subida' | oTranslate }}</label>
