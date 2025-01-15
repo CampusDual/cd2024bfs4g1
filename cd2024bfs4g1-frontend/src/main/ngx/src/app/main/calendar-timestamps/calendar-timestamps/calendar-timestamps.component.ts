@@ -347,6 +347,15 @@ export class CalendarTimestampsComponent {
     }
    
   }
+  updateDayCSSFontDecoration(day:Date){
+    if(Array.isArray(this.holidays) && this.holidays.filter(holiday => { 
+      return holiday.holiday_date  == day.getTime()
+    }).length == 1 ){
+      return 'italic';
+    }else{
+      return "normal";
+    }
+  }
 
   updateDayCSSFontColorForCurrentDay(day: Date) {
     if (this.isToday(day)) {

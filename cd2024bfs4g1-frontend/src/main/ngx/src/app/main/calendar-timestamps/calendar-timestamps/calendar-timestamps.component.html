@@ -27,7 +27,8 @@
                 <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{
                             'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.date),
                             'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.date),
-                            'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.date)
+                            'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.date),
+                            'font-style':updateDayCSSFontDecoration(dayWithWeekDays.date)
                         }" matTooltip="{{ getHolidayTooltip(dayWithWeekDays.date) }}" matTooltipClass="my-tooltip">
                     <div>{{ dayWithWeekDays.day }}</div>
                     <div>{{ dayWithWeekDays.dayOfWeek }}</div>
