@@ -18,5 +18,7 @@ public class StudentBootcampDao extends OntimizeJdbcDaoSupport {
     public static final String END_DATE = "end_date";
     public static final String SB_START_DATE = "sb_start_date";
     public static final String SB_END_DATE = "sb_end_date";
+    public static final String QUERY_STUDENTS_WITH_COMPUTABLE = "studentsWithComputable";
+
 
 }

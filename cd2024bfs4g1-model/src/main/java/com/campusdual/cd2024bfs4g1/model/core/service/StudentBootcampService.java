@@ -27,6 +27,11 @@ public class StudentBootcampService implements IStudentBootcampService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
+    public EntityResult studentsWithComputableQuery(Map<String, Object> keysValues, List<String> attributes) {
+        return this.daoHelper.query(this.studentBootcampDao, keysValues, attributes, StudentBootcampDao.QUERY_STUDENTS_WITH_COMPUTABLE);
+    }
+
+    @Override
     public EntityResult studentBootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 
        if (!attrMap.containsKey("student_id") || !attrMap.containsKey("bootcamp_id")) { // Check if the student_id is present, if not throw error
@@ -44,6 +49,8 @@ public class StudentBootcampService implements IStudentBootcampService {
            throw generalException;
        }
     }
+
+
 
     @Override
       public EntityResult studentsWithBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {

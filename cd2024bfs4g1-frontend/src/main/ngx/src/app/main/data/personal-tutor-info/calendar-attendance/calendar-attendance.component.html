@@ -81,6 +81,8 @@
           *ngFor="let student of students"
           class="student_row days"
           [ngStyle]="{'grid-template-columns': updateDayGridColumns()}"
+          [ngClass]="{'no-computable': !student.isComputable}"
+
         >
           <div>
             {{ student.name }} {{ student.surname1 }} {{ student.surname2 }}
