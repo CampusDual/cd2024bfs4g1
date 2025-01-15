@@ -63,6 +63,13 @@ public class TutorTypeService implements ITutorTypeService {
     @Override
     public EntityResult tutorTypeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
        try {
+           Integer id = (Integer) keyMap.get("id");
+           if (id <= 2){
+               EntityResult error = new EntityResultMapImpl();
+               error.setMessage("NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT");
+               error.setCode(EntityResult.OPERATION_WRONG);
+               return error;
+           }
            return this.daoHelper.delete(this.tutorTypeDao, keyMap);
        } catch (DataIntegrityViolationException e) {
            EntityResult error = new EntityResultMapImpl();
