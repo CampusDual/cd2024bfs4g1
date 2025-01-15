@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
 import EventEmitter from 'events';
+import { ActivatedRoute } from '@angular/router';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { ViewChildren, QueryList } from '@angular/core';
+import { OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-students-detail',
@@ -19,6 +23,8 @@ export class StudentsDetailComponent {
   @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
   @ViewChild("form") form: OFormComponent;
   @ViewChild("bootcampsStudentTable") bootcampTable: OTableComponent;
+  @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
+
   selected = false;
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
@@ -34,7 +40,14 @@ export class StudentsDetailComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location: Location, public injector: Injector,protected dialogService: DialogService) {
+  constructor(
+    private router: Router,
+    public location: Location,
+    public injector: Injector,
+    protected dialogService: DialogService,
+    private route: ActivatedRoute,
+    private traductor : OTranslateService
+  ) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
@@ -75,8 +88,29 @@ protected configureServiceStudent() {
     startdate.getControl().updateValueAndValidity();
   }
 
-  mostrarBoton: boolean = true; ngOnInit() {
+  mostrarBoton: boolean = true; 
+  selectedTabIndex: number = 0;
+
+  ngOnInit() {
     this.mostrarBoton = /\d+$/.test(this.router.url);
+  
+    const source = this.route.snapshot.queryParamMap.get('source');
+    if (source === 'commercial') {
+      setTimeout(() => this.setTabIndexByName('LNOTE'), 0);
+    }
+  }
+  
+  setTabIndexByName(tabName: string): void {
+    const translatedName = this.traductor.get(tabName);  
+  console.log(`Traducción de "${tabName}": ${translatedName}`);
+
+    const tabArray = this.tabs.toArray();
+    const index = tabArray.findIndex(tab => tab.textLabel.trim() === translatedName);
+    if (index !== -1) {
+      this.selectedTabIndex = index;
+    } else {
+      console.warn(`No se encontró la pestaña con el nombre '${translatedName}'`);
+    }
   }
 
   toUpperCamelCase(event: any) {
