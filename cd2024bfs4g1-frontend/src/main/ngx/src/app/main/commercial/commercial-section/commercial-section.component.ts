@@ -26,7 +26,7 @@ export class CommercialSectionComponent {
 
     if (studentId) {
       console.log("ID del estudiante:", studentId);
-      this.router.navigate([`/main/students/${studentId}`]);
+      this.router.navigate([`/main/students/${studentId}`], { queryParams: { source: 'commercial', id: event.id } });
     } else {
       console.error("No se encontró el ID del estudiante.");
     }

@@ -4,7 +4,7 @@
     <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
       (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
   </div>
-  <mat-tab-group oTabGroup="material" color="primary" id="tabGroup" animationDuration="0ms">
+  <mat-tab-group oTabGroup="material" color="primary" id="tabGroup" animationDuration="0ms" [selectedIndex]="selectedTabIndex">
     <mat-tab label="{{'Main data'|oTranslate}}">
       <o-text-input #idNumber hidden attr="id" sql-type="INTEGER" enabled="no" />
       <div class="grid-container">
