@@ -9,35 +9,43 @@
         <ng-template #attendanceDialog>
           <h1 mat-dialog-title class="center-select h1-spacing">{{'Registrar Asistencia' | oTranslate}}</h1>
           <mat-dialog-content>
-              <label class="center-content">{{'Select_Date' | oTranslate}}</label>
-              <div class="center-content">
-                  <mat-form-field class="fixed-size">
-                      <mat-label>{{ 'Attendance_Range' | oTranslate }}</mat-label>
-                      <mat-date-range-input [rangePicker]="picker">
-                          <input matStartDate [(ngModel)]="selectedStartDate">
-                          <input matEndDate  [(ngModel)]="selectedEndDate">
-                      </mat-date-range-input>
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-date-range-picker #picker></mat-date-range-picker>
-                  </mat-form-field>
+            <div class="center-content">
+              <div class="form-group">
+                <label class="form-label">{{'Select_Date' | oTranslate}}</label>
+                <mat-form-field class="fixed-size">
+                  <mat-label>{{ 'Attendance_Range' | oTranslate }}</mat-label>
+                  <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate [(ngModel)]="selectedStartDate">
+                    <input matEndDate [(ngModel)]="selectedEndDate">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
               </div>
-              <label class="center-content">{{'Select_Status' | oTranslate}}</label>
-              <div class="center-content">
-                  <mat-form-field class="fixed-size">
-                      <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
-                      <mat-select [(ngModel)]="selectedStatus" required>
-                          <mat-option *ngFor="let status of statusData" [value]="status.id">
-                              {{ status.abbreviation }} - {{ status.description }}
-                          </mat-option>
-                      </mat-select>
-                  </mat-form-field>
+            </div>
+          
+            <div class="center-content">
+              <div class="form-group">
+                <label class="form-label">{{'Select_Status' | oTranslate}}</label>
+                <mat-form-field class="fixed-size">
+                  <mat-label>{{'LSTATUS' | oTranslate}}</mat-label>
+                  <mat-select [(ngModel)]="selectedStatus" required>
+                    <mat-option *ngFor="let status of statusData" [value]="status.id">
+                      {{ status.abbreviation }} - {{ status.description }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
-
+            </div>
+          
+            <div class="center-content">
               <mat-label class="warning">
-                  <mat-icon>warning</mat-icon>
-                  {{'Attendance_Warning' | oTranslate}}
+                <mat-icon>warning</mat-icon>
+                {{'Attendance_Warning' | oTranslate}}
               </mat-label>
+            </div>
           </mat-dialog-content>
+          
           <mat-dialog-actions class="center-select">
               <button class="boton-angular"  mat-dialog-close>{{'Cancelar' | oTranslate}}</button>
               <button class="boton-angular" (click)="submitAttendance()">{{'Save' | oTranslate}}</button>

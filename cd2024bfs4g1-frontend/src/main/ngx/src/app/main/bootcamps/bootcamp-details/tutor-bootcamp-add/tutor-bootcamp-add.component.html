@@ -2,6 +2,7 @@
   <o-form #tutorBootcampForm service="tutorBootcamps" entity="tutorBootcamp" show-header="no" confirm-exit="false"
     undo-button="false" label-header-align="center" after-insert-mode="close" >
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
+    <div class="textMargi">
     <label>{{ 'Mentors' | oTranslate }}</label>
     <o-combo attr="tutor_id" label="Tutors" value-column="id" columns="id;name;surname1;surname2" service="tutors"
       label-visible="false" entity="tutor" visible-columns="name;surname1;surname2" required="no" searchable="yes"
@@ -14,6 +15,7 @@
         description-columns="type" query-on-init="true">
       </o-combo>
     </div>
+  </div>
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
       <o-button attr="addbutton" id="Add" type="RAISED" label="Add" color="primary"
         (click)="addTutorBootcamp()"></o-button>

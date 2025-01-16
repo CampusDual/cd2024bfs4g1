@@ -1,7 +1,7 @@
 <o-form #student_status_new attr="student_status_new"  service="studentstatus" entity="studentStatus" keys="id" show-header="no"
 header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)" confirm-exit="no">
     <div class="grid-container">
-        <div>
+        <div class="textMargi">
             <label for="REQ_LSTUDENTSTATUS">{{'REQ_LSTUDENTSTATUS' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="status" required="yes" max-length="40"></o-text-input>
         </div>

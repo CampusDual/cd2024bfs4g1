@@ -1,7 +1,7 @@
 <o-form #student_bootcamp_status_new attr="studentbootcamptstatusTable"  service="studentbootcampstatus" entity="studentBootcampStatus" keys="id" show-header="no"
 header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)" confirm-exit="no">
     <div class="grid-container">
-        <div>
+        <div class="textMargi">
             <label for="LSTUDENTBOOTCAMPSTATUS">{{'LSTUDENTBOOTCAMPSTATUS' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="student_bootcamp_status" required="yes" max-length="100"></o-text-input>
             <o-slide-toggle attr="computable" label="{{'LSLIDETOGGLE_COMPUTABLE' | oTranslate}}" read-only="no" tooltip="{{'popUp_COMPUTABLE' | oTranslate}}"></o-slide-toggle>

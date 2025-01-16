@@ -296,9 +296,31 @@ select option {
   width: 300px; 
   margin: 0 auto; 
 }
-
 .center-content {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 16px; 
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  width: 100%; 
+  position: relative; 
+}
+
+.form-label {
+  align-self: center; 
+  margin-bottom: 4px; 
+  width: 100%; 
+  max-width: 300px; 
+
+  text-align: left;
+}
+
+.fixed-size {
+  width: 100%; 
+  max-width: 300px; 
+}
+
