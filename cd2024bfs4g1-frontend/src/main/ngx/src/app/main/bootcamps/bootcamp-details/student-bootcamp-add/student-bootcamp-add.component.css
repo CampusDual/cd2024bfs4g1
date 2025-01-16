@@ -28,9 +28,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.popup1 {
-  width: 600px; 
-  height: 300px; 
-  max-width: 600px; 
-  max-height: 300px; 
+.comboEst{
+  width: 98%;
 }

@@ -1,14 +1,14 @@
-<div class="popup1" >
+<div >
   <o-form #studentBootcampForm service="studentBootcamps" entity="studentBootcamp" editable-detail="no" show-header="no" confirm-exit="false"
     undo-button="false" label-header-align="center" after-insert-mode="new"
     (onDataLoaded)="candidate();inicialDR()">
     <o-text-input attr="bootcamp_id" sql-type="INTEGER" enabled="no" hidden = "true"></o-text-input>
     <label >{{ 'Estudiante*' | oTranslate }}</label>
-    <o-combo attr="student_id" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students" label-visible="false"
+    <o-combo attr="student_id" class="comboEst" label="Students" value-column="id" columns="id;name;surname1;surname2" service="students" label-visible="false"
       entity="student" visible-columns="name;surname1;surname2" required="yes" searchable="yes" sortable="yes" sort="ASC" null-selection="no" >
     </o-combo>
     <label for="STATUS">{{'STATUS' | oTranslate}}</label>
-    <o-combo attr="status_id" label="STATUS" required="no" translate="yes"
+    <o-combo attr="status_id" class="comboEst"  label="STATUS" required="no" translate="yes"
     null-selection="true" read-only="false" service="studentbootcampstatus"
     entity="studentBootcampStatus" keys="id" columns="id;student_bootcamp_status" value-column="id"
     description-columns="student_bootcamp_status" query-on-init="true">
@@ -28,7 +28,7 @@
 
     <div fxLayout="column" layout-padding>
         <label class="input-comp-title">{{ 'REQ_Fecha Inicio/Fecha Fin' | oTranslate }}</label>
-        <o-daterange-input attr="dateRangeBootcamp" read-only="no"
+        <o-daterange-input attr="dateRangeBootcamp" read-only="no" class="comboEst"
           required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)"
           show-week-numbers="true" mode="desktop" label-visible="false" >
         </o-daterange-input>
