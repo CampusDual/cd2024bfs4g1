@@ -452,7 +452,7 @@ o-column.o-column .o-container > .o-container-title span{
   border-radius: 50%;
 }
 
-.active.available.end-date.in-range.weekend.ng-star-inserted{
+.active.available.end-date.in-range.weekend.ng-star-inserted, .active.available.end-date.in-range.ng-star-inserted, .available.ng-star-inserted.active.start-date.in-range{
   background-color: #1a3459;
   color: white;
 }
