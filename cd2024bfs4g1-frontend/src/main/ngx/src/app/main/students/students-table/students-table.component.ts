@@ -134,12 +134,27 @@ export class StudentsTableComponent {
     };
     reader.readAsText(file);
   }
-  parseCsv(csvData: string): any[] {
-    const lines = csvData.split('\n');
-    const headers = lines[0].trim().split(',');
 
+  parseCsv(csvData: string): any[] {
+    const EXPECTED_HEADERS = [
+      'name', 'surname1', 'personal_email', 'dni', 'surname2',
+      'birth_date', 'phone', 'campus_email', 'spain_comunity', 'location'
+    ];
+  
+    const lines = csvData.split('\n');
+    const headers = lines[0]?.trim().split(',');
+  
+    if (!this.areHeadersValid(headers, EXPECTED_HEADERS)) {
+      this.snackBar.open(
+        this.translateService.get("ERROR_CSV"),
+        '',
+        { duration: 3500, panelClass: 'notification-error' }
+      );
+      return [];
+    }
+  
     const data: any[] = lines.slice(1)
-      .filter(line => line.trim() !== '')
+      .filter(line => line.trim() !== '') 
       .map(line => {
         const values = line.split(',');
         const row: any = {};
@@ -148,10 +163,17 @@ export class StudentsTableComponent {
         });
         return row;
       });
-
+  
     return data;
   }
-
+  
+  areHeadersValid(headers: string[], expectedHeaders: string[]): boolean {
+    if (headers.length !== expectedHeaders.length) {
+      return false;
+    }
+    return headers.every((header, index) => header.trim() === expectedHeaders[index]);
+  }
+  
   validateAndUploadData(data: any[]): void {
     const REQUIRED_FIELDS = ['name', 'surname1', 'personal_email'];
     const invalidRows = data.filter(row =>
@@ -181,10 +203,11 @@ export class StudentsTableComponent {
     );
   }
   
-  
-
-
   insertCsv(data: any) {
+    if (data.length === 0) {
+      return; 
+    }
+  
     const filter = {
       students: data
     };
@@ -196,7 +219,6 @@ export class StudentsTableComponent {
     this.service.query(filter, columns, 'studentMultipleCheck').subscribe(resp => {
       resultado = resp.data;
   
-
       if (resultado && resultado.length > 0) {
         resultado.forEach((errorObj: any) => {
           if (errorObj.errors) {
@@ -205,7 +227,6 @@ export class StudentsTableComponent {
         });
       }
   
-    
       if (resultado && resultado.length > 0) {
         resultado.forEach((student: any) => {
           if (student.dni) {
@@ -214,23 +235,20 @@ export class StudentsTableComponent {
         });
       }
   
- 
       if (erroresConcatenados) {
-
         let paraps = "";
-
         erroresConcatenados.split('\n').map(error => {
-          if (error.indexOf(":")>-1){
+          if (error.indexOf(":") > -1) {
             let code = error.split(':')[0];
             let value = JSON.stringify(error.split(':')[1]);
             let translate = this.translateService.get(code);
-            let message = translate + ":"+ value;
-            paraps +=`<p>${message}</p>`; 
-          }else{
-            paraps +=`<p>${error}</p>`; 
+            let message = translate + ":" + value;
+            paraps += `<p>${message}</p>`;
+          } else {
+            paraps += `<p>${error}</p>`;
           }
         });
-
+  
         this.dialogService.error(
           this.translateService.get('ERROR'),
           `
@@ -241,18 +259,16 @@ export class StudentsTableComponent {
             </div>
           `
         );
-        
+  
         this.snackBar.open(
           this.translateService.get('IMPORT_CANCELLED'),
           '',
-          { duration: 3600, panelClass: 'notification-error' }
+          { duration: 3500, panelClass: 'notification-error' }
         );
-        
+  
         return;
-        
       }
   
-   
       if (repeatedDnis.length > 0) {
         const message = `
           <div style="text-align: center;">
@@ -261,7 +277,7 @@ export class StudentsTableComponent {
             <p>${this.translateService.get("CONFIRM_DUPLICATE_DNIS")}</p>
           </div>
         `;
-        
+  
         this.dialogService.confirm(this.translateService.get('WARNING'), message)
           .then((confirmed: boolean) => {
             if (confirmed) {
@@ -293,22 +309,19 @@ export class StudentsTableComponent {
               { duration: 3500, panelClass: 'notification-error' }
             );
           });
-        return; 
+        return;
       }
-      
- 
+  
       this.service.insert(filter, 'studentCsv').subscribe(resp => {
+        this.snackBar.open(
+          this.translateService.get('STUDENTS_REGISTERED'), 
+          '', 
+          { duration: 3500, panelClass: 'notification-bg' }
+        );
       });
-      this.snackBar.open(
-        this.translateService.get('STUDENTS_REGISTERED'), 
-        '', 
-        { duration: 3500, panelClass: 'notification-bg' }
-      );
-      
     });
   }
-  
-}
+}  
   
   
   
