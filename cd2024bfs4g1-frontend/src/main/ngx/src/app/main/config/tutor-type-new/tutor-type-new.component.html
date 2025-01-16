@@ -1,7 +1,7 @@
 <o-form #tutor_type_new attr="tutor_type_new" confirm-exit="no" service="tutortype" entity="tutorType" keys="id" show-header="no"
 header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)" confirm-exit="no">
     <div class="grid-container">
-        <div>
+        <div class="textMargi">
             <label for="REQ_LTUTORTYPE">{{'REQ_LTUTORTYPE' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="type" required="yes" max-length="100"></o-text-input>
         </div>
