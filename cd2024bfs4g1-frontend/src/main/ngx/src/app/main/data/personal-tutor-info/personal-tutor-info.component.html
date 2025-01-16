@@ -4,7 +4,7 @@
         <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
         <div class="grid-container">
 
-            <fieldset title="Datos personales" class="datos">
+            <fieldset title="{{'PDATA' | oTranslate}}" class="datos">
                 <legend>{{"Personal data"|oTranslate}}</legend>
                 <div class="foto">
                     <o-image #tutorsPhoto attr="usr_photo" empty-image="assets/images/no-image.png" sql-type="OTHER"
@@ -40,7 +40,7 @@
                 </div>
             </fieldset>
 
-            <fieldset title="Bootcamps Asigned" class="tabla">
+            <fieldset title="{{ 'Bootcamps Asigned' | oTranslate }}" class="tabla">
                 <legend>{{ 'Bootcamps Asigned' | oTranslate }}</legend>
                 <div class="table_container">
                     <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"

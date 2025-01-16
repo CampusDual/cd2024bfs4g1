@@ -37,21 +37,21 @@ throw new Error('Method not implemented.');
     this.service.configureService(conf);
   }
 
-  ngOnInit(){
-    this.mainService.getUserInfo().subscribe((result: ServiceResponse) =>{
-        this.inputStudentId.setValue(result.data.user_id);
-        this.getStudentData(result.data);
-    })
+  ngOnInit() {
 
-    this.mainService.getUserInfo().subscribe(result => {
+
+    this.mainService.getUserInfo().subscribe((result: ServiceResponse) => {
+      this.inputStudentId.setValue(result.data.user_id);
+      this.getStudentData(result.data);
+
       this.oUserInfoService.setUserInfo({
         username: result.data['usr_login'],
         avatar: "data:image/png;base64," + result.data['usr_photo']
-
       });
     });
- 
+    
   }
+  
 
   getStudentData(userData){
     if(userData.hasOwnProperty('usr_id') && this.service !== null){
@@ -73,69 +73,40 @@ throw new Error('Method not implemented.');
       })
     }
   }
+  
   onImageChange(event: any) {
-    // Si no hay evento o el archivo no está definido, simplemente retorna
-    if (!event || !this.UsrPhoto.currentFileName) {
+    if (!this.UsrPhoto || !event) {
+      console.warn('onImageChange: UsrPhoto o evento no definido.');
       return;
     }
 
-    if (this.isUpdatingImage) {
-      return;
-    }
-
-    const base64String = event;
-    const currentFileName = this.UsrPhoto.currentFileName || '';
-
+    const base64String = event; 
     const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-    const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
+    const fileExtension = this.UsrPhoto.currentFileName?.split('.').pop()?.toLowerCase();
 
-    // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.showAlert(); // Muestra la alerta de error
-      this.isUpdatingImage = true;
-      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
-      this.isUpdatingImage = false;
       return;
     }
 
-    if (base64String) {
-      const img = new Image();
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      img.src = `data:image/jpg;base64, ${base64String}`;
+    this.oUserInfoService.setUserInfo({
+      ...this.oUserInfoService.getUserInfo(),
+      avatar: `data:image/png;base64,${base64String}`
+    });
 
-      img.onload = () => {
-        if (ctx) {
-          const newWidth = 200;
-          const newHeight = 200;
+    console.log('Miniatura actualizada en el encabezado.');
 
-          canvas.width = newWidth;
-          canvas.height = newHeight;
-
-          ctx.drawImage(img, 0, 0, newWidth, newHeight);
-          const modifiedImageBase64 = canvas.toDataURL('image/jpg');
-
-          this.isUpdatingImage = true;
-          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
-          this.isUpdatingImage = false;
-
-          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
-        }
-      };
-
-      img.onerror = () => {
-        console.error('Error al cargar la imagen.');
-      };
-    }
+    setTimeout(() => {
+      this.UsrPhoto.setValue(base64String);
+      console.log('Imagen actualizada en el formulario.');
+    }, 100); 
   }
+  
 
   showAlert() {
     if (this.dialogService) {
       this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
     }
   }
-
-
 }
 
 
