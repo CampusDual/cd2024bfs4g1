@@ -60,7 +60,8 @@ padding-right: 20px
 }
 
 
-.fct-container {
+.fct-container,
+.fct-container2 {
 display: grid;
 grid-template-columns: 2fr;
 grid-template-rows: auto auto;
@@ -397,4 +398,15 @@ div.notification label {
 }
 .head{
   padding-left: 10px;
+}
+.botonSalvar{
+  display: flex;
+  justify-content: flex-end;
+}
+.cont-card{
+  border: 1px solid #1a3459;
+  border-radius: 15px;
+} 
+.commentsa{
+  margin: 10px;
 }
