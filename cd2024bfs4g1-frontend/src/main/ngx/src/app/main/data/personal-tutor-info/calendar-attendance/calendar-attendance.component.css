@@ -292,10 +292,7 @@ select option {
   margin-top: 5px;
   gap: 5px;
 }
-.fixed-size {
-  width: 300px;
-  margin: 0 auto;
-}
+
 .center-content {
   display: flex;
   justify-content: center;
@@ -314,13 +311,11 @@ select option {
   align-self: center;
   margin-bottom: 4px;
   width: 100%;
-  max-width: 300px;
-
   text-align: left;
 }
 
 .fixed-size {
   width: 100%;
-  max-width: 300px;
+  margin: 0 auto;
 }
 
