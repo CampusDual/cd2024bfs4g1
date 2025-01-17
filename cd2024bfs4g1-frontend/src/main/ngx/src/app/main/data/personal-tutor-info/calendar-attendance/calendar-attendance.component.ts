@@ -70,6 +70,7 @@ export class CalendarAttendanceComponent {
   attendanceMap: { [key: string]: number } = {};
   studentMap = new Map<number, Map<string, number>>();
 
+  
   backendResponse: any;
   startBootcampDate: Date;
   endBootcampsDate: Date;
@@ -94,6 +95,7 @@ export class CalendarAttendanceComponent {
     this.loadYears();
 
     this.service = this.injector.get(OntimizeService);
+    
   }
   refresh() {
     this.loadStudents();
@@ -132,15 +134,11 @@ export class CalendarAttendanceComponent {
     this.service.configureService(conf);
   }
 
-  protected configureHolidays() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf = this.service.getDefaultServiceConfiguration('holidays');
-    this.service.configureService(conf);
-  }
 
   loadStudents(): void {
     this.configureStudents();
     this.getStudents();
+    this.configureBootcamps();
   }
   getStudents() {
     if (this.service && this.bootcampId) {
@@ -200,6 +198,7 @@ export class CalendarAttendanceComponent {
     this.getAttendance();
   }
   getAttendance() {
+    
     if (this.service && this.bootcampId) {
       const columns = ['id', 'student_id', 'bootcamp_id', 'date', 'attendance_status_id'];
 

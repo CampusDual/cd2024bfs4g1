@@ -8,6 +8,7 @@ import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { CalendarAttendanceComponent } from '../../data/personal-tutor-info/calendar-attendance/calendar-attendance.component';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -17,15 +18,20 @@ import { CalendarAttendanceComponent } from '../../data/personal-tutor-info/cale
 })
 export class BootcampDetailsComponent {
 
-  @ViewChild('bootcampDetailForm') bootcampDetailForm:OFormComponent;
+  @ViewChild('bootcampDetailForm') bootcampDetailForm: OFormComponent;
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
   @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
-  selectedStatuses: string[] = ['Started', 'Pending']; 
+  @ViewChild('bootcampTimetable', { static: true }) bootcampTimetable: OTableComponent;
+
+  selectedStatuses: string[] = ['Started', 'Pending'];
   months: Date[] = [];
   bootcampId: number;
+
+  previousTabIndex: number | null = null;
+
 
   validatorsArray: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
@@ -39,7 +45,7 @@ export class BootcampDetailsComponent {
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     private translateService: OTranslateService,
     protected dialogService: DialogService
-   ) {
+  ) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsWithoutSpace.push(OValidators.patternValidator(/^(?!\s*$).+/, 'hasSpecialCharacters'));
     this.service = this.injector.get(OntimizeService);
@@ -55,13 +61,30 @@ export class BootcampDetailsComponent {
   goToStudentDetail(event: any) {
     const studentId = event.student_id;
     this.router.navigate([`/main/students/${studentId}`]);
-  this.clearTableSelection();
+    this.clearTableSelection();
+  }
+
+  onTabChange(event: MatTabChangeEvent) {
+    const previousIndex = this.previousTabIndex;
+    const currentIndex = event.index;
+
+    switch (currentIndex) {
+      case 0:
+        this.configureStudentBootcamps();
+        this.studentsTable.refresh();
+        break;
+      case 2:
+        this.configureBootcampTimetable()
+        this.bootcampTimetable.refresh();
+        break;
+    }
+    this.previousTabIndex = currentIndex;
   }
 
   goToTutorDetail(tutor: any) {
     const tutorId = tutor.tutor_id;
     this.router.navigate([`/main/tutors/${tutorId}`]);
-  this.clearTableSelection();
+    this.clearTableSelection();
   }
 
   clearTableSelection(): void {
@@ -115,7 +138,7 @@ export class BootcampDetailsComponent {
     this.bootcampDetailForm.setFieldValue("start_date", startDate);
     this.bootcampDetailForm.setFieldValue("end_date", endDate);
 
-}
+  }
 
   @ViewChild("startdate") startDateInput: ODateInputComponent;
   @ViewChild("enddate") endDateInput: ODateInputComponent;
@@ -130,11 +153,26 @@ export class BootcampDetailsComponent {
 
 
   ngOnInit() {
-
-   }
+    //this.configureBootcamps();
+    console.log("Estoy en el sevicio de bootcamps en Bootcamp-details");
+  }
 
   protected configureBootcamps() {
     const conf = this.service.getDefaultServiceConfiguration('bootcamps');
+    this.service.configureService(conf);
+
+  }
+
+
+
+  protected configureBootcampTimetable() {
+    const conf = this.service.getDefaultServiceConfiguration('bootcampTimetable');
+    this.service.configureService(conf);
+
+  }
+
+  protected configureStudentBootcamps() {
+    const conf = this.service.getDefaultServiceConfiguration('studentBootcamps');
     this.service.configureService(conf);
 
   }
@@ -227,7 +265,7 @@ export class BootcampDetailsComponent {
     } else {
       return null;
     }
-    
+
   }
 
 
@@ -283,9 +321,9 @@ export class BootcampDetailsComponent {
 
     this.configureTutorsBootcamp();
     this.dialogService.confirm('Confirm_dialog_title', 'Do_you_really_want_to_delete');
-    this.dialogService.dialogRef.afterClosed().subscribe( result => {
-      if(result) {
-        this.service.delete({id: tutors.id}, 'tutorBootcamp').subscribe(res => {
+    this.dialogService.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.delete({ id: tutors.id }, 'tutorBootcamp').subscribe(res => {
           if (res.code === 0) {
             this.list.reloadData();
           }
@@ -302,13 +340,13 @@ export class BootcampDetailsComponent {
   }
   getRowClass(rowData: any): string {
     const today = new Date();
-    const sessionDate = new Date(rowData.session_date); 
+    const sessionDate = new Date(rowData.session_date);
     if (isNaN(sessionDate.getTime())) {
       console.error('Invalid date format:', rowData.session_date);
-      return ''; 
+      return '';
     }
     if (sessionDate.toDateString() === today.toDateString()) {
-      return 'highlight-today'; 
+      return 'highlight-today';
     }
     return '';
   }
@@ -321,7 +359,7 @@ export class BootcampDetailsComponent {
       this.sessionFilters = null;
     } else {
       const filter = [{ attr: 'status', value: selectedStatuses }];
-      this.table.queryData(filter); 
+      this.table.queryData(filter);
     }
   }
   createFilter(values: Array<{ attr: string, value: any }>): Expression {
@@ -346,7 +384,7 @@ export class BootcampDetailsComponent {
 
     return filters.length > 0
       ? filters.reduce((exp1, exp2) =>
-          FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND))
+        FilterExpressionUtils.buildComplexExpression(exp1, exp2, FilterExpressionUtils.OP_AND))
       : null;
   }
 
