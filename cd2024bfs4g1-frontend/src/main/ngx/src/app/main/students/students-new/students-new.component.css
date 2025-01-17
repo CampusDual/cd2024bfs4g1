@@ -326,3 +326,14 @@ fieldset {
   padding: 20px;
   gap: 20px;
 }
+
+.aviso p{
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  gap: 5px;
+}
