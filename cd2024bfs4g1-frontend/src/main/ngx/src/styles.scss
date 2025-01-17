@@ -63,7 +63,6 @@
 button.calendarcellStart span {
   background: #2E8B57;
   text-align:center;
-  width: 100%;
   height: 89%;
 
   margin-top: 1.5px;
@@ -76,7 +75,6 @@ button.calendarcellStart span {
 button.calendarcellEnd span {
   background: #DC143C;
   text-align:center;
-  width: 100%;
   height: 89%;
   margin-top: 1.5px;
 }
@@ -88,7 +86,6 @@ button.calendarcell{
 button.calendarcell span{
   background: lightgrey;
   text-align:center;
-  width: 100%;
   height: 89%;
 }
 span.mat-calendar-body-cell-content{
@@ -128,7 +125,7 @@ button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary,
 .o-button button.mat-mdc-outlined-button,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent,
-.list_container .o-list-container .add-button, .boton-angular, .mat-primary.mat-stroked-button
+.list_container .o-list-container .add-button, .boton-angular
 {
   border: none;
   background-color: #8AB237;
@@ -155,9 +152,9 @@ button.mat-mdc-raised-button.mat-primary:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-primary:hover,
 .o-button button.mat-mdc-outlined-button:hover,
 button.mat-mdc-outlined-button:not([disabled]).mat-mdc-button-base.mat-accent:hover,
-.list_container .o-list-container .add-button:hover, .mat-primary.mat-stroked-button:hover,
+.list_container .o-list-container .add-button:hover,
 .boton-angular:hover {
-  border: none;
+  border: 2px solid #8AB237;
   background-color: #1a3459;
   border-radius: 10px;
   color: #8AB237;
@@ -454,9 +451,6 @@ o-column.o-column .o-container > .o-container-title span{
 }
 .mat-calendar-body-in-range::before{
   background-color: #8AB237;
-}
-.mat-calendar-body-cell-content.mat-focus-indicator{
-  border-radius: 50%;
 }
 
 .active.available.end-date.in-range.weekend.ng-star-inserted, .active.available.end-date.in-range.ng-star-inserted, .available.ng-star-inserted.active.start-date.in-range{
