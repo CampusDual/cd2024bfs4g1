@@ -6,8 +6,8 @@
 }
 
 .no-computable {
-  background-color: rgb(255, 108, 108); 
-  color: white;           
+  background-color: rgb(255, 108, 108);
+  color: white;
 }
 
 
@@ -228,7 +228,7 @@ select option {
   grid-row: 1;
   gap: 5px;
   min-width: 1550px;
- 
+
 }
 
 .student_row.days {
@@ -243,7 +243,7 @@ select option {
 
 .custom-select {
   width: 80px;
-  height: 40px;
+  height: 15px;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -287,40 +287,40 @@ select option {
 .warning {
   display: flex;
   align-items: center;
-  color: red; 
+  color: red;
   font-size: 12px;
   margin-top: 5px;
-  gap: 5px; 
+  gap: 5px;
 }
 .fixed-size {
-  width: 300px; 
-  margin: 0 auto; 
+  width: 300px;
+  margin: 0 auto;
 }
 .center-content {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
 }
 
 .form-group {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  width: 100%; 
-  position: relative; 
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
 }
 
 .form-label {
-  align-self: center; 
-  margin-bottom: 4px; 
-  width: 100%; 
-  max-width: 300px; 
+  align-self: center;
+  margin-bottom: 4px;
+  width: 100%;
+  max-width: 300px;
 
   text-align: left;
 }
 
 .fixed-size {
-  width: 100%; 
-  max-width: 300px; 
+  width: 100%;
+  max-width: 300px;
 }
 
