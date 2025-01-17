@@ -406,6 +406,7 @@ export class BootcampDetailsComponent {
 
   loadBootcamp() {
     this.bootcampId = this.bootcampDetailForm.getFieldValue("id");
+    this.asistencia.refresh();
   }
 
 
