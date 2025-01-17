@@ -11,7 +11,7 @@ import { MainService } from 'src/app/shared/services/main.service';
 export class PersonalTutorInfoComponent {
   @ViewChild("userId") inputTutorId: OTextInputComponent;
   @ViewChild("form") form: OFormComponent;
-  @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
+  @ViewChild("tutorsPhoto") tutorsPhoto: OImageComponent;
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
   mainInfo: any = {};
@@ -65,8 +65,7 @@ export class PersonalTutorInfoComponent {
     }
   }
     onImageChange(event: any) {
-    // Si no hay evento o el archivo no está definido, simplemente retorna
-    if (!event || !this.UsrPhoto.currentFileName) {
+    if (!event || !this.tutorsPhoto.currentFileName) {
       return;
     }
 
@@ -75,17 +74,14 @@ export class PersonalTutorInfoComponent {
     }
 
     const base64String = event;
-    const currentFileName = this.UsrPhoto.currentFileName || '';
+    const currentFileName = this.tutorsPhoto.currentFileName || '';
 
     const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
 
     // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.showAlert(); // Muestra la alerta de error
-      this.isUpdatingImage = true;
-      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
-      this.isUpdatingImage = false;
+      this.tutorsPhoto.setValue(''); // Limpia el valor del archivo
       return;
     }
 
@@ -106,11 +102,11 @@ export class PersonalTutorInfoComponent {
           ctx.drawImage(img, 0, 0, newWidth, newHeight);
           const modifiedImageBase64 = canvas.toDataURL('image/jpg');
 
-          this.isUpdatingImage = true;
-          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
-          this.isUpdatingImage = false;
-
-          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
+          this.oUserInfoService.setUserInfo({
+            ...this.oUserInfoService.getUserInfo(),
+            avatar:modifiedImageBase64
+          })
+          ctx.clearRect(0, 0, canvas.width, canvas.height); 
         }
       };
 
