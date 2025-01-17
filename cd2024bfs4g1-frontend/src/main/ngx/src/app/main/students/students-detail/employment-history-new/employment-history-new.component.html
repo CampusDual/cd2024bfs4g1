@@ -3,25 +3,25 @@
     <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden></o-text-input>
 
     <div class="grid-container">
-        <div class="employment status">
+        <div class="textMargi">
             <label for="REQ_LEMPLOYMENTSTATUS">{{'REQ_LEMPLOYMENTSTATUS' | oTranslate}}</label>
-            <o-combo attr="employment_status_id" label="LEMSTATUS" required="no" translate="yes"
+            <o-combo attr="employment_status_id" class="textMargi" label="LEMSTATUS" required="no" translate="yes"
             null-selection="true" read-only="false" service="employmentstatus"
             entity="employmentStatus" keys="id" columns="id;situation" value-column="id"
             description-columns="situation" query-on-init="true">
         </o-combo>
         </div>
 
-        <div >
+        <div class="textMargi">
             <label for="REQ_DATE">{{'REQ_DATE' | oTranslate}}</label>
-            <o-date-input #status_date label-visible="false" attr="status_date_change" required="yes"  read-only="no"
+            <o-date-input #status_date label-visible="false" class="textMargi" attr="status_date_change" required="yes"  read-only="no"
             required="yes" format="DD/MM/YYYY"  automatic-binding="false" text-input-enabled="no"
             show-week-numbers="true" mode="desktop" label-visible="false"></o-date-input>
         </div>
 
-        <div class="description">
+        <div class="textMargi">
             <label for="DESCRIPTION">{{'description' | oTranslate}}</label>
-            <o-text-input label-visible="false" attr="description" required="no"></o-text-input>
+            <o-text-input label-visible="false" class="textMargi" attr="description" required="no"></o-text-input>
         </div>
 
         <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">

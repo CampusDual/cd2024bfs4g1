@@ -2,15 +2,15 @@
     keys="id" show-header="no" header-actions="R;I;U;D" show-header-navigation="no" (onInsert)="volver($event)"
     confirm-exit="no">
     <div class="grid-container">
-        <div>
+        <div class="textMargi">
             <label for="REQ_LABBREVIATION">{{'REQ_LABBREVIATION' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="abbreviation" required="yes" max-length="1"></o-text-input>
         </div>
-        <div>
+        <div class="textMargi">
             <label for="REQ_LDESCRIPTION">{{'REQ_LDESCRIPTION' | oTranslate}}</label>
             <o-text-input label-visible="false" attr="description" required="yes" max-length="50"></o-text-input>
         </div>
-        <div>
+        <div class="textMargi">
             <label for="colorPicker">{{'SelectColor' | oTranslate}}</label>
             <input id="colorPicker" type="color" value="#ffffff" [(ngModel)]="selectedColor" onchange="" />
             <p>{{'SelectedColor' | oTranslate}} {{ selectedColor }}</p>

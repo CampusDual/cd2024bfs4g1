@@ -6,14 +6,14 @@
       <o-date-input  #startDateBootcamp attr="start_date" enabled="no" format="DD/MM/YYYY" hidden="true"></o-date-input>
       <o-date-input #endDateBootcamp attr="end_date" enabled="no" format="DD/MM/YYYY" hidden="true"></o-date-input>
 
-
-      <label >{{ 'time_start' | oTranslate }}</label>
-      <o-hour-input #horai attr="time_start" label="{{ 'TimeStart' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
-
-
-      <label >{{ 'time_end' | oTranslate }}</label>
-      <o-hour-input #horaf attr="time_end" label="{{ 'TimeEnd' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
-
+      <div  class="textMargi">
+        <label >{{ 'time_start' | oTranslate }}</label>
+        <o-hour-input #horai attr="time_start" label="{{ 'TimeStart' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
+      </div>
+      <div class="textMargi">
+        <label>{{ 'time_end' | oTranslate }}</label>
+        <o-hour-input #horaf   attr="time_end" label="{{ 'TimeEnd' | oTranslate }}" sql-type="VARCHAR" text-input-enabled="no" read-only="no" required="yes" clear-button="yes" format="24" value-type="string"></o-hour-input>
+      </div>
 
 
       <div class="especial fecha-inicio">
@@ -25,7 +25,7 @@
           format="DD/MM/YYYY">
         </o-date-input>
       </div>
-      <div fxLayout="column" layout-padding>
+      <div fxLayout="column"  class="textMargi" layout-padding>
           <label class="input-comp-title">{{ 'Fecha Inicio/Fecha Fin*' | oTranslate }}</label>
           <o-daterange-input attr="dateRangeBootcamp" read-only="no"
             required="yes" format="DD/MM/YYYY"  automatic-binding="false" (onValueChange)="throwChange($event)"

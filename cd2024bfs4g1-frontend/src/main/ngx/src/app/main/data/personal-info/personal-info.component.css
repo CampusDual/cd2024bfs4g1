@@ -27,7 +27,6 @@
 .foto:hover {
   box-shadow: 0 0 20px 10px #1a3459; /* Crea el efecto de aura */
   transform: scale(0.9); /* Agranda ligeramente la imagen al pasar el ratón */
-  background-color: #1a3459;
   border-radius: 50%;
 }
 
@@ -136,6 +135,10 @@
   padding-top: -50%;
 }
 
+.foto .ng-star-inserted{
+  margin-top: -50px;
+}
+
 p {
   color: black;
   margin-top: 0px;
@@ -156,22 +159,22 @@ fieldset {
   margin-top: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1812px) {
   .grid-container {
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
   }
 
   .foto {
-    width: 180px; 
+    width: 180px;
     height: 180px;
   }
 
   fieldset {
-    padding: 18px; 
+    padding: 18px;
   }
 
   .o-table {
-    width: 95%; 
+    width: 95%;
   }
 }
 
@@ -183,6 +186,6 @@ fieldset {
 }
 
 .fila-completa {
-  grid-column: 1 / -1; 
-  margin-top: 20px; 
+  grid-column: 1 / -1;
+  margin-top: 20px;
 }

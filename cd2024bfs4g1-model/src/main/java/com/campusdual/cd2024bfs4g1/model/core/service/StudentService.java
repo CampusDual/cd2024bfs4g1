@@ -12,6 +12,7 @@ import com.campusdual.cd2024bfs4g1.model.core.dao.*;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
+import com.ontimize.jee.common.db.NullValue;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
@@ -332,7 +333,6 @@ public class StudentService implements IStudentService {
 		String usrLogin = (String) attrMap.remove(UserDao.LOGIN);
 		String usrPassword = (String) attrMap.remove(UserDao.PASSWORD);
 		Object usrPhoto = attrMap.remove(UserDao.PHOTO);
-
 		Map<String, Object> userKeyMap2 = new HashMap<>();
 		if(usrLogin != null) {
 			userKeyMap2.put(UserDao.LOGIN, usrLogin);
@@ -346,7 +346,11 @@ public class StudentService implements IStudentService {
 			usrPhoto = null;
 		}
 
-		// Actualizar los datos del estudiante
+
+		if (attrMap.get(StudentDao.TUTOR) instanceof NullValue) {
+			attrMap.put(StudentDao.TUTOR, new NullValue(4));
+		}
+
 		EntityResult updateStudent = this.daoHelper.update(this.studentDao, attrMap, keyMap);
 		if (updateStudent.isWrong()) {
 			return updateStudent;

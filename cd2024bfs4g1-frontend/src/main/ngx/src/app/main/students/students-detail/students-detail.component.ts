@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
 import EventEmitter from 'events';
+import { ActivatedRoute } from '@angular/router';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { ViewChildren, QueryList } from '@angular/core';
+import { OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-students-detail',
@@ -19,6 +23,8 @@ export class StudentsDetailComponent {
   @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
   @ViewChild("form") form: OFormComponent;
   @ViewChild("bootcampsStudentTable") bootcampTable: OTableComponent;
+  @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
+
   selected = false;
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
@@ -34,7 +40,14 @@ export class StudentsDetailComponent {
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
 
-  constructor(private router: Router, public location: Location, public injector: Injector,protected dialogService: DialogService) {
+  constructor(
+    private router: Router,
+    public location: Location,
+    public injector: Injector,
+    protected dialogService: DialogService,
+    private route: ActivatedRoute,
+    private traductor : OTranslateService
+  ) {
     this.validatorsArray.push(this.dateValidator);
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
@@ -74,9 +87,65 @@ protected configureServiceStudent() {
   throwChange2(startdate: ODateInputComponent) {
     startdate.getControl().updateValueAndValidity();
   }
+  todayDate: string = '';
+  todayTimestamp: number = 0;
+  @ViewChild('notesForm') notesForm: OFormComponent;
+  @ViewChild('date') date: ODateInputComponent;
 
-  mostrarBoton: boolean = true; ngOnInit() {
+
+
+  ngAfterViewInit() {
+    if (this.date) {
+      this.date.setValue(this.todayTimestamp);
+      console.log("TiSt"+this.todayTimestamp);
+      console.log("Date: "+ this.date.getValue().toString());
+    }
+  }
+  @ViewChild("studentIdNote") studentIdNote: OTextInputComponent;
+
+  setIdStudent(event: any) {
+    this.studentIdNote.setValue(this.idNumber.getValue());
+
+  }
+  addNotes(event: any) {
+
+    this.notesForm.insert();
+
+  }
+
+  mostrarBoton: boolean = true;
+  selectedTabIndex: number = 0;
+
+  ngOnInit() {
     this.mostrarBoton = /\d+$/.test(this.router.url);
+    const today = new Date();
+    const day = today.getDate().toString().padStart(2, '0');
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const year = today.getFullYear();
+    this.todayDate = `${day}/${month}/${year}`;
+
+
+    const [dd, mm, yyyy] = this.todayDate.split('/').map(Number);
+    const parsedDate = new Date(yyyy, mm - 1, dd);
+    this.todayTimestamp = parsedDate.getTime();
+
+    const source = this.route.snapshot.queryParamMap.get('source');
+    if (source === 'commercial') {
+      setTimeout(() => this.setTabIndexByName('LNOTE'), 0);
+    }
+  }
+
+  setTabIndexByName(tabName: string): void {
+    const translatedName = this.traductor.get(tabName);
+  console.log(`Traducción de "${tabName}": ${translatedName}`);
+
+    const tabArray = this.tabs.toArray();
+    const index = tabArray.findIndex(tab => tab.textLabel.trim() === translatedName);
+    if (index !== -1) {
+      this.selectedTabIndex = index;
+    } else {
+      console.warn(`No se encontró la pestaña con el nombre '${translatedName}'`);
+    }
   }
 
   toUpperCamelCase(event: any) {
@@ -152,7 +221,7 @@ protected configureServiceStudent() {
   }
   mostrar(event: any) {
 
-    
+
     this.getDNI(event.srcElement.value);
 
   }
@@ -285,5 +354,9 @@ deleteNotes(notas: any) {
 
  }
 
-  
+ focusnote(){
+
+ }
+
+
 }
