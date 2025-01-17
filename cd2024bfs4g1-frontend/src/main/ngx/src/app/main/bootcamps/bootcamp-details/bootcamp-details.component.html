@@ -130,7 +130,7 @@
       </div>
     </mat-tab>
     <mat-tab label="{{ 'Schedule' | oTranslate }}">
-      <div class="table_containerhorarios">
+      <div class="mat_table_container">
         <div class="table_horario">
           <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
             <o-form-layout-dialog-options class="popup">
@@ -158,7 +158,7 @@
       </div>
     </mat-tab>
     <mat-tab label="{{ 'Documents' | oTranslate }}">
-      <div class="table_containerfichero">
+      <div class="mat_table_container">
         <div class="table_ficheros">
           <div class="upload-container">
             <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
@@ -200,9 +200,9 @@
     <o-form-layout-manager attr="popupNewSession" title="Session" mode="dialog"  >
       <o-form-layout-dialog-options class="popup">
         <mat-tab label="{{ 'Sesiones' | oTranslate }}">
-          <div class="table_sesions general_table">
+          <div class="mat_table_container">
             <div class="calendar-container">
-              <o-column>
+              <o-column class="rounded_top">
 
                 <o-combo
                   attr="status"
@@ -247,7 +247,7 @@
               sort="session_date:ASC">
             </o-filter-builder>
 
-              <o-table #sessionsTable class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
+              <o-table #sessionsTable class="general_table rounded_bottom" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
                        service="sessionBootcamp"
                        entity="sessionBootcamp" keys="id"
                        parent-keys="id_bootcamp:id"
@@ -278,7 +278,9 @@
           </div>
         </mat-tab>
         <mat-tab label="{{'Asistencia'|oTranslate}}">
-          <app-calendar-attendance #asistencia [bootcampId]="bootcampId"></app-calendar-attendance>
+          <div class="mat_table_container">
+            <app-calendar-attendance #asistencia [bootcampId]="bootcampId"></app-calendar-attendance>
+          </div>
         </mat-tab>
 
       </o-form-layout-dialog-options>
