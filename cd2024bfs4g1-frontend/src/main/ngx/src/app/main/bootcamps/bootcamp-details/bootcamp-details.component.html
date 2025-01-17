@@ -1,6 +1,6 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
   header-actions="R;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
-  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()" (onBeforeUpdate)="asistencia.saveAttendaces()">
   <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
@@ -33,7 +33,8 @@
     </div>
     <div class="especial fecha-inicio" hidden="true">
       <o-date-input #startdate class="fechas" attr="start_date" hidden="true" required="yes"
-        format="DD/MM/YYYY"></o-date-input>
+        format="DD/MM/YYYY">
+      </o-date-input>
     </div>
     <div class="especial fecha-fin" hidden="true">
       <o-date-input #enddate attr="end_date" required="yes" hidden="true" [validators]="validatorsArray"
