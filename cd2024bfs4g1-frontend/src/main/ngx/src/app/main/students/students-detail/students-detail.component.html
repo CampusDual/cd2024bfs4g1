@@ -1,5 +1,5 @@
 <o-form #form attr="studentsDetail" service="students" entity="student" keys="id" header-actions="U;D" after-insert-mode="detail"
-  show-header-navigation="no">
+  show-header-navigation="no" (onUpdate)="refreshwarning()">
   <div o-form-toolbar-buttons>
     <o-button attr="backButton" class="o-form-toolbar-button" type="RAISED" icon="keyboard_backspace" label="Go back"
       (click)="location.back()" *ngIf="mostrarBoton" color="primary"></o-button>
@@ -38,13 +38,12 @@
           <div class="datosPrincipales2">
 
             <div class="dni">
+              <div class="aviso" *ngIf="showNotice">
+                <p>{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></p>
+              </div>
               <label for="LDNI">{{'LDNI' | oTranslate}}</label>
               <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
-                (onBlur)="mostrar($event)"></o-nif-input>
-              <div class="aviso" *ngIf="showNotice">
-                <link rel="stylesheet" />
-                <label for="dni">{{'DNI_WARNING'|oTranslate}}<mat-icon svgIcon="ontimize:warning"></mat-icon></label>
-              </div>
+                (onBlur)="mostrar($event)" (input)="toUpperCase($event)"></o-nif-input>
             </div>
             <div>
               <label for="REQ_LBIRTHDATE">{{'LBIRTHDATE' | oTranslate}}</label>

@@ -50,6 +50,9 @@ export class CalendarAttendanceComponent {
   selectedEndDate: Date;
 
   protected service: OntimizeService;
+  protected serviceName: string;
+  protected serviceBkName: string;
+
 
   @Input('bootcampId')
   bootcampId: number;
@@ -69,6 +72,7 @@ export class CalendarAttendanceComponent {
   attendance: any[] = [];
   attendanceMap: { [key: string]: number } = {};
   studentMap = new Map<number, Map<string, number>>();
+
 
   backendResponse: any;
   startBootcampDate: Date;
@@ -94,19 +98,23 @@ export class CalendarAttendanceComponent {
     this.loadYears();
 
     this.service = this.injector.get(OntimizeService);
+
+
   }
   refresh() {
-    this.loadStudents();
-    this.loadAttendance();
+    this.getStudents();
+    //this.loadAttendance();
+    this.getAttendance();
     this.getBootcampDates();
   }
   ngOnInit() {
-    this.loadAttendanceStatus();
+    this.getAttendanceStatus();
     this.configureBootcamps();
   }
   ngOnChanges() {
-    this.loadStudents();
-    this.loadAttendance();
+    this.getStudents();
+   // this.loadAttendance();
+   this.getAttendance();
     this.getBootcampDates();
 
   }
@@ -132,21 +140,13 @@ export class CalendarAttendanceComponent {
     this.service.configureService(conf);
   }
 
-  protected configureHolidays() {
-    // Configure the service using the configuration defined in the `app.services.config.ts` file
-    const conf = this.service.getDefaultServiceConfiguration('holidays');
-    this.service.configureService(conf);
-  }
 
-  loadStudents(): void {
-    this.configureStudents();
-    this.getStudents();
-  }
   getStudents() {
+
     if (this.service && this.bootcampId) {
       const columns = ['student_id', 'name', 'surname1', 'surname2', 'computable'];
       const filter = { 'bootcamp_id': this.bootcampId };
-
+      this.configureStudents();
       this.service.query(filter, columns, 'studentsWithComputable').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
@@ -165,22 +165,19 @@ export class CalendarAttendanceComponent {
           this.snackBarService.open('Error al cargar los datos de los estudiantes.');
         }
       });
+      this.configureBootcamps();
     }
   }
 
 
 
-  loadAttendanceStatus(): void {
-    this.configureAttendanceStatus();
-    this.getAttendanceStatus();
-    this.statusData.map(status => {
-    });
-  }
+
   getAttendanceStatus() {
     if (this.service !== null) {
       const columns = ['id', 'abbreviation', 'description', 'color'];
 
 
+      this.configureAttendanceStatus();
       this.service.query({}, columns, 'attendanceControl').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
@@ -192,14 +189,13 @@ export class CalendarAttendanceComponent {
           this.snackBarService.open('Error al cargar los datos de los estatus de asistencia.');
         }
       });
+      this.configureBootcamps();
     }
   }
 
-  loadAttendance(): void {
-    this.configureAttendance();
-    this.getAttendance();
-  }
+
   getAttendance() {
+
     if (this.service && this.bootcampId) {
       const columns = ['id', 'student_id', 'bootcamp_id', 'date', 'attendance_status_id'];
 
@@ -207,6 +203,7 @@ export class CalendarAttendanceComponent {
         'bootcamp_id': this.bootcampId
       }
 
+      this.configureAttendance();
       this.service.query(filter, columns, 'attendance').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
@@ -229,6 +226,7 @@ export class CalendarAttendanceComponent {
           this.snackBarService.open('Error al cargar los datos de asistencia.');
         }
       });
+      this.configureBootcamps();
     }
   }
 
@@ -265,22 +263,26 @@ export class CalendarAttendanceComponent {
   }
 
   //ir a semana anterior
+
+  //llama
   decSelectedWeek(): void {
     this.attendanceModified = [];
     this.startDate = moment(this.startDate).subtract(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.loadStudents();
+    this.getStudents();
     this.updateCurrentMonthAndYear();
   }
 
   //ir a semana posterior
+
+  //llama
   incSelectedWeek(): void {
     this.attendanceModified = [];
     this.startDate = moment(this.startDate).add(1, 'weeks').toDate();
     this.endDate = moment(this.startDate).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.loadStudents();
+    this.getStudents();
     this.updateCurrentMonthAndYear();
   }
 
@@ -368,20 +370,25 @@ export class CalendarAttendanceComponent {
     return selectedStatus ? selectedStatus.description : null; // Retorna null si no hay selección.
   }
 
-  onButtonClick() {
-    this.configureAttendance();
+  saveAttendaces() { 
+
     const attendanceArray = Object.values(this.attendanceModified);
-    this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
-      response => {
-        this.attendanceModified = [];
-        this.snackBarService.open('asistenciasSave');
-        this.loadAttendance();
-      },
-      error => {
-        console.error('Error al procesar asistencias:', error);
-        this.snackBarService.open('Error al guardar asistencias.');
-      }
-    );
+    if(attendanceArray.length > 0){
+      this.configureAttendance();
+      this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
+        response => {
+          this.attendanceModified = [];
+          this.snackBarService.open('asistenciasSave');
+          //this.loadAttendance();
+          this.getAttendance();
+        },
+        error => {
+          console.error('Error al procesar asistencias:', error);
+          this.snackBarService.open('Error al guardar asistencias.');
+        }
+      );
+      this.configureBootcamps();
+    }    
   }
 
   getBackgroundColor(abbreviation: string): string {
@@ -405,13 +412,15 @@ export class CalendarAttendanceComponent {
   }
 
   getBootcampDates(): void {
-    this.configureBootcamps();
+
     if (this.service && this.bootcampId) {
       const columns = ['start_date', 'end_date'];
 
       const filter = {
         'id': this.bootcampId
       }
+
+      this.configureBootcamps();
       this.service.query(filter, columns, 'bootcamp').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
@@ -441,12 +450,13 @@ export class CalendarAttendanceComponent {
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
     this.loadDays();
-    this.loadStudents();
+    this.getStudents();
     this.updateCurrentMonthAndYear();
   }
 
   openAttendanceDialog() {
     this.dialog.open(this.attendanceDialog);
+    this.configureBootcamps();
   }
 
   iterateDateRange() {
@@ -464,6 +474,13 @@ export class CalendarAttendanceComponent {
 
     return dates;
   }
+
+
+  onDatePickerClosed(): void {
+    this.configureBootcamps();
+  }
+
+
   submitAttendance() {
     const dateRange = this.iterateDateRange();
     console.log('Date Range:', dateRange);
@@ -482,10 +499,13 @@ export class CalendarAttendanceComponent {
       }
     }
 
-    this.onButtonClick();
+    this.saveAttendaces();
     this.loadDays();
     this.updateCurrentMonthAndYear();
     this.dialog.closeAll();
   }
+
+
+
 
 }

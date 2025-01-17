@@ -3,7 +3,7 @@
         <div class="button-container">
             <o-button (click)="openAttendanceDialog()" label="Multiple Selection"></o-button>
             <o-button (click)="goToToday()" label="today"></o-button>
-            <o-button (click)="onButtonClick()" label="AttendanceSave"></o-button>
+            <o-button (click)="saveAttendaces()" label="AttendanceSave"></o-button>
         </div>
 
         <ng-template #attendanceDialog>
@@ -19,7 +19,7 @@
                     <input matEndDate [(ngModel)]="selectedEndDate">
                   </mat-date-range-input>
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-date-range-picker #picker></mat-date-range-picker>
+                  <mat-date-range-picker #picker (closed)="onDatePickerClosed()"></mat-date-range-picker>
                 </mat-form-field>
               </div>
             </div>

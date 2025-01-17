@@ -1,6 +1,6 @@
 <o-form #bootcampDetailForm attr="bootcampsDetail" service="bootcamps" entity="bootcamp" keys="id"
   header-actions="R;U;D" (onUpdate)="volver($event)" (onDelete)="volver($event)" show-header-navigation="no"
-  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()">
+  confirm-exit="false" (onDataLoaded)="onBootcampChange($event);inicialDR()" (onBeforeUpdate)="asistencia.saveAttendaces()">
   <o-text-input #idNumber attr="id" sql-type="INTEGER" enabled="no" hidden="true"></o-text-input>
 
   <div class="grid-container">
@@ -33,7 +33,8 @@
     </div>
     <div class="especial fecha-inicio" hidden="true">
       <o-date-input #startdate class="fechas" attr="start_date" hidden="true" required="yes"
-        format="DD/MM/YYYY"></o-date-input>
+        format="DD/MM/YYYY">
+      </o-date-input>
     </div>
     <div class="especial fecha-fin" hidden="true">
       <o-date-input #enddate attr="end_date" required="yes" hidden="true" [validators]="validatorsArray"
@@ -42,7 +43,7 @@
       </o-date-input>
     </div>
   </div>
-  <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight>
+  <mat-tab-group class="tab" animationDuration="0ms" dynamicHeight (selectedTabChange)="onTabChange($event)">
     <mat-tab label="{{ 'StudentsAndMentors' | oTranslate }}">
       <div class="general_container">
         <div class="table_container">
@@ -129,11 +130,11 @@
       </div>
     </mat-tab>
     <mat-tab label="{{ 'Schedule' | oTranslate }}">
-      <div class="table_containerhorarios">
+      <div class="mat_table_container">
         <div class="table_horario">
           <o-form-layout-manager attr="" mode="dialog" title="Timetable" virtual-scroll="false">
             <o-form-layout-dialog-options class="popup">
-              <o-table class="timetable_table" virtual-scroll="false" attr="bootcampTimetable"
+              <o-table #bootcampTimetable class="timetable_table" virtual-scroll="false" attr="bootcampTimetable"
                 service="bootcampTimetable" insert-form-route="newTimetable" pagination-controls="false"
                 detail-mode="none" update-button="false" entity="bootcampTimetable" keys="id"
                 parent-keys="id_bootcamp:id;start_date;end_date"
@@ -157,7 +158,7 @@
       </div>
     </mat-tab>
     <mat-tab label="{{ 'Documents' | oTranslate }}">
-      <div class="table_containerfichero">
+      <div class="mat_table_container">
         <div class="table_ficheros">
           <div class="upload-container">
             <label for="fileinput">{{ 'fileinput' | oTranslate }}</label>
@@ -196,12 +197,12 @@
         </div>
       </div>
     </mat-tab>
-    <o-form-layout-manager attr="popupNewSession" title="Session" mode="dialog">
+    <o-form-layout-manager attr="popupNewSession" title="Session" mode="dialog"  >
       <o-form-layout-dialog-options class="popup">
         <mat-tab label="{{ 'Sesiones' | oTranslate }}">
-          <div class="table_sesions general_table">
+          <div class="mat_table_container">
             <div class="calendar-container">
-              <o-column>
+              <o-column class="rounded_top">
 
                 <o-combo
                   attr="status"
@@ -246,7 +247,7 @@
               sort="session_date:ASC">
             </o-filter-builder>
 
-              <o-table #sessionsTable class="general_table" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
+              <o-table #sessionsTable class="general_table rounded_bottom" virtual-scroll="false" attr="sessionBootcamp_table" detail-form-route="session"
                        service="sessionBootcamp"
                        entity="sessionBootcamp" keys="id"
                        parent-keys="id_bootcamp:id"
@@ -255,6 +256,7 @@
                        select-all-checkbox-visible="true" selection-mode="multiple"
                        [row-class]="getRowClass"
                        sort-columns="session_date"
+                       detail-mode="dblclick"
                        >
 
                 <o-table-column class="center" attr="session_date" title="session_date" type="date" format="DD/MM/YYYY"></o-table-column>
@@ -276,7 +278,9 @@
           </div>
         </mat-tab>
         <mat-tab label="{{'Asistencia'|oTranslate}}">
-          <app-calendar-attendance #asistencia [bootcampId]="bootcampId"></app-calendar-attendance>
+          <div class="mat_table_container">
+            <app-calendar-attendance #asistencia [bootcampId]="bootcampId"></app-calendar-attendance>
+          </div>
         </mat-tab>
 
       </o-form-layout-dialog-options>

@@ -354,9 +354,9 @@ deleteNotes(notas: any) {
 
  }
 
- focusnote(){
-
- }
+refreshwarning(){
+  this.showNotice = false;
+}
 
 
 }
