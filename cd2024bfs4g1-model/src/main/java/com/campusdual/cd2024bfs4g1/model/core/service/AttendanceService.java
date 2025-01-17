@@ -3,6 +3,7 @@ package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IAttendanceService;
 import com.campusdual.cd2024bfs4g1.model.core.dao.AttendanceDao;
+import com.campusdual.cd2024bfs4g1.model.core.dao.BootcampDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
@@ -21,11 +22,13 @@ import java.util.Map;
 @Service("AttendanceService")
 @Lazy
 public class AttendanceService implements IAttendanceService {
-  @Autowired
-  private DefaultOntimizeDaoHelper daoHelper;
-  @Autowired
-  private AttendanceDao attendanceDao;
+    @Autowired
+    private DefaultOntimizeDaoHelper daoHelper;
+    @Autowired
+    private AttendanceDao attendanceDao;
 
+    @Autowired
+    private BootcampDao bootcampDao;
 
     @Override
     public EntityResult attendanceQuery(Map<String, Object> keyMap, List<String> attributes) throws OntimizeJEERuntimeException {
@@ -94,6 +97,8 @@ public class AttendanceService implements IAttendanceService {
     public EntityResult attendanceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
         return this.daoHelper.update(this.attendanceDao, attrMap, keyMap);
     }
+
+
 
     @Override
     public EntityResult attendanceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {

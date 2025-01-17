@@ -7,8 +7,8 @@ import { DialogService, Expression, FilterExpressionUtils, OFileInputComponent, 
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { CalendarAttendanceComponent } from '../../data/personal-tutor-info/calendar-attendance/calendar-attendance.component';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { CalendarAttendanceComponent } from '../../data/personal-tutor-info/calendar-attendance/calendar-attendance.component';
 
 @Component({
   selector: 'app-bootcamp-details',
@@ -25,7 +25,8 @@ export class BootcampDetailsComponent {
   @ViewChild('studentsTable', { static: true }) studentsTable!: OTableComponent;
   @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
   @ViewChild('bootcampTimetable', { static: true }) bootcampTimetable: OTableComponent;
-
+  @ViewChild('asistencia') asistencia: CalendarAttendanceComponent;
+  
   selectedStatuses: string[] = ['Started', 'Pending'];
   months: Date[] = [];
   bootcampId: number;
@@ -77,6 +78,7 @@ export class BootcampDetailsComponent {
         this.configureBootcampTimetable()
         this.bootcampTimetable.refresh();
         break;
+
     }
     this.previousTabIndex = currentIndex;
   }
@@ -113,6 +115,7 @@ export class BootcampDetailsComponent {
   }
 
   inicialDR() {
+    
     const startDateValue = this.startDateInput.getValue();
     const endDateValue = this.endDateInput.getValue();
 
@@ -154,7 +157,6 @@ export class BootcampDetailsComponent {
 
   ngOnInit() {
     //this.configureBootcamps();
-    console.log("Estoy en el sevicio de bootcamps en Bootcamp-details");
   }
 
   protected configureBootcamps() {
@@ -163,7 +165,7 @@ export class BootcampDetailsComponent {
 
   }
 
-
+  
 
   protected configureBootcampTimetable() {
     const conf = this.service.getDefaultServiceConfiguration('bootcampTimetable');
@@ -189,6 +191,7 @@ export class BootcampDetailsComponent {
 
 
   onBootcampChange(event: any) {
+
     this.studentsTable.refresh();
     this.configureBootcamps();
     const bootcampId = event.id;
@@ -331,7 +334,7 @@ export class BootcampDetailsComponent {
       }
     });
 
-   }
+  }
 
   showAlert() {
     if (this.dialogService) {
@@ -400,10 +403,9 @@ export class BootcampDetailsComponent {
       this.selectedStatuses = ['Started', 'Pending'];
     }
   }
-  @ViewChild('asistencia', { static: true }) asistencia!: CalendarAttendanceComponent;
+
   loadBootcamp() {
-    this.bootcampId= this.bootcampDetailForm.getFieldValue("id");
-    this.asistencia.refresh();
+    this.bootcampId = this.bootcampDetailForm.getFieldValue("id");
   }
 
 
