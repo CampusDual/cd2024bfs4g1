@@ -203,6 +203,23 @@ h3 {
   overflow-x: auto; 
   background-color: #f5f0f2;
   padding: 20px 0;
+  border-radius: 0;
+  margin: 0px;
+}
+
+.rounded_top{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.rounded_bottom{
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.aligned-container {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .input-button-container {
@@ -318,15 +335,7 @@ div.notification label {
   height: 100%;
 }
 
-.table_containerfichero {
-  width: 98%;
-  overflow-x: hidden;
-  margin: 0 auto;
-  margin-top: 25px;
-  padding: 0 10px;
-}
-
-.table_containerhorarios {
+.mat_table_container {
   width: 98%;
   overflow-x: hidden;
   margin: 0 auto;
@@ -558,11 +567,6 @@ div.notification label {
   background-color: #f5f0f2;
   border-radius: 15px;
   padding: 20px;
-}
-.table_sesions{
-  background-color: #f5f0f2;
-  font-family: 'Roboto', sans-serif;
-  height: auto;
 }
 
 o-list img {
