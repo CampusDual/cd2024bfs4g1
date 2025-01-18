@@ -392,5 +392,15 @@
   "Note" : "Note",
   "Session" : "Session",
   "AcaData" : "Academic data",
-  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "The default mentor type cannot be deleted"
+  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "The default mentor type cannot be deleted",
+  "permissionid": "Id Route",
+  "enabled": "Enabled",
+  "attr": "Id Menu",
+  "visible": "Visible",
+  "ROL*": "Role*",
+  "ROL": "Role",
+  "ATTR*": "Id Menu*",
+  "VISIBLE": "Visible",
+  "ENABLED": "Enabled",
+  "PERMISSIONID*": "Id Rute*"
 }
