@@ -1,5 +1,6 @@
-<o-form-layout-manager mode="tab" store-state="no" title="Routes" label-columns="permissionid" attr="o-form-layout-routes-home"
+<o-form-layout-manager mode="dialog" store-state="no" title="Routes" label-columns="permissionid" attr="o-form-layout-routes-home"
   title-data-origin="routes_form_edit" fxFill>
+  <o-form-layout-dialog-options height="60%" width="60%"></o-form-layout-dialog-options>
   <o-form show-header="no" query-on-init="no" fxFill>
     <o-table attr="routes" service="contentpermissions" entity="route" keys="id"
       columns="id;permissionid;enabled;id_rolename;rol_name"

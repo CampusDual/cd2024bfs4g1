@@ -1,0 +1,6 @@
+.adminform {
+    display: grid;
+    gap: 50px;
+    width: 100%;
+    margin-top: 40px;
+}

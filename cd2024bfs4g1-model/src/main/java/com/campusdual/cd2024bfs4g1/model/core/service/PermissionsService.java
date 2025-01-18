@@ -56,8 +56,38 @@ public class PermissionsService implements IPermissionsService {
     }
 
     @Override
+    public EntityResult menuInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.menuDao,attrMap);
+    }
+
+    @Override
+    public EntityResult menuUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.menuDao,attrMap,keyMap);
+    }
+
+    @Override
+    public EntityResult menuDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.menuDao,keyMap);
+    }
+
+    @Override
     public EntityResult routeQuery(Map<String, Object> keyMap, List<String> attrList) throws OntimizeJEERuntimeException {
         return this.daoHelper.query(this.routesDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult routeInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.insert(this.routesDao,attrMap);
+    }
+
+    @Override
+    public EntityResult routeUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.update(this.routesDao,attrMap,keyMap);
+    }
+
+    @Override
+    public EntityResult routeDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        return this.daoHelper.delete(this.routesDao,keyMap);
     }
 
     /**

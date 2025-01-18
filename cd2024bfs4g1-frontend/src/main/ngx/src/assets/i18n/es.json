@@ -390,6 +390,15 @@
   "festivos":"Holidays",
   "holiday_date":"Fecha del festivo",
   "REQ_LHOLIDAY_DATE":"Fecha del festivo*",
-  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "El tipo de tutor que quieres eliminar es el por defecto"
-
+  "NOT_DELETABLE_TUTOR_TYPE_IS_DEFAULT": "El tipo de tutor que quieres eliminar es el por defecto",
+  "permissionid": "Id Ruta",
+  "enabled": "Habilitado",
+  "attr": "Id Menú",
+  "visible": "Visible",
+  "ROL*": "Rol*",
+  "ROL": "Rol",
+  "ATTR*": "Id Menú*",
+  "VISIBLE": "Visible",
+  "ENABLED": "Habilitado",
+  "PERMISSIONID*": "Id Ruta*"
 }
