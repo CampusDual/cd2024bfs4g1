@@ -388,12 +388,6 @@ public class StudentService implements IStudentService {
 			if (userUpdateResult.isWrong()) {
 				return userUpdateResult;
 			}
-
-			// Asignar rol de estudiante al usuario
-			EntityResult assignRoleResult = assignStudentRole(userId);
-			if (assignRoleResult.isWrong()) {
-				return assignRoleResult;
-			}
 			return userUpdateResult;
 		} else {
 			// Si el usuario no existe, insertar un nuevo usuario

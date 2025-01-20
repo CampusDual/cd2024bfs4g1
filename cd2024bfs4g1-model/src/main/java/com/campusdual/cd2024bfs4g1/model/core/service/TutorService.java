@@ -171,12 +171,6 @@ public class TutorService implements ITutorService {
                 return userUpdateResult;
             }
 
-            // Asignar rol de tutor al usuario
-            EntityResult assignRoleResult = assignTutorRole(userId);
-            if (assignRoleResult.isWrong()) {
-                return assignRoleResult;
-            }
-
             return userUpdateResult;
         } else {
             // Si no existe el usuario, crearlo
