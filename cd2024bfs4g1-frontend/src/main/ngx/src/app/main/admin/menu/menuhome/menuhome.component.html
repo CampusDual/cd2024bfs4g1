@@ -1,0 +1,17 @@
+<o-form-layout-manager mode="dialog" store-state="no" title="Menus" label-columns="attr" attr="o-form-layout-menus-home"
+  title-data-origin="menus_form_edit" fxFill>
+  <o-form-layout-dialog-options height="70%" width="60%"></o-form-layout-dialog-options>
+  <o-form show-header="no" query-on-init="no" fxFill>
+    <o-table attr="menus" service="contentpermissions" entity="menu" keys="id"
+      columns="id;attr;visible;enabled;id_rolename;rol_name"
+      visible-columns="attr;visible;enabled;rol_name"
+      sort-columns="attr" query-on-init="yes"
+      insert-button="yes" delete-button="yes" refresh-button="no"
+      select-all-checkbox-visible="yes" fixed-header="yes" query-rows="25" class="home-table" fxFlex export-mode="local">
+      <o-table-column attr="visible" title="visible" type="boolean"
+        render-true-value="check_circle" render-false-value="block" render-type="icon" boolean-type="boolean"></o-table-column>
+      <o-table-column attr="enabled" title="enabled" type="boolean"
+        render-true-value="check_circle" render-false-value="block" render-type="icon" boolean-type="boolean"></o-table-column>
+    </o-table>
+  </o-form>
+</o-form-layout-manager>
