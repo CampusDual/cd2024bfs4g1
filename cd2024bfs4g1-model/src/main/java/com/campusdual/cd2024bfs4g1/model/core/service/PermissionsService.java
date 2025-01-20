@@ -8,10 +8,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
+import com.ontimize.jee.common.gui.SearchValue;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -113,14 +115,25 @@ public class PermissionsService implements IPermissionsService {
     private void addMenuToPermission(Map<String, Object> permissions) {
         List columns = Arrays.asList(MenuDao.ATTR_ATTR,MenuDao.ATTR_VISIBLE,MenuDao.ATTR_ENABLED);
         Map<String,Object> keys = new HashMap<>();
-        keys.put(MenuDao.ATTR_ROLENAME,getRole());
-        EntityResult menuPermisions = this.daoHelper.query(menuDao,keys,columns);
-        if(menuPermisions.calculateRecordNumber()>0){
-            List menuPermissionsList = new ArrayList();
-            for(int i=0; i< menuPermisions.calculateRecordNumber();i++){
-                menuPermissionsList.add(switchToLower(menuPermisions.getRecordValues(i)));
+        keys.put(MenuDao.ATTR_ROLENAME,new SearchValue(SearchValue.IN,getRoles()));
+        EntityResult menuPermissions = this.daoHelper.query(menuDao,keys,columns);
+        if(menuPermissions.calculateRecordNumber()>0){
+            Map<String,Map<String, Object>> menuPermissionsMap = new HashMap<>();
+            for(int i=0; i< menuPermissions.calculateRecordNumber();i++){
+                Map<String,Object> permission = switchToLower(menuPermissions.getRecordValues(i));
+                Map<String,Object> existingPermission = menuPermissionsMap.get(permission.get("attr"));
+                if(existingPermission == null){
+                    menuPermissionsMap.put((String) permission.get("attr"),permission);
+                }else{
+                    if((Boolean) permission.get("enabled")){
+                        existingPermission.put("enabled",true);
+                    }
+                    if((Boolean) permission.get("visible")){
+                        existingPermission.put("visible",true);
+                    }
+                }
             }
-            permissions.put(MENU,menuPermissionsList);
+            permissions.put(MENU,menuPermissionsMap.values());
         }
     }
 
@@ -132,14 +145,22 @@ public class PermissionsService implements IPermissionsService {
     private void addRouteToPermission(Map<String, Object> permissions) {
         List columns = Arrays.asList(RoutesDao.ATTR_PERMISSIONID, RoutesDao.ATTR_ENABLED);
         Map<String,Object> keys = new HashMap<>();
-        keys.put(RoutesDao.ATTR_ROLENAME,getRole());
+        keys.put(RoutesDao.ATTR_ROLENAME,new SearchValue(SearchValue.IN,getRoles()));
         EntityResult routePermisions = this.daoHelper.query(routesDao,keys,columns);
         if(routePermisions.calculateRecordNumber()>0){
-            List routePermissionsList = new ArrayList();
+            Map<String,Map<String, Object>>  routePermissionsMap = new HashMap<>();
             for(int i=0; i< routePermisions.calculateRecordNumber();i++){
-                routePermissionsList.add(switchToLower(routePermisions.getRecordValues(i)));
+                Map<String,Object> permission = switchToLower(routePermisions.getRecordValues(i));
+                Map<String,Object> existingPermission = routePermissionsMap.get(permission.get("permissionId"));
+                if(existingPermission == null){
+                    routePermissionsMap.put((String) permission.get("permissionId"),permission);
+                }else{
+                    if((Boolean) permission.get("enabled")){
+                        existingPermission.put("enabled",true);
+                    }
+                }
             }
-            permissions.put(ROUTES,routePermissionsList);
+            permissions.put(ROUTES,routePermissionsMap.values());
         }
     }
 
@@ -168,5 +189,16 @@ public class PermissionsService implements IPermissionsService {
     private String getRole(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getAuthorities().toArray()[0].toString();
+    }
+
+    private List<String> getRoles(){
+        List<String> result = new ArrayList<>();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        for(GrantedAuthority role: auth.getAuthorities()){
+            if(!result.contains(role.toString())){
+                result.add(role.toString());
+            }
+        }
+        return result;
     }
 }
