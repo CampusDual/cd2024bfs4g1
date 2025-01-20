@@ -50,7 +50,9 @@ export const SERVICE_CONFIG: Object = {
   'attendance':{
     'path': '/attendance'
   },
-
+  'contentpermissions':{
+    'path': '/permissions'
+  },
   'studentbootcampstatus':{
     'path': '/studentbootcampstatus'
   },

@@ -1,0 +1,24 @@
+<o-form #formroute service="contentpermissions" entity="route" editable-detail="yes" show-header="no"
+    confirm-exit="false" undo-button="false" label-header-align="center" keys="id">
+    <div class="adminform">
+        <div class="rol">
+            <label for="rol">{{'ROL*' | oTranslate}}</label>
+            <o-combo attr="id_rolename" label="ROL" required="yes" translate="yes" null-selection="false"
+                read-only="false" service="users" entity="role" keys="rol_id" columns="rol_id;rol_name;rol_notes"
+                value-column="rol_id" description-columns="rol_name;rol_notes" query-on-init="true">
+            </o-combo>
+        </div>
+        <div class="permissionid">
+            <label for="permissionid">{{'PERMISSIONID*'| oTranslate}}</label>
+            <o-text-input type="text" attr="permissionid" required="yes" max-length="250"></o-text-input>
+        </div>
+        <div class="enabled">
+            <o-slide-toggle attr="enabled" label="{{'enabled' | oTranslate}}" read-only="no"
+                tooltip="{{'POPUP_ENABLED' | oTranslate}}"></o-slide-toggle>
+        </div>
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutWrap style="margin-top: 10px;">
+            <o-button attr="editbutton" id="edit" type="RAISED" label="Save" color="primary"
+                (onClick)="insertRoute()"></o-button>
+        </div>
+    </div>
+</o-form>

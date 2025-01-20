@@ -8,6 +8,8 @@ export const MENU_CONFIG: MenuRootItem[] = [
     items: [
       { id: 'roles', name: 'ROLES', route: '/main/admin/roles', icon: 'supervisor_account' },
       { id: 'users', name: 'USERS', route: '/main/admin/users', icon: 'person' },
+      { id: 'routes', name: 'ROUTES', route: '/main/admin/routes', icon: 'http' },
+      { id: 'menus', name: 'MENUS', route: '/main/admin/menus', icon: 'list' },
     ]
   },
   { id: 'students', name: 'Students', route: '/main/students', icon: 'groups' },
