@@ -131,7 +131,7 @@ protected configureServiceStudent() {
 
     const source = this.route.snapshot.queryParamMap.get('source');
     if (source === 'commercial') {
-      setTimeout(() => this.setTabIndexByName('LNOTE'), 0);
+      setTimeout(() => this.setTabIndexByName('LCOMMENTS'), 0);
     }
   }
 
