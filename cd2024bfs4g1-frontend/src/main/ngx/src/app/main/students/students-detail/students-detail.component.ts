@@ -359,6 +359,7 @@ const keys ={
       }
     });
   }
+
 deleteNotes(notas: any) {
 
   this.configureNotes();
