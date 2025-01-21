@@ -436,7 +436,10 @@ o-column.o-column .o-container > .o-container-title span{
  mat-list-item .mat-mdc-list-item-title {
   color:  #7ec117;
   font-size: 20px;
-  --mdc-list-list-item-hover-label-text-color: #7ec117;
+  visibility: hidden;
+  --mdc-list-list-item-hover-label-text{
+    visibility: hidden;
+  };
 
 }
 
