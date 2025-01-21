@@ -336,7 +336,7 @@
   "COMPUTABLE_TRUE":"Computable",
   "COMPUTABLE_FALSE":"No computable",
   "student_bootcamp_status":"Estado del estudiante en bootcamp",
-  "LSLIDETOGGLE_COMPUTABLE":"No computable o computable ",
+  "LSLIDETOGGLE_COMPUTABLE":" Computable o no computable  ",
   "STUDENT_HAS_DOCUMENTS":"Este estudiante tiene documentos y no puede ser eliminado",
   "SelectColor": "Selecciona un color:  ",
   "SelectedColor": "Color seleccionado:",
@@ -400,6 +400,7 @@
   "ATTR*": "Id Menú*",
   "VISIBLE": "Visible",
   "ENABLED": "Habilitado",
+  "STUDENT_TT_BOOTCAMP":"Estudiantes activos/Estudiantes totales",
   "PERMISSIONID*": "Id Ruta*",
   "LLNOTE":"Última nota"
 }
