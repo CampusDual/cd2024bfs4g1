@@ -357,6 +357,7 @@ const keys ={
         this.list.reloadData();
       }
     });
+    this.noteArea.clearValue();
   }
 deleteNotes(notas: any) {
 
