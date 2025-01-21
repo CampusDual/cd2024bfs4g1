@@ -17,6 +17,9 @@ export class PersonalTutorInfoComponent {
   mainInfo: any = {};
   protected service: OntimizeService;
 
+  defaultImage: string = 'assets/images/no-image.png'; // Ruta de la imagen por defecto
+
+
   constructor(protected injector: Injector, private mainService: MainService,private router: Router,protected dialogService: DialogService,private oUserInfoService:OUserInfoService) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
@@ -66,8 +69,16 @@ export class PersonalTutorInfoComponent {
   }
     onImageChange(event: any) {
     if (!event || !this.tutorsPhoto.currentFileName) {
+      this.oUserInfoService.setUserInfo({
+        ...this.oUserInfoService.getUserInfo(),
+        avatar:this.defaultImage
+      })
       return;
     }
+
+    if(!this.tutorsPhoto.currentFileName){
+
+  }
 
     if (this.isUpdatingImage) {
       return;
@@ -81,7 +92,7 @@ export class PersonalTutorInfoComponent {
 
     // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.tutorsPhoto.setValue(''); // Limpia el valor del archivo
+      //this.tutorsPhoto.setValue(''); // Limpia el valor del archivo
       return;
     }
 
@@ -107,16 +118,17 @@ export class PersonalTutorInfoComponent {
             avatar:modifiedImageBase64
           })
           ctx.clearRect(0, 0, canvas.width, canvas.height); 
-        }
-      };
+        }}
 
+      
       img.onerror = () => {
         console.error('Error al cargar la imagen.');
       };
-    }
+      
+    }}
 
     
-  }
+  
 
 
   showAlert() {
@@ -124,5 +136,4 @@ export class PersonalTutorInfoComponent {
       this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
     }
   }
-
 }

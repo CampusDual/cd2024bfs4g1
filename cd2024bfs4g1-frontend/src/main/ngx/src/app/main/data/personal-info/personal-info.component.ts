@@ -22,6 +22,9 @@ throw new Error('Method not implemented.');
   protected service: OntimizeService;
   avatar: any
 
+  defaultImage: string = 'assets/images/no-image.png'; // Ruta de la imagen por defecto
+
+
   constructor(protected injector: Injector,private router: Router, private mainService: MainService,protected dialogService: DialogService,private oUserInfoService: OUserInfoService) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
@@ -75,6 +78,10 @@ throw new Error('Method not implemented.');
   }
   onImageChange(event: any) {
     if (!event || !this.UsrPhoto.currentFileName) {
+      this.oUserInfoService.setUserInfo({
+        ...this.oUserInfoService.getUserInfo(),
+        avatar:this.defaultImage
+      })
       return;
     }
   
@@ -89,8 +96,8 @@ throw new Error('Method not implemented.');
     const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
   
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.showAlert();
-      this.UsrPhoto.setValue('');
+      //this.showAlert();
+      //this.UsrPhoto.setValue('');
       return;
     }
   
