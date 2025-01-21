@@ -401,5 +401,6 @@
   "VISIBLE": "Visible",
   "ENABLED": "Habilitado",
   "STUDENT_TT_BOOTCAMP":"Estudiantes activos/Estudiantes totales",
-  "PERMISSIONID*": "Id Ruta*"
+  "PERMISSIONID*": "Id Ruta*",
+  "NNOTES":"No hay notas disponibles"
 }

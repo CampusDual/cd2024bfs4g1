@@ -404,5 +404,6 @@
   "ENABLED": "Enabled",
   "BT_STATUS_TT": "Bootcamp general status",
   "STUDENT_TT_BOOTCAMP":"Active students/Total students",
-  "PERMISSIONID*": "Id Rute*"
+  "PERMISSIONID*": "Id Rute*",
+  "NNOTES":"No notes found"
 }
