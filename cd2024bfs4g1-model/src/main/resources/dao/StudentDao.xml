@@ -49,6 +49,7 @@
                 <AmbiguousColumn name="user_id" prefix="cs"/>
                 <AmbiguousColumn name="student_status_id" prefix="cs"/>
                 <AmbiguousColumn name="status" prefix="cs"/>
+                <AmbiguousColumn name="employment_status" prefix="cs"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
