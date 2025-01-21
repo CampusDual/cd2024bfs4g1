@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableComponent, OTextareaInputComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -97,26 +97,23 @@ protected configureServiceStudent() {
   todayDate: string = '';
   todayTimestamp: number = 0;
   @ViewChild('notesForm') notesForm: OFormComponent;
-  @ViewChild('date') date: ODateInputComponent;
+  @ViewChild('noteDate') noteDate: ODateInputComponent;
+  @ViewChild('noteArea') noteArea: OTextareaInputComponent;
+  
 
 
 
   ngAfterViewInit() {
-    if (this.date) {
-      this.date.setValue(this.todayTimestamp);
+    if (this.noteDate) {
+      this.noteDate.setValue(this.todayTimestamp);
       console.log("TiSt"+this.todayTimestamp);
-      console.log("Date: "+ this.date.getValue().toString());
+      console.log("Date: "+ this.noteDate.getValue().toString());
     }
   }
   @ViewChild("studentIdNote") studentIdNote: OTextInputComponent;
 
   setIdStudent(event: any) {
     this.studentIdNote.setValue(this.idNumber.getValue());
-
-  }
-  addNotes(event: any) {
-
-    this.notesForm.insert();
 
   }
 
@@ -345,6 +342,22 @@ protected configureNotes() {
 }
 @ViewChild("list") list: OListComponent;
 
+InsertNotes() {
+  const sqlTypes = {fecha:91,student_id:4};
+  let idStudent : Number = this.idNumber.getValue();
+const keys ={
+  id_students: idStudent,
+  nota: this.noteArea.getValue(),
+  fecha:this.noteDate.getValue()
+  
+}
+    this.configureNotes();
+    this.service.insert(keys,'notes',sqlTypes).subscribe(res => {
+      if (res.code === 0) {
+        this.list.reloadData();
+      }
+    });
+  }
 deleteNotes(notas: any) {
 
   this.configureNotes();

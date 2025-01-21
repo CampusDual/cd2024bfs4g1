@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { FilterExpressionUtils, Expression, OFormComponent, OFormLayoutManagerComponent, OTableComponent, OntimizeService, DialogService, OTranslateService } from 'ontimize-web-ngx';
+import { FilterExpressionUtils, Expression, OFormComponent, OTableComponent, OntimizeService, DialogService, OTranslateService } from 'ontimize-web-ngx';
 import spainComunitys from 'src/app/main/students/spaincomunitys';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -54,27 +54,6 @@ export class StudentsTableComponent {
     }
 
 
-  }
-
-
-
-  openStudentDetail(studentId: string) {
-    console.log(`Abriendo detalle del estudiante con ID: ${studentId}`);
-
-
-    const formLayoutManager = document.querySelector('o-form-layout-manager') as any;
-
-    if (formLayoutManager) {
-      formLayoutManager.openDetail({
-        entity: 'student',
-        keysValues: { id: studentId },
-
-
-
-      });
-    } else {
-      console.error('No se pudo encontrar el o-form-layout-manager');
-    }
   }
 
   checked: boolean = false;
