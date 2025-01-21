@@ -400,5 +400,6 @@
   "ATTR*": "Id Menú*",
   "VISIBLE": "Visible",
   "ENABLED": "Habilitado",
-  "PERMISSIONID*": "Id Ruta*"
+  "PERMISSIONID*": "Id Ruta*",
+  "LLNOTE":"Última nota"
 }

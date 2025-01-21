@@ -402,5 +402,6 @@
   "ATTR*": "Id Menu*",
   "VISIBLE": "Visible",
   "ENABLED": "Enabled",
-  "PERMISSIONID*": "Id Rute*"
+  "PERMISSIONID*": "Id Rute*",
+  "LLNOTE":"Last note"
 }
