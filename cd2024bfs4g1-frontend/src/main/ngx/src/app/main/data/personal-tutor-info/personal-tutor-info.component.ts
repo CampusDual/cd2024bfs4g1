@@ -24,11 +24,6 @@ export class PersonalTutorInfoComponent {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
   }
-  goToDetail(event: any) {
-    const bootcampId = event.bootcamp_id;
-    this.router.navigate(['/main/data/tutor', bootcampId]);
-    
-  }
 
   protected configureService(){
     const conf = this.service.getDefaultServiceConfiguration('tutors');

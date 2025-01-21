@@ -44,9 +44,9 @@
                 <legend>{{ 'Bootcamps Asigned' | oTranslate }}</legend>
                 <div class="table_container">
                     <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
-                        entity="tutorsWithBootcampNotFinished" keys="id" parent-keys="tutor_id:id"
+                        entity="tutorsWithBootcampNotFinished" keys="bootcamp_id" parent-keys="tutor_id:id"
                         columns="id;bootcamp_id;bootcampname;status" visible-columns="bootcampname;status;Detalle" 
-                        default-visible-columns="bootcampname;status;Detalle" detail-mode="false"
+                        default-visible-columns="bootcampname;status;Detalle" 
                         delete-button="false" show-report-on-demand-option="false" insert-button="false"
                         show-charts-on-demand-option="false" refresh-button="false">
                         <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
@@ -56,11 +56,6 @@
                         <o-table-column attr="status" title="status" type="string" content-align="center"
                             title-align="center" tooltip="yes"
                             tooltip-value="{{'BT_STATUS_TT'|oTranslate}}"><o-table-cell-renderer-translate></o-table-cell-renderer-translate>
-                        </o-table-column>
-                        <o-table-column attr="Detalle" width="64px" tooltip="yes"
-                            tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-                            <o-table-cell-renderer-action (onClick)="goToDetail($event)"
-                                icon="person_search"></o-table-cell-renderer-action>
                         </o-table-column>
                     </o-table>
                 </div>
