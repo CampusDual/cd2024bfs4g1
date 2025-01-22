@@ -402,9 +402,14 @@
   "ENABLED": "Habilitado",
   "STUDENT_TT_BOOTCAMP":"Estudiantes activos/Estudiantes totales",
   "PERMISSIONID*": "Id Ruta*",
+  "BOOTCAMPS_NOTFOUND":"Bootcamps no encontrados",
+  "CONTINUE_ASK":"¿Deseas introducirlo a pesar de ello?",
   "NNOTES":"Todavía no hay comentarios...",
   "NO_NOTES": "No hay notas disponibles",
   "LLNOTE":"Última nota",
+  "BOOTCAMP_CODE":"Código de bootcamp",
+  "NONEXISTENT CODE":"No existe el código",
+  "MISSING CODE":"Código faltante",
   "creation_date": "Fecha de alta",
   "comercial_status":"Estado del alumno en Bootcamp"
 }

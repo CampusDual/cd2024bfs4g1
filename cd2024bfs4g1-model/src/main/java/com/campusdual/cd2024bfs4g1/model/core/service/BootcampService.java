@@ -184,4 +184,47 @@ public class BootcampService implements IBootcampService {
 
 
 
+    @Override
+    public EntityResult bootcampCheckQuery(Map<String, Object> keySMap, List<String> attrList) throws OntimizeJEERuntimeException {
+
+        Map<String, Object> queryMap = new HashMap<>();
+        List<Map> students = (List<Map>) keySMap.get("students");
+        EntityResult result = new EntityResultMapImpl();
+
+        for (Map student : students) {
+            String codigo = (String) student.get("codigo");
+            Map<String, Object> record = new HashMap<>();
+
+            if (codigo != null && !codigo.trim().isEmpty() ){
+                queryMap.put(bootcampDao.ATTR_CODIGO, codigo);
+
+
+                EntityResult queryResult = this.daoHelper.query(
+                        this.bootcampDao,
+                        queryMap,
+                        Arrays.asList(bootcampDao.ATTR_CODIGO, bootcampDao.ATTR_ID)
+                );
+
+                if (!queryResult.isEmpty() && queryResult.calculateRecordNumber() > 0) {
+                    Map<String, Object> foundBootcamp = queryResult.getRecordValues(0);
+                    record.put("codigo", foundBootcamp.get(bootcampDao.ATTR_CODIGO));
+                    record.put("error", foundBootcamp.get(bootcampDao.ATTR_NAME));
+                } else {
+                    record.put("codigo", codigo);
+                    record.put("error", "NONEXISTENT CODE");
+
+
+                }
+            } else {
+                record.put("codigo", "");
+                record.put("error", "MISSING CODE");
+
+            }
+            result.addRecord(record);
+        }
+        return result;
+    }
+
+
+
 }
