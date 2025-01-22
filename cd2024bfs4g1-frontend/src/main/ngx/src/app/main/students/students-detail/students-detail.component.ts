@@ -17,6 +17,10 @@ import { OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./students-detail.component.css']
 })
 export class StudentsDetailComponent {
+notesLoaded(event: any) {
+
+  this.notesBool = event && event.length > 0;
+}
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
@@ -35,11 +39,14 @@ export class StudentsDetailComponent {
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   protected service: OntimizeService;
   showNotice:boolean=false;
+  notesBool: boolean = false;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
-
+  onDataLoaded(): boolean {
+    return this.notesBool;
+  }
   constructor(
     private router: Router,
     public location: Location,

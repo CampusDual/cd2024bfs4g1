@@ -256,7 +256,9 @@
   "TimeEnd": "End hour",
   "DayStart": "Start period",
   "DayEnd": "End period",
-  "BT_STATUS_TT": "Bootcamp general status",
+
+
+
   "STU_SEARCH_TT": "Redirect to students detail",
   "dateRangeBootcamp" : "Start date/End date",
   "dateRangeBootcampDetail" : "Start date/End date*",
@@ -338,7 +340,7 @@
   "COMPUTABLE_TRUE":"Computable",
   "COMPUTABLE_FALSE":"Not computable",
   "student_bootcamp_status":"Student bootcamp status",
-  "LSLIDETOGGLE_COMPUTABLE":"Not computable or computable ",
+  "LSLIDETOGGLE_COMPUTABLE":"  Computable or not computable",
   "STUDENT_HAS_DOCUMENTS":"The student has documents and cannot be deleted",
   "SelectColor": "Select a color:  ",
   "SelectedColor": "Selected color:",
@@ -402,6 +404,11 @@
   "ATTR*": "Id Menu*",
   "VISIBLE": "Visible",
   "ENABLED": "Enabled",
+  "NO_NOTES": "No notes avaliable",
+  "BT_STATUS_TT": "Bootcamp general status",
+  "STUDENT_TT_BOOTCAMP":"Active students/Total students",
   "PERMISSIONID*": "Id Rute*",
-  "LLNOTE":"Last note"
+  "LLNOTE":"Last note",
+  "NNOTES":"There are no comments yet..."
+
 }
