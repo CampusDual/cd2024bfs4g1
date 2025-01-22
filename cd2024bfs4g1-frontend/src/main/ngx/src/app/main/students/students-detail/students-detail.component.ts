@@ -40,6 +40,7 @@ notesLoaded(event: any) {
   protected service: OntimizeService;
   showNotice:boolean=false;
   notesBool: boolean = false;
+  isNoteAreaValid: boolean = false;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
@@ -99,7 +100,7 @@ protected configureServiceStudent() {
   @ViewChild('notesForm') notesForm: OFormComponent;
   @ViewChild('noteDate') noteDate: ODateInputComponent;
   @ViewChild('noteArea') noteArea: OTextareaInputComponent;
-  
+
 
 
 
@@ -343,18 +344,23 @@ protected configureNotes() {
 @ViewChild("list") list: OListComponent;
 
 InsertNotes() {
-  const sqlTypes = {fecha:91,student_id:4};
-  let idStudent : Number = this.idNumber.getValue();
-const keys ={
-  id_students: idStudent,
-  nota: this.noteArea.getValue(),
-  fecha:this.noteDate.getValue()
-  
-}
+    if (!this.isNoteAreaValid) {
+      return; // Salimos si el área de texto no tiene contenido válido
+    }
+
+    const sqlTypes = {fecha:91,student_id:4};
+    let idStudent : Number = this.idNumber.getValue();
+    const keys ={
+      id_students: idStudent,
+      nota: this.noteArea.getValue(),
+      fecha:this.noteDate.getValue()
+    }
+
     this.configureNotes();
     this.service.insert(keys,'notes',sqlTypes).subscribe(res => {
       if (res.code === 0) {
         this.noteArea.setValue('');
+        this.isNoteAreaValid = false;
         this.list.reloadData();
       }
     });
@@ -380,9 +386,12 @@ refreshwarning(){
   this.showNotice = false;
 }
 
-areachange(){
-console.log("Ha cambiado el valor de la nota");
-
-
+onNoteAreaChange(noteArea: OTextareaInputComponent): void {
+  const noteValue = noteArea.getValue() || ''; // Obtén el valor del campo, o una cadena vacía si es null/undefined
+  // Verifica si hay al menos un carácter no espacio/salto de línea
+  const hasValidContent = /\S/.test(noteValue);
+  this.isNoteAreaValid = hasValidContent;
 }
+
+
 }

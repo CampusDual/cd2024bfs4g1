@@ -257,14 +257,14 @@
       <fieldset>
         <legend>{{"LCOMMENTS"|oTranslate}}</legend>
         <o-form #notesForm service="notes" entity="notes" show-header="no" confirm-exit="false" columns="nota;id_students;fecha"
-          undo-button="false" label-header-align="center" parent-keys="id:id_students">
+          undo-button="false" label-header-align="center" parent-keys="id:id_students" (keydown.enter)="InsertNotes()">
           <o-text-input #studentIdNote attr="id_students" sql-type="INTEGER" hidden></o-text-input>
-          <o-textarea-input #noteArea class="commentsa" attr="nota" sql-type="VARCHAR" required="yes" max-length="2500" autofocus ></o-textarea-input>
+          <o-textarea-input #noteArea class="commentsa" attr="nota" sql-type="VARCHAR" max-length="2500" autofocus (input)="onNoteAreaChange(noteArea)"></o-textarea-input>
           <o-date-input #noteDate label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
         </o-form>
         <div class="botonSalvar">
 
-          <o-button attr="saveNote" icon="save" label="Guardar" (click)="InsertNotes()"></o-button>
+          <o-button attr="saveNote" icon="save" label="Guardar" (click)="InsertNotes()" [enabled]="isNoteAreaValid"></o-button>
 
       </div>
 
