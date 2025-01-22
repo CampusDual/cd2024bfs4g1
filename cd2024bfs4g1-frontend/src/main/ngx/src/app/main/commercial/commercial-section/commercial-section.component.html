@@ -37,9 +37,9 @@
             <div>
                 <h1 class="titulo_tablas">{{ 'LCONTACTEDSTUDENTS' | oTranslate }}</h1>
             <o-table #tableCommercial virtual-scroll="false" class="general_table" attr="commercialTable" service="students" entity="commercialStudent"
-                sort-columns="name" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;udemy;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;student_status_id;bootcamps_id;employment_status;last_note;
-                creation_date;comercial_status" visible-columns="name;surname1;surname2;personal_email;phone;employment_status;last_note;creation_date;comercial_status" insert-button="false" delete-button="false" pageable="true"
+                sort-columns="name" keys="id" 
+                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;student_status_id;bootcamps_id;employment_status;last_note;creation_date;comercial_status"
+                visible-columns="name;surname1;surname2;personal_email;phone;employment_status;last_note;creation_date;comercial_status" insert-button="false" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" detail-mode="none" (onClick)="goToDetail($event)">
                 <o-table-column attr="name" title="Name"></o-table-column>
                 <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>

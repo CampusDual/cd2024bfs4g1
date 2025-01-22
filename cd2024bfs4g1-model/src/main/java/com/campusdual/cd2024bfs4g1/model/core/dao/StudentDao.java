@@ -31,7 +31,8 @@ public class StudentDao extends OntimizeJdbcDaoSupport {
         public static final String SPAIN_COMUNITY    = "spain_comunity";
         public static final String LOCATION          = "location";
         public static final String USER_ID           = "user_id";
-        public static final String STUDENT_STATUS_ID            = "student_status_id";
         public static final String CREATION_DATE     = "creation_date";
+        public static final String STUDENT_STATUS_ID            = "student_status_id";
+
 
 }

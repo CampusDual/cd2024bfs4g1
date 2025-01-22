@@ -404,5 +404,7 @@
   "PERMISSIONID*": "Id Ruta*",
   "NNOTES":"Todavía no hay comentarios...",
   "NO_NOTES": "No hay notas disponibles",
-  "LLNOTE":"Última nota"
+  "LLNOTE":"Última nota",
+  "creation_date": "Fecha de alta",
+  "comercial_status":"Estado del alumno en Bootcamp"
 }
