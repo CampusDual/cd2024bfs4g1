@@ -1,5 +1,4 @@
-<o-form-layout-manager attr="bootcampsLayout" mode="tab" label-columns="name" title="{{'PDATA'|oTranslate}}">
-    <o-form #form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="U;R" undo-button="no" columns="id;name">
+    <o-form #form attr="tutorsDetail" service="tutors" entity="tutor" keys="id" header-actions="U;R" undo-button="no" columns="id;name" >
         <o-text-input #userId hidden attr="user_id" sql-type="INTEGER" enabled="no" />
         <o-text-input attr="id" sql-type="INTEGER" enabled="no" hidden />
         <div class="grid-container">
@@ -26,7 +25,7 @@
                     </div>
                     <div class="apellido2 padding">
                         <label for="surname2">{{ 'LSURNAME2' | oTranslate }}</label>
-                        <p class="pmydata" *ngIf="form.getDataValue('surname2').value; else emptySurname"> 
+                        <p class="pmydata" *ngIf="form.getDataValue('surname2').value; else emptySurname">
                             {{ form.getDataValue('surname2').value }}
                         </p>
                         <ng-template #emptySurname>
@@ -44,9 +43,9 @@
                 <legend>{{ 'Bootcamps Asigned' | oTranslate }}</legend>
                 <div class="table_container">
                     <o-table class="general_table" attr="bootcampsTutorsTable" service="tutorBootcamps"
-                        entity="tutorsWithBootcampNotFinished" keys="id" parent-keys="tutor_id:id"
-                        columns="id;bootcamp_id;bootcampname;status" visible-columns="bootcampname;status;Detalle" 
-                        default-visible-columns="bootcampname;status;Detalle" detail-mode="false"
+                        entity="tutorsWithBootcampNotFinished" keys="bootcamp_id" parent-keys="tutor_id:id"
+                        columns="id;bootcamp_id;bootcampname;status" visible-columns="bootcampname;status"
+                        default-visible-columns="bootcampname;status"
                         delete-button="false" show-report-on-demand-option="false" insert-button="false"
                         show-charts-on-demand-option="false" refresh-button="false">
                         <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
@@ -57,14 +56,9 @@
                             title-align="center" tooltip="yes"
                             tooltip-value="{{'BT_STATUS_TT'|oTranslate}}"><o-table-cell-renderer-translate></o-table-cell-renderer-translate>
                         </o-table-column>
-                        <o-table-column attr="Detalle" width="64px" tooltip="yes"
-                            tooltip-value="{{'STU_SEARCH_TT'| oTranslate}}">
-                            <o-table-cell-renderer-action (onClick)="goToDetail($event)"
-                                icon="person_search"></o-table-cell-renderer-action>
-                        </o-table-column>
+
                     </o-table>
                 </div>
             </fieldset>
         </div>
     </o-form>
-</o-form-layout-manager>
