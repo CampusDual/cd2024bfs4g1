@@ -258,6 +258,7 @@
   "DayEnd": "End period",
 
 
+
   "STU_SEARCH_TT": "Redirect to students detail",
   "dateRangeBootcamp" : "Start date/End date",
   "dateRangeBootcampDetail" : "Start date/End date*",
@@ -403,10 +404,11 @@
   "ATTR*": "Id Menu*",
   "VISIBLE": "Visible",
   "ENABLED": "Enabled",
+  "NO_NOTES": "No notes avaliable",
   "BT_STATUS_TT": "Bootcamp general status",
   "STUDENT_TT_BOOTCAMP":"Active students/Total students",
   "PERMISSIONID*": "Id Rute*",
   "LLNOTE":"Last note",
-  "NNOTES":"There are no comments yet...",
-  "NO_NOTES": "No notes avaliable"
+  "NNOTES":"There are no comments yet..."
+
 }
