@@ -48,11 +48,6 @@ export class CommercialSectionComponent {
             return FilterExpressionUtils.buildExpressionLike(fil.attr,"|"+filterValue+"|");
           case 'student_status_id':
             return FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue);
-          case 'status':
-            if (Array.isArray(filterValue)) {
-              return FilterExpressionUtils.buildExpressionIn(fil.attr, filterValue);
-            }
-            return FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue);
           case 'id':
             return FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue);
           default:
