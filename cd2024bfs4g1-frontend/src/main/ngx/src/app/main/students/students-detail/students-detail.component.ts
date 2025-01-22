@@ -393,5 +393,4 @@ onNoteAreaChange(noteArea: OTextareaInputComponent): void {
   this.isNoteAreaValid = hasValidContent;
 }
 
-
 }
