@@ -176,6 +176,18 @@ showAlert() {
   }
 }
 
+phoneNumber: string = '+34 000000000';
+invalidPhone: boolean = false;
+validatePhoneNumber(): void {
+  const cleanedPhone = this.phoneNumber.replace(/\D/g, '');
+  if (cleanedPhone !== this.phoneNumber) {
+    this.invalidPhone = true;
+  } else {
+    this.invalidPhone = false;
+  }
+  this.phoneNumber = cleanedPhone;
+}
+
 }
 
 
