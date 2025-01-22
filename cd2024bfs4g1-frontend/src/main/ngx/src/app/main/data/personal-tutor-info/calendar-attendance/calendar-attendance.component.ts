@@ -113,8 +113,8 @@ export class CalendarAttendanceComponent {
   }
   ngOnChanges() {
     this.getStudents();
-   // this.loadAttendance();
-   this.getAttendance();
+    // this.loadAttendance();
+    this.getAttendance();
     this.getBootcampDates();
 
   }
@@ -360,7 +360,9 @@ export class CalendarAttendanceComponent {
     };
 
     this.attendanceModified[student.student_id + ":" + this.printDate(day.fullDate)] = newElement;
-
+    if (!this.studentMap.get(student.student_id)) {
+      this.studentMap.set(student.student_id, new Map<string, number>());
+    }
     this.studentMap.get(student.student_id).set(this.printDate(day.fullDate), selectedStatus);
   }
 
@@ -370,10 +372,10 @@ export class CalendarAttendanceComponent {
     return selectedStatus ? selectedStatus.description : null; // Retorna null si no hay selección.
   }
 
-  saveAttendaces() { 
+  saveAttendaces() {
 
     const attendanceArray = Object.values(this.attendanceModified);
-    if(attendanceArray.length > 0){
+    if (attendanceArray.length > 0) {
       this.configureAttendance();
       this.service.insert({ data: attendanceArray }, 'attendance').subscribe(
         response => {
@@ -388,7 +390,7 @@ export class CalendarAttendanceComponent {
         }
       );
       this.configureBootcamps();
-    }    
+    }
   }
 
   getBackgroundColor(abbreviation: string): string {
