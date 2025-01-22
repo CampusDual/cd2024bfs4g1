@@ -354,10 +354,10 @@ const keys ={
     this.configureNotes();
     this.service.insert(keys,'notes',sqlTypes).subscribe(res => {
       if (res.code === 0) {
+        this.noteArea.setValue('');
         this.list.reloadData();
       }
     });
-    this.noteArea.clearValue();
   }
 deleteNotes(notas: any) {
 
@@ -379,5 +379,9 @@ refreshwarning(){
   this.showNotice = false;
 }
 
+areachange(){
+console.log("Ha cambiado el valor de la nota");
 
+
+}
 }
