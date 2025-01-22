@@ -405,7 +405,7 @@
   "BT_STATUS_TT": "Bootcamp general status",
   "STUDENT_TT_BOOTCAMP":"Active students/Total students",
   "PERMISSIONID*": "Id Rute*",
-  "NNOTES":"No notes found",
-  "NO_NOTES": "No notes avaliable",
-  "LLNOTE":"Last note"
+  "LLNOTE":"Last note",
+  "NNOTES":"There are no comments yet...",
+  "NO_NOTES": "No notes avaliable"
 }
