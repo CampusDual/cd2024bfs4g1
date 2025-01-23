@@ -29,12 +29,13 @@ export class StudentsDetailComponent {
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
   validatorsArray: ValidatorFn[] = [];
+  validatorPhoneArr: ValidatorFn[] = [];
   validatorsArray1: ValidatorFn[] = [];
   validatorsNewPasswordArray: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   protected service: OntimizeService;
-  showNotice:boolean=false;
+  showNotice: boolean = false;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
@@ -46,9 +47,14 @@ export class StudentsDetailComponent {
     public injector: Injector,
     protected dialogService: DialogService,
     private route: ActivatedRoute,
-    private traductor : OTranslateService
+    private traductor: OTranslateService
   ) {
+
+
+
+    //this.validatorPhoneArr.push(OValidators.patternValidator(/^d\d/, 'isPhoneNumber'));
     this.validatorsArray.push(this.dateValidator);
+    this.validatorPhoneArr.push(this.phoneValidator);
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/\d/, 'hasNumber'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[A-Z]/, 'hasCapitalCase'));
     this.validatorsNewPasswordArray.push(OValidators.patternValidator(/[a-z]/, 'hasSmallCase'));
@@ -60,7 +66,7 @@ export class StudentsDetailComponent {
     const conf = this.service.getDefaultServiceConfiguration('documents');
     this.service.configureService(conf);
   }
-protected configureServiceStudent() {
+  protected configureServiceStudent() {
     const conf = this.service.getDefaultServiceConfiguration('students');
     this.service.configureService(conf);
   }
@@ -75,6 +81,24 @@ protected configureServiceStudent() {
       if (enddate && startdate && enddate < startdate) {
         result['wrongendate'] = true;
       }
+    }
+
+    return result;
+  }
+
+  phoneValidator(control: FormControl): ValidationErrors {
+    let result = {};
+
+    if (control && control.parent && control.value) {
+      let phone = control.value.valueOf();
+
+      if (!/^\d/.test(phone)) {
+        result['containsInvalidPhone'] = true;
+      }
+      if (/\D+/.test(phone)) {
+        result['containsInvalidPhone'] = true;
+      }
+
     }
 
     return result;
@@ -97,8 +121,8 @@ protected configureServiceStudent() {
   ngAfterViewInit() {
     if (this.date) {
       this.date.setValue(this.todayTimestamp);
-      console.log("TiSt"+this.todayTimestamp);
-      console.log("Date: "+ this.date.getValue().toString());
+      console.log("TiSt" + this.todayTimestamp);
+      console.log("Date: " + this.date.getValue().toString());
     }
   }
   @ViewChild("studentIdNote") studentIdNote: OTextInputComponent;
@@ -137,7 +161,7 @@ protected configureServiceStudent() {
 
   setTabIndexByName(tabName: string): void {
     const translatedName = this.traductor.get(tabName);
-  console.log(`Traducción de "${tabName}": ${translatedName}`);
+    console.log(`Traducción de "${tabName}": ${translatedName}`);
 
     const tabArray = this.tabs.toArray();
     const index = tabArray.findIndex(tab => tab.textLabel.trim() === translatedName);
@@ -226,7 +250,7 @@ protected configureServiceStudent() {
 
   }
 
-  getDNI(dni:string) {
+  getDNI(dni: string) {
 
     this.configureServiceStudent();
     const filter = {
@@ -234,129 +258,144 @@ protected configureServiceStudent() {
     };
     const columns = ['id'];
     this.service.query(filter, columns, 'student').subscribe(resp => {
-      if (resp.code === 0){
-        this.showNotice=true;
-        if(resp.data.length>1){
-          this.showNotice=true;
+      if (resp.code === 0) {
+        this.showNotice = true;
+        if (resp.data.length > 1) {
+          this.showNotice = true;
 
-        }else if(resp.data.length==1){
-          let idStudent=this.idNumber.getValue();
-          let idQueryStudent= resp.data[0].id;
-          if(idStudent==idQueryStudent){
-            this.showNotice=false;
-          }else{
-            this.showNotice=true;
+        } else if (resp.data.length == 1) {
+          let idStudent = this.idNumber.getValue();
+          let idQueryStudent = resp.data[0].id;
+          if (idStudent == idQueryStudent) {
+            this.showNotice = false;
+          } else {
+            this.showNotice = true;
           }
-        }else{
-          this.showNotice=false;
+        } else {
+          this.showNotice = false;
         }
       } else {
-        this.showNotice=false;
+        this.showNotice = false;
       }
     });
-}
-onImageChange(event: any) {
-  // Si no hay evento o el archivo no está definido, simplemente retorna
-  if (!event || !this.UsrPhoto.currentFileName) {
-    return;
   }
-
-  if (this.isUpdatingImage) {
-    return;
-  }
-
-  const base64String = event;
-  const currentFileName = this.UsrPhoto.currentFileName || '';
-
-  const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-  const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
-
-  // Validar si el nombre del archivo o la extensión son inválidos
-  if (!fileExtension || !validExtensions.includes(fileExtension)) {
-    this.showAlert(); // Muestra la alerta de error
-    this.isUpdatingImage = true;
-    this.UsrPhoto.setValue(''); // Limpia el valor del archivo
-    this.isUpdatingImage = false;
-    return;
-  }
-
-  if (base64String) {
-    const img = new Image();
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    img.src = `data:image/jpg;base64, ${base64String}`;
-
-    img.onload = () => {
-      if (ctx) {
-        const newWidth = 200;
-        const newHeight = 200;
-
-        canvas.width = newWidth;
-        canvas.height = newHeight;
-
-        ctx.drawImage(img, 0, 0, newWidth, newHeight);
-        const modifiedImageBase64 = canvas.toDataURL('image/jpg');
-
-        this.isUpdatingImage = true;
-        this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
-        this.isUpdatingImage = false;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
-      }
-    };
-
-    img.onerror = () => {
-      console.error('Error al cargar la imagen.');
-    };
-  }
-}
-showAlert() {
-  if (this.dialogService) {
-    this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
-  }
-}
-isRefreshing: boolean = false;
-refreshEmploymentStatus() {
-  if (this.isRefreshing) {
-    return;
-  }
-  this.isRefreshing = true;
-  this.form.queryData({ id: this.idNumber.getValue() });
-  setTimeout(() => {
-    this.isRefreshing = false;
-  }, 500);
-}
-protected configureBootcamps() {
-  const conf = this.service.getDefaultServiceConfiguration('bootcamps');
-  this.service.configureService(conf);
-
-}
-protected configureNotes() {
-  const conf = this.service.getDefaultServiceConfiguration('notes');
-  this.service.configureService(conf);
-
-}
-@ViewChild("list") list: OListComponent;
-
-deleteNotes(notas: any) {
-
-  this.configureNotes();
-  this.dialogService.confirm('Confirm_dialog_title', 'Do_you_really_want_to_delete');
-  this.dialogService.dialogRef.afterClosed().subscribe( result => {
-    if(result) {
-      this.service.delete({id: notas.id}, 'notes').subscribe(res => {
-        if (res.code === 0) {
-          this.list.reloadData();
-        }
-      });
+  onImageChange(event: any) {
+    // Si no hay evento o el archivo no está definido, simplemente retorna
+    if (!event || !this.UsrPhoto.currentFileName) {
+      return;
     }
-  });
 
- }
+    if (this.isUpdatingImage) {
+      return;
+    }
 
-refreshwarning(){
-  this.showNotice = false;
+    const base64String = event;
+    const currentFileName = this.UsrPhoto.currentFileName || '';
+
+    const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
+
+    // Validar si el nombre del archivo o la extensión son inválidos
+    if (!fileExtension || !validExtensions.includes(fileExtension)) {
+      this.showAlert(); // Muestra la alerta de error
+      this.isUpdatingImage = true;
+      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
+      this.isUpdatingImage = false;
+      return;
+    }
+
+    if (base64String) {
+      const img = new Image();
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      img.src = `data:image/jpg;base64, ${base64String}`;
+
+      img.onload = () => {
+        if (ctx) {
+          const newWidth = 200;
+          const newHeight = 200;
+
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          ctx.drawImage(img, 0, 0, newWidth, newHeight);
+          const modifiedImageBase64 = canvas.toDataURL('image/jpg');
+
+          this.isUpdatingImage = true;
+          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
+          this.isUpdatingImage = false;
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
+        }
+      };
+
+      img.onerror = () => {
+        console.error('Error al cargar la imagen.');
+      };
+    }
+  }
+  showAlert() {
+    if (this.dialogService) {
+      this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
+    }
+  }
+  isRefreshing: boolean = false;
+  refreshEmploymentStatus() {
+    if (this.isRefreshing) {
+      return;
+    }
+    this.isRefreshing = true;
+    this.form.queryData({ id: this.idNumber.getValue() });
+    setTimeout(() => {
+      this.isRefreshing = false;
+    }, 500);
+  }
+  protected configureBootcamps() {
+    const conf = this.service.getDefaultServiceConfiguration('bootcamps');
+    this.service.configureService(conf);
+
+  }
+  protected configureNotes() {
+    const conf = this.service.getDefaultServiceConfiguration('notes');
+    this.service.configureService(conf);
+
+  }
+  @ViewChild("list") list: OListComponent;
+
+  deleteNotes(notas: any) {
+
+    this.configureNotes();
+    this.dialogService.confirm('Confirm_dialog_title', 'Do_you_really_want_to_delete');
+    this.dialogService.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.delete({ id: notas.id }, 'notes').subscribe(res => {
+          if (res.code === 0) {
+            this.list.reloadData();
+          }
+        });
+      }
+    });
+
+  }
+
+  refreshwarning() {
+    this.showNotice = false;
+  }
+
+  phoneNumber: string = '+34 000000000';
+  invalidPhone: boolean = false;
+  validatePhoneNumber(event: any) {
+
+    this.phoneNumber = String(event.newValue);
+    const cleanedPhone = this.phoneNumber.replace(/\D/g, '');
+    if (cleanedPhone !== this.phoneNumber) {
+      this.invalidPhone = true;
+    } else {
+      this.invalidPhone = false;
+    }
+    this.phoneNumber = cleanedPhone;
+  }
+
 }
 
 
-}

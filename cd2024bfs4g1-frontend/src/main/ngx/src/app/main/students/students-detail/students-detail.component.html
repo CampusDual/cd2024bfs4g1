@@ -105,7 +105,11 @@
               <legend>{{"Contact"|oTranslate}}</legend>
               <div>
                 <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
-                <o-phone-input attr="phone" required="no"></o-phone-input>
+                <o-phone-input attr="phone" required="no" automatic-binding="false" 
+                 [validators]="validatorPhoneArr" >
+                 <o-validator error-name="containsInvalidPhone" error-text="INVALID_PHONE"></o-validator>
+                
+              </o-phone-input>
               </div>
               <div>
                 <label for="REQ_LEMAIL">{{'REQ_LEMAIL'|oTranslate}}</label>
