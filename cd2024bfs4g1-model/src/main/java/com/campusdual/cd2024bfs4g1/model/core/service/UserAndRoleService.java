@@ -1,9 +1,6 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -105,10 +102,25 @@ public class UserAndRoleService implements IUserAndRoleService {
 	@Transactional(rollbackFor = Throwable.class)
 	public EntityResult userDelete(final Map<?, ?> keysValues) throws OntimizeJEERuntimeException {
 		try {
+			roleForUserDelete(keysValues);
 			return this.daoHelper.delete(this.userDao, keysValues);
 		} finally {
 			this.invalidateSecurityManager();
 		}
+	}
+
+	@Override
+	public EntityResult  roleForUserDelete(final Map<?,?> keysValues) throws OntimizeJEERuntimeException{
+
+		EntityResult rolUserQuery = this.daoHelper.query(this.userRolesDao,keysValues, Arrays.asList(UserRoleDao.URO_ID));
+		List<?> uroIdList = (List<?>) rolUserQuery.get(UserRoleDao.URO_ID);
+		Map<String, Object> uroKey = new Hashtable<>();
+
+		for(int i = 0; i<uroIdList.size();i++){
+			uroKey.put(UserRoleDao.URO_ID,uroIdList.get(i));
+		}
+
+		return this.daoHelper.delete(this.userRolesDao,uroKey);
 	}
 
 	/*

@@ -7,7 +7,6 @@ import java.util.*;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentService;
 import com.campusdual.cd2024bfs4g1.api.core.service.IUserAndRoleService;
-import com.campusdual.cd2024bfs4g1.model.core.CdUtils;
 import com.campusdual.cd2024bfs4g1.model.core.dao.*;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentDao;
@@ -16,7 +15,6 @@ import com.ontimize.jee.common.db.NullValue;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
-import com.ontimize.jee.common.ols.l.LSystem;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -46,7 +44,7 @@ public class StudentService implements IStudentService {
 	private EmploymentStatusHistoryDao employmentStatusHistoryDao;
 
 	@Autowired
-	private IUserAndRoleService userAndRoleService;
+	private UserAndRoleService userAndRoleService;
 
 	@Autowired
 	private UserRoleDao userRoleDao;
@@ -507,9 +505,21 @@ public class StudentService implements IStudentService {
 			error4.setMessage("STUDENT_HAS_DOCUMENTS");
 			return error4;
 		}else {
+			EntityResult studentQuery = this.daoHelper.query(this.studentDao, keyMap, Arrays.asList(StudentDao.USER_ID));
+			List<?> userIdList = (List<?>) studentQuery.get(StudentDao.USER_ID);
+			if (userIdList != null && !userIdList.isEmpty()) {
+				Object userId = userIdList.get(0);
+
+				if (userId != null) {
+					Map<String, Object> userKey = new Hashtable<>();
+
+					userKey.put(UserDao.USR_ID, userId);
+					this.daoHelper.delete(this.studentDao,keyMap);
+					return userAndRoleService.userDelete(userKey);
+				}
+			}
 			return this.daoHelper.delete(this.studentDao, keyMap);
 		}
-
 	}
 
 	private EntityResult assignStudentRole(Integer userId){

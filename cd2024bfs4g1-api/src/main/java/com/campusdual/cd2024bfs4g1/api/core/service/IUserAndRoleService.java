@@ -305,4 +305,6 @@ public interface IUserAndRoleService {
      * @throws OntimizeJEERuntimeException if occurs
      */
 	EntityResult getClientPermissions() throws OntimizeJEERuntimeException;
+
+	EntityResult roleForUserDelete(final Map<?,?> keysValues) throws OntimizeJEERuntimeException;
 }
