@@ -83,25 +83,22 @@
             </div>
             <div class="contraseña">
               <label for="REQ_PASSWORD">{{'PASSWORD' | oTranslate}}</label>
-              <o-password-input attr="usr_password" required="no" max-length="60" show-password-button="false"
-                in-length="8" [validators]="validatorsNewPasswordArray">
+              <o-password-input attr="usr_password" required="no" max-length="60" show-password-button="false" in-length="8"
+                [validators]="validatorsNewPasswordArray">
                 <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
                 <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
                 <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
               </o-password-input>
             </div>
           </fieldset>
-          <br>
+          
           <div class="contacto">
             <fieldset title="{{'Contact'|oTranslate}}">
               <legend>{{"Contact"|oTranslate}}</legend>
               <div class="telefono">
                 <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
-
-                <o-phone-input attr="phone" required="no" automatic-binding="false" [data]="'+34 000000000'"
-                  [(ngModel)]="phoneNumber" (ngModelChange)="validatePhoneNumber()">
-                </o-phone-input>
-
+                <o-phone-input attr="phone" required="no" automatic-binding="false"
+                  [data]="'+34 000000000'"></o-phone-input>
               </div>
               <div class="email">
                 <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
@@ -113,8 +110,8 @@
               </div>
             </fieldset>
           </div>
+          </div>
         </div>
-      </div>
     </mat-tab>
     <mat-tab label="{{'FCT Information'|oTranslate}}">
       <div class="fct-container">
