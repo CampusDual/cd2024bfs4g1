@@ -242,6 +242,7 @@
   "LSTUDENTSTATUS": "Student status",
   "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "The student status you want to delete is in use",
   "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "The employment status you want to delete is in use",
+  "CANNOT_DELETE_DEFAULT_STATUS":"The default status cannot be removed",
   "update": "Update",
   "Select dates": "Select dates",
   "DATERANGE": {

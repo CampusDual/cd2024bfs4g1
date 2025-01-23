@@ -34,20 +34,21 @@ public class StudentBootcampService implements IStudentBootcampService {
     @Override
     public EntityResult studentBootcampInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
 
-       if (!attrMap.containsKey("student_id") || !attrMap.containsKey("bootcamp_id")) { // Check if the student_id is present, if not throw error
-           return new EntityResultMapImpl(EntityResult.OPERATION_WRONG, EntityResult.NODATA_RESULT);
-       }
-       try {
-           return this.daoHelper.insert(this.studentBootcampDao, attrMap);
-       } catch (DuplicateKeyException e) {
+        if (!attrMap.containsKey("student_id") || !attrMap.containsKey("bootcamp_id")) {
+            return new EntityResultMapImpl(EntityResult.OPERATION_WRONG, EntityResult.NODATA_RESULT);
+        }
 
-           EntityResult entityResultError = new EntityResultMapImpl();
-           entityResultError.setCode(EntityResult.OPERATION_WRONG);
-           entityResultError.setMessage("ERROR_STUDENT_ALREADY_EXISTS_IN_THIS_BOOTCAMPS");
-           return entityResultError;
-       } catch (Exception generalException) {
-           throw generalException;
-       }
+        try {
+            return this.daoHelper.insert(this.studentBootcampDao, attrMap);
+        } catch (DuplicateKeyException e) {
+
+            EntityResult entityResultError = new EntityResultMapImpl();
+            entityResultError.setCode(EntityResult.OPERATION_WRONG);
+            entityResultError.setMessage("ERROR_STUDENT_ALREADY_EXISTS_IN_THIS_BOOTCAMPS");
+            return entityResultError;
+        } catch (Exception generalException) {
+            throw generalException;
+        }
     }
 
 
