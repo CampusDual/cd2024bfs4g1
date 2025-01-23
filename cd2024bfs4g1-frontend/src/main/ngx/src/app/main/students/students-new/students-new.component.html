@@ -73,25 +73,25 @@
             </div>
           </div>
         </fieldset>
-          <div class="login">
-            <fieldset title="Login">
-              <legend>Login</legend>
-              <div class="usuario">
-                <label for="REQ_USER">{{'USER' | oTranslate}}</label>
-                <o-text-input attr="usr_login" required="no" id="name" max-length="50"
-                  [validators]="validatorsWithoutSpace"></o-text-input>
-              </div>
-              <div class="contraseña">
-                <label for="REQ_PASSWORD">{{'PASSWORD' | oTranslate}}</label>
-                <o-password-input attr="usr_password" required="no" max-length="60" show-password-button="false" in-length="8"
-                  [validators]="validatorsNewPasswordArray">
-                  <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
-                  <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
-                  <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
-                </o-password-input>
-              </div>
-            </fieldset>
-            
+        <div class="login">
+          <fieldset title="Login">
+            <legend>Login</legend>
+            <div class="usuario">
+              <label for="REQ_USER">{{'USER' | oTranslate}}</label>
+              <o-text-input attr="usr_login" required="no" id="name" max-length="50"
+                [validators]="validatorsWithoutSpace"></o-text-input>
+            </div>
+            <div class="contraseña">
+              <label for="REQ_PASSWORD">{{'PASSWORD' | oTranslate}}</label>
+              <o-password-input attr="usr_password" required="no" max-length="60" show-password-button="false" in-length="8"
+                [validators]="validatorsNewPasswordArray">
+                <o-validator error-name="hasCapitalCase" error-text="VALIDATOR.HASCAPITALCASE"></o-validator>
+                <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
+                <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
+              </o-password-input>
+            </div>
+          </fieldset>
+          
           <div class="contacto">
             <fieldset title="{{'Contact'|oTranslate}}">
               <legend>{{"Contact"|oTranslate}}</legend>
