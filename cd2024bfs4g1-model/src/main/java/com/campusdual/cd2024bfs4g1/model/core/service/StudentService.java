@@ -45,23 +45,23 @@ public class StudentService implements IStudentService {
 	@Autowired
 	private EmploymentStatusHistoryDao employmentStatusHistoryDao;
 
-	@Autowired
-	private IUserAndRoleService userAndRoleService;
+    @Autowired
+    private UserRoleDao userRoleDao;
 
-	@Autowired
-	private UserRoleDao userRoleDao;
+    @Autowired
+    private RoleDao roleDao;
 
-	@Autowired
-	private RoleDao roleDao;
+    @Autowired
+    private UserDao userDao;
 
-	@Autowired
-	private UserDao userDao;
-
-	@Autowired
-	private StudentDocumentDao studentDocumentDao;
+    @Autowired
+    private StudentDocumentDao studentDocumentDao;
 
 	@Autowired
 	private BootcampDao bootcampDao;
+
+    @Autowired
+    private UserAndRoleService userAndRoleService;
 
 	@Override
 	public EntityResult studentQuery(Map<String, Object> keysMap, List<String> attributes) throws OntimizeJEERuntimeException {
@@ -486,31 +486,44 @@ public class StudentService implements IStudentService {
 		EntityResult query4 = this.daoHelper.query(this.studentDocumentDao,deletekey4,Arrays.asList(StudentDocumentDao.ATTR_ID_STUDENT));
 
 
-		if(!query.isEmpty()){
-			EntityResult error = new EntityResultMapImpl();
-			error.setCode(EntityResult.OPERATION_WRONG);
-			error.setMessage("STUDENT_HAS_BOOTCAMPS");
-			return error;
-		} else if(!query2.isEmpty()){
-			EntityResult error2 = new EntityResultMapImpl();
-			error2.setCode(EntityResult.OPERATION_WRONG);
-			error2.setMessage("STUDENT_HAS_NOTES");
-			return error2;
-		}else if(!query3.isEmpty()){
-			EntityResult error3 = new EntityResultMapImpl();
-			error3.setCode(EntityResult.OPERATION_WRONG);
-			error3.setMessage("STUDENT_HAS_STATUS");
-			return error3;
-		}else if(!query4.isEmpty()){
-			EntityResult error4 = new EntityResultMapImpl();
-			error4.setCode(EntityResult.OPERATION_WRONG);
-			error4.setMessage("STUDENT_HAS_DOCUMENTS");
-			return error4;
-		}else {
-			return this.daoHelper.delete(this.studentDao, keyMap);
-		}
+        if (!query.isEmpty()) {
+            EntityResult error = new EntityResultMapImpl();
+            error.setCode(EntityResult.OPERATION_WRONG);
+            error.setMessage("STUDENT_HAS_BOOTCAMPS");
+            return error;
+        } else if (!query2.isEmpty()) {
+            EntityResult error2 = new EntityResultMapImpl();
+            error2.setCode(EntityResult.OPERATION_WRONG);
+            error2.setMessage("STUDENT_HAS_NOTES");
+            return error2;
+        } else if (!query3.isEmpty()) {
+            EntityResult error3 = new EntityResultMapImpl();
+            error3.setCode(EntityResult.OPERATION_WRONG);
+            error3.setMessage("STUDENT_HAS_STATUS");
+            return error3;
+        } else if (!query4.isEmpty()) {
+            EntityResult error4 = new EntityResultMapImpl();
+            error4.setCode(EntityResult.OPERATION_WRONG);
+            error4.setMessage("STUDENT_HAS_DOCUMENTS");
+            return error4;
+        } else {
+            EntityResult studentQuery = this.daoHelper.query(this.studentDao, keyMap, Arrays.asList(StudentDao.USER_ID));
+            List<?> userIdList = (List<?>) studentQuery.get(StudentDao.USER_ID);
+            if (userIdList != null && !userIdList.isEmpty()) {
+                Object userId = userIdList.get(0);
 
-	}
+                if (userId != null) {
+                    Map<String, Object> userKey = new Hashtable<>();
+
+                    userKey.put(UserDao.USR_ID, userId);
+                    this.daoHelper.delete(this.studentDao,keyMap);
+                   return userAndRoleService.userDelete(userKey);
+                }
+            }
+            return this.daoHelper.delete(this.studentDao, keyMap);
+
+        }
+    }
 
 	private EntityResult assignStudentRole(Integer userId){
 
