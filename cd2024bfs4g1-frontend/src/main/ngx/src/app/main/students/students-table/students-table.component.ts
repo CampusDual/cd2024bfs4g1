@@ -19,15 +19,23 @@ export class StudentsTableComponent {
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   detailId !: Number;
   service : OntimizeService
+  serviceBootcamp : OntimizeService
+  serviceStudentBootcamp : OntimizeService
 
   // Valor predeterminado (opcional)
-  valueSimple = "Madrid";
+  valueSimple = "Galicia";
 
 
   constructor(private route: ActivatedRoute, private router: Router, private snackBar: MatSnackBar , protected injector: Injector,  protected dialogService: DialogService, protected translateService : OTranslateService) {
 
-    this.service = this.injector.get(OntimizeService);
+ 
+
+  this.service = this.injector.get(OntimizeService);
+
   }
+
+ 
+
 
   ngOnInit() {
 
@@ -39,13 +47,24 @@ export class StudentsTableComponent {
         this.detailId = studentId;
       }
     });
+    
   }
 
   protected configureService() {
+
     const conf = this.service.getDefaultServiceConfiguration('students');
     this.service.configureService(conf);
 
+
+
   }
+  protected configureServiceBootcamp() {
+
+     const confBootcamp = this.service.getDefaultServiceConfiguration('bootcamps');
+     this.service.configureService(confBootcamp);
+
+
+  }  
 
   goToDetail() {
     if (this.detailId) {
@@ -117,7 +136,7 @@ export class StudentsTableComponent {
   parseCsv(csvData: string): any[] {
     const EXPECTED_HEADERS = [
       'name', 'surname1', 'personal_email', 'dni', 'surname2',
-      'birth_date', 'phone', 'campus_email', 'spain_comunity', 'location'
+      'birth_date', 'phone', 'campus_email', 'spain_comunity', 'location','codigo'
     ];
   
     const lines = csvData.split('\n');
@@ -184,122 +203,145 @@ export class StudentsTableComponent {
   
   insertCsv(data: any) {
     if (data.length === 0) {
-      return; 
+      return;
     }
   
-    const filter = {
-      students: data
-    };
-    const columns = [];
-    let resultado: any[] = [];
+    const filter = { students: data };
+    const filter2 = { students: data };
+  
+    const columns2 = ['codigo', 'name'];
+    let resultadoBootcamps: any[] = [];
+    let Bootcamps: string[] = [];
     let repeatedDnis: string[] = [];
     let erroresConcatenados: string = '';
+
+    this.configureServiceBootcamp();
+    this.service.query(filter2, columns2, 'bootcampCheck').subscribe(resp => {
+      resultadoBootcamps = resp.data;
   
-    this.service.query(filter, columns, 'studentMultipleCheck').subscribe(resp => {
-      resultado = resp.data;
-  
-      if (resultado && resultado.length > 0) {
-        resultado.forEach((errorObj: any) => {
-          if (errorObj.errors) {
-            erroresConcatenados += errorObj.errors + "\n";
+      if (resultadoBootcamps && resultadoBootcamps.length > 0) {
+        resultadoBootcamps.forEach((bootcamp: any) => {
+          if (bootcamp.error) {
+            Bootcamps.push(
+              this.translateService.get("BOOTCAMP_CODE") + 
+              `(${bootcamp.codigo}) ` + 
+              this.translateService.get(bootcamp.error)
+            );
           }
         });
       }
   
-      if (resultado && resultado.length > 0) {
-        resultado.forEach((student: any) => {
-          if (student.dni) {
-            repeatedDnis.push(student.dni);
-          }
-        });
-      }
+
+      this.configureService();
+      this.service.query(filter, [], 'studentMultipleCheck').subscribe(resp => {
+        const resultado = resp.data;
   
-      if (erroresConcatenados) {
-        let paraps = "";
-        erroresConcatenados.split('\n').map(error => {
-          if (error.indexOf(":") > -1) {
-            let code = error.split(':')[0];
-            let value = JSON.stringify(error.split(':')[1]);
-            let translate = this.translateService.get(code);
-            let message = translate + ":" + value;
-            paraps += `<p>${message}</p>`;
-          } else {
-            paraps += `<p>${error}</p>`;
-          }
-        });
-  
-        this.dialogService.error(
-          this.translateService.get('ERROR'),
-          `
-            <p>${this.translateService.get("CSV_HELP_TEXT")}</strong></p>
-            <p><strong>${this.translateService.get("CSV_ERRORS")}</strong></p>
-            <div style="text-align: left;">
-              ${paraps} 
-            </div>
-          `
-        );
-  
-        this.snackBar.open(
-          this.translateService.get('IMPORT_CANCELLED'),
-          '',
-          { duration: 3500, panelClass: 'notification-error' }
-        );
-  
-        return;
-      }
-  
-      if (repeatedDnis.length > 0) {
-        const message = `
-          <div style="text-align: center;">
-            <p>${this.translateService.get("DUPLICATE_DNIS_MESSAGE")}</p>
-            <p><strong>${repeatedDnis.join(', ')}</strong></p>
-            <p>${this.translateService.get("CONFIRM_DUPLICATE_DNIS")}</p>
-          </div>
-        `;
-  
-        this.dialogService.confirm(this.translateService.get('WARNING'), message)
-          .then((confirmed: boolean) => {
-            if (confirmed) {
-              this.service.insert(filter, 'studentCsv').subscribe(resp => {
-                this.snackBar.open(
-                  this.translateService.get('STUDENTS_REGISTERED'), 
-                  '', 
-                  { duration: 3500, panelClass: 'notification-bg' }
-                );
-              });
-            } else {
-              this.snackBar.open(
-                this.translateService.get('IMPORT_CANCELLED'), 
-                '', 
-                { duration: 3500, panelClass: 'notification-error' }
-              );
+        if (resultado && resultado.length > 0) {
+          resultado.forEach((errorObj: any) => {
+            if (errorObj.errors) {
+              erroresConcatenados += errorObj.errors + "\n";
             }
-          })
-          .catch((error) => {
-            this.dialogService.error(
-              this.translateService.get('ERROR'), 
-              `
-              <p>${this.translateService.get("CSV_UPDATE_ERROR")}</p>
-              `
-            );
-            this.snackBar.open(
-              this.translateService.get('IMPORT_CANCELLED'), 
-              '', 
-              { duration: 3500, panelClass: 'notification-error' }
-            );
+            if (errorObj.dni) {
+              repeatedDnis.push(errorObj.dni);
+            }
           });
-        return;
-      }
+        }
+
+        if (erroresConcatenados) {
+          let paraps = '';
+          erroresConcatenados.split('\n').forEach(error => {
+            if (error.indexOf(":") > -1) {
+              const [code, value] = error.split(':');
+              const translate = this.translateService.get(code);
+              paraps += `<p>${translate}: ${JSON.stringify(value)}</p>`;
+            } else {
+              paraps += `<p>${error}</p>`;
+            }
+          });
   
-      this.service.insert(filter, 'studentCsv').subscribe(resp => {
-        this.snackBar.open(
-          this.translateService.get('STUDENTS_REGISTERED'), 
-          '', 
-          { duration: 3500, panelClass: 'notification-bg' }
-        );
+          this.dialogService.error(
+            this.translateService.get('ERROR'),
+            `
+              <p>${this.translateService.get("CSV_HELP_TEXT")}</p>
+              <p><strong>${this.translateService.get("CSV_ERRORS")}</strong></p>
+              <div style="text-align: left;">${paraps}</div>
+            `
+          );
+          this.snackBar.open(
+            this.translateService.get('IMPORT_CANCELLED'),
+            '',
+            { duration: 3500, panelClass: 'notification-error' }
+          );
+          return;
+        }
+  
+        if (repeatedDnis.length > 0) {
+          const message = `
+            <div style="text-align: center;">
+              <p>${this.translateService.get("DUPLICATE_DNIS_MESSAGE")}</p>
+              <p><strong>${repeatedDnis.join(', ')}</strong></p>
+              <p>${this.translateService.get("CONFIRM_DUPLICATE_DNIS")}</p>
+            </div>
+          `;
+  
+          this.dialogService.confirm(this.translateService.get('WARNING'), message)
+            .then((confirmed: boolean) => {
+              if (confirmed) {
+                this.proceedWithBootcampValidation(filter, Bootcamps);
+              } else {
+                this.cancelImport();
+              }
+            })
+            .catch(() => this.cancelImport());
+        } else {
+          this.proceedWithBootcampValidation(filter, Bootcamps);
+        }
       });
     });
   }
+  
+  private proceedWithBootcampValidation(filter: any, Bootcamps: string[]) {
+    if (Bootcamps.length > 0) {
+      const messageBootcamps = `
+        <div style="text-align: center;">
+          <p>${this.translateService.get("BOOTCAMPS_NOTFOUND")}</p>
+          <p><strong>${Bootcamps.join("<br/>")}</strong></p>
+          <p>${this.translateService.get("CONTINUE_ASK")}</p>
+        </div>
+      `;
+  
+      this.dialogService.confirm(this.translateService.get('WARNING'), messageBootcamps)
+        .then((confirmed: boolean) => {
+          if (confirmed) {
+            this.insertStudents(filter);
+          } else {
+            this.cancelImport();
+          }
+        })
+        .catch(() => this.cancelImport());
+    } else {
+      this.insertStudents(filter);
+    }
+  }
+  
+  private insertStudents(filter: any) {
+    this.service.insert(filter, 'studentCsv').subscribe(() => {
+      this.snackBar.open(
+        this.translateService.get('STUDENTS_REGISTERED'),
+        '',
+        { duration: 3500, panelClass: 'notification-bg' }
+      );
+    });
+  }
+  
+  private cancelImport() {
+    this.snackBar.open(
+      this.translateService.get('IMPORT_CANCELLED'),
+      '',
+      { duration: 3500, panelClass: 'notification-error' }
+    );
+  }
+  
 }  
   
   
