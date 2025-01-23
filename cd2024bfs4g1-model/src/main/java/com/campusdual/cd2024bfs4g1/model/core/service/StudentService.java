@@ -139,7 +139,7 @@ public class StudentService implements IStudentService {
 				}
 				// Expresión regular corregida
 				if (!phone.matches("^\\+\\d{1,4}\\s?\\d{6,15}$")) {
-					errors.add("VAL_PHONE_MAX_CHAR:" + phone );
+					errors.add("VAL_PHONE_FORMAT_NOT_VALID:" + phone );
 				}
 			}
 

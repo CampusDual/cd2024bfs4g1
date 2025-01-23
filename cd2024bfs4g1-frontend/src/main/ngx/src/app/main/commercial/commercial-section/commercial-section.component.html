@@ -12,20 +12,19 @@
                      query-on-init="true" searchable="yes" visible-columns="name" translate="yes" null-selection="true"
                      sort="ASC"></o-combo>
           </div>
-          
+
           <div class="combo-container">
             <label for="studentStatusCombo" class="combo-placeholder">{{'LSTATUS' | oTranslate}}</label>
             <o-combo id="studentStatusCombo" attr="student_status_id" label="LSTATUS" null-selection="true"
                      service="studentstatus" entity="studentStatus" keys="id" columns="id;status" value-column="id"
                      visible-columns="status" read-only="no" sort="ASC"></o-combo>
           </div>
-          
           <div class="combo-container">
-            <label for="contactStatusCombo" class="combo-placeholder">{{'LCONTACTSTATUS' | oTranslate}}</label>
-            <o-combo id="contactStatusCombo" attr="status" label="LCONTACTSTATUS" null-selection="true" multiple="true"
-                     [static-data]="dataArray" service="students" entity="commercialStudent" columns="status"
-                     value-column="key" visible-columns="value" read-only="no" sort="ASC"></o-combo>
-          </div>
+            <label for="employmentStatusCombo" class="combo-placeholder">{{'LEMSTATUS_ACTUAL' | oTranslate}}</label>
+            <o-combo id="employmentStatusCombo" attr="employment_status" label="LEMSTATUS_ACTUAL" null-selection="true"
+                     service="employmentstatus" entity="employmentStatus" keys="id" columns="id;situation"
+                     value-column="situation"visible-columns="situation" read-only="no" sort="ASC"></o-combo>
+        </div>
 
         <div class="centered-actions" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="8px">
             <o-button attr="clear" [oFilterBuilderClear]="commercialFilterBuilder" type="STROKED"
@@ -34,28 +33,28 @@
         </div>
     </div>
 
-    <o-filter-builder #commercialFilterBuilder attr="thefilter"
-                      filters="bootcamps_id:bootcamps_id;student_status_id:student_status_id;status:status"
-                      [target]="tableCommercial" query-on-change="yes" query-on-change-delay="500"
-                      [expression-builder]="createFilter">
-    </o-filter-builder>
+ <o-filter-builder #commercialFilterBuilder attr="thefilter"
+                  filters="bootcamps_id:bootcamps_id;employment_status:employment_status;student_status_id:student_status_id"
+                  [target]="tableCommercial" query-on-change="yes" query-on-change-delay="500"
+                  [expression-builder]="createFilter">
+</o-filter-builder>
 </o-column-collapsible>
 
             <div>
                 <h1 class="titulo_tablas">{{ 'LCONTACTEDSTUDENTS' | oTranslate }}</h1>
             <o-table #tableCommercial virtual-scroll="false" class="general_table" attr="commercialTable" service="students" entity="commercialStudent"
-                sort-columns="name" keys="id" columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;udemy;status;
-                campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;student_status_id;bootcamps_id;employment_status;last_note"
-                visible-columns="name;surname1;surname2;personal_email;phone;status;employment_status;last_note" insert-button="false" delete-button="false" pageable="true"
+                sort-columns="name" keys="id" 
+                columns="id;name;surname1;personal_email;surname2;dni;birth_date;phone;udemy;campus_email;fct_school;fct_start;fct_end;tutor;github_user;spain_comunity;location;student_status_id;bootcamps_id;employment_status;last_note;creation_date;comercial_status"
+                visible-columns="name;surname1;surname2;personal_email;phone;employment_status;last_note;creation_date;comercial_status" insert-button="false" delete-button="false" pageable="true"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false" detail-mode="none" (onClick)="goToDetail($event)">
                 <o-table-column attr="name" title="Name"></o-table-column>
                 <o-table-column attr="surname1" title="FIRST_SURNAME"></o-table-column>
                 <o-table-column attr="surname2" title="LAST_SURNAME"></o-table-column>
                 <o-table-column attr="personal_email" title="Email"></o-table-column>
                 <o-table-column attr="phone" title="LPHONE"></o-table-column>
-                <o-table-column attr="status" title="LCONTACTSTATUS"></o-table-column>
                 <o-table-column attr="employment_status" title="LEMSTATUS_ACTUAL"></o-table-column>
                 <o-table-column max-width="150px" min-width="150px" attr="last_note" title="LLNOTE" tooltip="yes"></o-table-column>
+                <o-table-column attr="creation_date" title="creation_date" type="date" format="DD/MM/YYYY"content-align="center" title-align="center"></o-table-column>
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
               </o-table>
             </div>
