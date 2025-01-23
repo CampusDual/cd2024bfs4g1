@@ -46,8 +46,10 @@ export class CommercialSectionComponent {
         switch (fil.attr) {
           case 'bootcamps_id':
             return FilterExpressionUtils.buildExpressionLike(fil.attr,"|"+filterValue+"|");
-            case 'employment_status': 
+          case 'employment_status': 
             return FilterExpressionUtils.buildExpressionLike(fil.attr, "%" + filterValue + "%");
+          case 'student_status_id':
+            return FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue);
           case 'id':
             return FilterExpressionUtils.buildExpressionEquals(fil.attr, filterValue);
           default:
