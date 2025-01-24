@@ -415,5 +415,6 @@
   "NNOTES":"There are no comments yet...",
   "creation_date": "Creation date",
   "comercial_status":"Student bootcamp status",
+  "sessionstatus":"Session status",
   "Do_you_really_want_to_delete_student_bootcamp":"Are you sure you want to delete it? Assistance related to this student in the bootcamp will be eliminated."
 }
