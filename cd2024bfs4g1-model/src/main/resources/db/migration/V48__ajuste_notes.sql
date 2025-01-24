@@ -8,7 +8,7 @@ SELECT DISTINCT ON (n.id_students)
 FROM notas n
 ORDER BY n.id_students, n.id DESC;
 
-drop VIEW public.v_commercial_students
+drop VIEW public.v_commercial_students;
 
 CREATE OR REPLACE VIEW public.v_commercial_students
 AS WITH estados AS (
