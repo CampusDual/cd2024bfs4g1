@@ -1,6 +1,6 @@
 ALTER TABLE public.students ADD creation_date timestamp with time zone DEFAULT now() NOT NULL;
 
-drop view if exists public.v_comercial_students_status
+drop view if exists public.v_comercial_students_status;
 
 CREATE OR REPLACE VIEW public.v_comercial_students_status
 AS      SELECT 
@@ -28,7 +28,7 @@ LEFT JOIN (
     GROUP BY sb_1.student_id
 ) AS bot_activ ON s.id = bot_activ.student_id;
 
-drop view if exists public.v_commercial_students
+drop view if exists public.v_commercial_students;
 
 CREATE OR REPLACE VIEW public.v_commercial_students
 AS SELECT DISTINCT ON (s.id) s.id,
@@ -60,4 +60,4 @@ AS SELECT DISTINCT ON (s.id) s.id,
      left JOIN v_recent_employment_status v ON v.student_id = s.id
      left JOIN v_last_note vn ON vn.student_id = s.id
      left join v_comercial_students_status css on css.view_student_id=s.id
-     WHERE (b.end_date IS NULL OR b.end_date >= CURRENT_DATE)
+     WHERE (b.end_date IS NULL OR b.end_date >= CURRENT_DATE);

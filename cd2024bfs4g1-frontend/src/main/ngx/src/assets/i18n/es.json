@@ -412,5 +412,6 @@
   "NONEXISTENT CODE":"No existe el código",
   "MISSING CODE":"Código faltante",
   "creation_date": "Fecha de alta",
-  "comercial_status":"Estado del alumno en Bootcamp"
+  "comercial_status":"Estado del alumno en Bootcamp",
+  "Do_you_really_want_to_delete_student_bootcamp":"Seguro que quieres borrarlo? Se eliminarán las asistencias relacionadas a este estudiante en el bootcamp."
 }
