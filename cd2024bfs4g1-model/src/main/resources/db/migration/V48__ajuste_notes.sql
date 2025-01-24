@@ -1,4 +1,3 @@
-drop VIEW public.v_recent_note
 
 CREATE OR REPLACE VIEW public.v_recent_note
 AS
