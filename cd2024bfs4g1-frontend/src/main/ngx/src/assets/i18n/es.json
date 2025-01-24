@@ -245,6 +245,7 @@
   "Mentors":"Tutores",
   "Edit": "Editar",
   "NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE": "No se puede eliminar porque el estado del alumno se encuentra en uso",
+  "CANNOT_DELETE_DEFAULT_STATUS":"No se puede borrar el estado por defecto",
   "NOT_DELETABLE_EMPLOYMENT_STATUS_IS_IN_USE": "No se puede eliminar porque el estado laboral se encuentra en uso",
   "update": "Actualizar",
   "EMPLOYMENT_STATUS_CANNOT_BE_EMPTY": "El estado laboral debe tener nombre",

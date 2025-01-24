@@ -44,23 +44,31 @@ public class StudentBootcampStatusService implements IStudentBootcampStatusServi
     }
 
     @Override
+    public EntityResult studentBootcampStatusDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
+        try {
 
-        public EntityResult studentBootcampStatusDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-            try {
+            int statusId = (int) keyMap.get("id");
 
-                int statusId = (int) keyMap.get("id");
-                if (isStudentStatusInUse(statusId)) {
-                    EntityResult error = new EntityResultMapImpl();
-                    error.setMessage("NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE");
-                    error.setCode(EntityResult.OPERATION_WRONG);
-                    return error;
-                }
-                return this.daoHelper.delete(this.studentBootcampStatusDao, keyMap);
-
-            } catch (Exception e) {
-                throw new OntimizeJEERuntimeException("Unexpected error while deleting student status", e);
+            if (statusId == 1) {
+                EntityResult error = new EntityResultMapImpl();
+                error.setMessage("CANNOT_DELETE_DEFAULT_STATUS");
+                error.setCode(EntityResult.OPERATION_WRONG);
+                return error;
             }
+
+            if (isStudentStatusInUse(statusId)) {
+                EntityResult error = new EntityResultMapImpl();
+                error.setMessage("NOT_DELETABLE_STUDENT_STATUS_IS_IN_USE");
+                error.setCode(EntityResult.OPERATION_WRONG);
+                return error;
+            }
+
+            return this.daoHelper.delete(this.studentBootcampStatusDao, keyMap);
+
+        } catch (Exception e) {
+            throw new OntimizeJEERuntimeException("Unexpected error while deleting student status", e);
         }
+    }
 
 
         private boolean isStudentStatusInUse(int statusId) {
