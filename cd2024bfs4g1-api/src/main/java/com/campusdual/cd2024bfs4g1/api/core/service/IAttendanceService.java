@@ -12,5 +12,6 @@ public interface IAttendanceService {
     EntityResult attendanceInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException;
     EntityResult attendanceUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
     EntityResult attendanceDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException;
+    EntityResult attendanceDeleteAll(Map<String,Object> keymao) throws OntimizeJEERuntimeException;
     AdvancedEntityResult attendancePaginationQuery(final Map<String, Object> keyMap, final List<?> attrList, final int recordNumber, final int startIndex, final List<?> orderBy) throws OntimizeJEERuntimeException;
 }

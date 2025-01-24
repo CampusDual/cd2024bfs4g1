@@ -3,7 +3,7 @@ import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogService, Expression, FilterExpressionUtils, OFileInputComponent, OListComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, Expression, FilterExpressionUtils, OFileInputComponent, OListComponent, OTableButtonComponent, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import moment from 'moment';
 import { ODateInputComponent, ODateRangeInputComponent, OFormComponent, OntimizeService, OTranslateService } from 'ontimize-web-ngx';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -26,6 +26,7 @@ export class BootcampDetailsComponent {
   @ViewChild('sessionBootcampTable', { static: true }) table: OTableComponent;
   @ViewChild('bootcampTimetable', { static: true }) bootcampTimetable: OTableComponent;
   @ViewChild('asistencia') asistencia: CalendarAttendanceComponent;
+  @ViewChild('deleteButtton', {static: false}) deleteButtton: OTableButtonComponent;
   
   selectedStatuses: string[] = ['Started', 'Pending'];
   months: Date[] = [];
@@ -38,6 +39,7 @@ export class BootcampDetailsComponent {
   validatorsArray1: ValidatorFn[] = [];
   validatorsWithoutSpace: ValidatorFn[] = [];
   sessionsTable: any;
+  flagEnabled: boolean = false;
 
   constructor(private router: Router,
     private actRoute: ActivatedRoute,
@@ -148,6 +150,12 @@ export class BootcampDetailsComponent {
   @ViewChild("dateRange") dateRange: ODateRangeInputComponent;
   @ViewChild("list") list: OListComponent;
 
+  ngAfterViewInit() {
+    this.deleteButtton.onClick.subscribe(event => {
+      this.deleteStudentbootcamp();
+    });
+  }
+
   selected = false;
   startAtDate: Date;
   protected service: OntimizeService;
@@ -165,7 +173,10 @@ export class BootcampDetailsComponent {
 
   }
 
-  
+  protected configureServiceStudentBootcamp() {
+    const conf = this.service.getDefaultServiceConfiguration('studentBootcamps');
+    this.service.configureService(conf);
+  }
 
   protected configureBootcampTimetable() {
     const conf = this.service.getDefaultServiceConfiguration('bootcampTimetable');
@@ -409,6 +420,29 @@ export class BootcampDetailsComponent {
     this.asistencia.refresh();
   }
 
-
+  deleteStudentbootcamp(){
+    this.dialogService.confirm('Confirm_dialog_title','Do_you_really_want_to_delete_student_bootcamp');
+    this.dialogService.dialogRef.afterClosed().subscribe( result => {
+      if(result) {
+        this.configureServiceStudentBootcamp();
+        this.service.delete({id: this.studentsTable.getSelectedItems()[0].id}, 'studentsWithBootcamp').subscribe(res => {
+          if (res.code === 0) {
+            this.studentsTable.reloadData();
+          }
+        });
+      }
+    });
+  
+    this.configureBootcamps();
+  }
+  
+  activeDelete(){
+    this.flagEnabled = true;
+  }
+  
+  desactiveButton(){
+    this.flagEnabled = false;
+  }
+  
 
 }
