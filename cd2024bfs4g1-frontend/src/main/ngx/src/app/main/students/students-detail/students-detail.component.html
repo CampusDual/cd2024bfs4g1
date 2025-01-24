@@ -163,12 +163,14 @@
           <o-form-layout-dialog-options class="popup">
             <fieldset class="fieldsetDoc">
               <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
-              <o-table class="general_table_segunda" attr="bootcampsStudentTable" sort-columns="status:ASC;start_date:ASC" service="studentBootcamps"
+              <o-table #bootcampsStudentTable class="general_table_segunda" attr="bootcampsStudentTable" sort-columns="status:ASC;start_date:ASC" service="studentBootcamps"
                 entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
                 columns="id;bootcampname;start_date;end_date;sb_start_date;sb_end_date;student_bootcamp_status"
                 visible-columns="bootcampname;start_date;end_date;sb_start_date;sb_end_date;student_bootcamp_status" detail-mode="none"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false"
-                select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
+                select-all-checkbox-visible="true" quick-filter="false" selection-mode="single" insert-form-route="new"
+                delete-button="false" (onRowSelected)="activeDelete()" (onRowDeselected)="desactiveButton()">
+                <o-table-button #deleteButtton attr="deleteButtton" label="delete" icon="delete" enabled="{{flagEnabled}}"></o-table-button>
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
                 <o-table-context-menu view-detail="false" edit="false" delete="false"
                   insert="false"></o-table-context-menu>

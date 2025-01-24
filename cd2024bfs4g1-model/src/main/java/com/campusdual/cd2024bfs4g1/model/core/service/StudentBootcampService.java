@@ -1,6 +1,7 @@
 package com.campusdual.cd2024bfs4g1.model.core.service;
 
 import com.campusdual.cd2024bfs4g1.api.core.service.IStudentBootcampService;
+import com.campusdual.cd2024bfs4g1.model.core.dao.AttendanceDao;
 import com.campusdual.cd2024bfs4g1.model.core.dao.StudentBootcampDao;
 import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
@@ -12,9 +13,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("StudentBootcampService")
 @Lazy
@@ -25,6 +24,11 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+
+    @Autowired
+    private AttendanceDao attendanceDao;
+    @Autowired
+    private AttendanceService attendanceService;
 
     @Override
     public EntityResult studentsWithComputableQuery(Map<String, Object> keysValues, List<String> attributes) {
@@ -55,7 +59,14 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Override
       public EntityResult studentsWithBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-          return this.daoHelper.delete(this.studentBootcampDao, keyMap);
+        EntityResult studentIdQuery = this.daoHelper.query(this.studentBootcampDao,keyMap, Arrays.asList(StudentBootcampDao.STUDENT_ID));
+        List<?> studentIdList = (List<?>) studentIdQuery.get(StudentBootcampDao.STUDENT_ID);
+        Object studentId = studentIdList.get(0);
+        Map<String, Object> studentKey = new HashMap<>();
+        studentKey.put(StudentBootcampDao.STUDENT_ID,studentId);
+
+        attendanceService.attendanceDeleteAll(studentKey);
+        return this.daoHelper.delete(this.studentBootcampDao, keyMap);
     }
      @Override
     public EntityResult studentsWithBootcampQuery(Map<String, Object> keysValues, List<String> attributes) {

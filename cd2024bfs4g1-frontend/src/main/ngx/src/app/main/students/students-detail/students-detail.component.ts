@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableComponent, OTextareaInputComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OButtonComponent, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableButtonComponent, OTableComponent, OTextareaInputComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -28,6 +28,7 @@ notesLoaded(event: any) {
   @ViewChild("form") form: OFormComponent;
   @ViewChild("bootcampsStudentTable") bootcampTable: OTableComponent;
   @ViewChildren(MatTab) tabs!: QueryList<MatTab>;
+  @ViewChild('deleteButtton', {static: false}) deleteButtton: OTableButtonComponent;
 
   selected = false;
   isUpdatingImage: boolean = false;
@@ -41,6 +42,7 @@ notesLoaded(event: any) {
   showNotice:boolean=false;
   notesBool: boolean = false;
   isNoteAreaValid: boolean = false;
+  flagEnabled: boolean = false;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
@@ -70,6 +72,11 @@ notesLoaded(event: any) {
   }
 protected configureServiceStudent() {
     const conf = this.service.getDefaultServiceConfiguration('students');
+    this.service.configureService(conf);
+  }
+
+  protected configureServiceStudentBootcamp() {
+    const conf = this.service.getDefaultServiceConfiguration('studentBootcamps');
     this.service.configureService(conf);
   }
 
@@ -110,6 +117,9 @@ protected configureServiceStudent() {
       console.log("TiSt"+this.todayTimestamp);
       console.log("Date: "+ this.noteDate.getValue().toString());
     }
+    this.deleteButtton.onClick.subscribe(event => {
+      this.deleteStudentbootcamp();
+    });
   }
   @ViewChild("studentIdNote") studentIdNote: OTextInputComponent;
 
@@ -391,6 +401,30 @@ onNoteAreaChange(noteArea: OTextareaInputComponent): void {
   // Verifica si hay al menos un carácter no espacio/salto de línea
   const hasValidContent = /\S/.test(noteValue);
   this.isNoteAreaValid = hasValidContent;
+}
+
+deleteStudentbootcamp(){
+  this.dialogService.confirm('Confirm_dialog_title','Do_you_really_want_to_delete_student_bootcamp');
+  this.dialogService.dialogRef.afterClosed().subscribe( result => {
+    if(result) {
+      this.configureServiceStudentBootcamp();
+      this.service.delete({id: this.bootcampTable.getSelectedItems()[0].id}, 'studentsWithBootcamp').subscribe(res => {
+        if (res.code === 0) {
+          this.bootcampTable.reloadData();
+        }
+      });
+    }
+  });
+
+  this.configureServiceStudent();
+}
+
+activeDelete(){
+  this.flagEnabled = true;
+}
+
+desactiveButton(){
+  this.flagEnabled = false;
 }
 
 }

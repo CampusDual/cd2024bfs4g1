@@ -15,9 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("AttendanceService")
 @Lazy
@@ -105,6 +103,18 @@ public class AttendanceService implements IAttendanceService {
         return this.daoHelper.delete(this.attendanceDao, keyMap);
     }
 
+    @Override
+    public EntityResult attendanceDeleteAll(Map<String,Object> keyMap) throws OntimizeJEERuntimeException{
+
+        EntityResult allAttendancesQuery = this.daoHelper.query(this.attendanceDao,keyMap, Arrays.asList(AttendanceDao.ATTR_ID));
+        List<?> attendanceIdList = (List<?>) allAttendancesQuery.get(AttendanceDao.ATTR_ID);
+        Map<String, Object> attendanceKey = new Hashtable<>();
+
+        for (int i = 0; i<attendanceIdList.size();i++){
+            attendanceKey.put(AttendanceDao.ATTR_ID,attendanceIdList.get(i));
+        }
+        return this.daoHelper.delete(this.attendanceDao,attendanceKey);
+    }
     @Override
     public AdvancedEntityResult attendancePaginationQuery(Map<String, Object> keyMap, List<?> attrList, int recordNumber, int startIndex, List<?> orderBy) throws OntimizeJEERuntimeException {
         return this.daoHelper.paginationQuery(this.attendanceDao, keyMap, attrList, recordNumber, startIndex, orderBy);
