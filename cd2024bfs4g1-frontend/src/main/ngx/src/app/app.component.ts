@@ -3,6 +3,7 @@ import { AppearanceService, OntimizeService, OUserInfoService } from 'ontimize-w
 import { Component, OnInit, Injector, ViewChild, Inject } from '@angular/core';
 import { OntimizeMatIconRegistry } from 'ontimize-web-ngx';
 import { MainService } from './shared/services/main.service';
+import { AuthService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'o-app',
@@ -13,9 +14,11 @@ export class AppComponent implements OnInit {
   protected service: OntimizeService;
   ontimizeMatIconRegistry: OntimizeMatIconRegistry;
   iniciliced = 0;
-  constructor(private router: Router, protected appearanceService: AppearanceService,protected injector: Injector, 
+  constructor(private router: Router, protected appearanceService: AppearanceService,protected injector: Injector,
     private oUserInfoService:OUserInfoService,
-    private mainService: MainService) {
+    private mainService: MainService,
+    @Inject(AuthService) private authService: AuthService,
+  ) {
       this.service = this.injector.get(OntimizeService)
     this.ontimizeMatIconRegistry = this.injector.get(OntimizeMatIconRegistry);
     if(window['__ontimize'] !== undefined && window['__ontimize']['redirect'] !== undefined) {
@@ -48,8 +51,10 @@ export class AppComponent implements OnInit {
    });
  }
   ngAfterViewInit(){
+    if(this.authService.isLoggedIn()){
     setTimeout(()=>this.updateAvatar(),1000);
     setTimeout(()=>this.updateAvatar(),5000);
- 
+
+}
 }
 }

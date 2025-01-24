@@ -88,7 +88,7 @@
       sb.bootcamp_id = ?
 
     GROUP BY
-      sb.bootcamp_id, sb.id, s.name, s.surname1, s.surname2, s.personal_email, sb.student_id, sb.status, sb.start_date, sb.end_date, sbs.computable
+      sb.bootcamp_id, sb.id, s.name, s.surname1, s.surname2, s.personal_email, sb.student_id, sb.status_id, sb.start_date, sb.end_date, sbs.computable
 
     ORDER BY
       sbs.computable desc,

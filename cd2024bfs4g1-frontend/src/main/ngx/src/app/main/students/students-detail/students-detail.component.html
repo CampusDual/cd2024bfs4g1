@@ -65,14 +65,26 @@
               null-selection="false" [data]="[]" service="studentstatus" entity="studentStatus" keys="id"
               columns="id;status" value-column="id" description-columns="status" query-on-init="true" sort="ASC">
             </o-combo>
+
+          <div class="sepGitUdemy">
+            <div class="githubUser">
+              <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
+              <o-text-input attr="github_user" required="no" max-length="150"></o-text-input>
+            </div>
+            <div class="udemy">
+              <div class="checkbox-container">
+                <o-checkbox attr="udemy"></o-checkbox>
+              </div>
+            </div>
           </div>
+        </div>
 
         </fieldset>
        </div>
         <div class="gridDatos">
           <div class="login">
             <fieldset title="Login">
-              <legend>{{"Acceso"|oTranslate}}</legend>
+              <legend>{{"Login"|oTranslate}}</legend>
               <div class="usuario">
                 <label for="usuario">{{'USER' | oTranslate}}</label>
                 <o-text-input attr="usr_login" [validators]="validatorsWithoutSpace" required="no" id="name"
@@ -86,17 +98,6 @@
                   <o-validator error-name="hasNumber" error-text="VALIDATOR.HASNUMBER"></o-validator>
                   <o-validator error-name="hasSmallCase" error-text="VALIDATOR.HASSMALLCASE"></o-validator>
                 </o-password-input>
-              </div>
-              <div class="sepGitUdemy">
-                <div class="githubUser">
-                  <label for="LGITHUB_USER">{{'LGITHUB_USER' | oTranslate}}</label>
-                  <o-text-input attr="github_user" required="no" max-length="200"></o-text-input>
-                </div>
-                <div class="udemy">
-                  <div class="checkbox-container">
-                    <o-checkbox attr="udemy"></o-checkbox>
-                  </div>
-                </div>
               </div>
             </fieldset>
           </div>
@@ -164,8 +165,8 @@
               <legend align="left">{{'Bootcamps Asigned' | oTranslate}}</legend>
               <o-table class="general_table_segunda" attr="bootcampsStudentTable" sort-columns="status:ASC;start_date:ASC" service="studentBootcamps"
                 entity="studentsWithBootcamp" keys="id" parent-keys="student_id:id"
-                columns="id;bootcampname;status;start_date;end_date;sb_start_date;sb_end_date"
-                visible-columns="bootcampname;status;start_date;end_date;sb_start_date;sb_end_date" detail-mode="none"
+                columns="id;bootcampname;start_date;end_date;sb_start_date;sb_end_date;student_bootcamp_status"
+                visible-columns="bootcampname;start_date;end_date;sb_start_date;sb_end_date;student_bootcamp_status" detail-mode="none"
                 show-report-on-demand-option="false" show-charts-on-demand-option="false"
                 select-all-checkbox-visible="true" quick-filter="false" selection-mode="none" insert-form-route="new">
                 <o-table-paginator page-size="20" page-size-options="10;20;40"></o-table-paginator>
@@ -256,37 +257,51 @@
       <div class="fct-container2">
       <fieldset>
         <legend>{{"LCOMMENTS"|oTranslate}}</legend>
-        <o-form #notesForm service="notes" entity="notes" show-header="no" confirm-exit="false" (keydown.enter)="addNotes($event)" after-insert-mode="detail"
-          undo-button="false" label-header-align="center" parent-keys="id:id_students" >
+        <o-form #notesForm service="notes" entity="notes" show-header="no" confirm-exit="false" columns="nota;id_students;fecha"
+          undo-button="false" label-header-align="center" parent-keys="id:id_students">
           <o-text-input #studentIdNote attr="id_students" sql-type="INTEGER" hidden></o-text-input>
-          <o-textarea-input class="commentsa" attr="nota" sql-type="VARCHAR" required="yes" max-length="2500" autofocus ></o-textarea-input>
-          <o-date-input #date label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
+          <o-textarea-input #noteArea class="commentsa" attr="nota" sql-type="VARCHAR" max-length="2500" autofocus (input)="onNoteAreaChange(noteArea)"></o-textarea-input>
+          <o-date-input #noteDate label-visible="false" attr="fecha" format="DD/MM/YYYY" hidden></o-date-input>
         </o-form>
         <div class="botonSalvar">
-          <o-button attr="save" icon="save" label="Guardar" (click)="addNotes($event)"></o-button>
+
+          <o-button attr="saveNote" icon="save" label="{{'Save' | oTranslate}}" (click)="InsertNotes()" [enabled]="isNoteAreaValid"></o-button>
+
       </div>
 
       </fieldset>
-          <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="false"
-            delete-button="true"  delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
-            refresh-button="false" detail-mode="true" selectable="true"
-            detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
-            insert-button-position="" show-buttons-text="false" controls="false">
-            <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
-              <div class="cont-card">
-                <mat-card-actions class="cont-bot">
-                  <button class="boton_eliminar" (click)="deleteNotes(notas)" >
-                    <mat-icon class="pa1" svgIcon="ontimize:papelera1"></mat-icon>
-                    <mat-icon class="pa2" svgIcon="ontimize:papelera"></mat-icon>
-                  </button>
-                </mat-card-actions>
-                <mat-card-header class="head" >
-                  <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
-                  <mat-card-subtitle class="fromatotexto" [innerHTML]="notas.nota.split('\n').join('<br/>')"></mat-card-subtitle>
-                </mat-card-header>
-              </div>
-            </mat-card>
-          </o-list>
+      <o-list #list attr="notesList" sort-columns="id:DESC" service="notes" entity="notes" keys="id" parent-keys="id_students:id" insert-button="false"
+      delete-button="true" columns="id;nota;id_students;fecha" quick-filter="false"
+      refresh-button="false" detail-mode="true" selectable="true"
+      detail-button-in-row="true" edit-button-in-row="false" pagination-controls="false"
+      insert-button-position="" show-buttons-text="false" controls="false"
+      (onDataLoaded)="notesLoaded($event)">
+
+<ng-container *ngIf="onDataLoaded()">
+
+  <mat-card class="notas list_container o-list-container" #idNota *ngFor="let notas of list.dataArray">
+    <div class="cont-card">
+      <mat-card-actions class="cont-bot">
+        <button class="boton_eliminar" (click)="deleteNotes(notas)" >
+          <mat-icon class="pa1" svgIcon="ontimize:papelera1"></mat-icon>
+          <mat-icon class="pa2" svgIcon="ontimize:papelera"></mat-icon>
+        </button>
+      </mat-card-actions>
+      <mat-card-header class="head" >
+        <mat-card-title class="fromatotextotitulo"><a>{{ notas.fecha | date:'dd/MM/yyyy' }}</a></mat-card-title>
+        <mat-card-subtitle class="fromatotexto" [innerHTML]="notas.nota.split('\n').join('<br/>')"></mat-card-subtitle>
+      </mat-card-header>
+    </div>
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="!onDataLoaded()">
+  <div class="no-notes-container">
+    <label class="no-notes-label">{{ 'NO_NOTES' | oTranslate }}</label>
+  </div>
+</ng-container>
+</o-list>
+
       </div>
     </mat-tab>
   </mat-tab-group>

@@ -36,6 +36,7 @@
                 <AmbiguousColumn name="surname2" prefix="cs"/>
                 <AmbiguousColumn name="birth_date" prefix="cs"/>
                 <AmbiguousColumn name="phone" prefix="cs"/>
+                <AmbiguousColumn name="creation_date" prefix="cs"/>
                 <AmbiguousColumn name="campus_email" prefix="cs"/>
                 <AmbiguousColumn name="fct_school" prefix="cs"/>
                 <AmbiguousColumn name="fct_start" prefix="cs"/>
@@ -49,6 +50,7 @@
                 <AmbiguousColumn name="user_id" prefix="cs"/>
                 <AmbiguousColumn name="student_status_id" prefix="cs"/>
                 <AmbiguousColumn name="status" prefix="cs"/>
+                <AmbiguousColumn name="employment_status" prefix="cs"/>
             </AmbiguousColumns>
             <Sentence>
                 <![CDATA[

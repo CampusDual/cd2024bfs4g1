@@ -14,7 +14,7 @@ export class ConfigTablesComponent {
 
   downloadCsvTemplate(): void {
     // generación de encabezados y contenido csv
-    const headers = ['name','surname1','personal_email','dni','surname2','birth_date','phone','campus_email','spain_comunity','location'];
+    const headers = ['name','surname1','personal_email','dni','surname2','birth_date','phone','campus_email','spain_comunity','location','codigo'];
     const rows = [headers];
     const csvContent = rows.map(row => row.join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -36,13 +36,12 @@ export class ConfigTablesComponent {
 
 downloadCsvExample(): void {
   // generación de encabezados y aviso ejemplo csv
-  const aviso = ['Plantilla de ejemplo. En caso de subir registros de estudiante se deben seguir las siguientes indicaciones mediante la plantilla facilitada.'];
-  const salto = [' '];
-  const headers = ['name','surname1','personal_email','dni','surname2','birth_date','phone','campus_email','spain_comunity','location'];
-  const ex = ['Juan','Valdés','juanvaldes@hotmail.es','12345678Z','Carrera','1990-09-02','+34 988721241','juanvaldes@campusdual.es','Galicia','Vigo'];
-  const rows = [aviso, salto, headers, salto, ex];
+  const aviso = ['Documento de ejemplo. En caso de subir registros de estudiante se deben seguir las siguientes indicaciones mediante la plantilla facilitada.','Recuerda eliminar este comentario y el registro de ejemplo para poder utilizar este documento como plantilla.'];
+  const headers = ['name','surname1','personal_email','dni','surname2','birth_date','phone','campus_email','spain_comunity','location','codigo'];
+  const ex = ['Juan','Valdés','juanvaldes@hotmail.es','12345678Z','Carrera','1990-09-02','+34 988721241','juanvaldes@campusdual.es','Galicia','Vigo','048C'];
+  const rows = [aviso, headers, ex];
   const csvContent = rows.map(row => row.join(',')).join('\n');
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=ISO 8859-1;' });
 
   // creación de enlace del contenido
   const link = document.createElement('a');

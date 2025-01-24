@@ -14,18 +14,17 @@
             </div>
             <div class="nombre">
               <label for="name">{{'REQ_LNAME'|oTranslate}}</label>
-              <o-text-input attr="name" required="yes" id="name" [validators]="validatorsWithoutSpace" max-length="150"
-                (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-text-input attr="name" required="yes" id="name" [validators]="validatorsWithoutSpace"
+                max-length="150"></o-text-input>
             </div>
             <div class="apellido">
               <label for="surname1">{{'REQ_LSURNAME1'|oTranslate}}</label>
-              <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes" max-length="150"
-                (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-text-input attr="surname1" [validators]="validatorsWithoutSpace" required="yes"
+                max-length="150"></o-text-input>
             </div>
             <div class="apellido2">
               <label for="surname2">{{'LSURNAME2' | oTranslate}}</label>
-              <o-text-input attr="surname2" required="no" max-length="150"
-                (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-text-input attr="surname2" required="no" max-length="150"></o-text-input>
             </div>
           </div>
           <div class="datosPrincipales2">
@@ -35,7 +34,7 @@
               </div>
               <label for="LDNI">{{'LDNI' | oTranslate}}</label>
               <o-nif-input attr="dni" label="{{'NIF' | oTranslate}}" read-only="no" required="no"
-                (onBlur)="mostrar($event)" (input)="toUpperCase($event)"></o-nif-input>
+                (onBlur)="mostrar($event)"></o-nif-input>
             </div>
 
             <div class="fechaCumple">
@@ -50,7 +49,7 @@
             </div>
             <div class="location">
               <label for="location">{{'LLOCATION' | oTranslate}}</label>
-              <o-text-input attr="location" required="no" max-length="30" (input)="toUpperCamelCase($event)"></o-text-input>
+              <o-text-input attr="location" required="no" max-length="30"></o-text-input>
             </div>
             <div class="status">
               <div class="studentStatus">
@@ -92,27 +91,27 @@
               </o-password-input>
             </div>
           </fieldset>
-          <br>
-        <div class="contacto">
-          <fieldset title="{{'Contact'|oTranslate}}">
-            <legend>{{"Contact"|oTranslate}}</legend>
-            <div class="telefono">
-              <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
-              <o-phone-input attr="phone" required="no" automatic-binding="false"
-                [data]="'+34 000000000'"></o-phone-input>
-            </div>
-            <div class="email">
-              <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
-              <o-email-input attr="personal_email" max-length="200" required="yes"></o-email-input>
-            </div>
-            <div class="emailCampus">
-              <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
-              <o-email-input attr="campus_email" max-length="200" required="no"></o-email-input>
-            </div>
-          </fieldset>
+          
+          <div class="contacto">
+            <fieldset title="{{'Contact'|oTranslate}}">
+              <legend>{{"Contact"|oTranslate}}</legend>
+              <div class="telefono">
+                <label for="REQ_LPHONE">{{'LPHONE' | oTranslate}}</label>
+                <o-phone-input attr="phone" required="no" automatic-binding="false"
+                  [data]="'+34 000000000'"></o-phone-input>
+              </div>
+              <div class="email">
+                <label for="Personal email">{{'REQ_LEMAIL'|oTranslate}}</label>
+                <o-email-input attr="personal_email" max-length="200" required="yes"></o-email-input>
+              </div>
+              <div class="emailCampus">
+                <label for="campus_email">{{'LCAMPUS_EMAIL' | oTranslate}}</label>
+                <o-email-input attr="campus_email" max-length="200" required="no"></o-email-input>
+              </div>
+            </fieldset>
+          </div>
+          </div>
         </div>
-        </div>
-      </div>
     </mat-tab>
     <mat-tab label="{{'FCT Information'|oTranslate}}">
       <div class="fct-container">
@@ -131,7 +130,7 @@
           </div>
           <div class="fctStart">
             <label for="fct_start">{{'LFCT_START' | oTranslate}}</label>
-            <o-date-input #startdate attr="fct_start" required="no"  format="DD/MM/YYYY"
+            <o-date-input #startdate attr="fct_start" required="no" format="DD/MM/YYYY"
               (onValueChange)="throwChange(enddate)">
               <o-validator error-name="wrongendate" error-text="END_DATE_MORE_THAN_INIT_DATE"></o-validator>
             </o-date-input>

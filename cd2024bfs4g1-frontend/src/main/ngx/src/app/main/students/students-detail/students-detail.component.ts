@@ -1,5 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFileInputComponent, OFormComponent, OImageComponent, OListComponent, OntimizeService, OTableComponent, OTextareaInputComponent, OTextInputComponent, OValidators } from 'ontimize-web-ngx';
 import { ODateInputComponent } from 'ontimize-web-ngx';
 import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,6 +17,10 @@ import { OTranslateService } from 'ontimize-web-ngx';
   styleUrls: ['./students-detail.component.css']
 })
 export class StudentsDetailComponent {
+notesLoaded(event: any) {
+
+  this.notesBool = event && event.length > 0;
+}
   @ViewChild("idNumber") idNumber: OTextInputComponent;
   @ViewChild("documentsTable") documentsTable: OTableComponent;
   @ViewChild("fileinput") fileinput: OFileInputComponent;
@@ -35,11 +39,15 @@ export class StudentsDetailComponent {
   dataArray = spainComunitys.map(comunity => ({ key: comunity, value: comunity }));
   protected service: OntimizeService;
   showNotice:boolean=false;
+  notesBool: boolean = false;
+  isNoteAreaValid: boolean = false;
 
   // Valor predeterminado (opcional)
   valueSimple = "Madrid"; // Elige el valor que deseas predeterminar
 
-
+  onDataLoaded(): boolean {
+    return this.notesBool;
+  }
   constructor(
     private router: Router,
     public location: Location,
@@ -90,26 +98,23 @@ protected configureServiceStudent() {
   todayDate: string = '';
   todayTimestamp: number = 0;
   @ViewChild('notesForm') notesForm: OFormComponent;
-  @ViewChild('date') date: ODateInputComponent;
+  @ViewChild('noteDate') noteDate: ODateInputComponent;
+  @ViewChild('noteArea') noteArea: OTextareaInputComponent;
+
 
 
 
   ngAfterViewInit() {
-    if (this.date) {
-      this.date.setValue(this.todayTimestamp);
+    if (this.noteDate) {
+      this.noteDate.setValue(this.todayTimestamp);
       console.log("TiSt"+this.todayTimestamp);
-      console.log("Date: "+ this.date.getValue().toString());
+      console.log("Date: "+ this.noteDate.getValue().toString());
     }
   }
   @ViewChild("studentIdNote") studentIdNote: OTextInputComponent;
 
   setIdStudent(event: any) {
     this.studentIdNote.setValue(this.idNumber.getValue());
-
-  }
-  addNotes(event: any) {
-
-    this.notesForm.insert();
 
   }
 
@@ -131,7 +136,7 @@ protected configureServiceStudent() {
 
     const source = this.route.snapshot.queryParamMap.get('source');
     if (source === 'commercial') {
-      setTimeout(() => this.setTabIndexByName('LNOTE'), 0);
+      setTimeout(() => this.setTabIndexByName('LCOMMENTS'), 0);
     }
   }
 
@@ -338,6 +343,29 @@ protected configureNotes() {
 }
 @ViewChild("list") list: OListComponent;
 
+InsertNotes() {
+    if (!this.isNoteAreaValid) {
+      return; // Salimos si el área de texto no tiene contenido válido
+    }
+
+    const sqlTypes = {fecha:91,student_id:4};
+    let idStudent : Number = this.idNumber.getValue();
+    const keys ={
+      id_students: idStudent,
+      nota: this.noteArea.getValue(),
+      fecha:this.noteDate.getValue()
+    }
+
+    this.configureNotes();
+    this.service.insert(keys,'notes',sqlTypes).subscribe(res => {
+      if (res.code === 0) {
+        this.noteArea.setValue('');
+        this.isNoteAreaValid = false;
+        this.list.reloadData();
+      }
+    });
+  }
+
 deleteNotes(notas: any) {
 
   this.configureNotes();
@@ -358,5 +386,11 @@ refreshwarning(){
   this.showNotice = false;
 }
 
+onNoteAreaChange(noteArea: OTextareaInputComponent): void {
+  const noteValue = noteArea.getValue() || ''; // Obtén el valor del campo, o una cadena vacía si es null/undefined
+  // Verifica si hay al menos un carácter no espacio/salto de línea
+  const hasValidContent = /\S/.test(noteValue);
+  this.isNoteAreaValid = hasValidContent;
+}
 
 }

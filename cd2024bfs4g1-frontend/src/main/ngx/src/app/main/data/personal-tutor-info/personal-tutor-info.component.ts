@@ -11,20 +11,18 @@ import { MainService } from 'src/app/shared/services/main.service';
 export class PersonalTutorInfoComponent {
   @ViewChild("userId") inputTutorId: OTextInputComponent;
   @ViewChild("form") form: OFormComponent;
-  @ViewChild("UsrPhoto") UsrPhoto: OImageComponent;
+  @ViewChild("tutorsPhoto") tutorsPhoto: OImageComponent;
   isUpdatingImage: boolean = false;
   isUpdateOtherFile: boolean = false;
   mainInfo: any = {};
   protected service: OntimizeService;
 
+  defaultImage: string = 'assets/images/no-image.png'; // Ruta de la imagen por defecto
+
+
   constructor(protected injector: Injector, private mainService: MainService,private router: Router,protected dialogService: DialogService,private oUserInfoService:OUserInfoService) {
     this.service= this.injector.get(OntimizeService);
     this.configureService();
-  }
-  goToDetail(event: any) {
-    const bootcampId = event.bootcamp_id;
-    this.router.navigate(['/main/data/tutor', bootcampId]);
-    
   }
 
   protected configureService(){
@@ -65,27 +63,31 @@ export class PersonalTutorInfoComponent {
     }
   }
     onImageChange(event: any) {
-    // Si no hay evento o el archivo no está definido, simplemente retorna
-    if (!event || !this.UsrPhoto.currentFileName) {
+    if (!event || !this.tutorsPhoto.currentFileName) {
+      this.oUserInfoService.setUserInfo({
+        ...this.oUserInfoService.getUserInfo(),
+        avatar:this.defaultImage
+      })
       return;
     }
+
+    if(!this.tutorsPhoto.currentFileName){
+
+  }
 
     if (this.isUpdatingImage) {
       return;
     }
 
     const base64String = event;
-    const currentFileName = this.UsrPhoto.currentFileName || '';
+    const currentFileName = this.tutorsPhoto.currentFileName || '';
 
     const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     const fileExtension = currentFileName.split('.').pop()?.toLowerCase();
 
     // Validar si el nombre del archivo o la extensión son inválidos
     if (!fileExtension || !validExtensions.includes(fileExtension)) {
-      this.showAlert(); // Muestra la alerta de error
-      this.isUpdatingImage = true;
-      this.UsrPhoto.setValue(''); // Limpia el valor del archivo
-      this.isUpdatingImage = false;
+      //this.tutorsPhoto.setValue(''); // Limpia el valor del archivo
       return;
     }
 
@@ -106,21 +108,22 @@ export class PersonalTutorInfoComponent {
           ctx.drawImage(img, 0, 0, newWidth, newHeight);
           const modifiedImageBase64 = canvas.toDataURL('image/jpg');
 
-          this.isUpdatingImage = true;
-          this.UsrPhoto.setValue(modifiedImageBase64); // Actualiza la imagen redimensionada
-          this.isUpdatingImage = false;
+          this.oUserInfoService.setUserInfo({
+            ...this.oUserInfoService.getUserInfo(),
+            avatar:modifiedImageBase64
+          })
+          ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        }}
 
-          ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
-        }
-      };
-
+      
       img.onerror = () => {
         console.error('Error al cargar la imagen.');
       };
-    }
+      
+    }}
 
     
-  }
+  
 
 
   showAlert() {
@@ -128,5 +131,4 @@ export class PersonalTutorInfoComponent {
       this.dialogService.error('Error de tipo de archivo', 'Por favor, sube una imagen con extensión .jpg, .jpeg .png o .gif');
     }
   }
-
 }
