@@ -8,6 +8,16 @@ SELECT DISTINCT ON (n.id_students)
 FROM notas n
 ORDER BY n.id_students, n.id DESC;
 
+CREATE OR REPLACE VIEW public.v_last_note
+AS SELECT s.id AS student_id,
+    n.nota AS last_note
+   FROM students s
+     LEFT JOIN LATERAL ( SELECT n_1.nota
+           FROM notas n_1
+          WHERE n_1.id_students = s.id
+          ORDER BY n_1.fecha DESC
+         LIMIT 1) n ON true;
+
 drop VIEW public.v_commercial_students;
 
 CREATE OR REPLACE VIEW public.v_commercial_students
