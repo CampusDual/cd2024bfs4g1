@@ -59,11 +59,13 @@ public class StudentBootcampService implements IStudentBootcampService {
 
     @Override
       public EntityResult studentsWithBootcampDelete(Map<String, Object> keyMap) throws OntimizeJEERuntimeException {
-        EntityResult studentIdQuery = this.daoHelper.query(this.studentBootcampDao,keyMap, Arrays.asList(StudentBootcampDao.STUDENT_ID));
-        List<?> studentIdList = (List<?>) studentIdQuery.get(StudentBootcampDao.STUDENT_ID);
-        Object studentId = studentIdList.get(0);
+        EntityResult studentIdQuery = this.daoHelper.query(this.studentBootcampDao,keyMap, Arrays.asList(StudentBootcampDao.STUDENT_ID,StudentBootcampDao.BOOTCAMP_ID));
+        if(studentIdQuery.isWrong() || studentIdQuery.isEmpty()){
+            return studentIdQuery;
+        }
         Map<String, Object> studentKey = new HashMap<>();
-        studentKey.put(StudentBootcampDao.STUDENT_ID,studentId);
+        studentKey.put(StudentBootcampDao.STUDENT_ID,studentIdQuery.getRecordValues(0).get(StudentBootcampDao.STUDENT_ID));
+        studentKey.put(StudentBootcampDao.BOOTCAMP_ID,studentIdQuery.getRecordValues(0).get(StudentBootcampDao.BOOTCAMP_ID));
 
         attendanceService.attendanceDeleteAll(studentKey);
         return this.daoHelper.delete(this.studentBootcampDao, keyMap);
