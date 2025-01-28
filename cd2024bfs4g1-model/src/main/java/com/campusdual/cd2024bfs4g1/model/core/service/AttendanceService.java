@@ -8,6 +8,7 @@ import com.ontimize.jee.common.db.AdvancedEntityResult;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.dto.EntityResultMapImpl;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
+import com.ontimize.jee.common.gui.SearchValue;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -110,9 +111,10 @@ public class AttendanceService implements IAttendanceService {
         List<?> attendanceIdList = (List<?>) allAttendancesQuery.get(AttendanceDao.ATTR_ID);
         Map<String, Object> attendanceKey = new Hashtable<>();
 
-        for (int i = 0; i<attendanceIdList.size();i++){
-            attendanceKey.put(AttendanceDao.ATTR_ID,attendanceIdList.get(i));
-        }
+       if(attendanceIdList == null){
+           return new EntityResultMapImpl();
+       }
+        attendanceKey.put(AttendanceDao.ATTR_ID, new SearchValue(SearchValue.IN,attendanceIdList));
         return this.daoHelper.delete(this.attendanceDao,attendanceKey);
     }
     @Override
