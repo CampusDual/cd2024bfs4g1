@@ -11,11 +11,15 @@
       <legend>{{'STUDENTS_IN_BOOTCAMP'| oTranslate}}</legend>
       <o-table class="general_table" virtual-scroll="false" attr="studentsBootcampTable" service="studentBootcamps"
         entity="studentsWithBootcamp" keys="id" parent-keys="bootcamp_id:id"
-        columns="bootcamp_id;id;name;surname1;surname2;personal_email;student_id;sb_start_date;sb_end_date;student_bootcamp_status"
-        visible-columns="name;surname1;surname2;personal_email;sb_start_date;sb_end_date;student_bootcamp_status"
-        default-visible-columns="name;surname1;personal_email;student_bootcamp_status" query-rows="10"
+        columns="userphotostudent;bootcamp_id;id;name;surname1;surname2;personal_email;student_id;sb_start_date;sb_end_date;student_bootcamp_status"
+        visible-columns="userphotostudent;name;surname1;surname2;personal_email;sb_start_date;sb_end_date;student_bootcamp_status"
+        default-visible-columns="userphotostudent;name;surname1;personal_email;student_bootcamp_status" query-rows="10"
         show-report-on-demand-option="false" show-charts-on-demand-option="false" detail-mode="false" query-on-init="true" pageable="true"
         insert-button="false" delete-button="false" refresh-button="false" selection-mode="none" virtual-scroll="true">
+        <o-table-column attr="userphotostudent" width="64px">
+          <o-table-cell-renderer-image image-type="base64" empty-image="assets/images/no-image.png"
+            avatar="yes"> </o-table-cell-renderer-image>
+        </o-table-column>
         <o-table-column attr="sb_start_date" title="start_date" type="date" format="DD/MM/YYYY"></o-table-column>
         <o-table-column attr="sb_end_date" title="end_date" type="date" format="DD/MM/YYYY"></o-table-column>
         <o-table-paginator page-size="20" page-size-options="10;20;40">
