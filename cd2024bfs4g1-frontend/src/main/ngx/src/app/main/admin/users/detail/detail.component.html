@@ -30,11 +30,11 @@
         [enabled]="!form.isInInsertMode()" selection-mode="none" export-mode="local">
         <o-table-columns-filter columns="rol_name;rol_notes"></o-table-columns-filter>
         <o-table-column attr="actived" title="active">
-          <o-table-cell-renderer-boolean boolean-type="string" true-value="S" false-value="N" true-value-type="icon"
+          <o-table-cell-renderer-boolean boolean-type="boolean" true-value="true" false-value="false" true-value-type="icon"
             render-type="icon" render-true-value="check_box" render-false-value="check_box_outline_blank">
           </o-table-cell-renderer-boolean>
-          <o-table-cell-editor-boolean true-value="S" false-value="N"
-            boolean-type="string"></o-table-cell-editor-boolean>
+          <o-table-cell-editor-boolean true-value="true" false-value="false"
+            boolean-type="boolean"></o-table-cell-editor-boolean>
         </o-table-column>
       </o-table>
     </div>
