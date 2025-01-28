@@ -124,22 +124,15 @@ o-form {
   margin: 0 auto;
 }
 
-.aviso label {
-  color: rgb(244, 67, 54);
+.aviso p {
+  color: red;
   display: flex;
-  font-size: 11px;
-  height: 20PX;
-  letter-spacing: normal;
-  font-weight: 400;
-  line-height: 15px;
+  align-items: center;
+  justify-content: flex-start;
   text-align: left;
-  text-size-adjust: 100%;
-  width: 542.453px
-}
-
-.aviso label mat-icon {
-  padding-bottom: 10px;
-
+  font-size: 0.9rem;
+  margin-top: 5px;
+  gap: 5px;
 }
 
 .datos {
