@@ -45,7 +45,7 @@
 			</AmbiguousColumns>
 			<FunctionColumns>
 				<FunctionColumn name="actived"
-					value="(CASE WHEN tur.rol_id IS NOT NULL THEN 'S' ELSE 'N' END)" />
+					value="(CASE WHEN tur.rol_id IS NOT NULL THEN true ELSE false END)" />
 			</FunctionColumns>
 			<Sentence>
                 <![CDATA[
