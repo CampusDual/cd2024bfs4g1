@@ -34,7 +34,8 @@ ofreciendo una experiencia eficiente y fácil de usar tanto para los usuarios co
 ## Estado del proyecto
 
 :construction: Proyecto en construcción :construction:
-
+Proyecto de libre uso. 
+Las actualizaciones y mejoras son agradecidas!!
 ---
 
 ## Funcionalidades del Proyecto ⚙️
