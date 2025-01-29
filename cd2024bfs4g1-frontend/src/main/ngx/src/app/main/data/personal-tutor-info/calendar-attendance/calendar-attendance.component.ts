@@ -84,6 +84,7 @@ export class CalendarAttendanceComponent {
 
   public selectedYear = this.currentYear;
   public selectedMonth = this.currentMonth;
+  holidays: any;
 
   constructor(
     protected snackBarService: SnackBarService,
@@ -109,6 +110,7 @@ export class CalendarAttendanceComponent {
   }
   ngOnInit() {
     this.getAttendanceStatus();
+    this.getHolidays(this.startDate,this.endDate);
     this.configureBootcamps();
   }
   ngOnChanges() {
@@ -137,6 +139,11 @@ export class CalendarAttendanceComponent {
   protected configureAttendance() {
     // Configure the service using the configuration defined in the `app.services.config.ts` file
     const conf = this.service.getDefaultServiceConfiguration('attendance');
+    this.service.configureService(conf);
+  }
+
+  protected configureHolidaysService(){
+    const conf = this.service.getDefaultServiceConfiguration('holidays');
     this.service.configureService(conf);
   }
 
@@ -316,12 +323,24 @@ export class CalendarAttendanceComponent {
     return `7fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
   }
 
+  isToday(day: Date): boolean {
+    day.setHours(0, 0, 0, 0);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return day.getTime() == today.getTime();
+  }
+
   //Cambiar color al dia actual (background)
-  updateDayCSSForCurrentDay(day: number) {
-    if (moment().isSame(moment(this.startDate).date(day), 'day')) {
+  updateDayCSSForCurrentDay(day: Date) { // 
+    if (this.isToday(day)) {
       return '#8AB237';
+    }else if(Array.isArray(this.holidays) && this.holidays.filter(holiday => { 
+      return holiday.holiday_date  == day.getTime()
+    }).length == 1 ){
+      return 'red';
+    }else{
+      return '#1a3459';
     }
-    return '#1a3459';
   }
 
   //Cambiar color al dia actual (color)
@@ -507,7 +526,63 @@ export class CalendarAttendanceComponent {
     this.dialog.closeAll();
   }
 
+  getHolidays(startDate: Date, endDate: Date) {
+    this.configureHolidaysService();
 
+    if (this.service !== null) {
+      const filter =    {
+        "@basic_expression": {
+            "lop": {
+                "lop": "holiday_date",
+                "op": ">=",
+                "rop": startDate.getTime()
+            },
+            "op": "AND",
+            "rop": {
+                "lop": "holiday_date",
+                "op": "<=",
+                "rop": endDate.getTime()
+            }
+        }
+    };
+
+    const types = {
+      'holiday_date': 91     
+    };
+
+      const columns = ['id', 'name', 'holiday_date'];
+      this.service.query(filter, columns, 'holidays',types).subscribe(resp => {
+        if (resp.code === 0) {
+          if(resp.data.length > 0){ 
+            console.log(resp.data);
+            this.holidays= resp.data;
+          }else{
+            this.holidays = {}; //json
+          }
+        } else {
+          alert('Impossible to query data!');
+        }
+      });
+    }
+  }
+
+  getHolidayTooltip(day: Date): string {
+    if (Array.isArray(this.holidays)) {
+      const holiday = this.holidays.find((h: any) => h.holiday_date === day.getTime());
+      return holiday ? holiday.name : ''; 
+    }
+    return ''; 
+  }
+
+  updateDayCSSFontDecoration(day:Date){
+    if(Array.isArray(this.holidays) && this.holidays.filter(holiday => { 
+      return holiday.holiday_date  == day.getTime()
+    }).length == 1 ){
+      return 'italic';
+    }else{
+      return "normal";
+    }
+  }
 
 
 }
