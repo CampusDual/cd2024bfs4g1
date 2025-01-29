@@ -163,7 +163,32 @@ A continuación se describen las principales tecnologías utilizadas en este pro
 
 ## Autores 👥
 
-Este proyecto ha sido desarrollado como parte del **Bootcamp de Desarrollo Fullstack IMATIA SEPT 2024 / FEB 2025**.
+Este proyecto ha sido desarrollado como parte del **Bootcamp de Desarrollo Fullstack IMATIA SEPT 2024 / FEB 2025**.  
 
-- **Equipo de Desarrollo**: Estudiantes del Bootcamp de Desarrollo Fullstack IMATIA
-- **Año**: 2024/2025
+📌 **Equipo de Desarrollo**:  
+> 🚀 Estudiantes del Bootcamp de Desarrollo Fullstack IMATIA  
+
+| Nombre | Apellido 1 | Apellido 2 |
+|--------|-----------|------------|
+| Brayan  | Iglesias  | Pereira    |
+| Daniel  | Rey       | Pérez      |
+| David   | Carrera   | Otero      |
+| David   | Domínguez | Vidal      |
+| David   | Velasco   | Pérez      |
+| Francisco | Rego   | Prieto     |
+| Gabriel  | Freire   | Simón      |
+| Gabriel  | Alonso   | Varela     |
+| Javier   | Pérez    | Otero      |
+| Jesús    | Blanco   | Míguez     |
+| Joel     | Álvarez  | Rodríguez  |
+| José Manuel | Riveiro | López del Castillo |
+| Manuel   | Fernández | Crego     |
+| Marcos Adrián | Padín | Abal     |
+| María Jesús | Muñoz  | Heredia   |
+| Mario    | Martínez | Vilariño   |
+| Nicolás Iván | Vázquez | Pintos  |
+| Olga     | Gil      | Peñas      |
+| Ruan Nicolás | De Proença | Gimenes |
+| Sara     | Rey      | Valiño     |
+
+📅 **Año**: 2024/2025  
