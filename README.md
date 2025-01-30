@@ -1,146 +1,195 @@
-## DESCRIPTION
+# NODUS SCIENTIA
 
-Application template based in Ontimize Web and Ontimize Boot (java 11).
+# Índice 🗂️
 
-Use this template to generate an application with a standard structure and a predefined Ontimize configuration for Ontimize authentication and a unique database, using PostgreSQL.
+1. [Descripción del Proyecto](#descripción-del-proyecto)
+2. [Estado del Proyecto](#estado-del-proyecto)
+3. [Funcionalidades del Proyecto](#funcionalidades-del-proyecto)
+   - [Gestión de Bootcamps](#gestión-de-bootcamps)
+   - [Gestión de Tutores](#gestión-de-tutores)
+   - [Gestión de Alumnos](#gestión-de-alumnos)
+   - [Seguridad y Privacidad](#seguridad-y-privacidad)
+   - [Interfaz Intuitiva](#interfaz-intuitiva)
+4. [Despliegue Local](#despliegue-local)
+5. [Información Adicional](#información-adicional)
+   - [Usuarios Predeterminados de la Aplicación](#usuarios-predeterminados-de-la-aplicación)
+   - [Ontimize Boot](#ontimize-boot)
+6. [Tecnologías Usadas](#tecnologías-usadas)
+   - [Backend](#backend)
+   - [Frontend](#frontend)
+   - [Base de Datos](#base-de-datos)
+   - [Herramientas de Desarrollo](#herramientas-de-desarrollo)
+   - [Otros](#otros)
 
-Take a look at application.yml and [Ontimize Boot](https://ontimize.github.io/docs/) documentation to customize as needed.
+---
 
-Several Spring Boot configuration files are provided. It is recommended to use environment variables in Spring configuration files for configuration values that depend on the environment.
+## Descripción del proyecto 📖
 
-For K8s environment it is recommended that Spring actuator is configured in a different port than the application. (see application-staging.yml)
+Este proyecto tiene como objetivo proporcionar una plataforma para gestionar bootcamps, tutores y alumnos en IMATIA. La aplicación permite a los gestores administrar bootcamps, asignar tutores y alumnos, 
+y realizar un seguimiento detallado de las interacciones dentro del sistema. La plataforma está construida utilizando **Angular** para el frontend,  **Node.js** para el backend, y **PostgreSQL** como base de datos, 
+ofreciendo una experiencia eficiente y fácil de usar tanto para los usuarios como para los administradores.
 
-### CLOUD DEPLOYMENT
+---
 
-This application is ready to be deployed in a Kubernetes Cluster, using provided Helm charts (in ./charts folder).
+## Estado del proyecto
 
-Other files provided:
+:construction: Proyecto en construcción :construction:
+Proyecto de libre uso. 
+Las actualizaciones y mejoras son agradecidas!!
+---
 
-		./Dockerfile: Provided as is. Adapt as needed.
+## Funcionalidades del Proyecto ⚙️
 
-		./.git/workflows/maven-build-docker-ecr.yaml: Adapt as needed. Provided setup is:
+### 1. **Gestión de Bootcamps**
+   - **Crear, Editar y Eliminar Bootcamps**: Los gestores pueden gestionar todos los aspectos de los bootcamps, incluyendo la creación de nuevos programas, edición de los existentes y eliminación de aquellos que ya no son necesarios.
+   - **Asignación de Tutores y Alumnos**: Los gestores pueden asignar tutores y alumnos a cada bootcamp, facilitando la organización de los grupos.
 
-			- Fires on push in develop branch
-			- Performs maven verify
-			- Builds docker image
-			- Extracts project version from pom.xml
-			- Updates version in ./charts/xxx/Chart.yaml
-			- Pushes docker image to Amazon AWS ECR (login, repository, etc. are automatically done. Credentials are not needed if repository organization is imatia-innovation).
+### 2. **Gestión de Tutores**
+   - **Acceso a la Información de Bootcamps y Alumnos**: Los tutores tienen acceso a los bootcamps a los que están asignados y pueden ver los detalles de los alumnos bajo su supervisión.
+   - **Subida de Materiales Educativos**: Los tutores pueden cargar y gestionar materiales como cronogramas, evaluaciones y otros recursos de estudio relevantes para sus alumnos.
 
-		Note: Amazon AWS ECR can be customized depending on infrastructure needs and setup. Provided configuration is standard and should work in most cases.
+### 3. **Gestión de Alumnos**
+   - **Acceso a Materiales de Estudio**: Los alumnos pueden acceder de manera organizada a los materiales proporcionados por los tutores, como documentos, enlaces y otros recursos.
+   - **Visualización de Fechas Importantes**: Los alumnos tienen un calendario o sección de notificaciones donde pueden ver las fechas clave del bootcamp, como exámenes y entregas de trabajos.
+   - **Recibir Anuncios y Actualizaciones**: Los alumnos pueden recibir anuncios importantes y actualizaciones sobre los bootcamps directamente en su perfil.
 
-### DOCKER-COMPOSE DEPLOYMENT
+### 4. **Seguridad y Privacidad**
+   - **Control de Acceso Personalizado**: El sistema garantiza que cada usuario solo pueda acceder a las funciones y datos que le correspondan según su rol (gestor, tutor o alumno).
+   - **Protección de Datos**: El uso de tecnologías como **Node.js** y **PostgreSQL** asegura que los datos estén protegidos de accesos no autorizados.
 
-This application is ready to be deployed on a local machine, using provided docker compose files (in ./ folder):
+### 5. **Interfaz Intuitiva**
+   - **Diseño Adaptado a Cada Usuario**: La aplicación proporciona una interfaz optimizada para cada tipo de usuario, con acceso rápido y sencillo a las funcionalidades que necesita.
+   - **Experiencia de Usuario Mejorada**: La interfaz es fluida y accesible, garantizando que la interacción con la aplicación sea fácil y eficiente.
 
-		./docker-compose.yaml: Adapt as needed. Provided setup is:
+---
 
-			- Builds docker image
-			- Runs database (Defined in docker-compose-services.yaml)
-			- Runs application
+### DESPLIEGUE LOCAL  🧰
 
-		./docker-compose-services.yaml: Adapt as needed. Provided setup is:
+Los parámetros en el archivo `application-local.yaml` deben coincidir con los valores de los servicios de desarrollo, como la base de datos. Por defecto, los parámetros coinciden con los valores en los archivos de Docker.
 
-			- Runs database
+- Ve a la carpeta de la aplicación:
 
-The services required to run the application, such as the database, are provided in a separate file to allow to run the services only and to be able to launch the application from an IDE.
+    cd cd2024bfs4g1
 
- - Go to the application folder
+- Si no hay un despliegue de los servicios de desarrollo disponible, ejecuta el archivo Docker Compose proporcionado para iniciar los servicios:
 
-		cd cd2024bfs4g1
+    docker compose -f docker-compose-services.yaml up
 
- - With docker privileges run the following command to start the deployment:
+- Compila y despliega la aplicación con los siguientes comandos:
 
-		docker compose up
+    mvn clean install -Plocal
+    java -jar cd2024bfs4g1-boot/target/cd2024bfs4g1-boot.jar --spring.profiles.active=local
 
-The application is deployed as a docker container in the url: [http://localhost:8080](http://localhost:8080)
+- La aplicación es accesible usando la URL: [http://localhost:8080](http://localhost:8080)
 
- - List the pods:
+## INFORMACIÓN ADICIONAL
 
-		docker ps
+### Usuarios predeterminados de la aplicación
 
- - Show the logs of each container:
+Por defecto, la aplicación proporciona dos usuarios. Adáptalos según sea necesario:
 
-		docker logs -f id_container
+- **Admin**:
+    - Rol: `Administrador`
+    - Usuario: `admin`
+    - Contraseña: `adminuser`
 
- - Access the console of the container:
+- **Demo**:
+    - Rol: `Usuario`
+    - Usuario: `demo`
+    - Contraseña: `demouser`
 
-		docker exec -it id_container sh
+### Ontimize Boot
 
- - Stop the deployment:
+- Ve a la carpeta de la aplicación y ejecuta la instalación:
 
-		docker compose down
-		docker volume prune
+    mvn clean install -Plocal
 
-### LOCAL DEPLOYMENT
+#### Iniciar solo el servidor:
 
-The parameters in the application-local.yaml file must match the values of the development services, such as the database. By default, the parameters match the values in the docker files.
+- Ve a la carpeta `cd2024bfs4g1-boot` y ejecuta el comando:
 
- - Go to the application folder
+    mvn spring-boot:run -Dspring-boot.run.profiles=local
 
-		cd cd2024bfs4g1
+#### Ejecutar el cliente solo, fuera del servidor Spring Boot:
 
- - If a deployment of a development services are not available, run the provided docker compose file to start the services:
+- Ve a la carpeta `frontend/src/main/ngx`, si tienes `node` y `npm` instalados en tu sistema, ejecuta los siguientes comandos:
 
-		docker compose -f docker-compose-services.yaml up
+    npm install
+    npm run start-local
 
- - Compile and deploy the application with the following commands:
+Usa la siguiente URL para acceder a la aplicación: [http://localhost:4299](http://localhost:4299)
 
-		mvn clean install -Plocal
-		java -jar cd2024bfs4g1-boot/target/cd2024bfs4g1-boot.jar --spring.profiles.active=local
+#### Desplegar y ejecutar el cliente y el servidor juntos:
 
- - The application is accessible using the url: [http://localhost:8080](http://localhost:8080)
+- Ve a la carpeta `cd2024bfs4g1-boot/target` y ejecuta el comando:
 
-## ADDITIONAL INFORMATION
+    java -jar cd2024bfs4g1-boot/target/cd2024bfs4g1-boot.jar --spring.profiles.active=local
 
-## Default application users
+Usa la siguiente URL para acceder a la aplicación: [http://localhost:8080](http://localhost:8080)
 
-By default the application provides two users. Adapt as needed:
+---
 
- - Admin:
-    - Role: `Administrator`
-    - Username: `admin`
-    - Password: `adminuser`
+## Tecnologías Usadas 🚀
 
- - Demo:
-    - Role: `User`
-    - Username: `demo`
-    - Password: `demouser`
+A continuación se describen las principales tecnologías utilizadas en este proyecto:
 
-## Ontimize Boot
+### Backend
+- ![Java 11](https://img.shields.io/badge/Java%2011-%23ED8B00.svg?style=flat&logo=java&logoColor=white) [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html): Lenguaje de programación utilizado para el desarrollo del backend, que garantiza rendimiento y robustez.
+- ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%236DB33F.svg?style=flat&logo=springboot&logoColor=white) [Spring Boot](https://spring.io/projects/spring-boot): Framework basado en Java que facilita la creación de aplicaciones backend con configuración mínima y soporte para servicios REST.
+- ![JPA](https://img.shields.io/badge/JPA-%23007396.svg?style=flat&logo=java&logoColor=white) [JPA (Java Persistence API)](https://jakarta.ee/specifications/persistence/): Utilizado para la gestión de la persistencia de datos, facilitando la interacción con la base de datos.
+- ![Maven](https://img.shields.io/badge/Maven-%23C71A36.svg?style=flat&logo=apachemaven&logoColor=white) [Maven](https://maven.apache.org/): Herramienta de gestión de dependencias y construcción de proyectos Java.
 
-- Go to the application folder and run an install:
+### Frontend
+- ![Angular](https://img.shields.io/badge/Angular-%23DD0031.svg?style=flat&logo=angular&logoColor=white) [Angular](https://angular.io/): Framework para el desarrollo del frontend, que permite construir aplicaciones web de una sola página (SPA) con un alto nivel de interacción.
+- ![TypeScript](https://img.shields.io/badge/TypeScript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white) [TypeScript](https://www.typescriptlang.org/): Superset de JavaScript que añade tipado estático, utilizado en la construcción del frontend.
+- ![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat&logo=html5&logoColor=white) [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML): Lenguaje de marcado estándar para la estructura de la interfaz.
+- ![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=css3&logoColor=white) [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS): Hojas de estilo para el diseño y la presentación.
+- ![SCSS](https://img.shields.io/badge/SCSS-%23CC6699.svg?style=flat&logo=sass&logoColor=white) [SCSS](https://sass-lang.com/): Preprocesador de CSS que permite escribir hojas de estilo de forma modular y avanzada.
+- ![NgRx](https://img.shields.io/badge/NgRx-%23BA2BD2.svg?style=flat&logo=reactivex&logoColor=white) [NgRx](https://ngrx.io/): Librería para la gestión del estado de la aplicación en Angular, basada en un patrón de flujo unidireccional de datos.
 
-		mvn clean install -Plocal
+### Base de Datos
+- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-%23336791.svg?style=flat&logo=postgresql&logoColor=white) [PostgreSQL](https://www.postgresql.org/): Sistema de gestión de bases de datos relacional utilizado para almacenar la información de los usuarios, tutores, y otros datos relevantes.
 
-### Start only the server:
+### Herramientas de Desarrollo
+- ![VS Code](https://img.shields.io/badge/VS%20Code-%23007ACC.svg?style=flat&logo=visualstudiocode&logoColor=white) [Visual Studio Code](https://code.visualstudio.com/): Editor de código fuente utilizado para el desarrollo frontend.
+- ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-%23000000.svg?style=flat&logo=intellijidea&logoColor=white) [IntelliJ IDEA](https://www.jetbrains.com/idea/): IDE utilizado para el desarrollo backend en Java.
+- ![Git](https://img.shields.io/badge/Git-%23F05033.svg?style=flat&logo=git&logoColor=white) [Git](https://git-scm.com/): Sistema de control de versiones utilizado para gestionar el código fuente del proyecto.
 
- - Go to the `cd2024bfs4g1-boot` folder and run the command
+### Otros
+- ![Ontimize](https://img.shields.io/badge/Ontimize-%231A1A1A.svg?style=flat&logo=java&logoColor=white) [Ontimize](https://ontimize.com/): Framework para la creación de aplicaciones empresariales, utilizado para el desarrollo rápido del backend y la interfaz de usuario.
+- ![JUnit](https://img.shields.io/badge/JUnit-%23A020F0.svg?style=flat&logo=java&logoColor=white) [JUnit](https://junit.org/junit5/): Framework para pruebas unitarias en Java, utilizado para garantizar la calidad del código.
 
-		mvn spring-boot:run -Dspring-boot.run.profiles=local
 
-### Run the client alone, outside the spring-boot server
+---
 
- - Go to the `frontend/src/main/ngx` folder, if you have node and npm installed on your system run the following commands:
+## Autores 👥
 
-		npm install
-		npm run start-local
+Este proyecto ha sido desarrollado como parte del **Bootcamp de Desarrollo Fullstack IMATIA SEPT 2024 / FEB 2025**.  
 
-Use the following URL to access the application: [http://localhost:4299](http://localhost:4299)
+📌 **Equipo de Desarrollo**:  
+> 🚀 Estudiantes del Bootcamp de Desarrollo Fullstack IMATIA  
 
-### Deploy and run client and server together
+| Nombre | Apellido 1 | Apellido 2 |
+|--------|-----------|------------|
+| Brayan  | Iglesias  | Pereira    |
+| Daniel  | Rey       | Pérez      |
+| David   | Carrera   | Otero      |
+| David   | Domínguez | Vidal      |
+| David   | Velasco   | Pérez      |
+| Francisco | Rego   | Prieto     |
+| Gabriel  | Freire   | Simón      |
+| Gabriel  | Alonso   | Varela     |
+| Javier   | Pérez    | Otero      |
+| Jesús    | Blanco   | Míguez     |
+| Joel     | Álvarez  | Rodríguez  |
+| José Manuel | Riveiro | López del Castillo |
+| Manuel   | Fernández | Crego     |
+| Marcos Adrián | Padín | Abal     |
+| María Jesús | Muñoz  | Heredia   |
+| Mario    | Martínez | Vilariño   |
+| Nicolás Iván | Vázquez | Pintos  |
+| Olga     | Gil      | Peñas      |
+| Ruan Nicolás | De Proença | Gimenes |
+| Sara     | Rey      | Valiño     |
 
- - Go to the `cd2024bfs4g1-boot/target` folder and run the command
-
-		java -jar cd2024bfs4g1-boot/target/cd2024bfs4g1-boot.jar --spring.profiles.active=local
-
-Use the following URL to access the application: [http://localhost:8080](http://localhost:8080)
-
-## API-First and Swagger UI
-
-The application adopts the API-first approach using the [OpenAPI](http://www.openapis.org/what-is-openapi) specification.
-
-The REST API is defined using yaml files and, in compile time, the [Ontimize OpenAPI](http://www.ontimize.com/xwiki/bin/view/Ontimize+Boot/OpenAPI+plugin) plugin generates the models and the controller interfaces that must be implemented on the application.
-
-The Ontimize OpenAPI plugin also provides the Swagger user interface and it will be available for local and compose environments at [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
-
+📅 **Año**: 2024/2025  
