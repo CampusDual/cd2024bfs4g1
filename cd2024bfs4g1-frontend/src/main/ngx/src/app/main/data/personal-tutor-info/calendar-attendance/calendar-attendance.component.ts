@@ -468,6 +468,7 @@ export class CalendarAttendanceComponent {
     this.loadDays();
     this.getStudents();
     this.updateCurrentMonthAndYear();
+    this.getHolidays(this.startDate,this.endDate);
   }
 
   openAttendanceDialog() {
