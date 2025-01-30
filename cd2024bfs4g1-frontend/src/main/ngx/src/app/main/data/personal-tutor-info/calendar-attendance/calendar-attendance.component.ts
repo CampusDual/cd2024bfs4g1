@@ -77,6 +77,7 @@ export class CalendarAttendanceComponent {
   backendResponse: any;
   startBootcampDate: Date;
   endBootcampsDate: Date;
+  holidays: any;
 
   private currentDate = Date.now();
   private currentYear = moment(this.currentDate).year();
@@ -92,12 +93,12 @@ export class CalendarAttendanceComponent {
     private router: Router,
     private dialog: MatDialog
   ) {
+    this.service = this.injector.get(OntimizeService);
     moment.locale('es');
     this.loadInitialDates();
     this.loadDays();
     this.loadYears();
 
-    this.service = this.injector.get(OntimizeService);
 
 
   }
@@ -150,7 +151,6 @@ export class CalendarAttendanceComponent {
       this.service.query(filter, columns, 'studentsWithComputable').subscribe(resp => {
         if (resp.code === 0) {
           if (resp.data.length > 0) {
-            console.log('Respuesta con computable:', resp.data);
 
             this.students = resp.data.map((stu: any) => {
               return {
@@ -235,6 +235,7 @@ export class CalendarAttendanceComponent {
     const startOfWeek = moment().startOf('isoWeek');
     this.startDate = startOfWeek.toDate();
     this.endDate = moment(startOfWeek).add(this.weeksToShow * 7, 'days').toDate();
+    this.getHolidays(this.startDate,this.endDate);
   }
 
   //Obtener año actual
@@ -272,6 +273,7 @@ export class CalendarAttendanceComponent {
     this.loadDays();
     this.getStudents();
     this.updateCurrentMonthAndYear();
+    this.getHolidays(this.startDate,this.endDate);
   }
 
   //ir a semana posterior
@@ -284,6 +286,8 @@ export class CalendarAttendanceComponent {
     this.loadDays();
     this.getStudents();
     this.updateCurrentMonthAndYear();
+    this.getHolidays(this.startDate,this.endDate);
+ 
   }
 
   //Actualizar mes y año
@@ -316,12 +320,25 @@ export class CalendarAttendanceComponent {
     return `7fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr`;
   }
 
+  isToday(day: Date): boolean {
+    day.setHours(0, 0, 0, 0);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return day.getTime() == today.getTime();
+  }
   //Cambiar color al dia actual (background)
-  updateDayCSSForCurrentDay(day: number) {
-    if (moment().isSame(moment(this.startDate).date(day), 'day')) {
+  updateDayCSSForCurrentDay(day: Date) {
+  
+    if (this.isToday(day)) {
       return '#8AB237';
+    }else if(Array.isArray(this.holidays) && this.holidays.filter(holiday => { 
+      return holiday.holiday_date  == day.getTime()
+    }).length == 1 ){
+      return 'red';
+    }else{
+      return '#1a3459';
     }
-    return '#1a3459';
+    
   }
 
   //Cambiar color al dia actual (color)
@@ -349,9 +366,6 @@ export class CalendarAttendanceComponent {
 
   onSelectChange(event: any, student: Student, day: Day): void {
     const selectedStatus = event.value;
-    console.log(event);
-    console.log(student);
-    console.log(day);
     let newElement = {
       student_id: student.student_id,
       bootcamp_id: this.bootcampId,
@@ -485,7 +499,6 @@ export class CalendarAttendanceComponent {
 
   submitAttendance() {
     const dateRange = this.iterateDateRange();
-    console.log('Date Range:', dateRange);
 
     this.attendanceModified = [];
 
@@ -506,8 +519,67 @@ export class CalendarAttendanceComponent {
     this.updateCurrentMonthAndYear();
     this.dialog.closeAll();
   }
+  protected configureHolidaysService(){
+    const conf = this.service.getDefaultServiceConfiguration('holidays');
+    this.service.configureService(conf);
+  }
 
+  getHolidays(startDate: Date, endDate: Date) {
+    this.configureHolidaysService();
+    if (this.service !== null) {
+     
+      const filter =    {
+        "@basic_expression": {
+            "lop": {
+                "lop": "holiday_date",
+                "op": ">=",
+                "rop": startDate.getTime()
+            },
+            "op": "AND",
+            "rop": {
+                "lop": "holiday_date",
+                "op": "<=",
+                "rop": endDate.getTime()
+            }
+        }
+    };
 
+    const types = {
+      'holiday_date': 91     
+    };
+      const columns = ['id', 'name', 'holiday_date'];
+      this.service.query(filter, columns, 'holidays',types).subscribe(resp => {
+        if (resp.code === 0) {
+          if(resp.data.length > 0){ 
+            this.holidays= resp.data;
+          }else{
+            this.holidays = {}; //json
+          }
+
+  
+        } else {
+          alert('Impossible to query data!');
+        }
+      });
+    }
+  }
+
+  updateDayCSSFontDecoration(day:Date){
+    if(Array.isArray(this.holidays) && this.holidays.filter(holiday => { 
+      return holiday.holiday_date  == day.getTime()
+    }).length == 1 ){
+      return 'italic';
+    }else{
+      return "normal";
+    }
+  }
+  getHolidayTooltip(day: Date): string {
+    if (Array.isArray(this.holidays)) {
+      const holiday = this.holidays.find((h: any) => h.holiday_date === day.getTime());
+      return holiday ? holiday.name : ''; 
+    }
+    return ''; 
+  }
 
 
 }

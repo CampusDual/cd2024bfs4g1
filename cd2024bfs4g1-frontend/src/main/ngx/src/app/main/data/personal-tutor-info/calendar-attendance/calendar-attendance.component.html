@@ -76,10 +76,11 @@
         <div class="date-item-container days" [ngStyle]="{'grid-template-columns': updateDayGridColumns()}">
             <div class="student days">{{'Alumno' | oTranslate}}</div>
             <div *ngFor="let dayWithWeekDays of daysWithWeekDays" class="date-item day" [ngStyle]="{
-                        'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.day),
+                        'background-color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#C0C0C0' : updateDayCSSForCurrentDay(dayWithWeekDays.fullDate),
                         'color': isWeekend(dayWithWeekDays.dayOfWeek) ? '#1a3459' : updateDayCSSFontColorForCurrentDay(dayWithWeekDays.day),
-                        'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.day)
-                    }">
+                        'font-weight': updateDayCSSFontWeightForCurrentDay(dayWithWeekDays.day),
+                        'font-style':updateDayCSSFontDecoration(dayWithWeekDays.fullDate)
+                    }" matTooltip="{{ getHolidayTooltip(dayWithWeekDays.fullDate) }}" matTooltipClass="my-tooltip">
                 <div>{{dayWithWeekDays.day}}</div>
                 <div>{{dayWithWeekDays.dayOfWeek}}</div>
             </div>
